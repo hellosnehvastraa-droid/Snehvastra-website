@@ -1,198 +1,64 @@
-/* Reset default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Body */
+/* Reset some styles */
 body {
-    background-color: #fff;
-    color: #222;
-    line-height: 1.6;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  text-align: center;
 }
 
-/* Header / Navbar */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+/* Banner */
+.banner img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
 }
 
-header .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #000;
+/* Heading */
+h1 {
+  margin: 30px 0 20px;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-header nav ul {
-    display: flex;
-    list-style: none;
-}
-
-header nav ul li {
-    margin-left: 25px;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: #222;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-header nav ul li a:hover {
-    color: #ff5e57;
-}
-
-/* Hero Section with your banner */
-.hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    text-align: center;
-    background-image: url('../images/mybanner.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-}
-
-.hero .btn {
-    text-decoration: none;
-    background-color: #ff5e57;
-    color: #fff;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.hero .btn:hover {
-    background-color: #e04b45;
-}
-
-/* Featured Products */
-.featured-products {
-    padding: 60px 50px;
-    text-align: center;
-}
-
-.featured-products h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    font-weight: bold;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
+/* Product grid */
+.products {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
 }
 
 .product {
-    border: 1px solid #eee;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .product img {
-    width: 100%;
-    height: auto;
-}
-
-.product h3 {
-    font-size: 1.1rem;
-    margin: 10px 0;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .product p {
-    font-size: 1rem;
-    color: #ff5e57;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.product .btn {
-    display: inline-block;
-    margin-bottom: 15px;
-    padding: 8px 20px;
-    background-color: #ff5e57;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background 0.3s;
-}
-
-.product .btn:hover {
-    background-color: #e04b45;
-}
-
-.product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 30px;
-    background-color: #fff;
-    border-top: 1px solid #eee;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-footer a {
-    text-decoration: none;
-    color: #ff5e57;
-    margin: 0 8px;
-    transition: color 0.3s;
-}
-
-footer a:hover {
-    color: #e04b45;
-}
-
-/* Responsive */
-@media(max-width: 768px) {
-    header {
-        flex-direction: column;
-    }
-    header nav ul {
-        flex-direction: column;
-        margin-top: 15px;
-    }
-    header nav ul li {
-        margin: 10px 0;
-    }
-
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
+  margin-top: 40px;
+  padding: 20px;
+  background: #333;
+  color: #fff;
+  font-size: 14px;
 }
