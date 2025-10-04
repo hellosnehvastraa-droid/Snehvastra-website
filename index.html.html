@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snehvastra Drop Store</title>
+    <!-- Link to main.css in css folder -->
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Cinematic Logo Intro Styles */
+        #intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .gradient-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            animation: gradientAnimation 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientAnimation {
+            0% {opacity: 0.7;}
+            50% {opacity: 1;}
+            100% {opacity: 0.7;}
+        }
+
+        .intro-logo {
+            width: 200px;
+            height: auto;
+            z-index: 2;
+            animation: logoZoom 2s ease forwards;
+        }
+
+        @keyframes logoZoom {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🌸 Cinematic Logo Intro -->
+    <div id="intro">
+        <div class="gradient-bg"></div>
+        <img src="logo.sv.nbg.jpg" alt="Snehvastra Logo" class="intro-logo">
+    </div>
+
+    <!-- 🌿 Main Page Content -->
+    <div id="main-content" style="display: none;">
+
+        <!-- Header / Navigation -->
+        <header>
+            <div class="container header-container">
+                <div class="logo">Snehvastra</div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <div class="menu-toggle">&#9776;</div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <h1>Welcome to Snehvastra Drops</h1>
+                <p>Exclusive limited-time drops. Grab them before they disappear!</p>
+
+                <!-- Countdown Timer -->
+                <div class="countdown">
+                    <div><span id="days">00</span>Days</div>
+                    <div><span id="hours">00</span>Hours</div>
+                    <div><span id="minutes">00</span>Minutes</div>
+                    <div><span id="seconds">00</span>Seconds</div>
+                </div>
+
+                <a href="#shop" class="btn">Shop Now</a>
+            </div>
+        </section>
+
+        <!-- Featured Drop / Products -->
+        <section id="shop" class="shop">
+            <div class="container">
+                <h2>Current Drop</h2>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev">&#10094;</button>
+                    <div class="carousel">
+                        <div class="product-card">
+                            <img src="images/myproduct1.jpg" alt="Product 1">
+                            <h3>Product 1</h3>
+                            <p>₹999</p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                        <div class="product-card">
+                            <img src="images/myproduct2.jpg" alt="Product 2">
+                            <h3>Product 2</h3>
+                            <p>₹1299</p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                        <div class="product-card">
+                            <img src="images/myproduct3.jpg" alt="Product 3">
+                            <h3>Product 3</h3>
+                            <p>₹799</p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                        <div class="product-card">
+                            <img src="images/myproduct4.jpg" alt="Product 4">
+                            <h3>Product 4</h3>
+                            <p>₹1499</p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Snehvastra</h2>
+                <p>Snehvastra is a clothing brand bringing you exclusive limited-edition drops that combine street style with premium quality. Our mission is to deliver unique fashion experiences directly to your doorstep.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Snehvastra. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        // Hide intro after 3 seconds and show main content
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const intro = document.getElementById('intro');
+                const mainContent = document.getElementById('main-content');
+                intro.style.transition = "opacity 1s ease";
+                intro.style.opacity = 0;
+                setTimeout(() => {
+                    intro.style.display = "none";
+                    mainContent.style.display = "block";
+                }, 1000);
+            }, 3000); // 3 seconds intro
+        });
+    </script>
+</body>
+</html>
