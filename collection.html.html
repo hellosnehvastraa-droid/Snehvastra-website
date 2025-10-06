@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Snehvastra Collection</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header>
+  <div class="container header-container">
+    <div class="logo">Snehvastra</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="actions">
+        <button id="wishlist-toggle-2" class="icon-btn" title="Wishlist">♡ <span id="wish-count-2">0</span></button>
+        <button id="cart-toggle-2" class="icon-btn" title="Cart">🛒 <span id="cart-count-2">0</span></button>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="shop">
+    <div class="container">
+      <h2>Collection — ongoing, on sale & sold out</h2>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev">❮</button>
+        <div class="carousel">
+          <!-- 10 sample product cards (same structure) -->
+          <div class="product-card" data-id="p1" data-title="Neon Shift Jacket" data-price="4999"><img loading="lazy" src="images/myproduct1.jpg" alt=""><h3>Neon Shift Jacket</h3><p class="price">₹4,999 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><span class="status on-sale">On Sale</span><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p2" data-title="Chromatic Tee" data-price="1299"><img loading="lazy" src="images/myproduct2.jpg" alt=""><h3>Chromatic Tee</h3><p class="price">₹1,299 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><span class="status on-sale">On Sale</span><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p3" data-title="Shifted Cargo" data-price="2899"><img loading="lazy" src="images/myproduct3.jpg" alt=""><h3>Shifted Cargo</h3><p class="price">₹2,899 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><span class="status on-sale">On Sale</span><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p4" data-title="Glow Hoodie" data-price="3999"><img loading="lazy" src="images/myproduct4.jpg" alt=""><h3>Glow Hoodie</h3><p class="price">₹3,999 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><span class="status sold-out">Sold Out</span><div class="card-actions"><button class="btn" disabled>Sold</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p5" data-title="Drop 5" data-price="1299"><img loading="lazy" src="images/myproduct5.jpg" alt=""><h3>Drop 5</h3><p class="price">₹1,299 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p6" data-title="Drop 6" data-price="1099"><img loading="lazy" src="images/myproduct6.jpg" alt=""><h3>Drop 6</h3><p class="price">₹1,099 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p7" data-title="Drop 7" data-price="1399"><img loading="lazy" src="images/myproduct7.jpg" alt=""><h3>Drop 7</h3><p class="price">₹1,399 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p8" data-title="Drop 8" data-price="1199"><img loading="lazy" src="images/myproduct8.jpg" alt=""><h3>Drop 8</h3><p class="price">₹1,199 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p9" data-title="Drop 9" data-price="1599"><img loading="lazy" src="images/myproduct9.jpg" alt=""><h3>Drop 9</h3><p class="price">₹1,599 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+
+          <div class="product-card" data-id="p10" data-title="Drop 10" data-price="899"><img loading="lazy" src="images/myproduct10.jpg" alt=""><h3>Drop 10</h3><p class="price">₹899 • <span class="usd">≈ $<span class="usd-val">—</span></span></p><div class="card-actions"><button class="btn add-cart">Add</button><button class="icon-btn add-wish">♡</button></div></div>
+        </div>
+        <button class="carousel-btn next">❯</button>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- Include same cart panel on collection page -->
+<aside id="cart-panel" aria-hidden="true">
+  <header class="cart-header">
+    <h3>Your Cart</h3>
+    <button id="cart-close" class="icon-btn">✕</button>
+  </header>
+  <div id="cart-items" class="cart-items"></div>
+  <footer class="cart-footer">
+    <div class="cart-total">Total: ₹<span id="cart-total">0</span> • $<span id="cart-total-usd">0.00</span></div>
+    <div class="cart-actions">
+      <button id="checkout-btn" class="btn">Checkout (Demo)</button>
+    </div>
+  </footer>
+</aside>
+
+<script src="js/script.js"></script>
+</body>
+</html>

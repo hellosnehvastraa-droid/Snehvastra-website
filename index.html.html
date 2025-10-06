@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Snehvastra Drops</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- Intro (gradient adapts to logo) -->
+<div id="intro" aria-hidden="true">
+  <div class="gradient-bg"></div>
+  <img id="logo-sample" src="images/logo.final.png" alt="Snehvastra Logo" class="intro-logo" />
+</div>
+
+<!-- Main content -->
+<div id="main-content" style="display:none;">
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">Snehvastra</div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="actions">
+          <button id="wishlist-toggle" class="icon-btn" title="Wishlist">♡ <span id="wish-count">0</span></button>
+          <button id="cart-toggle" class="icon-btn" title="Cart">🛒 <span id="cart-count">0</span></button>
+          <button class="menu-toggle" aria-label="Menu">☰</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero: greeting + compact timer placed to the right on wide screens -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-left">
+        <h1>Welcome to Snehvastra</h1>
+        <p class="lead">Experience fashion that transforms your personality — limited drops designed for Gen-Z.</p>
+        <a href="collection.html" class="btn">Explore Drops</a>
+      </div>
+
+      <div class="hero-right">
+        <div class="countdown compact" aria-live="polite" aria-atomic="true">
+          <div><span id="days">00</span><small>Days</small></div>
+          <div><span id="hours">00</span><small>Hours</small></div>
+          <div><span id="minutes">00</span><small>Minutes</small></div>
+          <div><span id="seconds">00</span><small>Seconds</small></div>
+        </div>
+        <p class="next-drop-note">Next drop: <strong id="next-drop-name">NEON SHIFT Jacket</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- New & Upcoming Drops (4 visible on desktop) -->
+  <section id="new-drops" class="shop">
+    <div class="container">
+      <h2>New & Upcoming Drops</h2>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Prev">❮</button>
+
+        <div class="carousel" role="list">
+          <!-- product-card template content; buttons have data attributes -->
+          <div class="product-card" data-id="p1" data-title="Neon Shift Jacket" data-price="4999">
+            <img loading="lazy" src="images/myproduct1.jpg" alt="Neon Shift Jacket">
+            <h3>Neon Shift Jacket</h3>
+            <p class="price">₹4,999 &nbsp;<span class="usd">≈ $<span class="usd-val">—</span></span></p>
+            <div class="card-actions">
+              <button class="btn add-cart">Add to cart</button>
+              <button class="icon-btn add-wish" title="Add to wishlist">♡</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-id="p2" data-title="Chromatic Tee" data-price="1299">
+            <img loading="lazy" src="images/myproduct2.jpg" alt="Chromatic Tee">
+            <h3>Chromatic Tee</h3>
+            <p class="price">₹1,299 &nbsp;<span class="usd">≈ $<span class="usd-val">—</span></span></p>
+            <div class="card-actions">
+              <button class="btn add-cart">Add to cart</button>
+              <button class="icon-btn add-wish" title="Add to wishlist">♡</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-id="p3" data-title="Shifted Cargo" data-price="2899">
+            <img loading="lazy" src="images/myproduct3.jpg" alt="Shifted Cargo">
+            <h3>Shifted Cargo</h3>
+            <p class="price">₹2,899 &nbsp;<span class="usd">≈ $<span class="usd-val">—</span></span></p>
+            <div class="card-actions">
+              <button class="btn add-cart">Add to cart</button>
+              <button class="icon-btn add-wish" title="Add to wishlist">♡</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-id="p4" data-title="Glow Hoodie" data-price="3999">
+            <img loading="lazy" src="images/myproduct4.jpg" alt="Glow Hoodie">
+            <h3>Glow Hoodie</h3>
+            <p class="price">₹3,999 &nbsp;<span class="usd">≈ $<span class="usd-val">—</span></span></p>
+            <div class="card-actions">
+              <button class="btn add-cart">Add to cart</button>
+              <button class="icon-btn add-wish" title="Add to wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn next" aria-label="Next">❯</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>Our Vision</h2>
+      <p>Snehvastra is for the generation that transforms itself — we design limited-run clothing that amplifies confidence and identity. Built for Gen-Z, crafted responsibly.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <form id="contact-form">
+        <input name="name" type="text" placeholder="Your Name" required>
+        <input name="email" type="email" placeholder="Your Email" value="hellosnehvastra@gmail.com" required>
+        <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Snehvastra. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Slide-out Cart Panel -->
+<aside id="cart-panel" aria-hidden="true">
+  <header class="cart-header">
+    <h3>Your Cart</h3>
+    <button id="cart-close" class="icon-btn">✕</button>
+  </header>
+  <div id="cart-items" class="cart-items"></div>
+  <footer class="cart-footer">
+    <div class="cart-total">Total: ₹<span id="cart-total">0</span> • $<span id="cart-total-usd">0.00</span></div>
+    <div class="cart-actions">
+      <button id="checkout-btn" class="btn">Checkout (Demo)</button>
+    </div>
+  </footer>
+</aside>
+
+<script src="js/script.js"></script>
+</body>
+</html>
