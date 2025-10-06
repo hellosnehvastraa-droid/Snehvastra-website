@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Snehvastra — Drops for the New Generation</title>
+  <meta name="description" content="Snehvastra — youth-first transformative streetwear. Limited drops, bold ideas." />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <!-- CINEMATIC INTRO -->
+  <div id="intro" aria-hidden="true">
+    <div class="gradient-bg"></div>
+    <img src="logo.sv.nbg.jpg" class="intro-logo" alt="Snehvastra logo" />
+    <button id="skip-intro" class="skip-btn" aria-label="Skip intro">Skip</button>
+  </div>
+
+  <!-- MAIN (hidden while intro plays) -->
+  <div id="main-content" class="page" style="display:none;">
+    <header>
+      <div class="container header-container">
+        <a href="index.html" class="logo">SNEHVASTRA</a>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO: greetings + featured drop teaser -->
+      <section id="home" class="hero hero-compact">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <p class="eyebrow">For the generation of today & tomorrow</p>
+            <h1 class="display">Transformative streetwear. Confidence, redesigned.</h1>
+            <p class="lead">Limited drops, bold concepts, outfits that change the mood — and the attitude.</p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="shop.html#ongoing">Shop Ongoing Drops</a>
+              <a class="btn btn-ghost" href="#upcoming">Upcoming Drops</a>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <!-- Featured drop card -->
+            <div class="featured-card">
+              <img src="images/myproduct1.jpg" alt="Featured drop" onerror="this.style.opacity=.6">
+              <div class="featured-info">
+                <h3>NEON SHIFT Jacket <span class="badge new">New</span></h3>
+                <p class="muted">Limited Quantity</p>
+
+                <div class="countdown">
+                  <div><span id="days">00</span><small>Days</small></div>
+                  <div><span id="hours">00</span><small>Hours</small></div>
+                  <div><span id="minutes">00</span><small>Minutes</small></div>
+                  <div><span id="seconds">00</span><small>Seconds</small></div>
+                </div>
+
+                <div class="price-line">
+                  <div class="price">₹ <span id="featured-inr">1999</span></div>
+                  <div class="price small">≈ $ <span id="featured-usd">—</span></div>
+                </div>
+
+                <div class="card-actions">
+                  <a class="btn" href="shop.html#ongoing">Pre-order</a>
+                  <button class="btn btn-outline" id="notify-featured">Notify Me</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- UPCOMING DROPS -->
+      <section id="upcoming" class="section">
+        <div class="container">
+          <h2>Upcoming Drops</h2>
+          <p class="muted">Sneak peeks — get ready. Tap 'Notify' to be emailed on launch.</p>
+
+          <div class="grid cards-grid" id="upcoming-grid">
+            <!-- JS will fill or use static cards below -->
+            <article class="card upcoming">
+              <img src="images/myproduct2.jpg" alt="Preview 1" onerror="this.style.opacity=.6">
+              <h3>Chromatic Tee</h3>
+              <p class="muted">Release: Oct 20, 2025</p>
+              <div class="card-actions">
+                <button class="btn btn-outline small notify-btn">Notify</button>
+              </div>
+            </article>
+
+            <article class="card upcoming">
+              <img src="images/myproduct3.jpg" alt="Preview 2" onerror="this.style.opacity=.6">
+              <h3>Shifted Cargo</h3>
+              <p class="muted">Release: Nov 04, 2025</p>
+              <div class="card-actions">
+                <button class="btn btn-outline small notify-btn">Notify</button>
+              </div>
+            </article>
+
+            <article class="card upcoming">
+              <img src="images/myproduct4.jpg" alt="Preview 3" onerror="this.style.opacity=.6">
+              <h3>Glow Panel Hoodie</h3>
+              <p class="muted">Release: Nov 20, 2025</p>
+              <div class="card-actions">
+                <button class="btn btn-outline small notify-btn">Notify</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT - short and professional -->
+      <section id="about" class="section about-section">
+        <div class="container">
+          <h2>About Snehvastra</h2>
+          <p class="lead">Snehvastra is a youth-first fashion lab that designs apparel to transform identity. We combine experimentation, sustainable fabrics, and functional design — empowering Gen-Z to wear confidence. Each drop explores a concept and is available for a limited time to preserve originality.</p>
+
+          <div class="brand-values">
+            <div><strong>Concept-first</strong><p class="muted">Every drop starts from an idea.</p></div>
+            <div><strong>Quality</strong><p class="muted">Ethical sourcing & durable build.</p></div>
+            <div><strong>Community</strong><p class="muted">Designed with our crowd.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT & NEWSLETTER -->
+      <section id="contact" class="section">
+        <div class="container">
+          <h2>Stay in the loop</h2>
+          <p class="muted">Subscribe for early access and exclusive drops.</p>
+          <form id="newsletter-form" class="newsletter-form" onsubmit="return false;">
+            <input type="email" id="newsletter-email" placeholder="Your email" required>
+            <button class="btn btn-primary" id="newsletter-submit">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <a href="index.html" class="logo footer-logo">SNEHVASTRA</a>
+            <p class="muted">Made for the bold. © 2025 Snehvastra</p>
+          </div>
+          <div>
+            <h4>Links</h4>
+            <ul class="footer-links">
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="#upcoming">Upcoming</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <p class="muted">socials@yourbrand.com</p>
+            <div class="socials">
+              <a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="TikTok">TT</a><a href="#" aria-label="YouTube">YT</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
