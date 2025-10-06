@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnehVastra Collection</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container container">
+            <div class="logo">SnehVastra</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">&#9776;</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Our Full Collection</h1>
+        <p>Explore all drops, from new arrivals to exclusive editions.</p>
+    </section>
+
+    <!-- Collection -->
+    <section id="collection" class="shop container">
+        <h2>Products</h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn carousel-prev">&#10094;</button>
+            <div class="carousel">
+                <!-- Product Cards -->
+                <div class="product-card" data-price="25">
+                    <div class="status on-sale">On Sale</div>
+                    <img src="https://via.placeholder.com/300x300?text=Product+1" alt="Product 1">
+                    <h3>Product 1</h3>
+                    <p>$25.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="30">
+                    <div class="status sold-out">Sold Out</div>
+                    <img src="https://via.placeholder.com/300x300?text=Product+2" alt="Product 2">
+                    <h3>Product 2</h3>
+                    <p>$30.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="20">
+                    <img src="https://via.placeholder.com/300x300?text=Product+3" alt="Product 3">
+                    <h3>Product 3</h3>
+                    <p>$20.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="35">
+                    <img src="https://via.placeholder.com/300x300?text=Product+4" alt="Product 4">
+                    <h3>Product 4</h3>
+                    <p>$35.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="40">
+                    <div class="status on-sale">On Sale</div>
+                    <img src="https://via.placeholder.com/300x300?text=Product+5" alt="Product 5">
+                    <h3>Product 5</h3>
+                    <p>$40.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="22">
+                    <img src="https://via.placeholder.com/300x300?text=Product+6" alt="Product 6">
+                    <h3>Product 6</h3>
+                    <p>$22.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="28">
+                    <div class="status on-sale">On Sale</div>
+                    <img src="https://via.placeholder.com/300x300?text=Product+7" alt="Product 7">
+                    <h3>Product 7</h3>
+                    <p>$28.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="32">
+                    <img src="https://via.placeholder.com/300x300?text=Product+8" alt="Product 8">
+                    <h3>Product 8</h3>
+                    <p>$32.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="27">
+                    <img src="https://via.placeholder.com/300x300?text=Product+9" alt="Product 9">
+                    <h3>Product 9</h3>
+                    <p>$27.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" data-price="45">
+                    <div class="status sold-out">Sold Out</div>
+                    <img src="https://via.placeholder.com/300x300?text=Product+10" alt="Product 10">
+                    <h3>Product 10</h3>
+                    <p>$45.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <button class="carousel-btn carousel-next">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact container">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" rows="5" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 SnehVastra. All rights reserved.
+    </footer>
+
+    <!-- Cart Panel -->
+    <div id="cart-panel">
+        <h3>Your Cart</h3>
+        <ul id="cart-items"></ul>
+        <div id="cart-total">Total: $0.00</div>
+        <button id="checkout-btn" class="btn">Checkout</button>
+        <button id="close-cart" class="btn">Close</button>
+    </div>
+
+    <!-- Product Popup -->
+    <div id="product-popup">
+        <div class="popup-content">
+            <span id="close-popup">&#10006;</span>
+            <h3>Product Name</h3>
+            <label for="size-select">Select Size:</label>
+            <select id="size-select">
+                <option value="s">S</option>
+                <option value="m" selected>M</option>
+                <option value="l">L</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Back to top -->
+    <div id="back-top" style="display:none;position:fixed;bottom:30px;right:30px;cursor:pointer;background:#111;color:#f0a500;padding:10px 15px;border-radius:50%;font-size:1.5rem;">&#8679;</div>
+
+    <!-- Music Toggle -->
+    <div id="music-toggle" style="position:fixed;bottom:30px;left:30px;cursor:pointer;background:#f0a500;color:#111;padding:10px 15px;border-radius:50%;font-size:1.2rem;">🎵</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
