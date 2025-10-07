@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Snehvastra - Innovative Youth-Oriented Drops</title>
+<meta name="description" content="Discover Snehvastra’s exclusive drops designed to elevate your style and confidence. Fashion for Gen-Z with limited editions and bold designs." />
+<meta name="robots" content="index, follow" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const intro = document.getElementById("intro");
+    const mainContent = document.getElementById("main-content");
+    if (intro) intro.style.display = "none";
+    if (mainContent) mainContent.style.display = "block";
+  }, 2500);
+});
+</script>
+</head>
+<body>
+
+<div id="intro" aria-hidden="true">
+  <div class="gradient-bg"></div>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="intro-logo" />
+</div>
+
+<div id="main-content">
+
+<header role="banner">
+  <div class="container header-container">
+    <div class="logo"><a href="index.html" aria-label="Snehvastra Home">Snehvastra</a></div>
+    <nav role="navigation" aria-label="Primary Navigation">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="wishlist.html" id="wishlist" style="display:none;">Wishlist ❤️ <span id="wish-count">0</span></a></li>
+        <li><a href="#" id="cart" style="display:none;">Cart 🛒 <span id="cart-count">0</span></a></li>
+        <li><a href="user-login.html" id="login-link">Login</a></li>
+      </ul>
+      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" role="main" aria-label="Welcome hero section">
+  <div class="container hero-content">
+    <h1>Welcome to Snehvastra</h1>
+    <p>Experience fashion that transforms your personality.</p>
+
+    <div class="countdown" aria-live="polite" aria-atomic="true"></div>
+
+    <a href="collection.html" class="btn">Explore Drops</a>
+  </div>
+</section>
+
+<section id="new-drops" class="shop">
+  <div class="container">
+    <h2>Our Latest Drops</h2>
+
+    <div class="drop-label">Ongoing Drop</div>
+    <div class="product-card" role="listitem" aria-live="polite" tabindex="0">
+      <div class="placeholder-img" style="background-image: url('images/myproduct1.jpg'); background-size: cover;" aria-label="Drop 1 ongoing product image"></div>
+      <h3>Drop 1</h3>
+      <p>₹999 / $12</p>
+      <p><strong>Stock Left: 10</strong></p>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-wishlist">♡</button>
+    </div>
+
+    <div class="drop-label">Upcoming Drop</div>
+    <div class="product-card" role="listitem" tabindex="0">
+      <div class="placeholder-img" style="background-image: url('images/myproduct2.jpg'); background-size: cover;" aria-label="Drop 2 upcoming product image"></div>
+      <h3>Drop 2</h3>
+      <p>₹1299 / $16</p>
+      <p><strong>Stock Left: 10</strong></p>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-wishlist">♡</button>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about" aria-label="About Snehvastra">
+  <div class="container">
+    <h2>About Snehvastra</h2>
+    <p>
+      Snehvastra is a youth-oriented clothing brand creating transformative outfits for Gen-Z. Every piece is designed to boost confidence,
+      ignite creativity, and deliver a fresh, bold style experience.
+    </p>
+  </div>
+</section>
+
+<section id="contact" class="contact" aria-label="Contact Snehvastra">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required aria-required="true" />
+      <input type="email" placeholder="Your Email" value="hellosnehvastra@gmail.com" required aria-required="true" />
+      <textarea placeholder="Your Message" rows="5" required aria-required="true"></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <div class="container">
+    <p>&copy; 2025 Snehvastra. All rights reserved.</p>
+  </div>
+</footer>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

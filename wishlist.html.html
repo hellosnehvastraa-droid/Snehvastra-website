@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wishlist — Snehvastra</title>
+<meta name="description" content="View and manage your favorite items in your Snehvastra wishlist. Save exclusive drops for later purchase." />
+<meta name="robots" content="noindex, nofollow" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const intro = document.getElementById("intro");
+    const mainContent = document.getElementById("main-content");
+    if (intro) intro.style.display = "none";
+    if (mainContent) mainContent.style.display = "block";
+  }, 2500);
+});
+</script>
+</head>
+<body>
+
+<div id="intro" aria-hidden="true">
+  <div class="gradient-bg"></div>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="intro-logo" />
+</div>
+
+<div id="main-content">
+
+<header role="banner">
+  <div class="container header-container">
+    <div class="logo"><a href="index.html" aria-label="Snehvastra Home">Snehvastra</a></div>
+    <nav role="navigation" aria-label="Primary Navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="wishlist.html" id="wishlist" style="display:none;" class="active">Wishlist ❤️ <span id="wish-count"></span></a></li>
+        <li><a href="#" id="cart" style="display:none;">Cart 🛒 <span id="cart-count"></span></a></li>
+        <li><a href="user-login.html" id="login-link">Login</a></li>
+      </ul>
+      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container" role="main">
+  <h2>Your Wishlist</h2>
+  <ul class="wishlist-items" id="wishlist-items"></ul>
+  <p class="empty-msg" id="empty-msg" style="display:none;">You have no items in your wishlist.</p>
+</main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const wishlistItemsEl = document.getElementById("wishlist-items");
+    const emptyMsg = document.getElementById("empty-msg");
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    if (wishlist.length === 0) {
+      emptyMsg.style.display = "block";
+    } else {
+      emptyMsg.style.display = "none";
+      wishlistItemsEl.innerHTML = "";
+      wishlist.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item.title;
+        wishlistItemsEl.appendChild(li);
+      });
+    }
+  });
+</script>
+
+<script src="js/script.js"></script>
+</div>
+</body>
+</html>

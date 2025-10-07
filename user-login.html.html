@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login — Snehvastra</title>
+<meta name="description" content="Login to your Snehvastra account to manage wishlist, track orders, and shop exclusive drops." />
+<meta name="robots" content="noindex, nofollow" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const intro = document.getElementById("intro");
+    const mainContent = document.getElementById("main-content");
+    if (intro) intro.style.display = "none";
+    if (mainContent) mainContent.style.display = "block";
+  }, 2500);
+});
+</script>
+</head>
+<body>
+<div id="intro" aria-hidden="true">
+  <div class="gradient-bg"></div>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="intro-logo" />
+</div>
+<div id="main-content">
+<header role="banner">
+  <div class="container header-container">
+    <div class="logo"><a href="index.html" aria-label="Snehvastra Home">Snehvastra</a></div>
+    <nav role="navigation" aria-label="Primary Navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="wishlist.html" id="wishlist" style="display:none;">Wishlist ❤️ <span id="wish-count"></span></a></li>
+        <li><a href="#" id="cart" style="display:none;">Cart 🛒 <span id="cart-count"></span></a></li>
+        <li><a href="user-login.html" id="login-link" class="active">Login</a></li>
+      </ul>
+      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">☰</button>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="form-container" role="main">
+    <h2>Customer Login</h2>
+    <form id="login-form" aria-label="Login Form">
+      <input type="email" id="login-email" name="email" placeholder="Email" required aria-required="true" />
+      <input type="password" id="login-password" name="password" placeholder="Password" required aria-required="true" autocomplete="off" />
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <p class="link-text">Don't have an account? <a href="user-register.html">Register here</a></p>
+    <p class="link-text">
+      <a href="#" id="forgot-password-link">Forgot Password?</a>
+    </p>
+    <div id="forgot-password-container" style="display:none;">
+      <form id="forgot-password-form" aria-label="Forgot Password Form">
+        <input type="email" id="forgot-email" placeholder="Enter your registered email" required aria-required="true" autocomplete="email" />
+        <button type="submit" class="btn">Reset Password</button>
+      </form>
+      <p id="forgot-password-message"></p>
+    </div>
+  </div>
+</main>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const forgotLink = document.getElementById("forgot-password-link");
+    const forgotContainer = document.getElementById("forgot-password-container");
+    const forgotForm = document.getElementById("forgot-password-form");
+    const forgotMsg = document.getElementById("forgot-password-message");
+
+    if (forgotLink && forgotContainer && forgotForm && forgotMsg) {
+      forgotLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        forgotContainer.style.display = "block";
+        forgotLink.style.display = "none";
+      });
+
+      forgotForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("forgot-email").value.trim();
+        if (email) {
+          forgotMsg.textContent = "If this email exists in our system, password reset instructions have been sent.";
+          forgotForm.style.display = "none";
+        }
+      });
+    }
+  });
+</script>
+<script src="js/script.js"></script>
+</div>
+</body>
+</html>

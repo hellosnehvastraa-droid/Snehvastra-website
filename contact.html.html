@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Snehvastra</title>
+<meta name="description" content="Get in touch with Snehvastra for inquiries, support, or collaboration. Reach out via our contact form or email us directly." />
+<meta name="robots" content="index, follow" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const intro = document.getElementById("intro");
+    const mainContent = document.getElementById("main-content");
+    if (intro) intro.style.display = "none";
+    if (mainContent) mainContent.style.display = "block";
+  }, 2500);
+});
+</script>
+</head>
+<body>
+<div id="intro" aria-hidden="true">
+  <div class="gradient-bg"></div>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="intro-logo" />
+</div>
+<div id="main-content">
+<header role="banner">
+  <div class="container header-container">
+    <div class="logo"><a href="index.html" aria-label="Snehvastra Home">Snehvastra</a></div>
+    <nav role="navigation" aria-label="Primary Navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="wishlist.html" id="wishlist" style="display:none;">Wishlist ❤️ <span id="wish-count"></span></a></li>
+        <li><a href="#" id="cart" style="display:none;">Cart 🛒 <span id="cart-count"></span></a></li>
+        <li><a href="user-login.html" id="login-link">Login</a></li>
+      </ul>
+      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">☰</button>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="contact" aria-label="Contact Snehvastra Section">
+    <div class="container">
+      <h2>Contact</h2>
+      <form id="contact-page-form" aria-describedby="contact-desc" novalidate>
+        <input name="name" type="text" placeholder="Your Name" required aria-required="true" aria-label="Your Name" />
+        <input name="email" type="email" placeholder="Your Email" value="hellosnehvastra@gmail.com" required aria-required="true" aria-label="Your Email" />
+        <textarea name="message" rows="6" placeholder="How can we help?" required aria-required="true" aria-label="Your Message"></textarea>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+      <p id="contact-desc" style="margin-top:18px">Or email directly: <a href="mailto:hellosnehvastra@gmail.com">hellosnehvastra@gmail.com</a></p>
+    </div>
+  </section>
+</main>
+<script src="js/script.js"></script>
+</div>
+</body>
+</html>
