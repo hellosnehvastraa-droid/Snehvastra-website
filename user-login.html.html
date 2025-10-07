@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login — Snehvastra</title>
+<link rel="stylesheet" href="css/main.css" />
+<style>
+  .form-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #111;
+  }
+  form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  .btn {
+    width: 100%;
+    padding: 14px 0;
+    background: #111;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    color: #f0a500;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s ease;
+  }
+  .btn:hover {
+    background: #f0a500;
+    color: #111;
+  }
+  .link-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #555;
+  }
+  .link-text a {
+    color: #f0a500;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-container">
+    <div class="logo">Snehvastra</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="user-login.html" class="active">Login</a></li>
+      </ul>
+      <div class="menu-toggle">☰</div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="form-container">
+    <h2>Customer Login</h2>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Email" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <p class="link-text">Don't have an account? <a href="user-register.html">Register here</a></p>
+  </div>
+</main>
+
+<script>
+  // Simulate simple login authentication
+  document.getElementById("login-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value.trim();
+
+    // For demo, retrieve users from localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      alert("Login successful!");
+      window.location.href = "index.html"; // Redirect to home or profile page
+    } else {
+      alert("Invalid email or password. Please try again.");
+    }
+  });
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>
