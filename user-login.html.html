@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login — Snehvastra</title>
+<meta name="description" content="Login to your Snehvastra account to manage wishlist, track orders, and shop exclusive drops." />
+<meta name="robots" content="noindex, nofollow" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fa;
+    color: #111;
+  }
+  .form-container {
+    background: #fff;
+    max-width: 400px;
+    margin: 120px auto;
+    padding: 30px 25px;
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+  }
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #222;
+    text-align: center;
+  }
+  form input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  form input:focus {
+    outline: none;
+    border-color: #f0a500;
+    box-shadow: 0 0 6px #f0a500aa;
+  }
+  .btn {
+    background: #f0a500;
+    color: #111;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .btn:hover,
+  .btn:focus {
+    background: #d18c00;
+    outline: none;
+  }
+  .link-text {
+    margin-top: 15px;
+    text-align: center;
+    color: #555;
+    font-family: 'Poppins', sans-serif;
+  }
+  .link-text a {
+    color: #f0a500;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .link-text a:hover,
+  .link-text a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+  #forgot-password-container {
+    margin-top: 20px;
+  }
+  #forgot-password-container input {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  #forgot-password-message {
+    font-style: italic;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+<header role="banner">
+  <div class="container header-container">
+    <div class="logo"><a href="index.html" aria-label="Snehvastra Home">Snehvastra</a></div>
+    <nav role="navigation" aria-label="Primary Navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="wishlist.html" id="wishlist" style="display:none;">Wishlist ❤️ <span id="wish-count"></span></a></li>
+        <li><a href="#" id="cart" style="display:none;">Cart 🛒 <span id="cart-count"></span></a></li>
+        <li><a href="user-login.html" id="login-link" class="active">Login</a></li>
+      </ul>
+      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="form-container" role="main">
+    <h2>Customer Login</h2>
+    <form id="login-form" aria-label="Login Form">
+      <input type="email" id="login-email" name="email" placeholder="Email" required aria-required="true" />
+      <input type="password" id="login-password" name="password" placeholder="Password" required aria-required="true" autocomplete="off" />
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <p class="link-text">Don't have an account? <a href="user-register.html">Register here</a></p>
+
+    <p class="link-text">
+      <a href="#" id="forgot-password-link">Forgot Password?</a>
+    </p>
+
+    <div id="forgot-password-container" style="display:none;">
+      <form id="forgot-password-form" aria-label="Forgot Password Form">
+        <input type="email" id="forgot-email" placeholder="Enter your registered email" required aria-required="true" autocomplete="email" />
+        <button type="submit" class="btn">Reset Password</button>
+      </form>
+      <p id="forgot-password-message"></p>
+    </div>
+  </div>
+</main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const forgotLink = document.getElementById("forgot-password-link");
+    const forgotContainer = document.getElementById("forgot-password-container");
+    const forgotForm = document.getElementById("forgot-password-form");
+    const forgotMsg = document.getElementById("forgot-password-message");
+
+    if (forgotLink && forgotContainer && forgotForm && forgotMsg) {
+      forgotLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        forgotContainer.style.display = "block";
+        forgotLink.style.display = "none";
+      });
+
+      forgotForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("forgot-email").value.trim();
+        if (email) {
+          forgotMsg.textContent = "If this email exists in our system, password reset instructions have been sent.";
+          forgotForm.style.display = "none";
+        }
+      });
+    }
+  });
+</script>
+
+<script src="js/script.js"></script>
+</body>
+</html>
