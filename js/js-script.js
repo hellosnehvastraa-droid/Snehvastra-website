@@ -3,141 +3,83 @@
 let cart = [];
 let wishlist = [];
 
-// Add to cart functionality for buttons with class 'add-to-cart'
-document.querySelectorAll('.add-to-cart').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const product = btn.dataset.product;
-    const sizeSelect = document.getElementById('size-select') || document.getElementById('size');
-    const purposeSelect = document.getElementById('purpose-select') || document.getElementById('purpose');
-    if (!sizeSelect || !purposeSelect) return;
-    const size = sizeSelect.value;
-    const purpose = purposeSelect.value;
-    cart.push({ product, size, purpose });
-    updateCartUI();
-  });
-});
-
-// Update Cart UI in the element with class 'cart-container'
-function updateCartUI() {
-  const cartContainer = document.querySelector('.cart-container');
-  if (!cartContainer) return;
-  cartContainer.innerHTML = '';
-  cart.forEach((item, index) => {
-    const div = document.createElement('div');
-    div.className = 'cart-item';
-    div.innerHTML = `
-      <h2>${item.product}</h2>
-      <p>Size: ${item.size}</p>
-      <p>Purpose: ${item.purpose}</p>
-      <button class="remove-item">Remove</button>
-    `;
-    cartContainer.appendChild(div);
-    div.querySelector('.remove-item').addEventListener('click', () => {
-      cart.splice(index, 1);
+document.addEventListener('DOMContentLoaded', () => {
+  // Add to cart buttons
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const product = btn.dataset.product;
+      const sizeSelect = document.getElementById('size-select') || document.getElementById('size');
+      const purposeSelect = document.getElementById('purpose-select') || document.getElementById('purpose');
+      if (!sizeSelect || !purposeSelect) return;
+      const size = sizeSelect.value;
+      const purpose = purposeSelect.value;
+      cart.push({ product, size, purpose });
       updateCartUI();
     });
   });
-}
 
-// Wishlist simulation
-document.querySelectorAll('.view-product').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const product = btn.dataset.product;
-    if (!wishlist.includes(product)) {
-      wishlist.push(product);
-      updateWishlistUI();
-    }
-  });
-});
-
-// Update Wishlist UI in the element with class 'wishlist-container'
-function updateWishlistUI() {
-  const wishlistContainer = document.querySelector('.wishlist-container');
-  if (!wishlistContainer) return;
-  wishlistContainer.innerHTML = '';
-  wishlist.forEach((product, index) => {
-    const div = document.createElement('div');
-    div.className = 'wishlist-item';
-    div.innerHTML = `
-      <h2>${product}</h2>
-      <button class="remove-item">Remove</button>
-    `;
-    wishlistContainer.appendChild(div);
-    div.querySelector('.remove-item').addEventListener('click', () => {
-      wishlist.splice(index, 1);
-      updateWishlistUI();
+  // View product buttons add to wishlist
+  document.querySelectorAll('.view-product').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const product = btn.dataset.product;
+      if (!wishlist.includes(product)) {
+        wishlist.push(product);
+        updateWishlistUI();
+      }
     });
   });
-}
 
-// Front-end counter for rush simulation with random decreases
-let productStock = 20;
-const counterInterval = setInterval(() => {
-  if (productStock > 0) {
-    productStock -= Math.floor(Math.random() * 2); // Random decrease by 0 or 1
-    if(productStock < 0) productStock = 0;
-    document.querySelectorAll('.rush-counter, #rush-counter').forEach(el => el.textContent = productStock);
+  function updateCartUI() {
+    const cartContainer = document.querySelector('.cart-container');
+    if (!cartContainer) return;
+    cartContainer.innerHTML = '';
+    cart.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <h2>${item.product}</h2>
+        <p>Size: ${item.size}</p>
+        <p>Purpose: ${item.purpose}</p>
+        <button class="remove-item">Remove</button>
+      `;
+      cartContainer.appendChild(div);
+      div.querySelector('.remove-item').addEventListener('click', () => {
+        cart.splice(index, 1);
+        updateCartUI();
+      });
+    });
   }
-}, 3000);
 
-// Login form validation and handling
-const loginForm = document.getElementById('login-form');
-if (loginForm) {
-  loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const email = loginForm.email.value.trim();
-    const password = loginForm.password.value.trim();
+  function updateWishlistUI() {
+    const wishlistContainer = document.querySelector('.wishlist-container');
+    if (!wishlistContainer) return;
+    wishlistContainer.innerHTML = '';
+    wishlist.forEach((product, index) => {
+      const div = document.createElement('div');
+      div.className = 'wishlist-item';
+      div.innerHTML = `
+        <h2>${product}</h2>
+        <button class="remove-item">Remove</button>
+      `;
+      wishlistContainer.appendChild(div);
+      div.querySelector('.remove-item').addEventListener('click', () => {
+        wishlist.splice(index, 1);
+        updateWishlistUI();
+      });
+    });
+  }
 
-    if (!validateEmail(email)) {
-      alert('Please enter a valid email address.');
-      return;
+  // Front-end counter for rush simulation
+  let productStock = 20;
+  setInterval(() => {
+    if (productStock > 0) {
+      productStock -= Math.floor(Math.random() * 2);  // random: 0 or 1 decrement
+      if(productStock < 0) productStock = 0;
+      document.querySelectorAll('.rush-counter, #rush-counter').forEach(el => el.textContent = productStock);
     }
-    if (password.length < 6) {
-      alert('Password must be at least 6 characters.');
-      return;
-    }
-    alert('Login successful (simulation)');
-    loginForm.reset();
-    // Additional login processing logic can be added here
-  });
-}
+  }, 3000);
 
-// Register form validation and handling
-const registerForm = document.getElementById('register-form');
-if (registerForm) {
-  registerForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = registerForm.name.value.trim();
-    const email = registerForm.email.value.trim();
-    const password = registerForm.password.value.trim();
-
-    if (name.length === 0) {
-      alert('Please enter your name.');
-      return;
-    }
-    if (!validateEmail(email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    if (password.length < 6) {
-      alert('Password must be at least 6 characters.');
-      return;
-    }
-    alert('Registration successful (simulation)');
-    registerForm.reset();
-    // Additional registration logic can be added here
-  });
-}
-
-// Utility email validation
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email.toLowerCase());
-}
-
-// DYNAMIC PRODUCT CARD LOADING FOR HOMEPAGE
-document.addEventListener("DOMContentLoaded", function() {
-  // Latest Drops
+  // Load Latest Drops on homepage dynamically
   const products = [
     { img: "images/rev1.jpg", name: "Drop 1", status: "On Sale" },
     { img: "images/rev2.jpg", name: "Drop 2", status: "Sold Out" },
@@ -160,11 +102,10 @@ document.addEventListener("DOMContentLoaded", function() {
     ).join("");
   }
 
-  // Upcoming Drops (Pre-Booking Example)
+  // Load Pre-booking Products
   const preBookingProducts = [
     { img: "images/myproduct1.jpg", name: "Upcoming Drop A", available: "Pre-book in 2 days" },
     { img: "images/myproduct2.jpg", name: "Upcoming Drop B", available: "Pre-book in 5 days" }
-    // Add more as needed
   ];
   const preBookingContainer = document.getElementById('preBookingContainer');
   if (preBookingContainer) {
@@ -178,3 +119,54 @@ document.addEventListener("DOMContentLoaded", function() {
     ).join("");
   }
 });
+
+// Utility email validation
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email.toLowerCase());
+}
+
+// Login form validation
+const loginForm = document.getElementById('login-form');
+if(loginForm) {
+  loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = loginForm.email.value.trim();
+    const password = loginForm.password.value.trim();
+    if(!validateEmail(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    if(password.length < 6) {
+      alert('Password must be at least 6 characters.');
+      return;
+    }
+    alert('Login successful (simulation)');
+    loginForm.reset();
+  });
+}
+
+// Register form validation
+const registerForm = document.getElementById('register-form');
+if(registerForm) {
+  registerForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = registerForm.name.value.trim();
+    const email = registerForm.email.value.trim();
+    const password = registerForm.password.value.trim();
+    if(name.length === 0) {
+      alert('Please enter your name.');
+      return;
+    }
+    if(!validateEmail(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    if(password.length < 6) {
+      alert('Password must be at least 6 characters.');
+      return;
+    }
+    alert('Registration successful (simulation)');
+    registerForm.reset();
+  });
+}
