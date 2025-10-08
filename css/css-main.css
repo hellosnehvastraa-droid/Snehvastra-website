@@ -1,74 +1,69 @@
-/* Full responsive and polished styling for all site pages */
-
 body, html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff;
-  color: #222;
-  scroll-behavior: smooth;
-}
-
-.logo-header, .logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 0;
+  background: linear-gradient(135deg, #6c3bb7 0%, #463f8a 100%);
+  color: #fff;
+  min-height: 100vh;
 }
 
 .logo, #logo-mask {
   max-height: 70px;
-  transition: all 0.3s ease;
-  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.15));
-}
-
-nav, nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.25));
 }
 
 nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: flex;
   justify-content: center;
   gap: 24px;
-  background-color: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  padding: 12px 0;
+  background-color: transparent;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: #333;
+  color: #fff;
   font-weight: 600;
   padding: 6px 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-  background-color: #222;
+nav ul li a.active, nav ul li a:hover {
+  background-color: #4a256a;
   color: #fff;
 }
 
+/* Hero */
 .hero {
-  background: url("../images/mybanner.jpg") center/cover no-repeat;
+  background: transparent;
   text-align: center;
-  padding: 90px 20px;
+  padding: 90px 20px 44px 20px;
   color: #fff;
   font-weight: 700;
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   letter-spacing: 0.04em;
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+  text-shadow: 2px 3px 12px #442578, 0 4px 20px #000;
 }
 
-.featured-drops, .collection-header, .pre-booking {
+/* Content Headings and Sections */
+.featured-drops, .collection-header, .pre-booking, .about-section, .contact-form, .login-section, .register-section, .wishlist-section, .cart-section {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 16px;
+  color: #fff;
 }
 
+h1, h2 {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Product Card */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(260px, 1fr));
@@ -76,58 +71,69 @@ nav ul li a.active {
   padding-bottom: 40px;
 }
 
-.product-card {
-  background: #fafafa;
+.product-card, .wishlist-item, .cart-item {
+  background: rgba(52, 37, 110, 0.16);
+  color: #fff;
+  border: 2px solid #7d63c6;
   border-radius: 9px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.07);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
   overflow: hidden;
   text-align: center;
   padding-bottom: 16px;
   transition: transform 0.25s ease;
 }
 
-.product-card:hover {
+.product-card:hover, .wishlist-item:hover, .cart-item:hover {
   transform: scale(1.03);
 }
 
-.product-card img {
+.product-card img, .wishlist-item img, .cart-item img {
   width: 100%;
   height: 180px;
   object-fit: cover;
+  border-radius: 9px 9px 0 0;
 }
 
-.product-card h2 {
+.product-card h2, .wishlist-item h2, .cart-item h2 {
   margin: 14px 0 6px;
   font-weight: 700;
   font-size: 1.25rem;
-  color: #222;
+  color: #fff;
 }
 
 .product-card .price {
   font-weight: 600;
-  color: #ff3c3c;
+  color: #d6afff;
   margin-bottom: 12px;
 }
 
-.product-card button {
-  background-color: #222;
+.product-card button, .wishlist-item button, .cart-item button, .login-section button, .register-section button, .contact-form button {
+  background: linear-gradient(90deg, #a244f4 0%, #6c3bb7 100%);
   color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 10px 16px;
-  font-weight: 600;
+  border-radius: 7px;
+  padding: 12px 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+  box-shadow: 0 2px 10px rgba(108,59,183,0.13);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.22s, box-shadow 0.14s;
+  outline: none;
+  margin: 0 auto 16px auto;
+  display: block;
+  width: 90%;
 }
 
-.product-card button:hover {
-  background-color: #ff3c3c;
+.product-card button:hover, .wishlist-item button:hover, .cart-item button:hover, .login-section button:hover, .register-section button:hover, .contact-form button:hover {
+  background: linear-gradient(90deg, #463f8a 0%, #a244f4 100%);
+  box-shadow: 0 4px 24px rgba(76,30,117,0.17);
 }
 
 /* Product Detail Section */
 .product-detail-section {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 40px auto 80px auto;
   padding: 0 16px;
   display: flex;
   gap: 40px;
@@ -155,13 +161,13 @@ nav ul li a.active {
 
 .product-info h1 {
   font-size: 2rem;
-  color: #111;
+  color: #e0d8ff;
   margin-bottom: 6px;
 }
 
 .product-info p, .product-info label {
   font-weight: 600;
-  color: #555;
+  color: #ccccee;
   margin: 10px 0 6px;
   display: block;
 }
@@ -170,27 +176,20 @@ nav ul li a.active {
   margin-bottom: 16px;
   font-size: 1rem;
   padding: 8px 12px;
+  border-radius: 7px;
+  border: 1px solid #9a7bfa;
+  background-color: #4a256a;
+  color: #f4eaff;
 }
 
 .product-info button#add-to-cart-btn {
   width: 100%;
-  background-color: #222;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.product-info button#add-to-cart-btn:hover {
-  background-color: #ff3c3c;
 }
 
 /* Rush & Pre-booking section */
 .rush-drop {
   font-weight: 600;
-  color: #e03e3e;
+  color: #d3aeff;
   margin-top: 16px;
 }
 
@@ -204,93 +203,6 @@ nav ul li a.active {
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   max-width: 100%;
   height: auto;
-}
-
-/* Login & Register */
-.login-section, .register-section {
-  max-width: 420px;
-  margin: 40px auto;
-  padding: 0 16px;
-  text-align: center;
-}
-
-.login-section form, .register-section form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.login-section input[type="email"],
-.login-section input[type="password"],
-.register-section input[type="text"],
-.register-section input[type="email"],
-.register-section input[type="password"] {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.login-section button, .register-section button {
-  padding: 12px 0;
-  font-weight: 700;
-  border: none;
-  border-radius: 8px;
-  background-color: #222;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.login-section button:hover, .register-section button:hover {
-  background-color: #ff3c3c;
-}
-
-/* Wishlist & Cart Sections */
-.wishlist-section, .cart-section {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 16px;
-}
-
-.wishlist-container, .cart-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-}
-
-.wishlist-item, .cart-item {
-  background: #fafafa;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  width: 220px;
-  text-align: center;
-  position: relative;
-}
-
-.wishlist-item h2, .cart-item h2 {
-  margin: 12px 0 6px;
-  font-weight: 700;
-}
-
-.wishlist-item button, .cart-item button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #ff3c3c;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  font-weight: 700;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.wishlist-item button:hover, .cart-item button:hover {
-  background-color: #d03232;
 }
 
 /* Contact Form */
@@ -312,40 +224,11 @@ nav ul li a.active {
   border: 1px solid #bbb;
   border-radius: 5px;
   resize: vertical;
+  background-color: #4a256a;
+  color: #eee;
 }
 
 .contact-form button {
-  border: none;
-  background-color: #222;
+  background-color: #6c3bb7;
   color: white;
-  font-weight: 700;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contact-form button:hover {
-  background-color: #ff3c3c;
-}
-
-/* Responsive mobile fixes */
-@media(max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .product-detail-section {
-    flex-direction: column;
-  }
-
-  .product-images img {
-    width: 100%;
-    height: auto;
-  }
-
-  .wishlist-container, .cart-container {
-    justify-content: flex-start;
-  }
 }
