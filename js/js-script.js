@@ -134,3 +134,47 @@ function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email.toLowerCase());
 }
+
+// DYNAMIC PRODUCT CARD LOADING FOR HOMEPAGE
+document.addEventListener("DOMContentLoaded", function() {
+  // Latest Drops
+  const products = [
+    { img: "images/rev1.jpg", name: "Drop 1", status: "On Sale" },
+    { img: "images/rev2.jpg", name: "Drop 2", status: "Sold Out" },
+    { img: "images/rev3.jpg", name: "Drop 3", status: "On Sale" },
+    { img: "images/grain.png", name: "Drop 4", status: "On Sale" },
+    { img: "images/placeholder.png", name: "Drop 5", status: "On Sale" },
+    { img: "images/placeholder.png", name: "Drop 6", status: "Sold Out" },
+    { img: "images/placeholder.png", name: "Drop 7", status: "On Sale" },
+    { img: "images/placeholder.png", name: "Drop 8", status: "Sold Out" }
+  ];
+  const dropsContainer = document.getElementById('dropsContainer');
+  if (dropsContainer) {
+    dropsContainer.innerHTML = products.map(p =>
+      `<div class="product-card">
+        <img src="${p.img}" alt="${p.name}">
+        <h2>${p.name}</h2>
+        <p class="price">${p.status}</p>
+        <button class="view-product" data-product="${p.name}">View Details</button>
+      </div>`
+    ).join("");
+  }
+
+  // Upcoming Drops (Pre-Booking Example)
+  const preBookingProducts = [
+    { img: "images/myproduct1.jpg", name: "Upcoming Drop A", available: "Pre-book in 2 days" },
+    { img: "images/myproduct2.jpg", name: "Upcoming Drop B", available: "Pre-book in 5 days" }
+    // Add more as needed
+  ];
+  const preBookingContainer = document.getElementById('preBookingContainer');
+  if (preBookingContainer) {
+    preBookingContainer.innerHTML = preBookingProducts.map(p =>
+      `<div class="product-card">
+         <img src="${p.img}" alt="${p.name}">
+         <h2>${p.name}</h2>
+         <p class="price">${p.available}</p>
+         <button class="view-product" data-product="${p.name}">Pre-Book</button>
+       </div>`
+    ).join("");
+  }
+});
