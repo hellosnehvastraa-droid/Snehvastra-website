@@ -119,7 +119,22 @@
         }
         window.addEventListener('resize', adjustNavbarForMobile);
         window.addEventListener('load', adjustNavbarForMobile);
+        <script>
+const videos = ["video1.mp4", "video2.mp4"];
+const container = document.getElementById("videoContainer");
+
+videos.forEach(video => {
+  const vid = document.createElement("video");
+  vid.src = `videos/${video}`;
+  vid.controls = true;        // Shows play/pause, volume, fullscreen
+  vid.width = 400;            // You can also use 100% for responsive
+  vid.height = 225;           // Maintains aspect ratio
+  vid.style.borderRadius = "10px";
+  vid.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
+  container.appendChild(vid);
+});
     </script>
 </body>
 </html>
+
 
