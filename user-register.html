@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Register — Snehvastra</title>
-<meta name="description" content="Create a new account with Snehvastra" />
-<meta name="robots" content="noindex, nofollow" />
-<link rel="stylesheet" href="css/main.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Snehvastra</title>
+    <link rel="stylesheet" href="css/css-main.css">
+    <script defer src="js/js-script.js"></script>
 </head>
 <body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Snehvastra Logo" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html">Collection</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="user-login.html" id="login-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header role="banner">
-  <div class="container header-container">
-    <div class="logo"><a href="index.html" aria-label="Snehvastra Home">Snehvastra</a></div>
-    <nav role="navigation" aria-label="Primary Navigation">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="wishlist.html" id="wishlist" style="display:none;">Wishlist ❤️ <span id="wish-count"></span></a></li>
-        <li><a href="#" id="cart" style="display:none;">Cart 🛒 <span id="cart-count"></span></a></li>
-        <li><a href="user-login.html" id="login-link">Login</a></li>
-      </ul>
-      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">☰</button>
-    </nav>
-  </div>
-</header>
+    <main>
+        <section class="register-section">
+            <h1>Create an Account</h1>
+            <form id="register-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
 
-<main>
-  <div class="form-container" role="main" style="max-width:420px; margin:80px auto;">
-    <h2 style="text-align:center; font-family:'Montserrat',sans-serif;">Create an Account</h2>
-    <form id="register-form" aria-label="Registration Form">
-      <input type="email" id="register-email" name="email" placeholder="Email" required aria-required="true" />
-      <input type="password" id="register-password" name="password" placeholder="Password" required aria-required="true" autocomplete="off" />
-      <input type="password" id="register-password-confirm" name="passwordConfirm" placeholder="Confirm Password" required aria-required="true" autocomplete="off" />
-      <button type="submit" class="btn">Register</button>
-    </form>
-    <p class="link-text center">Already have an account? <a href="user-login.html">Login here</a></p>
-  </div>
-</main>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
 
-<script src="js/script.js"></script>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+
+                <button type="submit">Register</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Snehvastra. All rights reserved.</p>
+    </footer>
 </body>
 </html>
-
