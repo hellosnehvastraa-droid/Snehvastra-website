@@ -1,142 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details - Snehvastra</title>
-    <link rel="stylesheet" href="css/css-main.css">
-    <script defer src="js/js-script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details - Snehvastra</title>
+  <link rel="stylesheet" href="css/css-main.css" />
+  <script defer src="js/js-script.js"></script>
 </head>
 <body>
-    <!-- Header / Navbar -->
-    <header>
-        <div class="logo">
-            <img src="images/logo.sv.nbg.jpg" alt="Snehvastra Logo" id="logo-mask">
+  <!-- Header / Navbar -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.sv.nbg.jpg" alt="Snehvastra Logo" id="logo-mask" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="user-login.html" id="login-btn">Login</a></li>
+        <li><a href="#" id="logout-btn" style="display:none;">Logout</a></li>
+        <li><a href="wishlist.html" id="wishlist-btn">Wishlist</a></li>
+        <li><a href="#" id="cart-btn">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Product Section -->
+  <section class="product-detail-section">
+    <div class="product-container">
+      <div class="product-images">
+        <img src="images/rev1.jpg" alt="Drop 1" id="main-product-image" />
+      </div>
+      <div class="product-info">
+        <h1>Drop 1</h1>
+        <p>Status: <span id="product-status">On Sale</span></p>
+        <!-- Size Selector -->
+        <label for="size-select">Select Size:</label>
+        <select id="size-select">
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+        <!-- Purpose Selector -->
+        <label for="purpose-select">Purpose of Order:</label>
+        <select id="purpose-select">
+          <option value="Birthday">Birthday</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Party">Party</option>
+          <option value="Gift">Gift</option>
+          <option value="Other">Other</option>
+        </select>
+        <!-- Add to Cart -->
+        <button id="add-to-cart-btn">Add to Cart</button>
+        <!-- Rush for Drop & Pre-booking -->
+        <div class="rush-drop">
+          <p>Rush for this drop: <span id="rush-counter">10</span> left</p>
+          <p>Pre-booking available in: <span id="prebooking-timer">3d 00h 00m 00s</span></p>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="collection.html">Collection</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="user-login.html" id="login-btn">Login</a></li>
-                <li><a href="#" id="logout-btn" style="display:none;">Logout</a></li>
-                <li><a href="wishlist.html" id="wishlist-btn">Wishlist</a></li>
-                <li><a href="#" id="cart-btn">Cart</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Product Section -->
-    <section class="product-detail-section">
-        <div class="product-container">
-            <div class="product-images">
-                <img src="images/rev1.jpg" alt="Drop 1" id="main-product-image">
-            </div>
-            <div class="product-info">
-                <h1>Drop 1</h1>
-                <p>Status: <span id="product-status">On Sale</span></p>
-
-                <!-- Size Selector -->
-                <label for="size-select">Select Size:</label>
-                <select id="size-select">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-
-                <!-- Purpose Selector -->
-                <label for="purpose-select">Purpose of Order:</label>
-                <select id="purpose-select">
-                    <option value="Birthday">Birthday</option>
-                    <option value="Wedding">Wedding</option>
-                    <option value="Party">Party</option>
-                    <option value="Gift">Gift</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <!-- Add to Cart -->
-                <button id="add-to-cart-btn">Add to Cart</button>
-
-                <!-- Rush for Drop & Pre-booking -->
-                <div class="rush-drop">
-                    <p>Rush for this drop: <span id="rush-counter">10</span> left</p>
-                    <p>Pre-booking available in: <span id="prebooking-timer">3 days 00:00:00</span></p>
-                </div>
-
-                <!-- Reviews Section -->
-                 <div class="product-reviews">
-                    <h2>Customer Reviews</h2>
-                    <div id="videosContainer">
-                        <!-- Placeholder for review videos -->
-                        <video src="videos/video1.mp4" controls width="100%" height="auto"></video>
-                        <video src="videos/video2.mp4" controls width="100%" height="auto"></video>
-                    </div>
-                </div>
-            </div>
+        <!-- Reviews Section -->
+        <div class="product-reviews">
+          <h2>Customer Reviews</h2>
+          <div class="review-videos" id="videoContainer">
+            <!-- Videos will be appended here dynamically -->
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Snehvastra. All Rights Reserved.</p>
+  </footer>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Snehvastra. All Rights Reserved.</p>
-    </footer>
+  <script>
+    // Single Item Drop Logic: No quantity needed
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    addToCartBtn.addEventListener('click', () => {
+      const size = document.getElementById('size-select').value;
+      const purpose = document.getElementById('purpose-select').value;
+      alert(`Added ${size} size for ${purpose} to cart`);
+      // Simulate decreasing rush counter
+      const counterEl = document.getElementById('rush-counter');
+      let current = parseInt(counterEl.innerText);
+      if(current > 0) counterEl.innerText = current - 1;
+    });
 
-    <script>
-        // Single Item Drop Logic: No quantity needed
-        const addToCartBtn = document.getElementById('add-to-cart-btn');
-        addToCartBtn.addEventListener('click', () => {
-            const size = document.getElementById('size-select').value;
-            const purpose = document.getElementById('purpose-select').value;
-            alert(`Added ${size} size for ${purpose} to cart`);
-            // Simulate decreasing rush counter
-            const counterEl = document.getElementById('rush-counter');
-            let current = parseInt(counterEl.innerText);
-            if(current > 0) counterEl.innerText = current - 1;
-        });
+    // Pre-booking countdown simulation
+    const prebookingTimerEl = document.getElementById('prebooking-timer');
+    let prebookingTime = 3 * 24 * 60 * 60; // 3 days in seconds
 
-        // Pre-booking countdown simulation
-        const prebookingTimerEl = document.getElementById('prebooking-timer');
-        let prebookingTime = 3 * 24 * 60 * 60; // 3 days in seconds
-        setInterval(() => {
-            const days = Math.floor(prebookingTime / (24*3600));
-            const hours = Math.floor((prebookingTime % (24*3600)) / 3600);
-            const minutes = Math.floor((prebookingTime % 3600) / 60);
-            const seconds = prebookingTime % 60;
-            prebookingTimerEl.innerText = `${days}d ${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${seconds.toString().padStart(2,'0')}s`;
-            if(prebookingTime > 0) prebookingTime--;
-        }, 1000);
+    setInterval(() => {
+      const days = Math.floor(prebookingTime / (24*3600));
+      const hours = Math.floor((prebookingTime % (24*3600)) / 3600);
+      const minutes = Math.floor((prebookingTime % 3600) / 60);
+      const seconds = prebookingTime % 60;
 
-        // Mobile visibility fixes for login/logout buttons
-        function adjustNavbarForMobile() {
-            const loginBtn = document.getElementById('login-btn');
-            const logoutBtn = document.getElementById('logout-btn');
-            if(window.innerWidth <= 768) {
-                loginBtn.style.display = loginBtn.style.display;
-                logoutBtn.style.display = logoutBtn.style.display;
-            }
+      prebookingTimerEl.innerText = `${days}d ${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${seconds.toString().padStart(2,'0')}s`;
+
+      if(prebookingTime > 0) prebookingTime--;
+    }, 1000);
+
+    // Mobile visibility fixes for login/logout buttons
+    function adjustNavbarForMobile() {
+      const loginBtn = document.getElementById('login-btn');
+      const logoutBtn = document.getElementById('logout-btn');
+      if(window.innerWidth <= 768) {
+        // Toggle display based on login state
+        if (loginBtn.style.display === 'none') {
+          logoutBtn.style.display = 'block';
+        } else {
+          logoutBtn.style.display = 'none';
         }
-        window.addEventListener('resize', adjustNavbarForMobile);
-        window.addEventListener('load', adjustNavbarForMobile);
-        <script>
-const videos = ["video1.mp4", "video2.mp4"];
-const container = document.getElementById("videoContainer");
+      } else {
+        loginBtn.style.display = 'inline';
+        logoutBtn.style.display = 'none';
+      }
+    }
+    window.addEventListener('resize', adjustNavbarForMobile);
+    window.addEventListener('load', adjustNavbarForMobile);
 
-videos.forEach(video => {
-  const vid = document.createElement("video");
-  vid.src = `videos/${video}`;
-  vid.controls = true;        // Shows play/pause, volume, fullscreen
-  vid.width = 400;            // You can also use 100% for responsive
-  vid.height = 225;           // Maintains aspect ratio
-  vid.style.borderRadius = "10px";
-  vid.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
-  container.appendChild(vid);
-});
-    </script>
+    // Review videos dynamic loading
+    const videos = ["video1.mp4", "video2.mp4"];
+    const container = document.getElementById("videoContainer");
+    videos.forEach(video => {
+      const vid = document.createElement("video");
+      vid.src = `videos/${video}`;
+      vid.controls = true;
+      vid.width = 400;
+      vid.height = 225;
+      vid.style.borderRadius = "10px";
+      vid.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
+      container.appendChild(vid);
+    });
+
+  </script>
 </body>
 </html>
-
-
-
-
