@@ -115,3 +115,29 @@ input, select, textarea {
 .status.on-sale {
     color: green;
 }
+/* Sold / On Sale badges */
+.status {
+    font-weight: bold;
+}
+
+.status.sold-out {
+    color: red;
+}
+
+.status.on-sale {
+    color: green;
+}
+
+/* -------------------- Product Review Videos -------------------- */
+.product-reviews {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-reviews video {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
