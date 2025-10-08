@@ -1,88 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About Snehvastra - Youth-Oriented Clothing Brand</title>
-<meta name="description" content="Learn about Snehvastra’s vision and values." />
-<link rel="stylesheet" href="css/main.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Snehvastra</title>
+    <link rel="stylesheet" href="css/css-main.css">
 </head>
 <body>
-<div id="intro" aria-hidden="true">
-  <div class="gradient-bg"></div>
-  <img src="images/logo.final.png" alt="Snehvastra Logo" class="intro-logo" />
-</div>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Snehvastra Logo" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html">Collection</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="user-login.html" id="login-link">Login</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div id="main-content">
-<header role="banner">
-  <div class="container header-container">
-    <div class="logo"><a href="index.html" aria-label="Snehvastra Home">Snehvastra</a></div>
-    <nav role="navigation" aria-label="Primary Navigation">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="wishlist.html" id="wishlist" style="display:none;">Wishlist ❤️ <span id="wish-count"></span></a></li>
-        <li><a href="#" id="cart" style="display:none;">Cart 🛒 <span id="cart-count"></span></a></li>
-        <li><a href="user-login.html" id="login-link">Login</a></li>
-      </ul>
-      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">☰</button>
-    </nav>
-  </div>
-</header>
+    <main>
+        <section class="about-us">
+            <h1>About Snehvastra</h1>
+            <p>Snehvastra is dedicated to the Gen-Z generation. We design exclusive handcrafted clothing items that combine modern aesthetics with comfort. Each drop is unique and made to inspire fashion-forward individuals.</p>
 
-<main>
-  <section class="about" aria-label="About Snehvastra Section">
-    <div class="container">
-      <h1>Our Vision</h1>
-      <p>
-        Snehvastra creates transformative clothing for the generation that shapes culture. We design limited runs with strong creative direction:
-        bold palette, thoughtful details, and garments that make you feel confident and unmistakable.
-      </p>
-      <h3>What we stand for</h3>
-      <ul>
-        <li>Design-forward pieces built for identity &amp; self-expression</li>
-        <li>Limited drops to keep things unique</li>
-        <li>Quality and sustainability where possible</li>
-      </ul>
-      <p>
-        Want to collaborate or stock Snehvastra? Email us at
-        <a href="mailto:hellosnehvastra@gmail.com">hellosnehvastra@gmail.com</a>
-      </p>
-    </div>
-  </section>
-</main>
+            <h2>Our Mission</h2>
+            <p>To redefine Gen-Z fashion with limited edition drops that create excitement, exclusivity, and a sense of individuality.</p>
+        </section>
+    </main>
 
-<!-- shared snippets -->
-<div id="product-popup" role="dialog" aria-modal="true" style="display:none;">
-  <div class="card" role="document">
-    <button id="close-popup" class="close" aria-label="Close popup">✕</button>
-    <img id="popup-img" src="images/logo.final.png" alt="Product image preview" />
-    <div class="content">
-      <h2 id="popup-title">Product</h2>
-      <p id="popup-desc"></p>
-      <label for="size-select">Size</label>
-      <select id="size-select" name="size"><option>S</option><option selected>M</option><option>L</option></select>
-      <label for="quantity-select">Quantity</label>
-      <select id="quantity-select" name="quantity"></select>
-      <div style="margin-top:12px;"><button id="popup-add-to-cart" class="btn">Add to Cart</button></div>
-    </div>
-  </div>
-</div>
-
-<aside id="cart-panel" aria-label="Cart panel">
-  <div style="display:flex; align-items:center; justify-content:space-between;">
-    <h3>Your Cart</h3>
-    <button id="close-cart" class="close" aria-label="Close cart">✕</button>
-  </div>
-  <ul id="cart-items" style="margin:14px 0;"></ul>
-  <div id="cart-total" style="font-weight:700; margin-top:10px;">Total: ₹0</div>
-</aside>
-
-<button id="back-to-top" aria-label="Back to top">↑</button>
-
-<script src="js/script.js"></script>
-</div>
+    <footer>
+        <p>&copy; 2025 Snehvastra. All rights reserved.</p>
+    </footer>
 </body>
 </html>
