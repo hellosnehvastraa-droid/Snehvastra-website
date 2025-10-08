@@ -1,163 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Product Detail — Snehvastra</title>
-<meta name="description" content="Detailed product view for Snehvastra's exclusive drops." />
-<link rel="stylesheet" href="css/main.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Snehvastra</title>
+    <link rel="stylesheet" href="css/css-main.css">
+    <script defer src="js/js-script.js"></script>
 </head>
 <body>
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.sv.nbg.jpg" alt="Snehvastra Logo" id="logo-mask">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html">Collection</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="user-login.html" id="login-btn">Login</a></li>
+                <li><a href="#" id="logout-btn" style="display:none;">Logout</a></li>
+                <li><a href="wishlist.html" id="wishlist-btn">Wishlist</a></li>
+                <li><a href="#" id="cart-btn">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div id="intro" aria-hidden="true">
-  <div class="gradient-bg"></div>
-  <img src="images/logo.final.png" alt="Snehvastra Logo" class="intro-logo" />
-</div>
+    <!-- Product Section -->
+    <section class="product-detail-section">
+        <div class="product-container">
+            <div class="product-images">
+                <img src="images/rev1.jpg" alt="Drop 1" id="main-product-image">
+            </div>
+            <div class="product-info">
+                <h1>Drop 1</h1>
+                <p>Status: <span id="product-status">On Sale</span></p>
 
-<div id="main-content">
-<header role="banner">
-  <div class="container header-container">
-    <div class="logo"><a href="index.html" aria-label="Snehvastra Home">Snehvastra</a></div>
-    <nav role="navigation" aria-label="Primary Navigation">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="wishlist.html" id="wishlist" style="display:none;">Wishlist ❤️ <span id="wish-count"></span></a></li>
-        <li><a href="#" id="cart" style="display:none;">Cart 🛒 <span id="cart-count"></span></a></li>
-        <li><a href="user-login.html" id="login-link">Login</a></li>
-      </ul>
-      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle menu">☰</button>
-    </nav>
-  </div>
-</header>
+                <!-- Size Selector -->
+                <label for="size-select">Select Size:</label>
+                <select id="size-select">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
 
-<main class="container" style="padding-top: 40px;">
-  <div class="product-detail">
-    <section class="images-section">
-      <img src="images/myproduct1.jpg" alt="Snehvastra Drop 1 Main Image" id="main-product-image" class="main-image" />
-      <div class="thumbnail-row">
-        <img src="images/myproduct1.jpg" alt="Drop 1 Thumbnail 1" class="selected" />
-        <img src="images/myproduct1-2.jpg" alt="Drop 1 Thumbnail 2" />
-        <img src="images/myproduct1-3.jpg" alt="Drop 1 Thumbnail 3" />
-      </div>
+                <!-- Purpose Selector -->
+                <label for="purpose-select">Purpose of Order:</label>
+                <select id="purpose-select">
+                    <option value="Birthday">Birthday</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Party">Party</option>
+                    <option value="Gift">Gift</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <!-- Add to Cart -->
+                <button id="add-to-cart-btn">Add to Cart</button>
+
+                <!-- Rush for Drop & Pre-booking -->
+                <div class="rush-drop">
+                    <p>Rush for this drop: <span id="rush-counter">10</span> left</p>
+                    <p>Pre-booking available in: <span id="prebooking-timer">3 days 00:00:00</span></p>
+                </div>
+
+                <!-- Reviews Section -->
+                <div class="product-reviews">
+                    <h2>Customer Reviews</h2>
+                    <div class="review-videos">
+                        <!-- Placeholder for review videos -->
+                        <video src="videos/review1.mp4" controls></video>
+                        <video src="videos/review2.mp4" controls></video>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="info-section">
-      <h1 class="product-title">Drop 1</h1>
-      <div class="price">₹999 / $12</div>
-      <div class="description">
-        This stylish Drop 1 outfit features premium cotton fabric with a bold palette to make you stand out.
-        Care instructions: Machine wash cold, do not bleach, tumble dry low.
-      </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Snehvastra. All Rights Reserved.</p>
+    </footer>
 
-      <div class="size-guide-toggle" id="size-guide-toggle" tabindex="0" role="button" aria-pressed="false" aria-controls="size-guide" aria-expanded="false">Show Size Guide ▼</div>
-      <div class="size-guide" id="size-guide" aria-hidden="true">
-        <table>
-          <thead>
-            <tr><th>Size</th><th>Chest (inches)</th><th>Length (inches)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>S</td><td>34-36</td><td>27</td></tr>
-            <tr><td>M</td><td>38-40</td><td>28</td></tr>
-            <tr><td>L</td><td>42-44</td><td>29</td></tr>
-            <tr><td>XL</td><td>46-48</td><td>30</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <script>
+        // Single Item Drop Logic: No quantity needed
+        const addToCartBtn = document.getElementById('add-to-cart-btn');
+        addToCartBtn.addEventListener('click', () => {
+            const size = document.getElementById('size-select').value;
+            const purpose = document.getElementById('purpose-select').value;
+            alert(`Added ${size} size for ${purpose} to cart`);
+            // Simulate decreasing rush counter
+            const counterEl = document.getElementById('rush-counter');
+            let current = parseInt(counterEl.innerText);
+            if(current > 0) counterEl.innerText = current - 1;
+        });
 
-      <label for="quantity-select" style="margin-bottom: 12px; font-weight: 700; display:block;">Quantity:</label>
-      <select id="quantity-select" name="quantity" style="padding:6px 12px; border-radius:8px; border:1px solid #ccc; width:100px; margin-bottom:10px;">
-      </select>
+        // Pre-booking countdown simulation
+        const prebookingTimerEl = document.getElementById('prebooking-timer');
+        let prebookingTime = 3 * 24 * 60 * 60; // 3 days in seconds
+        setInterval(() => {
+            const days = Math.floor(prebookingTime / (24*3600));
+            const hours = Math.floor((prebookingTime % (24*3600)) / 3600);
+            const minutes = Math.floor((prebookingTime % 3600) / 60);
+            const seconds = prebookingTime % 60;
+            prebookingTimerEl.innerText = `${days}d ${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${seconds.toString().padStart(2,'0')}s`;
+            if(prebookingTime > 0) prebookingTime--;
+        }, 1000);
 
-      <button class="btn-add-to-cart btn" id="add-to-cart-btn">Add to Cart</button>
-      <button class="add-to-wishlist" aria-label="Add to Wishlist" title="Add to Wishlist" style="background:none; border:none; cursor:pointer; font-size:1.8rem; margin-left:12px;">♡</button>
-
-      <section class="reviews">
-        <h3>Customer Reviews</h3>
-        <div class="review-item"><div class="review-stars">★★★★★</div><div class="review-comment">Love this drop! The fabric is so soft and comfortable.</div></div>
-        <div class="review-item"><div class="review-stars">★★★★☆</div><div class="review-comment">Great style and fit, just wish it came in more colors.</div></div>
-        <div class="review-item"><div class="review-stars">★★★★★</div><div class="review-comment">Exactly what I expected. Quality is top-notch!</div></div>
-      </section>
-    </section>
-  </div>
-</main>
-
-<!-- shared snippets -->
-<div id="product-popup" role="dialog" aria-modal="true" style="display:none;">
-  <div class="card" role="document">
-    <button id="close-popup" class="close" aria-label="Close popup">✕</button>
-    <img id="popup-img" src="images/logo.final.png" alt="Product image preview" />
-    <div class="content">
-      <h2 id="popup-title">Product</h2>
-      <p id="popup-desc"></p>
-      <label for="size-select">Size</label>
-      <select id="size-select" name="size"><option>S</option><option selected>M</option><option>L</option></select>
-      <label for="quantity-select">Quantity</label>
-      <select id="quantity-select" name="quantity"></select>
-      <div style="margin-top:12px;"><button id="popup-add-to-cart" class="btn">Add to Cart</button></div>
-    </div>
-  </div>
-</div>
-
-<aside id="cart-panel" aria-label="Cart panel">
-  <div style="display:flex; align-items:center; justify-content:space-between;">
-    <h3>Your Cart</h3>
-    <button id="close-cart" class="close" aria-label="Close cart">✕</button>
-  </div>
-  <ul id="cart-items" style="margin:14px 0;"></ul>
-  <div id="cart-total" style="font-weight:700; margin-top:10px;">Total: ₹0</div>
-</aside>
-
-<button id="back-to-top" aria-label="Back to top">↑</button>
-
-<script>
-  // product page small behaviors: thumbnails & size guide (keeps previous inline logic)
-  document.addEventListener("DOMContentLoaded", () => {
-    const mainImage = document.getElementById("main-product-image");
-    const thumbnails = document.querySelectorAll(".thumbnail-row img");
-    thumbnails.forEach(thumb => thumb.addEventListener("click", () => {
-      if (!mainImage) return;
-      mainImage.src = thumb.src;
-      thumbnails.forEach(t => t.classList.remove("selected"));
-      thumb.classList.add("selected");
-    }));
-
-    const sizeToggle = document.getElementById("size-guide-toggle");
-    const sizeGuide = document.getElementById("size-guide");
-    if (sizeToggle && sizeGuide) {
-      sizeToggle.addEventListener("click", () => {
-        const isVisible = sizeGuide.style.display === "block";
-        sizeGuide.style.display = isVisible ? "none" : "block";
-        sizeToggle.textContent = isVisible ? "Show Size Guide ▼" : "Hide Size Guide ▲";
-        sizeToggle.setAttribute("aria-pressed", String(!isVisible));
-        sizeToggle.setAttribute("aria-expanded", String(!isVisible));
-        sizeGuide.setAttribute("aria-hidden", String(isVisible));
-      });
-      sizeToggle.addEventListener("keydown", e => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sizeToggle.click(); }
-      });
-    }
-
-    // populate quantity based on stockLimits in script.js (if present)
-    const qtySelect = document.getElementById("quantity-select");
-    if (qtySelect) {
-      // attempt to read stock from local stock limits (script.js manages stock); fallback to 10
-      for (let i=1;i<=10;i++){ const o = document.createElement("option"); o.value=i; o.textContent=i; qtySelect.appendChild(o); }
-    }
-
-    const addBtn = document.getElementById("add-to-cart-btn");
-    if (addBtn) {
-      addBtn.addEventListener("click", () => {
-        // fallback: use popup addToCart if user wants (script.js handles real add)
-        alert("Added to cart (mock). If you have script.js loaded, it will perform real add-to-cart."); 
-      });
-    }
-  });
-</script>
-
-<script src="js/script.js"></script>
-</div>
+        // Mobile visibility fixes for login/logout buttons
+        function adjustNavbarForMobile() {
+            const loginBtn = document.getElementById('login-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            if(window.innerWidth <= 768) {
+                loginBtn.style.display = loginBtn.style.display;
+                logoutBtn.style.display = logoutBtn.style.display;
+            }
+        }
+        window.addEventListener('resize', adjustNavbarForMobile);
+        window.addEventListener('load', adjustNavbarForMobile);
+    </script>
 </body>
 </html>
