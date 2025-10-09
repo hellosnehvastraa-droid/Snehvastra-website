@@ -24,12 +24,11 @@
         <li><a href="#" id="cart-btn">Cart</a></li>
       </ul>
     </nav>
-  </header>
 
   <section class="product-detail-section">
     <div class="product-container">
       <div class="product-images">
-        <img src="images/rev1.jpg" alt="Drop 1" id="main-product-image"/>
+        <img src="images/rev1.jpg" alt="Drop 1" id="main-product-image" />
       </div>
       <div class="product-info">
         <h1>Drop 1</h1>
@@ -65,71 +64,7 @@
 
   <footer>
     <p>&copy; 2025 Snehvastra. All Rights Reserved.</p>
+    <p>Instagram: @sneh_vastra | Facebook: Snehvastra</p>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Add to Cart button
-      const addToCartBtn = document.getElementById('add-to-cart-btn');
-      addToCartBtn.addEventListener('click', () => {
-        const size = document.getElementById('size-select').value;
-        const purpose = document.getElementById('purpose-select').value;
-        alert(`Added ${size} size for ${purpose} to cart`);
-        const counterEl = document.getElementById('rush-counter');
-        let current = parseInt(counterEl.innerText);
-        if(current > 0) {
-          counterEl.innerText = current - 1;
-        }
-      });
-
-      // Pre-booking countdown
-      const prebookingTimerEl = document.getElementById('prebooking-timer');
-      let prebookingTime = 3 * 24 * 60 * 60;
-      setInterval(() => {
-        const days = Math.floor(prebookingTime / (24*3600));
-        const hours = Math.floor((prebookingTime % (24*3600)) / 3600);
-        const minutes = Math.floor((prebookingTime % 3600) / 60);
-        const seconds = prebookingTime % 60;
-
-        prebookingTimerEl.innerText = `${days}d ${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${seconds.toString().padStart(2,'0')}s`;
-
-        if(prebookingTime > 0) {
-          prebookingTime--;
-        }
-      }, 1000);
-
-      // Mobile Navbar visibility adjustments
-      function adjustNavbarForMobile() {
-        const loginBtn = document.getElementById('login-btn');
-        const logoutBtn = document.getElementById('logout-btn');
-        if(window.innerWidth <= 768) {
-          if (loginBtn.style.display === 'none') {
-            logoutBtn.style.display = 'block';
-          } else {
-            logoutBtn.style.display = 'none';
-          }
-        } else {
-          loginBtn.style.display = 'inline';
-          logoutBtn.style.display = 'none';
-        }
-      }
-      window.addEventListener('resize', adjustNavbarForMobile);
-      window.addEventListener('load', adjustNavbarForMobile);
-
-      // Load review videos dynamically
-      const videos = ["video1.mp4", "video2.mp4"];
-      const container = document.getElementById("videoContainer");
-      videos.forEach(video => {
-        const vid = document.createElement("video");
-        vid.src = `videos/${video}`;
-        vid.controls = true;
-        vid.width = 400;
-        vid.height = 225;
-        vid.style.borderRadius = "10px";
-        vid.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
-        container.appendChild(vid);
-      });
-    });
-  </script>
 </body>
 </html>
