@@ -1,68 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Snehvastra | Home</title>
-  <link rel="stylesheet" href="css-main.css"/>
-  <script src="js-script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snehvastra - New Gen Luxury Streetwear</title>
+  <style>
+    /* Splash screen styles */
+    #splash {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, #4a256a 0%, #6c3bb7 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #splash img {
+      max-height: 150px;
+      filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.7));
+      user-select: none;
+    }
+    #mainContent {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    /* Main Styles for page content */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4a256a 0%, #6c3bb7 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .logo {
+      max-height: 75px;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.6));
+      transition: transform 0.4s ease;
+    }
+    nav {
+      background-color: rgba(52, 37, 110, 0.85);
+      box-shadow: 0 0 15px rgba(64, 45, 130, 0.85);
+      position: relative;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      align-items: center;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    nav ul li a.active, nav ul li a:hover {
+      background-color: #3d1f68;
+      color: #e0d8ff;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+      padding: 10px;
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-shadow: 2px 3px 14px #3c1f6f, 0 6px 25px #000;
+    }
+    .hero p {
+      font-size: 1.3rem;
+    }
+    .hero button {
+      margin-top: 24px;
+      background: linear-gradient(90deg, #a244f4 0%, #6c3bb7 100%);
+      color: white;
+      border: none;
+      border-radius: 7px;
+      padding: 14px 32px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s background ease;
+      font-size: 1rem;
+    }
+    .hero button:hover {
+      background: linear-gradient(90deg, #463f8a 0%, #a244f4 100%);
+    }
+    .hero-image {
+      max-width: 100%;
+      margin-top: 40px;
+      border-radius: 12px;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+      user-select: none;
+    }
+    .drops-container, .pre-booking-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .product-card {
+      background: rgba(52, 37, 110, 0.18);
+      border: 2px solid #7d63c6;
+      border-radius: 9px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      padding-bottom: 16px;
+      transition: transform 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(76,30,117,0.4);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 9px 9px 0 0;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+      user-select: none;
+    }
+    .product-card img:hover {
+      transform: scale(1.06);
+    }
+    .product-card h2 {
+      margin: 12px 0 6px 0;
+      font-weight: 700;
+      font-size: 1.3rem;
+      user-select: none;
+    }
+    .product-card .price {
+      font-weight: 600;
+      color: #d6afff;
+      margin-bottom: 12px;
+    }
+    .drops-alert {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #6c3bb7;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(108,59,183,0.25);
+      z-index: 1000;
+      cursor: pointer;
+      font-weight: 700;
+      user-select: none;
+      transition: opacity 0.5s ease, transform 0.3s ease;
+      display: none;
+    }
+    .drops-alert.hide {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+    }
+    footer {
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      user-select: none;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        width: 220px;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .product-card img {
+        height: 140px;
+      }
+    }
+  </style>
 </head>
-<body class="fade-in">
+<body>
 
-  <header class="logo-header">
-    <div class="logo-mask">
-      <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo"/>
-    </div>
-  </header>
+<!-- Splash screen logo -->
+<div id="splash">
+  <img src="images/logo.final.png" alt="Snehvastra Logo" />
+</div>
 
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
+<!-- Main page content hidden initially -->
+<div id="mainContent" style="opacity:0;">
+
+<header>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <nav>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul id="nav-links">
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
       <li><a href="collection.html">Collection</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li class="cart-wishlist">
-        <button id="wishlistBtn">Wishlist</button>
-        <button id="cartBtn">Cart</button>
-      </li>
-      <li class="user-auth">
-        <a href="user-login.html" id="loginLink">Login</a>
-        <a href="#" id="logoutLink" style="display:none;">Logout</a>
-      </li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="user-login.html">Login</a></li>
+      <li><a href="blog.html">Blog</a></li>
     </ul>
   </nav>
+</header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>New Gen Luxury Streetwear</h1>
-      <p>Exclusive drops. Limited stock. Be the first.</p>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-content">
+    <h1>New Gen Luxury Streetwear</h1>
+    <p>Exclusive drops. Limited stock. Be the first.</p>
+    <button onclick="window.location.href='collection.html'">Shop Collection</button>
+  </div>
+  <img src="images/mybanner.jpg" alt="Luxury streetwear banner" class="hero-image" />
+</section>
 
-  <section class="featured-drops">
-    <h2>Latest Drops</h2>
-    <div class="drops-container" id="dropsContainer">
-      <!-- Product cards loaded dynamically -->
-    </div>
-  </section>
+<section class="featured-drops">
+  <h2>Featured Drops</h2>
+  <div id="dropsContainer" class="drops-container">
+    <!-- Products loaded dynamically -->
+  </div>
+</section>
 
-  <section class="pre-booking">
-    <h2>Upcoming Drops - Pre-book Now</h2>
-    <div class="pre-booking-container" id="preBookingContainer">
-      <!-- Pre-booking products dynamically loaded -->
-    </div>
-  </section>
+<section class="pre-booking">
+  <h2>Pre-Booking</h2>
+  <div id="preBookingContainer" class="pre-booking-container">
+    <!-- Pre-booking products dynamically loaded -->
+  </div>
+</section>
 
-  <aside class="drops-alert" id="dropsAlert" style="display:none;">
-    <!-- Dismissible alert for drops status -->
-  </aside>
+<div id="dropsAlert" class="drops-alert" role="alert" aria-live="assertive" aria-atomic="true"></div>
 
-  <footer>
-    <p>&copy; 2025 Snehvastra. All Rights Reserved.</p>
-    <p>Instagram: @sneh_vastra | Facebook: Snehvastra</p>
-  </footer>
+<footer>
+  &copy; 2025 Snehvastra. All Rights Reserved.<br />
+  Instagram: @sneh_vastra | Facebook: Snehvastra
+</footer>
 
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-links').classList.toggle('active');
+  }
+
+  // Splash screen logic
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('splash').style.display = 'none';
+      const main = document.getElementById('mainContent');
+      main.style.opacity = '1';
+    }, 2500);
+  });
+
+  // Cart and wishlist arrays
+  const cart = [];
+  const wishlist = [];
+
+  // Toast alert element
+  const dropsAlert = document.getElementById('dropsAlert');
+  let alertTimeout;
+
+  function showToast(message) {
+    if (!dropsAlert) return;
+    dropsAlert.textContent = message;
+    dropsAlert.style.display = 'block';
+    dropsAlert.classList.remove('hide');
+    clearTimeout(alertTimeout);
+    alertTimeout = setTimeout(() => {
+      dropsAlert.classList.add('hide');
+      setTimeout(() => {
+        dropsAlert.style.display = 'none';
+      }, 500);
+    }, 4000);
+  }
+
+  // Load products dynamically
+  const products = [
+    { img: "images/rev1.jpg", name: "Drop 1", status: "On Sale" },
+    { img: "images/rev2.jpg", name: "Drop 2", status: "Sold Out" },
+    { img: "images/rev3.jpg", name: "Drop 3", status: "On Sale" },
+    { img: "images/grain.png", name: "Drop 4", status: "On Sale" },
+    { img: "images/placeholder.png", name: "Drop 5", status: "On Sale" },
+    { img: "images/placeholder.png", name: "Drop 6", status: "Sold Out" },
+    { img: "images/placeholder.png", name: "Drop 7", status: "On Sale" },
+    { img: "images/placeholder.png", name: "Drop 8", status: "Sold Out" }
+  ];
+
+  const dropsContainer = document.getElementById('dropsContainer');
+  if (dropsContainer) {
+    dropsContainer.innerHTML = products.map(p =>
+      `<div class="product-card" tabindex="0">
+        <img src="${p.img}" alt="${p.name}" />
+        <h2>${p.name}</h2>
+        <p class="price">${p.status}</p>
+        <button onclick="addToCart('${p.name}')">Add to Cart</button>
+        <button onclick="viewDetails('${p.name}')">View Details</button>
+      </div>`
+    ).join('');
+  }
+
+  const preBookingProducts = [
+    { img: "images/myproduct1.jpg", name: "Upcoming Drop A", available: "Pre-book in 2 days" },
+    { img: "images/myproduct2.jpg", name: "Upcoming Drop B", available: "Pre-book in 5 days" }
+  ];
+
+  const preBookingContainer = document.getElementById('preBookingContainer');
+  if (preBookingContainer) {
+    preBookingContainer.innerHTML = preBookingProducts.map(p =>
+      `<div class="product-card" tabindex="0">
+        <img src="${p.img}" alt="${p.name}" />
+        <h2>${p.name}</h2>
+        <p class="price">${p.available}</p>
+        <button onclick="addToCart('${p.name}')">Add to Cart</button>
+        <button onclick="viewDetails('${p.name}')">View Details</button>
+      </div>`
+    ).join('');
+  }
+
+  // Simulation functions for add to cart and view details
+  function addToCart(product) {
+    cart.push(product);
+    showToast(`${product} added to cart.`);
+  }
+
+  function viewDetails(product) {
+    alert(`View details for ${product} (Demo).`);
+  }
+</script>
 </body>
-</html>
-
-
+</html
