@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini Cart Preview - Snehvastra</title>
+  <style>
+    /* Basic global styles for demonstration */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4a256a 0%, #6c3bb7 100%);
+      color: #fff;
+      min-height: 100vh;
+    }
+    nav {
+      background-color: rgba(52, 37, 110, 0.85);
+      box-shadow: 0 0 15px rgba(64, 45, 130, 0.85);
+      padding: 10px 20px;
+      position: relative;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li a, nav ul li button {
+      color: #fff;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      font-size: 1rem;
+    }
+    nav ul li a:hover, nav ul li button:hover {
+      background-color: #3d1f68;
+      color: #e0d8ff;
+    }
+    .mini-cart-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cart-count-badge {
+      background: #a244f4;
+      color: white;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 2px 7px;
+      border-radius: 50%;
+      min-width: 20px;
+      text-align: center;
+      user-select: none;
+    }
+    .mini-cart-preview {
+      position: absolute;
+      top: 36px;
+      right: 0;
+      width: 300px;
+      background: rgba(52, 37, 110, 0.95);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.85);
+      padding: 12px;
+      display: none;
+      flex-direction: column;
+      max-height: 350px;
+      overflow-y: auto;
+      z-index: 1000;
+      user-select: none;
+    }
+    .mini-cart-preview.show {
+      display: flex;
+    }
+    .mini-cart-header {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .mini-cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #7d63c6;
+      padding: 6px 0;
+    }
+    .mini-cart-item:last-child {
+      border-bottom: none;
+    }
+    .mini-cart-item-name {
+      max-width: 190px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .mini-cart-remove-btn {
+      background: none;
+      border: none;
+      color: #dba3ff;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.2rem;
+      user-select: none;
+    }
+    .mini-cart-total {
+      font-weight: 700;
+      text-align: right;
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #e0c9ff;
+    }
+    .mini-cart-checkout-btn {
+      width: 100%;
+      background: linear-gradient(90deg, #a244f4 0%, #6c3bb7 100%);
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 12px;
+      user-select: none;
+    }
+    .mini-cart-checkout-btn:hover {
+      background: linear-gradient(90deg, #6c3bb7 0%, #a244f4 100%);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+
+    <li>
+      <button class="mini-cart-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="miniCartPreview" id="miniCartToggle">
+        Cart <span class="cart-count-badge" id="cartCount">0</span>
+      </button>
+      <div class="mini-cart-preview" id="miniCartPreview" role="region" aria-live="polite" aria-atomic="true">
+        <div class="mini-cart-header">Your Cart</div>
+        <div id="miniCartItems">No items in cart.</div>
+        <div class="mini-cart-total" id="miniCartTotal"></div>
+        <button class="mini-cart-checkout-btn" onclick="window.location.href='cart.html'">Go to Checkout</button>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  const miniCartToggle = document.getElementById('miniCartToggle');
+  const miniCartPreview = document.getElementById('miniCartPreview');
+  const miniCartItems = document.getElementById('miniCartItems');
+  const miniCartTotal = document.getElementById('miniCartTotal');
+  const cartCount = document.getElementById('cartCount');
+
+  // Sample cart array with products
+  let cart = [];
+
+  // Example products, ID and price for demo
+  const productData = {
+    1: {name: "Drop 1", price: 50},
+    2: {name: "Drop 2", price: 70},
+    3: {name: "Drop 3", price: 85}
+  };
+
+  // Toggle mini-cart visibility
+  miniCartToggle.addEventListener('click', () => {
+    const expanded = miniCartToggle.getAttribute('aria-expanded') === 'true';
+    miniCartToggle.setAttribute('aria-expanded', !expanded);
+    miniCartPreview.classList.toggle('show');
+  });
+
+  // Close mini cart if clicked outside
+  document.addEventListener('click', (event) => {
+    if (!miniCartPreview.contains(event.target) && !miniCartToggle.contains(event.target)) {
+      miniCartPreview.classList.remove('show');
+      miniCartToggle.setAttribute('aria-expanded', false);
+    }
+  });
+
+  // Add product to cart function (example usage)
+  function addToCart(id) {
+    cart.push(id);
+    updateMiniCart();
+  }
+
+  // Remove product from cart by index
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateMiniCart();
+  }
+
+  // Update mini cart UI
+  function updateMiniCart() {
+    if(cart.length === 0) {
+      miniCartItems.textContent = "No items in cart.";
+      miniCartTotal.textContent = "";
+      cartCount.textContent = "0";
+      return;
+    }
+    let total = 0;
+    miniCartItems.innerHTML = "";
+    cart.forEach((id, idx) => {
+      const {name, price} = productData[id] || {name:"Unknown",price:0};
+      total += price;
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'mini-cart-item';
+      itemDiv.innerHTML = `<span class="mini-cart-item-name">${name} - $${price}</span>
+      <button class="mini-cart-remove-btn" aria-label="Remove ${name} from cart" onclick="removeFromCart(${idx})">&times;</button>`;
+      miniCartItems.appendChild(itemDiv);
+    });
+    miniCartTotal.textContent = "Total: $" + total.toFixed(2);
+    cartCount.textContent = cart.length.toString();
+  }
+
+  // Initialize with sample items for demonstration
+  addToCart(1);
+  addToCart(2);
+</script>
+
+</body>
+</html>
