@@ -16,9 +16,10 @@
       z-index: 9999;
     }
     #splash img {
-      max-height: 150px;
-      filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.7));
+      max-height: 220px; /* increased size from 150 */
+      filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.4)); /* reduced and lighter shadow */
       user-select: none;
+      transition: transform 0.4s ease;
     }
     #mainContent {
       opacity: 0;
@@ -36,8 +37,8 @@
       overflow-x: hidden;
     }
     .logo {
-      max-height: 75px;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.6));
+      max-height: 110px; /* increased from 75 */
+      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.25)); /* reduced shadow */
       transition: transform 0.4s ease;
     }
     nav {
@@ -81,7 +82,8 @@
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 16px;
-      text-shadow: 2px 3px 14px #3c1f6f, 0 6px 25px #000;
+      /* reduced shadow */
+      text-shadow: 1px 1px 6px #3c1f6f, 0 3px 12px #000;
     }
     .hero p {
       font-size: 1.3rem;
@@ -358,4 +360,4 @@
   }
 </script>
 </body>
-</html
+</html>
