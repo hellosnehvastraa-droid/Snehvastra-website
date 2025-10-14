@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Detail - Snehvastra</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+<header>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <nav>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="user-login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="product-detail-container">
+  <section class="product-images">
+    <img src="images/drop2.png" alt="Drop 2 Main Image" />
+    <img src="images/drop2-side.png" alt="Drop 2 Side View" />
+  </section>
+  <section class="product-info">
+    <h1>Drop 2</h1>
+    <div class="product-price">$59.99</div>
+    <div class="product-description">
+      <p>Experience luxury streetwear like never before. Drop 2 features premium materials and exclusive design.</p>
+    </div>
+    <div class="options">
+      <div>
+        <label for="size-select">Size:</label><br />
+        <select id="size-select" aria-label="Select size">
+          <option value="">Select Size</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+      <div>
+        <label for="purpose-select">Purpose:</label><br />
+        <select id="purpose-select" aria-label="Select purpose">
+          <option value="">Select Purpose</option>
+          <option value="casual">Casual Wear</option>
+          <option value="sports">Sports</option>
+          <option value="party">Party</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <label for="quantity-input">Quantity:</label><br />
+      <input type="number" id="quantity-input" min="1" max="10" step="1" value="1" aria-label="Select quantity" />
+    </div>
+    <div class="button-row">
+      <button id="add-to-cart-btn">Add to Cart</button>
+      <button id="wishlist-btn">Add to Wishlist</button>
+    </div>
+  </section>
+</main>
+
+<section class="reviews-section">
+  <h2>Customer Reviews</h2>
+  <div class="review">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="review">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="related-products">
+  <h2>Related Products</h2>
+  <div class="related-grid">
+    <div class="related-card" tabindex="0" onclick="showAlert('Clicked Drop 1 (Demo)')">
+      <img src="images/drop1.png" alt="Drop 1" />
+      Drop 1
+    </div>
+    <div class="related-card" tabindex="0" onclick="showAlert('Clicked Drop 3 (Demo)')">
+      <img src="images/drop3.png" alt="Drop 3" />
+      Drop 3
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Snehvastra. All Rights Reserved.<br/>
+  Instagram: @sneh_vastra | Facebook: Snehvastra
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

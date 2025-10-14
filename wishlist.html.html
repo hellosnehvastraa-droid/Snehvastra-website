@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wishlist - Snehvastra</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+<header>
+  <img src="images/logoo.final.png" alt="Snehvastra Logo" class="logo" />
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="wishlist.html" aria-current="page" class="active">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="user-login.html">Login</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h1>Your Wishlist</h1>
+  <table aria-label="Wishlist">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Name</th>
+        <th>Move to Cart</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody id="wishlist-items">
+      <tr>
+        <td><img src="images/drop1.png" alt="Drop 1" class="product-thumb" /></td>
+        <td>Drop 1</td>
+        <td><button class="move-btn">Move to Cart</button></td>
+        <td><button class="remove-btn">Remove</button></td>
+      </tr>
+      <tr>
+        <td><img src="images/drop2.png" alt="Drop 2" class="product-thumb" /></td>
+        <td>Drop 2</td>
+        <td><button class="move-btn">Move to Cart</button></td>
+        <td><button class="remove-btn">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+<footer>
+  &copy; 2025 Snehvastra. All Rights Reserved.<br/>
+  Instagram: @sneh_vastra | Facebook: Snehvastra
+</footer>
+<script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini Cart Preview - Snehvastra</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li>
+      <button class="mini-cart-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="miniCartPreview" id="miniCartToggle">
+        Cart <span class="cart-count-badge" id="cartCount">0</span>
+      </button>
+      <div class="mini-cart-preview" id="miniCartPreview" role="region" aria-live="polite" aria-atomic="true">
+        <div class="mini-cart-header">Your Cart</div>
+        <div id="miniCartItems">No items in cart.</div>
+        <div class="mini-cart-total" id="miniCartTotal"></div>
+        <button class="mini-cart-checkout-btn" onclick="window.location.href='cart.html'">Go to Checkout</button>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<script src="script.js" defer></script>
+</body>
+</html>

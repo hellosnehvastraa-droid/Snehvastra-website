@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Order History - Snehvastra</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+<header>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <nav>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="user-login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h1>Your Order History</h1>
+  <table aria-label="Order history table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Items</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>#1001</td>
+        <td>2025-09-15</td>
+        <td>3</td>
+        <td>$107.00</td>
+        <td class="status">Completed</td>
+      </tr>
+      <tr>
+        <td>#1002</td>
+        <td>2025-09-29</td>
+        <td>1</td>
+        <td>$59.00</td>
+        <td class="status">Shipped</td>
+      </tr>
+      <tr>
+        <td>#1003</td>
+        <td>2025-10-02</td>
+        <td>2</td>
+        <td>$89.00</td>
+        <td class="status">Processing</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+<footer>
+  &copy; 2025 Snehvastra. All Rights Reserved.<br/>
+  Instagram: @sneh_vastra | Facebook: Snehvastra
+</footer>
+<script src="script.js" defer></script>
+</body>
+</html>

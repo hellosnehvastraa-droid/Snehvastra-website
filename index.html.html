@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snehvastra - New Gen Luxury Streetwear</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+<div id="splash" role="dialog" aria-modal="true" aria-label="Loading Snehvastra splash screen">
+  <img src="images/logo.final.png" alt="Snehvastra Logo" />
+</div>
+
+<div id="mainContent" style="opacity:0;">
+
+<header>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <nav>
+    <ul id="nav-links">
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="user-login.html">Login</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>New Gen Luxury Streetwear</h1>
+    <p>Exclusive drops. Limited stock. Be the first.</p>
+    <button onclick="window.location.href='collection.html'">Shop Collection</button>
+  </div>
+  <img src="images/mybanner.jpg" alt="Luxury streetwear banner" class="hero-image" />
+</section>
+
+<section class="featured-drops">
+  <h2>Featured Drops</h2>
+  <div id="dropsContainer" class="drops-container" aria-live="polite" aria-atomic="true">
+    <!-- Loaded by JS -->
+  </div>
+</section>
+
+<section class="pre-booking">
+  <h2>Pre-Booking</h2>
+  <div id="preBookingContainer" class="pre-booking-container" aria-live="polite" aria-atomic="true">
+    <!-- Loaded by JS -->
+  </div>
+</section>
+
+<div id="dropsAlert" class="drops-alert" role="alert" aria-live="assertive" aria-atomic="true" tabindex="0"></div>
+
+<footer>
+  &copy; 2025 Snehvastra. All Rights Reserved.<br/>
+  Instagram: @sneh_vastra | Facebook: Snehvastra
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" hidden>
+  <div class="modal-content" role="document">
+    <p id="modalMessage"></p>
+    <button id="modalCloseBtn" aria-label="Close dialog">Close</button>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
