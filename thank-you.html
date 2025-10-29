@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Thank You - Snehvastra</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(145deg, #0a0a0a, #1b1b1b);
+      color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .thankyou-container {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 60px 40px;
+      max-width: 600px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      animation: fadeIn 1.2s ease forwards;
+    }
+    .thankyou-container h1 {
+      color: #d4bcff;
+      font-size: 2.3rem;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    .thankyou-container p {
+      color: #ddd;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0a0a0a;
+      background: #d4bcff;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(212,188,255,0.4);
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background: #c4aaff;
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(212,188,255,0.6);
+    }
+    footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.03);
+      padding: 15px 0;
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    footer strong {
+      color: #d4bcff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .thankyou-container {
+        padding: 50px 25px;
+        margin: 0 10px;
+      }
+      .thankyou-container h1 { font-size: 1.9rem; }
+    }
+/* Re-enable zoom for product images only */
+.product-media img {
+  touch-action: pinch-zoom;
+}
+  </style>
+</head>
+<body>
+  <div class="thankyou-container">
+    <h1>Thank You for Your Purchase!</h1>
+    <p>Your order has been successfully received. We’ll notify you once it’s shipped.<br><br>We appreciate your trust in <strong>Snehvastra</strong>.</p>
+    <a href="index.html" class="btn">Continue Shopping</a>
+  </div>
+
+  <footer>
+    &copy; 2025 <strong>Snehvastra</strong>. All Rights Reserved.<br/>
+    Instagram: <strong>@sneh_vastra</strong> | Facebook: <strong>Snehvastra</strong>
+  </footer>
+<!-- Other page content -->
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+</html>
