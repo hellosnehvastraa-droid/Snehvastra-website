@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Snehvastra — New Gen Luxury Streetwear</title>
   <meta name="description" content="Snehvastra — exclusive limited drops, premium streetwear with a modern luxury aesthetic. Shop the latest capsule collections and pre-book upcoming releases." />
   <meta name="keywords" content="Snehvastra, streetwear, fashion drops, limited edition, luxury streetwear" />
@@ -102,6 +102,11 @@ html, body {
   justify-content: center;
   flex-direction: column;
   background: linear-gradient(180deg, rgba(10,10,12,1), rgba(22,16,26,1));
+}/* Splash */
+#splash {
+  position: fixed;
+  inset: 0;
+  ...
 }
 #splash img {
   width: clamp(140px, 40vw, 220px); /* responsive size */
@@ -160,10 +165,17 @@ html, body {
     .brand img{height:68px;width:auto;border-radius:8px;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.6));transition:transform .35s ease}
     .brand h1{font-size:1.05rem;margin:0;font-weight:800;letter-spacing:0.6px}
     nav{margin-left:auto}
-    #nav-links{display:flex;gap:12px;align-items:center;padding:0;margin:0;list-style:none}
-    #nav-links li a{display:inline-block;padding:8px 12px;border-radius:8px;font-weight:700;color:var(--muted);background:transparent}
-    #nav-links li a.active, #nav-links li a:hover{background:var(--panel);color:#fff;box-shadow:0 6px 15px rgba(108,59,183,0.08)}
-
+    #nav-links li {
+  margin-right: 6px;
+}
+#nav-links li a {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: var(--muted);
+  background: transparent;
+}
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 20px 48px}
     .hero-content{padding:12px}
@@ -235,6 +247,10 @@ html, body {
     }
     /* Accessibility focus */
     a:focus,button:focus,[tabindex]:focus{outline:3px solid rgba(130,84,255,0.18);outline-offset:2px;border-radius:6px}
+/* Re-enable zoom for product images only */
+.product-media img {
+  touch-action: pinch-zoom;
+}
   </style>
 </head>
 
