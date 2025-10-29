@@ -94,7 +94,85 @@ html, body {
   overflow-x: hidden;
   width: 100%;
 }
+<!-- ================= HEADER (SNEHVASTRA STANDARD) ================= -->
+<header style="
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0.8rem 1.2rem;
+  background:rgba(10,10,12,0.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  position:sticky;
+  top:0;
+  z-index:1000;
+">
+  <img src='images/logo.final.png' alt='Snehvastra Logo' class='logo' style='height:42px;width:auto;'/>
+  
+  <nav style="position:relative;">
+    <span class="menu-toggle" onclick="toggleMenu()" 
+      style="font-size:1.6rem;cursor:pointer;color:#d4bcff;display:none;">☰</span>
+    <ul id="nav-links" style="
+      list-style:none;
+      display:flex;
+      gap:1.2rem;
+      margin:0;
+      padding:0;
+    ">
+      <li><a href='index.html' style='color:#d4bcff;text-decoration:none;font-weight:500;'>Home</a></li>
+      <li><a href='collection.html' style='color:#d4bcff;text-decoration:none;font-weight:500;'>Collection</a></li>
+      <li><a href='about.html' style='color:#d4bcff;text-decoration:none;font-weight:500;'>About</a></li>
+      <li><a href='contact.html' style='color:#d4bcff;text-decoration:none;font-weight:500;'>Contact</a></li>
+      <li><a href='wishlist.html' style='color:#d4bcff;text-decoration:none;font-weight:500;'>Wishlist</a></li>
+      <li><a href='cart.html' style='color:#d4bcff;text-decoration:none;font-weight:500;'>Cart</a></li>
+      <li><a href='user-login.html' style='color:#d4bcff;text-decoration:none;font-weight:500;'>Login</a></li>
+      <li><a href='blog.html' style='color:#d4bcff;text-decoration:none;font-weight:500;'>Blog</a></li>
+    </ul>
+  </nav>
+</header>
 
+<!-- Mobile Nav Behavior -->
+<script>
+function toggleMenu() {
+  const nav = document.getElementById('nav-links');
+  if (nav.style.display === 'flex') {
+    nav.style.display = 'none';
+  } else {
+    nav.style.display = 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.position = 'absolute';
+    nav.style.top = '60px';
+    nav.style.right = '10px';
+    nav.style.background = 'rgba(15,15,18,0.95)';
+    nav.style.borderRadius = '10px';
+    nav.style.padding = '1rem';
+    nav.style.backdropFilter = 'blur(8px)';
+  }
+}
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 600) {
+    document.getElementById('nav-links').style.display = 'flex';
+    document.getElementById('nav-links').style.flexDirection = 'row';
+    document.getElementById('nav-links').style.position = 'static';
+    document.getElementById('nav-links').style.background = 'none';
+    document.getElementById('nav-links').style.padding = '0';
+  } else {
+    document.getElementById('nav-links').style.display = 'none';
+  }
+});
+</script>
+
+<!-- Mobile-only menu toggle visibility -->
+<style>
+@media (max-width: 600px) {
+  .menu-toggle { display: inline; }
+  #nav-links { display: none; }
+}
+header a:hover { color:#fff !important; }
+header a.active { color:#fff !important; }
+</style>
+<!-- =============================================================== -->
 /* 2. Center + scale splash logo properly */
 #splash {
   display: flex;
@@ -532,3 +610,4 @@ html, body {
 
 </body>
 </html>
+
