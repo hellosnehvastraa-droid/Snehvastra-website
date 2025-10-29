@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Product Detail - SnehVastra</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #0a0a0a, #1b1b1b);
+      color: #e3e3e3;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      height: 60px;
+      width: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #d4bcff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    main.product-detail-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 60px auto;
+      background: rgba(15,15,15,0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      border-radius: 18px;
+      padding: 50px;
+    }
+
+    .product-images {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .product-images img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .product-images img:hover {
+      transform: scale(1.03);
+    }
+
+    .product-info {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .product-info h1 {
+      font-size: 2.4rem;
+      color: #d4bcff;
+    }
+
+    .product-price {
+      font-size: 1.8rem;
+      color: #b18bff;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .button-row button {
+      flex: 1;
+      padding: 12px;
+      font-size: 1rem;
+      background: linear-gradient(135deg, #b18bff, #7a4fff);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .button-row button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #d4bcff, #9f73ff);
+    }
+
+    .reviews-section {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: rgba(15,15,15,0.6);
+      border-radius: 18px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .reviews-section h2 {
+      color: #caaeff;
+      margin-bottom: 25px;
+    }
+
+    .review iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 14px;
+      margin-bottom: 25px;
+    }
+
+    .related-products {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: rgba(15,15,15,0.6);
+      border-radius: 18px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .related-products h2 {
+      color: #caaeff;
+      margin-bottom: 25px;
+    }
+
+    .related-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .related-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 20px;
+      width: 220px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: #d4bcff;
+    }
+
+    .related-card:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .related-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      background: rgba(0,0,0,0.8);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 25px;
+      font-size: 0.9rem;
+      color: #b5b5b5;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      main.product-detail-container {
+        flex-direction: column;
+        padding: 25px;
+        margin: 30px 15px;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.8rem;
+        color: #fff;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
+        text-align: right;
+      }
+
+      nav ul.hidden {
+        display: none;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const links = document.getElementById("nav-links");
+      links.classList.toggle("hidden");
+    }
+    function showAlert(message) {
+      alert(message);
+    }
+  </script>
+</head>
+<body>
+<header>
+  <img src="images/logo.final.png" alt="SnehVastra Logo" class="logo"/>
+  <nav>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="user-login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="product-detail-container">
+  <section class="product-images">
+    <img src="images/drop2.png" alt="Drop 2 Main Image"/>
+    <img src="images/drop2-side.png" alt="Drop 2 Side View"/>
+  </section>
+  <section class="product-info">
+    <h1>Drop 2</h1>
+    <div class="product-price">$59.99</div>
+    <p>Experience luxury streetwear like never before. Drop 2 features premium materials and exclusive design for the refined eye.</p>
+    <div class="options">
+      <label for="size-select">Size:</label><br>
+      <select id="size-select">
+        <option value="">Select Size</option>
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+      </select><br><br>
+      <label for="purpose-select">Purpose:</label><br>
+      <select id="purpose-select">
+        <option value="">Select Purpose</option>
+        <option value="casual">Casual Wear</option>
+        <option value="sports">Sports</option>
+        <option value="party">Party</option>
+      </select><br><br>
+      <label for="quantity-input">Quantity:</label><br>
+      <input type="number" id="quantity-input" min="1" max="10" value="1"/>
+    </div>
+    <div class="button-row">
+      <button id="add-to-cart-btn">Add to Cart</button>
+      <button id="wishlist-btn">Add to Wishlist</button>
+    </div>
+  </section>
+</main>
+
+<section class="reviews-section">
+  <h2>Customer Reviews</h2>
+  <div class="review">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+  </div>
+  <div class="review">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="related-products">
+  <h2>Related Products</h2>
+  <div class="related-grid">
+    <div class="related-card" tabindex="0" onclick="showAlert('Clicked Drop 1 (Demo)')">
+      <img src="images/drop1.png" alt="Drop 1"/>
+      Drop 1
+    </div>
+    <div class="related-card" tabindex="0" onclick="showAlert('Clicked Drop 3 (Demo)')">
+      <img src="images/drop3.png" alt="Drop 3"/>
+      Drop 3
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 SnehVastra. All Rights Reserved.<br>
+  Instagram: @sneh_vastra | Facebook: Snehvastra
+</footer>
+<!-- Other page content -->
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</script>
+</body>
+</html>

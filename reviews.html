@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Customer Reviews - Snehvastra</title>
+  <meta name="description" content="Read and share customer reviews for Snehvastra — where fashion meets exclusivity and craftsmanship." />
+  <style>
+    /* === Reset & Base === */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #0a0a0a, #000);
+      color: #f2f2f2;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    a { color: #d4bcff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* === Header === */
+    header {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+    }
+    .logo { height: 45px; filter: drop-shadow(0 0 5px #d4bcff70); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+    }
+    nav a {
+      color: #f2f2f2;
+      transition: color 0.3s;
+    }
+    nav a:hover, nav a.active { color: #d4bcff; }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* === Glass Content === */
+    main {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 1rem;
+    }
+    .glass-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 0 20px rgba(212,188,255,0.1);
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      color: #d4bcff;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: #ccc;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    /* === Review Button === */
+    .review-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4bcff, #7a5af5);
+      color: #000;
+      font-weight: 600;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      box-shadow: 0 0 10px rgba(212,188,255,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .review-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px rgba(212,188,255,0.7);
+    }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      color: #ccc;
+      width: 100%;
+    }
+    .footer-social {
+      display: block;
+      margin-top: 0.4rem;
+      color: #d4bcff;
+    }
+
+    /* === Animations & Responsive === */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media(max-width: 768px) {
+      nav ul { display: none; flex-direction: column; background: rgba(0,0,0,0.9); position: absolute; top: 70px; right: 20px; padding: 1rem 2rem; border-radius: 10px; }
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <nav>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="reviews.html" class="active">Reviews</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="glass-box">
+    <h1>Customer Reviews</h1>
+    <p>We value your voice. Share your experience and help others discover Snehvastra’s essence of luxury and craftsmanship.</p>
+    <a class="review-button" 
+      href="https://www.google.com/maps/place/Snehvastra/@25.1387098,75.8661457,993m/data=!3m2!1e3!4b1!4m6!3m5!1s0x396f852ea0733825:0xb3375f8ae1c2c657!8m2!3d25.138705!4d75.8687206!16s%2Fg%2F11ykm093lh?entry=ttu"
+      target="_blank" 
+      rel="noopener noreferrer">
+      Leave a Google Review
+    </a>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Snehvastra. All Rights Reserved.
+  <span class="footer-social">Instagram: @sneh_vastra | Facebook: Snehvastra</span>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('nav-links').classList.toggle('active');
+  }
+</script>
+<!-- Other page content -->
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+</html>

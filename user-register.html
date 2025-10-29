@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>User Registration - Snehvastra</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top left, #0a0a0a 0%, #000 80%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      backdrop-filter: blur(12px);
+    }
+
+    header {
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      height: 45px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+    nav a.active, nav a:hover {
+      color: #d4bcff;
+      text-shadow: 0 0 8px #d4bcff;
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 25px;
+      color: #d4bcff;
+      text-shadow: 0 0 10px rgba(212,188,255,0.6);
+    }
+
+    form {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255,255,255,0.06);
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 25px rgba(212,188,255,0.08);
+      backdrop-filter: blur(10px);
+      text-align: left;
+      animation: fadeIn 0.8s ease;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    input:focus {
+      border-color: #d4bcff;
+      box-shadow: 0 0 6px #d4bcff;
+      background: rgba(255,255,255,0.12);
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #d4bcff, #9c88ff);
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 8px rgba(212,188,255,0.3);
+    }
+
+    button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(212,188,255,0.7);
+    }
+
+    .login-link {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .login-link a {
+      color: #d4bcff;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+      text-shadow: 0 0 6px #d4bcff;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      padding: 15px;
+      background: rgba(0,0,0,0.7);
+      color: #999;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding: 20px;
+        border-radius: 0 0 0 12px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <nav>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="user-register.html" aria-current="page" class="active">Register</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Create Account</h1>
+  <form id="register-form" aria-label="Registration form">
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" name="fullname" placeholder="Your full name" required />
+    
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="email@example.com" required />
+    
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Create password" required />
+    
+    <label for="confirmpassword">Confirm Password</label>
+    <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required />
+    
+    <button type="submit">Register</button>
+  </form>
+  <div class="login-link">
+    Already have an account? <a href="user-login.html">Login here</a>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Snehvastra. All Rights Reserved.<br/>
+  Instagram: @sneh_vastra | Facebook: Snehvastra
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("nav-links").classList.toggle("show");
+  }
+</script>
+<!-- Other page content -->
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+</html>
