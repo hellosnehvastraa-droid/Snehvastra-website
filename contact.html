@@ -88,14 +88,17 @@
       animation: fadeInUp 1.4s ease;
     }
 <form action="https://formsubmit.co/hellosnehvastraa@gmail.com" method="POST">
+  <!-- Visible fields -->
   <input type="text" name="name" placeholder="Your Name" required>
   <input type="email" name="email" placeholder="Your Email" required>
   <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 
-  <!-- Hidden Config -->
+  <!-- Hidden setup -->
   <input type="hidden" name="_subject" value="New Message from Snehvastra Website!">
   <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="box">
   <input type="hidden" name="_next" value="https://snehvastra.store/thank-you.html">
+  <input type="hidden" name="_autoresponse" value="Thank you for contacting Snehvastra! We’ve received your message and will get back to you shortly. 💌">
 
   <button type="submit">Send Message</button>
 </form>
@@ -229,4 +232,5 @@
     gtag('config', 'G-CXQG6L0W01');
   </script>
 </body>
+
 </html>
