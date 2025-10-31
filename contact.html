@@ -87,19 +87,31 @@
       backdrop-filter: blur(10px);
       animation: fadeInUp 1.4s ease;
     }
-<form action="https://formsubmit.co/hellosnehvastraa+main@gmail.com" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-
-  <!-- Hidden configuration -->
-  <input type="hidden" name="_subject" value="New Message from Snehvastra Website!">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="box">
-  <input type="hidden" name="_next" value="https://www.snehvastra.store/thank-you.html">
-
+<form id="contact-form">
+  <input type="text" id="name" name="name" placeholder="Your Name" required>
+  <input type="email" id="email" name="email" placeholder="Your Email" required>
+  <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
   <button type="submit">Send Message</button>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("29J7oGKWEBXi9zAYsAilu"); // replace with your EmailJS public key
+  })();
+
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_8Ib4kjj', 'template_o786ilk', this)
+      .then(() => {
+        window.location.href = "https://www.snehvastra.store/thank-you.html";
+      }, (error) => {
+        alert('❌ Failed to send message. Try again later.');
+        console.error('EmailJS Error:', error);
+      });
+  });
+</script>
     
     form label {
       text-align: left;
@@ -236,6 +248,7 @@ document.querySelector('form').addEventListener('submit', function() {
 </body>
 
 </html>
+
 
 
 
