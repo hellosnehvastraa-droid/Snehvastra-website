@@ -88,15 +88,14 @@
       animation: fadeInUp 1.4s ease;
     }
 <form action="https://formsubmit.co/hellosnehvastraa@gmail.com" method="POST">
-  <!-- Hidden setup -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://www.snehvastra.store/thank-you.html">
-  <input type="hidden" name="_template" value="table">
-
-  <!-- Visible fields -->
   <input type="text" name="name" placeholder="Your Name" required>
   <input type="email" name="email" placeholder="Your Email" required>
   <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+  <!-- Hidden config -->
+  <input type="hidden" name="_subject" value="New Message from Snehvastra Website!">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://www.snehvastra.store/thank-you.html">
 
   <button type="submit">Send Message</button>
 </form>
@@ -236,6 +235,7 @@ document.querySelector('form').addEventListener('submit', function() {
 </body>
 
 </html>
+
 
 
 
