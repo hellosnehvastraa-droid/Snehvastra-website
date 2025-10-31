@@ -87,17 +87,25 @@
       backdrop-filter: blur(10px);
       animation: fadeInUp 1.4s ease;
     }
-<form action="https://formsubmit.co/hellosnehvastraa@gmail.com" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-
-  <!-- Hidden settings -->
-  <input type="hidden" name="_subject" value="New Message from Snehvastra Website!">
+<form action="https://formsubmit.co/hellosnehvastraa@gmail.com" method="POST" class="contact-form">
+  <!-- Disable Captcha -->
   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="box">
+
+  <!-- Redirect to Thank You page -->
   <input type="hidden" name="_next" value="https://www.snehvastra.store/thank-you.html">
-  <input type="hidden" name="_autoresponse" value="Thank you for contacting Snehvastra 💜 We’ll get back to you shortly.">
+
+  <!-- Optional: Add subject line -->
+  <input type="hidden" name="_subject" value="New message from Snehvastra Contact Form">
+
+  <!-- Form Fields -->
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" placeholder="Your Name" required>
+
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" placeholder="Your Email" required>
+
+  <label for="message">Message</label>
+  <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
 
   <button type="submit">Send Message</button>
 </form>
@@ -233,6 +241,7 @@
 </body>
 
 </html>
+
 
 
 
