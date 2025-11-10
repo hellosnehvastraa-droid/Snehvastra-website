@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Mini Cart Preview - Snehvastra</title>
+  <meta name="description" content="Preview your Snehvastra cart instantly with a sleek glassy mini-cart before checkout." />
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted: rgba(75, 67, 55, 0.7);
+      --accent-gradient: linear-gradient(90deg, #BFA658, #ECD78F);
+      --panel-bg: rgba(252, 250, 246, 0.04);
+      --panel-border: rgba(191, 166, 88, 0.08);
+      --btn-shadow: 0 0 25px rgba(191, 166, 88, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      background: var(--panel-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--panel-border);
+      border-radius: 50px;
+      padding: 0.8rem 2rem;
+      box-shadow: var(--btn-shadow);
+      user-select: none;
+    }
+
+    nav a,
+    button {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    nav a:hover,
+    button:hover {
+      color: var(--text-dark);
+    }
+
+    .cart-count-badge {
+      background: var(--panel-bg);
+      color: var(--text-dark);
+      font-weight: 600;
+      border-radius: 50%;
+      padding: 0.2rem 0.45rem;
+      font-size: 0.8rem;
+      margin-left: 5px;
+      box-shadow: var(--btn-shadow);
+      user-select: none;
+    }
+
+    .mini-cart-preview {
+      position: absolute;
+      top: 70px;
+      right: 50%;
+      transform: translateX(50%) scale(0.95);
+      width: 320px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      box-shadow: var(--btn-shadow);
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+      user-select: none;
+    }
+
+    .mini-cart-preview.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(50%) scale(1);
+    }
+
+    .mini-cart-header {
+      background: rgba(191, 166, 88, 0.06);
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+      color: var(--text-dark);
+    }
+
+    #miniCartItems {
+      max-height: 220px;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      background: var(--panel-bg);
+      border-radius: 12px;
+      padding: 0.7rem;
+      border: 1px solid var(--panel-border);
+      user-select: text;
+    }
+
+    .cart-item img {
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+      object-fit: cover;
+      user-select: none;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      padding: 0 0.8rem;
+    }
+
+    .cart-item-details p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      user-select: text;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: color 0.3s;
+      user-select: none;
+    }
+
+    .remove-btn:hover {
+      color: #e06346;
+    }
+
+    .mini-cart-total {
+      border-top: 1px solid var(--panel-border);
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+      color: var(--muted);
+      user-select: text;
+    }
+
+    .mini-cart-checkout-btn {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      background: var(--accent-gradient);
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.4s ease;
+      border-radius: 12px;
+      user-select: none;
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: var(--btn-shadow);
+    }
+
+    .mini-cart-checkout-btn:hover {
+      background: linear-gradient(90deg, #ECD78F, #BFA658);
+    }
+
+    /* Re-enable zoom for product images only */
+    .product-media img {
+      touch-action: pinch-zoom;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <button class="mini-cart-toggle" id="miniCartToggle" aria-expanded="false">
+          Cart <span class="cart-count-badge" id="cartCount">2</span>
+        </button>
+        <div class="mini-cart-preview" id="miniCartPreview" aria-live="polite" aria-label="Mini cart preview">
+          <div class="mini-cart-header">Your Cart</div>
+          <div id="miniCartItems">
+            <div class="cart-item">
+              <img src="images/placeholder.png" alt="Black Edition Tee" />
+              <div class="cart-item-details">
+                <p>Black Edition Tee</p>
+                <p>₹799</p>
+              </div>
+              <button class="remove-btn" aria-label="Remove Black Edition Tee">&times;</button>
+            </div>
+            <div class="cart-item">
+              <img src="images/placeholder.png" alt="Ivory Drop Shirt" />
+              <div class="cart-item-details">
+                <p>Ivory Drop Shirt</p>
+                <p>₹1,199</p>
+              </div>
+              <button class="remove-btn" aria-label="Remove Ivory Drop Shirt">&times;</button>
+            </div>
+          </div>
+          <div class="mini-cart-total">Total: ₹1,998</div>
+          <button
+            class="mini-cart-checkout-btn"
+            onclick="window.location.href='cart.html'"
+            aria-label="Go to Checkout"
+          >
+            Go to Checkout
+          </button>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <script>
+    const toggleBtn = document.getElementById('miniCartToggle');
+    const miniCart = document.getElementById('miniCartPreview');
+
+    toggleBtn.addEventListener('click', () => {
+      const isActive = miniCart.classList.toggle('active');
+      toggleBtn.setAttribute('aria-expanded', isActive);
+    });
+
+    document.addEventListener('click', e => {
+      if (!miniCart.contains(e.target) && !toggleBtn.contains(e.target)) {
+        miniCart.classList.remove('active');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+
+</html>
