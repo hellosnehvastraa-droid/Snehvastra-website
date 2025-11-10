@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Collection - Snehvastra</title>
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted: rgba(75, 67, 55, 0.7);
+      --accent: linear-gradient(to right, #BFA658, #ECD78F);
+      --card-bg: rgba(252, 250, 246, 0.5);
+      --card-border: rgba(191, 166, 88, 0.15);
+      --btn-shadow: 0 0 20px rgba(191, 166, 88, 0.35);
+      --max-width: 1100px;
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      position: sticky;
+      top: 0;
+      background: rgba(252, 250, 246, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+      animation: fadeIn 1.2s ease;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      border-bottom: 1px solid var(--card-border);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .logo {
+      height: 60px;
+      filter: drop-shadow(0 0 12px var(--btn-shadow));
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: transparent;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(191, 166, 88, 0.7);
+      background: rgba(191, 166, 88, 0.1);
+    }
+
+    main {
+      padding: 80px 5% 40px;
+      animation: fadeSlide 1.2s ease;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 60px;
+      background: var(--accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 35px;
+      padding: 25px;
+      margin-bottom: 50px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: 0 0 20px rgba(191, 166, 88, 0.1);
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 150px;
+      color: var(--muted);
+    }
+
+    .filter-group label {
+      font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .filter-group input[type="checkbox"] {
+      margin-right: 8px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    select {
+      background: rgba(252, 250, 246, 0.95);
+      color: var(--text-dark);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 18px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 0 25px rgba(191, 166, 88, 0.15);
+      position: relative;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .product-card:hover,
+    .product-card:focus-visible {
+      transform: translateY(-8px) scale(1.04);
+      border-color: rgba(191, 166, 88, 0.4);
+      box-shadow: 0 0 45px rgba(191, 166, 88, 0.35);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      transition: transform 0.4s ease;
+      user-select: none;
+    }
+
+    .product-card:hover img,
+    .product-card:focus-visible img {
+      transform: scale(1.07);
+    }
+
+    .product-card h3 {
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .product-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .product-card .price {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      user-select: text;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: rgba(252, 250, 246, 0.85);
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-top: 1px solid var(--card-border);
+      animation: fadeIn 1.2s ease;
+      user-select: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Re-enable zoom for product images only */
+    .product-media img {
+      touch-action: pinch-zoom;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html" class="active">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="user-login.html">Login</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Our Collection</h1>
+
+    <div class="filters" aria-label="Product filters">
+      <div class="filter-group">
+        <label>Category</label>
+        <label><input type="checkbox" value="Streetwear" checked> Streetwear</label>
+        <label><input type="checkbox" value="Luxury" checked> Luxury</label>
+        <label><input type="checkbox" value="Casual" checked> Casual</label>
+      </div>
+
+      <div class="filter-group">
+        <label>Price Range</label>
+        <label><input type="checkbox" value="0-50" checked> ₹0 - ₹50</label>
+        <label><input type="checkbox" value="51-100" checked> ₹51 - ₹100</label>
+        <label><input type="checkbox" value="101-99999" checked> Above ₹100</label>
+      </div>
+
+      <div class="filter-group">
+        <label>Availability</label>
+        <label><input type="checkbox" value="In Stock" checked> In Stock</label>
+        <label><input type="checkbox" value="Sold Out" checked> Sold Out</label>
+      </div>
+
+      <div class="filter-group">
+        <label for="sort">Sort By</label>
+        <select id="sort" aria-label="Sort products">
+          <option value="popularity">Popularity</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="products-grid" aria-live="polite">
+      <div class="product-card" tabindex="0">
+        <img src="images/rev1.jpg" alt="Streetwear Fusion Tee" />
+        <h3>Streetwear Fusion Tee</h3>
+        <p>Bold yet minimal — crafted for statement comfort.</p>
+        <p class="price">₹499</p>
+      </div>
+
+      <div class="product-card" tabindex="0">
+        <img src="images/rev2.jpg" alt="Luxury Midnight Jacket" />
+        <h3>Luxury Midnight Jacket</h3>
+        <p>Tailored craftsmanship with modern luxury essence.</p>
+        <p class="price">₹299</p>
+      </div>
+
+      <div class="product-card" tabindex="0">
+        <img src="images/rev3.jpg" alt="Casual Cloud Hoodie" />
+        <h3>Casual Cloud Hoodie</h3>
+        <p>Soft fleece touch — urban comfort meets class.</p>
+        <p class="price">₹199</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Snehvastra. All Rights Reserved.<br />
+    Instagram: @sneh_vastra | Facebook: Snehvastra
+  </footer>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;
+    n.push=n;
+    n.loaded=!0;
+    n.version='2.0';
+    n.queue=[];
+    t=b.createElement(e);
+    t.async=!0;
+    t.src=v;
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','840460501999060');
+    fbq('track','PageView');
+  </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=840460501999060&ev=PageView&noscript=1" />
+  </noscript>
+
+</body>
+
+</html>
