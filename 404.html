@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>404 - Page Not Found | Snehvastra</title>
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --font-family: 'Poppins', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-family);
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      user-select: none;
+    }
+
+    .container {
+      max-width: 480px;
+      width: 100%;
+      padding: 24px;
+      background: rgba(252, 250, 246, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(191, 166, 88, 0.3);
+      backdrop-filter: blur(16px);
+    }
+
+    h1 {
+      font-family: 'Clash Display', serif;
+      font-size: 6rem;
+      letter-spacing: 0.3em;
+      color: var(--muted-gold);
+      margin-bottom: 0.8rem;
+      text-shadow: 0 0 8px var(--muted-gold);
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+      opacity: 0.85;
+    }
+
+    a {
+      display: inline-block;
+      padding: 0.85rem 1.8rem;
+      border-radius: 16px;
+      background: var(--muted-gold);
+      color: #111;
+      font-weight: 600;
+      font-size: 1.15rem;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(191, 166, 88, 0.45);
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      background: var(--highlight-gold);
+      color: var(--muted-gold);
+      outline: none;
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(191, 166, 88, 0.65);
+    }
+
+    @media (max-width: 520px) {
+      h1 {
+        font-size: 4.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .container {
+        max-width: 95%;
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" role="main" aria-labelledby="page-title" aria-describedby="page-desc">
+    <h1 id="page-title" aria-level="1" role="heading">404</h1>
+    <p id="page-desc" role="note">
+      Oops! Looks like this page drifted off the runway.<br>
+      But don’t worry, we’ve got plenty of style waiting for you.
+    </p>
+    <a href="index.html" role="link" aria-label="Return to home page">Back to Home</a>
+  </div>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+
+</html>
