@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>FAQ / Help - Snehvastra</title>
+  <meta name="description" content="Find answers to common questions about Snehvastra fashion drops, shipping, returns, and more." />
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted: rgba(75, 67, 55, 0.7);
+      --accent-gradient: linear-gradient(90deg, #BFA658, #ECD78F);
+      --panel-bg: rgba(252, 250, 246, 0.05);
+      --panel-border: rgba(191, 166, 88, 0.1);
+      --btn-shadow: 0 0 20px rgba(191, 166, 88, 0.35);
+      --max-width: 800px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      backdrop-filter: blur(12px);
+      background: rgba(252, 250, 246, 0.9);
+      border-bottom: 1px solid var(--panel-border);
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      border-radius: 0 0 16px 16px;
+    }
+
+    header img.logo {
+      height: 42px;
+      filter: drop-shadow(var(--btn-shadow));
+      user-select: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent-gradient);
+      background: rgba(191, 166, 88, 0.1);
+      text-shadow: 0 0 12px rgba(191, 166, 88, 0.6);
+    }
+
+    main {
+      flex: 1;
+      padding: 4rem 5% 3rem;
+      max-width: var(--max-width);
+      margin: auto;
+      animation: fadeIn 1s ease-in-out;
+      user-select: text;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      background: var(--panel-bg);
+      box-shadow: 0 0 25px rgba(191, 166, 88, 0.03);
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .faq-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 40px rgba(191, 166, 88, 0.06);
+    }
+
+    .faq-item h2 {
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      background: rgba(191, 166, 88, 0.07);
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+    }
+
+    .faq-item h2::after {
+      content: "+";
+      position: absolute;
+      right: 1.5rem;
+      transition: transform 0.3s;
+      color: var(--muted);
+    }
+
+    .faq-item.active h2::after {
+      transform: rotate(45deg);
+      color: var(--accent-gradient);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      background: rgba(191, 166, 88, 0.03);
+      user-select: text;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+      animation: slideDown 0.4s ease;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.85rem;
+      background: rgba(252, 250, 246, 0.85);
+      border-top: 1px solid var(--panel-border);
+      backdrop-filter: blur(10px);
+      color: var(--muted);
+      user-select: none;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      border-radius: 16px 16px 0 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-top: 0.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .product-media img {
+      touch-action: pinch-zoom;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="user-login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-item">
+      <h2>What is your return policy?</h2>
+      <div class="faq-answer">
+        <p>We offer a 30-day return policy on most items. Items must be unused, in their original packaging, and accompanied by proof of purchase.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h2>Do you offer international shipping?</h2>
+      <div class="faq-answer">
+        <p>Yes, we ship worldwide. Shipping costs and delivery times vary depending on your location and courier service.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h2>How can I track my order?</h2>
+      <div class="faq-answer">
+        <p>Once your order ships, you’ll receive a confirmation email with a live tracking link for real-time updates.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h2>Can I change or cancel my order?</h2>
+      <div class="faq-answer">
+        <p>Changes or cancellations can be made within 24 hours of placing your order. After that, processing begins and modifications may not be possible.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h2>Are Snehvastra drops limited edition?</h2>
+      <div class="faq-answer">
+        <p>Yes — every drop is a curated, limited edition release. Once sold out, the design is archived permanently.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 SnehVastra. All Rights Reserved.<br />
+    Instagram: @sneh_vastra | Facebook: Snehvastra
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item h2').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+
+</body>
+
+</html>
