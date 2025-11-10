@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>About Snehvastra — Craftsmanship & Drops</title>
+  <meta name="description"
+    content="Snehvastra blends craft and city — limited-edition drop-model streetwear built with mindful materials and modern cuts. Learn our story and mission." />
+  <meta name="keywords"
+    content="Snehvastra, about, story, streetwear, drop model, limited edition, craftsmanship" />
+  <link rel="canonical" href="https://www.snehvastra.store/about.html" />
+  <meta property="og:site_name" content="Snehvastra" />
+  <meta property="og:title" content="About Snehvastra — Craftsmanship & Drops" />
+  <meta property="og:description"
+    content="Snehvastra blends craft and city — limited-edition streetwear built with mindful materials and modern cuts." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/og-image.jpg" />
+  <meta property="og:url" content="https://www.snehvastra.store/about.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Snehvastra — Craftsmanship & Drops" />
+  <meta name="twitter:description"
+    content="Snehvastra blends craft and city — limited-edition streetwear built with mindful materials and modern cuts." />
+  <meta name="twitter:image" content="images/og-image.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --panel: rgba(252, 250, 246, 0.4);
+      --max-width: 1100px;
+      --radius: 12px;
+      --transition-speed: 0.28s;
+      --font-body: 'Poppins', sans-serif;
+      --font-header: 'Clash Display', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: var(--font-body);
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--muted-gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition-speed) ease;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--highlight-gold);
+      outline: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px rgba(191, 166, 88, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    img:hover,
+    img:focus {
+      transform: scale(1.05);
+      box-shadow: 0 12px 34px rgba(236, 215, 143, 0.5);
+      outline: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid var(--muted-gold);
+      box-shadow: 0 2px 8px rgba(191, 166, 88, 0.15);
+      backdrop-filter: saturate(180%) blur(15px);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand img {
+      height: 60px;
+      filter: drop-shadow(0 10px 30px rgba(191, 166, 88, 0.4));
+      border-radius: var(--radius);
+      transition: filter 0.3s ease;
+    }
+
+    .brand img:hover {
+      filter: drop-shadow(0 14px 42px rgba(236, 215, 143, 0.6));
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-header);
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      user-select: none;
+    }
+
+    nav {
+      margin-left: auto;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 16px;
+      align-items: center;
+    }
+
+    nav li {
+      margin: 0;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: transparent;
+    }
+
+    nav a.active,
+    nav a[aria-current="page"] {
+      color: var(--highlight-gold);
+      background: rgba(236, 215, 143, 0.15);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 32px auto;
+      padding: 0 18px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .hero .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted-gold);
+      margin-bottom: 8px;
+      user-select: none;
+    }
+
+    .hero h2 {
+      font-family: var(--font-header);
+      font-size: 2.5rem;
+      margin: 0;
+      letter-spacing: -0.5px;
+      color: var(--text-dark);
+      user-select: text;
+    }
+
+    .hero p.lead {
+      margin-top: 12px;
+      color: var(--text-dark);
+      font-size: 1.15rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .story-wrap {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .story-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid rgba(191, 166, 88, 0.15);
+      box-shadow: 0 20px 60px rgba(236, 215, 143, 0.2);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      transition: transform 0.6s ease, opacity 0.6s ease;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .story-card.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    .story-card h3 {
+      font-family: var(--font-header);
+      margin: 0 0 12px;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--text-dark);
+    }
+
+    .story-card p {
+      color: var(--text-dark);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .brand-image-section {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(191, 166, 88, 0.15);
+      background: var(--panel);
+      box-shadow: 0 20px 60px rgba(236, 215, 143, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      min-height: 320px;
+    }
+
+    .brand-image-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius);
+      transition: transform 0.6s ease;
+    }
+
+    .brand-image-section img:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 12px 35px rgba(236, 215, 143, 0.4);
+    }
+
+    .values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .value-pill {
+      background: rgba(236, 215, 143, 0.2);
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-weight: 700;
+      color: var(--muted-gold);
+      font-size: 0.95rem;
+      user-select: none;
+      box-shadow: 0 4px 14px rgba(191, 166, 88, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .value-pill:hover,
+    .value-pill:focus {
+      background: var(--highlight-gold);
+      color: var(--text-dark);
+      outline: none;
+      cursor: default;
+      box-shadow: 0 6px 18px rgba(236, 215, 143, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      color: rgba(75, 67, 55, 0.6);
+      padding: 28px 20px;
+      border-top: 1px solid rgba(191, 166, 88, 0.15);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    @media (max-width: 1024px) {
+      .story-wrap {
+        grid-template-columns: 1fr;
+        row-gap: 36px;
+      }
+
+      .brand-image-section {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 20px 12px;
+      }
+
+      nav ul {
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding: 0 10px;
+      }
+
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+
+      main {
+        padding: 0 14px 32px;
+      }
+    }
+
+    a:focus,
+    button:focus,
+    [tabindex]:focus {
+      outline: 3px solid rgba(236, 215, 143, 0.4);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand" role="banner" aria-label="Main header">
+      <img src="images/logo.final.png" alt="Snehvastra logo" />
+      <h1>Snehvastra</h1>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html" role="menuitem">Home</a></li>
+          <li><a href="collection.html" role="menuitem">Collection</a></li>
+          <li><a href="about.html" role="menuitem" aria-current="page" class="active">About</a></li>
+          <li><a href="contact.html" role="menuitem">Contact</a></li>
+          <li><a href="wishlist.html" role="menuitem">Wishlist</a></li>
+          <li><a href="cart.html" role="menuitem">Cart</a></li>
+          <li><a href="user-login.html" role="menuitem">Login</a></li>
+          <li><a href="blog.html" role="menuitem">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main" aria-labelledby="aboutTitle">
+    <div class="hero" aria-label="Page introduction">
+      <div class="eyebrow">Our story & craft</div>
+      <h2 id="aboutTitle">Snehvastra — built for the drop</h2>
+      <p class="lead">
+        Snehvastra blends city rhythm and careful craft. We release limited capsule drops that highlight materials, detail,
+        and a timeless attitude — designed for those who move fast and care deeply about the pieces they wear.
+      </p>
+    </div>
+
+    <div class="story-wrap" aria-label="Brand story content">
+      <section class="story-card" tabindex="0" aria-labelledby="storyHeader1" aria-describedby="storyDesc1">
+        <h3 id="storyHeader1">Our Story</h3>
+        <p id="storyDesc1">
+          Born from late-night design sessions and long walks through market lanes, Snehvastra started as a conversation
+          between technique and the city. Each capsule is curated with respect for material, pattern, and silhouette — made
+          to be worn confidently and passed on.
+        </p>
+        <p style="margin-top: 12px; color: var(--text-dark); opacity: 0.75;">
+          We design in small batches, iterate quickly, and refine with hands-on sampling to ensure every piece feels intentional.
+        </p>
+      </section>
+
+      <aside class="brand-image-section" aria-hidden="true" aria-label="Brand visual image">
+        <img src="images/mybanner.jpg" alt="Snehvastra brand story image" loading="lazy" />
+      </aside>
+    </div>
+
+    <div class="story-wrap" style="margin-top: 32px;">
+      <section class="story-card" tabindex="0" aria-labelledby="storyHeader2" aria-describedby="storyDesc2">
+        <h3 id="storyHeader2">Our Mission</h3>
+        <p id="storyDesc2">
+          We connect with the new generation through meaningful drops that celebrate identity. Our mission is to make limited pieces
+          that people remember — not just for a season, but for the story they carry.
+        </p>
+        <p style="margin-top: 12px; color: var(--text-dark); opacity: 0.75;">
+          Sustainability is considered within our supply choices, small runs, and packaging decisions — a slow approach inside a fast moment.
+        </p>
+        <div class="values" tabindex="0" aria-label="Brand values">
+          <div class="value-pill" tabindex="0">Limited Runs</div>
+          <div class="value-pill" tabindex="0">Artisan Details</div>
+          <div class="value-pill" tabindex="0">Quality Fabric</div>
+          <div class="value-pill" tabindex="0">Local Sampling</div>
+        </div>
+      </section>
+
+      <section class="story-card" tabindex="0" aria-labelledby="storyHeader3" aria-describedby="storyDesc3">
+        <h3 id="storyHeader3">How Drops Work</h3>
+        <p id="storyDesc3">
+          We plan each drop as a short runway — announcement, release window, and a final close. Drops are promoted across channels,
+          and once a capsule closes, the pieces are archived until the next release.
+        </p>
+        <p style="margin-top: 12px; color: var(--text-dark); opacity: 0.75;">
+          Join the mailing list on the site footer to receive first access and pre-book notifications for upcoming items.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    &copy; <span id="yr"></span> Snehvastra. All Rights Reserved. &nbsp; • &nbsp;
+    <span style="opacity: 0.9">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <script>
+    (function () {
+      const yr = document.getElementById("yr");
+      if (yr) yr.textContent = new Date().getFullYear();
+
+      window.addEventListener("error", function (e) {
+        console && console.debug && console.debug("Runtime (demo):", e.message);
+      });
+    })()
+  </script>
+</body>
+
+</html>
