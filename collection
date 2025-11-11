@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Collection - Snehvastra</title>
   <style>
     :root {
@@ -176,6 +176,10 @@
       margin-bottom: 15px;
       transition: transform 0.4s ease;
       user-select: none;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      loading: lazy;
     }
 
     .product-card:hover img,
@@ -259,14 +263,14 @@
     <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html" class="active">Collection</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="user-login.html">Login</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/collection.html" class="active">Collection</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/wishlist.html">Wishlist</a></li>
+        <li><a href="/cart.html">Cart</a></li>
+        <li><a href="/user-login.html">Login</a></li>
+        <li><a href="/blog.html">Blog</a></li>
       </ul>
     </nav>
   </header>
@@ -307,21 +311,21 @@
 
     <div class="products-grid" aria-live="polite">
       <div class="product-card" tabindex="0">
-        <img src="images/rev1.jpg" alt="Streetwear Fusion Tee" />
+        <img src="images/rev1.jpg" alt="Streetwear Fusion Tee" loading="lazy" />
         <h3>Streetwear Fusion Tee</h3>
         <p>Bold yet minimal — crafted for statement comfort.</p>
         <p class="price">₹499</p>
       </div>
 
       <div class="product-card" tabindex="0">
-        <img src="images/rev2.jpg" alt="Luxury Midnight Jacket" />
+        <img src="images/rev2.jpg" alt="Luxury Midnight Jacket" loading="lazy" />
         <h3>Luxury Midnight Jacket</h3>
         <p>Tailored craftsmanship with modern luxury essence.</p>
         <p class="price">₹299</p>
       </div>
 
       <div class="product-card" tabindex="0">
-        <img src="images/rev3.jpg" alt="Casual Cloud Hoodie" />
+        <img src="images/rev3.jpg" alt="Casual Cloud Hoodie" loading="lazy" />
         <h3>Casual Cloud Hoodie</h3>
         <p>Soft fleece touch — urban comfort meets class.</p>
         <p class="price">₹199</p>
@@ -348,15 +352,9 @@
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;
-    n.push=n;
-    n.loaded=!0;
-    n.version='2.0';
-    n.queue=[];
-    t=b.createElement(e);
-    t.async=!0;
-    t.src=v;
-    s=b.getElementsByTagName(e)[0];
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window,document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','840460501999060');
