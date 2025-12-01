@@ -2,655 +2,252 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Blog — Snehvastra Journal</title>
-  <meta name="description"
-    content="Read the Snehvastra Journal — drop stories, behind-the-scenes, lookbooks, and limited release announcements from our luxury streetwear label." />
-  <meta name="keywords"
-    content="Snehvastra blog, streetwear journal, lookbook, fashion drops, behind the scenes" />
-  <link rel="canonical" href="https://www.snehvastra.store/blog.html" />
-  <meta property="og:site_name" content="Snehvastra" />
-  <meta property="og:title" content="Snehvastra Journal — Drops & Stories" />
-  <meta property="og:description"
-    content="Drop announcements, lookbooks, and behind-the-scenes from Snehvastra — limited capsule streetwear." />
-  <meta property="og:image" content="images/og-image.jpg" />
-  <meta property="og:url" content="https://www.snehvastra.store/blog.html" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Snehvastra Journal — Drops & Stories" />
-  <meta name="twitter:description" content="Drop announcements, lookbooks, and behind-the-scenes from Snehvastra." />
-  <meta name="twitter:image" content="images/og-image.jpg" />
+  <title>Blog - Snehvastra</title>
+  <meta name="description" content="Snehvastra stories, craftsmanship insights, and luxury fashion updates." />
+  <meta name="theme-color" content="#ECD78F">
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {"@type":"Organization","name":"Snehvastra","url":"https://www.snehvastra.store","logo":"https://www.snehvastra.store/images/logo.final.png"},
-      {"@type":"WebPage","name":"Snehvastra Journal","url":"https://www.snehvastra.store/blog.html","description":"Snehvastra Journal — editorial stories and drop announcements."},
-      {"@type":"ItemList","name":"Recent blog posts","itemListElement":[
-        {"@type":"ListItem","position":1,"url":"https://www.snehvastra.store/blog.html#post-noir-overshirt"},
-        {"@type":"ListItem","position":2,"url":"https://www.snehvastra.store/blog.html#post-eclipse-cargo"},
-        {"@type":"ListItem","position":3,"url":"https://www.snehvastra.store/blog.html#post-beanie-notes"}
-      ]}
-    ]
-  }
-  </script>
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-light-1: #FCFAF6; /* very soft cream */
-      --bg-light-2: #FAF6E7; /* soft pale gold */
-      --muted: rgba(75, 67, 55, 0.7); /* warm dark brown muted color */
-      --accent: linear-gradient(90deg, #BFA658, #ECD78F); /* gold gradient */
-      --card: rgba(252, 250, 246, 0.03); /* very subtle cream overlay for cards */
-      --max-width: 1100px;
-      --btn-shadow: 0 12px 30px rgba(191, 166, 88, 0.35);
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --max-w: 1200px;
+      --radius: 16px;
+      --transition-speed: 0.28s;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
+    /* MASTER TEMPLATE (from previous 11 files) */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body {
-      height: 100%;
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
       background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--muted);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      transition: transform 0.3s ease;
-      border-radius: 12px;
-    }
-
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 28px 20px;
-    }
-
-    #splash {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      background: linear-gradient(180deg, rgba(252, 250, 246, 0.98), rgba(250, 246, 231, 0.98));
-      transition: opacity 0.45s ease;
-    }
-
-    #splash img {
-      width: 220px;
-      filter: drop-shadow(var(--btn-shadow));
+      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.6;
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: linear-gradient(180deg, rgba(236, 215, 143, 0.6), rgba(236, 215, 143, 0.35));
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid rgba(191, 166, 88, 0.03);
+      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
+      backdrop-filter: blur(12px);
+    }
+    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
+    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
+    nav ul li a {
+      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
+      transition: all var(--transition-speed) ease; text-decoration: none;
+    }
+    nav ul li a:hover, nav ul li a.active { 
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
+    }
+    #cartCount { 
+      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
+      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
     }
 
-    .topbar {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 12px 20px;
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
+      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
+      margin: 0 5%; border-radius: var(--radius);
+    }
+    .auction-timer { 
+      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
+      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    main { 
+      padding: 160px 5% 60px; max-width: var(--max-w); margin: 0 auto; 
+      display: flex; flex-direction: column; align-items: center; gap: 40px;
     }
 
-    .brand img {
-      height: 64px;
-      border-radius: 8px;
-      filter: drop-shadow(var(--btn-shadow));
+    .blog-hero {
+      text-align: center; max-width: 800px;
+    }
+    .blog-hero h1 {
+      font-family: 'Clash Display', serif; font-size: clamp(2.5rem, 6vw, 3.8rem); font-weight: 600;
+      background: linear-gradient(90deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
     }
 
-    nav {
-      margin-left: auto;
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 32px; width: 100%;
     }
-
-    #nav-links li {
-      margin-right: 6px;
+    .blog-card {
+      background: rgba(255,255,255,0.95); border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 20px 60px rgba(236,215,143,0.1); border: 1px solid rgba(191,166,88,0.15);
+      backdrop-filter: blur(12px); transition: all var(--transition-speed) ease;
     }
-
-    #nav-links li a {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-weight: 700;
-      color: var(--muted);
-      background: transparent;
+    .blog-card:hover {
+      transform: translateY(-10px); box-shadow: 0 30px 80px rgba(236,215,143,0.25);
     }
-
-    .page-head {
-      display: flex;
-      align-items: end;
-      gap: 18px;
-      justify-content: space-between;
-      padding: 12px 0;
+    .blog-image {
+      height: 240px; background: linear-gradient(45deg, var(--muted-gold), var(--highlight-gold));
+      display: flex; align-items: center; justify-content: center; font-size: 3rem;
     }
-
-    .page-head h1 {
-      margin: 0;
-      font-size: 1.6rem;
-      letter-spacing: -0.4px;
-      color: var(--muted);
+    .blog-content {
+      padding: 28px;
     }
-
-    .page-intro {
-      color: rgba(75, 67, 55, 0.75);
-      max-width: 64ch;
+    .blog-date { 
+      color: var(--muted-gold); font-size: 0.85rem; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 12px;
     }
-
-    .feature {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 22px;
-      align-items: stretch;
-      margin-top: 18px;
+    .blog-title {
+      font-family: 'Clash Display', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 16px;
+      line-height: 1.3;
     }
-
-    .feature-visual {
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      background: var(--card);
+    .blog-excerpt {
+      color: rgba(75,67,55,0.8); line-height: 1.6; margin-bottom: 24px;
     }
-
-    .feature-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 320px;
-      transition: transform 0.6s ease;
-      border-radius: 12px;
+    .read-more {
+      color: var(--muted-gold); font-weight: 600; text-decoration: none; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 8px;
     }
-
-    .feature-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      color: var(--text-dark);
-    }
-
-    .kicker {
-      font-weight: 800;
-      color: var(--muted);
-      text-transform: uppercase;
-      font-size: 0.79rem;
-      letter-spacing: 1px;
-    }
-
-    .feature-body h2 {
-      margin: 0;
-      font-size: 1.25rem;
-      color: var(--text-dark);
-    }
-
-    .feature-body p {
-      margin: 0;
-      color: var(--text-dark);
-    }
-
-    .posts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 22px;
-    }
-
-    .post-card {
-      background: var(--card);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(191, 166, 88, 0.03);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
-      color: var(--text-dark);
-    }
-
-    .post-media {
-      height: 180px;
-      overflow: hidden;
-    }
-
-    .post-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-      border-radius: 8px;
-    }
-
-    .post-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 60px rgba(191, 166, 88, 0.6);
-    }
-
-    .post-body {
-      padding: 14px;
-    }
-
-    .post-body h3 {
-      margin: 0 0 8px;
-      font-size: 1.02rem;
-    }
-
-    .meta {
-      font-size: 0.86rem;
-      color: rgba(75, 67, 55, 0.65);
-      margin-bottom: 10px;
-    }
-
-    .read-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 12px;
-    }
-
-    .btn {
-      appearance: none;
-      border: 0;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      background: var(--accent);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      box-shadow: var(--btn-shadow);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .btn.secondary {
-      background: transparent;
-      border: 1px solid rgba(75, 67, 55, 0.12);
-      color: var(--muted);
-      box-shadow: none;
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 28px 60px rgba(191, 166, 88, 0.48);
-    }
-
-    .btn.secondary:hover {
-      background: rgba(191, 166, 88, 0.08);
-      box-shadow: 0 6px 18px rgba(191, 166, 88, 0.12);
-      color: var(--muted);
-    }
+    .read-more:hover { color: var(--highlight-gold); }
 
     footer {
-      padding: 26px 20px;
-      text-align: center;
-      color: rgba(75, 67, 55, 0.6);
-      border-top: 1px solid rgba(191, 166, 88, 0.12);
-      margin-top: 28px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
+      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: auto;
+      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
+      max-width: var(--max-w); margin-left: auto; margin-right: auto;
     }
 
-    .drops-alert {
-      position: fixed;
-      right: 20px;
-      top: 20px;
-      z-index: 1200;
-      background: linear-gradient(90deg, #bfa658, #ecd78f);
-      padding: 12px 18px;
-      border-radius: 10px;
-      box-shadow: 0 8px 30px rgba(191, 166, 88, 0.16);
-      font-weight: 800;
-      display: none;
-      color: var(--text-dark);
+    .toast {
+      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+      max-width: 350px;
     }
+    .toast.show { transform: translateX(0); }
 
-    .drops-alert.show {
-      display: block;
-      animation: pop 0.36s ease;
-    }
-
-    @keyframes pop {
-      from {
-        transform: translateY(-8px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(252, 250, 246, 0.75);
-      z-index: 1300;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.22s ease;
-    }
-
-    .modal.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-panel {
-      background: linear-gradient(180deg, #fcfaf6, #faf6e7);
-      padding: 18px;
-      border-radius: 12px;
-      max-width: 520px;
-      color: var(--text-dark);
-      box-shadow: 0 24px 80px rgba(191, 166, 88, 0.6);
-    }
-
-    .modal-panel button {
-      margin-top: 12px;
-    }
-
-    @media (max-width: 980px) {
-      .feature {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .feature-visual img {
-        min-height: 240px;
-      }
-
-      .page-head {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .post-media {
-        height: 140px;
-      }
-
-      .brand img {
-        height: 54px;
-      }
-
-      main {
-        padding: 18px 14px;
-      }
-    }
-
-    a:focus,
-    button:focus,
-    [tabindex]:focus {
-      outline: 3px solid rgba(191, 166, 88, 0.4);
-      outline-offset: 2px;
-      border-radius: 6px;
-    }
-
-    .product-media img {
-      touch-action: pinch-zoom;
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
+      nav ul { gap: 10px; justify-content: center; }
+      main { padding: 140px 18px 40px !important; }
+      .blog-grid { grid-template-columns: 1fr; gap: 24px; }
     }
   </style>
 </head>
 
 <body>
-  <div id="splash" role="dialog" aria-label="Snehvastra loading" aria-modal="true">
-    <img src="images/logo.final.png" alt="Snehvastra" id="splashLogo" />
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
   </div>
 
-  <div id="pageRoot" style="opacity:0;transition:opacity .4s ease">
-    <header>
-      <div class="topbar" role="banner" aria-label="Header">
-        <div class="brand">
-          <img src="images/logo.final.png" alt="Snehvastra logo" />
-          <div style="display:none"><!-- placeholder for symmetry --></div>
-        </div>
-        <nav aria-label="Primary navigation">
-          <ul id="nav" role="menu">
-            <li role="none"><a role="menuitem" href="index.html">Home</a></li>
-            <li role="none"><a role="menuitem" href="collection.html">Collection</a></li>
-            <li role="none"><a role="menuitem" href="about.html">About</a></li>
-            <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
-            <li role="none"><a role="menuitem" href="wishlist.html">Wishlist</a></li>
-            <li role="none"><a role="menuitem" href="cart.html">Cart</a></li>
-            <li role="none"><a role="menuitem" href="user-login.html">Login</a></li>
-            <li role="none"><a role="menuitem" href="blog.html" class="active" aria-current="page">Blog</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main role="main" aria-labelledby="blogTitle">
-      <div class="page-head">
-        <div>
-          <h1 id="blogTitle">Snehvastra Journal</h1>
-          <div class="page-intro">
-            Stories, lookbooks, and the behind-the-scenes of our limited drops. Read editorials and drop notes curated by the studio.
-          </div>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <button class="btn" onclick="showToast('Subscribe coming soon (Demo)')">Subscribe</button>
-          <button class="btn secondary" onclick="showToast('View archive coming soon (Demo)')">Archive</button>
-        </div>
-      </div>
-
-      <section class="feature" aria-label="Featured post">
-        <div class="feature-visual" id="featureVisual">
-          <img src="images/drop1.jpg" alt="Noir Tech Overshirt — editorial" loading="lazy" id="featureImg" />
-        </div>
-        <div class="feature-body">
-          <div class="kicker">Featured Drop</div>
-          <h2>Noir Tech Overshirt — the anatomy of a drop</h2>
-          <p>
-            We take you inside the making of the Noir Tech Overshirt: fabric sourcing, prototype iterations, and the details that transform a jacket into a statement piece for drop season.
-          </p>
-          <div style="display:flex;gap:10px;margin-top:auto">
-            <button class="btn" onclick="openPost('nv-01')">Read story</button>
-            <button class="btn secondary" onclick="showToast('Preview video coming soon (Demo)')">Preview</button>
-          </div>
-        </div>
-      </section>
-
-      <section aria-label="Recent posts" style="margin-top:20px">
-        <h3 style="margin:0 0 10px">Recent Posts</h3>
-        <div id="postsGrid" class="posts-grid" aria-live="polite">
-          <!-- JS will inject post cards -->
-        </div>
-      </section>
-    </main>
-
-    <footer role="contentinfo">
-      &copy; <span id="yr"></span> Snehvastra. All Rights Reserved. &nbsp;•&nbsp;Instagram: <strong>@sneh_vastra</strong>
-    </footer>
-  </div>
-
-  <div id="dropsAlert" class="drops-alert" role="status" aria-live="polite" aria-atomic="true"></div>
-
-  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-panel" role="document">
-      <p id="modalMessage">Message</p>
-      <div style="display:flex;gap:8px;justify-content:center">
-        <button id="modalCloseBtn" class="btn secondary">Close</button>
-      </div>
+  <main>
+    <div class="blog-hero">
+      <h1>Craftsmanship Stories</h1>
+      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.8);">
+        Behind every thread, a tradition. Discover the art of Snehvastra.
+      </p>
     </div>
-  </div>
+
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-image">🧵</div>
+        <div class="blog-content">
+          <div class="blog-date">Nov 28, 2025</div>
+          <h2 class="blog-title">The 200-Year Loom Still Running</h2>
+          <p class="blog-excerpt">In a quiet village of Rajasthan, a loom from 1825 produces our finest weaves. Master weaver Shyamji shares his 7-generation legacy.</p>
+          <a href="blog-single.html" class="read-more">Read Story →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-image">🌿</div>
+        <div class="blog-content">
+          <div class="blog-date">Nov 25, 2025</div>
+          <h2 class="blog-title">Natural Dyes That Last Generations</h2>
+          <p class="blog-excerpt">From madder root to pomegranate rind, discover how we source colors straight from nature that never fade.</p>
+          <a href="blog-single.html" class="read-more">Read Story →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-image">👑</div>
+        <div class="blog-content">
+          <div class="blog-date">Nov 22, 2025</div>
+          <h2 class="blog-title">Why Snehvastra ONE Auction Matters</h2>
+          <p class="blog-excerpt">Our most exclusive drop yet. Limited pieces, live bidding, and why this changes everything for luxury craft.</p>
+          <a href="auction.html" class="read-more">Join Auction →</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <div id="toast" class="toast"></div>
 
   <script>
-    (function () {
-      // Elements
-      const splash = document.getElementById('splash');
-      const pageRoot = document.getElementById('pageRoot');
-      const dropsAlert = document.getElementById('dropsAlert');
-      const modal = document.getElementById('modal');
-      const modalMessage = document.getElementById('modalMessage');
-      const modalCloseBtn = document.getElementById('modalCloseBtn');
-      const yr = document.getElementById('yr');
-      if (yr) yr.textContent = new Date().getFullYear();
+    // MASTER SCRIPT (from 11 files)
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
 
-      // Logo glow
-      const splashLogo = document.getElementById('splashLogo');
-      if (splashLogo) splashLogo.style.filter = 'drop-shadow(0 10px 28px rgba(191,166,88,0.28))';
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
 
-      // SPLASH (2s)
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          if (splash) {
-            splash.style.opacity = '0';
-            splash.style.transform = 'translateY(-6px)';
-            setTimeout(() => splash.style.display = 'none', 420);
-          }
-          pageRoot.style.opacity = '1';
-        }, 2000);
-      });
-
-      // Toast helper
-      let toastTimer;
-      function showToast(msg, ms = 3200) {
-        if (!dropsAlert) return;
-        dropsAlert.textContent = msg;
-        dropsAlert.classList.add('show');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => dropsAlert.classList.remove('show'), ms);
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
       }
-      window.showToast = showToast; // expose globally
+    }, 1000);
 
-      // Modal helpers
-      function showModal(msg) {
-        modalMessage.textContent = msg;
-        modal.classList.add('show');
-        modal.setAttribute('aria-hidden', 'false');
-        modalCloseBtn.focus();
-      }
-      function hideModal() {
-        modal.classList.remove('show');
-        modal.setAttribute('aria-hidden', 'true');
-      }
-      modalCloseBtn.addEventListener('click', hideModal);
-      modal.addEventListener('click', e => { if (e.target === modal) hideModal(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') hideModal(); });
-
-      // Sample editorial posts (safe demo content)
-      const posts = [
-        {
-          id: 'nv-01',
-          title: 'Noir Tech Overshirt — design notes',
-          excerpt: 'Inside the prototypes, trims, and fabric choices that made the Noir Tech Overshirt distinct for this season\'s drop.',
-          img: 'images/drop1.jpg',
-          date: '2025-07-12',
-          readTime: '4 min'
-        },
-        {
-          id: 'ue-02',
-          title: 'Urban Eclipse Cargo — utility & fit',
-          excerpt: 'A deep look at silhouette, pocket engineering, and the compromises that created a functional cargo without losing form.',
-          img: 'images/drop2.jpg',
-          date: '2025-06-30',
-          readTime: '5 min'
-        },
-        {
-          id: 'mlt-03',
-          title: 'Layered Tee: subtle construction',
-          excerpt: 'Why a layered tee can elevate a capsule — pattern choices and the finishing that matters.',
-          img: 'images/drop3.jpg',
-          date: '2025-06-08',
-          readTime: '3 min'
-        },
-        {
-          id: 'bn-04',
-          title: 'Beanie Notes — styling for drop season',
-          excerpt: 'Quick styling tips and seasonal wearability for cold nights and warm crowds.',
-          img: 'images/placeholder.png',
-          date: '2025-05-20',
-          readTime: '2 min'
-        }
-      ];
-
-      // Render posts grid
-      const postsGrid = document.getElementById('postsGrid');
-      function renderPosts() {
-        if (!postsGrid) return;
-        postsGrid.innerHTML = posts.map(p => `
-          <article class="post-card" tabindex="0" aria-labelledby="h-${p.id}">
-            <div class="post-media"><img src="${p.img}" alt="${p.title}" loading="lazy"></div>
-            <div class="post-body">
-              <div class="meta">${p.date} • ${p.readTime}</div>
-              <h3 id="h-${p.id}">${p.title}</h3>
-              <div style="color:rgba(75,67,55,0.78)">${p.excerpt}</div>
-              <div class="read-row">
-                <button class="btn" data-id="${p.id}" data-action="open">Read</button>
-                <button class="btn secondary" data-id="${p.id}" data-action="share">Share</button>
-              </div>
-            </div>
-          </article>
-        `).join('');
-      }
-      renderPosts();
-
-      // Open post (demo modal)
-      function openPost(id) {
-        const p = posts.find(x => x.id === id);
-        if (!p) return showToast('Post not found (Demo)');
-        const content = `${p.title}\n\n${p.excerpt}\n\nFull article content would load here in a real site. (Demo)`;
-        showModal(content);
-      }
-      window.openPost = openPost;
-
-      // Event delegation for post buttons
-      document.body.addEventListener('click', (e) => {
-        const btn = e.target.closest('button');
-        if (!btn) return;
-        const action = btn.getAttribute('data-action');
-        const id = btn.getAttribute('data-id');
-        if (action === 'open') openPost(id);
-        else if (action === 'share') showToast('Share dialog (Demo) for ' + id);
-      });
-
-      // feature image small hover
-      const featureImg = document.getElementById('featureImg');
-      const featureVisual = document.getElementById('featureVisual');
-      if (featureVisual) {
-        featureVisual.addEventListener('mouseenter', () => featureImg && (featureImg.style.transform = 'scale(1.04)'));
-        featureVisual.addEventListener('mouseleave', () => featureImg && (featureImg.style.transform = 'scale(1)'));
-      }
-    })();
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
   </script>
-  <!-- Google Analytics -->
+
+  <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-CXQG6L0W01');
   </script>
 </body>
-
 </html>
