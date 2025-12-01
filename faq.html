@@ -4,298 +4,364 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>FAQ / Help - Snehvastra</title>
-  <meta name="description" content="Find answers to common questions about Snehvastra fashion drops, shipping, returns, and more." />
+  <title>FAQ - Frequently Asked Questions - Snehvastra</title>
+  <meta name="description" content="Snehvastra FAQ: Shipping, returns, sizing, auctions, payments, and craftsmanship questions answered." />
+  <meta name="theme-color" content="#ECD78F">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg-light-1: #FCFAF6;
       --bg-light-2: #FAF6E7;
       --text-dark: #4B4337;
-      --muted: rgba(75, 67, 55, 0.7);
-      --accent-gradient: linear-gradient(90deg, #BFA658, #ECD78F);
-      --panel-bg: rgba(252, 250, 246, 0.05);
-      --panel-border: rgba(191, 166, 88, 0.1);
-      --btn-shadow: 0 0 20px rgba(191, 166, 88, 0.35);
-      --max-width: 800px;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --max-w: 1000px;
+      --radius: 16px;
+      --transition-speed: 0.28s;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body {
       background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.7;
     }
 
+    /* MASTER HEADER */
     header {
+      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
       backdrop-filter: blur(12px);
-      background: rgba(252, 250, 246, 0.9);
-      border-bottom: 1px solid var(--panel-border);
-      padding: 1.2rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      border-radius: 0 0 16px 16px;
+    }
+    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
+    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
+    nav ul li a {
+      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
+      transition: all var(--transition-speed) ease; text-decoration: none;
+    }
+    nav ul li a:hover, nav ul li a.active { 
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
+    }
+    #cartCount { 
+      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
+      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
     }
 
-    header img.logo {
-      height: 42px;
-      filter: drop-shadow(var(--btn-shadow));
-      user-select: none;
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
+      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
+      margin: 0 5%; border-radius: var(--radius);
+    }
+    .auction-timer { 
+      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
+      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+    main { padding: 160px 5% 80px; max-width: var(--max-w); margin: 0 auto; }
+    
+    .faq-hero {
+      text-align: center; background: rgba(255,255,255,0.95); padding: 60px 40px; 
+      border-radius: var(--radius); border: 1px solid rgba(191,166,88,0.15);
+      box-shadow: 0 25px 80px rgba(236,215,143,0.1); backdrop-filter: blur(15px);
+      margin-bottom: 40px;
+    }
+    .faq-hero h1 {
+      font-family: 'Clash Display', serif; font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px;
     }
 
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-      padding: 8px 12px;
-      border-radius: 8px;
+    /* FAQ SEARCH */
+    .faq-search {
+      max-width: 600px; margin: 0 auto 40px; position: relative;
     }
-
-    nav a:hover,
-    nav a.active {
-      color: var(--accent-gradient);
-      background: rgba(191, 166, 88, 0.1);
-      text-shadow: 0 0 12px rgba(191, 166, 88, 0.6);
+    .faq-search input {
+      width: 100%; padding: 18px 24px 18px 50px; border: 2px solid rgba(191,166,88,0.2);
+      border-radius: var(--radius); font-size: 1rem; background: rgba(255,255,255,0.9);
+      transition: all var(--transition-speed); backdrop-filter: blur(10px);
     }
+    .faq-search input:focus { outline: none; border-color: var(--highlight-gold); box-shadow: 0 0 0 4px rgba(236,215,143,0.15); }
+    .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--muted-gold); font-size: 1.2rem; }
 
-    main {
-      flex: 1;
-      padding: 4rem 5% 3rem;
-      max-width: var(--max-width);
-      margin: auto;
-      animation: fadeIn 1s ease-in-out;
-      user-select: text;
+    /* ACCORDION */
+    .faq-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 24px;
     }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 2.5rem;
-      font-size: 2.2rem;
-      letter-spacing: 1px;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      user-select: none;
+    .faq-category {
+      background: rgba(255,255,255,0.95); border-radius: var(--radius); 
+      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 20px 60px rgba(236,215,143,0.1);
+      backdrop-filter: blur(15px); overflow: hidden;
     }
-
+    .faq-category h2 {
+      font-family: 'Clash Display', serif; font-size: 1.4rem; padding: 28px 32px;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      color: var(--text-dark); margin: 0;
+    }
     .faq-item {
-      margin-bottom: 1.2rem;
-      border: 1px solid var(--panel-border);
-      border-radius: 12px;
-      background: var(--panel-bg);
-      box-shadow: 0 0 25px rgba(191, 166, 88, 0.03);
-      overflow: hidden;
-      transition: all 0.3s ease-in-out;
+      border-bottom: 1px solid rgba(191,166,88,0.1);
     }
-
-    .faq-item:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 40px rgba(191, 166, 88, 0.06);
+    .faq-question {
+      padding: 24px 32px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      font-weight: 600; transition: all var(--transition-speed); position: relative;
     }
-
-    .faq-item h2 {
-      padding: 1rem 1.5rem;
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      background: rgba(191, 166, 88, 0.07);
-      cursor: pointer;
-      position: relative;
-      user-select: none;
+    .faq-question:hover { background: rgba(236,215,143,0.05); }
+    .faq-question::after {
+      content: '+'; font-size: 1.5rem; font-weight: 700; color: var(--muted-gold); transition: transform var(--transition-speed);
     }
-
-    .faq-item h2::after {
-      content: "+";
-      position: absolute;
-      right: 1.5rem;
-      transition: transform 0.3s;
-      color: var(--muted);
-    }
-
-    .faq-item.active h2::after {
-      transform: rotate(45deg);
-      color: var(--accent-gradient);
-    }
-
+    .faq-question.active::after { transform: rotate(45deg); }
     .faq-answer {
-      display: none;
-      padding: 1rem 1.5rem;
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.6;
-      background: rgba(191, 166, 88, 0.03);
-      user-select: text;
+      padding: 0 32px 24px; max-height: 0; overflow: hidden; transition: all var(--transition-speed);
+      color: rgba(75,67,55,0.85); line-height: 1.6;
+    }
+    .faq-answer.show { max-height: 200px; padding: 24px 32px 24px; }
+
+    /* CONTACT CTA */
+    .contact-cta {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold)); 
+      padding: 40px; border-radius: var(--radius); text-align: center; margin-top: 60px;
+      box-shadow: 0 20px 60px rgba(236,215,143,0.3);
+    }
+    .contact-cta h3 {
+      font-family: 'Clash Display', serif; font-size: 1.6rem; margin-bottom: 16px; color: var(--text-dark);
+    }
+    .contact-btn {
+      display: inline-block; padding: 16px 32px; background: rgba(255,255,255,0.9);
+      border-radius: 12px; color: var(--text-dark); text-decoration: none; font-weight: 600;
+      transition: all var(--transition-speed);
+    }
+    .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .faq-grid { grid-template-columns: 1fr; }
+      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
+      nav ul { gap: 10px; justify-content: center; }
+      main { padding: 140px 18px 40px !important; }
     }
 
-    .faq-item.active .faq-answer {
-      display: block;
-      animation: slideDown 0.4s ease;
+    /* TOAST + FOOTER */
+    .toast {
+      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+      max-width: 350px;
     }
-
+    .toast.show { transform: translateX(0); }
+    
     footer {
-      text-align: center;
-      padding: 1.5rem 0;
-      font-size: 0.85rem;
-      background: rgba(252, 250, 246, 0.85);
-      border-top: 1px solid var(--panel-border);
-      backdrop-filter: blur(10px);
-      color: var(--muted);
-      user-select: none;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      border-radius: 16px 16px 0 0;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav ul {
-        flex-wrap: wrap;
-        gap: 1rem;
-        padding-top: 0.5rem;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
-    }
-
-    .product-media img {
-      touch-action: pinch-zoom;
+      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: 60px;
+      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
+      max-width: var(--max-w); margin-left: auto; margin-right: auto;
     }
   </style>
 </head>
 
 <body>
-
+  <!-- HEADER -->
   <header>
     <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="user-login.html">Login</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- AUCTION BANNER -->
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+  </div>
+
   <main>
-    <h1>Frequently Asked Questions</h1>
+    <!-- HERO -->
+    <div class="faq-hero">
+      <h1>Frequently Asked Questions</h1>
+      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.85); max-width: 600px; margin: 0 auto;">
+        Everything you need to know about Snehvastra craftsmanship, shipping, and auctions.
+      </p>
+    </div>
 
-    <div class="faq-item">
-      <h2>What is your return policy?</h2>
-      <div class="faq-answer">
-        <p>We offer a 30-day return policy on most items. Items must be unused, in their original packaging, and accompanied by proof of purchase.</p>
+    <!-- SEARCH -->
+    <div class="faq-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="faqSearch" placeholder="Search FAQs... (e.g., shipping, returns, sizing)">
+    </div>
+
+    <!-- FAQ CATEGORIES -->
+    <div class="faq-grid">
+      <!-- ORDERS & SHIPPING -->
+      <div class="faq-category">
+        <h2>🧵 Orders & Shipping</h2>
+        <div class="faq-item">
+          <div class="faq-question">How long does shipping take in India?</div>
+          <div class="faq-answer">3-5 business days across India. Free shipping on orders above ₹10,000. Express delivery available (+₹299).</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What about international shipping?</div>
+          <div class="faq-answer">DHL Express worldwide (7-14 days). Customer pays import duties & taxes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I track my order?</div>
+          <div class="faq-answer">Yes! Tracking link sent via email & SMS within 24 hours of dispatch.</div>
+        </div>
+      </div>
+
+      <!-- RETURNS & SIZING -->
+      <div class="faq-category">
+        <h2>📏 Returns & Sizing</h2>
+        <div class="faq-item">
+          <div class="faq-question">What is your return policy?</div>
+          <div class="faq-answer">15-day returns on regular items (unworn, with tags). Auction items final sale.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How do I know my size?</div>
+          <div class="faq-answer">Check our <a href="size-guide.html">Size Guide</a>. Contact us for personalized fitting advice.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Do you offer exchanges?</div>
+          <div class="faq-answer">Yes, same 15-day window. Free exchange shipping within India.</div>
+        </div>
+      </div>
+
+      <!-- AUCTION & PAYMENTS -->
+      <div class="faq-category">
+        <h2>🔥 Auctions & Payments</h2>
+        <div class="faq-item">
+          <div class="faq-question">How do auctions work?</div>
+          <div class="faq-answer">Live bidding. Highest bid wins at timer end + 5% premium. Payment due within 24hrs.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What payment methods do you accept?</div>
+          <div class="faq-answer">All cards, UPI, net banking, wallets. Secure via Razorpay & Stripe.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is my payment secure?</div>
+          <div class="faq-answer">100% secure with SSL encryption + PCI DSS compliance.</div>
+        </div>
+      </div>
+
+      <!-- CRAFTSMANSHIP & CARE -->
+      <div class="faq-category">
+        <h2>✨ Craftsmanship & Care</h2>
+        <div class="faq-item">
+          <div class="faq-question">What makes Snehvastra special?</div>
+          <div class="faq-answer">Handcrafted by Rajasthan master artisans using 200-year-old looms & natural dyes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How do I care for my garment?</div>
+          <div class="faq-answer">Cold hand wash, natural air dry. Care instructions included with each piece.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What is your warranty?</div>
+          <div class="faq-answer">Lifetime stitch guarantee + 2-year natural dye warranty.</div>
+        </div>
       </div>
     </div>
 
-    <div class="faq-item">
-      <h2>Do you offer international shipping?</h2>
-      <div class="faq-answer">
-        <p>Yes, we ship worldwide. Shipping costs and delivery times vary depending on your location and courier service.</p>
-      </div>
+    <!-- CONTACT CTA -->
+    <div class="contact-cta">
+      <h3>Still have questions?</h3>
+      <p style="color: var(--text-dark); margin-bottom: 24px; font-size: 1.1rem;">
+        We're here to help with your Snehvastra journey.
+      </p>
+      <a href="contact.html" class="contact-btn">💬 Contact Support</a>
     </div>
-
-    <div class="faq-item">
-      <h2>How can I track my order?</h2>
-      <div class="faq-answer">
-        <p>Once your order ships, you’ll receive a confirmation email with a live tracking link for real-time updates.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <h2>Can I change or cancel my order?</h2>
-      <div class="faq-answer">
-        <p>Changes or cancellations can be made within 24 hours of placing your order. After that, processing begins and modifications may not be possible.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <h2>Are Snehvastra drops limited edition?</h2>
-      <div class="faq-answer">
-        <p>Yes — every drop is a curated, limited edition release. Once sold out, the design is archived permanently.</p>
-      </div>
-    </div>
-
   </main>
 
   <footer>
-    &copy; 2025 SnehVastra. All Rights Reserved.<br />
-    Instagram: @sneh_vastra | Facebook: Snehvastra
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
   </footer>
 
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
   <script>
-    document.querySelectorAll('.faq-item h2').forEach(header => {
-      header.addEventListener('click', () => {
-        const item = header.parentElement;
-        item.classList.toggle('active');
+    // MASTER SCRIPT + FAQ FUNCTIONALITY
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // FAQ ACCORDION
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isActive = question.classList.contains('active');
+        
+        // Close all others
+        document.querySelectorAll('.faq-question').forEach(q => {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.remove('show');
+        });
+        
+        // Toggle current
+        if (!isActive) {
+          question.classList.add('active');
+          answer.classList.add('show');
+        }
       });
+    });
+
+    // FAQ SEARCH
+    document.getElementById('faqSearch').addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      document.querySelectorAll('.faq-question').forEach(question => {
+        const text = question.textContent.toLowerCase();
+        question.parentElement.style.display = text.includes(searchTerm) ? 'block' : 'none';
+      });
+    });
+
+    // AUCTION TIMER
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
+      }
+    }, 1000);
+
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
     });
   </script>
 
-  <!-- Google Analytics -->
+  <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-CXQG6L0W01');
   </script>
-
 </body>
-
 </html>
