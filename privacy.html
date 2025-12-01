@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Privacy Policy - Snehvastra</title>
+  <meta name="description" content="Snehvastra privacy policy: Your data protection, cookies, payments, GDPR compliance for luxury craftsmanship." />
+  <meta name="theme-color" content="#ECD78F">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --max-w: 900px;
+      --radius: 20px;
+      --transition-speed: 0.35s;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.7;
+    }
+
+    /* MASTER HEADER */
+    header {
+      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
+      backdrop-filter: blur(12px);
+    }
+    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
+    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
+    nav ul li a {
+      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
+      transition: all var(--transition-speed) ease; text-decoration: none;
+    }
+    nav ul li a:hover, nav ul li a.active { 
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
+    }
+    #cartCount { 
+      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
+      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
+    }
+
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
+      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
+      margin: 0 5%; border-radius: var(--radius);
+    }
+
+    main { padding: 160px 5% 80px; max-width: var(--max-w); margin: 0 auto; }
+    
+    .policy-hero {
+      background: rgba(255,255,255,0.95); padding: 80px 50px; border-radius: var(--radius);
+      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 30px 100px rgba(236,215,143,0.1);
+      backdrop-filter: blur(20px); margin-bottom: 60px; text-align: center;
+    }
+    .policy-hero h1 {
+      font-family: 'Clash Display', serif; font-size: clamp(3rem, 8vw, 4rem); font-weight: 700;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
+    }
+
+    /* POLICY SECTIONS */
+    .policy-section {
+      background: rgba(255,255,255,0.95); margin-bottom: 40px; padding: 48px;
+      border-radius: var(--radius); border: 1px solid rgba(191,166,88,0.15);
+      box-shadow: 0 20px 60px rgba(236,215,143,0.1); backdrop-filter: blur(15px);
+    }
+    .policy-section h2 {
+      font-family: 'Clash Display', serif; font-size: 1.8rem; margin-bottom: 24px;
+      color: var(--text-dark); position: relative; padding-left: 40px;
+    }
+    .policy-section h2::before {
+      content: '🔒'; position: absolute; left: 0; font-size: 1.6rem;
+    }
+    .policy-section h3 {
+      font-family: 'Clash Display', serif; font-size: 1.3rem; margin: 32px 0 16px;
+      color: var(--muted-gold);
+    }
+    .policy-section ul {
+      padding-left: 24px; margin: 16px 0;
+    }
+    .policy-section li {
+      margin-bottom: 12px; color: rgba(75,67,55,0.9);
+    }
+    .policy-section p {
+      color: rgba(75,67,55,0.85); margin-bottom: 16px;
+    }
+    .last-updated {
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      color: var(--text-dark); padding: 12px 24px; border-radius: 12px;
+      font-weight: 600; display: inline-block; margin-bottom: 24px;
+    }
+
+    /* CONTACT TRUST */
+    .trust-cta {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      padding: 40px; border-radius: var(--radius); text-align: center; margin-top: 60px;
+      box-shadow: 0 20px 60px rgba(236,215,143,0.3);
+    }
+    .trust-cta h3 {
+      font-family: 'Clash Display', serif; font-size: 1.6rem; margin-bottom: 16px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
+      main { padding: 140px 18px 40px !important; }
+      .policy-section { padding: 32px 24px; }
+    }
+
+    /* TOAST + FOOTER */
+    .toast {
+      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+    }
+    .toast.show { transform: translateX(0); }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="privacy.html" class="active">Privacy</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- AUCTION BANNER -->
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <div class="policy-hero">
+      <h1>Privacy Policy</h1>
+      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.85); max-width: 600px; margin: 0 auto;">
+        Your trust is our finest thread. We protect your data like our master artisans protect ancient techniques.
+      </p>
+    </div>
+
+    <!-- LAST UPDATED -->
+    <div class="last-updated">Last Updated: November 29, 2025</div>
+
+    <!-- DATA WE COLLECT -->
+    <div class="policy-section">
+      <h2>1. Information We Collect</h2>
+      <h3>Personal Information</h3>
+      <ul>
+        <li>Name, email, phone, shipping address (during checkout)</li>
+        <li>Payment details (processed securely by Razorpay/Stripe - we don't store card info)</li>
+        <li>Size preferences and order history</li>
+      </ul>
+      <h3>Automatic Collection</h3>
+      <ul>
+        <li>IP address, browser type, device info</li>
+        <li>Cookies for site functionality and analytics</li>
+        <li>Pages visited, time spent, referral sources</li>
+      </ul>
+    </div>
+
+    <!-- HOW WE USE DATA -->
+    <div class="policy-section">
+      <h2>2. How We Use Your Information</h2>
+      <ul>
+        <li>Process orders and payments</li>
+        <li>Ship products and communicate order status</li>
+        <li>Provide customer support and auction updates</li>
+        <li>Improve site functionality and personalize experience</li>
+        <li>Send promotional emails (you can unsubscribe anytime)</li>
+        <li>Prevent fraud and comply with legal requirements</li>
+      </ul>
+    </div>
+
+    <!-- DATA PROTECTION -->
+    <div class="policy-section">
+      <h2>3. Data Protection</h2>
+      <p><strong>Security:</strong> SSL encryption on all pages. PCI DSS compliant payments. Regular security audits.</p>
+      <p><strong>Third Parties:</strong> Only share with shipping partners (DTDC/DHL), payment processors, and legal authorities when required.</p>
+      <p><strong>Storage:</strong> Data stored in India (AWS Mumbai) with GDPR-compliant backups.</p>
+      <ul>
+        <li>Order data: 7 years (legal requirement)</li>
+        <li>Cookies: 30 days maximum</li>
+      </ul>
+    </div>
+
+    <!-- COOKIES -->
+    <div class="policy-section">
+      <h2>4. Cookies & Tracking</h2>
+      <ul>
+        <li><strong>Essential:</strong> Cart functionality, login sessions</li>
+        <li><strong>Analytics:</strong> Google Analytics (anonymized IP)</li>
+        <li><strong>Marketing:</strong> Facebook Pixel, Instagram retargeting</li>
+      </ul>
+      <p>Manage cookies via browser settings or our <a href="#" style="color: var(--muted-gold);">Cookie Preferences</a> link.</p>
+    </div>
+
+    <!-- YOUR RIGHTS -->
+    <div class="policy-section">
+      <h2>5. Your Rights</h2>
+      <ul>
+        <li><strong>Access:</strong> Request copy of your data</li>
+        <li><strong>Delete:</strong> Request data removal (subject to legal retention)</li>
+        <li><strong>Opt-out:</strong> Unsubscribe from emails anytime</li>
+        <li><strong>Correct:</strong> Update inaccurate information</li>
+      </ul>
+      <p>Email <a href="mailto:privacy@snehvastra.store" style="color: var(--muted-gold);">privacy@snehvastra.store</a> to exercise rights.</p>
+    </div>
+
+    <!-- CHILDREN -->
+    <div class="policy-section">
+      <h2>6. Children Under 13</h2>
+      <p>We do not knowingly collect data from children under 13. Parents may contact us to remove data.</p>
+    </div>
+
+    <!-- CHANGES -->
+    <div class="policy-section">
+      <h2>7. Changes to This Policy</h2>
+      <p>We may update this policy. Significant changes posted 30 days in advance. Continued use = acceptance.</p>
+    </div>
+
+    <!-- TRUST CTA -->
+    <div class="trust-cta">
+      <h3>Questions About Privacy?</h3>
+      <p style="color: var(--text-dark); margin-bottom: 24px;">Our artisans treat your data with the same care as handwoven silk.</p>
+      <a href="contact.html" style="display: inline-block; padding: 16px 32px; background: rgba(255,255,255,0.9); border-radius: 12px; color: var(--text-dark); text-decoration: none; font-weight: 600;">💬 Contact Privacy Team</a>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // MASTER SCRIPT
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    // AUCTION TIMER
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
+      }
+    }, 1000);
+
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>

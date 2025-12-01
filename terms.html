@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Terms of Service - Snehvastra</title>
+  <meta name="description" content="Snehvastra terms: Orders, payments, shipping, returns, auctions, liability for luxury handcrafted apparel." />
+  <meta name="theme-color" content="#ECD78F">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --max-w: 900px;
+      --radius: 20px;
+      --transition-speed: 0.35s;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.7;
+    }
+
+    /* MASTER HEADER */
+    header {
+      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
+      backdrop-filter: blur(12px);
+    }
+    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
+    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
+    nav ul li a {
+      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
+      transition: all var(--transition-speed) ease; text-decoration: none;
+    }
+    nav ul li a:hover, nav ul li a.active { 
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
+    }
+    #cartCount { 
+      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
+      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
+    }
+
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
+      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
+      margin: 0 5%; border-radius: var(--radius);
+    }
+    .auction-timer { 
+      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
+      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
+    }
+
+    main { padding: 160px 5% 80px; max-width: var(--max-w); margin: 0 auto; }
+    
+    .terms-hero {
+      background: rgba(255,255,255,0.95); padding: 80px 50px; border-radius: var(--radius);
+      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 30px 100px rgba(236,215,143,0.1);
+      backdrop-filter: blur(20px); margin-bottom: 60px; text-align: center;
+    }
+    .terms-hero h1 {
+      font-family: 'Clash Display', serif; font-size: clamp(3rem, 8vw, 4rem); font-weight: 700;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
+    }
+
+    /* TERMS SECTIONS */
+    .terms-section {
+      background: rgba(255,255,255,0.95); margin-bottom: 40px; padding: 48px;
+      border-radius: var(--radius); border: 1px solid rgba(191,166,88,0.15);
+      box-shadow: 0 20px 60px rgba(236,215,143,0.1); backdrop-filter: blur(15px);
+    }
+    .terms-section h2 {
+      font-family: 'Clash Display', serif; font-size: 1.8rem; margin-bottom: 24px;
+      color: var(--text-dark); position: relative; padding-left: 40px;
+    }
+    .terms-section h2::before {
+      content: '⚖️'; position: absolute; left: 0; font-size: 1.6rem;
+    }
+    .terms-section h3 {
+      font-family: 'Clash Display', serif; font-size: 1.3rem; margin: 32px 0 16px;
+      color: var(--muted-gold);
+    }
+    .terms-section ul {
+      padding-left: 24px; margin: 16px 0;
+    }
+    .terms-section li {
+      margin-bottom: 12px; color: rgba(75,67,55,0.9);
+    }
+    .terms-section p {
+      color: rgba(75,67,55,0.85); margin-bottom: 16px;
+    }
+    .last-updated {
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      color: var(--text-dark); padding: 12px 24px; border-radius: 12px;
+      font-weight: 600; display: inline-block; margin-bottom: 24px;
+    }
+    .important-notice {
+      background: rgba(255,235,59,0.15); border-left: 5px solid var(--highlight-gold);
+      padding: 20px; margin: 24px 0; border-radius: 8px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
+      main { padding: 140px 18px 40px !important; }
+      .terms-section { padding: 32px 24px; }
+    }
+
+    /* TOAST + FOOTER */
+    .toast {
+      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+    }
+    .toast.show { transform: translateX(0); }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="terms.html" class="active">Terms</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- AUCTION BANNER -->
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <div class="terms-hero">
+      <h1>Terms of Service</h1>
+      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.85); max-width: 600px; margin: 0 auto;">
+        The sacred agreement between artisan and collector. By purchasing, you accept these terms.
+      </p>
+    </div>
+
+    <!-- LAST UPDATED -->
+    <div class="last-updated">Last Updated: November 29, 2025</div>
+
+    <!-- INTRODUCTION -->
+    <div class="terms-section">
+      <h2>1. Introduction</h2>
+      <p>These Terms of Service ("Terms") govern your access to and use of snehvastra.store ("Site"), including browsing, purchasing handcrafted apparel, and participating in auctions operated by Snehvastra Artisans ("we", "us", "our").</p>
+      <div class="important-notice">
+        <strong>Acceptance:</strong> By using our Site, you confirm you are 18+ and accept these Terms, our <a href="privacy.html" style="color: var(--muted-gold);">Privacy Policy</a>, and any applicable local laws.
+      </div>
+    </div>
+
+    <!-- ORDERS & PAYMENTS -->
+    <div class="terms-section">
+      <h2>2. Orders & Payments</h2>
+      <h3>Order Process</h3>
+      <ul>
+        <li>Product availability subject to stock. We reserve right to cancel orders.</li>
+        <li>Prices displayed in INR, inclusive of GST. International: duties extra.</li>
+        <li>Payment via Razorpay/Stripe. All transactions encrypted PCI-DSS compliant.</li>
+        <li>Orders final once payment processed. No cancellations except at our discretion.</li>
+      </ul>
+      <h3>Auction Payments</h3>
+      <ul>
+        <li>Winning bid + 18% GST + shipping due within 24 hours.</li>
+        <li>Non-payment forfeits item. Reserve right to re-auction.</li>
+      </ul>
+    </div>
+
+    <!-- SHIPPING & DELIVERY -->
+    <div class="terms-section">
+      <h2>3. Shipping & Delivery</h2>
+      <ul>
+        <li>India: 3-7 business days. International: 7-21 days via DHL.</li>
+        <li>Risk transfers to buyer upon dispatch. See <a href="shipping.html" style="color: var(--muted-gold);">Shipping Policy</a>.</li>
+        <li>Failed deliveries charged again. Remote areas may incur extra fees.</li>
+      </ul>
+    </div>
+
+    <!-- RETURNS & REFUNDS -->
+    <div class="terms-section">
+      <h2>4. Returns & Refunds</h2>
+      <div class="important-notice">
+        <strong>Handcrafted Limitation:</strong> Due to artisanal nature, returns accepted only for defects within 7 days.
+      </div>
+      <ul>
+        <li><strong>Defective Items:</strong> Photos required. Full refund/replacement.</li>
+        <li><strong>Change of Mind:</strong> No returns except unopened auction items (15% restocking fee).</li>
+        <li>Auction winners: No returns except proven forgery (verified by 2nd artisan).</li>
+        <li>Refund processing: 5-7 business days to original payment method.</li>
+      </ul>
+    </div>
+
+    <!-- PRODUCT WARRANTY -->
+    <div class="terms-section">
+      <h2>5. Product Warranty</h2>
+      <ul>
+        <li>6 months stitching warranty. Fabric/colorfastness per natural dye properties.</li>
+        <li>Normal wear excluded. Misuse voids warranty.</li>
+        <li>Auction pieces: "As-is" with artisan authenticity certificate.</li>
+      </ul>
+    </div>
+
+    <!-- AUCTION TERMS -->
+    <div class="terms-section">
+      <h2>6. Auction Specific Terms</h2>
+      <ul>
+        <li>Bids binding. No withdrawals once placed.</li>
+        <li>Reserve right to end auction early or reject bids.</li>
+        <li>Buyer premium: 15% on hammer price.</li>
+        <li>All items unique - variations expected in handcraft.</li>
+      </ul>
+    </div>
+
+    <!-- LIMITED LIABILITY -->
+    <div class="terms-section">
+      <h2>7. Limitation of Liability</h2>
+      <p>To maximum extent permitted by law, Snehvastra not liable for indirect, incidental, or consequential damages. Total liability capped at order value.</p>
+    </div>
+
+    <!-- INTELLECTUAL PROPERTY -->
+    <div class="terms-section">
+      <h2>8. Intellectual Property</h2>
+      <p>All designs, images, trademarks property of Snehvastra Artisans. Personal use only. No commercial reproduction.</p>
+    </div>
+
+    <!-- TERMINATION -->
+    <div class="terms-section">
+      <h2>9. Termination</h2>
+      <p>We reserve right to refuse service, terminate accounts for violation of Terms.</p>
+    </div>
+
+    <!-- GOVERNING LAW -->
+    <div class="terms-section">
+      <h2>10. Governing Law</h2>
+      <p>These Terms governed by laws of Rajasthan, India. Disputes resolved in Jaipur courts.</p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="terms-section" style="text-align: center;">
+      <h2>Questions?</h2>
+      <p>Email <a href="mailto:legal@snehvastra.store" style="color: var(--muted-gold);">legal@snehvastra.store</a></p>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // MASTER SCRIPT
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    // AUCTION TIMER
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
+      }
+    }, 1000);
+
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+</html>

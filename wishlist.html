@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Join SNEHVASTRA ONE Auction Waitlist</title>
+  <meta name="description" content="Be first for Snehvastra ONE Auction - Limited pieces. Exclusive access. Join waitlist now." />
+  <meta name="theme-color" content="#ECD78F">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --max-w: 1200px;
+      --radius: 16px;
+      --transition-speed: 0.35s;
+    }
+
+    /* MASTER TEMPLATE STYLES */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
+      backdrop-filter: blur(12px);
+    }
+    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
+    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
+    nav ul li a {
+      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
+      transition: all var(--transition-speed) ease; text-decoration: none;
+    }
+    nav ul li a:hover, nav ul li a.active { 
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
+    }
+    #cartCount { 
+      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
+      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
+    }
+
+    /* AUCTION BANNER - SPECIAL */
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 20px 25px; text-align: center; font-weight: 700; font-size: 1.1rem;
+      position: sticky; top: 92px; z-index: 90; box-shadow: 0 6px 25px rgba(236,215,143,0.4);
+      margin: 0 5%; border-radius: var(--radius);
+    }
+    .auction-timer { 
+      font-family: 'Clash Display', serif; font-size: 1rem; background: rgba(255,255,255,0.98); 
+      padding: 8px 16px; border-radius: 25px; display: inline-block; margin-left: 12px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* 🔥 WAITLIST HERO */
+    main { 
+      padding: 180px 5% 80px; max-width: var(--max-w); margin: 0 auto; 
+      text-align: center; display: flex; flex-direction: column; align-items: center; gap: 60px;
+    }
+    
+    .hero-badge {
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      color: var(--text-dark); padding: 12px 28px; border-radius: 50px; font-weight: 700;
+      font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; display: inline-block;
+      box-shadow: 0 8px 25px rgba(191,166,88,0.3); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 8px 25px rgba(191,166,88,0.3); }
+      50% { box-shadow: 0 8px 35px rgba(191,166,88,0.5); }
+    }
+
+    .hero h1 {
+      font-family: 'Clash Display', serif; font-weight: 700; font-size: clamp(3rem, 8vw, 5rem);
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;
+      letter-spacing: -1px; line-height: 1.1;
+    }
+    .hero .subtitle {
+      font-size: 1.3rem; color: rgba(75,67,55,0.8); max-width: 600px; margin: 24px auto 0;
+      font-weight: 400; line-height: 1.6;
+    }
+
+    /* 🔥 WAITLIST FORM */
+    .waitlist-form {
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 24px;
+      padding: 48px 40px; max-width: 500px; width: 100%; border: 1px solid rgba(191,166,88,0.2);
+      box-shadow: 0 25px 80px rgba(236,215,143,0.15);
+    }
+    .waitlist-counter {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 16px; margin-bottom: 32px;
+      font-family: 'Clash Display', serif; font-size: 1.2rem; font-weight: 600;
+    }
+    .form-group { margin-bottom: 24px; text-align: left; }
+    .form-group label {
+      display: block; font-size: 0.95rem; color: rgba(75,67,55,0.9); font-weight: 500;
+      margin-bottom: 8px; letter-spacing: 0.3px;
+    }
+    .form-group input {
+      width: 100%; padding: 18px 24px; border-radius: 16px; border: 2px solid rgba(191,166,88,0.2);
+      background: rgba(252,250,246,0.9); color: var(--text-dark); font-size: 1.05rem;
+      transition: all var(--transition-speed) ease; font-family: inherit; outline: none;
+    }
+    .form-group input:focus {
+      border-color: var(--muted-gold); box-shadow: 0 0 20px rgba(191,166,88,0.25);
+      background: rgba(252,250,246,1);
+    }
+
+    .join-btn {
+      width: 100%; padding: 20px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      border: none; border-radius: 20px; color: var(--text-dark); font-weight: 700; font-size: 1.15rem;
+      cursor: pointer; transition: all var(--transition-speed) ease; box-shadow: 0 12px 40px rgba(191,166,88,0.4);
+      font-family: 'Clash Display', serif; letter-spacing: 1px; text-transform: uppercase;
+      position: relative; overflow: hidden;
+    }
+    .join-btn:hover:not(:disabled) { 
+      transform: translateY(-3px); box-shadow: 0 18px 50px rgba(191,166,88,0.6); 
+    }
+    .join-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+    .join-btn::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    .join-btn:hover::after { left: 100%; }
+
+    .success-message {
+      display: none; text-align: center; color: #4CAF50; font-weight: 600; font-size: 1.1rem;
+      background: rgba(76,175,80,0.1); padding: 24px; border-radius: 16px; border: 2px solid #4CAF50;
+    }
+    .success-message.show { display: block; animation: fadeInUp 0.6s ease; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px;
+      margin-top: 40px;
+    }
+    .feature-item {
+      background: rgba(255,255,255,0.6); padding: 28px; border-radius: 16px; text-align: left;
+      border: 1px solid rgba(191,166,88,0.15); backdrop-filter: blur(10px); transition: all var(--transition-speed);
+    }
+    .feature-item:hover {
+      transform: translateY(-5px); box-shadow: 0 20px 60px rgba(236,215,143,0.2);
+    }
+    .feature-icon { font-size: 2rem; background: var(--highlight-gold); color: var(--text-dark);
+      width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; box-shadow: 0 8px 25px rgba(191,166,88,0.3);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
+      nav ul { gap: 10px; justify-content: center; }
+      main { padding: 160px 18px 60px !important; gap: 40px; }
+      .waitlist-form { padding: 36px 24px !important; }
+      .features { grid-template-columns: 1fr; gap: 20px; }
+    }
+
+    /* TOAST + FOOTER (MASTER) */
+    .toast {
+      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+      max-width: 350px;
+    }
+    .toast.show { transform: translateX(0); }
+    .toast.success { background: linear-gradient(135deg, #4CAF50, #81C784); color: white; }
+    
+    footer {
+      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: auto;
+      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
+      max-width: var(--max-w); margin-left: auto; margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="waitlist.html" class="active">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- AUCTION BANNER -->
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">LIMITED AUCTION ACCESS</div>
+      <h1>Join the ONE Auction</h1>
+      <p class="subtitle">
+        Be first for exclusive Snehvastra pieces. Limited quantities. First-come bidding. 
+        Join waitlist for instant access when doors open.
+      </p>
+    </div>
+
+    <!-- WAITLIST FORM -->
+    <div class="waitlist-form">
+      <div class="waitlist-counter" id="waitlistCounter">#<span id="counter">1247</span> JOINED</div>
+      
+      <div class="success-message" id="successMessage">
+        🎉 You're in! Check your email for auction access.
+      </div>
+
+      <form id="waitlistForm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+        </div>
+        
+        <button type="submit" class="join-btn" id="joinBtn">JOIN WAITLIST</button>
+      </form>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+      <div class="feature-item">
+        <div class="feature-icon">👑</div>
+        <h3>First Access</h3>
+        <p>Be first in line when auction opens. Priority bidding on all pieces.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <h3>Live Bidding</h3>
+        <p>Real-time auctions with exclusive Snehvastra one-of-one pieces.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔒</div>
+        <h3>Limited Spots</h3>
+        <p>Only 500 bidders. Once full, waitlist closes permanently.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // MASTER SCRIPT
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // WAITLIST FUNCTIONALITY
+    let waitlistCount = parseInt(localStorage.getItem('snehvastra_waitlist_count')) || 1247;
+    
+    function updateCounter() {
+      document.getElementById('counter').textContent = waitlistCount;
+    }
+
+    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value.trim();
+      const btn = document.getElementById('joinBtn');
+      const form = this;
+      
+      if (!email) return;
+      
+      btn.disabled = true;
+      btn.textContent = 'JOINING...';
+      
+      // Simulate API call
+      setTimeout(() => {
+        waitlistCount++;
+        localStorage.setItem('snehvastra_waitlist_count', waitlistCount);
+        updateCounter();
+        
+        document.getElementById('successMessage').classList.add('show');
+        form.style.display = 'none';
+        
+        showToast('✅ Welcome to the auction waitlist!', 'success');
+        
+        // Store waitlist entry
+        let waitlist = JSON.parse(localStorage.getItem('snehvastra_waitlist')) || [];
+        waitlist.push({ email, joined: new Date().toISOString() });
+        localStorage.setItem('snehvastra_waitlist', JSON.stringify(waitlist));
+        
+      }, 1200);
+    });
+
+    // AUCTION COUNTDOWN
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
+      }
+    }, 1000);
+
+    // INIT
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      updateCounter();
+    });
+  </script>
+
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+</html>

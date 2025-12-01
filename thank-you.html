@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Order Confirmed - Thank You! - Snehvastra</title>
+  <meta name="description" content="Order confirmed! Track your Snehvastra package and discover exclusive pieces in our live auction." />
+  <meta name="theme-color" content="#ECD78F">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --success-green: #4CAF50;
+      --max-w: 1000px;
+      --radius: 20px;
+      --transition-speed: 0.35s;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.6;
+    }
+
+    /* MASTER HEADER */
+    header {
+      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
+      backdrop-filter: blur(12px);
+    }
+    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
+    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
+    nav ul li a {
+      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
+      transition: all var(--transition-speed) ease; text-decoration: none;
+    }
+    nav ul li a:hover, nav ul li a.active { 
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
+    }
+    #cartCount { 
+      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
+      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
+    }
+
+    /* SUCCESS BANNER */
+    .success-banner {
+      background: linear-gradient(135deg, var(--success-green), #81C784);
+      color: white; padding: 24px 30px; text-align: center; font-weight: 700; font-size: 1.2rem;
+      position: sticky; top: 92px; z-index: 90; box-shadow: 0 8px 30px rgba(76,175,80,0.3);
+      margin: 0 5%; border-radius: var(--radius);
+    }
+    .checkmark { font-size: 2.5rem; margin-right: 16px; display: inline-block; animation: checkmark 0.6s ease-out; }
+    @keyframes checkmark { 0% { transform: scale(0) rotate(180deg); opacity: 0; } 50% { transform: scale(1.2) rotate(0); } 100% { transform: scale(1) rotate(0); opacity: 1; } }
+
+    main { padding: 180px 5% 80px; max-width: var(--max-w); margin: 0 auto; text-align: center; }
+    
+    .thank-you-hero {
+      background: rgba(255,255,255,0.95); padding: 60px 50px; border-radius: var(--radius);
+      border: 1px solid rgba(191,166,88,0.2); box-shadow: 0 30px 100px rgba(236,215,143,0.15);
+      backdrop-filter: blur(20px); margin-bottom: 60px;
+    }
+    .thank-you-hero h1 {
+      font-family: 'Clash Display', serif; font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 700;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
+    }
+    .order-number {
+      background: rgba(236,215,143,0.2); color: var(--text-dark); padding: 16px 28px; border-radius: 12px;
+      font-family: 'Clash Display', serif; font-size: 1.3rem; font-weight: 600; display: inline-block;
+      margin: 20px 0; letter-spacing: 2px;
+    }
+
+    /* ORDER SUMMARY */
+    .order-summary {
+      background: rgba(255,255,255,0.95); padding: 40px; border-radius: var(--radius);
+      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 20px 60px rgba(236,215,143,0.1);
+      backdrop-filter: blur(15px); max-width: 600px; margin: 0 auto 40px;
+    }
+    .order-item {
+      display: flex; justify-content: space-between; align-items: center; padding: 20px 0;
+      border-bottom: 1px solid rgba(191,166,88,0.1);
+    }
+    .order-item:last-child { border-bottom: none; font-weight: 700; font-size: 1.2rem; }
+    .track-btn {
+      width: 100%; padding: 18px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      border: none; border-radius: 16px; color: var(--text-dark); font-weight: 700; font-size: 1.1rem;
+      cursor: pointer; transition: all var(--transition-speed); font-family: 'Clash Display', serif;
+      box-shadow: 0 12px 40px rgba(191,166,88,0.4); margin: 20px 0;
+    }
+    .track-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(191,166,88,0.6); }
+
+    /* UPSELL AUCTION */
+    .upsell-section {
+      background: rgba(255,255,255,0.95); padding: 40px; border-radius: var(--radius);
+      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 20px 60px rgba(236,215,143,0.15);
+      margin-top: 40px;
+    }
+    .upsell-section h3 {
+      font-family: 'Clash Display', serif; font-size: 1.6rem; margin-bottom: 24px; text-align: center;
+    }
+
+    /* CTA BUTTONS */
+    .cta-buttons { display: flex; gap: 20px; max-width: 500px; margin: 40px auto 0; flex-wrap: wrap; }
+    .cta-primary {
+      flex: 1; padding: 18px 32px; background: linear-gradient(135deg, var(--success-green), #81C784);
+      color: white; border: none; border-radius: 16px; font-weight: 700; font-size: 1.1rem;
+      cursor: pointer; transition: all var(--transition-speed); font-family: 'Clash Display', serif;
+      box-shadow: 0 12px 40px rgba(76,175,80,0.4);
+    }
+    .cta-secondary {
+      flex: 1; padding: 18px 32px; background: transparent; border: 2px solid var(--muted-gold);
+      color: var(--muted-gold); border-radius: 16px; font-weight: 600; font-size: 1.1rem;
+      cursor: pointer; transition: all var(--transition-speed);
+    }
+    .cta-primary:hover, .cta-secondary:hover { transform: translateY(-3px); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
+      nav ul { gap: 10px; justify-content: center; }
+      main { padding: 160px 18px 40px !important; }
+      .cta-buttons { flex-direction: column; }
+    }
+
+    /* TOAST + FOOTER */
+    .toast {
+      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+      max-width: 350px;
+    }
+    .toast.show { transform: translateX(0); }
+    
+    footer {
+      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: 60px;
+      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
+      max-width: var(--max-w); margin-left: auto; margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="thank-you.html" class="active">Order</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- SUCCESS BANNER -->
+  <div class="success-banner">
+    <span class="checkmark">✅</span>
+    Order Confirmed! Your Snehvastra package is on its way.
+  </div>
+
+  <main>
+    <!-- THANK YOU HERO -->
+    <div class="thank-you-hero">
+      <h1>Thank You!</h1>
+      <div class="order-number" id="orderNumber">#SNV-2025-04723</div>
+      <p style="font-size: 1.25rem; color: rgba(75,67,55,0.85); max-width: 600px; margin: 0 auto;">
+        Your order has been carefully packed by our artisans and shipped with love.
+      </p>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="order-summary">
+      <h3 style="font-family: 'Clash Display', serif; margin-bottom: 24px;">Order Summary</h3>
+      <div class="order-item">
+        <span>Signature Tee - Matte Black (M)</span>
+        <span>₹4,999</span>
+      </div>
+      <div class="order-item">
+        <span>Crafted Bomber - Olive (L)</span>
+        <span>₹12,500</span>
+      </div>
+      <div class="order-item">
+        <strong>Total</strong>
+        <strong>₹17,499</strong>
+      </div>
+      <button class="track-btn" onclick="trackOrder()">📦 TRACK ORDER</button>
+    </div>
+
+    <!-- CTA BUTTONS -->
+    <div class="cta-buttons">
+      <button class="cta-primary" onclick="window.location.href='auction.html'">🔥 JOIN LIVE AUCTION</button>
+      <button class="cta-secondary" onclick="window.location.href='collection.html'">🧵 SHOP MORE</button>
+    </div>
+
+    <!-- UPSELL -->
+    <div class="upsell-section">
+      <h3>Discover Exclusive Auction Pieces</h3>
+      <p style="color: rgba(75,67,55,0.8); margin-bottom: 24px;">
+        While you wait, bid on our rarest craftsmanship. Limited quantities.
+      </p>
+      <a href="auction.html" style="display: inline-block; padding: 16px 32px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold)); color: var(--text-dark); text-decoration: none; border-radius: 16px; font-weight: 700; font-family: 'Clash Display', serif;">VIEW AUCTION →</a>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // MASTER SCRIPT + THANK YOU
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    function trackOrder() {
+      showToast('📦 Tracking: Expected delivery in 3-5 days', 'success');
+      // Simulate tracking redirect
+      setTimeout(() => {
+        window.open('https://track.snehvastra.store/SNV-2025-04723', '_blank');
+      }, 1500);
+    }
+
+    // ORDER NUMBER
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      document.getElementById('orderNumber').textContent = `#SNV-${new Date().getFullYear()}-${Math.floor(Math.random() * 90000) + 10000}`;
+      
+      // CELEBRATION
+      showToast('🎉 Thank you for choosing Snehvastra craftsmanship!', 'success');
+    });
+  </script>
+
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+    gtag('event', 'purchase', { 'value': 17499, 'currency': 'INR' });
+  </script>
+</body>
+</html>

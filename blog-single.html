@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>The 200-Year Loom Still Running - Snehvastra Blog</title>
+  <meta name="description" content="Explore the legacy of the 200-year-old loom that produces Snehvastra’s finest weaves, crafted by master artisan Shyamji." />
+  <meta name="theme-color" content="#ECD78F">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --max-w: 900px;
+      --radius: 16px;
+      --transition-speed: 0.28s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(252, 250, 246, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold);
+      border-radius: 0 0 var(--radius) var(--radius);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      filter: drop-shadow(0 0 12px var(--highlight-gold));
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: var(--muted-gold);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all var(--transition-speed) ease;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--highlight-gold);
+      background: rgba(236, 215, 143, 0.15);
+    }
+
+    #cartCount {
+      background: var(--highlight-gold);
+      color: var(--text-dark);
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark);
+      padding: 15px 20px;
+      text-align: center;
+      font-weight: 700;
+      position: sticky;
+      top: 92px;
+      z-index: 90;
+      box-shadow: 0 4px 20px rgba(236, 215, 143, 0.3);
+      margin: 0 5%;
+      border-radius: var(--radius);
+    }
+
+    .auction-timer {
+      font-family: 'Clash Display', serif;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 6px 12px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    main {
+      padding: 160px 5% 60px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .post-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .post-header h1 {
+      font-family: 'Clash Display', serif;
+      font-size: clamp(2.8rem, 6vw, 3.6rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .post-meta {
+      color: var(--muted-gold);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+    }
+
+    .post-image {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 75px rgba(236, 215, 143, 0.15);
+      max-height: 420px;
+      object-fit: cover;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+      color: rgba(75, 67, 55, 0.85);
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 5% 40px;
+      background: rgba(252, 250, 246, 0.85);
+      margin-top: auto;
+      color: rgba(75, 67, 55, 0.8);
+      border-top: 1px solid var(--muted-gold);
+      font-size: 0.95rem;
+      max-width: var(--max-w);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .toast {
+      position: fixed;
+      top: 120px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark);
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 35px rgba(236, 215, 143, 0.4);
+      font-weight: 600;
+      z-index: 1000;
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+      max-width: 350px;
+    }
+
+    .toast.show {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 18px 20px !important;
+      }
+
+      nav ul {
+        gap: 10px;
+        justify-content: center;
+      }
+
+      main {
+        padding: 140px 18px 40px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="blog-single.html" class="active">Story</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+  </div>
+
+  <main>
+    <header class="post-header">
+      <h1>The 200-Year Loom Still Running</h1>
+      <div class="post-meta">November 28, 2025 | By Shyamji, Master Weaver</div>
+    </header>
+
+    <img src="images/blog/loom-1825.jpg" alt="200 Year Old Loom" class="post-image" />
+
+    <article class="post-content">
+      <p>
+        Nestled in the heart of Rajasthan, the 200-year-old loom stands as a testament to the enduring legacy of
+        Snehvastra’s craftsmanship. For seven generations, this loom has woven stories into every thread, creating
+        fabrics that transcend time.
+      </p>
+      <p>
+        Master weaver Shyamji, who learned the craft from his ancestors, dedicates 27 hours to each exquisite piece,
+        embedding heritage and soul into every stitch. The rhythmic beat of the loom echoes tradition and artistry,
+        captivating all who behold it.
+      </p>
+      <p>
+        This story is just the beginning. Our auction offers a glimpse into this living heritage, with rare pieces
+        available for live bidding. Join us and become part of the timeless legacy.
+      </p>
+      <p style="text-align: center; margin-top: 40px;">
+        <a href="auction.html" style="color: var(--muted-gold); font-weight: 600; text-decoration: none; font-size: 1.1rem;">
+          → Join the Auction
+        </a>
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
+      }
+    }, 1000);
+
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+
+</html>

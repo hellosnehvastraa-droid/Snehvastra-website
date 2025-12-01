@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Signature Tee - Matte Black - Snehvastra</title>
+  <meta name="description" content="Signature Tee in Matte Black. Handcrafted with 200-thread Egyptian cotton. Limited edition craftsmanship." />
+  <meta name="theme-color" content="#ECD78F">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-light-1: #FCFAF6;
+      --bg-light-2: #FAF6E7;
+      --text-dark: #4B4337;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --max-w: 1200px;
+      --radius: 16px;
+      --transition-speed: 0.28s;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.6;
+    }
+
+    /* MASTER HEADER */
+    header {
+      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
+      backdrop-filter: blur(12px);
+    }
+    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
+    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
+    nav ul li a {
+      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
+      transition: all var(--transition-speed) ease; text-decoration: none;
+    }
+    nav ul li a:hover, nav ul li a.active { 
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
+    }
+    #cartCount { 
+      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
+      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
+    }
+
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
+      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
+      margin: 0 5%; border-radius: var(--radius);
+    }
+    .auction-timer { 
+      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
+      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
+    }
+
+    /* PRODUCT PAGE LAYOUT */
+    main { padding: 160px 5% 60px; max-width: var(--max-w); margin: 0 auto; }
+    .product-container {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    }
+
+    /* PRODUCT GALLERY */
+    .product-gallery { position: relative; }
+    .main-image {
+      width: 100%; height: 500px; object-fit: cover; border-radius: var(--radius);
+      cursor: zoom-in; transition: all var(--transition-speed); box-shadow: 0 20px 60px rgba(236,215,143,0.15);
+    }
+    .main-image.zoom { transform: scale(1.05); z-index: 10; }
+    .thumbnails {
+      display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;
+    }
+    .thumbnail {
+      width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer;
+      border: 3px solid transparent; transition: all var(--transition-speed);
+    }
+    .thumbnail.active { border-color: var(--highlight-gold); box-shadow: 0 0 0 3px rgba(236,215,143,0.3); }
+
+    /* PRODUCT INFO */
+    .product-info h1 {
+      font-family: 'Clash Display', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .product-price {
+      font-size: 2.2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;
+    }
+    .badge {
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      color: var(--text-dark); padding: 8px 16px; border-radius: 25px; font-size: 0.85rem;
+      font-weight: 600; display: inline-block; margin-bottom: 24px;
+    }
+    .product-details { color: rgba(75,67,55,0.8); margin-bottom: 32px; line-height: 1.7; }
+    .size-selector {
+      display: flex; gap: 12px; margin: 32px 0; flex-wrap: wrap;
+    }
+    .size-btn {
+      width: 56px; height: 56px; border-radius: 50%; border: 2px solid rgba(191,166,88,0.3);
+      background: rgba(255,255,255,0.9); font-weight: 600; cursor: pointer; transition: all var(--transition-speed);
+    }
+    .size-btn.active { background: var(--highlight-gold); border-color: var(--muted-gold); transform: scale(1.05); }
+    .add-to-cart {
+      width: 100%; padding: 20px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      border: none; border-radius: 16px; color: var(--text-dark); font-weight: 700; font-size: 1.15rem;
+      cursor: pointer; transition: all var(--transition-speed); font-family: 'Clash Display', serif;
+      box-shadow: 0 12px 40px rgba(191,166,88,0.4); margin-bottom: 16px;
+    }
+    .add-to-cart:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(191,166,88,0.6); }
+    .wishlist-btn {
+      width: 100%; padding: 16px; background: rgba(255,255,255,0.9); border: 2px solid var(--muted-gold);
+      border-radius: 12px; color: var(--muted-gold); font-weight: 600; cursor: pointer;
+      transition: all var(--transition-speed);
+    }
+    .wishlist-btn:hover { background: var(--muted-gold); color: white; }
+
+    /* REVIEWS SECTION */
+    .reviews-section { margin-top: 60px; grid-column: 1 / -1; }
+    .reviews-section h3 {
+      font-family: 'Clash Display', serif; font-size: 1.5rem; margin-bottom: 24px;
+    }
+    .review-item {
+      display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid rgba(191,166,88,0.1);
+    }
+    .review-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--highlight-gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .product-container { grid-template-columns: 1fr; gap: 40px; }
+      main { padding: 140px 18px 40px !important; }
+      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
+      nav ul { gap: 10px; justify-content: center; }
+      .size-selector { justify-content: center; }
+    }
+
+    /* TOAST + FOOTER */
+    .toast {
+      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+      max-width: 350px;
+    }
+    .toast.show { transform: translateX(0); }
+    .toast.success { background: linear-gradient(135deg, #4CAF50, #81C784); color: white; }
+    
+    footer {
+      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: 60px;
+      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
+      max-width: var(--max-w); margin-left: auto; margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="product-single.html" class="active">Product</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- AUCTION BANNER -->
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+  </div>
+
+  <main>
+    <div class="product-container">
+      <!-- GALLERY -->
+      <div class="product-gallery">
+        <img src="images/products/tee-black-1.jpg" alt="Signature Tee Matte Black" class="main-image" id="mainImage" />
+        <div class="thumbnails">
+          <img src="images/products/tee-black-1.jpg" class="thumbnail active" data-src="images/products/tee-black-1.jpg" />
+          <img src="images/products/tee-black-2.jpg" class="thumbnail" data-src="images/products/tee-black-2.jpg" />
+          <img src="images/products/tee-black-3.jpg" class="thumbnail" data-src="images/products/tee-black-3.jpg" />
+          <img src="images/products/tee-black-4.jpg" class="thumbnail" data-src="images/products/tee-black-4.jpg" />
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="product-info">
+        <h1>Signature Tee - Matte Black</h1>
+        <div class="product-price">₹4,999</div>
+        <div class="badge">LIMITED EDITION</div>
+        
+        <div class="product-details">
+          <p>Handcrafted with 200-thread Egyptian cotton. 27 hours of meticulous work by Rajasthan master artisans. 
+          Natural black dye from fermented indigo. Timeless matte finish.</p>
+        </div>
+
+        <div class="size-selector">
+          <button class="size-btn active" data-size="S">S</button>
+          <button class="size-btn" data-size="M">M</button>
+          <button class="size-btn" data-size="L">L</button>
+          <button class="size-btn" data-size="XL">XL</button>
+        </div>
+
+        <button class="add-to-cart" id="addToCart">ADD TO CART</button>
+        <button class="wishlist-btn" id="wishlistBtn">❤️ ADD TO WISHLIST</button>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="reviews-section">
+      <h3>Customer Reviews</h3>
+      <div class="review-item">
+        <div class="review-avatar"></div>
+        <div>
+          <strong>Rahul K.</strong> <span style="color: var(--muted-gold);">★★★★★</span>
+          <p>"Perfect fit, incredible quality. Feels like wearing heritage."</p>
+        </div>
+      </div>
+      <div class="review-item">
+        <div class="review-avatar"></div>
+        <div>
+          <strong>Priya S.</strong> <span style="color: var(--muted-gold);">★★★★★</span>
+          <p>"The matte black is stunning. Best tee I've ever owned."</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // MASTER + PDP FUNCTIONALITY
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    let wishlist = JSON.parse(localStorage.getItem('snehvastra_wishlist')) || [];
+
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // IMAGE ZOOM + THUMBNAILS
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+        document.getElementById('mainImage').src = thumb.dataset.src;
+      });
+    });
+
+    document.getElementById('mainImage').addEventListener('click', function() {
+      this.classList.toggle('zoom');
+    });
+
+    // SIZE SELECTOR
+    document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // CART + WISHLIST
+    document.getElementById('addToCart').addEventListener('click', () => {
+      const size = document.querySelector('.size-btn.active').dataset.size;
+      const product = { id: 'tee-black', name: 'Signature Tee - Matte Black', price: 4999, size, qty: 1 };
+      
+      if (cart['tee-black']) {
+        cart['tee-black'].qty += 1;
+      } else {
+        cart['tee-black'] = product;
+      }
+      
+      localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
+      updateCartCount();
+      showToast('✅ Added to cart!', 'success');
+    });
+
+    document.getElementById('wishlistBtn').addEventListener('click', () => {
+      const product = { id: 'tee-black', name: 'Signature Tee - Matte Black', price: 4999 };
+      if (!wishlist.find(p => p.id === product.id)) {
+        wishlist.push(product);
+        localStorage.setItem('snehvastra_wishlist', JSON.stringify(wishlist));
+        showToast('❤️ Added to wishlist!', 'success');
+      }
+    });
+
+    // AUCTION TIMER
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
+      }
+    }, 1000);
+
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CXQG6L0W01');
+  </script>
+</body>
+</html>
