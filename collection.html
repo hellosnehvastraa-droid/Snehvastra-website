@@ -3,29 +3,34 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Collection - Snehvastra</title>
+  <meta name="theme-color" content="#ECD78F">
+  <meta name="description" content="Snehvastra Echo Drops + One Auction. Luxury streetwear collection." />
+
+  <!-- YOUR FONTS + INDEX SYNC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg-light-1: #FCFAF6;
       --bg-light-2: #FAF6E7;
       --text-dark: #4B4337;
-      --muted: rgba(75, 67, 55, 0.7);
-      --accent: linear-gradient(to right, #BFA658, #ECD78F);
-      --card-bg: rgba(252, 250, 246, 0.5);
-      --card-border: rgba(191, 166, 88, 0.15);
-      --btn-shadow: 0 0 20px rgba(191, 166, 88, 0.35);
-      --max-width: 1100px;
-      --radius: 16px;
+      --muted-gold: #BFA658;
+      --highlight-gold: #ECD78F;
+      --max-w: 1100px;
+      --radius: 14px;
+      --transition-speed: 0.28s;
+      --btn-gradient-start: #ECD78F;
+      --btn-gradient-end: #FFF9DE;
+      --btn-hover-gradient-start: #FFF9DE;
+      --btn-hover-gradient-end: #ECD78F;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-
+    /* 🔥 YOUR EXACT COLORS + INDEX SYNC */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body {
       background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
       color: var(--text-dark);
@@ -33,312 +38,340 @@
       overflow-x: hidden;
     }
 
+    /* HEADER - INDEX SYNC */
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 5%;
-      position: sticky;
-      top: 0;
-      background: rgba(252, 250, 246, 0.85);
-      backdrop-filter: blur(12px);
-      z-index: 50;
-      animation: fadeIn 1.2s ease;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      border-bottom: 1px solid var(--card-border);
-      border-radius: 0 0 var(--radius) var(--radius);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; background: rgba(252,250,246,0.95);
+      backdrop-filter: blur(12px); z-index: 50; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
     }
-
-    .logo {
-      height: 60px;
-      filter: drop-shadow(0 0 12px var(--btn-shadow));
-    }
-
+    .logo { height: 50px; width: auto; border-radius: 8px; }
     nav ul {
-      display: flex;
-      list-style: none;
-      gap: 25px;
-      flex-wrap: wrap;
+      display: flex; list-style: none; gap: 15px; flex-wrap: wrap;
     }
-
     nav ul li a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-      font-weight: 600;
-      padding: 8px 12px;
-      border-radius: 8px;
-      background: transparent;
+      text-decoration: none; color: var(--muted-gold); font-size: 0.9rem; font-weight: 600;
+      padding: 8px 14px; border-radius: 8px; transition: all var(--transition-speed) ease;
     }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: var(--accent);
-      text-shadow: 0 0 12px rgba(191, 166, 88, 0.7);
-      background: rgba(191, 166, 88, 0.1);
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15);
     }
+    #cartCount { background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; padding: 2px 6px; font-size: 0.8rem; font-weight: 700; }
 
-    main {
-      padding: 80px 5% 40px;
-      animation: fadeSlide 1.2s ease;
-      max-width: var(--max-width);
-      margin: 0 auto;
+    /* 🔥 AUCTION BANNER - INDEX SYNC */
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 12px 20px; text-align: center; font-weight: 700;
+      position: sticky; top: 72px; z-index: 40; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
     }
+    .auction-timer { font-family: 'Clash Display', serif; font-size: 0.85rem; background: rgba(255,255,255,0.9); padding: 4px 10px; border-radius: 12px; display: inline-block; margin-left: 8px; }
 
+    /* MAIN */
+    main { padding: 140px 5% 40px; max-width: var(--max-w); margin: 0 auto; }
     h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      letter-spacing: 1.5px;
-      margin-bottom: 60px;
-      background: var(--accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      user-select: none;
+      text-align: center; font-family: 'Clash Display', serif; font-size: 2.5rem; font-weight: 600;
+      letter-spacing: 1.5px; margin-bottom: 60px; background: linear-gradient(90deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
+    /* 🔥 WORKING FILTERS - PRO IMPLEMENTATION [web:145] */
     .filters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 35px;
-      padding: 25px;
-      margin-bottom: 50px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      box-shadow: 0 0 20px rgba(191, 166, 88, 0.1);
-      backdrop-filter: blur(10px);
-      animation: fadeInUp 1.4s ease;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 25px;
+      margin-bottom: 50px; background: rgba(255,255,255,0.4); border: 1px solid var(--muted-gold);
+      border-radius: var(--radius); box-shadow: 0 8px 25px rgba(189,166,97,0.15);
     }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      min-width: 150px;
-      color: var(--muted);
-    }
-
-    .filter-group label {
-      font-size: 0.9rem;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .filter-group input[type="checkbox"] {
-      margin-right: 8px;
-      accent-color: var(--accent);
-      cursor: pointer;
-    }
-
+    .filter-group { display: flex; flex-direction: column; gap: 8px; min-width: 140px; }
+    .filter-group label { font-size: 0.88rem; cursor: pointer; font-weight: 500; }
+    .filter-group input[type="checkbox"] { margin-right: 8px; accent-color: var(--highlight-gold); transform: scale(1.1); }
     select {
-      background: rgba(252, 250, 246, 0.95);
-      color: var(--text-dark);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 8px 12px;
-      cursor: pointer;
-      font-weight: 600;
+      background: rgba(252,250,246,0.95); color: var(--text-dark); border: 1px solid var(--muted-gold);
+      border-radius: 8px; padding: 10px 14px; cursor: pointer; font-weight: 600; width: 160px;
     }
+    .filter-count { font-size: 0.8rem; color: var(--muted-gold); font-weight: 500; }
 
+    /* 🔥 PRODUCTS - PLACEHOLDER + CART SYNC */
     .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
-      animation: fadeInUp 1.6s ease;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;
     }
-
     .product-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 18px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      overflow: hidden;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 0 25px rgba(191, 166, 88, 0.15);
-      position: relative;
-      cursor: pointer;
-      outline: none;
+      background: rgba(255,255,255,0.7); border-radius: var(--radius); padding: 20px;
+      border: 1px solid var(--muted-gold); box-shadow: 0 8px 25px rgba(189,166,97,0.15);
+      transition: all var(--transition-speed) ease; position: relative; cursor: pointer;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(189,166,97,0.3); }
+    
+    /* 🔥 PLACEHOLDER - SAME AS INDEX */
+    .product-media {
+      height: 220px; background: #f0f0f0; border: 2px dashed #ddd; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px;
+      margin-bottom: 16px; position: relative; overflow: hidden;
+    }
+    .product-media::before { content: "IMAGE HERE"; font-weight: bold; text-transform: uppercase; }
+    .product-media img { width: 100%; height: 100%; object-fit: cover; }
+
+    .product-card h3 { font-family: 'Clash Display', serif; font-size: 1.15rem; margin-bottom: 8px; }
+    .product-card p { font-size: 0.92rem; color: rgba(75,67,55,0.7); margin-bottom: 12px; }
+    .price { font-size: 1.2rem; font-weight: 900; color: var(--highlight-gold); }
+
+    /* 🔥 ADD TO CART BUTTONS - INDEX SYNC */
+    .add-to-cart-btn {
+      width: 100%; padding: 14px; margin-top: 12px; background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));
+      color: var(--text-dark); border: none; border-radius: 12px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 8px 25px rgba(236,215,143,0.4); transition: all 0.3s ease;
+    }
+    .add-to-cart-btn:hover {
+      transform: translateY(-2px); box-shadow: 0 12px 35px rgba(236,215,143,0.6);
     }
 
-    .product-card:hover,
-    .product-card:focus-visible {
-      transform: translateY(-8px) scale(1.04);
-      border-color: rgba(191, 166, 88, 0.4);
-      box-shadow: 0 0 45px rgba(191, 166, 88, 0.35);
+    /* TOAST - INDEX SYNC */
+    .toast {
+      position: fixed; top: 100px; right: 20px; background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+      max-width: 320px;
     }
+    .toast.show { transform: translateX(0); }
 
-    .product-card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      transition: transform 0.4s ease;
-      user-select: none;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      loading: lazy;
-    }
-
-    .product-card:hover img,
-    .product-card:focus-visible img {
-      transform: scale(1.07);
-    }
-
-    .product-card h3 {
-      font-size: 1.15rem;
-      color: var(--text-dark);
-      margin-bottom: 6px;
-    }
-
-    .product-card p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .product-card .price {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-      user-select: text;
-    }
-
+    /* FOOTER */
     footer {
-      text-align: center;
-      padding: 40px;
-      background: rgba(252, 250, 246, 0.85);
-      font-size: 0.9rem;
-      color: var(--muted);
-      border-top: 1px solid var(--card-border);
-      animation: fadeIn 1.2s ease;
-      user-select: none;
+      text-align: center; padding: 50px 5%; background: rgba(252,250,246,0.85); margin-top: 80px;
+      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
+    /* WHATSAPP - INDEX SYNC */
+    .whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold)); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--text-dark);
+      box-shadow: 0 10px 30px rgba(191,166,88,0.4); z-index: 999; text-decoration: none;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeSlide {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Re-enable zoom for product images only */
-    .product-media img {
-      touch-action: pinch-zoom;
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .filters { flex-direction: column; align-items: center; gap: 20px; }
+      header { padding: 15px 4%; flex-direction: column; gap: 15px; }
+      nav ul { gap: 10px; justify-content: center; }
+      main { padding: 120px 4% 30px; }
     }
   </style>
 </head>
 
 <body>
+  <!-- HEADER - CART COUNT SYNC -->
   <header>
     <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/collection.html" class="active">Collection</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-        <li><a href="/wishlist.html">Wishlist</a></li>
-        <li><a href="/cart.html">Cart</a></li>
-        <li><a href="/user-login.html">Login</a></li>
-        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html" class="active">Collection</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        <li><a href="user-login.html">Login</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <h1>Our Collection</h1>
+  <!-- 🔥 AUCTION BANNER - LIVE COUNTDOWN -->
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+  </div>
 
+  <main>
+    <h1>Echo Drops Collection</h1>
+
+    <!-- 🔥 WORKING FILTERS -->
     <div class="filters" aria-label="Product filters">
       <div class="filter-group">
         <label>Category</label>
-        <label><input type="checkbox" value="Streetwear" checked> Streetwear</label>
-        <label><input type="checkbox" value="Luxury" checked> Luxury</label>
-        <label><input type="checkbox" value="Casual" checked> Casual</label>
+        <label><input type="checkbox" value="Streetwear" data-filter="category" checked> Streetwear</label>
+        <label><input type="checkbox" value="Luxury" data-filter="category" checked> Luxury</label>
+        <label><input type="checkbox" value="Casual" data-filter="category" checked> Casual</label>
       </div>
-
       <div class="filter-group">
-        <label>Price Range</label>
-        <label><input type="checkbox" value="0-50" checked> ₹0 - ₹50</label>
-        <label><input type="checkbox" value="51-100" checked> ₹51 - ₹100</label>
-        <label><input type="checkbox" value="101-99999" checked> Above ₹100</label>
+        <label>Price</label>
+        <label><input type="checkbox" value="under-2000" data-filter="price" checked> Under ₹2K</label>
+        <label><input type="checkbox" value="2000-5000" data-filter="price" checked> ₹2K-5K</label>
+        <label><input type="checkbox" value="5000-plus" data-filter="price" checked> 5K+</label>
       </div>
-
       <div class="filter-group">
-        <label>Availability</label>
-        <label><input type="checkbox" value="In Stock" checked> In Stock</label>
-        <label><input type="checkbox" value="Sold Out" checked> Sold Out</label>
+        <label>Status</label>
+        <label><input type="checkbox" value="instock" data-filter="status" checked> In Stock</label>
+        <label><input type="checkbox" value="limited" data-filter="status" checked> Limited</label>
       </div>
-
       <div class="filter-group">
-        <label for="sort">Sort By</label>
-        <select id="sort" aria-label="Sort products">
-          <option value="popularity">Popularity</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
+        <label>Sort</label>
+        <select id="sortSelect">
+          <option value="default">Featured</option>
+          <option value="price-low">Price: Low-High</option>
+          <option value="price-high">Price: High-Low</option>
+          <option value="name">Name A-Z</option>
         </select>
       </div>
     </div>
 
-    <div class="products-grid" aria-live="polite">
-      <div class="product-card" tabindex="0">
-        <img src="images/rev1.jpg" alt="Streetwear Fusion Tee" loading="lazy" />
+    <!-- 🔥 PRODUCTS WITH CART BUTTONS -->
+    <div class="products-grid" id="productsGrid" aria-live="polite">
+      <div class="product-card" data-product-id="1" data-name="Streetwear Fusion Tee" data-category="Streetwear" data-price="499" data-price-range="under-2000" data-status="instock">
+        <div class="product-media"></div>
         <h3>Streetwear Fusion Tee</h3>
         <p>Bold yet minimal — crafted for statement comfort.</p>
-        <p class="price">₹499</p>
+        <div class="price">₹499</div>
+        <button class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
       </div>
 
-      <div class="product-card" tabindex="0">
-        <img src="images/rev2.jpg" alt="Luxury Midnight Jacket" loading="lazy" />
+      <div class="product-card" data-product-id="2" data-name="Luxury Midnight Jacket" data-category="Luxury" data-price="2999" data-price-range="2000-5000" data-status="limited">
+        <div class="product-media"></div>
         <h3>Luxury Midnight Jacket</h3>
         <p>Tailored craftsmanship with modern luxury essence.</p>
-        <p class="price">₹299</p>
+        <div class="price">₹2,999</div>
+        <button class="add-to-cart-btn" data-product-id="2">Add to Cart</button>
       </div>
 
-      <div class="product-card" tabindex="0">
-        <img src="images/rev3.jpg" alt="Casual Cloud Hoodie" loading="lazy" />
+      <div class="product-card" data-product-id="3" data-name="Casual Cloud Hoodie" data-category="Casual" data-price="1999" data-price-range="under-2000" data-status="instock">
+        <div class="product-media"></div>
         <h3>Casual Cloud Hoodie</h3>
         <p>Soft fleece touch — urban comfort meets class.</p>
-        <p class="price">₹199</p>
+        <div class="price">₹1,999</div>
+        <button class="add-to-cart-btn" data-product-id="3">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-product-id="4" data-name="Tech Overshirt" data-category="Streetwear" data-price="4999" data-price-range="2000-5000" data-status="limited">
+        <div class="product-media"></div>
+        <h3>Tech Overshirt</h3>
+        <p>Structured overshirt with tech fabric.</p>
+        <div class="price">₹4,999</div>
+        <button class="add-to-cart-btn" data-product-id="4">Add to Cart</button>
       </div>
     </div>
   </main>
 
   <footer>
-    &copy; 2025 Snehvastra. All Rights Reserved.<br />
-    Instagram: @sneh_vastra | Facebook: Snehvastra
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
   </footer>
 
-  <!-- Google Analytics -->
+  <!-- TOAST + WHATSAPP -->
+  <div id="toast" class="toast"></div>
+  <a href="https://wa.me/919876543210?text=🔥 Snehvastra Collection - Echo Drops!" class="whatsapp-float" target="_blank">💬</a>
+
+  <!-- 🔥 PRO SCRIPT - FULL SYNC -->
+  <script>
+    // CART SYNC (INDEX COMPATIBLE)
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    function updateCartCount() {
+      const total = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = total;
+    }
+
+    // TOAST SYSTEM
+    function showToast(message, duration = 3000) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), duration);
+    }
+
+    // ADD TO CART
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('add-to-cart-btn')) {
+        const productId = e.target.getAttribute('data-product-id');
+        const productCard = e.target.closest('.product-card');
+        const productName = productCard.getAttribute('data-name');
+        const productPrice = productCard.getAttribute('data-price');
+        
+        cart[productId] = (cart[productId] || 0) + 1;
+        localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
+        updateCartCount();
+        showToast(`${productName} added! (₹${productPrice.toLocaleString()})`);
+        
+        e.target.style.transform = 'scale(0.95)';
+        setTimeout(() => e.target.style.transform = '', 150);
+      }
+    });
+
+    // 🔥 WORKING FILTERS [web:145]
+    function applyFilters() {
+      const products = Array.from(document.querySelectorAll('.product-card'));
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      const sortValue = document.getElementById('sortSelect').value;
+      
+      let visibleCount = 0;
+      
+      products.forEach(product => {
+        let show = true;
+        
+        // Category filter
+        const categoryCheckboxes = Array.from(checkboxes).filter(cb => cb.dataset.filter === 'category');
+        if (categoryCheckboxes.length) {
+          const productCategory = product.dataset.category;
+          show = categoryCheckboxes.some(cb => cb.value === productCategory);
+        }
+        
+        // Price filter
+        const priceCheckboxes = Array.from(checkboxes).filter(cb => cb.dataset.filter === 'price');
+        if (priceCheckboxes.length && show) {
+          const productPriceRange = product.dataset.priceRange;
+          show = priceCheckboxes.some(cb => cb.value === productPriceRange);
+        }
+        
+        // Status filter
+        const statusCheckboxes = Array.from(checkboxes).filter(cb => cb.dataset.filter === 'status');
+        if (statusCheckboxes.length && show) {
+          const productStatus = product.dataset.status;
+          show = statusCheckboxes.some(cb => cb.value === productStatus);
+        }
+        
+        product.style.display = show ? 'block' : 'none';
+        if (show) visibleCount++;
+      });
+      
+      // Sort
+      const visibleProducts = Array.from(products).filter(p => p.style.display !== 'none');
+      visibleProducts.sort((a, b) => {
+        if (sortValue === 'price-low') return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+        if (sortValue === 'price-high') return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+        if (sortValue === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+      });
+      
+      const grid = document.getElementById('productsGrid');
+      visibleProducts.forEach(p => grid.appendChild(p));
+    }
+
+    // Filter events
+    document.querySelectorAll('input[type="checkbox"], #sortSelect').forEach(el => {
+      el.addEventListener('change', applyFilters);
+    });
+
+    // AUCTION COUNTDOWN
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
+      }
+    }, 1000);
+
+    // INIT
+    window.addEventListener('load', () => {
+      updateCartCount();
+      applyFilters();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -346,26 +379,5 @@
     gtag('js', new Date());
     gtag('config', 'G-CXQG6L0W01');
   </script>
-
-  <!-- Meta Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','840460501999060');
-    fbq('track','PageView');
-  </script>
-
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=840460501999060&ev=PageView&noscript=1" />
-  </noscript>
-
 </body>
-
 </html>
