@@ -4,7 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>404 - Page Not Found | Snehvastra</title>
+  <title>Page Not Found - Snehvastra</title>
+  <meta name="description" content="Lost in the weave? Let's get you back to Snehvastra craftsmanship. Search or navigate home." />
+  <meta name="theme-color" content="#ECD78F">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg-light-1: #FCFAF6;
@@ -12,113 +20,275 @@
       --text-dark: #4B4337;
       --muted-gold: #BFA658;
       --highlight-gold: #ECD78F;
-      --font-family: 'Poppins', sans-serif;
+      --max-w: 1000px;
+      --radius: 20px;
+      --transition-speed: 0.35s;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: var(--font-family);
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body {
-      height: 100vh;
-      background: linear-gradient(135deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-      user-select: none;
+      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.7;
     }
 
-    .container {
-      max-width: 480px;
-      width: 100%;
-      padding: 24px;
-      background: rgba(252, 250, 246, 0.85);
-      border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(191, 166, 88, 0.3);
-      backdrop-filter: blur(16px);
+    /* MASTER HEADER */
+    header {
+      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
+      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
+      backdrop-filter: blur(12px);
+    }
+    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
+    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
+    nav ul li a {
+      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
+      transition: all var(--transition-speed) ease; text-decoration: none;
+    }
+    nav ul li a:hover, nav ul li a.active { 
+      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
+    }
+    #cartCount { 
+      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
+      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
     }
 
-    h1 {
-      font-family: 'Clash Display', serif;
-      font-size: 6rem;
-      letter-spacing: 0.3em;
-      color: var(--muted-gold);
-      margin-bottom: 0.8rem;
-      text-shadow: 0 0 8px var(--muted-gold);
+    .auction-banner {
+      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
+      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
+      margin: 0 5%; border-radius: var(--radius);
+    }
+    .auction-timer { 
+      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
+      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
     }
 
-    p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      color: var(--text-dark);
-      opacity: 0.85;
+    main { padding: 180px 5% 80px; max-width: var(--max-w); margin: 0 auto; text-align: center; }
+    
+    .error-hero {
+      background: rgba(255,255,255,0.95); padding: 80px 50px; border-radius: var(--radius);
+      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 30px 100px rgba(236,215,143,0.1);
+      backdrop-filter: blur(20px); margin-bottom: 60px; position: relative;
+    }
+    .error-hero h1 {
+      font-family: 'Clash Display', serif; font-size: clamp(4rem, 12vw, 8rem); font-weight: 700;
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 20px rgba(236,215,143,0.3)); }
+      to { filter: drop-shadow(0 0 30px rgba(236,215,143,0.6)); }
+    }
+    .error-subtitle {
+      font-family: 'Clash Display', serif; font-size: 1.8rem; color: var(--muted-gold);
+      margin-bottom: 16px; opacity: 0; animation: fadeInUp 1s 0.3s forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    a {
-      display: inline-block;
-      padding: 0.85rem 1.8rem;
-      border-radius: 16px;
-      background: var(--muted-gold);
-      color: #111;
-      font-weight: 600;
-      font-size: 1.15rem;
-      text-decoration: none;
-      box-shadow: 0 8px 18px rgba(191, 166, 88, 0.45);
-      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    .search-section {
+      max-width: 600px; margin: 0 auto 60px; position: relative;
+    }
+    .search-input {
+      width: 100%; padding: 24px 28px 24px 60px; border: 2px solid rgba(191,166,88,0.2);
+      border-radius: var(--radius); font-size: 1.1rem; background: rgba(255,255,255,0.9);
+      transition: all var(--transition-speed); backdrop-filter: blur(10px);
+    }
+    .search-input:focus { outline: none; border-color: var(--highlight-gold); box-shadow: 0 0 0 4px rgba(236,215,143,0.15); }
+    .search-icon { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); color: var(--muted-gold); font-size: 1.4rem; }
+
+    /* QUICK NAVIGATION */
+    .quick-nav {
+      background: rgba(255,255,255,0.95); padding: 48px; border-radius: var(--radius);
+      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 20px 60px rgba(236,215,143,0.1);
+      backdrop-filter: blur(15px); margin-bottom: 40px;
+    }
+    .quick-nav h3 {
+      font-family: 'Clash Display', serif; font-size: 1.6rem; margin-bottom: 32px; color: var(--text-dark);
+    }
+    .nav-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;
+    }
+    .nav-btn {
+      padding: 16px 24px; background: rgba(236,215,143,0.15); border: 1px solid rgba(191,166,88,0.2);
+      border-radius: 12px; color: var(--text-dark); text-decoration: none; font-weight: 600;
+      transition: all var(--transition-speed); text-align: center; display: block;
+    }
+    .nav-btn:hover { 
+      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
+      transform: translateY(-3px); box-shadow: 0 12px 35px rgba(191,166,88,0.4); 
     }
 
-    a:hover,
-    a:focus {
-      background: var(--highlight-gold);
-      color: var(--muted-gold);
-      outline: none;
-      transform: scale(1.05);
-      box-shadow: 0 12px 24px rgba(191, 166, 88, 0.65);
+    /* ARTISAN MESSAGE */
+    .artisan-message {
+      background: linear-gradient(135deg, rgba(236,215,143,0.1), rgba(191,166,88,0.05));
+      padding: 40px; border-radius: var(--radius); border-left: 5px solid var(--highlight-gold);
+      font-style: italic; color: rgba(75,67,55,0.9);
+    }
+    .artisan-message::before {
+      content: '🧵'; font-size: 2rem; display: block; margin-bottom: 16px;
     }
 
-    @media (max-width: 520px) {
-      h1 {
-        font-size: 4.5rem;
-      }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
+      nav ul { gap: 10px; justify-content: center; }
+      main { padding: 160px 18px 40px !important; }
+      .nav-grid { grid-template-columns: repeat(2, 1fr); }
+    }
 
-      p {
-        font-size: 1rem;
-      }
-
-      .container {
-        max-width: 95%;
-        padding: 18px;
-      }
+    /* TOAST + FOOTER */
+    .toast {
+      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
+      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
+      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+      max-width: 350px;
+    }
+    .toast.show { transform: translateX(0); }
+    
+    footer {
+      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: 60px;
+      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
+      max-width: var(--max-w); margin-left: auto; margin-right: auto;
     }
   </style>
 </head>
 
 <body>
-  <div class="container" role="main" aria-labelledby="page-title" aria-describedby="page-desc">
-    <h1 id="page-title" aria-level="1" role="heading">404</h1>
-    <p id="page-desc" role="note">
-      Oops! Looks like this page drifted off the runway.<br>
-      But don’t worry, we’ve got plenty of style waiting for you.
-    </p>
-    <a href="index.html" role="link" aria-label="Return to home page">Back to Home</a>
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="404.html" class="active">404</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- AUCTION BANNER -->
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
   </div>
 
-  <!-- Google Analytics -->
+  <main>
+    <!-- 404 HERO -->
+    <div class="error-hero">
+      <h1>404</h1>
+      <div class="error-subtitle">Lost in the Weave?</div>
+      <p style="font-size: 1.25rem; color: rgba(75,67,55,0.85); max-width: 600px; margin: 0 auto 40px;">
+        The page you're looking for has unraveled. Let's get you back to our craftsmanship.
+      </p>
+      <a href="index.html" style="display: inline-block; padding: 20px 40px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold)); color: var(--text-dark); text-decoration: none; border-radius: 16px; font-weight: 700; font-family: 'Clash Display', serif; font-size: 1.2rem; box-shadow: 0 16px 50px rgba(191,166,88,0.4);">🏠 Take Me Home</a>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-section">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="pageSearch" placeholder="Search our collection... (tees, bombers, auctions)">
+    </div>
+
+    <!-- QUICK NAV -->
+    <div class="quick-nav">
+      <h3>Quick Paths</h3>
+      <div class="nav-grid">
+        <a href="index.html" class="nav-btn">🏠 Home</a>
+        <a href="collection.html" class="nav-btn">🧵 Collection</a>
+        <a href="auction.html" class="nav-btn">🔥 Live Auction</a>
+        <a href="cart.html" class="nav-btn">🛒 Your Cart</a>
+        <a href="faq.html" class="nav-btn">❓ FAQ</a>
+        <a href="contact.html" class="nav-btn">💬 Contact Us</a>
+      </div>
+    </div>
+
+    <!-- ARTISAN MESSAGE -->
+    <div class="artisan-message">
+      <p>"Every thread has its place in the weave. If you can't find what you're seeking, our artisans are ready to craft it for you."</p>
+      <p style="font-size: 0.9rem; margin-top: 16px; opacity: 0.8;">— Master Weaver, Jaipur</p>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
+    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // MASTER SCRIPT + 404 FUNCTIONALITY
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    
+    function updateCartCount() {
+      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // 404 SEARCH
+    document.getElementById('pageSearch').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const query = e.target.value.toLowerCase();
+        if (query.includes('tee') || query.includes('tshirt')) {
+          window.location.href = 'collection.html#tees';
+          showToast('🧵 Redirecting to Tees collection...');
+        } else if (query.includes('auction')) {
+          window.location.href = 'auction.html';
+          showToast('🔥 Taking you to Live Auction...');
+        } else if (query.includes('cart') || query.includes('order')) {
+          window.location.href = 'cart.html';
+          showToast('🛒 Redirecting to your cart...');
+        } else {
+          showToast('No results found. Try "tees", "auction", or "cart"');
+        }
+      }
+    });
+
+    // AUCTION TIMER
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = auctionDate - now;
+      const timer = document.getElementById('auctionTimer');
+      if (timer && diff > 0) {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else if (timer) {
+        timer.textContent = 'LIVE NOW!';
+      }
+    }, 1000);
+
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      showToast('🧵 Page not found, but our craftsmanship awaits!', 'success');
+    });
+  </script>
+
+  <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-CXQG6L0W01');
+    gtag('event', 'page_not_found', { 'page_path': window.location.pathname });
   </script>
 </body>
-
 </html>
