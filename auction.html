@@ -1,410 +1,632 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>SNEHVASTRA ONE - LIVE AUCTION</title>
-  <meta name="description" content="Live bidding: Snehvastra ONE Auction. Limited pieces. Real-time bids. Join now." />
-  <meta name="theme-color" content="#ECD78F">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SNEHVASTRA ONE — Auction · Snehvastra V2</title>
+  <meta name="description" content="Live bidding — cinematic Snehvastra ONE auction. Frosted-glass bids, real-time timers, and Sneh (Auction Advisor) guiding every move." />
+  <meta name="theme-color" content="#3A0F5A" />
 
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --bid-green: #4CAF50;
-      --max-w: 1200px;
-      --radius: 16px;
-      --transition-speed: 0.28s;
+    /* ------------------------------
+       Design tokens
+    ------------------------------ */
+    :root{
+      --purple:#3A0F5A;
+      --purple-2:#7B3BBE;
+      --purple-glow: rgba(153, 95, 255, 0.22);
+      --slate:#1f1f25;
+      --muted:#6d6c73;
+      --silver:#C7C7CE;
+      --paper:#F6F6F8;
+      --radius:14px;
+      --ease: cubic-bezier(.2,.9,.25,1);
+      --max:1240px;
     }
 
-    /* MASTER TEMPLATE */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.6;
+    /* ------------------------------
+       Reset & base
+    ------------------------------ */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', sans-serif;
+      color:var(--slate);
+      background: linear-gradient(180deg,#f6f5f8,#efeaf5);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-y:auto;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* ------------------------------
+       Header (consistent V2)
+    ------------------------------ */
+    header{
+      position:sticky;top:0;z-index:120;
+      backdrop-filter: blur(8px) saturate(120%);
+      background: rgba(255,255,255,0.72);
+      border-bottom: 1px solid rgba(58,15,90,0.04);
+      padding:14px 24px;
+    }
+    .nav {
+      max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:52px;filter:drop-shadow(0 10px 30px rgba(58,15,90,0.10))}
+    .brand .name{font-weight:700;color:var(--purple);font-family:'Clash Display',serif}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--purple);transition:all .2s var(--ease)}
+    nav a:hover, nav a.active{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));box-shadow:0 10px 30px rgba(58,15,90,0.04);color:var(--slate)}
+
+    /* ------------------------------
+       Hero (animated purple gradient)
+    ------------------------------ */
+    .hero {
+      position:relative;
+      overflow:hidden;
+      padding:96px 20px 84px;
+      margin-top:18px;
+      text-align:center;
+    }
+    .hero .bg {
+      position:absolute;inset:0;background:linear-gradient(120deg,#3A0F5A 0%, #7B3BBE 40%, #2A0D3F 100%);
+      z-index:-2;filter:contrast(1.05) saturate(1.05);
+      transform-origin:center;
+      animation: heroShift 18s ease-in-out infinite alternate;
+    }
+    @keyframes heroShift { from{transform:scale(1.02) rotate(0.01deg)} to{transform:scale(1.06) rotate(.02deg)} }
+    .hero .pattern {
+      position:absolute;left:-6%;top:-10%;width:70%;height:110%;background:radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06), transparent 20%), linear-gradient(90deg, rgba(255,255,255,0.02), transparent 60%);
+      filter:blur(48px);z-index:-1;mix-blend-mode:overlay;
+    }
+    .hero h1{
+      font-family:'Clash Display',serif;color:#fff;font-size:clamp(2.2rem,4.6vw,3.6rem);letter-spacing:-0.6px;margin-bottom:12px;
+      text-shadow:0 12px 40px rgba(58,15,90,0.35);
+    }
+    .hero p{
+      color:rgba(255,255,255,0.9);max-width:920px;margin:0 auto;font-size:1.05rem;line-height:1.6;
+    }
+    .hero .cta-row{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+    /* Glass button (purple gradient glass) */
+    .btn {
+      display:inline-flex;align-items:center;gap:10px;justify-content:center;
+      padding:14px 22px;border-radius:14px;border:1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      color:#fff;font-weight:700;cursor:pointer;backdrop-filter: blur(6px) saturate(120%);
+      box-shadow: 0 14px 40px rgba(58,15,90,0.28), inset 0 1px 0 rgba(255,255,255,0.14);
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--purple-2), var(--purple));
+      box-shadow: 0 18px 50px rgba(58,15,90,0.36);
+    }
+    .btn.ghost {
+      background: rgba(255,255,255,0.08);
+      color: #fff; border:1px solid rgba(255,255,255,0.08);
+      box-shadow: none;
+    }
+    .btn:hover{transform:translateY(-3px)}
+
+    /* ------------------------------
+       Main layout
+    ------------------------------ */
+    .wrap{max-width:var(--max);margin:40px auto;padding:0 20px;display:flex;flex-direction:column;gap:36px}
+
+    /* Auctions grid – frosted cards */
+    .auctions-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+    @media (max-width:1080px){ .auctions-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:720px){ .auctions-grid{grid-template-columns:1fr} .hero{padding:64px 20px} }
+
+    .auction-card{
+      border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#ffffff, #fbfbff);
+      border:1px solid rgba(58,15,90,0.06);
+      box-shadow: 0 22px 60px rgba(58,15,90,0.06);
+      display:flex;flex-direction:column;transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .auction-card:hover{ transform: translateY(-8px); box-shadow:0 34px 92px rgba(58,15,90,0.12) }
+
+    .media{
+      height:260px;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg, rgba(58,15,90,0.05), rgba(255,255,255,0.9));
+      position:relative;font-size:4.2rem;color:var(--purple);
+    }
+    .media img{width:100%;height:100%;object-fit:cover;display:block}
+    .live-dot{ position:absolute; top:14px; right:14px; width:12px;height:12px;border-radius:50%; background:linear-gradient(90deg,#ffb3ff,#b27aff); box-shadow:0 0 18px rgba(147,78,255,0.24); animation:pulse 1.6s infinite;}
+    @keyframes pulse { 0%{transform:scale(1);opacity:1} 50%{transform:scale(1.25);opacity:.55} 100%{transform:scale(1);opacity:1} }
+
+    .body{
+      padding:20px 22px 28px;display:flex;flex-direction:column;gap:14px;
+    }
+    .title{ font-family:'Clash Display',serif;color:var(--purple);font-size:1.1rem }
+    .meta{ color:var(--muted); font-size:0.95rem }
+    .current-bid{ font-size:1.6rem;font-weight:900;color:var(--purple) }
+    .bid-info{ display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px }
+
+    .controls{ display:flex;gap:12px;margin-top:12px; align-items:center }
+    .input {
+      flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(58,15,90,0.12);font-weight:700;text-align:center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+    .bid-cta{ padding:12px 18px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--purple-2),var(--purple));color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 36px rgba(58,15,90,0.28) }
+    .bid-cta:hover{transform:translateY(-3px)}
+
+    .timer {
+      margin-top:10px;padding:8px 12px;border-radius:10px;background:linear-gradient(180deg, rgba(58,15,90,0.03), rgba(255,255,255,0.5));
+      color:var(--purple);font-family:'Clash Display',serif;font-weight:700;display:inline-block;
     }
 
-    /* HEADER */
-    header {
-      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px);
+    /* Auction advisor card */
+    .advisor {
+      position:sticky; top:100px; align-self:flex-start;
+      background:linear-gradient(180deg,#fff,#fbfbff); border-radius:16px; padding:20px; border:1px solid rgba(58,15,90,0.06);
+      box-shadow:0 20px 60px rgba(58,15,90,0.05); width:320px;
     }
-    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
-    nav ul li a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-      transition: all var(--transition-speed) ease; text-decoration: none;
-    }
-    nav ul li a:hover, nav ul li a.active { 
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
-    }
-    #cartCount { 
-      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
-      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
-    }
+    .advisor h4{font-family:'Clash Display',serif;color:var(--purple);margin:0 0 8px}
+    .advisor p{color:var(--muted);font-size:0.95rem;margin:0 0 12px}
+    .advisor .ai-input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(58,15,90,0.08);margin-bottom:10px}
+    .advisor .ai-res{color:var(--muted);min-height:28px}
 
-    /* 🔥 LIVE AUCTION STATUS */
-    .auction-status {
-      background: linear-gradient(135deg, var(--bid-green), #81C784);
-      color: white; padding: 18px 25px; text-align: center; font-weight: 700; font-size: 1.1rem;
-      position: sticky; top: 92px; z-index: 90; box-shadow: 0 6px 25px rgba(76,175,80,0.4);
-      margin: 0 5%; border-radius: var(--radius);
+    /* Leaderboard / Footer area */
+    .leaderboard-wrap{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+    .leaderboard{
+      flex:1;min-width:320px;background:linear-gradient(180deg,#fff,#fbfbff);padding:20px;border-radius:16px;border:1px solid rgba(58,15,90,0.06);
+      box-shadow:0 20px 60px rgba(58,15,90,0.05);
     }
-    .live-indicator { animation: pulse 1.5s infinite; display: inline-block; margin-right: 12px; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .leaderboard h3{font-family:'Clash Display',serif;color:var(--purple);margin:0 0 12px}
+    .leader-row{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;border:1px solid rgba(58,15,90,0.03);margin-bottom:10px;background:linear-gradient(180deg,#fff,#fbfbff)}
+    .leader-rank{font-weight:900;color:var(--purple);font-size:1.1rem}
+    .leader-name{color:var(--muted);font-weight:700}
+    .leader-bid{font-weight:900;color:var(--purple)}
 
-    /* 🔥 AUCTION DASHBOARD */
-    main { 
-      padding: 180px 5% 60px; max-width: var(--max-w); margin: 0 auto; gap: 40px; 
+    /* Floating AI orb — primary */
+    .ai-orb{
+      position:fixed;right:22px;bottom:22px;width:66px;height:66px;border-radius:999px;background:linear-gradient(135deg,var(--purple-2),var(--purple));
+      color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;cursor:pointer;
+      box-shadow:0 22px 60px rgba(58,15,90,0.34);z-index:1000;border:1px solid rgba(255,255,255,0.06);
     }
+    .ai-orb:focus{outline:3px solid rgba(186,178,255,0.16)}
 
-    .auction-hero {
-      text-align: center; background: rgba(255,255,255,0.95); padding: 48px; border-radius: 24px;
-      border: 1px solid rgba(191,166,88,0.2); box-shadow: 0 25px 80px rgba(236,215,143,0.15);
-      backdrop-filter: blur(20px);
-    }
-    .auction-hero h1 {
-      font-family: 'Clash Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px;
-    }
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(12,10,15,0.48);display:none;align-items:center;justify-content:center;z-index:1200;padding:20px}
+    .modal{background:#fff;padding:20px;border-radius:16px;max-width:720px;width:100%;box-shadow:0 30px 120px rgba(0,0,0,0.45)}
+    .modal h3{font-family:'Clash Display',serif;color:var(--purple);margin:0 0 8px}
+    .modal .controls{display:flex;gap:10px;margin-top:12px}
 
-    /* 🔥 LIVE AUCTIONS GRID */
-    .auctions-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 28px; margin-top: 40px;
-    }
-    .auction-item {
-      background: rgba(255,255,255,0.95); border-radius: 20px; overflow: hidden; border: 1px solid rgba(191,166,88,0.15);
-      box-shadow: 0 20px 60px rgba(236,215,143,0.1); backdrop-filter: blur(10px); transition: all var(--transition-speed);
-      position: relative;
-    }
-    .auction-item:hover {
-      transform: translateY(-8px); box-shadow: 0 30px 80px rgba(236,215,143,0.25);
-    }
-    .auction-image {
-      height: 280px; background: linear-gradient(45deg, var(--muted-gold), var(--highlight-gold));
-      display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative;
-      overflow: hidden;
-    }
-    .live-dot {
-      position: absolute; top: 16px; right: 16px; width: 16px; height: 16px; background: var(--bid-green);
-      border-radius: 50%; animation: pulse 1.2s infinite; box-shadow: 0 0 0 4px rgba(76,175,80,0.3);
-    }
-    .auction-content {
-      padding: 28px; position: relative;
-    }
-    .auction-title {
-      font-family: 'Clash Display', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 12px;
-      color: var(--text-dark);
-    }
-    .current-bid {
-      font-size: 1.8rem; font-weight: 700; color: var(--bid-green); margin: 8px 0;
-    }
-    .bid-counter {
-      font-size: 0.9rem; color: rgba(75,67,55,0.7); margin-bottom: 20px;
-    }
-    .bid-input-group {
-      display: flex; gap: 12px; margin-bottom: 20px;
-    }
-    .bid-input {
-      flex: 1; padding: 14px 18px; border-radius: 12px; border: 2px solid rgba(191,166,88,0.2);
-      background: rgba(252,250,246,0.9); font-size: 1.1rem; font-weight: 600; text-align: center;
-      transition: all var(--transition-speed);
-    }
-    .bid-input:focus {
-      border-color: var(--muted-gold); box-shadow: 0 0 15px rgba(191,166,88,0.25); outline: none;
-    }
-    .bid-btn {
-      padding: 14px 24px; background: linear-gradient(135deg, var(--bid-green), #81C784);
-      color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 0.95rem;
-      cursor: pointer; transition: all var(--transition-speed); white-space: nowrap;
-    }
-    .bid-btn:hover:not(:disabled) {
-      transform: translateY(-2px); box-shadow: 0 8px 25px rgba(76,175,80,0.4);
-    }
-    .bid-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    /* toast */
+    #toast{position:fixed;top:18px;right:18px;background:linear-gradient(135deg,var(--purple-2),var(--purple));color:#fff;padding:12px 18px;border-radius:12px;box-shadow:0 16px 40px rgba(58,15,90,0.30);display:none;z-index:1300}
+    /* accessibility */
+    :focus{outline:none}
+    button:focus, input:focus{outline:3px solid rgba(186,178,255,0.14);outline-offset:3px;border-radius:10px}
 
-    .auction-timer {
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      color: var(--text-dark); padding: 12px 20px; border-radius: 25px; font-family: 'Clash Display', serif;
-      font-size: 1.1rem; font-weight: 700; margin-top: 16px; display: inline-block;
-    }
-
-    /* 🔥 LEADERBOARD */
-    .leaderboard {
-      grid-column: 1 / -1; background: rgba(255,255,255,0.95); padding: 32px; border-radius: 20px;
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 20px 60px rgba(236,215,143,0.15);
-      margin-top: 40px;
-    }
-    .leaderboard h3 {
-      font-family: 'Clash Display', serif; font-size: 1.5rem; margin-bottom: 24px; text-align: center;
-    }
-    .leaderboard-list {
-      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 12px;
-    }
-    .leader-item {
-      text-align: center; min-width: 120px; padding: 16px 12px; background: rgba(236,215,143,0.2);
-      border-radius: 12px; transition: all var(--transition-speed);
-    }
-    .leader-item:hover { background: rgba(236,215,143,0.4); transform: scale(1.05); }
-    .leader-rank { font-size: 1.5rem; font-weight: 700; color: var(--muted-gold); display: block; }
-    .leader-name { font-weight: 600; color: var(--text-dark); }
-    .leader-bid { font-size: 0.9rem; color: var(--bid-green); font-weight: 700; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
-      nav ul { gap: 10px; justify-content: center; }
-      main { padding: 160px 18px 40px !important; }
-      .auctions-grid { grid-template-columns: 1fr; gap: 20px; }
-      .bid-input-group { flex-direction: column; }
-      .leaderboard-list { flex-direction: column; align-items: center; }
-    }
-
-    /* TOAST + FOOTER */
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-      max-width: 350px;
-    }
-    .toast.show { transform: translateX(0); }
-    .toast.success { background: linear-gradient(135deg, var(--bid-green), #81C784); color: white; }
-    
-    footer {
-      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: 60px;
-      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
-      max-width: var(--max-w); margin-left: auto; margin-right: auto;
-    }
   </style>
 </head>
-
 <body>
-  <!-- HEADER -->
+
+  <!-- Header -->
   <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="auction.html" class="active">Live Auction</a></li>
-        <li><a href="waitlist.html">Waitlist</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-      </ul>
-    </nav>
+    <div class="nav">
+      <div class="brand">
+        <img src="images/logo.final.png" alt="Snehvastra logo" />
+        <div class="name">Snehvastra</div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="auction.html" class="active">Auction</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- LIVE STATUS -->
-  <div class="auction-status">
-    <span class="live-indicator">● LIVE</span>
-    SNEHVASTRA ONE AUCTION - 247 BIDS TODAY
+  <!-- Hero -->
+  <section class="hero" role="banner" aria-labelledby="heroTitle">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="pattern" aria-hidden="true"></div>
+
+    <h1 id="heroTitle">SNEHVASTRA ONE — Live Auction</h1>
+    <p>
+      Join the cinematic drop — limited pieces, NFC-backed authenticity, curated rarity. Bids are live; Sneh (Auction Advisor) helps with strategy and rules.
+    </p>
+
+    <div class="cta-row">
+      <button class="btn primary" onclick="scrollToGrid()">Start Bidding</button>
+      <button class="btn ghost" onclick="openSnehModal();">Ask Sneh (Auction Advisor)</button>
+      <button class="btn ghost" onclick="window.open('https://wa.me/917597152209','_blank')">Auction Help (WhatsApp)</button>
+    </div>
+  </section>
+
+  <!-- Main wrap -->
+  <div class="wrap" role="main">
+
+    <!-- Grid + Advisor layout -->
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;">
+      <!-- Auctions Grid -->
+      <div>
+        <h2 style="font-family:'Clash Display',serif;color:var(--purple);margin-bottom:14px">Live Auction Items</h2>
+
+        <div class="auctions-grid" id="auctionsGrid" aria-live="polite">
+          <!-- Cards will be rendered here (server or JS rendered below). For now we include three sample cards as V2-ready markup. -->
+
+          <!-- ITEM 1 -->
+          <article class="auction-card" data-id="1" aria-labelledby="title1">
+            <div class="media" aria-hidden="false">
+              <div class="live-dot" aria-hidden="true"></div>
+              <img src="images/item-tee.jpg" alt="Signature Tee — Matte Black" loading="lazy" />
+            </div>
+
+            <div class="body">
+              <div>
+                <div id="title1" class="title">Signature Tee — Matte Black</div>
+                <div class="meta">Unique drop — NFC tag included</div>
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div class="current-bid" id="bidDisplay1">₹12,500</div>
+                <div class="meta">12 bids · 3 watchers</div>
+              </div>
+
+              <div class="bid-info">
+                <div style="flex:1">
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <input id="bidInput1" class="input" type="number" placeholder="₹13,000+" aria-label="Enter bid amount for item 1" />
+                    <button class="bid-cta" onclick="placeBid(1)">BID</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timer" id="timer1">02:47:23</div>
+            </div>
+          </article>
+
+          <!-- ITEM 2 -->
+          <article class="auction-card" data-id="2" aria-labelledby="title2">
+            <div class="media">
+              <div class="live-dot"></div>
+              <img src="images/item-bomber.jpg" alt="Crafted Bomber — Olive" loading="lazy" />
+            </div>
+
+            <div class="body">
+              <div>
+                <div id="title2" class="title">Crafted Bomber — Olive</div>
+                <div class="meta">Limited size run • Hand-stitched trims</div>
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div class="current-bid" id="bidDisplay2">₹28,500</div>
+                <div class="meta">8 bids · 7 watchers</div>
+              </div>
+
+              <div class="bid-info">
+                <div style="flex:1">
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <input id="bidInput2" class="input" type="number" placeholder="₹29,000+" aria-label="Enter bid amount for item 2" />
+                    <button class="bid-cta" onclick="placeBid(2)">BID</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timer" id="timer2">01:23:45</div>
+            </div>
+          </article>
+
+          <!-- ITEM 3 -->
+          <article class="auction-card" data-id="3" aria-labelledby="title3">
+            <div class="media">
+              <div class="live-dot"></div>
+              <img src="images/item-sneaker.jpg" alt="Drop Edition Sneakers" loading="lazy" />
+            </div>
+
+            <div class="body">
+              <div>
+                <div id="title3" class="title">Drop Edition Sneakers</div>
+                <div class="meta">Hand-finished sole • Collector serial</div>
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div class="current-bid" id="bidDisplay3">₹45,000</div>
+                <div class="meta">21 bids · 15 watchers</div>
+              </div>
+
+              <div class="bid-info">
+                <div style="flex:1">
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <input id="bidInput3" class="input" type="number" placeholder="₹46,000+" aria-label="Enter bid amount for item 3" />
+                    <button class="bid-cta" onclick="placeBid(3)">BID</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timer" id="timer3">00:56:12</div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Advisor column -->
+      <aside>
+        <div class="advisor" role="complementary" aria-labelledby="advisorTitle">
+          <h4 id="advisorTitle">Sneh — Auction Advisor</h4>
+          <p>Ask Sneh for bidding strategy, auction rules, or help with NFC authentication and checkout flow.</p>
+
+          <input id="advisorInput" class="ai-input" placeholder="e.g. 'How much should I bid?'" aria-label="Ask Sneh auction advisor" />
+          <div style="display:flex;gap:8px;margin-top:10px;">
+            <button class="btn" onclick="askAdvisor()">Ask</button>
+            <button class="btn ghost" onclick="playAdvisorGuide()">▶ Guide</button>
+          </div>
+
+          <div class="ai-res" id="advisorRes" aria-live="polite" style="margin-top:12px"></div>
+
+          <div style="margin-top:18px">
+            <h4 style="margin:0 0 8px;color:var(--purple);font-family:'Clash Display',serif">Quick Rules</h4>
+            <ul style="color:var(--muted);margin:8px 0 0;padding-left:18px;line-height:1.6">
+              <li>Highest bid at timer end wins.</li>
+              <li>Bids are final — confirm payment within 24 hours.</li>
+              <li>NFC tag is shipped with authenticated serial.</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="leaderboard-wrap" style="align-items:flex-start;">
+      <div class="leaderboard" aria-labelledby="leaderTitle">
+        <h3 id="leaderTitle">Top Bidders</h3>
+        <div id="leaders">
+          <div class="leader-row"><div class="leader-rank">1</div><div class="leader-name">arun_v</div><div class="leader-bid">₹1.2L</div></div>
+          <div class="leader-row"><div class="leader-rank">2</div><div class="leader-name">priya.k</div><div class="leader-bid">₹98K</div></div>
+          <div class="leader-row"><div class="leader-rank">3</div><div class="leader-name">nikhil_design</div><div class="leader-bid">₹87K</div></div>
+        </div>
+      </div>
+
+      <div style="min-width:320px">
+        <div class="card" style="padding:18px;border-radius:16px;">
+          <h4 style="margin:0 0 8px;color:var(--purple);font-family:'Clash Display',serif">Auction Notes</h4>
+          <p style="color:var(--muted);margin:0 0 12px">Payments must be completed within 24 hours of auction close. All items have NFC authenticity; scan the tag after delivery to register your piece.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn ghost" onclick="window.location.href='shipping.html'">Shipping Policy</button>
+            <button class="btn ghost" onclick="window.open('https://wa.me/917597152209','_blank')">Contact Support</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <main>
-    <!-- HERO -->
-    <div class="auction-hero">
-      <h1>LIVE AUCTION</h1>
-      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.8); max-width: 600px; margin: 0 auto;">
-        Real-time bidding on exclusive Snehvastra pieces. Limited quantities.
-      </p>
-    </div>
-
-    <!-- LIVE AUCTIONS -->
-    <div class="auctions-grid">
-      <div class="auction-item" data-id="1">
-        <div class="auction-image">
-          <span class="live-dot"></span>
-          👕
-        </div>
-        <div class="auction-content">
-          <div class="auction-title">Signature Tee - Matte Black</div>
-          <div class="current-bid" data-bid="12500">₹12,500</div>
-          <div class="bid-counter">12 bids • 3 watchers</div>
-          <div class="bid-input-group">
-            <input type="number" class="bid-input" placeholder="₹13,000" min="13000" id="bid1" />
-            <button class="bid-btn" onclick="placeBid(1)">BID NOW</button>
-          </div>
-          <div class="auction-timer" id="timer1">02:47:23</div>
-        </div>
-      </div>
-
-      <div class="auction-item" data-id="2">
-        <div class="auction-image">
-          <span class="live-dot"></span>
-          🧥
-        </div>
-        <div class="auction-content">
-          <div class="auction-title">Crafted Bomber - Olive</div>
-          <div class="current-bid" data-bid="28500">₹28,500</div>
-          <div class="bid-counter">8 bids • 7 watchers</div>
-          <div class="bid-input-group">
-            <input type="number" class="bid-input" placeholder="₹29,000" min="29000" id="bid2" />
-            <button class="bid-btn" onclick="placeBid(2)">BID NOW</button>
-          </div>
-          <div class="auction-timer" id="timer2">01:23:45</div>
-        </div>
-      </div>
-
-      <div class="auction-item" data-id="3">
-        <div class="auction-image">
-          <span class="live-dot"></span>
-          👟
-        </div>
-        <div class="auction-content">
-          <div class="auction-title">Drop Edition Sneakers</div>
-          <div class="current-bid" data-bid="45000">₹45,000</div>
-          <div class="bid-counter">21 bids • 15 watchers</div>
-          <div class="bid-input-group">
-            <input type="number" class="bid-input" placeholder="₹46,000" min="46000" id="bid3" />
-            <button class="bid-btn" onclick="placeBid(3)">BID NOW</button>
-          </div>
-          <div class="auction-timer" id="timer3">00:56:12</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LEADERBOARD -->
-    <div class="leaderboard">
-      <h3>🏆 TOP BIDDERS</h3>
-      <div class="leaderboard-list">
-        <div class="leader-item">
-          <span class="leader-rank">1</span>
-          <span class="leader-name">arun_v</span>
-          <span class="leader-bid">₹1.2L</span>
-        </div>
-        <div class="leader-item">
-          <span class="leader-rank">2</span>
-          <span class="leader-name">priya.k</span>
-          <span class="leader-bid">₹98K</span>
-        </div>
-        <div class="leader-item">
-          <span class="leader-rank">3</span>
-          <span class="leader-name">nikhil_design</span>
-          <span class="leader-bid">₹87K</span>
-        </div>
-        <div class="leader-item">
-          <span class="leader-rank">4</span>
-          <span class="leader-name">sneha_22</span>
-          <span class="leader-bid">₹76K</span>
-        </div>
-        <div class="leader-item">
-          <span class="leader-rank">5</span>
-          <span class="leader-name">raj_maker</span>
-          <span class="leader-bid">₹65K</span>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+  <!-- Footer -->
+  <footer style="max-width:var(--max);margin:60px auto 120px;padding:0 20px;color:var(--muted);text-align:center">
+    © <span id="year"></span> Snehvastra · All rights reserved.
   </footer>
 
-  <!-- TOAST -->
-  <div id="toast" class="toast"></div>
+  <!-- Floating AI orb -->
+  <button class="ai-orb" id="aiOrb" aria-label="Open Sneh — Auction Advisor" title="Ask Sneh">
+    S
+  </button>
+
+  <!-- Modal (Sneh full assistant) -->
+  <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Sneh — Full Auction Advisor</h3>
+      <p style="color:var(--muted);margin:6px 0 12px">Ask anything about bidding, auction rules, or NFC authentication. You can also play an auction guide.</p>
+
+      <label for="modalInput" style="font-weight:700;color:var(--purple);display:block;margin-bottom:8px">Your question</label>
+      <input id="modalInput" class="ai-input" placeholder="e.g. 'When does bidding extend?'" />
+
+      <div class="controls" style="margin-top:12px">
+        <button class="btn" id="modalAsk">Ask</button>
+        <button class="btn ghost" id="modalGuide">▶ Guide</button>
+        <button class="btn ghost" id="modalClose">Close</button>
+      </div>
+
+      <div id="modalRes" class="ai-response" style="margin-top:12px;color:var(--muted)"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast">Saved</div>
 
   <script>
-    // MASTER SCRIPT + AUCTION
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    let bids = JSON.parse(localStorage.getItem('snehvastra_bids')) || {1:12500, 2:28500, 3:45000};
-    
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
+    /**************************************************************************
+     * Basic state (will be replaced by server / websocket in production)
+     **************************************************************************/
+    // Cart sync
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart') || '{}');
+    function updateCartCount(){
+      const total = Object.values(cart).reduce((s,v)=>s+(v||0),0);
+      document.getElementById('cartCount').textContent = total;
     }
 
-    function showToast(message, type = 'success') {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = `toast ${type}`;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4000);
-    }
+    // Sample bids state
+    const bids = {1:12500,2:28500,3:45000};
+    const watchers = {1:3,2:7,3:15};
+    const bidCounts = {1:12,2:8,3:21};
 
-    // 🔥 LIVE BIDDING
-    function placeBid(auctionId) {
-      const bidInput = document.getElementById(`bid${auctionId}`);
-      const bidBtn = event.target;
-      const currentBid = bids[auctionId];
-      const newBid = parseInt(bidInput.value);
-
-      if (!newBid || newBid <= currentBid) {
-        showToast('❌ Bid must be higher than current: ₹' + currentBid.toLocaleString(), 'error');
-        return;
-      }
-
-      bidBtn.disabled = true;
-      bidBtn.textContent = 'BIDDING...';
-
-      setTimeout(() => {
-        bids[auctionId] = newBid;
-        document.querySelector(`[data-id="${auctionId}"] .current-bid`).textContent = '₹' + newBid.toLocaleString();
-        document.querySelector(`[data-id="${auctionId}"] .current-bid`).setAttribute('data-bid', newBid);
-        bidInput.value = (newBid + 1000).toLocaleString();
-        bidInput.placeholder = '₹' + (newBid + 1000).toLocaleString();
-
-        localStorage.setItem('snehvastra_bids', JSON.stringify(bids));
-        showToast('✅ Bid placed successfully! You\'re winning.', 'success');
-        bidBtn.disabled = false;
-        bidBtn.textContent = 'BID NOW';
-      }, 1200);
-    }
-
-    // 🔥 COUNTDOWN TIMERS
-    const auctionTimers = {
-      1: new Date(Date.now() + 2*60*60*1000 + 47*60*1000 + 23*1000).getTime(),
-      2: new Date(Date.now() + 1*60*60*1000 + 23*60*1000 + 45*1000).getTime(),
-      3: new Date(Date.now() + 56*60*1000 + 12*1000).getTime()
+    // Auction timers (relative to now; in production use server timestamps + websockets)
+    const timers = {
+      1: Date.now() + (2*3600 + 47*60 + 23)*1000, // 2h47m23s
+      2: Date.now() + (1*3600 + 23*60 + 45)*1000,
+      3: Date.now() + (56*60 + 12)*1000
     };
 
-    function updateAuctionTimers() {
-      Object.keys(auctionTimers).forEach(id => {
-        const now = Date.now();
-        const diff = auctionTimers[id] - now;
-        const timerEl = document.getElementById(`timer${id}`);
-        if (diff > 0 && timerEl) {
-          const h = Math.floor(diff / 3600000);
-          const m = Math.floor((diff % 3600000) / 60000);
-          const s = Math.floor((diff % 60000) / 1000);
-          timerEl.textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-        }
-      });
+    // Utility: format INR
+    function fmtINR(x){ return '₹' + Number(x).toLocaleString('en-IN'); }
+
+    // Place bid (client-side simulation)
+    function placeBid(id){
+      const input = document.getElementById('bidInput' + id);
+      const val = parseInt(input.value);
+      if(!val || val <= bids[id]) { showToast('Enter a higher bid'); input.focus(); return; }
+
+      // update state
+      bids[id] = val;
+      bidCounts[id] = (bidCounts[id]||0) + 1;
+      watchers[id] = (watchers[id]||0) + 1;
+
+      // update UI
+      document.getElementById('bidDisplay' + id).textContent = fmtINR(val);
+      // find the .meta text and update (simple approach)
+      const card = document.querySelector(`[data-id="${id}"]`);
+      if(card) {
+        const meta = card.querySelector('.meta');
+        if(meta) meta.textContent = `${bidCounts[id]} bids · ${watchers[id]} watchers`;
+      }
+      input.value = '';
+      showToast('Bid placed — confirm in checkout');
+
+      // Optional: small extension rule — if bid placed in last 60s, extend by 90s
+      const remaining = timers[id] - Date.now();
+      if(remaining <= 60000){
+        timers[id] = timers[id] + 90000;
+        showToast('Auction extended due to last-minute bid');
+      }
     }
 
-    // INIT
-    window.addEventListener('load', () => {
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      
-      // Load current bids
-      Object.keys(bids).forEach(id => {
-        const el = document.querySelector(`[data-id="${id}"] .current-bid`);
-        if (el) el.textContent = '₹' + bids[id].toLocaleString();
-      });
-      
-      setInterval(updateAuctionTimers, 1000);
-    });
-  </script>
+    // Timers: update DOM every second
+    function updateTimers(){
+      for(const id in timers){
+        const el = document.getElementById('timer' + id);
+        const diff = timers[id] - Date.now();
+        if(!el) continue;
+        if(diff <= 0){ el.textContent = 'Closed'; continue; }
+        const h = Math.floor(diff/3600000);
+        const m = Math.floor((diff%3600000)/60000);
+        const s = Math.floor((diff%60000)/1000);
+        el.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      }
+    }
 
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
+    // Main countdown (for banner or event) — using a static event date as placeholder
+    const mainEvent = new Date('2025-12-01T18:00:00').getTime();
+    function updateMainEvent(){
+      const diff = mainEvent - Date.now();
+      const bannerEl = document.getElementById('heroTitle');
+      // we only use for informational purposes — hero already displays title
+      if(diff <= 0){
+        // event live
+      }
+    }
+
+    // Scroll to grid
+    function scrollToGrid(){
+      const el = document.getElementById('auctionsGrid');
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // Advisor (simple rule-based assistant for now)
+    function generateAdvisorResponse(q){
+      if(!q || !q.trim()) return "Try: 'How much should I bid?', 'How does extension work?', or 'What is NFC authentication?'";
+      q = q.toLowerCase();
+      if(q.includes('how much') || q.includes('how much should') || q.includes('suggest')) {
+        return "Sneh suggests bidding 5–10% above current if you want a high chance, or set a 'sniper' higher bid and monitor the timer.";
+      }
+      if(q.includes('extension') || q.includes('extend') || q.includes('last minute')) {
+        return "We extend the auction by 90 seconds if a bid arrives within the final 60 seconds — to avoid sniping.";
+      }
+      if(q.includes('nfc') || q.includes('auth') || q.includes('authenticate')) {
+        return "Each SNEHVASTRA ONE piece includes an NFC tag with a unique serial. Scan post-delivery to register ownership and validity.";
+      }
+      if(q.includes('pay') || q.includes('payment') || q.includes('invoice')) {
+        return "Winners receive an invoice and must complete payment within 24 hours to confirm shipment and NFC registration.";
+      }
+      return "Great question. If you'd like, ask for 'guide' to hear a short auction walkthrough.";
+    }
+
+    function askAdvisor(){
+      const q = document.getElementById('advisorInput').value || '';
+      const res = generateAdvisorResponse(q);
+      document.getElementById('advisorRes').textContent = res;
+      showToast('Sneh answered — see advisor panel');
+    }
+
+    // TTS guide
+    let ttsUtter = null;
+    function playAdvisorGuide(){
+      const text = "Welcome to Snehvastra One Auction. To win, bid above the current highest price. If you bid in the final minute, the auction extends by ninety seconds. Winners must pay within 24 hours. NFC tags authenticate every piece.";
+      if('speechSynthesis' in window){
+        if(ttsUtter){ speechSynthesis.cancel(); ttsUtter = null; return; } // toggle stop
+        ttsUtter = new SpeechSynthesisUtterance(text);
+        ttsUtter.rate = 0.98; ttsUtter.pitch = 0.95;
+        const voices = window.speechSynthesis.getVoices();
+        if(voices && voices.length) ttsUtter.voice = voices.find(v => /en-?gb|en-?us|default/i.test(v.lang)) || voices[0];
+        ttsUtter.onend = ()=> { ttsUtter = null; };
+        speechSynthesis.speak(ttsUtter);
+      } else {
+        showToast('TTS not supported');
+      }
+    }
+
+    // Modal controls (full Sneh assistant)
+    const aiOrb = document.getElementById('aiOrb');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalInput = document.getElementById('modalInput');
+    const modalAsk = document.getElementById('modalAsk');
+    const modalRes = document.getElementById('modalRes');
+    const modalGuide = document.getElementById('modalGuide');
+    const modalClose = document.getElementById('modalClose');
+
+    aiOrb.addEventListener('click', ()=> openSnehModal());
+    function openSnehModal(){
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden','false');
+      modalInput.focus();
+    }
+    function closeSnehModal(){
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+      modalRes.textContent = '';
+    }
+    modalClose.addEventListener('click', closeSnehModal);
+    modalAsk.addEventListener('click', ()=>{
+      const q = modalInput.value || '';
+      modalRes.textContent = generateAdvisorResponse(q.toLowerCase());
+    });
+    modalGuide.addEventListener('click', playAdvisorGuide);
+    modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeSnehModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeSnehModal(); });
+
+    // Toast helper
+    const toastEl = document.getElementById('toast');
+    let toastTimer = null;
+    function showToast(msg, ms=2600){
+      toastEl.textContent = msg;
+      toastEl.style.display = 'block';
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>{ toastEl.style.display = 'none'; }, ms);
+    }
+
+    // Initialization
+    window.addEventListener('load', ()=>{
+      updateCartCount();
+      document.getElementById('year').textContent = new Date().getFullYear();
+      updateTimers();
+      setInterval(updateTimers, 1000);
+    });
+
+    // Accessibility small helpers (focus trap in modal)
+    modalBackdrop.addEventListener('keydown', (e)=>{
+      if(e.key !== 'Tab') return;
+      const focusable = modalBackdrop.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if(!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length-1];
+      if(e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
+      else if(!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
+    });
+
   </script>
 </body>
 </html>
