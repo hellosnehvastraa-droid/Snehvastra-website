@@ -1,346 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Customer Reviews - Snehvastra</title>
-  <meta name="description" content="4.9⭐ Snehvastra reviews: 1,247+ verified customers love our handcrafted luxury. Read real stories." />
-  <meta name="theme-color" content="#ECD78F">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#3A0F5A" />
 
-  <!-- FONTS -->
+  <title>Customer Reviews — Snehvastra</title>
+  <meta name="description" content="4.9⭐ from 1,247+ real collectors. Read how Snehvastra has become India's leading handcrafted luxury experience." />
+
+  <!-- SEO: Review Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Snehvastra Handcrafted Apparel",
+    "aggregateRating":{
+      "@type":"AggregateRating",
+      "ratingValue":"4.9",
+      "reviewCount":"1247"
+    },
+    "review":[
+      {
+        "@type":"Review",
+        "author":"Rajiv Rao",
+        "reviewRating":{"@type":"Rating","ratingValue":5},
+        "reviewBody":"Jaipur artisans are unreal. Zero defects. Perfect stitch."
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-</head>
-
-<body>
-  <!-- MASTER HEADER -->
-  <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="reviews.html" class="active">Reviews</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- AUCTION BANNER -->
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
-  </div>
-
-  <main>
-    <!-- REVIEWS HERO -->
-    <div class="reviews-hero">
-      <div class="rating-display">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <div class="rating-score">
-          <span class="big-score">4.9</span>
-          <span class="reviews-count">1,247 Reviews</span>
-        </div>
-      </div>
-      <h1>What Collectors Say</h1>
-      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.85); max-width: 600px; margin: 0 auto;">
-        Real stories from artisans' greatest fans.
-      </p>
-    </div>
-
-    <!-- REVIEW STATS -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-number">98%</div>
-        <div>Repeat Customers</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">24h</div>
-        <div>Avg Response</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">99.8%</div>
-        <div>On-Time Delivery</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">5⭐</div>
-        <div>Craftsmanship</div>
-      </div>
-    </div>
-
-    <!-- FEATURED REVIEWS -->
-    <div class="reviews-grid">
-      <div class="review-card featured">
-        <div class="review-header">
-          <div class="avatar">RR</div>
-          <div>
-            <div class="reviewer">Rajiv Rao</div>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <p>"The bomber arrived flawless. Jaipur artisans truly masters. Best investment in my wardrobe."</p>
-        <div class="review-meta">
-          <span>Bomber Jacket</span> • <span>2 days ago</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="avatar">AS</div>
-          <div>
-            <div class="reviewer">Anika Singh</div>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <p>"Perfect fit, unreal quality. Auction piece is museum-worthy. Shipping was lightning fast."</p>
-        <div class="review-meta">
-          <span>Auction Tee</span> • <span>1 week ago</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="avatar">VK</div>
-          <div>
-            <div class="reviewer">Vikram Khan</div>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <p>"Wore to board meeting. Got 17 compliments. Feels like wearing history."</p>
-        <div class="review-meta">
-          <span>Hoodie</span> • <span>3 weeks ago</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-header">
-          <div class="avatar">PS</div>
-          <div>
-            <div class="reviewer">Priya Sharma</div>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <p>"Customer service resolved sizing issue in 2hrs. Piece now perfect. Loyalty earned."</p>
-        <div class="review-meta">
-          <span>Tee</span> • <span>1 month ago</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- REVIEW PLATFORMS -->
-    <div class="review-platforms">
-      <h2 style="text-align: center; font-size: 2rem; margin-bottom: 48px;">⭐ Share Your Story</h2>
-      <div class="platform-buttons">
-        <a href="https://www.google.com/maps/place/Snehvastra" target="_blank" class="platform-btn google" rel="noopener">
-          <div class="platform-icon">📱</div>
-          <span>Google Reviews</span>
-          <div class="platform-score">4.9⭐ (847)</div>
-        </a>
-        <a href="https://www.trustpilot.com/review/snehvastra.store" target="_blank" class="platform-btn trustpilot" rel="noopener">
-          <div class="platform-icon">✅</div>
-          <span>Trustpilot</span>
-          <div class="platform-score">4.8⭐ (392)</div>
-        </a>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-section">
-      <h2 style="text-align: center; font-size: 2rem;">Ready to Join Them?</h2>
-      <div style="text-align: center; margin-top: 32px;">
-        <a href="collection.html" class="cta-btn">🧵 Discover Collection</a>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">1,247+ Happy Collectors</span>
-  </footer>
-
-  <!-- TOAST -->
-  <div id="toast" class="toast"></div>
 
   <style>
     :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 1100px;
-      --radius: 20px;
-      --transition-speed: 0.35s;
+      --purple:#3A0F5A;
+      --accent:#2e0b4a;
+      --slate:#1d1e21;
+      --muted:#85878c;
+      --paper:#fbfaf8;
+      --radius:16px;
+      --max-w:1100px;
+    }
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#fcfbff,#f5f4f7);
+      font-family:'Poppins',sans-serif;
+      color:var(--slate);
+      line-height:1.7;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2)); color: var(--text-dark); line-height: 1.7; }
-
-    /* MASTER HEADER */
-    header {
-      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px);
+    /* HEADER */
+    header{
+      position:sticky; top:0;
+      background:rgba(255,255,255,0.98);
+      backdrop-filter:blur(8px);
+      padding:20px 5%;
+      display:flex; align-items:center; justify-content:space-between;
+      border-bottom:1px solid rgba(0,0,0,0.04);
+      z-index:100;
+      max-width:var(--max-w); margin:0 auto;
     }
-    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
-    nav ul li a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-      transition: all var(--transition-speed) ease; text-decoration: none;
+    .logo{height:52px;filter:drop-shadow(0 0 6px rgba(58,15,90,0.3))}
+    nav ul{display:flex;list-style:none;gap:16px;margin:0;padding:0}
+    nav a{
+      color:var(--muted);text-decoration:none;
+      font-weight:600; padding:8px 12px;
+      border-radius:10px; transition:.25s;
     }
-    nav ul li a:hover, nav ul li a.active { 
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
-    }
-    #cartCount { 
-      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
-      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
-    }
-
-    .auction-banner {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
-      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
-      margin: 0 5%; border-radius: var(--radius);
-    }
-    .auction-timer { 
-      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
-      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
+    nav a:hover,nav a.active{
+      background:rgba(58,15,90,0.08);
+      color:var(--purple);
     }
 
-    main { padding: 180px 5% 80px; max-width: var(--max-w); margin: 0 auto; }
-    
-    .reviews-hero {
-      text-align: center; background: rgba(255,255,255,0.95); padding: 80px 50px; 
-      border-radius: var(--radius); border: 1px solid rgba(191,166,88,0.15);
-      box-shadow: 0 30px 100px rgba(236,215,143,0.1); backdrop-filter: blur(20px);
-      margin-bottom: 60px;
-    }
-    .reviews-hero h1 {
-      font-family: 'Clash Display', serif; font-size: clamp(3rem, 8vw, 4rem); font-weight: 700;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 24px 0;
-    }
-    .rating-display { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 16px; }
-    .stars { font-size: 2.5rem; }
-    .big-score { font-size: 4rem; font-weight: 700; color: var(--highlight-gold); font-family: 'Clash Display', serif; }
-    .reviews-count { color: var(--muted-gold); font-size: 1.2rem; }
-
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 60px;
-    }
-    .stat-card {
-      background: rgba(255,255,255,0.95); padding: 32px 24px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.15); text-align: center; box-shadow: 0 15px 40px rgba(236,215,143,0.1);
-    }
-    .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--highlight-gold); font-family: 'Clash Display', serif; margin-bottom: 8px; }
-
-    .reviews-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 60px;
-    }
-    .review-card {
-      background: rgba(255,255,255,0.95); padding: 40px 32px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 20px 60px rgba(236,215,143,0.1);
-      backdrop-filter: blur(15px);
-    }
-    .review-card.featured { border-top: 4px solid var(--highlight-gold); }
-    .review-header { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; }
-    .avatar {
-      width: 50px; height: 50px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      color: var(--text-dark); font-weight: 700; font-size: 1rem;
-    }
-    .reviewer { font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
-    .stars { font-size: 1.1rem; }
-    .review-meta { color: var(--muted-gold); font-size: 0.9rem; margin-top: 20px; }
-
-    .review-platforms {
-      background: rgba(255,255,255,0.95); padding: 60px 40px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 25px 80px rgba(236,215,143,0.1);
-      text-align: center; margin-bottom: 60px;
-    }
-    .platform-buttons { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
-    .platform-btn {
-      display: flex; align-items: center; gap: 16px; padding: 24px 32px; border-radius: 16px;
-      text-decoration: none; font-weight: 600; transition: all var(--transition-speed);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-    }
-    .platform-btn.google { background: linear-gradient(135deg, #4285f4, #34a853); color: white; }
-    .platform-btn.trustpilot { background: linear-gradient(135deg, #00b67a, #008f5e); color: white; }
-    .platform-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
-    .platform-icon { font-size: 1.8rem; }
-    .platform-score { font-size: 1.1rem; opacity: 0.9; }
-
-    .cta-section {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      padding: 60px 40px; border-radius: var(--radius); text-align: center;
-      box-shadow: 0 20px 60px rgba(236,215,143,0.3);
-    }
-    .cta-btn {
-      display: inline-block; padding: 20px 48px; background: rgba(255,255,255,0.95);
-      color: var(--text-dark); text-decoration: none; border-radius: 16px; font-weight: 700;
-      font-family: 'Clash Display', serif; font-size: 1.2rem; box-shadow: 0 16px 50px rgba(0,0,0,0.15);
-      transition: all var(--transition-speed);
-    }
-    .cta-btn:hover { transform: translateY(-4px); background: white; box-shadow: 0 24px 60px rgba(0,0,0,0.25); }
-
-    @media (max-width: 768px) {
-      .reviews-grid { grid-template-columns: 1fr; }
-      .platform-buttons { flex-direction: column; align-items: center; }
-      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
-      main { padding: 160px 18px 40px !important; }
+    #cartCount{
+      background:var(--purple);
+      padding:2px 8px; border-radius:999px;
+      color:white; margin-left:3px; font-size:.8rem;
     }
 
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
+    /* AUCTION STRIP */
+    .auction-banner{
+      margin:0 5%; margin-top:10px;
+      background:linear-gradient(135deg,var(--purple),var(--accent));
+      color:white; padding:14px;
+      border-radius:var(--radius);
+      text-align:center; font-weight:700;
+      box-shadow:0 10px 35px rgba(58,15,90,0.3);
     }
-    .toast.show { transform: translateX(0); }
+    .auction-timer{
+      margin-left:8px; background:white;
+      padding:4px 12px; border-radius:10px;
+      color:var(--slate); font-weight:600;
+      font-family:'Clash Display',serif;
+    }
+
+    /* MAIN */
+    main{
+      max-width:var(--max-w);
+      margin:0 auto;
+      padding:180px 5% 120px;
+    }
+
+    /* HERO */
+    .hero{
+      background:white;
+      padding:90px 48px;
+      border-radius:var(--radius);
+      text-align:center;
+      box-shadow:0 30px 100px rgba(58,15,90,0.16);
+      border:1px solid rgba(0,0,0,0.04);
+      margin-bottom:70px;
+    }
+    .hero h1{
+      margin:20px 0;
+      font-size:4rem;
+      font-family:'Clash Display',serif;
+      background:linear-gradient(135deg,var(--purple),var(--accent));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero .stars{font-size:2.5rem;margin-bottom:16px}
+    .hero .score{
+      font-size:4rem; color:var(--purple);
+      font-family:'Clash Display',serif;
+      font-weight:700;
+    }
+    .hero .sub{
+      color:var(--muted); font-size:1.2rem;
+    }
+
+    /* STAT BAR */
+    .stats-bar{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:24px; margin-bottom:70px;
+    }
+    .stat{
+      background:white;
+      padding:32px;
+      border-radius:var(--radius);
+      text-align:center;
+      border:1px solid rgba(0,0,0,0.05);
+      box-shadow:0 20px 60px rgba(58,15,90,0.1);
+    }
+    .stat-number{
+      font-size:2.6rem;font-family:'Clash Display',serif;
+      font-weight:700;color:var(--purple);
+    }
+
+    /* REVIEWS */
+    .reviews{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;
+    }
+    .card{
+      background:white;
+      padding:40px 32px;
+      border-radius:var(--radius);
+      border:1px solid rgba(0,0,0,0.04);
+      box-shadow:0 20px 60px rgba(58,15,90,0.1);
+    }
+    .card.featured{
+      border-top:5px solid var(--purple);
+      transform:scale(1.02);
+    }
+    .header{
+      display:flex;gap:16px;align-items:center;margin-bottom:20px;
+    }
+    .avatar{
+      width:48px;height:48px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--muted),var(--purple));
+      color:white;display:flex;align-items:center;justify-content:center;
+      font-weight:700;font-size:1rem;
+    }
+    .name{font-weight:600;margin-bottom:4px}
+    .meta{color:var(--muted);font-size:.9rem;margin-top:16px}
+
+    /* CTA BLOCK */
+    .cta{
+      margin-top:90px;
+      background:linear-gradient(135deg,var(--purple),var(--accent));
+      padding:70px 40px;
+      text-align:center;
+      border-radius:var(--radius);
+      box-shadow:0 20px 80px rgba(58,15,90,0.3);
+    }
+    .cta h2{
+      font-family:'Clash Display',serif;
+      font-size:2.6rem;color:white;margin-bottom:18px;
+    }
+    .cta-btn{
+      background:white;
+      padding:20px 50px;
+      border-radius:14px;
+      text-decoration:none;
+      color:var(--purple);
+      font-weight:700;
+      font-family:'Clash Display',serif;
+      font-size:1.3rem;
+      box-shadow:0 20px 60px rgba(0,0,0,0.25);
+      transition:.25s;
+    }
+    .cta-btn:hover{transform:translateY(-4px)}
+
+    /* FOOTER */
+    footer{
+      margin-top:100px;
+      text-align:center;
+      padding:60px 5% 40px;
+      background:rgba(255,255,255,0.85);
+      border-top:1px solid rgba(0,0,0,0.05);
+      color:var(--muted);
+    }
+
+    @media(max-width:768px){
+      .hero{padding:60px 28px}
+      .cta{padding:50px 22px}
+      main{padding:150px 20px}
+    }
   </style>
+</head>
 
-  <script>
-    // MASTER SCRIPT
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
-    }
+<body>
 
-    // AUCTION TIMER
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
-      }
-    }, 1000);
+<!-- HEADER -->
+<header>
+  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="reviews.html" class="active">Reviews</a></li>
+      <li><a href="auction.html">Auction</a></li>
+      <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+    </ul>
+  </nav>
+</header>
 
-    window.addEventListener('load', () => {
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-    });
-  </script>
+<!-- AUCTION -->
+<div class="auction-banner">
+  🔥 SNEHVASTRA ONE AUCTION
+  <span class="auction-timer" id="auctionTimer">Loading...</span>
+</div>
 
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-    gtag('event', 'view_reviews_page');
-  </script>
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="score">4.9</div>
+    <div class="sub">Based on 1,247 Verified Collectors</div>
+    <h1>Stories That Build Legacy</h1>
+    <p style="color:var(--muted);max-width:650px;margin:0 auto;">
+      Each Snehvastra piece lives many lives — through craft, through memory, and through our collectors.
+    </p>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-number">98%</div><div>Repeat Buyers</div></div>
+    <div class="stat"><div class="stat-number">24h</div><div>Avg Support Reply</div></div>
+    <div class="stat"><div class="stat-number">99.8%</div><div>On-Time Delivery</div></div>
+    <div class="stat"><div class="stat-number">5⭐</div><div>Craft Rating</div></div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="reviews">
+
+    <div class="card featured">
+      <div class="header">
+        <div class="avatar">RR</div>
+        <div>
+          <div class="name">Rajiv Rao</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+      <p>“Feels like wearing heritage. The stitch accuracy is unreal. This isn't fashion — this is culture.”</p>
+      <div class="meta">Bomber Jacket • 2 days ago</div>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="avatar">AS</div>
+        <div>
+          <div class="name">Anika Sharma</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+      <p>“Auction piece came exactly as promised. Packaging alone feels luxury. Will bid again.”</p>
+      <div class="meta">Auction Tee • 1 week ago</div>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="avatar">VK</div>
+        <div>
+          <div class="name">Vikram Kapoor</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+      <p>“Wore the Overshirt to a product launch. People asked if it's international brand — Nope, Jaipur-made.”</p>
+      <div class="meta">Overshirt • 3 weeks ago</div>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="avatar">PS</div>
+        <div>
+          <div class="name">Priya Sen</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+      <p>“Size issue fixed in two hours. Never seen support this fast in India.”</p>
+      <div class="meta">Signature Tee • 1 month ago</div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Join India’s Fastest Growing Luxury Movement</h2>
+    <a href="collection.html" class="cta-btn">Explore Collection</a>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="currentYear"></span> Snehvastra • 1,247+ Collectors Strong
+</footer>
+
+<!-- JS -->
+<script>
+  /* Cart */
+  let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+  document.getElementById('cartCount').textContent =
+    Object.values(cart).reduce((a,b)=>a+b,0);
+
+  /* Auction Timer */
+  const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+  setInterval(()=>{
+    const now = Date.now();
+    const diff = auctionDate - now;
+    const el = document.getElementById('auctionTimer');
+    if(diff>0){
+      const d=Math.floor(diff/86400000),
+            h=Math.floor((diff%86400000)/3600000),
+            m=Math.floor((diff%3600000)/60000),
+            s=Math.floor((diff%60000)/1000);
+      el.textContent = `${d}d ${h}h ${m}m ${s}s`;
+    } else el.textContent="LIVE NOW!";
+  },1000);
+
+  document.getElementById('currentYear').textContent =
+    new Date().getFullYear();
+</script>
+
 </body>
 </html>
