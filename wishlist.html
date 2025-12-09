@@ -1,196 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Join SNEHVASTRA ONE Auction Waitlist</title>
-  <meta name="description" content="Be first for Snehvastra ONE Auction - Limited pieces. Exclusive access. Join waitlist now." />
-  <meta name="theme-color" content="#ECD78F">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#3A0F5A" />
+  <title>Wishlist - Snehvastra</title>
+  <meta name="description" content="Your saved Snehvastra pieces. Track exclusive drops and auction items. Priority notifications." />
 
-  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600,700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 1200px;
-      --radius: 16px;
-      --transition-speed: 0.35s;
+    :root{
+      --purple:#3A0F5A; --slate:#22232A; --mid:#3B3D45; --silver:#B7B9BD; --paper:#F6F6F6;
+      --text:#EDECEF; --muted:#C7C6C8; --max-w:1200px; --radius:14px; --ease:.28s;
     }
-
-    /* MASTER TEMPLATE STYLES */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.6;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#FBFAF8);color:var(--slate);min-height:100vh;overflow-x:hidden;line-height:1.7}
 
     /* HEADER */
-    header {
-      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px);
-    }
-    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
-    nav ul li a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-      transition: all var(--transition-speed) ease; text-decoration: none;
-    }
-    nav ul li a:hover, nav ul li a.active { 
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
-    }
-    #cartCount { 
-      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
-      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.95));border-bottom:1px solid rgba(183,185,189,0.08);border-radius:0 0 var(--radius) var(--radius);z-index:100;max-width:var(--max-w);margin:0 auto;padding:20px 5%;display:flex;align-items:center;justify-content:space-between}
+    .logo{height:50px;filter:drop-shadow(0 0 12px var(--purple))}
+    nav ul{display:flex;list-style:none;gap:15px;flex-wrap:wrap;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:600;padding:8px 14px;border-radius:8px;transition:all var(--ease)}
+    nav a:hover, nav a.active{background:rgba(58,15,90,0.04);color:var(--purple)}
+    #cartCount{background:var(--purple);color:#fff;border-radius:50%;padding:2px 6px;font-size:0.8rem;font-weight:700;margin-left:4px}
+
+    .auction-banner{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:15px 20px;text-align:center;font-weight:700;position:sticky;top:92px;z-index:90;box-shadow:0 4px 20px rgba(58,15,90,0.3);margin:0 5%;border-radius:var(--radius)}
+    .auction-timer{font-family:'Clash Display',serif;font-size:0.9rem;background:rgba(255,255,255,0.95);padding:6px 12px;border-radius:12px;display:inline-block;margin-left:8px;color:var(--slate)}
+
+    main{padding:180px 5% 80px;max-width:var(--max-w);margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:40px}
+
+    /* HERO */
+    .hero-badge{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:12px 28px;border-radius:50px;font-weight:700;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;display:inline-block;box-shadow:0 8px 25px rgba(58,15,90,0.3)}
+    .hero h1{font-family:'Clash Display',serif;font-weight:700;font-size:clamp(2.2rem,5vw,3rem);background:linear-gradient(135deg,var(--purple),#2e0b4a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:6px 0}
+    .hero .subtitle{font-size:1.05rem;color:var(--mid);max-width:700px;margin:0 auto 0;font-weight:400;line-height:1.6}
+
+    /* LAYOUT */
+    .content{display:grid;grid-template-columns:1fr 360px;gap:32px;width:100%;max-width:1100px;align-items:start}
+    .panel{background:#fff;backdrop-filter:blur(12px);border-radius:16px;padding:24px;border:1px solid rgba(58,15,90,0.06);box-shadow:0 20px 60px rgba(58,15,90,0.06)}
+    .wishlist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+
+    .item-card{display:flex;gap:16px;align-items:center;padding:14px;border-radius:12px;border:1px solid rgba(34,35,42,0.04);transition:all var(--ease);text-align:left}
+    .item-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(58,15,90,0.06)}
+    .item-thumb{width:96px;height:96px;border-radius:12px;object-fit:cover;background:linear-gradient(180deg,rgba(58,15,90,0.02),rgba(34,35,42,0.02))}
+    .item-info{flex:1}
+    .item-title{font-weight:700;color:var(--slate);margin-bottom:6px}
+    .item-meta{color:var(--mid);font-size:0.95rem;margin-bottom:8px}
+    .item-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .btn{padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:700;font-size:0.95rem}
+    .btn.primary{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid rgba(58,15,90,0.09);color:var(--purple)}
+
+    .sidebar .counter{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:14px;border-radius:12px;font-weight:700;font-size:1rem;display:block;margin-bottom:18px}
+    .sidebar .note{color:var(--mid);font-size:0.95rem;margin-bottom:18px}
+    .sidebar .notif-group{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+    .sidebar input[type="email"]{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(58,15,90,0.08);font-size:0.95rem}
+    .sidebar .small{font-size:0.9rem;color:var(--muted);margin-top:8px}
+
+    .empty{padding:60px;border-radius:12px;text-align:center;color:var(--mid)}
+    .empty a{color:var(--purple);text-decoration:none;font-weight:700}
+
+    footer{text-align:center;padding:60px 5% 40px;background:rgba(255,255,255,0.85);margin-top:40px;color:var(--muted);border-top:1px solid rgba(183,185,189,0.1);font-size:0.95rem;max-width:var(--max-w);margin-left:auto;margin-right:auto}
+
+    @media(max-width:980px){
+      .content{grid-template-columns:1fr;gap:18px}
+      main{padding:140px 5% 60px}
+      .sidebar{order:2}
     }
 
-    /* AUCTION BANNER - SPECIAL */
-    .auction-banner {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 20px 25px; text-align: center; font-weight: 700; font-size: 1.1rem;
-      position: sticky; top: 92px; z-index: 90; box-shadow: 0 6px 25px rgba(236,215,143,0.4);
-      margin: 0 5%; border-radius: var(--radius);
-    }
-    .auction-timer { 
-      font-family: 'Clash Display', serif; font-size: 1rem; background: rgba(255,255,255,0.98); 
-      padding: 8px 16px; border-radius: 25px; display: inline-block; margin-left: 12px; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    /* 🔥 WAITLIST HERO */
-    main { 
-      padding: 180px 5% 80px; max-width: var(--max-w); margin: 0 auto; 
-      text-align: center; display: flex; flex-direction: column; align-items: center; gap: 60px;
-    }
-    
-    .hero-badge {
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      color: var(--text-dark); padding: 12px 28px; border-radius: 50px; font-weight: 700;
-      font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; display: inline-block;
-      box-shadow: 0 8px 25px rgba(191,166,88,0.3); animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 8px 25px rgba(191,166,88,0.3); }
-      50% { box-shadow: 0 8px 35px rgba(191,166,88,0.5); }
-    }
-
-    .hero h1 {
-      font-family: 'Clash Display', serif; font-weight: 700; font-size: clamp(3rem, 8vw, 5rem);
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;
-      letter-spacing: -1px; line-height: 1.1;
-    }
-    .hero .subtitle {
-      font-size: 1.3rem; color: rgba(75,67,55,0.8); max-width: 600px; margin: 24px auto 0;
-      font-weight: 400; line-height: 1.6;
-    }
-
-    /* 🔥 WAITLIST FORM */
-    .waitlist-form {
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 24px;
-      padding: 48px 40px; max-width: 500px; width: 100%; border: 1px solid rgba(191,166,88,0.2);
-      box-shadow: 0 25px 80px rgba(236,215,143,0.15);
-    }
-    .waitlist-counter {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 16px; margin-bottom: 32px;
-      font-family: 'Clash Display', serif; font-size: 1.2rem; font-weight: 600;
-    }
-    .form-group { margin-bottom: 24px; text-align: left; }
-    .form-group label {
-      display: block; font-size: 0.95rem; color: rgba(75,67,55,0.9); font-weight: 500;
-      margin-bottom: 8px; letter-spacing: 0.3px;
-    }
-    .form-group input {
-      width: 100%; padding: 18px 24px; border-radius: 16px; border: 2px solid rgba(191,166,88,0.2);
-      background: rgba(252,250,246,0.9); color: var(--text-dark); font-size: 1.05rem;
-      transition: all var(--transition-speed) ease; font-family: inherit; outline: none;
-    }
-    .form-group input:focus {
-      border-color: var(--muted-gold); box-shadow: 0 0 20px rgba(191,166,88,0.25);
-      background: rgba(252,250,246,1);
-    }
-
-    .join-btn {
-      width: 100%; padding: 20px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      border: none; border-radius: 20px; color: var(--text-dark); font-weight: 700; font-size: 1.15rem;
-      cursor: pointer; transition: all var(--transition-speed) ease; box-shadow: 0 12px 40px rgba(191,166,88,0.4);
-      font-family: 'Clash Display', serif; letter-spacing: 1px; text-transform: uppercase;
-      position: relative; overflow: hidden;
-    }
-    .join-btn:hover:not(:disabled) { 
-      transform: translateY(-3px); box-shadow: 0 18px 50px rgba(191,166,88,0.6); 
-    }
-    .join-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
-    .join-btn::after {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    .join-btn:hover::after { left: 100%; }
-
-    .success-message {
-      display: none; text-align: center; color: #4CAF50; font-weight: 600; font-size: 1.1rem;
-      background: rgba(76,175,80,0.1); padding: 24px; border-radius: 16px; border: 2px solid #4CAF50;
-    }
-    .success-message.show { display: block; animation: fadeInUp 0.6s ease; }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .features {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px;
-      margin-top: 40px;
-    }
-    .feature-item {
-      background: rgba(255,255,255,0.6); padding: 28px; border-radius: 16px; text-align: left;
-      border: 1px solid rgba(191,166,88,0.15); backdrop-filter: blur(10px); transition: all var(--transition-speed);
-    }
-    .feature-item:hover {
-      transform: translateY(-5px); box-shadow: 0 20px 60px rgba(236,215,143,0.2);
-    }
-    .feature-icon { font-size: 2rem; background: var(--highlight-gold); color: var(--text-dark);
-      width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px; box-shadow: 0 8px 25px rgba(191,166,88,0.3);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
-      nav ul { gap: 10px; justify-content: center; }
-      main { padding: 160px 18px 60px !important; gap: 40px; }
-      .waitlist-form { padding: 36px 24px !important; }
-      .features { grid-template-columns: 1fr; gap: 20px; }
-    }
-
-    /* TOAST + FOOTER (MASTER) */
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-      max-width: 350px;
-    }
-    .toast.show { transform: translateX(0); }
-    .toast.success { background: linear-gradient(135deg, #4CAF50, #81C784); color: white; }
-    
-    footer {
-      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: auto;
-      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
-      max-width: var(--max-w); margin-left: auto; margin-right: auto;
-    }
+    .toast{position:fixed;top:120px;right:20px;background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:16px 24px;border-radius:12px;box-shadow:0 10px 35px rgba(58,15,90,0.4);font-weight:600;z-index:1000;transform:translateX(400px);transition:transform 0.3s ease;max-width:350px}
+    .toast.show{transform:translateX(0)}
+    .toast.success{background:linear-gradient(135deg,#4CAF50,#81C784);color:#fff}
   </style>
 </head>
-
 <body>
   <!-- HEADER -->
   <header>
@@ -199,8 +83,8 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="waitlist.html" class="active">Auction</a></li>
+        <li><a href="wishlist.html" class="active">Wishlist</a></li>
+        <li><a href="auction.html">Auction</a></li>
         <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
       </ul>
     </nav>
@@ -212,51 +96,40 @@
   </div>
 
   <main>
-    <!-- HERO -->
     <div class="hero">
-      <div class="hero-badge">LIMITED AUCTION ACCESS</div>
-      <h1>Join the ONE Auction</h1>
-      <p class="subtitle">
-        Be first for exclusive Snehvastra pieces. Limited quantities. First-come bidding. 
-        Join waitlist for instant access when doors open.
-      </p>
+      <div class="hero-badge">YOUR SAVED PIECES</div>
+      <h1>Your Wishlist</h1>
+      <p class="subtitle">Track exclusive Snehvastra drops and auction items. Save for later, move to cart, or get restock alerts.</p>
     </div>
 
-    <!-- WAITLIST FORM -->
-    <div class="waitlist-form">
-      <div class="waitlist-counter" id="waitlistCounter">#<span id="counter">1247</span> JOINED</div>
-      
-      <div class="success-message" id="successMessage">
-        🎉 You're in! Check your email for auction access.
-      </div>
-
-      <form id="waitlistForm">
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+    <div class="content">
+      <!-- LEFT: WISHLIST GRID -->
+      <div class="panel">
+        <div id="wishlistArea">
+          <!-- Filled by JS -->
         </div>
-        
-        <button type="submit" class="join-btn" id="joinBtn">JOIN WAITLIST</button>
-      </form>
-    </div>
+      </div>
 
-    <!-- FEATURES -->
-    <div class="features">
-      <div class="feature-item">
-        <div class="feature-icon">👑</div>
-        <h3>First Access</h3>
-        <p>Be first in line when auction opens. Priority bidding on all pieces.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">⚡</div>
-        <h3>Live Bidding</h3>
-        <p>Real-time auctions with exclusive Snehvastra one-of-one pieces.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🔒</div>
-        <h3>Limited Spots</h3>
-        <p>Only 500 bidders. Once full, waitlist closes permanently.</p>
-      </div>
+      <!-- RIGHT: SIDEBAR -->
+      <aside class="panel sidebar">
+        <div class="counter" id="wishlistCounter">0 ITEMS</div>
+        <div class="note">Signed in as: <strong id="signedInName">Guest</strong></div>
+
+        <div style="margin-bottom:12px;">
+          <label for="notifEmail" style="display:block;font-weight:700;margin-bottom:8px">Enable restock notifications</label>
+          <div class="notif-group">
+            <input type="email" id="notifEmail" placeholder="your@email.com" />
+            <button class="btn primary" id="enableNotifBtn">Enable</button>
+          </div>
+          <div class="small">We'll only email you for wishlist changes and restocks. You can unsubscribe anytime.</div>
+        </div>
+
+        <div style="margin-top:18px;">
+          <div style="font-weight:700;margin-bottom:8px">Quick actions</div>
+          <button class="btn ghost" id="moveAllToCart">Move All to Cart</button>
+          <button class="btn ghost" id="clearWishlist">Clear Wishlist</button>
+        </div>
+      </aside>
     </div>
   </main>
 
@@ -269,61 +142,308 @@
   <div id="toast" class="toast"></div>
 
   <script>
-    // MASTER SCRIPT
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
+    /* ========= Utilities & storage keys ========= */
+    const KEY_USERS = 'snehvastra_users';
+    const KEY_USER = 'snehvastra_user'; // logged-in user object
+    const KEY_WISHLIST = 'snehvastra_wishlist'; // for guests or fallback
+    const KEY_CART = 'snehvastra_cart';
+
+    // Helper: show toast
+    function showToast(message, type='') {
+      const t = document.getElementById('toast');
+      t.textContent = message;
+      t.className = 'toast' + (type ? ' ' + type : '');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
     }
 
-    function showToast(message, type = 'success') {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = `toast ${type}`;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4000);
+    // Simple sample product lookup (used if product data not provided).
+    // Replace this with real product data or fetch later.
+    const SAMPLE_PRODUCTS = {
+      'tee-black': { id:'tee-black', title:'Signature Tee - Matte Black', price:4999, img:'images/products/tee-black-1.jpg', type:'tee' },
+      'bomber-olive': { id:'bomber-olive', title:'Crafted Bomber - Olive', price:12500, img:'images/products/bomber-olive.jpg', type:'jacket' },
+      'hoodie-gray': { id:'hoodie-gray', title:'Heritage Hoodie - Gray', price:6499, img:'images/products/hoodie-gray.jpg', type:'hoodie' }
+    };
+
+    // Get storage helpers
+    function getLocalWishlist() {
+      return JSON.parse(localStorage.getItem(KEY_WISHLIST) || '[]');
+    }
+    function setLocalWishlist(arr) {
+      localStorage.setItem(KEY_WISHLIST, JSON.stringify(arr));
+      window.dispatchEvent(new Event('wishlistUpdated'));
     }
 
-    // WAITLIST FUNCTIONALITY
-    let waitlistCount = parseInt(localStorage.getItem('snehvastra_waitlist_count')) || 1247;
-    
-    function updateCounter() {
-      document.getElementById('counter').textContent = waitlistCount;
+    function getCart() {
+      return JSON.parse(localStorage.getItem(KEY_CART) || '{}');
+    }
+    function setCart(cart) {
+      localStorage.setItem(KEY_CART, JSON.stringify(cart));
+      updateCartCount();
     }
 
-    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const email = document.getElementById('email').value.trim();
-      const btn = document.getElementById('joinBtn');
-      const form = this;
-      
-      if (!email) return;
-      
-      btn.disabled = true;
-      btn.textContent = 'JOINING...';
-      
-      // Simulate API call
-      setTimeout(() => {
-        waitlistCount++;
-        localStorage.setItem('snehvastra_waitlist_count', waitlistCount);
-        updateCounter();
-        
-        document.getElementById('successMessage').classList.add('show');
-        form.style.display = 'none';
-        
-        showToast('✅ Welcome to the auction waitlist!', 'success');
-        
-        // Store waitlist entry
-        let waitlist = JSON.parse(localStorage.getItem('snehvastra_waitlist')) || [];
-        waitlist.push({ email, joined: new Date().toISOString() });
-        localStorage.setItem('snehvastra_waitlist', JSON.stringify(waitlist));
-        
-      }, 1200);
+    function getLoggedUser() {
+      return JSON.parse(localStorage.getItem(KEY_USER) || 'null');
+    }
+    function saveLoggedUser(u) {
+      if (u) localStorage.setItem(KEY_USER, JSON.stringify(u));
+      else localStorage.removeItem(KEY_USER);
+      window.dispatchEvent(new Event('userUpdated'));
+    }
+
+    /* ========= Wishlist model =============
+       For logged-in users, wishlist is stored on user.wishlist (array of productIds).
+       For guests, a local list of items (with productId and snapshot) is used.
+       Each wishlist entry: { productId, title, price, img, addedAt }
+    ======================================= */
+
+    function loadEffectiveWishlist() {
+      const user = getLoggedUser();
+      if (user && user.wishlist && Array.isArray(user.wishlist)) {
+        // ensure entries are enriched: if it's just productIds, map to sample
+        return user.wishlist.map(entry => {
+          if (typeof entry === 'string') {
+            const p = SAMPLE_PRODUCTS[entry] || { id: entry, title: entry, price: 0, img:'images/placeholder.png' };
+            return { productId: p.id, title: p.title, price: p.price, img: p.img, addedAt: new Date().toISOString() };
+          }
+          return entry;
+        });
+      }
+      return getLocalWishlist();
+    }
+
+    function persistWishlist(wlist) {
+      const user = getLoggedUser();
+      if (user && user.id) {
+        // store under user object (only productIds to keep it small)
+        const users = JSON.parse(localStorage.getItem(KEY_USERS) || '[]');
+        const idx = users.findIndex(u => u.id === user.id);
+        const ids = wlist.map(i => i.productId);
+        if (idx >= 0) {
+          users[idx].wishlist = ids;
+          localStorage.setItem(KEY_USERS, JSON.stringify(users));
+          // update logged-in copy
+          user.wishlist = ids;
+          saveLoggedUser(user);
+        } else {
+          // fallback: save directly on logged-in user and users array
+          user.wishlist = ids;
+          saveLoggedUser(user);
+          users.push(user);
+          localStorage.setItem(KEY_USERS, JSON.stringify(users));
+        }
+      } else {
+        // guest
+        setLocalWishlist(wlist);
+      }
+      window.dispatchEvent(new Event('wishlistUpdated'));
+    }
+
+    /* ========= Render ========= */
+    const wishlistArea = document.getElementById('wishlistArea');
+    const wishlistCounter = document.getElementById('wishlistCounter');
+    const signedInName = document.getElementById('signedInName');
+
+    function renderWishlist() {
+      const w = loadEffectiveWishlist();
+      wishlistCounter.textContent = (w.length) + ' ITEM' + (w.length !== 1 ? 'S' : '');
+      const user = getLoggedUser();
+      signedInName.textContent = user && user.name ? user.name : 'Guest';
+
+      if (w.length === 0) {
+        wishlistArea.innerHTML = `
+          <div class="empty panel">
+            <h3>Your wishlist is empty</h3>
+            <p>Save pieces you love and we'll keep them safe. Get restock alerts or add to cart later.</p>
+            <p style="margin-top:18px">
+              <a href="collection.html">Browse collection</a> • <a href="auction.html">See auction</a>
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      // Build grid
+      const cards = w.map(item => {
+        const img = item.img || (SAMPLE_PRODUCTS[item.productId] ? SAMPLE_PRODUCTS[item.productId].img : 'images/placeholder.png');
+        const title = item.title || (SAMPLE_PRODUCTS[item.productId] ? SAMPLE_PRODUCTS[item.productId].title : item.productId);
+        const price = (item.price != null) ? item.price : (SAMPLE_PRODUCTS[item.productId] ? SAMPLE_PRODUCTS[item.productId].price : 0);
+        const id = item.productId;
+        return `
+          <div class="item-card" data-id="${id}">
+            <img class="item-thumb" src="${img}" alt="${escapeHtml(title)}" />
+            <div class="item-info">
+              <div class="item-title">${escapeHtml(title)}</div>
+              <div class="item-meta">₹${price.toLocaleString('en-IN')} • ${escapeHtml(item.type || (SAMPLE_PRODUCTS[id] && SAMPLE_PRODUCTS[id].type) || '—')}</div>
+              <div class="item-actions">
+                <button class="btn primary move-to-cart" data-id="${id}">Move to cart</button>
+                <button class="btn ghost remove-item" data-id="${id}">Remove</button>
+                <a href="product-single.html?pid=${encodeURIComponent(id)}" class="btn ghost">View</a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      wishlistArea.innerHTML = `<div class="wishlist-grid">${cards}</div>`;
+      attachItemHandlers();
+    }
+
+    function attachItemHandlers(){
+      document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = btn.dataset.id;
+          removeFromWishlist(id);
+        });
+      });
+      document.querySelectorAll('.move-to-cart').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = btn.dataset.id;
+          moveToCart(id);
+        });
+      });
+    }
+
+    /* ========= Actions ========= */
+
+    function addToWishlist(product) {
+      // product: {productId, title, price, img}
+      const w = loadEffectiveWishlist();
+      if (w.find(i => i.productId === product.productId)) {
+        showToast('Already in wishlist', 'success');
+        return;
+      }
+      w.unshift({...product, addedAt: new Date().toISOString()});
+      persistWishlist(w);
+      renderWishlist();
+      showToast('Added to wishlist', 'success');
+    }
+
+    function removeFromWishlist(productId) {
+      let w = loadEffectiveWishlist();
+      w = w.filter(i => i.productId !== productId);
+      persistWishlist(w);
+      renderWishlist();
+      showToast('Removed from wishlist', 'success');
+    }
+
+    function moveToCart(productId) {
+      const w = loadEffectiveWishlist();
+      const item = w.find(i => i.productId === productId);
+      if (!item) { showToast('Item not found', 'error'); return; }
+      const cart = getCart();
+      cart[productId] = cart[productId] ? cart[productId] + 1 : 1;
+      setCart(cart);
+      // remove from wishlist
+      removeFromWishlist(productId);
+      showToast('Moved to cart', 'success');
+    }
+
+    // Move all
+    document.getElementById('moveAllToCart').addEventListener('click', () => {
+      const w = loadEffectiveWishlist();
+      if (!w.length) return showToast('Wishlist is empty', 'error');
+      const cart = getCart();
+      w.forEach(item => {
+        cart[item.productId] = cart[item.productId] ? cart[item.productId] + 1 : 1;
+      });
+      setCart(cart);
+      persistWishlist([]); // clear wishlist after move
+      renderWishlist();
+      showToast('All items moved to cart', 'success');
     });
 
-    // AUCTION COUNTDOWN
+    // Clear wishlist
+    document.getElementById('clearWishlist').addEventListener('click', () => {
+      persistWishlist([]);
+      renderWishlist();
+      showToast('Wishlist cleared', 'success');
+    });
+
+    // Enable notifications
+    document.getElementById('enableNotifBtn').addEventListener('click', () => {
+      const email = document.getElementById('notifEmail').value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showToast('Enter valid email', 'error');
+      // store email per user or in local wishlists subscriptions
+      const user = getLoggedUser();
+      if (user && user.id) {
+        user.wishlistEmail = email;
+        saveLoggedUser(user);
+      } else {
+        localStorage.setItem('snehvastra_wishlist_email', email);
+      }
+      showToast('Notifications enabled', 'success');
+      document.getElementById('notifEmail').value = '';
+    });
+
+    /* ========= Helper: Escape HTML ========= */
+    function escapeHtml(str){
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    /* ========= Sync when user logs in or wishlist updates ========= */
+    window.addEventListener('userUpdated', () => {
+      renderWishlist();
+    });
+    window.addEventListener('wishlistUpdated', () => {
+      renderWishlist();
+    });
+
+    /* ========= Page init & small helpers ========= */
+    function updateCartCount() {
+      const total = Object.values(getCart()).reduce((s, q) => s + q, 0);
+      document.getElementById('cartCount').textContent = total;
+    }
+
+    // If the user logs in after being a guest, merge local wishlist into user wishlist
+    function mergeGuestWishlistIntoUser() {
+      const user = getLoggedUser();
+      if (!user || !user.id) return;
+      const guest = getLocalWishlist();
+      if (!guest || !guest.length) return;
+      const userWishlistIds = (user.wishlist && Array.isArray(user.wishlist)) ? user.wishlist.slice() : [];
+      guest.forEach(item => {
+        if (!userWishlistIds.includes(item.productId)) userWishlistIds.push(item.productId);
+      });
+      user.wishlist = userWishlistIds;
+      saveLoggedUser(user);
+      // clear guest wishlist
+      setLocalWishlist([]);
+      window.dispatchEvent(new Event('wishlistUpdated'));
+    }
+
+    // Render initial
+    window.addEventListener('load', () => {
+      updateCartCount();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      // Sample fallback: if there's no wishlist stored anywhere, seed with a few items (only for first-run)
+      if (!localStorage.getItem(KEY_WISHLIST) && !localStorage.getItem(KEY_USERS)) {
+        const seed = [
+          { productId:'tee-black', title:SAMPLE_PRODUCTS['tee-black'].title, price:SAMPLE_PRODUCTS['tee-black'].price, img:SAMPLE_PRODUCTS['tee-black'].img },
+          { productId:'bomber-olive', title:SAMPLE_PRODUCTS['bomber-olive'].title, price:SAMPLE_PRODUCTS['bomber-olive'].price, img:SAMPLE_PRODUCTS['bomber-olive'].img }
+        ];
+        setLocalWishlist(seed);
+      }
+
+      // If user logged in and there was a guest wishlist, merge
+      mergeGuestWishlistIntoUser();
+
+      renderWishlist();
+
+      // Pre-fill notification email if present
+      const user = getLoggedUser();
+      if (user && user.wishlistEmail) document.getElementById('notifEmail').value = user.wishlistEmail;
+      else if (localStorage.getItem('snehvastra_wishlist_email')) document.getElementById('notifEmail').value = localStorage.getItem('snehvastra_wishlist_email');
+    });
+
+    /* ========= Auction timer (kept from other files) ========= */
     const auctionDate = new Date('2025-12-01T18:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
@@ -340,21 +460,29 @@
       }
     }, 1000);
 
-    // INIT
-    window.addEventListener('load', () => {
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      updateCounter();
-    });
+    /* ========= Expose utility for product pages to add to wishlist ========= */
+    // Example usage from product page:
+    // window.snehvastraAddToWishlist({ productId:'tee-black', title:'...', price:4999, img:'...' })
+    window.snehvastraAddToWishlist = (product) => {
+      if (!product || !product.productId) return;
+      addToWishlist(product);
+    };
+
+    // Also allow removing programmatically
+    window.snehvastraRemoveFromWishlist = (productId) => {
+      removeFromWishlist(productId);
+    };
+
   </script>
 
   <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-CXQG6L0W01');
+    gtag('event', 'view_wishlist');
   </script>
 </body>
 </html>
