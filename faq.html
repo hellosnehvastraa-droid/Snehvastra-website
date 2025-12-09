@@ -1,367 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>FAQ - Frequently Asked Questions - Snehvastra</title>
-  <meta name="description" content="Snehvastra FAQ: Shipping, returns, sizing, auctions, payments, and craftsmanship questions answered." />
-  <meta name="theme-color" content="#ECD78F">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#3A0F5A" />
+  <title>FAQ — Snehvastra • Help & Support</title>
+  <meta name="description" content="Snehvastra FAQ: shipping, returns, sizing, auctions, payments, craftsmanship, and more." />
+  <link rel="canonical" href="https://www.snehvastra.store/faq.html" />
 
-  <!-- FONTS -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Structured FAQ Schema (keeps in sync with on-page FAQs) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"How long does shipping take in India?","acceptedAnswer":{"@type":"Answer","text":"3-5 business days. Free shipping on orders above ₹10,000. Express delivery available for a fee."}},
+      {"@type":"Question","name":"What is your return policy?","acceptedAnswer":{"@type":"Answer","text":"15-day returns on unworn regular items with tags. Auction items are final sale."}},
+      {"@type":"Question","name":"How do auctions work?","acceptedAnswer":{"@type":"Answer","text":"Live bidding — highest bidder at close wins. Winning bidder must pay within 24 hours."}},
+      {"@type":"Question","name":"How do I know my size?","acceptedAnswer":{"@type":"Answer","text":"Use our Size Guide page or ask our chat assistant for personalized advice."}}
+    ]
+  }
+  </script>
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 1000px;
-      --radius: 16px;
-      --transition-speed: 0.28s;
+    :root{
+      --bg: linear-gradient(180deg,#f7f6f8,#f3f3f5);
+      --purple:#3A0F5A;
+      --purple-2:#2e0b4a;
+      --slate:#22232A;
+      --muted:#6f7074;
+      --glass: rgba(255,255,255,0.9);
+      --card:#ffffff;
+      --radius:14px;
+      --maxw:1100px;
+      --ease: .28s;
+      --focus: rgba(186,178,255,0.22);
+      --shadow: 0 20px 80px rgba(58,15,90,0.06);
+      --accent-grad: linear-gradient(135deg,var(--purple),var(--purple-2));
+      font-synthesis: none;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      color:var(--slate);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.7;
-    }
+    /* Container */
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:22px;min-height:100vh;display:flex;flex-direction:column;gap:28px}
 
-    /* MASTER HEADER */
-    header {
-      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px);
-    }
-    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
-    nav ul li a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-      transition: all var(--transition-speed) ease; text-decoration: none;
-    }
-    nav ul li a:hover, nav ul li a.active { 
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
-    }
-    #cartCount { 
-      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
-      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
-    }
+    /* Header */
+    header{position:sticky;top:0;z-index:120;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(58,15,90,0.05)}
+    .topbar{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{height:48px}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{color:var(--purple);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px}
+    nav a:hover{background:rgba(58,15,90,0.05)}
+    #cartCount{background:var(--purple);color:white;padding:4px 8px;border-radius:999px;font-weight:800;font-size:0.85rem}
 
-    .auction-banner {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
-      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
-      margin: 0 5%; border-radius: var(--radius);
-    }
-    .auction-timer { 
-      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
-      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
-    }
+    /* Hero */
+    .hero{background:var(--card);padding:44px;border-radius:18px;box-shadow:var(--shadow);text-align:center;border:1px solid rgba(58,15,90,0.04)}
+    .hero h1{font-family:"Clash Display",serif;margin:0;color:var(--purple);font-size:clamp(1.6rem,3.8vw,2.4rem)}
+    .hero p{margin:12px auto 0;color:var(--muted);max-width:820px}
 
-    main { padding: 160px 5% 80px; max-width: var(--max-w); margin: 0 auto; }
-    
-    .faq-hero {
-      text-align: center; background: rgba(255,255,255,0.95); padding: 60px 40px; 
-      border-radius: var(--radius); border: 1px solid rgba(191,166,88,0.15);
-      box-shadow: 0 25px 80px rgba(236,215,143,0.1); backdrop-filter: blur(15px);
-      margin-bottom: 40px;
+    /* Search + controls */
+    .controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:14px}
+    .search{position:relative;max-width:720px;width:100%}
+    .search input{
+      width:100%;padding:14px 48px;border-radius:12px;border:1px solid rgba(58,15,90,0.06);
+      font-size:1rem;background:var(--glass);
+      box-shadow:0 8px 30px rgba(58,15,90,0.03);
     }
-    .faq-hero h1 {
-      font-family: 'Clash Display', serif; font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px;
-    }
+    .search .icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.05rem;color:var(--muted)}
+    .search .clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:var(--muted);cursor:pointer;font-weight:700;padding:8px;border-radius:8px}
 
-    /* FAQ SEARCH */
-    .faq-search {
-      max-width: 600px; margin: 0 auto 40px; position: relative;
-    }
-    .faq-search input {
-      width: 100%; padding: 18px 24px 18px 50px; border: 2px solid rgba(191,166,88,0.2);
-      border-radius: var(--radius); font-size: 1rem; background: rgba(255,255,255,0.9);
-      transition: all var(--transition-speed); backdrop-filter: blur(10px);
-    }
-    .faq-search input:focus { outline: none; border-color: var(--highlight-gold); box-shadow: 0 0 0 4px rgba(236,215,143,0.15); }
-    .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--muted-gold); font-size: 1.2rem; }
+    /* Grid */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+    .left{display:flex;flex-direction:column;gap:20px}
+    .right{position:sticky;top:100px;height:fit-content}
 
-    /* ACCORDION */
-    .faq-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 24px;
+    /* categories */
+    .categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+    .cat{background:var(--card);border-radius:12px;border:1px solid rgba(58,15,90,0.04);box-shadow:0 14px 50px rgba(58,15,90,0.05);overflow:hidden}
+    .cat h2{margin:0;padding:18px 20px;background:linear-gradient(90deg,rgba(58,15,90,0.03),rgba(191,191,191,0.01));color:var(--purple);font-family:"Clash Display",serif;font-size:1.1rem;border-bottom:1px solid rgba(58,15,90,0.03)}
+    .faq-list{padding:6px 0}
+    .faq-item{border-top:1px solid rgba(58,15,90,0.03);background:transparent}
+    .question{
+      display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;font-weight:700;
     }
-    .faq-category {
-      background: rgba(255,255,255,0.95); border-radius: var(--radius); 
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 20px 60px rgba(236,215,143,0.1);
-      backdrop-filter: blur(15px); overflow: hidden;
-    }
-    .faq-category h2 {
-      font-family: 'Clash Display', serif; font-size: 1.4rem; padding: 28px 32px;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      color: var(--text-dark); margin: 0;
-    }
-    .faq-item {
-      border-bottom: 1px solid rgba(191,166,88,0.1);
-    }
-    .faq-question {
-      padding: 24px 32px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-      font-weight: 600; transition: all var(--transition-speed); position: relative;
-    }
-    .faq-question:hover { background: rgba(236,215,143,0.05); }
-    .faq-question::after {
-      content: '+'; font-size: 1.5rem; font-weight: 700; color: var(--muted-gold); transition: transform var(--transition-speed);
-    }
-    .faq-question.active::after { transform: rotate(45deg); }
-    .faq-answer {
-      padding: 0 32px 24px; max-height: 0; overflow: hidden; transition: all var(--transition-speed);
-      color: rgba(75,67,55,0.85); line-height: 1.6;
-    }
-    .faq-answer.show { max-height: 200px; padding: 24px 32px 24px; }
+    .question:focus{outline:3px solid var(--focus);outline-offset:4px;border-radius:6px}
+    .q-title{display:flex;gap:12px;align-items:center}
+    .q-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(180deg,rgba(58,15,90,0.06),rgba(255,255,255,0.6));display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+    .answer{padding:0 20px;max-height:0;overflow:hidden;transition:max-height var(--ease),padding var(--ease);color:var(--muted)}
+    .answer.show{padding:14px 20px 20px;max-height:400px}
 
-    /* CONTACT CTA */
-    .contact-cta {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold)); 
-      padding: 40px; border-radius: var(--radius); text-align: center; margin-top: 60px;
-      box-shadow: 0 20px 60px rgba(236,215,143,0.3);
-    }
-    .contact-cta h3 {
-      font-family: 'Clash Display', serif; font-size: 1.6rem; margin-bottom: 16px; color: var(--text-dark);
-    }
-    .contact-btn {
-      display: inline-block; padding: 16px 32px; background: rgba(255,255,255,0.9);
-      border-radius: 12px; color: var(--text-dark); text-decoration: none; font-weight: 600;
-      transition: all var(--transition-speed);
-    }
-    .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+    /* right column card */
+    .side-card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(58,15,90,0.04);box-shadow:0 14px 50px rgba(58,15,90,0.05)}
+    .side-card h3{margin:0 0 12px;color:var(--purple);font-family:"Clash Display",serif}
+    .help-cta{display:flex;flex-direction:column;gap:12px}
+    .btn{padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn-primary{background:var(--accent-grad);color:white;box-shadow:0 12px 40px rgba(58,15,90,0.18)}
+    .btn-ghost{background:transparent;border:2px solid rgba(58,15,90,0.06);color:var(--purple)}
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .faq-grid { grid-template-columns: 1fr; }
-      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
-      nav ul { gap: 10px; justify-content: center; }
-      main { padding: 140px 18px 40px !important; }
-    }
+    /* AI orb */
+    .ai-orb{position:fixed;right:22px;bottom:22px;width:64px;height:64px;border-radius:999px;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;cursor:pointer;z-index:1200;box-shadow:0 18px 60px rgba(58,15,90,0.25)}
+    .modal-back{position:fixed;inset:0;background:rgba(15,15,20,0.45);display:none;align-items:center;justify-content:center;padding:18px;z-index:1220}
+    .modal{background:var(--card);width:100%;max-width:720px;border-radius:14px;padding:20px;border:1px solid rgba(58,15,90,0.06);box-shadow:0 40px 120px rgba(10,10,20,0.6)}
+    .modal h4{margin:0 0 8px;color:var(--purple);font-family:"Clash Display",serif}
+    .modal .controls{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    .ai-response{margin-top:12px;color:var(--muted);min-height:48px}
 
-    /* TOAST + FOOTER */
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-      max-width: 350px;
-    }
-    .toast.show { transform: translateX(0); }
-    
-    footer {
-      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: 60px;
-      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
-      max-width: var(--max-w); margin-left: auto; margin-right: auto;
+    /* auction banner inline small */
+    .auction-banner{display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,rgba(58,15,90,0.06),rgba(191,191,191,0.02));font-weight:700;color:var(--muted);font-size:0.95rem;margin-left:8px}
+    .auction-timer{font-family:"Clash Display",serif;margin-left:8px;color:var(--purple)}
+
+    /* footer */
+    footer{margin-top:28px;text-align:center;color:var(--muted);padding:28px 4px;border-top:1px solid rgba(58,15,90,0.03)}
+
+    /* responsive */
+    @media (max-width:980px){
+      .grid{grid-template-columns:1fr;gap:20px}
+      .right{position:static}
+      .controls{flex-direction:column}
     }
   </style>
 </head>
-
 <body>
-  <!-- HEADER -->
   <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="faq.html" class="active">FAQ</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-      </ul>
-    </nav>
+    <div class="topbar">
+      <div class="brand">
+        <img src="images/logo.final.png" alt="Snehvastra" class="logo" />
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="collection.html">Collection</a></li>
+            <li><a href="faq.html" class="active">FAQ</a></li>
+            <li><a href="auction.html">Auction</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div>
+        Cart (<span id="cartCount">0</span>)
+        <span class="auction-banner">SNEHVASTRA ONE <span id="auctionTimer" class="auction-timer">Loading...</span></span>
+      </div>
+    </div>
   </header>
 
-  <!-- AUCTION BANNER -->
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
-  </div>
+  <main class="wrap" id="pageWrap">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="faqTitle">
+      <h1 id="faqTitle">Help & Frequently Asked Questions</h1>
+      <p>All you need to know about ordering, auctions, craftsmanship, returns, and shipping. Use the search or ask Sneh — our assistant.</p>
 
-  <main>
-    <!-- HERO -->
-    <div class="faq-hero">
-      <h1>Frequently Asked Questions</h1>
-      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.85); max-width: 600px; margin: 0 auto;">
-        Everything you need to know about Snehvastra craftsmanship, shipping, and auctions.
-      </p>
-    </div>
-
-    <!-- SEARCH -->
-    <div class="faq-search">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="faqSearch" placeholder="Search FAQs... (e.g., shipping, returns, sizing)">
-    </div>
-
-    <!-- FAQ CATEGORIES -->
-    <div class="faq-grid">
-      <!-- ORDERS & SHIPPING -->
-      <div class="faq-category">
-        <h2>🧵 Orders & Shipping</h2>
-        <div class="faq-item">
-          <div class="faq-question">How long does shipping take in India?</div>
-          <div class="faq-answer">3-5 business days across India. Free shipping on orders above ₹10,000. Express delivery available (+₹299).</div>
+      <div class="controls" role="region" aria-label="FAQ controls">
+        <div class="search" role="search">
+          <span class="icon">🔎</span>
+          <input id="faqSearch" type="search" placeholder="Search FAQs — try 'shipping', 'returns', 'size guide', 'auction'">
+          <button class="clear" id="clearSearch" aria-label="Clear search">✕</button>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">What about international shipping?</div>
-          <div class="faq-answer">DHL Express worldwide (7-14 days). Customer pays import duties & taxes.</div>
+      </div>
+    </section>
+
+    <section class="grid" aria-live="polite">
+      <div class="left">
+        <div class="categories" id="faqCategories">
+          <!-- Category: Orders & Shipping -->
+          <section class="cat" data-cat="orders">
+            <h2>🧵 Orders & Shipping</h2>
+            <div class="faq-list" role="list">
+              <div class="faq-item" role="listitem">
+                <button class="question" data-q="How long does shipping take in India?">
+                  <span class="q-title"><span class="q-icon">🚚</span><span>How long does shipping take in India?</span></span>
+                  <span class="meta">3-5 days</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  3-5 business days across India. Free shipping on orders above ₹10,000. Express shipping available for an additional charge.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="question" data-q="What about international shipping?">
+                  <span class="q-title"><span class="q-icon">✈️</span><span>What about international shipping?</span></span>
+                  <span class="meta">DHL / 7–14 days</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  We ship worldwide via DHL Express (7–14 days). Customers are responsible for any import duties, taxes, or customs fees.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="question" data-q="Can I track my order?">
+                  <span class="q-title"><span class="q-icon">🔗</span><span>Can I track my order?</span></span>
+                  <span class="meta">Yes</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  Yes — a tracking link and SMS/email update are sent within 24 hours of dispatch.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category: Returns & Sizing -->
+          <section class="cat" data-cat="returns">
+            <h2>📏 Returns & Sizing</h2>
+            <div class="faq-list">
+              <div class="faq-item">
+                <button class="question" data-q="What is your return policy?">
+                  <span class="q-title"><span class="q-icon">🔁</span><span>What is your return policy?</span></span>
+                  <span class="meta">15 days</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  15-day returns on unworn regular items with tags. Auction and 1/1 pieces are final sale unless otherwise stated.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="question" data-q="How do I know my size?">
+                  <span class="q-title"><span class="q-icon">📐</span><span>How do I know my size?</span></span>
+                  <span class="meta">Size Guide</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  Check our <a href="size-guide.html" style="color:var(--purple)">Size Guide</a> for measurements. Ask Sneh (the AI orb) for personalised advice.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="question" data-q="Do you offer exchanges?">
+                  <span class="q-title"><span class="q-icon">🔄</span><span>Do you offer exchanges?</span></span>
+                  <span class="meta">Yes</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  Yes — free exchanges within India within the 15-day window (subject to availability).
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category: Auctions & Payments -->
+          <section class="cat" data-cat="auctions">
+            <h2>🔥 Auctions & Payments</h2>
+            <div class="faq-list">
+              <div class="faq-item">
+                <button class="question" data-q="How do auctions work?">
+                  <span class="q-title"><span class="q-icon">🏷️</span><span>How do auctions work?</span></span>
+                  <span class="meta">Live bids</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  Live bidding ends at the auction timer. Highest bid wins. Winning bidders are expected to complete payment within 24 hours. Platform fees or premiums may apply.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="question" data-q="What payment methods do you accept?">
+                  <span class="q-title"><span class="q-icon">💳</span><span>What payment methods do you accept?</span></span>
+                  <span class="meta">Razorpay / Cards / UPI</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  We accept cards, UPI, wallets and netbanking via Razorpay (secure). WhatsApp links or COD may be available for certain orders.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="question" data-q="Is my payment secure?">
+                  <span class="q-title"><span class="q-icon">🔐</span><span>Is my payment secure?</span></span>
+                  <span class="meta">Yes</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  Yes — payments go through secure gateways with SSL and PCI compliance on provider side.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category: Craftsmanship -->
+          <section class="cat" data-cat="craft">
+            <h2>✨ Craftsmanship & Care</h2>
+            <div class="faq-list">
+              <div class="faq-item">
+                <button class="question" data-q="What makes Snehvastra special?">
+                  <span class="q-title"><span class="q-icon">🏺</span><span>What makes Snehvastra special?</span></span>
+                  <span class="meta">Heritage</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  Our drops combine Rajasthan artisan techniques, natural dyes and limited production — often handloom and 1/1 pieces with NFC authentication for Snehvastra ONE.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="question" data-q="How do I care for my garment?">
+                  <span class="q-title"><span class="q-icon">🧼</span><span>How do I care for my garment?</span></span>
+                  <span class="meta">Cold wash</span>
+                </button>
+                <div class="answer" aria-hidden="true">
+                  Prefer cold gentle wash, avoid strong detergents. Air dry in shade. Care instructions are sent with each drop.
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">Can I track my order?</div>
-          <div class="faq-answer">Yes! Tracking link sent via email & SMS within 24 hours of dispatch.</div>
+
+        <!-- quick links / extras -->
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
+          <a href="contact.html" class="btn btn-ghost" aria-label="Contact support">Contact Support</a>
+          <a href="size-guide.html" class="btn btn-ghost" aria-label="Open size guide">Size Guide</a>
+          <a href="auction.html" class="btn btn-ghost" aria-label="Visit auction">Visit Auction</a>
         </div>
       </div>
 
-      <!-- RETURNS & SIZING -->
-      <div class="faq-category">
-        <h2>📏 Returns & Sizing</h2>
-        <div class="faq-item">
-          <div class="faq-question">What is your return policy?</div>
-          <div class="faq-answer">15-day returns on regular items (unworn, with tags). Auction items final sale.</div>
+      <aside class="right">
+        <div class="side-card" aria-labelledby="needHelp">
+          <h3 id="needHelp">Need help? Fast options</h3>
+          <div class="help-cta">
+            <button class="btn btn-primary" id="openAi">Ask Sneh (AI)</button>
+            <a class="btn btn-ghost" href="contact.html">Contact Support</a>
+            <div style="font-size:0.95rem;color:var(--muted)">Or message us on WhatsApp: <a href="https://wa.me/917597152209" style="color:var(--purple)">+91 75971 52209</a></div>
+          </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">How do I know my size?</div>
-          <div class="faq-answer">Check our <a href="size-guide.html">Size Guide</a>. Contact us for personalized fitting advice.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">Do you offer exchanges?</div>
-          <div class="faq-answer">Yes, same 15-day window. Free exchange shipping within India.</div>
-        </div>
-      </div>
 
-      <!-- AUCTION & PAYMENTS -->
-      <div class="faq-category">
-        <h2>🔥 Auctions & Payments</h2>
-        <div class="faq-item">
-          <div class="faq-question">How do auctions work?</div>
-          <div class="faq-answer">Live bidding. Highest bid wins at timer end + 5% premium. Payment due within 24hrs.</div>
+        <div class="side-card" style="margin-top:14px" aria-labelledby="orderSummary">
+          <h3 id="orderSummary">Order summary</h3>
+          <div style="margin-top:8px;color:var(--muted);font-size:0.95rem">
+            Items in cart: <strong id="cartItemsCount">0</strong><br>
+            Subtotal preview: <strong id="cartSubtotal">—</strong>
+          </div>
+          <div style="margin-top:12px">
+            <a href="cart.html" class="btn btn-ghost" style="width:100%">Open Cart</a>
+            <a href="checkout.html" class="btn btn-primary" style="width:100%">Checkout</a>
+          </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">What payment methods do you accept?</div>
-          <div class="faq-answer">All cards, UPI, net banking, wallets. Secure via Razorpay & Stripe.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">Is my payment secure?</div>
-          <div class="faq-answer">100% secure with SSL encryption + PCI DSS compliance.</div>
-        </div>
-      </div>
+      </aside>
+    </section>
 
-      <!-- CRAFTSMANSHIP & CARE -->
-      <div class="faq-category">
-        <h2>✨ Craftsmanship & Care</h2>
-        <div class="faq-item">
-          <div class="faq-question">What makes Snehvastra special?</div>
-          <div class="faq-answer">Handcrafted by Rajasthan master artisans using 200-year-old looms & natural dyes.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">How do I care for my garment?</div>
-          <div class="faq-answer">Cold hand wash, natural air dry. Care instructions included with each piece.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">What is your warranty?</div>
-          <div class="faq-answer">Lifetime stitch guarantee + 2-year natural dye warranty.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONTACT CTA -->
-    <div class="contact-cta">
-      <h3>Still have questions?</h3>
-      <p style="color: var(--text-dark); margin-bottom: 24px; font-size: 1.1rem;">
-        We're here to help with your Snehvastra journey.
-      </p>
-      <a href="contact.html" class="contact-btn">💬 Contact Support</a>
-    </div>
+    <footer>
+      © <span id="currentYear"></span> Snehvastra. All Rights Reserved. • Instagram: <strong>@sneh_vastra</strong>
+    </footer>
   </main>
 
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
-  </footer>
+  <!-- AI orb + modal -->
+  <button id="aiOrb" class="ai-orb" aria-label="Open Sneh assistant">S</button>
+  <div id="modalBackdrop" class="modal-back" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="snehTitle">
+      <h4 id="snehTitle">Sneh — FAQ Assistant</h4>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input id="aiInput" class="search" type="text" placeholder="Ask: 'shipping', 'size', 'auction rules'..." style="padding:10px;border-radius:10px;border:1px solid rgba(58,15,90,0.06);flex:1" />
+        <button id="askBtn" class="btn btn-primary" style="padding:10px 14px">Ask</button>
+      </div>
 
-  <!-- TOAST -->
-  <div id="toast" class="toast"></div>
+      <div class="ai-response" id="aiResponse" aria-live="polite"></div>
+
+      <div class="controls">
+        <button id="readBtn" class="btn btn-ghost">🔊 Read</button>
+        <button id="closeModal" class="btn btn-ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" style="position:fixed;top:18px;right:18px;background:linear-gradient(135deg,var(--purple),var(--purple-2));color:#fff;padding:12px 18px;border-radius:10px;display:none;z-index:1300;font-weight:700"></div>
 
   <script>
-    // MASTER SCRIPT + FAQ FUNCTIONALITY
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
-    }
+    /***********************
+     * Utility & CART sync
+     ***********************/
+    const toast = (txt, ms=3000) => {
+      const t = document.getElementById('toast');
+      t.textContent = txt;
+      t.style.display = 'block';
+      t.style.opacity = '1';
+      setTimeout(()=>{ t.style.display='none'; }, ms);
+    };
 
-    function showToast(message, type = 'success') {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = `toast ${type}`;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4000);
+    function readCartFromStorage(){
+      try { return JSON.parse(localStorage.getItem('snehvastra_cart')) || {}; }
+      catch(e){ return {}; }
     }
+    function updateCartUI(){
+      const cart = readCartFromStorage();
+      const count = Object.values(cart).reduce((s,n)=>s+n,0) || 0;
+      document.getElementById('cartCount').textContent = count;
+      document.getElementById('cartItemsCount').textContent = count;
+      // subtotal best-effort (catalog mismatch safe)
+      const products = {
+        "1":499,"2":2999,"3":1999,"4":4999,"one":999999
+      };
+      const subtotal = Object.entries(cart).reduce((sum,[id,qty])=>(sum + (products[id]||0) * qty),0);
+      document.getElementById('cartSubtotal').textContent = subtotal ? '₹' + subtotal.toLocaleString() : '—';
+    }
+    updateCartUI();
 
-    // FAQ ACCORDION
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        const isActive = question.classList.contains('active');
-        
-        // Close all others
-        document.querySelectorAll('.faq-question').forEach(q => {
-          q.classList.remove('active');
-          q.nextElementSibling.classList.remove('show');
-        });
-        
-        // Toggle current
-        if (!isActive) {
-          question.classList.add('active');
-          answer.classList.add('show');
-        }
+    window.addEventListener('storage', updateCartUI);
+
+    /***********************
+     * Accordion + Search
+     ***********************/
+    const questions = Array.from(document.querySelectorAll('.question'));
+    questions.forEach(btn=>{
+      btn.addEventListener('click', ()=> toggleFAQ(btn));
+      btn.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFAQ(btn); }
       });
     });
 
-    // FAQ SEARCH
-    document.getElementById('faqSearch').addEventListener('input', (e) => {
-      const searchTerm = e.target.value.toLowerCase();
-      document.querySelectorAll('.faq-question').forEach(question => {
-        const text = question.textContent.toLowerCase();
-        question.parentElement.style.display = text.includes(searchTerm) ? 'block' : 'none';
+    function toggleFAQ(btn){
+      const isActive = btn.classList.contains('active');
+      // close all in same category
+      const list = btn.closest('.faq-list');
+      list.querySelectorAll('.question').forEach(q=>{ q.classList.remove('active'); q.nextElementSibling.classList.remove('show'); q.nextElementSibling.setAttribute('aria-hidden','true'); });
+      if(!isActive){
+        btn.classList.add('active');
+        const ans = btn.nextElementSibling;
+        ans.classList.add('show');
+        ans.setAttribute('aria-hidden','false');
+      }
+    }
+
+    // Search
+    const searchInput = document.getElementById('faqSearch');
+    const clearBtn = document.getElementById('clearSearch');
+
+    function performSearch(q){
+      q = (q||'').trim().toLowerCase();
+      const items = document.querySelectorAll('.faq-item');
+      if(!q){
+        items.forEach(i=>i.style.display='block');
+        return;
+      }
+      items.forEach(item=>{
+        const question = item.querySelector('.question').textContent.toLowerCase();
+        const answer = item.querySelector('.answer').textContent.toLowerCase();
+        const match = question.includes(q) || answer.includes(q);
+        item.style.display = match ? 'block' : 'none';
       });
+    }
+
+    searchInput.addEventListener('input', e => performSearch(e.target.value));
+    clearBtn.addEventListener('click', ()=>{ searchInput.value=''; performSearch(''); searchInput.focus(); });
+
+    /***********************
+     * Inline AI Assistant (client-only heuristics)
+     ***********************/
+    const aiOrb = document.getElementById('aiOrb');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const aiInput = document.getElementById('aiInput');
+    const aiResponse = document.getElementById('aiResponse');
+    const askBtn = document.getElementById('askBtn');
+    const closeModal = document.getElementById('closeModal');
+    const readBtn = document.getElementById('readBtn');
+
+    // open
+    aiOrb.addEventListener('click', ()=> openAssistant());
+    function openAssistant(){
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden','false');
+      aiInput.value = '';
+      aiResponse.textContent = 'Ask about shipping, returns, auctions, sizing...';
+      aiInput.focus();
+    }
+    closeModal.addEventListener('click', ()=> closeAssistant());
+    modalBackdrop.addEventListener('click', (e)=> { if(e.target === modalBackdrop) closeAssistant(); });
+
+    function closeAssistant(){
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+      aiResponse.textContent = '';
+    }
+
+    // Simple rule-based AI
+    function snehAnswer(q){
+      q = (q||'').toLowerCase();
+      if(!q) return "Try: 'shipping time', 'return policy', 'auction rules', 'size guide', or ask about a product ID'";
+      if(q.includes('shipping') || q.includes('delivery')) return "Shipping in India: 3–5 business days. Free above ₹10,000. Express available for a fee.";
+      if(q.includes('return') || q.includes('refund')) return "15-day returns for unused standard items with tags. Auction items are final sale.";
+      if(q.includes('size') || q.includes('fit') || q.includes('measure')) return "Use the Size Guide page. If unsure, share your usual size and I can recommend a fit.";
+      if(q.includes('auction') || q.includes('bid')) return "Auctions are live: highest bid wins. Winner must pay within 24 hours. Check auction page for item-specific rules.";
+      if(q.includes('payment') || q.includes('razor') || q.includes('upi')) return "We accept cards, UPI, wallets via Razorpay. For custom orders we may share a direct payment link via WhatsApp.";
+      if(q.includes('custom') || q.includes('customize')) return "Customize: schedule pickup, artisans review and quote within 24 hours. Pickup + customization estimated separately.";
+      if(/track|tracking/.test(q)) return "You’ll get a tracking link by SMS & email once your order ships (within 24 hours).";
+      // fallback: search matching FAQ content
+      const all = Array.from(document.querySelectorAll('.faq-item'));
+      for(const item of all){
+        const Q = item.querySelector('.question').textContent.toLowerCase();
+        const A = item.querySelector('.answer').textContent.toLowerCase();
+        if(Q.includes(q) || A.includes(q)) return item.querySelector('.answer').textContent.trim();
+      }
+      return "Couldn't find a direct match. Try: 'shipping', 'returns', 'size', 'auction'. Or contact us on WhatsApp +91 75971 52209.";
+    }
+
+    askBtn.addEventListener('click', ()=> {
+      const q = aiInput.value.trim();
+      const ans = snehAnswer(q);
+      aiResponse.textContent = ans;
     });
 
-    // AUCTION TIMER
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
+    aiInput.addEventListener('keypress', (e)=> { if(e.key==='Enter'){ askBtn.click(); } });
+
+    // Read aloud
+    readBtn.addEventListener('click', ()=>{
+      const text = aiResponse.textContent || "No response yet.";
+      if(!('speechSynthesis' in window)){ toast('Voice not supported'); return; }
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 0.98; u.pitch = 0.94;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    });
+
+    /***********************
+     * Auction timer (keeps consistent)
+     ***********************/
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime(); // keep synced across site
+    function updateAuctionTimer(){
+      const el = document.getElementById('auctionTimer');
+      const now = Date.now();
       const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
+      if(diff > 0){
         const d = Math.floor(diff / 86400000);
         const h = Math.floor((diff % 86400000) / 3600000);
         const m = Math.floor((diff % 3600000) / 60000);
         const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
+        el.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else {
+        el.textContent = 'LIVE NOW!';
       }
-    }, 1000);
+    }
+    setInterval(updateAuctionTimer, 1000);
+    updateAuctionTimer();
 
-    window.addEventListener('load', () => {
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    /***********************
+     * Keyboard shortcuts
+     ***********************/
+    document.addEventListener('keydown',(e)=>{
+      // press / to focus search
+      if(e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'){
+        e.preventDefault();
+        searchInput.focus();
+      }
+      // press ? to open assistant
+      if(e.key === '?' || (e.shiftKey && e.key === '/')){
+        openAssistant();
+      }
+      // Esc to close assistant
+      if(e.key === 'Escape') {
+        if(modalBackdrop.style.display === 'flex') closeAssistant();
+      }
     });
-  </script>
 
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
+    // init on load
+    window.addEventListener('load', ()=>{
+      updateCartUI();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      performSearch('');
+    });
+
   </script>
 </body>
 </html>
