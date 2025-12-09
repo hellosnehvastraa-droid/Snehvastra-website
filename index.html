@@ -1,533 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <meta name="theme-color" content="#ECD78F">
-  <title>Snehvastra — One Auction LIVE</title>
-  <meta name="description" content="Snehvastra One LIVE AUCTION: LED Neon Hoodie #001/1 + Echo drops." />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="theme-color" content="#3A0F5A"/>
+  <title>Snehvastra — New Gen Luxury Streetwear</title>
+  <meta name="description" content="Crafted streetwear. AI-powered styling. NFC-authenticated limited drops. Experience New Gen Luxury."/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 1100px;
-      --radius: 14px;
-      --transition-speed: 0.28s;
-      --btn-gradient-start: #ECD78F;
-      --btn-gradient-end: #FFF9DE;
-      --btn-hover-gradient-start: #FFF9DE;
-      --btn-hover-gradient-end: #ECD78F;
+    :root{
+      --purple:#3A0F5A;
+      --purple-dark:#2e0b4a;
+      --slate:#22232A;
+      --slate-mid:#3B3D45;
+      --silver:#B7B9BD;
+      --paper:#F6F6F6;
+      --muted:#C7C6C8;
+      --radius:16px;
+      --ease:.35s;
+      --max-width:1200px;
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; overflow-x: hidden; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark);
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,var(--paper),#FBFAF8);
+      color:var(--slate);
+      overflow-x:hidden;
     }
 
-    /* PLACEHOLDER - VISIBLE GRAY BOXES */
-    .product-media {
-      height: 200px;
-      overflow: hidden;
-      background: #f0f0f0;
-      border: 2px dashed #ddd;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-      font-size: 14px;
-      position: relative;
+    /* Sticky Header */
+    header{
+      position:sticky;top:0;z-index:100;
+      background:rgba(255,255,255,0.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(183,185,189,0.12);
     }
-    .product-media::before {
-      content: "IMAGE HERE";
-      font-weight: bold;
-      text-transform: uppercase;
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 5%;max-width:var(--max-width);margin:0 auto;
     }
-    .product-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .brand{display:flex;gap:12px;align-items:center;}
+    .brand img{height:48px;border-radius:10px;}
+    .brand h1{font-family:'Clash Display',serif;margin:0;font-size:1.2rem;color:var(--purple);}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;}
+    nav a{
+      text-decoration:none;font-weight:600;font-size:0.95rem;
+      padding:8px 14px;border-radius:10px;color:var(--muted);
+      transition:all var(--ease);
     }
-
-    /* AUCTION BADGE */
-    .auction-badge {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark);
-      padding: 12px 18px;
-      border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(236,215,143,0.4);
-      font-weight: 700;
-      font-size: 0.9rem;
-      z-index: 15;
-      text-align: center;
-      min-width: 140px;
-    }
-    .auction-timer {
-      font-family: 'Clash Display', serif;
-      font-size: 0.8rem;
-      background: rgba(255,255,255,0.9);
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin-top: 4px;
-      display: block;
-      font-weight: 700;
+    nav a:hover,nav a.active{
+      background:rgba(58,15,90,0.05);color:var(--purple);
     }
 
-    /* WHATSAPP BUTTON */
-    .whatsapp-float {
-      position: fixed; bottom: 24px; right: 24px;
-      width: 60px; height: 60px;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem; color: var(--text-dark);
-      box-shadow: 0 10px 30px rgba(191,166,88,0.4);
-      z-index: 999; text-decoration: none;
+    /* HERO v2: Spotlight + Gradient Movement */
+    .hero{
+      text-align:center;padding:140px 5% 100px;
+      position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 50% 40%,rgba(58,15,90,0.16),transparent 50%),
+        radial-gradient(circle at 60% 80%,rgba(191,185,200,0.25),transparent 70%);
+      filter:blur(20px);
+      animation:glow 10s infinite alternate ease-in-out;
+    }
+    @keyframes glow{
+      0%{transform:scale(1);}
+      100%{transform:scale(1.18);}
+    }
+    .hero img{
+      width:240px;max-width:70vw;border-radius:14px;
+      box-shadow:0 20px 60px rgba(58,15,90,0.18);
+      animation:fadeUp 1.6s ease forwards;
+    }
+    @keyframes fadeUp{
+      0%{opacity:0;transform:translateY(20px);}
+      100%{opacity:1;transform:translateY(0);}
+    }
+    .hero h2{
+      font-family:'Clash Display',serif;
+      font-size:clamp(2rem,6vw,3.5rem);
+      color:var(--purple);
+      margin:28px 0 10px;
+      animation:fadeUp 1.8s ease forwards;
+    }
+    .hero p{
+      max-width:700px;margin:0 auto;color:var(--slate-mid);
+      font-size:1.1rem;line-height:1.7;
+      animation:fadeUp 2s ease forwards;
     }
 
-    /* TOAST NOTIFICATION */
-    .toast {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));
-      color: var(--text-dark);
-      padding: 16px 24px;
-      border-radius: 12px;
-      box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600;
-      z-index: 1000;
-      transform: translateX(400px);
-      transition: transform 0.3s ease;
-      max-width: 320px;
+    /* Dual CTA (Purple + Glass) */
+    .cta-wrap{
+      margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
     }
-    .toast.show {
-      transform: translateX(0);
+    .btn-solid{
+      padding:14px 30px;border-radius:14px;border:none;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;font-weight:700;cursor:pointer;
+      transition:var(--ease);
+      box-shadow:0 12px 40px rgba(58,15,90,0.4);
+      letter-spacing:0.5px;
+    }
+    .btn-solid:hover{transform:translateY(-4px);}
+    .btn-glass{
+      padding:14px 30px;border-radius:14px;
+      border:2px solid rgba(58,15,90,0.18);
+      background:rgba(255,255,255,0.5);
+      backdrop-filter:blur(10px);
+      font-weight:600;color:var(--purple-mid);
+      cursor:pointer;transition:var(--ease);
+      box-shadow:0 10px 30px rgba(58,15,90,0.1);
+    }
+    .btn-glass:hover{transform:translateY(-4px);}
+
+    /* Founder Statement (Premium) */
+    .founder{
+      max-width:var(--max-width);margin:140px auto 80px;padding:0 5%;
+      text-align:center;animation:fadeUp 1.6s;
+    }
+    .founder h3{
+      font-family:'Clash Display',serif;font-size:2.4rem;color:var(--purple);margin-bottom:10px;
+    }
+    .founder p{
+      max-width:800px;margin:0 auto;color:var(--slate-mid);
+      font-size:1.15rem;line-height:1.75;
     }
 
-    /* HERO */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 20px 60px;
-      gap: 20px;
-      position: relative;
-      z-index: 10;
-      margin: 0 auto;
-      max-width: var(--max-w);
+    /* AI Full Section */
+    .ai-sec{
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      padding:100px 5%;color:white;text-align:center;
+      border-radius:50px 50px 0 0;
+      margin-top:120px;
     }
-    .hero-halo {
-      position: absolute;
-      top: 0; left: 50%;
-      width: 500px; height: 400px;
-      border-radius: 50%;
-      transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(236,215,143,0.08), transparent);
-      z-index: 1;
+    .ai-sec h2{
+      font-family:'Clash Display',serif;
+      font-size:clamp(2rem,5vw,3.2rem);
+      margin-bottom:16px;
     }
-    .logo-lg {
-      width: 280px;
-      max-width: 80vw;
-      height: auto;
-      border-radius: 12px;
+    .ai-sec p{
+      max-width:700px;margin:0 auto 30px;opacity:0.9;font-size:1.1rem;
     }
-    .hero h2 {
-      margin: 0;
-      font-family: 'Clash Display', serif;
-      font-weight: 600;
-      font-size: 2.2rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .ai-demo{
+      background:white;color:var(--slate);
+      padding:24px;border-radius:18px;
+      max-width:480px;margin:0 auto;
+      box-shadow:0 20px 60px rgba(0,0,0,0.18);
+      font-size:1rem;
     }
 
-    /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.95);
-      border-bottom: 1px solid var(--muted-gold);
-      z-index: 100;
-    }
-    .topbar {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 15px 20px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .brand img { height: 45px; width: auto; border-radius: 8px; }
-    .brand h1 {
-      margin: 0;
-      font-family: 'Clash Display', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-    #nav-links {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 10px;
-    }
-    #nav-links a {
-      padding: 8px 12px;
-      border-radius: 8px;
-      color: var(--muted-gold);
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-    #nav-links a:hover { background: rgba(236,215,143,0.1); }
-
-    /* BUTTONS */
-    .btn {
-      padding: 14px 28px;
-      border: none;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));
-      color: var(--text-dark);
-      box-shadow: 0 8px 25px rgba(236,215,143,0.4);
-      transition: all 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(236,215,143,0.6);
-    }
-    .btn.secondary {
-      background: transparent;
-      border: 2px solid var(--muted-gold);
-      color: var(--muted-gold);
+    footer{
+      padding:60px 5%;text-align:center;
+      color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);
+      margin-top:80px;
     }
 
-    /* SECTIONS */
-    .section {
-      max-width: var(--max-w);
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h3 {
-      font-family: 'Clash Display', serif;
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: var(--text-dark);
-    }
-    .drops-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .product-card {
-      background: #fffdf5;
-      border-radius: 16px;
-      border: 1px solid var(--muted-gold);
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(189,166,97,0.15);
-      transition: all 0.3s ease;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(189,166,97,0.3);
-    }
-    .product-body {
-      padding: 20px;
-    }
-    .product-body h4 {
-      margin: 0 0 10px;
-      font-family: 'Clash Display', serif;
-      font-size: 1.1rem;
-    }
-    .price { 
-      font-weight: 900; 
-      color: var(--highlight-gold); 
-      font-size: 1.2rem; 
-    }
-    .product-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 10px 0;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 40px 20px;
-      text-align: center;
-      color: var(--text-dark);
-      border-top: 1px solid var(--muted-gold);
-      margin-top: 60px;
-      font-size: 0.95rem;
-    }
-
-    /* SPLASH */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-light-1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-    #splash.fade-out { opacity: 0; pointer-events: none; }
-    #splash img {
-      width: clamp(150px, 40vw, 250px);
-      height: auto;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero { padding: 60px 16px 40px; }
-      .hero h2 { font-size: 1.8rem; }
-      .topbar { padding: 12px 16px; flex-wrap: wrap; }
-      .auction-badge { left: 16px; right: 16px; top: 16px; }
-    }
-
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
   </style>
 </head>
 
 <body>
-  <!-- SPLASH SCREEN -->
-  <div id="splash">
-    <img src="images/logo.final.png" alt="Snehvastra" id="splashLogo" />
-  </div>
 
-  <div class="container" id="pageRoot" style="opacity: 0; transition: opacity 0.5s ease;">
-    <!-- HEADER -->
-    <header>
-      <div class="topbar">
-        <div class="brand">
-          <img src="images/logo.final.png" alt="Snehvastra" id="brandLogo" />
-          <div>
-            <h1>Snehvastra</h1>
-            <div style="font-size: 0.8rem; color: var(--muted-gold);">New Gen Luxury Streetwear</div>
-          </div>
-        </div>
-        <nav>
-          <ul id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="collection.html">Collection</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="wishlist.html">Wishlist</a></li>
-            <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-          </ul>
-        </nav>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <img src="images/logo.final.png" alt="Snehvastra Logo"/>
+      <div>
+        <h1>Snehvastra</h1>
+        <div style="font-size:0.82rem;color:var(--muted)">New Gen Luxury Streetwear</div>
       </div>
-    </header>
+    </div>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="auction-badge">
-          <strong>SNEHVASTRA ONE</strong><br>
-          <div class="auction-timer" id="auctionTimer">Loading...</div>
-        </div>
-        
-        <div class="hero-halo"></div>
-        <div class="logo-wrap">
-          <img src="images/logo.final.png" alt="Snehvastra" class="logo-lg" id="heroLogo" />
-          <h2>New Gen Luxury Streetwear</h2>
-          <p><strong>LIVE AUCTION:</strong> LED Neon Hoodie #001/1<br>
-          Exclusive drops. Crafted with warmth.</p>
-          <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
-            <button class="btn" onclick="location.href='collection.html'">Shop Echo Drops</button>
-            <button class="btn secondary" onclick="showToast('Join Snehvastra One Auction waitlist! WhatsApp: 9876543210')">One Auction</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- FEATURED DROPS -->
-      <section class="section">
-        <h3>Featured Echo Drops</h3>
-        <div class="drops-container">
-          <!-- PRODUCT 1 -->
-          <article class="product-card" data-product-id="1" data-product-name="Noir Tech Overshirt" data-product-price="4999">
-            <div class="product-media"></div>
-            <div class="product-body">
-              <h4>Noir Tech Overshirt</h4>
-              <div class="product-meta">
-                <div class="price">₹4,999</div>
-                <div style="color: var(--muted-gold);">On Sale</div>
-              </div>
-              <button class="btn add-to-cart-btn" data-product-id="1">Add to Cart</button>
-            </div>
-          </article>
-          
-          <!-- PRODUCT 2 -->
-          <article class="product-card" data-product-id="2" data-product-name="Urban Eclipse Cargo" data-product-price="3999">
-            <div class="product-media"></div>
-            <div class="product-body">
-              <h4>Urban Eclipse Cargo</h4>
-              <div class="product-meta">
-                <div class="price">₹3,999</div>
-                <div style="color: var(--muted-gold);">Limited</div>
-              </div>
-              <button class="btn add-to-cart-btn" data-product-id="2">Add to Cart</button>
-            </div>
-          </article>
-          
-          <!-- PRODUCT 3 -->
-          <article class="product-card" data-product-id="3" data-product-name="Monochrome Layered Tee" data-product-price="1999">
-            <div class="product-media"></div>
-            <div class="product-body">
-              <h4>Monochrome Layered Tee</h4>
-              <div class="product-meta">
-                <div class="price">₹1,999</div>
-                <div style="color: var(--muted-gold);">Limited</div>
-              </div>
-              <button class="btn add-to-cart-btn" data-product-id="3">Add to Cart</button>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- ABOUT -->
-      <section class="section">
-        <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap; justify-content: space-between;">
-          <div style="max-width: 600px;">
-            <strong style="font-size: 1rem; display: block; margin-bottom: 10px;">Why Snehvastra?</strong>
-            <p style="color: rgba(75,67,55,0.8); line-height: 1.6;">
-              <strong>1/1 Auction Piece + Unlimited Echo Drops.</strong><br>
-              NFC authenticity chips. Limited-run craftsmanship.
-            </p>
-          </div>
-          <div style="display: flex; gap: 20px;">
-            <div style="text-align: center;">
-              <div style="font-weight: 900; font-size: 1.4rem; color: var(--highlight-gold);">1/1</div>
-              <div style="font-size: 0.85rem; color: rgba(75,67,55,0.7);">Unique Piece</div>
-            </div>
-            <div style="text-align: center;">
-              <div style="font-weight: 900; font-size: 1.4rem; color: var(--muted-gold);">∞</div>
-              <div style="font-size: 0.85rem; color: rgba(75,67,55,0.7);">Echo Drops</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      © <span id="yr"></span> Snehvastra. All Rights Reserved. •
-      <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
-    </footer>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
   </div>
+</header>
 
-  <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="toast"></div>
+<!-- HERO -->
+<section class="hero">
+  <img src="images/logo.final.png" alt="Snehvastra Logo Large"/>
+  <h2>New Gen Luxury Streetwear</h2>
+  <p>Crafted pieces, NFC authentication, and AI-powered styling — designed for the rare.</p>
 
-  <!-- WHATSAPP -->
-  <a href="https://wa.me/919876543210?text=🔥 Snehvastra One Auction details!" class="whatsapp-float" target="_blank">💬</a>
+  <div class="cta-wrap">
+    <button class="btn-solid" onclick="location.href='collection.html'">Explore Collection</button>
+    <button class="btn-glass" onclick="location.href='auction.html'">Join Live Auction</button>
+  </div>
+</section>
 
-  <!-- PERFECT WORKING SCRIPT -->
-  <script>
-    // GLOBAL CART
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+<!-- FOUNDER STATEMENT -->
+<section class="founder">
+  <h3>“Luxury, engineered — not discovered.”</h3>
+  <p>
+    At Snehvastra, we craft streetwear as future collectibles.
+    NFC-authenticated, precision-finished, and guided by AI — this is luxury rebuilt for the next generation.
+  </p>
+</section>
 
-    // UPDATE CART COUNT
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
-    }
+<!-- AI ASSISTANT SECTION -->
+<section class="ai-sec">
+  <h2>Meet Sneh — Your AI Stylist & Auction Guide</h2>
+  <p>Ask about sizing, gifts, upcoming drops, or bidding strategies. Sneh learns your style and guides your journey.</p>
 
-    // SHOW TOAST
-    function showToast(message, duration = 3000) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, duration);
-    }
+  <div class="ai-demo">
+    “Looking for a gift? I can recommend premium fits based on their style and height.”
+  </div>
+</section>
 
-    // ADD TO CART
-    document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('add-to-cart-btn')) {
-        const productId = e.target.getAttribute('data-product-id');
-        const productCard = e.target.closest('.product-card');
-        const productName = productCard.getAttribute('data-product-name');
-        const productPrice = productCard.getAttribute('data-product-price');
-        
-        // ADD/INCREMENT
-        cart[productId] = (cart[productId] || 0) + 1;
-        localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
-        
-        // UPDATE UI
-        updateCartCount();
-        showToast(`${productName} added to cart! (₹${productPrice})`);
-        
-        // VISUAL FEEDBACK
-        e.target.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          e.target.style.transform = '';
-        }, 150);
-      }
-    });
+<footer>
+  © <span id="year"></span> Snehvastra. All Rights Reserved.
+</footer>
 
-    // AUCTION COUNTDOWN
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
-      }
-    }, 1000);
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
-    // SPLASH & INIT
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('splash').classList.add('fade-out');
-        document.getElementById('pageRoot').style.opacity = '1';
-      }, 1000);
-      
-      // INIT CART COUNT
-      updateCartCount();
-    });
-
-    // YEAR
-    document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
