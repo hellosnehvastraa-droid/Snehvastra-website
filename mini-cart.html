@@ -1,342 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Mini Cart Preview - Snehvastra</title>
-  <meta name="description" content="Preview your Snehvastra cart instantly with a sleek glassy mini-cart before checkout." />
-  <meta name="theme-color" content="#ECD78F" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="theme-color" content="#3A0F5A" />
+<title>Mini Cart — Snehvastra</title>
+<meta name="description" content="Snehvastra Mini Cart — Instant preview of your items with a glassy V2 UI." />
 
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted: rgba(75, 67, 55, 0.7);
-      --accent-gradient: linear-gradient(90deg, #BFA658, #ECD78F);
-      --panel-bg: rgba(252, 250, 246, 0.04);
-      --panel-border: rgba(191, 166, 88, 0.08);
-      --btn-shadow: 0 0 25px rgba(191, 166, 88, 0.05);
-      --max-w: 600px;
-      --radius: 16px;
-      --transition-speed: 0.4s;
-    }
+<style>
+:root{
+  --purple:#3A0F5A; --purple-dark:#2e0b4a;
+  --slate:#22232A; --mid:#3B3D45;
+  --muted:#8f9095; --paper:#F6F6F6;
+  --radius:14px; --ease:.28s; --card:#fff;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0; background:linear-gradient(180deg,var(--paper),#FBFAF8);
+  font-family:'Poppins',sans-serif; color:var(--slate);
+  display:flex; justify-content:center; align-items:center;
+  height:100vh; padding:20px;
+}
 
-    body {
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+/* NAV */
+nav ul{
+  list-style:none; display:flex; gap:1.4rem;
+  background:rgba(255,255,255,0.92); backdrop-filter:blur(18px);
+  border-radius:60px; padding:0.85rem 2rem;
+  border:1px solid rgba(58,15,90,0.08);
+  box-shadow:0 10px 40px rgba(58,15,90,0.08);
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      background: var(--panel-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--panel-border);
-      border-radius: 50px;
-      padding: 0.8rem 2rem;
-      box-shadow: var(--btn-shadow);
-      user-select: none;
-      position: relative;
-    }
+nav a, .mini-toggle{
+  text-decoration:none; color:var(--mid);
+  font-weight:600; background:none; border:none;
+  cursor:pointer; padding:6px 10px; transition:.25s;
+}
 
-    nav a,
-    button {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-    }
+nav a:hover, .mini-toggle:hover{color:var(--purple)}
 
-    nav a:hover,
-    button:hover {
-      color: var(--text-dark);
-    }
+/* BADGE */
+#cartCount{
+  background:var(--purple); color:#fff; padding:2px 8px;
+  border-radius:999px; font-size:.8rem; font-weight:700;
+  margin-left:6px;
+}
 
-    .cart-count-badge {
-      background: var(--panel-bg);
-      color: var(--text-dark);
-      font-weight: 600;
-      border-radius: 50%;
-      padding: 0.2rem 0.45rem;
-      font-size: 0.8rem;
-      margin-left: 5px;
-      box-shadow: var(--btn-shadow);
-      user-select: none;
-    }
+/* MINI CART PANEL */
+.mini-cart{
+  position:absolute; top:100px; right:50%;
+  transform:translateX(50%) scale(.95);
+  width:360px; background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(20px);
+  border-radius:var(--radius);
+  box-shadow:0 22px 60px rgba(58,15,90,0.2);
+  border:1px solid rgba(58,15,90,0.1);
 
-    .mini-cart-preview {
-      position: absolute;
-      top: 65px;
-      right: 50%;
-      transform: translateX(50%) scale(0.95);
-      width: 320px;
-      background: var(--panel-bg);
-      backdrop-filter: blur(15px);
-      border: 1px solid var(--panel-border);
-      border-radius: var(--radius);
-      box-shadow: var(--btn-shadow);
-      overflow: hidden;
-      opacity: 0;
-      pointer-events: none;
-      transition: all var(--transition-speed) ease;
-      user-select: none;
-      z-index: 2000;
-    }
+  opacity:0; pointer-events:none;
+  transition:all var(--ease);
+}
 
-    .mini-cart-preview.active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(50%) scale(1);
-    }
+.mini-cart.active{
+  opacity:1; pointer-events:auto;
+  transform:translateX(50%) scale(1);
+}
 
-    .mini-cart-header {
-      background: rgba(191, 166, 88, 0.06);
-      padding: 1rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-align: center;
-      letter-spacing: 0.5px;
-      color: var(--text-dark);
-    }
+@media(max-width:480px){
+  .mini-cart{width:92vw; right:4%; transform:scale(.94)}
+  .mini-cart.active{transform:scale(1)}
+}
 
-    #miniCartItems {
-      max-height: 220px;
-      overflow-y: auto;
-      padding: 1rem;
-    }
+/* HEADER */
+.mini-h{
+  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  padding:1rem; color:#fff; text-align:center;
+  font-family:'Clash Display',serif; font-size:1.2rem;
+  border-radius:var(--radius) var(--radius) 0 0;
+}
 
-    .cart-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.8rem;
-      background: var(--panel-bg);
-      border-radius: 12px;
-      padding: 0.7rem;
-      border: 1px solid var(--panel-border);
-      user-select: text;
-    }
+/* ITEM LIST */
+#cartItems{max-height:260px; overflow-y:auto; padding:1rem}
+.cart-line{
+  display:flex; align-items:center; gap:14px;
+  background:rgba(58,15,90,0.03);
+  border:1px solid rgba(58,15,90,0.06);
+  padding:12px; border-radius:12px;
+  margin-bottom:12px; transition:.25s;
+}
+.cart-line:hover{
+  box-shadow:0 8px 25px rgba(58,15,90,0.1);
+  transform:translateY(-2px);
+}
 
-    .cart-item img {
-      width: 45px;
-      height: 45px;
-      border-radius: 10px;
-      object-fit: cover;
-      user-select: none;
-    }
+.cart-line img{
+  width:52px; height:52px;
+  border-radius:10px; object-fit:cover;
+  border:1px solid rgba(58,15,90,0.1);
+}
 
-    .cart-item-details {
-      flex: 1;
-      padding: 0 0.8rem;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
+.details{flex:1}
+.details p{margin:0; font-size:.92rem}
+.details p:first-child{font-weight:600;color:var(--slate)}
+.details p:last-child{color:var(--purple);font-weight:600}
 
-    .cart-item-details p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--muted);
-      user-select: text;
-    }
+.remove{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(0,0,0,0.04); border:none; cursor:pointer;
+  font-size:1.3rem; color:var(--muted);
+  transition:.25s;
+}
+.remove:hover{
+  background:rgba(224,30,30,0.1);
+  color:#e03e3e; transform:scale(1.15);
+}
 
-    .remove-btn {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 1rem;
-      cursor: pointer;
-      transition: color 0.3s;
-      user-select: none;
-      flex-shrink: 0;
-    }
+/* TOTAL + CTA */
+.total{
+  padding:1rem; text-align:center;
+  border-top:1px solid rgba(58,15,90,0.1);
+  font-weight:700; color:var(--purple-dark);
+}
 
-    .remove-btn:hover {
-      color: #e06346;
-    }
-
-    .mini-cart-total {
-      border-top: 1px solid var(--panel-border);
-      padding: 1rem;
-      text-align: center;
-      font-weight: 600;
-      color: var(--muted);
-      user-select: text;
-    }
-
-    .mini-cart-checkout-btn {
-      width: 100%;
-      padding: 1rem;
-      border: none;
-      background: var(--accent-gradient);
-      color: var(--text-dark);
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.4s ease;
-      border-radius: 12px;
-      user-select: none;
-      margin-bottom: 1rem;
-      font-family: 'Poppins', sans-serif;
-      box-shadow: var(--btn-shadow);
-    }
-
-    .mini-cart-checkout-btn:hover {
-      background: linear-gradient(90deg, #ECD78F, #BFA658);
-    }
-  </style>
+.checkout-btn{
+  width:100%; border:none; cursor:pointer;
+  padding:1rem; font-family:'Clash Display',serif;
+  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  color:#fff; font-size:1.1rem;
+  border-radius:12px; margin-bottom:1rem;
+  transition:.3s;
+}
+.checkout-btn:hover{
+  box-shadow:0 12px 42px rgba(58,15,90,0.45);
+  transform:translateY(-2px);
+}
+</style>
 </head>
-
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="collection.html">Collection</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li>
-        <button class="mini-cart-toggle" id="miniCartToggle" aria-expanded="false" aria-controls="miniCartPreview">
-          Cart <span class="cart-count-badge" id="cartCount">0</span>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="auction.html">Auction</a></li>
+    <li>
+      <button class="mini-toggle" id="miniToggle">
+        Cart <span id="cartCount">0</span>
+      </button>
+
+      <!-- MINI CART -->
+      <div class="mini-cart" id="miniCart">
+        <div class="mini-h">Your Cart</div>
+        <div id="cartItems"></div>
+        <div class="total" id="cartTotal">Total: ₹0</div>
+        <button class="checkout-btn" onclick="location.href='cart.html'">
+          Proceed to Checkout →
         </button>
-        <div class="mini-cart-preview" id="miniCartPreview" aria-live="polite" aria-label="Mini cart preview">
-          <div class="mini-cart-header">Your Cart</div>
-          <div id="miniCartItems">
-            <!-- Cart items dynamically injected here -->
-          </div>
-          <div class="mini-cart-total" id="miniCartTotal">Total: ₹0</div>
-          <button class="mini-cart-checkout-btn" onclick="window.location.href='cart.html'" aria-label="Go to Checkout">
-            Go to Checkout
-          </button>
-        </div>
-      </li>
-    </ul>
-  </nav>
+      </div>
+    </li>
+  </ul>
+</nav>
 
-  <script>
-    const toggleBtn = document.getElementById('miniCartToggle');
-    const miniCart = document.getElementById('miniCartPreview');
-    const cartCountEl = document.getElementById('cartCount');
-    const miniCartItemsEl = document.getElementById('miniCartItems');
-    const miniCartTotalEl = document.getElementById('miniCartTotal');
+<script>
+/****************************************
+  CART SYSTEM — UNIVERSAL ENGINE V2
+****************************************/
+function readCart(){
+  try { return JSON.parse(localStorage.getItem("snehvastra_cart")) || {}; }
+  catch { return {}; }
+}
+function saveCart(c){
+  localStorage.setItem("snehvastra_cart", JSON.stringify(c));
+}
 
-    function formatPrice(num) {
-      return `₹${num.toLocaleString()}`;
-    }
+function formatINR(n){ return "₹" + n.toLocaleString("en-IN"); }
 
-    function updateMiniCart() {
-      let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-      let totalItems = 0;
-      let totalPrice = 0;
-      miniCartItemsEl.innerHTML = '';
+const miniCart = document.getElementById("miniCart");
+const toggleBtn = document.getElementById("miniToggle");
+const countEl = document.getElementById("cartCount");
+const itemsEl = document.getElementById("cartItems");
+const totalEl = document.getElementById("cartTotal");
 
-      // If cart empty
-      if (Object.keys(cart).length === 0) {
-        miniCartItemsEl.innerHTML = '<p style="color: var(--muted); font-style: italic;">Your cart is empty.</p>';
-        miniCartTotalEl.textContent = formatPrice(0);
-        cartCountEl.textContent = 0;
-        return;
-      }
+function updateMiniCart(){
+  const cart = readCart();
+  const entries = Object.entries(cart);
 
-      // Populate cart items
-      for (const [id, qty] of Object.entries(cart)) {
-        // Extract product name and price from id: format "Name_price"
-        const parts = id.split('_');
-        const name = parts.slice(0, -1).join('_').replace(/_/g, ' ');
-        const price = parseInt(parts[parts.length - 1]) || 0;
-        totalItems += qty;
-        totalPrice += price * qty;
+  let totalQty = 0;
+  let totalPrice = 0;
+  itemsEl.innerHTML = "";
 
-        const itemEl = document.createElement('div');
-        itemEl.className = 'cart-item';
+  if(entries.length === 0){
+    itemsEl.innerHTML =
+      `<div style="padding:2rem;text-align:center;color:var(--muted)">Your cart is empty</div>`;
+    totalEl.textContent = "Total: ₹0";
+    countEl.textContent = 0;
+    return;
+  }
 
-        const img = document.createElement('img');
-        img.src = 'images/placeholder.png';
-        img.alt = name;
+  for(const [id, data] of entries){
+    const { name, price, qty, img } = data;
+    totalQty += qty;
+    totalPrice += price * qty;
 
-        const details = document.createElement('div');
-        details.className = 'cart-item-details';
-        details.innerHTML = `<p>${name}</p><p>${formatPrice(price * qty)}</p>`;
+    const div = document.createElement("div");
+    div.className = "cart-line";
 
-        const removeBtn = document.createElement('button');
-        removeBtn.className = 'remove-btn';
-        removeBtn.setAttribute('aria-label', `Remove ${name}`);
-        removeBtn.innerHTML = '&times;';
-        removeBtn.addEventListener('click', () => {
-          delete cart[id];
-          localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
-          updateMiniCart();
-          updateCartCount();
-        });
+    div.innerHTML = `
+      <img src="${img || 'images/placeholder.png'}" onerror="this.src='images/placeholder.png'">
+      <div class="details">
+        <p>${name}</p>
+        <p>${formatINR(price)} × ${qty}</p>
+      </div>
+      <button class="remove">×</button>
+    `;
 
-        itemEl.appendChild(img);
-        itemEl.appendChild(details);
-        itemEl.appendChild(removeBtn);
-        miniCartItemsEl.appendChild(itemEl);
-      }
-
-      miniCartTotalEl.textContent = `Total: ${formatPrice(totalPrice)}`;
-      cartCountEl.textContent = totalItems;
-    }
-
-    function updateCartCount() {
-      let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-      let totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      cartCountEl.textContent = totalItems;
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      const isActive = miniCart.classList.toggle('active');
-      toggleBtn.setAttribute('aria-expanded', isActive);
-    });
-
-    document.addEventListener('click', e => {
-      if (!miniCart.contains(e.target) && !toggleBtn.contains(e.target)) {
-        miniCart.classList.remove('active');
-        toggleBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
+    div.querySelector(".remove").onclick = () => {
+      const c = readCart();
+      delete c[id];
+      saveCart(c);
       updateMiniCart();
-      updateCartCount();
-    });
-  </script>
+    };
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-  </script>
+    itemsEl.appendChild(div);
+  }
+
+  countEl.textContent = totalQty;
+  totalEl.textContent = "Total: " + formatINR(totalPrice);
+}
+
+/****************************************
+  EVENTS
+****************************************/
+toggleBtn.onclick = () => {
+  const show = !miniCart.classList.contains("active");
+  miniCart.classList.toggle("active", show);
+  toggleBtn.setAttribute("aria-expanded", show);
+  if(show) updateMiniCart();
+};
+
+document.addEventListener("click", e => {
+  if(!miniCart.contains(e.target) && !toggleBtn.contains(e.target)){
+    miniCart.classList.remove("active");
+    toggleBtn.setAttribute("aria-expanded","false");
+  }
+});
+
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape"){
+    miniCart.classList.remove("active");
+    toggleBtn.setAttribute("aria-expanded","false");
+  }
+});
+
+window.onload = updateMiniCart;
+</script>
+
 </body>
-
 </html>
