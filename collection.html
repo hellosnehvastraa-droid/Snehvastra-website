@@ -1,383 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Collection - Snehvastra</title>
-  <meta name="theme-color" content="#ECD78F">
-  <meta name="description" content="Snehvastra Echo Drops + One Auction. Luxury streetwear collection." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Collection — SNEHVASTRA V2</title>
+  <meta name="description" content="Snehvastra Echo Drops — premium limited streetwear. Shop limited runs, curated pieces, and Snehvastra ONE auctioned rarities." />
+  <meta name="theme-color" content="#3A0F5A" />
+  <link rel="canonical" href="https://www.snehvastra.store/collection.html" />
 
-  <!-- YOUR FONTS + INDEX SYNC -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 1100px;
-      --radius: 14px;
-      --transition-speed: 0.28s;
-      --btn-gradient-start: #ECD78F;
-      --btn-gradient-end: #FFF9DE;
-      --btn-hover-gradient-start: #FFF9DE;
-      --btn-hover-gradient-end: #ECD78F;
+    :root{
+      --plum:#3A0F5A;
+      --plum-2:#2a0a3f;
+      --slate:#1F2024;
+      --muted:#8E8F92;
+      --silver:#BFC4C7;
+      --paper:#F5F4F6;
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+      --shadow-soft: 0 20px 70px rgba(58,15,90,0.06);
+      --ease: 0.28s;
+      --max-w:1200px;
+      --font-display: 'Clash Display', serif;
+      --font-sans: 'Poppins', sans-serif;
+      --focus: rgba(186,178,255,0.22);
     }
 
-    /* 🔥 YOUR EXACT COLORS + INDEX SYNC */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark);
-      min-height: 100vh;
-      overflow-x: hidden;
+    /* Base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font-sans);
+      background: linear-gradient(180deg,#f7f6f8,#f3f3f5);
+      color:var(--slate);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
     }
 
-    /* HEADER - INDEX SYNC */
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; background: rgba(252,250,246,0.95);
-      backdrop-filter: blur(12px); z-index: 50; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
+    /* Top nav */
+    .topbar{
+      position:sticky;top:0;z-index:140;
+      backdrop-filter: blur(8px) saturate(120%);
+      background: rgba(250,249,251,0.92);
+      border-bottom:1px solid rgba(47,18,66,0.04);
+      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;
     }
-    .logo { height: 50px; width: auto; border-radius: 8px; }
-    nav ul {
-      display: flex; list-style: none; gap: 15px; flex-wrap: wrap;
-    }
-    nav ul li a {
-      text-decoration: none; color: var(--muted-gold); font-size: 0.9rem; font-weight: 600;
-      padding: 8px 14px; border-radius: 8px; transition: all var(--transition-speed) ease;
-    }
-    nav ul li a:hover, nav ul li a.active {
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15);
-    }
-    #cartCount { background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; padding: 2px 6px; font-size: 0.8rem; font-weight: 700; }
+    .wrap{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{height:52px;width:auto;border-radius:10px;filter:drop-shadow(0 12px 36px rgba(58,15,90,0.08))}
+    nav ul{display:flex;gap:12px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{color:var(--plum);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px;transition:all var(--ease)}
+    nav a.active, nav a[aria-current="page"]{background: linear-gradient(180deg, rgba(58,15,90,0.04), rgba(255,255,255,0.6)); box-shadow:0 8px 30px rgba(58,15,90,0.04); color:var(--slate)}
 
-    /* 🔥 AUCTION BANNER - INDEX SYNC */
-    .auction-banner {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 12px 20px; text-align: center; font-weight: 700;
-      position: sticky; top: 72px; z-index: 40; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
-    }
-    .auction-timer { font-family: 'Clash Display', serif; font-size: 0.85rem; background: rgba(255,255,255,0.9); padding: 4px 10px; border-radius: 12px; display: inline-block; margin-left: 8px; }
+    /* Header hero */
+    header.main-hero{max-width:var(--max-w);margin:28px auto 6px;padding:28px 20px;display:flex;flex-direction:column;gap:16px}
+    .hero-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .eyebrow{font-size:0.85rem;color:var(--muted);letter-spacing:1.6px;font-weight:700;text-transform:uppercase}
+    .page-title{font-family:var(--font-display);font-size:clamp(1.6rem,2.6vw,2.6rem);margin:0;color:var(--slate)}
+    .hero-sub{color:var(--muted);max-width:760px}
 
-    /* MAIN */
-    main { padding: 140px 5% 40px; max-width: var(--max-w); margin: 0 auto; }
-    h1 {
-      text-align: center; font-family: 'Clash Display', serif; font-size: 2.5rem; font-weight: 600;
-      letter-spacing: 1.5px; margin-bottom: 60px; background: linear-gradient(90deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
+    /* Filters */
+    .controls{max-width:var(--max-w);margin:10px auto 0;padding:18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+    .filters{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .chip{background:linear-gradient(180deg, #fff, #fbfbfc);padding:10px 12px;border-radius:999px;border:1px solid rgba(47,18,66,0.04);font-weight:700;color:var(--plum);cursor:pointer}
+    .search{display:flex;gap:8px;align-items:center}
+    .search input{padding:12px 14px;border-radius:12px;border:1px solid rgba(47,18,66,0.06);min-width:280px;font-size:0.96rem}
+    .sort select{padding:10px 12px;border-radius:12px;border:1px solid rgba(47,18,66,0.06)}
 
-    /* 🔥 WORKING FILTERS - PRO IMPLEMENTATION [web:145] */
-    .filters {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 25px;
-      margin-bottom: 50px; background: rgba(255,255,255,0.4); border: 1px solid var(--muted-gold);
-      border-radius: var(--radius); box-shadow: 0 8px 25px rgba(189,166,97,0.15);
-    }
-    .filter-group { display: flex; flex-direction: column; gap: 8px; min-width: 140px; }
-    .filter-group label { font-size: 0.88rem; cursor: pointer; font-weight: 500; }
-    .filter-group input[type="checkbox"] { margin-right: 8px; accent-color: var(--highlight-gold); transform: scale(1.1); }
-    select {
-      background: rgba(252,250,246,0.95); color: var(--text-dark); border: 1px solid var(--muted-gold);
-      border-radius: 8px; padding: 10px 14px; cursor: pointer; font-weight: 600; width: 160px;
-    }
-    .filter-count { font-size: 0.8rem; color: var(--muted-gold); font-weight: 500; }
+    /* Grid */
+    .grid-wrap{max-width:var(--max-w);margin:18px auto 80px;padding:0 20px}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
 
-    /* 🔥 PRODUCTS - PLACEHOLDER + CART SYNC */
-    .products-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;
+    .card{
+      background:linear-gradient(180deg,#fff,#fbfbfc);
+      border-radius:16px;padding:18px;border:1px solid rgba(47,18,66,0.04);
+      box-shadow:var(--shadow-soft);transition:transform var(--ease), box-shadow var(--ease);
+      display:flex;flex-direction:column;gap:12px;height:100%;
     }
-    .product-card {
-      background: rgba(255,255,255,0.7); border-radius: var(--radius); padding: 20px;
-      border: 1px solid var(--muted-gold); box-shadow: 0 8px 25px rgba(189,166,97,0.15);
-      transition: all var(--transition-speed) ease; position: relative; cursor: pointer;
+    .card:hover{transform:translateY(-8px);box-shadow:0 30px 110px rgba(58,15,90,0.12)}
+    .media{height:220px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, rgba(58,15,90,0.04), rgba(0,0,0,0.02));font-size:2rem;color:var(--muted)}
+    .status-pill{font-size:0.8rem;padding:6px 10px;border-radius:999px;border:1px solid rgba(58,15,90,0.06);background:linear-gradient(180deg,rgba(58,15,90,0.03),rgba(255,255,255,0.4));color:var(--plum);font-weight:700;display:inline-block}
+    .title{font-family:var(--font-display);font-size:1.05rem;margin:0;color:var(--slate)}
+    .excerpt{color:var(--muted);font-size:0.95rem;flex:1}
+    .price{font-weight:900;color:var(--plum);font-size:1.05rem}
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn{
+      padding:10px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:800;transition:all var(--ease);
+      background:linear-gradient(135deg,var(--plum),var(--plum-2));color:white;box-shadow:0 12px 36px rgba(58,15,90,0.28);
     }
-    .product-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(189,166,97,0.3); }
-    
-    /* 🔥 PLACEHOLDER - SAME AS INDEX */
-    .product-media {
-      height: 220px; background: #f0f0f0; border: 2px dashed #ddd; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px;
-      margin-bottom: 16px; position: relative; overflow: hidden;
-    }
-    .product-media::before { content: "IMAGE HERE"; font-weight: bold; text-transform: uppercase; }
-    .product-media img { width: 100%; height: 100%; object-fit: cover; }
+    .btn.ghost{background:transparent;color:var(--plum);border:2px solid rgba(58,15,90,0.06);box-shadow:none}
+    .btn.small{padding:8px 10px;border-radius:10px;font-weight:700}
 
-    .product-card h3 { font-family: 'Clash Display', serif; font-size: 1.15rem; margin-bottom: 8px; }
-    .product-card p { font-size: 0.92rem; color: rgba(75,67,55,0.7); margin-bottom: 12px; }
-    .price { font-size: 1.2rem; font-weight: 900; color: var(--highlight-gold); }
+    /* AI Panel */
+    .ai-panel{max-width:720px;margin:18px auto;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfc);box-shadow:0 12px 40px rgba(58,15,90,0.06);display:none}
+    .ai-panel h4{margin:0 0 8px;font-family:var(--font-display);color:var(--plum)}
 
-    /* 🔥 ADD TO CART BUTTONS - INDEX SYNC */
-    .add-to-cart-btn {
-      width: 100%; padding: 14px; margin-top: 12px; background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));
-      color: var(--text-dark); border: none; border-radius: 12px; font-weight: 700; cursor: pointer;
-      box-shadow: 0 8px 25px rgba(236,215,143,0.4); transition: all 0.3s ease;
-    }
-    .add-to-cart-btn:hover {
-      transform: translateY(-2px); box-shadow: 0 12px 35px rgba(236,215,143,0.6);
-    }
+    /* Quick view modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(18,20,24,0.5);display:none;align-items:center;justify-content:center;z-index:900;padding:20px}
+    .modal{background:#fff;border-radius:14px;padding:22px;max-width:920px;width:100%;box-shadow:0 40px 160px rgba(18,20,24,0.6);display:grid;grid-template-columns:1fr 420px;gap:20px}
+    .modal .media{height:380px}
+    .modal h3{margin:0;font-family:var(--font-display);color:var(--plum)}
+    .specs{color:var(--muted);margin-top:10px}
+    .modal .actions{justify-content:flex-end;margin-top:12px}
 
-    /* TOAST - INDEX SYNC */
-    .toast {
-      position: fixed; top: 100px; right: 20px; background: linear-gradient(90deg, var(--btn-gradient-start), var(--btn-gradient-end));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-      max-width: 320px;
+    /* Floating AI orb */
+    .ai-orb{
+      position:fixed;right:22px;bottom:22px;width:64px;height:64px;border-radius:999px;background:linear-gradient(180deg,#eef0f2,#dde0e3);box-shadow:0 18px 48px rgba(46,46,46,0.14), inset 0 2px 8px rgba(255,255,255,0.6);
+      display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:980;border:1px solid rgba(47,18,66,0.04)
     }
-    .toast.show { transform: translateX(0); }
+    .ai-orb .ico{font-weight:900;color:var(--plum);font-size:22px}
 
-    /* FOOTER */
-    footer {
-      text-align: center; padding: 50px 5%; background: rgba(252,250,246,0.85); margin-top: 80px;
-      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
+    /* Toast */
+    .toast{position:fixed;top:18px;right:18px;background:linear-gradient(135deg,var(--plum),#2a0a3f);color:white;padding:12px 18px;border-radius:12px;box-shadow:0 18px 60px rgba(58,15,90,0.32);display:none;z-index:980;font-weight:700}
+
+    footer{max-width:var(--max-w);margin:60px auto 100px;padding:24px;color:var(--muted);border-top:1px solid rgba(47,18,66,0.03);text-align:center}
+
+    /* Responsive */
+    @media(max-width:980px){
+      .modal{grid-template-columns:1fr; padding:18px}
+      .modal .media{height:260px}
+      .search input{min-width:180px}
+      nav ul{display:none}
     }
 
-    /* WHATSAPP - INDEX SYNC */
-    .whatsapp-float {
-      position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold)); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--text-dark);
-      box-shadow: 0 10px 30px rgba(191,166,88,0.4); z-index: 999; text-decoration: none;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .filters { flex-direction: column; align-items: center; gap: 20px; }
-      header { padding: 15px 4%; flex-direction: column; gap: 15px; }
-      nav ul { gap: 10px; justify-content: center; }
-      main { padding: 120px 4% 30px; }
-    }
+    /* Focus */
+    a:focus, button:focus, input:focus { outline: 3px solid var(--focus); outline-offset: 3px; border-radius:10px; }
   </style>
 </head>
 
 <body>
-  <!-- HEADER - CART COUNT SYNC -->
-  <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html" class="active">Collection</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li><a href="user-login.html">Login</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Top nav -->
+  <div class="topbar" role="banner">
+    <div class="wrap">
+      <div class="brand">
+        <img src="images/logo.final.png" alt="Snehvastra" class="logo" />
+        <div>
+          <div style="font-weight:800;color:var(--plum);font-size:0.98rem">SNEHVASTRA</div>
+          <div style="font-size:12px;color:var(--muted)">New Gen Luxury Streetwear</div>
+        </div>
+      </div>
 
-  <!-- 🔥 AUCTION BANNER - LIVE COUNTDOWN -->
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html" aria-current="page" class="active">Collection</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 
-  <main>
-    <h1>Echo Drops Collection</h1>
+  <!-- Hero -->
+  <header class="main-hero" role="region" aria-labelledby="collectionTitle">
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow">Echo Drops</div>
+        <h1 id="collectionTitle" class="page-title">Collection — curated, limited, considered</h1>
+        <div class="hero-sub">Shop limited runs and crafted pieces. Each drop is small-batched with NFC authentication and a living craft story.</div>
+      </div>
+      <div style="text-align:right">
+        <div class="status-pill" title="Limited runs & 1/1 auctions">Limited Drops • Crafted</div>
+        <div style="margin-top:8px;font-size:0.9rem;color:var(--muted)">Free shipping over ₹50,000 • Secure payments</div>
+      </div>
+    </div>
+  </header>
 
-    <!-- 🔥 WORKING FILTERS -->
-    <div class="filters" aria-label="Product filters">
-      <div class="filter-group">
-        <label>Category</label>
-        <label><input type="checkbox" value="Streetwear" data-filter="category" checked> Streetwear</label>
-        <label><input type="checkbox" value="Luxury" data-filter="category" checked> Luxury</label>
-        <label><input type="checkbox" value="Casual" data-filter="category" checked> Casual</label>
-      </div>
-      <div class="filter-group">
-        <label>Price</label>
-        <label><input type="checkbox" value="under-2000" data-filter="price" checked> Under ₹2K</label>
-        <label><input type="checkbox" value="2000-5000" data-filter="price" checked> ₹2K-5K</label>
-        <label><input type="checkbox" value="5000-plus" data-filter="price" checked> 5K+</label>
-      </div>
-      <div class="filter-group">
-        <label>Status</label>
-        <label><input type="checkbox" value="instock" data-filter="status" checked> In Stock</label>
-        <label><input type="checkbox" value="limited" data-filter="status" checked> Limited</label>
-      </div>
-      <div class="filter-group">
-        <label>Sort</label>
-        <select id="sortSelect">
-          <option value="default">Featured</option>
-          <option value="price-low">Price: Low-High</option>
-          <option value="price-high">Price: High-Low</option>
-          <option value="name">Name A-Z</option>
+  <!-- Controls -->
+  <section class="controls" aria-label="Product controls">
+    <div class="filters" role="region" aria-label="Filters">
+      <button class="chip" data-filter-presets="all" id="showAll">All</button>
+      <button class="chip" data-filter-presets="street" id="showStreet">Street</button>
+      <button class="chip" data-filter-presets="luxury" id="showLuxury">Luxury</button>
+      <button class="chip" id="showLimited">Limited</button>
+    </div>
+
+    <div class="search">
+      <input id="aiSearch" placeholder="Ask Sneh: 'show black hoodies under 50k' or 'best layering'" aria-label="AI search" />
+      <button class="chip" onclick="askAI()">Ask Sneh</button>
+      <div class="sort">
+        <label for="sort" style="font-weight:700;color:var(--muted);margin-left:6px">Sort</label>
+        <select id="sort" aria-label="Sort products">
+          <option value="featured">Featured</option>
+          <option value="price-low">Price: Low → High</option>
+          <option value="price-high">Price: High → Low</option>
+          <option value="name">Name A → Z</option>
         </select>
       </div>
     </div>
+  </section>
 
-    <!-- 🔥 PRODUCTS WITH CART BUTTONS -->
-    <div class="products-grid" id="productsGrid" aria-live="polite">
-      <div class="product-card" data-product-id="1" data-name="Streetwear Fusion Tee" data-category="Streetwear" data-price="499" data-price-range="under-2000" data-status="instock">
-        <div class="product-media"></div>
-        <h3>Streetwear Fusion Tee</h3>
-        <p>Bold yet minimal — crafted for statement comfort.</p>
-        <div class="price">₹499</div>
-        <button class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
-      </div>
+  <!-- AI Panel -->
+  <div id="aiPanel" class="ai-panel" role="region" aria-live="polite"></div>
 
-      <div class="product-card" data-product-id="2" data-name="Luxury Midnight Jacket" data-category="Luxury" data-price="2999" data-price-range="2000-5000" data-status="limited">
-        <div class="product-media"></div>
-        <h3>Luxury Midnight Jacket</h3>
-        <p>Tailored craftsmanship with modern luxury essence.</p>
-        <div class="price">₹2,999</div>
-        <button class="add-to-cart-btn" data-product-id="2">Add to Cart</button>
-      </div>
-
-      <div class="product-card" data-product-id="3" data-name="Casual Cloud Hoodie" data-category="Casual" data-price="1999" data-price-range="under-2000" data-status="instock">
-        <div class="product-media"></div>
-        <h3>Casual Cloud Hoodie</h3>
-        <p>Soft fleece touch — urban comfort meets class.</p>
-        <div class="price">₹1,999</div>
-        <button class="add-to-cart-btn" data-product-id="3">Add to Cart</button>
-      </div>
-
-      <div class="product-card" data-product-id="4" data-name="Tech Overshirt" data-category="Streetwear" data-price="4999" data-price-range="2000-5000" data-status="limited">
-        <div class="product-media"></div>
-        <h3>Tech Overshirt</h3>
-        <p>Structured overshirt with tech fabric.</p>
-        <div class="price">₹4,999</div>
-        <button class="add-to-cart-btn" data-product-id="4">Add to Cart</button>
-      </div>
+  <!-- Products grid -->
+  <section class="grid-wrap" aria-label="Product grid">
+    <div class="products-grid" id="productsGrid">
+      <!-- Product cards generated by script -->
     </div>
-  </main>
-s
+
+    <!-- Auction highlight -->
+    <div style="margin-top:28px;display:flex;gap:18px;align-items:center;justify-content:center">
+      <a href="auction.html" class="btn ghost" style="display:inline-flex;align-items:center;gap:10px">Join Snehvastra ONE Auction →</a>
+      <div style="color:var(--muted);font-weight:700">1/1 • NFC authenticated • Highest bidder wins</div>
+    </div>
+  </section>
+
+  <!-- Quick view modal -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <div>
+        <div class="media" id="modalMedia">IMAGE</div>
+      </div>
+      <aside>
+        <h3 id="modalTitle">Title</h3>
+        <div class="specs" id="modalTags">Tags • Category</div>
+        <div style="margin-top:12px" class="price" id="modalPrice">₹0</div>
+        <p style="margin-top:14px;color:var(--muted)" id="modalExcerpt">Excerpt</p>
+
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center" class="actions">
+          <button id="modalAdd" class="btn">Add to Cart</button>
+          <button id="modalView" class="btn ghost small" onclick="location.href='product-single.html'">View Product</button>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:0.95rem">
+          <strong>Sizing hint:</strong> true-to-size. Use product page for precise measurements.
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Floating AI orb -->
+  <button id="aiOrb" class="ai-orb" aria-label="Open Sneh — shopping assistant" title="Ask Sneh">
+    <span class="ico">S</span>
+  </button>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite">Saved</div>
+
   <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+    © <span id="currentYear"></span> Snehvastra • Crafted limited drops • Instagram: <strong>@sneh_vastra</strong>
   </footer>
 
-  <!-- TOAST + WHATSAPP -->
-  <div id="toast" class="toast"></div>
-  <a href="https://wa.me/7597152209?text=🔥 Snehvastra Collection - Echo Drops!" class="whatsapp-float" target="_blank">💬</a>
-
-  <!-- 🔥 PRO SCRIPT - FULL SYNC -->
   <script>
-    // CART SYNC (INDEX COMPATIBLE)
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    function updateCartCount() {
-      const total = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+    /* -------------------------
+       DATA: Finalized products
+       (prices locked by CEO decision)
+       ------------------------- */
+    const PRODUCTS = [
+      {
+        id: '1',
+        name: 'Streetwear Fusion Tee',
+        price: 4999,
+        category: 'Streetwear',
+        tags: ['black','tee','street'],
+        status: 'instock',
+        excerpt: 'Bold yet minimal — crafted for statement comfort.',
+        image: 'images/products/tee.jpg'
+      },
+      {
+        id: '2',
+        name: 'Luxury Midnight Jacket',
+        price: 29999,
+        category: 'Luxury',
+        tags: ['jacket','luxury','black'],
+        status: 'limited',
+        excerpt: 'Tailored craftsmanship with modern luxury essence.',
+        image: 'images/products/jacket.jpg'
+      },
+      {
+        id: '3',
+        name: 'Casual Cloud Hoodie',
+        price: 19999,
+        category: 'Casual',
+        tags: ['hoodie','casual','oversized'],
+        status: 'instock',
+        excerpt: 'Soft fleece touch — urban comfort meets class.',
+        image: 'images/products/hoodie.jpg'
+      },
+      {
+        id: '4',
+        name: 'Tech Overshirt',
+        price: 49999,
+        category: 'Streetwear',
+        tags: ['overshirt','tech','layer'],
+        status: 'limited',
+        excerpt: 'Structured overshirt with advanced technical fabric.',
+        image: 'images/products/overshirt.jpg'
+      },
+      {
+        id: 'one',
+        name: 'Snehvastra ONE (Auction)',
+        price: 999999,
+        category: 'Auction',
+        tags: ['one','auction','1/1'],
+        status: 'auction',
+        excerpt: 'One-of-one heritage piece — NFC authenticated.',
+        image: 'images/products/one.jpg'
+      }
+    ];
+
+    /* -------------------------
+       CART (localStorage)
+       ------------------------- */
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart') || '{}');
+
+    function saveCart(){
+      localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function updateCartCount(){
+      const total = Object.values(cart).reduce((s,n)=>s+n,0);
       document.getElementById('cartCount').textContent = total;
     }
 
-    // TOAST SYSTEM
-    function showToast(message, duration = 3000) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), duration);
+    /* -------------------------
+       RENDER PRODUCTS
+       ------------------------- */
+    const grid = document.getElementById('productsGrid');
+
+    function money(x){ return '₹' + Number(x).toLocaleString(); }
+
+    function createCard(p){
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.setAttribute('data-id', p.id);
+      el.setAttribute('data-price', p.price);
+      el.setAttribute('data-category', p.category);
+      el.setAttribute('data-status', p.status);
+      el.setAttribute('data-tags', p.tags.join(','));
+      el.innerHTML = `
+        <div class="media" role="img" aria-label="${p.name} visual">
+          <img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='block';this.textContent='${p.name.charAt(0)}'">
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 class="title">${p.name}</h3>
+            <div class="status-pill" aria-hidden="true">${p.status === 'limited' ? 'Limited' : (p.status==='auction'?'Auction':'In stock')}</div>
+          </div>
+          <p class="excerpt">${p.excerpt}</p>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto">
+          <div class="price">${money(p.price)}</div>
+          <div class="actions">
+            <button class="btn ghost small" data-action="quick" data-id="${p.id}">Quick view</button>
+            <button class="btn" data-action="add" data-id="${p.id}">Add</button>
+          </div>
+        </div>
+      `;
+      return el;
     }
 
-    // ADD TO CART
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('add-to-cart-btn')) {
-        const productId = e.target.getAttribute('data-product-id');
-        const productCard = e.target.closest('.product-card');
-        const productName = productCard.getAttribute('data-name');
-        const productPrice = productCard.getAttribute('data-price');
-        
-        cart[productId] = (cart[productId] || 0) + 1;
-        localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
-        updateCartCount();
-        showToast(`${productName} added! (₹${productPrice.toLocaleString()})`);
-        
-        e.target.style.transform = 'scale(0.95)';
-        setTimeout(() => e.target.style.transform = '', 150);
+    function renderAll(products = PRODUCTS){
+      grid.innerHTML = '';
+      products.forEach(p => grid.appendChild(createCard(p)));
+    }
+
+    /* -------------------------
+       EVENTS: add to cart, quick view
+       ------------------------- */
+    grid.addEventListener('click', (e)=>{
+      const action = e.target.getAttribute('data-action');
+      const id = e.target.getAttribute('data-id');
+      if(!action || !id) return;
+
+      if(action === 'add'){
+        cart[id] = (cart[id] || 0) + 1;
+        saveCart();
+        showToast(`${PRODUCTS.find(x=>x.id===id).name} added • ${money(PRODUCTS.find(x=>x.id===id).price)}`);
+        e.target.animate([{transform:'scale(1)'},{transform:'scale(.96)'},{transform:'scale(1)'}],{duration:200});
+      }
+
+      if(action === 'quick'){
+        openQuickView(id);
       }
     });
 
-    // 🔥 WORKING FILTERS [web:145]
-    function applyFilters() {
-      const products = Array.from(document.querySelectorAll('.product-card'));
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-      const sortValue = document.getElementById('sortSelect').value;
-      
-      let visibleCount = 0;
-      
-      products.forEach(product => {
-        let show = true;
-        
-        // Category filter
-        const categoryCheckboxes = Array.from(checkboxes).filter(cb => cb.dataset.filter === 'category');
-        if (categoryCheckboxes.length) {
-          const productCategory = product.dataset.category;
-          show = categoryCheckboxes.some(cb => cb.value === productCategory);
-        }
-        
-        // Price filter
-        const priceCheckboxes = Array.from(checkboxes).filter(cb => cb.dataset.filter === 'price');
-        if (priceCheckboxes.length && show) {
-          const productPriceRange = product.dataset.priceRange;
-          show = priceCheckboxes.some(cb => cb.value === productPriceRange);
-        }
-        
-        // Status filter
-        const statusCheckboxes = Array.from(checkboxes).filter(cb => cb.dataset.filter === 'status');
-        if (statusCheckboxes.length && show) {
-          const productStatus = product.dataset.status;
-          show = statusCheckboxes.some(cb => cb.value === productStatus);
-        }
-        
-        product.style.display = show ? 'block' : 'none';
-        if (show) visibleCount++;
-      });
-      
-      // Sort
-      const visibleProducts = Array.from(products).filter(p => p.style.display !== 'none');
-      visibleProducts.sort((a, b) => {
-        if (sortValue === 'price-low') return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-        if (sortValue === 'price-high') return parseInt(b.dataset.price) - parseInt(a.dataset.price);
-        if (sortValue === 'name') return a.dataset.name.localeCompare(b.dataset.name);
-        return 0;
-      });
-      
-      const grid = document.getElementById('productsGrid');
-      visibleProducts.forEach(p => grid.appendChild(p));
+    /* -------------------------
+       Quick view modal
+       ------------------------- */
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMedia = document.getElementById('modalMedia');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalTags = document.getElementById('modalTags');
+    const modalExcerpt = document.getElementById('modalExcerpt');
+    const modalAdd = document.getElementById('modalAdd');
+    let currentModalId = null;
+
+    function openQuickView(id){
+      const p = PRODUCTS.find(x=>x.id===id);
+      if(!p) return;
+      currentModalId = id;
+      modalTitle.textContent = p.name;
+      modalPrice.textContent = money(p.price);
+      modalTags.textContent = `${p.category} • ${p.tags.join(' • ')}`;
+      modalExcerpt.textContent = p.excerpt;
+      modalMedia.innerHTML = `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block">`;
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden','false');
+      modalAdd.focus();
     }
 
-    // Filter events
-    document.querySelectorAll('input[type="checkbox"], #sortSelect').forEach(el => {
-      el.addEventListener('change', applyFilters);
+    modalBackdrop.addEventListener('click', (e)=>{
+      if(e.target === modalBackdrop) closeModal();
     });
 
-    // AUCTION COUNTDOWN
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
-      }
-    }, 1000);
+    function closeModal(){
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+      currentModalId = null;
+    }
 
-    // INIT
-    window.addEventListener('load', () => {
+    document.getElementById('modalAdd').addEventListener('click', ()=>{
+      if(!currentModalId) return;
+      cart[currentModalId] = (cart[currentModalId]||0) + 1;
+      saveCart();
+      showToast(`${PRODUCTS.find(x=>x.id===currentModalId).name} added`);
+      closeModal();
+    });
+
+    /* -------------------------
+       Filters & Sort
+       ------------------------- */
+    function applyFiltersAndSort(){
+      let items = Array.from(PRODUCTS);
+      const sort = document.getElementById('sort').value;
+
+      // apply any UI preset filters (chip active)
+      // simple behavior: chips with data-filter-presets
+      const activePreset = document.querySelector('.chip.active');
+      if(activePreset){
+        const preset = activePreset.dataset.filterPresets;
+        if(preset === 'street') items = items.filter(i => i.category.toLowerCase().includes('street'));
+        if(preset === 'luxury') items = items.filter(i => i.category.toLowerCase().includes('luxury'));
+        if(preset === 'all') items = items; // nothing
+      }
+
+      // sort
+      if(sort === 'price-low') items.sort((a,b)=>a.price-b.price);
+      if(sort === 'price-high') items.sort((a,b)=>b.price-a.price);
+      if(sort === 'name') items.sort((a,b)=>a.name.localeCompare(b.name));
+
+      renderAll(items);
+    }
+
+    // chip toggles
+    document.querySelectorAll('.chip[data-filter-presets]').forEach(c=>{
+      c.addEventListener('click', ()=>{
+        document.querySelectorAll('.chip[data-filter-presets]').forEach(x=>x.classList.remove('active'));
+        c.classList.add('active');
+        applyFiltersAndSort();
+      });
+    });
+
+    document.getElementById('sort').addEventListener('change', applyFiltersAndSort);
+
+    /* -------------------------
+       AI assistant — local rules
+       ------------------------- */
+    const aiPanel = document.getElementById('aiPanel');
+    const aiSearch = document.getElementById('aiSearch');
+
+    function askAI(){
+      const q = aiSearch.value.trim().toLowerCase();
+      if(!q){ aiPanel.style.display='none'; return; }
+
+      // quick rule-based intents (upgradeable)
+      let resp = '';
+      if(/under\s?₹?\s?50k|under 50k|<50k/.test(q) || /under\s?50,000/.test(q)){
+        const matches = PRODUCTS.filter(p=>p.price < 50000);
+        resp = `<strong>Showing items under ₹50,000 — ${matches.length} result(s):</strong><br>` + matches.map(m=>`${m.name} • ${money(m.price)}`).join('<br>');
+        renderFilteredList(matches);
+      } else if(/black|all black|show black/.test(q)){
+        const matches = PRODUCTS.filter(p=>p.tags.join(',').includes('black'));
+        resp = `<strong>Black items:</strong><br>` + (matches.length ? matches.map(m=>`${m.name} • ${money(m.price)}`).join('<br>') : 'No exact black items found.');
+        renderFilteredList(matches);
+      } else if(/layer|layering|hoodie|overshirt/.test(q)){
+        const rec = PRODUCTS.filter(p=>p.tags.includes('overshirt') || p.tags.includes('hoodie'));
+        resp = `<strong>Layering picks:</strong><br>` + rec.map(m=>`${m.name} • ${money(m.price)}`).join('<br>');
+        renderFilteredList(rec);
+      } else if(/suggest|style|match|outfit/.test(q)){
+        // smart outfit suggestions (simple rules)
+        const tee = PRODUCTS.find(p=>p.name.includes('Tee'));
+        const overshirt = PRODUCTS.find(p=>p.name.includes('Overshirt'));
+        const hoodie = PRODUCTS.find(p=>p.name.includes('Hoodie'));
+        resp = `<strong>Styling suggestion:</strong><br>Try: ${tee ? tee.name + ' (paired with)' : ''} ${overshirt ? overshirt.name : hoodie.name}.`;
+        renderFilteredList([tee, overshirt].filter(Boolean));
+      } else {
+        resp = "Try prompts like: 'show black items', 'under 50k', 'layering picks', or 'suggest outfit'.";
+      }
+
+      aiPanel.innerHTML = `<h4>Sneh — Shopping Assistant</h4><div style="color:var(--muted);line-height:1.6">${resp}</div>`;
+      aiPanel.style.display = 'block';
+      aiSearch.focus();
+    }
+
+    // helper to render a filtered small list (keeps main grid)
+    function renderFilteredList(list){
+      if(!list || !list.length){ renderAll(); return; }
+      renderAll(list);
+      window.scrollTo({top: document.querySelector('.grid-wrap').offsetTop - 24, behavior:'smooth'});
+    }
+
+    /* -------------------------
+       Toast
+       ------------------------- */
+    const toast = document.getElementById('toast');
+    let toastTimer = null;
+    function showToast(msg, ms=2600){
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      toast.style.opacity = '1';
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>{ toast.style.display = 'none'; }, ms);
+    }
+
+    /* -------------------------
+       AI Orb modal (deep questions)
+       ------------------------- */
+    const aiOrbBtn = document.getElementById('aiOrb');
+    aiOrbBtn.addEventListener('click', ()=> {
+      const q = prompt('Sneh — Ask me anything about fit, fabric, or drops. e.g. "Will this shrink?"');
+      if(q === null) return;
+      const ans = generateSnehResponse(q);
+      alert('Sneh says:\n\n' + ans);
+    });
+
+    function generateSnehResponse(q){
+      q = q.toLowerCase();
+      if(q.includes('shrink')||q.includes('wash')||q.includes('care')) return 'Care: gentle cold wash, hang dry flat. Follow product label. Natural fibers relax slightly.';
+      if(q.includes('size')||q.includes('fit')) return 'Fit: our pieces run true-to-size. For relaxed fit size up one. Check product page for specific measurements.';
+      if(q.includes('auction')) return 'ONE Auction: 1/1 pieces, NFC-authenticated. Join live auction page to bid.';
+      if(q.includes('delivery')||q.includes('shipping')) return 'Shipping: Standard 3-7 business days. Express available at checkout. Free over ₹50,000.';
+      if(q.includes('material')||q.includes('fabric')) return 'We use long-staple cotton, responsibly sourced blends, and technical finishes for texture and longevity.';
+      return "Great question — for full specifics we will open a chat on WhatsApp. Or try 'size', 'care', or 'auction'.";
+    }
+
+    /* -------------------------
+       Init
+       ------------------------- */
+    window.addEventListener('load', ()=>{
+      renderAll();
       updateCartCount();
-      applyFilters();
       document.getElementById('currentYear').textContent = new Date().getFullYear();
-    });
-  </script>
+      // default activate 'All' chip
+      document.getElementById('showAll').classList.add('active');
 
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
+      // keyboard: enter triggers AI search
+      document.getElementById('aiSearch').addEventListener('keypress', (e)=> {
+        if(e.key === 'Enter') askAI();
+      });
+
+      // quick-access chips (some pre-filters)
+      document.getElementById('showStreet').addEventListener('click', ()=> document.getElementById('showStreet').click());
+    });
+
+    // small accessibility: close modal on esc
+    document.addEventListener('keydown', (e)=> {
+      if(e.key === 'Escape') {
+        if(modalBackdrop.style.display === 'flex') closeModal();
+      }
+    });
+
   </script>
 </body>
 </html>
