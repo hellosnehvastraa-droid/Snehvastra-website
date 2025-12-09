@@ -1,377 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Customize - Snehvastra</title>
-  <meta name="description" content="Transform your cherished garments. Snehvastra artisans customize with pickup service + creative vision." />
-  <meta name="theme-color" content="#ECD78F">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>Customize • Snehvastra</title>
+<meta name="theme-color" content="#3A0F5A" />
+<meta name="description" content="Revive your cherished garments with Snehvastra’s artisan-led customization. AI-assisted ideas, doorstep pickup, emotional storytelling." />
 
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ROOT */
+:root{
+  --purple:#3A0F5A; --purple-light:#5a1c85;
+  --slate:#22232A; --mid:#3B3D45; --silver:#B7B9BD;
+  --paper:#F6F6F6; --muted:#C7C6C8;
+  --radius:14px; --max-w:1100px; --ease:.28s;
+}
+
+/* GLOBAL */
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,var(--paper),#faf9f7);
+  color:var(--slate);
+}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:80;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(183,185,189,0.08);
+}
+.topbar{
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{height:46px;}
+nav ul{
+  list-style:none;margin:0;padding:0;
+  display:flex;gap:12px;flex-wrap:wrap;
+}
+nav a{
+  padding:8px 12px;border-radius:8px;
+  text-decoration:none;
+  color:var(--muted);
+  font-size:.9rem;
+  transition:.25s;
+}
+nav a:hover,nav a.active{
+  background:rgba(58,15,90,0.06);
+  color:var(--purple);
+}
+
+/* MAIN */
+main{
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:120px 20px 60px;
+}
+
+/* HERO */
+.customize-hero{
+  background:#fff;
+  border-radius:var(--radius);
+  border:1px solid rgba(34,35,42,0.05);
+  padding:60px 40px;
+  margin-bottom:48px;
+  box-shadow:0 16px 40px rgba(34,35,42,0.08);
+  text-align:center;
+}
+.customize-hero h1{
+  font-family:'Clash Display',serif;
+  font-size:2.4rem;
+  margin:0 0 14px;
+  color:var(--purple);
+}
+.customize-hero p{
+  font-size:1.15rem;
+  max-width:680px;
+  margin:0 auto;
+  color:var(--mid);
+  line-height:1.8;
+}
+
+/* AI INLINE PROMPT */
+.ai-inline{
+  margin:24px auto 0;
+  max-width:560px;
+  background:linear-gradient(180deg,#fff,#fdfdfd);
+  border-radius:var(--radius);
+  border:1px solid rgba(34,35,42,0.06);
+  padding:18px 22px;
+  display:flex;gap:14px;
+  align-items:center;
+  box-shadow:0 10px 28px rgba(34,35,42,0.06);
+}
+.ai-inline input{
+  flex:1;padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(183,185,189,0.3);
+}
+.ai-inline button{
+  padding:12px 16px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--purple),#2e0b4a);
+  border:none;color:#fff;
+  font-weight:600;cursor:pointer;
+}
+
+/* FORM CARD */
+.customize-section{
+  background:#fff;
+  border-radius:var(--radius);
+  border:1px solid rgba(34,35,42,0.05);
+  padding:40px;
+  box-shadow:0 16px 40px rgba(34,35,42,0.08);
+  margin-bottom:48px;
+}
+.form-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:22px;margin-bottom:28px;
+}
+.form-group label{
+  display:block;font-weight:600;margin-bottom:8px;
+}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:14px;
+  border:1px solid rgba(183,185,189,0.3);
+  border-radius:10px;
+  font-size:1rem;
+  transition:.25s;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+  border-color:var(--purple);outline:none;
+  box-shadow:0 0 0 3px rgba(58,15,90,0.1);
+}
+textarea{min-height:120px;resize:vertical;}
+
+/* UPLOAD */
+.upload-preview{
+  width:140px;height:140px;
+  margin-top:10px;
+  border-radius:12px;
+  border:2px dashed rgba(183,185,189,0.35);
+  background:rgba(58,15,90,0.05);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.6rem;color:var(--muted);
+}
+.upload-preview img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+
+/* CHECKBOX */
+.checkbox-row{
+  display:flex;gap:12px;
+  align-items:flex-start;
+  margin:20px 0;
+}
+
+/* PRICE ESTIMATE */
+.price-estimate{
+  margin:40px 0 20px;
+  background:rgba(58,15,90,0.03);
+  border-radius:12px;
+  padding:26px;
+  border:1px solid rgba(58,15,90,0.15);
+}
+.estimate-row{
+  display:flex;justify-content:space-between;
+  padding:6px 0;
+  font-size:1rem;
+}
+.estimate-total{
+  margin-top:14px;
+  padding-top:12px;
+  font-size:1.3rem;
+  border-top:1px solid rgba(58,15,90,0.2);
+  color:var(--purple);font-weight:700;
+}
+
+/* BUTTON */
+.submit-btn{
+  width:100%;
+  padding:18px;
+  border:none;border-radius:12px;
+  background:linear-gradient(135deg,var(--purple),#2e0b4a);
+  color:#fff;font-size:1.2rem;
+  font-family:'Clash Display',serif;
+  cursor:pointer;transition:.25s;
+}
+.submit-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(58,15,90,0.32);
+}
+
+/* FAQ */
+.faq-section{
+  background:#fff;
+  border-radius:var(--radius);
+  border:1px solid rgba(34,35,42,0.05);
+  padding:40px;
+  box-shadow:0 16px 40px rgba(34,35,42,0.08);
+}
+.faq-section h2{
+  text-align:center;
+  font-family:'Clash Display',serif;
+  font-size:1.8rem;
+  margin-bottom:32px;
+}
+.faq-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:24px;
+}
+.faq-item h3{
+  margin-bottom:10px;
+  font-family:'Clash Display',serif;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;top:20px;right:20px;
+  background:linear-gradient(180deg,var(--silver),#aeb0b2);
+  padding:14px 18px;color:var(--slate);
+  border-radius:10px;
+  box-shadow:0 14px 30px rgba(34,35,42,0.25);
+  transform:translateX(300px);
+  transition:.3s;z-index:200;font-weight:600;
+}
+.toast.show{transform:translateX(0);}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float{
+  position:fixed;bottom:22px;right:22px;
+  width:62px;height:62px;border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  font-size:1.8rem;color:#fff;
+  box-shadow:0 12px 28px rgba(37,211,102,0.35);
+  cursor:pointer;text-decoration:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .form-grid{grid-template-columns:1fr;}
+  .customize-section{padding:30px;}
+}
+</style>
 </head>
 
 <body>
-  <!-- MASTER HEADER -->
-  <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="customize.html" class="active">Customize</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- AUCTION BANNER -->
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+<!-- HEADER -->
+<header>
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="images/logo.final.png" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="customize.html" class="active">Customize</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="customize-hero">
+  <h1>Revive Your Story</h1>
+  <p>Every garment carries memories. Our Jaipur artisans reimagine your cherished pieces into timeless heirlooms — with AI & craft working together.</p>
+</section>
+
+<!-- AI INLINE -->
+<div class="ai-inline">
+  <input id="aiInput" placeholder="Ask Sneh: 'What design suits a black hoodie?'" />
+  <button onclick="askAI()">Ask</button>
+</div>
+
+<!-- CUSTOMIZE FORM -->
+<section class="customize-section">
+<form id="customizeForm">
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Garment Photo *</label>
+      <input type="file" id="uploadPic" accept="image/*" required />
+      <div class="upload-preview" id="uploadPreview">📷</div>
+    </div>
+
+    <div class="form-group">
+      <label>Garment Type *</label>
+      <select id="garmentType" required>
+        <option value="">Select garment</option>
+        <option value="hoodie">Hoodie</option>
+        <option value="tee">T-Shirt</option>
+        <option value="shirt">Shirt</option>
+        <option value="jacket">Jacket</option>
+        <option value="denim">Denim</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
   </div>
 
-  <main>
-    <!-- CUSTOMIZE HERO -->
-    <div class="customize-hero">
-      <h1>Revive Your Favorites</h1>
-      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.85); max-width: 600px; margin: 0 auto;">
-        Send us your cherished garments. Our Jaipur artisans will transform them into timeless heirlooms.
-      </p>
+  <div class="form-group">
+    <label>Your Story (Optional)</label>
+    <textarea id="customDescription" placeholder="Tell us what this garment means to you..."></textarea>
+  </div>
+
+  <div class="checkbox-row">
+    <input type="checkbox" id="creativeFreedom">
+    <label for="creativeFreedom">Give artisans full creative freedom 🎨</label>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Full Address *</label>
+      <input id="pickupAddress" required />
     </div>
 
-    <!-- CUSTOMIZATION FORM -->
-    <div class="customize-section">
-      <form id="customizeForm">
-        <!-- UPLOAD & GARMENT -->
-        <div class="form-grid">
-          <div class="form-group">
-            <label>📸 Garment Photo <span style="color:#e06346">*</span></label>
-            <input type="file" id="uploadPic" accept="image/*" required />
-            <div class="upload-preview" id="uploadPreview"></div>
-          </div>
-          <div class="form-group">
-            <label>👕 Garment Type <span style="color:#e06346">*</span></label>
-            <select id="garmentType" required>
-              <option value="">Select garment</option>
-              <option value="hoodie">Hoodie</option>
-              <option value="tee">T-Shirt</option>
-              <option value="shirt">Shirt</option>
-              <option value="jacket">Jacket</option>
-              <option value="denim">Denim</option>
-              <option value="outerwear">Outerwear</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- STORY & CREATIVE FREEDOM -->
-        <div class="form-group">
-          <label>✍️ Your Story (Optional)</label>
-          <textarea id="customDescription" rows="4" placeholder="Tell us about this garment's memories, or leave blank for our artisans' creative vision..."></textarea>
-        </div>
-
-        <div class="checkbox-row">
-          <input type="checkbox" id="creativeFreedom" />
-          <label for="creativeFreedom">🎨 Give artisans full creative freedom</label>
-        </div>
-
-        <!-- PICKUP DETAILS -->
-        <div class="form-section">
-          <h3>📍 Pickup Details</h3>
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Full Address <span style="color:#e06346">*</span></label>
-              <input type="text" id="pickupAddress" placeholder="Street, City, PIN" required />
-            </div>
-            <div class="form-group">
-              <label>Phone <span style="color:#e06346">*</span></label>
-              <input type="tel" id="pickupPhone" placeholder="+91 9876543210" required />
-            </div>
-            <div class="form-group">
-              <label>Pickup Date <span style="color:#e06346">*</span></label>
-              <input type="date" id="pickupDate" required />
-            </div>
-          </div>
-        </div>
-
-        <!-- PRICE ESTIMATE -->
-        <div class="price-estimate">
-          <div class="estimate-row">
-            <span>Customization:</span>
-            <span id="basePrice">₹2,999+</span>
-          </div>
-          <div class="estimate-row">
-            <span>Pickup/Delivery:</span>
-            <span>₹199</span>
-          </div>
-          <div class="estimate-total">
-            <span>Estimated Total:</span>
-            <strong>₹3,198+</strong>
-          </div>
-          <p class="price-note">Final quote after artisan review (3-24hrs)</p>
-        </div>
-
-        <button type="submit" class="submit-btn">🚚 Schedule Pickup</button>
-      </form>
+    <div class="form-group">
+      <label>Phone/WhatsApp *</label>
+      <input id="pickupPhone" required />
     </div>
 
-    <!-- FAQ -->
-    <div class="faq-section">
-      <h2>Common Questions</h2>
-      <div class="faq-grid">
-        <div class="faq-item">
-          <h3>What can be customized?</h3>
-          <p>Hoodies, tees, shirts, jackets, denim. If wearable, we can transform it.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Timeline?</h3>
-          <p>Pickup: 1-2 days. Customization: 7-14 days. Delivery: 2-3 days.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Creative freedom?</h3>
-          <p>Opt-in for our master artisans to reimagine your piece completely.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Guarantee?</h3>
-          <p>30-day satisfaction or free re-customization.</p>
-        </div>
-      </div>
+    <div class="form-group">
+      <label>Pickup Date *</label>
+      <input type="date" id="pickupDate" required />
     </div>
-  </main>
+  </div>
 
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Custom: <a href="mailto:custom@snehvastra.store" style="color: var(--muted-gold);">custom@snehvastra.store</a></span>
-  </footer>
+  <div class="price-estimate">
+    <div class="estimate-row"><span>Customization:</span><span id="basePrice">₹3,499+</span></div>
+    <div class="estimate-row"><span>Pickup:</span><span>₹199</span></div>
+    <div class="estimate-total">
+      Estimated Total: <strong>₹3,698+</strong>
+    </div>
+  </div>
 
-  <!-- TOAST -->
-  <div id="toast" class="toast"></div>
+  <button class="submit-btn" type="submit">🚚 Schedule Pickup</button>
 
-  <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 900px;
-      --radius: 20px;
-      --transition-speed: 0.35s;
-    }
+</form>
+</section>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2)); color: var(--text-dark); line-height: 1.7; }
+<!-- FAQ -->
+<section class="faq-section">
+<h2>Customization Questions</h2>
+<div class="faq-grid">
 
-    /* MASTER HEADER */
-    header {
-      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px);
-    }
-    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
-    nav ul li a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-      transition: all var(--transition-speed) ease; text-decoration: none;
-    }
-    nav ul li a:hover, nav ul li a.active { 
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
-    }
-    #cartCount { 
-      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
-      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
-    }
+  <div class="faq-item">
+    <h3>What can be customized?</h3>
+    <p>Anything wearable — hoodies, tees, jackets, denim, and heirloom fabrics.</p>
+  </div>
 
-    .auction-banner {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
-      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
-      margin: 0 5%; border-radius: var(--radius);
-    }
-    .auction-timer { 
-      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
-      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
-    }
+  <div class="faq-item">
+    <h3>How long does it take?</h3>
+    <p>Pickup 1–2 days → Customization 7–14 days → Delivery 2–3 days.</p>
+  </div>
 
-    main { padding: 180px 5% 80px; max-width: var(--max-w); margin: 0 auto; }
-    
-    .customize-hero {
-      text-align: center; background: rgba(255,255,255,0.95); padding: 80px 50px; 
-      border-radius: var(--radius); border: 1px solid rgba(191,166,88,0.15);
-      box-shadow: 0 30px 100px rgba(236,215,143,0.1); margin-bottom: 60px;
-      backdrop-filter: blur(20px);
-    }
-    .customize-hero h1 {
-      font-family: 'Clash Display', serif; font-size: clamp(3rem, 8vw, 4rem); font-weight: 700;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
-    }
+  <div class="faq-item">
+    <h3>Creative freedom?</h3>
+    <p>Our artisans can completely reimagine your piece — if you enable the option.</p>
+  </div>
 
-    .customize-section {
-      background: rgba(255,255,255,0.95); padding: 60px 50px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 25px 80px rgba(236,215,143,0.1);
-      backdrop-filter: blur(20px); margin-bottom: 60px;
-    }
-    .form-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px;
-    }
-    .form-group label { font-weight: 600; margin-bottom: 12px; display: block; color: var(--text-dark); }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; padding: 20px; border: 2px solid rgba(191,166,88,0.2);
-      border-radius: 16px; font-size: 1rem; background: rgba(255,255,255,0.9);
-      transition: all var(--transition-speed);
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      outline: none; border-color: var(--highlight-gold); box-shadow: 0 0 0 4px rgba(236,215,143,0.15);
-    }
-    .upload-preview {
-      margin-top: 12px; width: 120px; height: 120px; border-radius: 16px;
-      background: rgba(191,166,88,0.1); display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; color: var(--muted-gold);
-    }
-    .checkbox-row { display: flex; align-items: flex-start; gap: 16px; margin: 24px 0; }
-    .checkbox-row input[type="checkbox"] { margin-top: 4px; transform: scale(1.2); }
+  <div class="faq-item">
+    <h3>Guarantee</h3>
+    <p>30-day satisfaction or free re-customization.</p>
+  </div>
 
-    .form-section { margin-top: 48px; }
-    .form-section h3 {
-      font-family: 'Clash Display', serif; font-size: 1.6rem; margin-bottom: 24px; color: var(--text-dark);
-    }
+</div>
+</section>
 
-    .price-estimate {
-      background: rgba(236,215,143,0.1); padding: 32px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.2); margin: 40px 0;
-    }
-    .estimate-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.1rem; }
-    .estimate-total { 
-      font-size: 1.4rem; border-top: 2px solid var(--muted-gold); padding-top: 16px; margin-top: 16px;
-    }
-    .price-note { font-size: 0.95rem; color: var(--muted-gold); text-align: center; margin-top: 16px; }
+</main>
 
-    .submit-btn {
-      width: 100%; padding: 24px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      border: none; border-radius: var(--radius); color: var(--text-dark); font-weight: 700; font-size: 1.3rem;
-      cursor: pointer; font-family: 'Clash Display', serif; box-shadow: 0 20px 60px rgba(191,166,88,0.4);
-      transition: all var(--transition-speed);
-    }
-    .submit-btn:hover { transform: translateY(-4px); box-shadow: 0 30px 80px rgba(191,166,88,0.6); }
+<!-- FOOTER -->
+<footer>
+  © <span id="currentYear"></span> Snehvastra • WhatsApp: <strong>7597152209</strong>
+</footer>
 
-    .faq-section {
-      background: rgba(255,255,255,0.95); padding: 60px 50px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 25px 80px rgba(236,215,143,0.1);
-    }
-    .faq-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-top: 40px;
-    }
-    .faq-item h3 { font-family: 'Clash Display', serif; margin-bottom: 12px; color: var(--text-dark); }
-    .faq-item p { color: rgba(75,67,55,0.85); }
+<!-- FLOAT -->
+<a class="whatsapp-float" href="https://wa.me/917597152209?text=Hi!%20I%20want%20a%20custom%20design." target="_blank">💬</a>
+<div id="toast" class="toast"></div>
 
-    @media (max-width: 768px) {
-      .form-grid { grid-template-columns: 1fr; }
-      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
-      main { padding: 160px 18px 40px !important; }
-      .customize-section, .faq-section { padding: 40px 24px; }
-    }
+<!-- SCRIPTS -->
+<script>
+let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+function updateCartCount(){
+  document.getElementById('cartCount').textContent =
+    Object.values(cart).reduce((a,b)=>a+b,0) || 0;
+}
+updateCartCount();
 
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-    }
-    .toast.show { transform: translateX(0); }
-  </style>
+document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-  <script>
-    // MASTER SCRIPT
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
-    }
+/* IMAGE PREVIEW */
+document.getElementById('uploadPic').addEventListener('change', e=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    document.getElementById('uploadPreview').innerHTML =
+      `<img src="${ev.target.result}">`;
+  };
+  reader.readAsDataURL(file);
+});
 
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4000);
-    }
+/* DATE MIN */
+let t = new Date(); t.setDate(t.getDate()+1);
+document.getElementById('pickupDate').min = t.toISOString().split('T')[0];
 
-    // AUCTION TIMER
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
-      }
-    }, 1000);
+/* FORM SUBMIT */
+document.getElementById('customizeForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  let r = ['uploadPic','garmentType','pickupAddress','pickupPhone','pickupDate'];
+  for(let id of r){ if(!document.getElementById(id).value){ toast("Fill all required fields"); return; } }
 
-    // CUSTOMIZATION FORM
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
+  toast("✅ Request sent! Our artisans will contact you within 24 hours.");
+  e.target.reset();
+  document.getElementById('uploadPreview').innerHTML = '📷';
+});
 
-      // Date picker: tomorrow minimum
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      document.getElementById('pickupDate').min = tomorrow.toISOString().split('T')[0];
+/* AI INLINE */
+function askAI(){
+  let q = document.getElementById('aiInput').value.trim().toLowerCase();
+  if(!q){ toast("Try: 'Ideas for a vintage denim jacket'"); return; }
 
-      // Image preview
-      document.getElementById('uploadPic').addEventListener('change', (e) => {
-        const preview = document.getElementById('uploadPreview');
-        const file = e.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            preview.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;border-radius:16px;object-fit:cover;">`;
-          };
-          reader.readAsDataURL(file);
-        }
-      });
+  let response = "Here’s what I suggest: ";
+  if(q.includes('black') && q.includes('hoodie')){
+    response += "Metallic silver typography + deep purple textures + minimal sleeve patch.";
+  }
+  else if(q.includes('denim')){
+    response += "Hand-distressed textures + raw edges + bold thread contrast.";
+  }
+  else{
+    response += "Try asymmetrical panels, layered textures, or purple–silver gradients.";
+  }
+  toast(response, 6000);
+}
 
-      // Form submission
-      document.getElementById('customizeForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Basic validation
-        const required = ['uploadPic', 'garmentType', 'pickupAddress', 'pickupPhone', 'pickupDate'];
-        let valid = true;
-        required.forEach(id => {
-          if (!document.getElementById(id).value) valid = false;
-        });
-        
-        if (!valid) {
-          showToast('Please fill all required fields');
-          return;
-        }
+/* TOAST */
+function toast(msg,d=3500){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), d);
+}
+</script>
 
-        showToast('✅ Customization request sent! Artisan team will contact you within 24hrs.');
-        document.getElementById('customizeForm').reset();
-        document.getElementById('uploadPreview').innerHTML = '📷';
-      });
-    });
-  </script>
-
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-    gtag('event', 'customization_page_view');
-  </script>
 </body>
 </html>
