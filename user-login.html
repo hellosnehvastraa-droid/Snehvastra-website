@@ -1,341 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#3A0F5A" />
   <title>Login - Snehvastra</title>
-  <meta name="theme-color" content="#ECD78F">
-  <meta name="description" content="Snehvastra User Login - Secure access to Echo Drops." />
+  <meta name="description" content="Snehvastra User Login - Secure access to exclusive drops and auctions." />
 
-  <!-- FONTS SYNC -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --panel-bg: rgba(252, 250, 246, 0.05);
-      --panel-border: rgba(191, 166, 88, 0.1);
-      --btn-shadow: 0 0 20px rgba(191, 166, 88, 0.35);
-      --radius: 30px;
-      --transition-speed: 0.28s;
+    :root{
+      --purple:#3A0F5A; --slate:#22232A; --mid:#3B3D45; --muted:#C7C6C8; --paper:#F6F6F6;
+      --text:#EDECEF; --radius:22px; --ease:.28s; --max-w:1100px;
     }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#FBFAF8);color:var(--slate);
+      min-height:100vh;display:flex;flex-direction:column;align-items:center;overflow-x:hidden}
 
-    /* YOUR BEAUTIFUL DESIGN */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      min-height: 100vh; overflow-x: hidden;
-    }
+    /* HEADER */
+    header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:90%;max-width:var(--max-w);
+      display:flex;justify-content:space-between;align-items:center;padding:18px 28px;
+      background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(58,15,90,0.1);
+      border-radius:0 0 var(--radius) var(--radius);z-index:100}
+    .logo{height:48px;filter:drop-shadow(0 0 12px var(--purple))}
+    nav ul{display:flex;gap:16px;list-style:none}
+    nav a{color:var(--mid);text-decoration:none;font-size:0.9rem;padding:8px 14px;border-radius:10px;
+      transition:all var(--ease);font-weight:600}
+    nav a:hover,nav a.active{color:var(--purple);background:rgba(58,15,90,0.05)}
+    #cartCount{background:var(--purple);color:#fff;border-radius:50%;padding:2px 6px;font-size:0.8rem;margin-left:4px}
 
-    /* HEADER - FULL NAV SYNC */
-    header {
-      position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-      display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1100px;
-      background: rgba(252,250,246,0.95); padding: 15px 25px; border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px); border-bottom: 1px solid var(--muted-gold);
-    }
-    .logo { height: 45px; width: auto; filter: drop-shadow(0 0 8px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; }
-    nav a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 6px 12px;
-      border-radius: 8px; transition: all var(--transition-speed) ease; text-decoration: none;
-    }
-    nav a:hover, nav a.active { color: var(--highlight-gold); background: rgba(236,215,143,0.15); }
-    #cartCount { background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; padding: 2px 6px; font-size: 0.8rem; font-weight: 700; }
+    /* AUCTION BAR */
+    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:90%;max-width:500px;
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:12px 16px;text-align:center;
+      font-weight:700;border-radius:12px;box-shadow:0 4px 20px rgba(58,15,90,0.35);z-index:90;font-size:0.88rem}
+    .auction-timer{font-family:'Clash Display',serif;background:#fff;padding:4px 10px;border-radius:8px;color:var(--slate);margin-left:8px}
 
-    /* 🔥 AUCTION BANNER */
-    .auction-banner {
-      position: absolute; top: 90px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 500px;
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold)); color: var(--text-dark);
-      padding: 12px 20px; text-align: center; font-weight: 700; border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(236,215,143,0.3); font-size: 0.9rem;
-    }
-    .auction-timer { font-family: 'Clash Display', serif; background: rgba(255,255,255,0.9); padding: 4px 10px; border-radius: 8px; display: inline-block; margin-left: 8px; }
+    /* LOGIN BOX */
+    main{margin-top:180px;background:#fff;border-radius:var(--radius);padding:55px 40px;width:90%;max-width:420px;
+      box-shadow:0 25px 80px rgba(58,15,90,0.12);border:1px solid rgba(58,15,90,0.12)}
 
-    /* YOUR MAIN DESIGN */
-    main {
-      background: var(--panel-bg); backdrop-filter: blur(12px); border-radius: var(--radius);
-      padding: 60px 40px; box-shadow: 0 0 40px rgba(191,166,88,0.5); text-align: center;
-      width: 90%; max-width: 400px; margin: 60px 20px 100px; animation: fadeIn 1.2s ease forwards;
-      border: 1px solid var(--panel-border);
-    }
-    h1 {
-      font-family: 'Clash Display', serif; font-size: 2rem; font-weight: 600; letter-spacing: 1px;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px;
-    }
+    h1{font-family:'Clash Display',serif;font-size:2.3rem;text-align:center;
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);-webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;margin-bottom:32px}
 
-    /* 🔥 FORM ENHANCEMENTS */
-    form { display: flex; flex-direction: column; gap: 20px; }
-    label { text-align: left; color: rgba(75,67,55,0.8); font-size: 0.9rem; font-weight: 500; }
-    input {
-      padding: 14px 16px; border-radius: 12px; border: 1px solid var(--panel-border);
-      background: rgba(252,250,246,0.9); color: var(--text-dark); font-size: 1rem; outline: none;
-      transition: all 0.3s ease; font-family: inherit;
-    }
-    input:focus {
-      border-color: var(--muted-gold); box-shadow: 0 0 15px rgba(191,166,88,0.3);
-      background: rgba(252,250,246,1);
-    }
-    .input-group { position: relative; }
-    .password-toggle {
-      position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none;
-      border: none; color: var(--muted-gold); cursor: pointer; font-size: 1.1rem;
-    }
+    form{display:flex;flex-direction:column;gap:20px}
+    label{color:var(--mid);font-size:0.9rem;font-weight:500;text-align:left;margin-bottom:4px}
+    input{padding:15px;border-radius:14px;border:1px solid rgba(58,15,90,0.2);font-size:1rem;
+      background:rgba(255,255,255,0.95);transition:all var(--ease)}
+    input:focus{border-color:var(--purple);box-shadow:0 0 0 4px rgba(58,15,90,0.13);outline:none}
 
-    .forgot-password { text-align: right; margin-top: -12px; }
-    .forgot-password a {
-      color: var(--muted-gold); font-size: 0.85rem; text-decoration: none; font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .forgot-password a:hover { color: var(--highlight-gold); }
+    .password-wrap{position:relative}
+    .password-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);
+      background:none;border:none;font-size:1.1rem;color:var(--muted);cursor:pointer}
 
-    /* 🔥 BUTTONS */
-    button {
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold)); color: var(--text-dark);
-      font-weight: 700; border: none; padding: 16px; border-radius: var(--radius); cursor: pointer;
-      font-size: 1rem; transition: all 0.3s ease; box-shadow: var(--btn-shadow);
-      position: relative; overflow: hidden;
-    }
-    button:hover {
-      transform: translateY(-2px); box-shadow: 0 8px 30px rgba(191,166,88,0.5);
-    }
-    button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .forgot-password{text-align:right;margin-top:-10px}
+    .forgot-password a{font-size:0.85rem;color:var(--purple);text-decoration:none}
 
-    .register-link {
-      margin-top: 25px; font-size: 0.9rem; color: rgba(75,67,55,0.7);
-    }
-    .register-link a {
-      color: var(--muted-gold); text-decoration: none; font-weight: 600;
-    }
-    .register-link a:hover { color: var(--highlight-gold); }
+    button{padding:16px;border:none;border-radius:16px;background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      color:#fff;font-weight:700;font-size:1rem;cursor:pointer;transition:all var(--ease);
+      box-shadow:0 10px 35px rgba(58,15,90,0.35)}
+    button:hover{transform:translateY(-3px);box-shadow:0 16px 45px rgba(58,15,90,0.55)}
 
-    /* 🔥 TOAST */
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-      max-width: 350px;
-    }
-    .toast.show { transform: translateX(0); }
-    .toast.success { background: linear-gradient(135deg, #4CAF50, #81C784); color: white; }
-    .toast.error { background: linear-gradient(135deg, #ff6b6b, #ff8e8e); color: white; }
+    .register-link{text-align:center;margin-top:16px;font-size:0.9rem;color:var(--mid)}
+    .register-link a{color:var(--purple);font-weight:600;text-decoration:none}
 
-    /* FOOTER */
-    footer {
-      position: absolute; bottom: 15px; text-align: center; width: 90%; max-width: 400px;
-      left: 50%; transform: translateX(-50%); color: rgba(75,67,55,0.8); font-size: 0.9rem;
-      background: rgba(252,250,246,0.6); padding: 15px; border-radius: var(--radius); backdrop-filter: blur(8px);
-      border: 1px solid var(--panel-border);
-    }
+    /* TOAST */
+    .toast{position:fixed;top:120px;right:20px;background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      color:#fff;padding:16px 22px;border-radius:14px;transform:translateX(400px);
+      transition:transform 0.4s;box-shadow:0 10px 35px rgba(58,15,90,0.35);font-weight:600;z-index:200}
+    .toast.show{transform:translateX(0)}
+    .toast.error{background:linear-gradient(135deg,#e94b4b,#ff7b7b)}
+    .toast.success{background:linear-gradient(135deg,#4CAF50,#7edc88)}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    footer{text-align:center;margin:40px 0 20px;color:var(--mid);font-size:0.9rem}
+    footer strong{color:var(--purple)}
 
-    @media (max-width: 500px) {
-      header { padding: 12px 20px; }
-      main { padding: 50px 25px; margin: 50px 15px 120px; }
-      h1 { font-size: 1.8rem; }
-      nav ul { gap: 8px; }
-      nav a { font-size: 0.8rem; padding: 4px 8px; }
+    @media(max-width:480px){
+      main{padding:40px 25px}
+      h1{font-size:1.9rem}
+      nav a{font-size:0.78rem;padding:6px 10px}
     }
   </style>
 </head>
-
 <body>
-  <!-- HEADER - FULL SYNC -->
+
+  <!-- HEADER -->
   <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+    <img src="images/logo.final.png" class="logo" alt="Snehvastra Logo" />
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
         <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="auction.html">Auction</a></li>
         <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
         <li><a href="user-login.html" class="active">Login</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- AUCTION BANNER -->
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
-  </div>
+  <!-- AUCTION BAR -->
+  <div class="auction-banner">🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span></div>
 
+  <!-- LOGIN BOX -->
   <main>
-    <h1>User Login</h1>
-    
-    <!-- 🔥 WORKING FORM -->
-    <form id="login-form" aria-label="Login form">
-      <div class="input-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="email@example.com" required autocomplete="email" />
+    <h1>Welcome Back</h1>
+
+    <form id="login-form">
+      <div>
+        <label>Email Address</label>
+        <input type="email" id="email" required placeholder="email@example.com" />
       </div>
 
-      <div class="input-group">
-        <label for="password">Password</label>
-        <div style="position: relative;">
-          <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password" />
-          <button type="button" class="password-toggle" onclick="togglePassword()">👁</button>
-        </div>
-      </div>
-
-      <div class="forgot-password">
-        <a href="#" onclick="showForgotPassword()">Forgot Password?</a>
-      </div>
-
-      <label>
-        <input type="checkbox" id="remember" style="margin-right: 8px; transform: scale(1.2); accent-color: var(--muted-gold);" />
-        Remember me
-      </label>
-
-      <button type="submit" id="loginBtn">Login</button>
-    </form>
-
-    <div class="register-link">
-      New user? <a href="user-register.html">Create an account</a>
-    </div>
-  </main>
-
-  <footer>
-    © <span id="currentYear"></span> <strong>Snehvastra</strong>. All Rights Reserved.<br />
-    Instagram: <strong>@sneh_vastra</strong> | Facebook: <strong>Snehvastra</strong>
-  </footer>
-
-  <!-- TOAST -->
-  <div id="toast" class="toast"></div>
-
-  <!-- 🔥 FULLY FUNCTIONAL SCRIPT [web:185][web:186] -->
-  <script>
-    // SHARED STORAGE
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    let user = JSON.parse(localStorage.getItem('snehvastra_user')) || null;
-
-    // CART COUNT
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
-    }
-
-    // TOAST
-    function showToast(message, type = 'success') {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = `toast ${type}`;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4000);
-    }
-
-    // PASSWORD TOGGLE
-    function togglePassword() {
-      const password = document.getElementById('password');
-      const toggle = document.querySelector('.password-toggle');
-      if (password.type === 'password') {
-        password.type = 'text';
-        toggle.textContent = '🙈';
-      } else {
-        password.type = 'password';
-        toggle.textContent = '👁';
-      }
-    }
-
-    // FORGOT PASSWORD
-    function showForgotPassword() {
-      showToast('Password reset link sent to your email!', 'success');
-    }
-
-    // FORM SUBMIT
-    document.getElementById('login-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const remember = document.getElementById('remember').checked;
-      const loginBtn = document.getElementById('loginBtn');
-      
-      // SIMULATE LOADING
-      loginBtn.disabled = true;
-      loginBtn.textContent = 'Logging in...';
-      
-      setTimeout(() => {
-        // DEMO USERS
-        const demoUsers = {
-          'user@example.com': 'password123',
-          'admin@snehvastra.com': 'admin123'
-        };
-        
-        if (demoUsers[email] && demoUsers[email] === password) {
-          // LOGIN SUCCESS
-          user = { email, name: email.split('@')[0], loggedIn: true };
-          localStorage.setItem('snehvastra_user', JSON.stringify(user));
-          
-          if (remember) {
-            localStorage.setItem('snehvastra_session', 'active');
-          }
-          
-          showToast(`Welcome back, ${user.name}! 👋`, 'success');
-          setTimeout(() => {
-            window.location.href = 'index.html';
-          }, 1500);
-        } else {
-          // LOGIN FAILED
-          showToast('Invalid email or password', 'error');
-          loginBtn.disabled = false;
-          loginBtn.textContent = 'Login';
-        }
-      }, 2000);
-    });
-
-    // AUCTION COUNTDOWN
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
-      }
-    }, 1000);
-
-    // INIT
-    window.addEventListener('load', () => {
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      
-      // CHECK IF ALREADY LOGGED IN
-      if (user && user.loggedIn) {
-        showToast(`Welcome back, ${user.name}!`, 'success');
-        setTimeout(() => window.location.href = 'index.html', 1000);
-      }
-    });
-  </script>
-
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-  </script>
-</body>
-</html>
+      <div>
+        <label>Password</label>
+        <div class="password-wrap">
+          <input type="password" id="password" required placeholder="Enter your password" />
+          <button type="button" class="password-toggle" onclick="togglePassword()">👁</button
