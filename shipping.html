@@ -1,172 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#3A0F5A" />
   <title>Shipping & Delivery - Snehvastra</title>
   <meta name="description" content="Snehvastra shipping: Free India delivery over ₹10K, DHL international, live tracking, delivery timelines." />
-  <meta name="theme-color" content="#ECD78F">
 
-  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600,700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 1100px;
-      --radius: 20px;
-      --transition-speed: 0.35s;
+    :root{
+      --purple:#3A0F5A; --slate:#22232A; --mid:#3B3D45; --silver:#B7B9BD; --paper:#F6F6F6;
+      --text:#EDECEF; --muted:#C7C6C8; --max-w:1100px; --radius:14px; --ease:.28s;
     }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#FBFAF8);color:var(--slate);min-height:100vh;overflow-x:hidden;line-height:1.7}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.7;
-    }
+    /* HEADER */
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.95));border-bottom:1px solid rgba(183,185,189,0.08);border-radius:0 0 var(--radius) var(--radius);z-index:100;max-width:var(--max-w);margin:0 auto;padding:20px 5%;display:flex;align-items:center;justify-content:space-between}
+    .logo{height:50px;filter:drop-shadow(0 0 12px var(--purple))}
+    nav ul{display:flex;list-style:none;gap:15px;flex-wrap:wrap;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:600;padding:8px 14px;border-radius:8px;transition:all var(--ease)}
+    nav a:hover, nav a.active{background:rgba(58,15,90,0.04);color:var(--purple)}
+    #cartCount{background:var(--purple);color:#fff;border-radius:50%;padding:2px 6px;font-size:0.8rem;font-weight:700;margin-left:4px}
 
-    /* MASTER HEADER */
-    header {
-      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px);
-    }
-    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
-    nav ul li a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-      transition: all var(--transition-speed) ease; text-decoration: none;
-    }
-    nav ul li a:hover, nav ul li a.active { 
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
-    }
-    #cartCount { 
-      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
-      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
-    }
+    .auction-banner{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:15px 20px;text-align:center;font-weight:700;position:sticky;top:92px;z-index:90;box-shadow:0 4px 20px rgba(58,15,90,0.3);margin:0 5%;border-radius:var(--radius)}
+    .auction-timer{font-family:'Clash Display',serif;font-size:0.9rem;background:rgba(255,255,255,0.95);padding:6px 12px;border-radius:12px;display:inline-block;margin-left:8px;color:var(--slate)}
 
-    .auction-banner {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
-      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
-      margin: 0 5%; border-radius: var(--radius);
-    }
-    .auction-timer { 
-      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
-      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
-    }
+    main{padding:160px 5% 80px;max-width:var(--max-w);margin:0 auto}
 
-    main { padding: 160px 5% 80px; max-width: var(--max-w); margin: 0 auto; }
-    
-    .shipping-hero {
-      text-align: center; background: rgba(255,255,255,0.95); padding: 80px 40px; 
-      border-radius: var(--radius); border: 1px solid rgba(191,166,88,0.15);
-      box-shadow: 0 30px 100px rgba(236,215,143,0.1); backdrop-filter: blur(20px);
-      margin-bottom: 60px;
-    }
-    .shipping-hero h1 {
-      font-family: 'Clash Display', serif; font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 700;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
-    }
+    /* SHIPPING HERO */
+    .shipping-hero{text-align:center;background:#fff;padding:80px 40px;border-radius:var(--radius);border:1px solid rgba(34,35,42,0.04);box-shadow:0 30px 100px rgba(58,15,90,0.1);backdrop-filter:blur(20px);margin-bottom:60px}
+    .shipping-hero h1{font-family:'Clash Display',serif;font-size:clamp(3rem,8vw,4.5rem);font-weight:700;background:linear-gradient(135deg,var(--purple),#2e0b4a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px}
+    .shipping-hero p{font-size:1.3rem;color:var(--mid);max-width:700px;margin:0 auto}
 
-    /* TRACKER SECTION */
-    .tracker-section {
-      background: rgba(255,255,255,0.95); padding: 48px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 25px 80px rgba(236,215,143,0.1);
-      backdrop-filter: blur(20px); margin-bottom: 60px; text-align: center;
-    }
-    .tracker-input {
-      max-width: 500px; margin: 0 auto 32px; position: relative; display: block;
-    }
-    .tracker-input input {
-      width: 100%; padding: 20px 24px 20px 60px; border: 2px solid rgba(191,166,88,0.2);
-      border-radius: 16px; font-size: 1.1rem; background: rgba(255,255,255,0.9);
-      transition: all var(--transition-speed);
-    }
-    .tracker-input input:focus { outline: none; border-color: var(--highlight-gold); box-shadow: 0 0 0 4px rgba(236,215,143,0.15); }
-    .tracker-icon { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); color: var(--muted-gold); font-size: 1.3rem; }
-    .track-btn {
-      padding: 18px 40px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      border: none; border-radius: 16px; color: var(--text-dark); font-weight: 700; font-size: 1.1rem;
-      cursor: pointer; transition: all var(--transition-speed); font-family: 'Clash Display', serif;
-      box-shadow: 0 12px 40px rgba(191,166,88,0.4);
-    }
-    .track-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(191,166,88,0.6); }
+    /* TRACKER */
+    .tracker-section{background:#fff;padding:48px;border-radius:var(--radius);border:1px solid rgba(34,35,42,0.04);box-shadow:0 25px 80px rgba(58,15,90,0.1);backdrop-filter:blur(20px);margin-bottom:60px;text-align:center}
+    .tracker-section h2{font-family:'Clash Display',serif;font-size:1.8rem;margin-bottom:24px;color:var(--slate)}
+    .tracker-input{max-width:500px;margin:0 auto 32px 0;position:relative;display:block}
+    .tracker-input input{width:100%;padding:20px 24px 20px 60px;border:2px solid rgba(58,15,90,0.2);border-radius:16px;font-size:1.1rem;background:rgba(255,255,255,0.9);transition:all var(--ease)}
+    .tracker-input input:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 4px rgba(58,15,90,0.15)}
+    .tracker-icon{position:absolute;left:24px;top:50%;transform:translateY(-50%);color:var(--purple);font-size:1.3rem}
+    .track-btn{padding:18px 40px;background:linear-gradient(135deg,var(--purple),#2e0b4a);border:none;border-radius:16px;color:#fff;font-weight:700;font-size:1.1rem;cursor:pointer;transition:all var(--ease);font-family:'Clash Display',serif;box-shadow:0 12px 40px rgba(58,15,90,0.4)}
+    .track-btn:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(58,15,90,0.6)}
 
-    /* SHIPPING CARDS */
-    .shipping-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-bottom: 60px;
-    }
-    .shipping-card {
-      background: rgba(255,255,255,0.95); padding: 48px 40px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 20px 60px rgba(236,215,143,0.1);
-      backdrop-filter: blur(15px); text-align: center; position: relative; overflow: hidden;
-    }
-    .shipping-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
-      background: linear-gradient(90deg, var(--muted-gold), var(--highlight-gold));
-    }
-    .shipping-icon { font-size: 4rem; margin-bottom: 24px; display: block; }
-    .india .shipping-icon { color: #FF9933; }
-    .international .shipping-icon { color: #1E90FF; }
-    .auction .shipping-icon { color: var(--highlight-gold); }
-    .shipping-card h3 {
-      font-family: 'Clash Display', serif; font-size: 1.6rem; margin-bottom: 20px; color: var(--text-dark);
-    }
-    .price-tag {
-      font-size: 2rem; font-weight: 700; color: var(--highlight-gold); margin: 16px 0;
-      font-family: 'Clash Display', serif;
-    }
-    .free-tag { color: #4CAF50; background: rgba(76,175,80,0.1); padding: 8px 20px; border-radius: 50px; font-weight: 600; }
+    /* SHIPPING GRID */
+    .shipping-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:40px;margin-bottom:60px}
+    .shipping-card{background:#fff;padding:48px 40px;border-radius:var(--radius);border:1px solid rgba(34,35,42,0.04);box-shadow:0 20px 60px rgba(58,15,90,0.1);backdrop-filter:blur(15px);text-align:center;position:relative;overflow:hidden}
+    .shipping-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--purple),#2e0b4a)}
+    .shipping-icon{font-size:4rem;margin-bottom:24px;display:block}
+    .india .shipping-icon{color:#FF9933}
+    .international .shipping-icon{color:#1E90FF}
+    .auction .shipping-icon{color:var(--purple)}
+    .shipping-card h3{font-family:'Clash Display',serif;font-size:1.6rem;margin-bottom:20px;color:var(--slate)}
+    .price-tag{font-size:2rem;font-weight:700;color:var(--purple);margin:16px 0;font-family:'Clash Display',serif}
+    .free-tag{color:#4CAF50;background:rgba(76,175,80,0.1);padding:8px 20px;border-radius:50px;font-weight:600;display:inline-block}
+    .shipping-card ul{text-align:left;max-width:300px;margin:0 auto;padding-left:0}
+    .shipping-card li{margin-bottom:12px;color:var(--mid);list-style:none;position:relative;padding-left:24px}
+    .shipping-card li::before{content:'→';position:absolute;left:0;color:var(--purple);font-weight:700}
 
     /* TIMELINE */
-    .timeline {
-      max-width: 800px; margin: 60px auto; padding: 0 20px;
-    }
-    .timeline-item {
-      display: flex; align-items: center; margin-bottom: 48px; opacity: 0; transform: translateX(-50px);
-      animation: slideIn 0.8s forwards;
-    }
-    .timeline-item:nth-child(even) { flex-direction: row-reverse; transform: translateX(50px); }
-    .timeline-item:nth-child(even) .timeline-content { text-align: left; }
-    @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
-    .timeline-icon {
-      width: 60px; height: 60px; background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-      margin: 0 32px; flex-shrink: 0; color: var(--text-dark); font-weight: 700;
-    }
-    .timeline-content h4 {
-      font-family: 'Clash Display', serif; font-size: 1.3rem; margin-bottom: 8px; color: var(--text-dark);
+    .timeline{max-width:800px;margin:60px auto;padding:0 20px}
+    .timeline h2{text-align:center;font-family:'Clash Display',serif;font-size:2.2rem;margin-bottom:48px;color:var(--slate)}
+    .timeline-item{display:flex;align-items:center;margin-bottom:48px;opacity:0;transform:translateX(-50px);transition:all 0.8s}
+    .timeline-item:nth-child(even){flex-direction:row-reverse;transform:translateX(50px)}
+    .timeline-item.animate{opacity:1;transform:translateX(0)}
+    .timeline-icon{width:60px;height:60px;background:linear-gradient(135deg,var(--purple),#2e0b4a);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff;font-weight:700;margin:0 32px;flex-shrink:0}
+    .timeline-content h4{font-family:'Clash Display',serif;font-size:1.3rem;margin-bottom:8px;color:var(--slate)}
+    .timeline-content p{color:var(--mid)}
+
+    @media(max-width:768px){
+      .shipping-grid{grid-template-columns:1fr}
+      .timeline-item,.timeline-item:nth-child(even){flex-direction:column;text-align:center}
+      .timeline-icon{margin:24px 0}
+      header{flex-direction:column;gap:20px;padding:18px 20px !important}
+      main{padding:140px 18px 40px !important}
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .shipping-grid { grid-template-columns: 1fr; }
-      .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; text-align: center; }
-      .timeline-icon { margin: 24px 0; }
-      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
-      main { padding: 140px 18px 40px !important; }
-    }
-
-    /* TOAST + FOOTER */
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-      max-width: 350px;
-    }
-    .toast.show { transform: translateX(0); }
+    .toast{position:fixed;top:120px;right:20px;background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:16px 24px;border-radius:12px;box-shadow:0 10px 35px rgba(58,15,90,0.4);font-weight:600;z-index:1000;transform:translateX(400px);transition:transform 0.3s ease;max-width:350px}
+    .toast.show{transform:translateX(0)}
+    footer{text-align:center;padding:60px 5% 40px;background:rgba(255,255,255,0.85);margin-top:60px;color:var(--muted);border-top:1px solid rgba(183,185,189,0.1);font-size:0.95rem;max-width:var(--max-w);margin-left:auto;margin-right:auto}
+    footer strong{color:var(--purple)}
   </style>
 </head>
-
 <body>
   <!-- HEADER -->
   <header>
@@ -191,14 +110,12 @@
     <!-- HERO -->
     <div class="shipping-hero">
       <h1>Fast & Luxurious Delivery</h1>
-      <p style="font-size: 1.3rem; color: rgba(75,67,55,0.85); max-width: 700px; margin: 0 auto;">
-        Your craftsmanship arrives safely. Tracked worldwide shipping from Jaipur.
-      </p>
+      <p>Your craftsmanship arrives safely. Tracked worldwide shipping from Jaipur.</p>
     </div>
 
     <!-- TRACKER -->
     <div class="tracker-section">
-      <h2 style="font-family: 'Clash Display', serif; font-size: 1.8rem; margin-bottom: 24px;">Track Your Order</h2>
+      <h2>Track Your Order</h2>
       <div class="tracker-input">
         <span class="tracker-icon">📦</span>
         <input type="text" id="trackingNumber" placeholder="Enter your order # (e.g., SNV-12345)">
@@ -212,10 +129,9 @@
         <div class="shipping-icon">🇮🇳</div>
         <h3>India Delivery</h3>
         <div class="price-tag">
-          <span class="free-tag">FREE over ₹10,000</span><br>
-          ₹199 otherwise
+          <span class="free-tag">FREE over ₹10,000</span><br>₹199 otherwise
         </div>
-        <ul style="text-align: left; max-width: 300px; margin: 0 auto;">
+        <ul>
           <li>3-5 business days</li>
           <li>Live tracking</li>
           <li>₹10K+ free shipping</li>
@@ -225,7 +141,7 @@
         <div class="shipping-icon">🌍</div>
         <h3>International</h3>
         <div class="price-tag">DHL Express<br>₹2,999+</div>
-        <ul style="text-align: left; max-width: 300px; margin: 0 auto;">
+        <ul>
           <li>7-14 business days</li>
           <li>Worldwide tracking</li>
           <li>Duties paid by customer</li>
@@ -235,7 +151,7 @@
         <div class="shipping-icon">🔥</div>
         <h3>Auction Winners</h3>
         <div class="price-tag">Same as above<br>+ 24hr dispatch</div>
-        <ul style="text-align: left; max-width: 300px; margin: 0 auto;">
+        <ul>
           <li>Priority dispatch</li>
           <li>Signature required</li>
           <li>Insurance included</li>
@@ -245,9 +161,7 @@
 
     <!-- DELIVERY TIMELINE -->
     <div class="timeline">
-      <h2 style="text-align: center; font-family: 'Clash Display', serif; font-size: 2.2rem; margin-bottom: 48px;">
-        Delivery Journey
-      </h2>
+      <h2>Delivery Journey</h2>
       <div class="timeline-item">
         <div class="timeline-icon">1</div>
         <div class="timeline-content">
@@ -281,14 +195,13 @@
 
   <footer>
     © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+    <span style="opacity:0.85">Instagram: <strong>@sneh_vastra</strong></span>
   </footer>
 
   <!-- TOAST -->
   <div id="toast" class="toast"></div>
 
   <script>
-    // MASTER SCRIPT + SHIPPING FUNCTIONALITY
     let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
     
     function updateCartCount() {
@@ -296,10 +209,9 @@
       document.getElementById('cartCount').textContent = totalItems;
     }
 
-    function showToast(message, type = 'success') {
+    function showToast(message) {
       const toast = document.getElementById('toast');
       toast.textContent = message;
-      toast.className = `toast ${type}`;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 4000);
     }
@@ -309,9 +221,8 @@
       const trackingNumber = document.getElementById('trackingNumber').value.trim();
       if (trackingNumber) {
         showToast(`📦 Tracking SNV-${trackingNumber}: Out for delivery (ETA: Tomorrow)`);
-        // Real: window.open(`https://track.snehvastra.store/${trackingNumber}`);
       } else {
-        showToast('Please enter your order number', 'error');
+        showToast('Please enter your order number');
       }
     });
 
@@ -337,11 +248,10 @@
       updateCartCount();
       document.getElementById('currentYear').textContent = new Date().getFullYear();
       
-      // Animate timeline on scroll
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
-            setTimeout(() => entry.target.style.animationDelay = `${index * 0.2}s`, 100);
+            setTimeout(() => entry.target.classList.add('animate'), index * 200);
           }
         });
       });
