@@ -1,253 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Blog - Snehvastra</title>
-  <meta name="description" content="Snehvastra stories, craftsmanship insights, and luxury fashion updates." />
-  <meta name="theme-color" content="#ECD78F">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Snehvastra — Blog · Craft, Drops & Stories</title>
+  <meta name="description" content="Snehvastra craftsmanship stories, drop insights, and fashion culture. AI-powered reading experience." />
+  <meta name="theme-color" content="#3A0F5A" />
 
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 1200px;
-      --radius: 16px;
-      --transition-speed: 0.28s;
+    /* ------------------------
+       Design tokens (V2)
+       ------------------------ */
+    :root{
+      --purple: #3A0F5A;
+      --purple-2: #7B3BBE;
+      --slate: #1d1d23;
+      --muted: #6f6e75;
+      --silver: #C7C7CE;
+      --paper: #F6F6F8;
+      --radius: 14px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+      --max: 1240px;
+      --focus: rgba(186,178,255,0.18);
+      --specular: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
     }
 
-    /* MASTER TEMPLATE (from previous 11 files) */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
-      color: var(--text-dark); min-height: 100vh; overflow-x: hidden; line-height: 1.6;
+    /* ------------------------
+       Reset
+       ------------------------ */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:var(--slate);
+      background: linear-gradient(180deg,#f6f5f8,#efeaf5);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
     }
+    img{display:block;max-width:100%}
+    a{color:inherit}
 
-    header {
-      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px);
+    /* ------------------------
+       Header
+       ------------------------ */
+    header{
+      position:sticky;top:0;z-index:120;
+      backdrop-filter: blur(10px) saturate(130%);
+      background: rgba(255,255,255,0.78);
+      border-bottom:1px solid rgba(58,15,90,0.04);
+      padding:14px 20px;
     }
-    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
-    nav ul li a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-      transition: all var(--transition-speed) ease; text-decoration: none;
-    }
-    nav ul li a:hover, nav ul li a.active { 
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
-    }
-    #cartCount { 
-      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
-      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
-    }
+    .nav{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:52px;filter:drop-shadow(0 10px 30px rgba(58,15,90,0.08))}
+    .brand .name{font-family:'Clash Display',serif;color:var(--purple);font-weight:600}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600;color:var(--purple);transition:all .18s var(--ease)}
+    nav a:hover, nav a.active{background:var(--specular);box-shadow:0 10px 28px rgba(58,15,90,0.06);color:var(--slate)}
 
-    .auction-banner {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
-      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
-      margin: 0 5%; border-radius: var(--radius);
+    /* ------------------------
+       Hero (animated gradient)
+       ------------------------ */
+    .hero {
+      position:relative; overflow:hidden; padding:96px 20px 64px; text-align:center; margin-top:18px;
     }
-    .auction-timer { 
-      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
-      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
-    }
+    .hero .bg { position:absolute; inset:0; background:linear-gradient(120deg,var(--purple),var(--purple-2)); z-index:-2; filter:contrast(1.04) saturate(1.05); animation:gradShift 16s ease-in-out infinite alternate; }
+    @keyframes gradShift { from{transform:scale(1.01)} to{transform:scale(1.05)} }
+    .hero .shine { position:absolute; width:360px;height:360px; top:8%; left:6%; filter:blur(84px); background:radial-gradient(circle, rgba(255,255,255,0.12), transparent 50%); z-index:-1; }
+    .hero h1{ font-family:'Clash Display',serif;color:#fff;font-size:clamp(2.4rem,5vw,3.6rem); margin:0 0 12px; text-shadow:0 14px 40px rgba(58,15,90,0.34) }
+    .hero p{ color:rgba(255,255,255,0.9); max-width:920px; margin:0 auto; font-size:1.05rem; line-height:1.6 }
+    .hero .cta { margin-top:20px; display:flex;gap:12px;justify-content:center;flex-wrap:wrap }
 
-    main { 
-      padding: 160px 5% 60px; max-width: var(--max-w); margin: 0 auto; 
-      display: flex; flex-direction: column; align-items: center; gap: 40px;
+    /* Buttons - V2 glass */
+    .btn {
+      padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);
+      background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      color:#fff;font-weight:700;cursor:pointer;box-shadow:0 12px 36px rgba(58,15,90,0.22);
+      transition: transform .22s var(--ease);
     }
+    .btn.purple { background:linear-gradient(135deg,var(--purple-2),var(--purple)); }
+    .btn.ghost { background:rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.06); box-shadow:none }
+    .btn:hover{ transform:translateY(-3px) }
 
-    .blog-hero {
-      text-align: center; max-width: 800px;
-    }
-    .blog-hero h1 {
-      font-family: 'Clash Display', serif; font-size: clamp(2.5rem, 6vw, 3.8rem); font-weight: 600;
-      background: linear-gradient(90deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
-    }
+    /* ------------------------
+       Page wrap
+       ------------------------ */
+    .wrap{ max-width:var(--max); margin:36px auto 80px; padding:0 20px; display:flex;flex-direction:column; gap:36px }
 
+    /* Featured article (wide) */
+    .featured {
+      display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:stretch;
+    }
+    .feat-card {
+      border-radius:16px; overflow:hidden; background:linear-gradient(180deg,#fff,#fbfbff);
+      border:1px solid rgba(58,15,90,0.06); box-shadow:0 28px 80px rgba(58,15,90,0.06); display:flex; flex-direction:column;
+    }
+    .feat-media { height:420px; background:linear-gradient(120deg, rgba(58,15,90,0.04), rgba(255,255,255,0.9)); display:flex;align-items:center;justify-content:center; }
+    .feat-content { padding:28px; display:flex;flex-direction:column; gap:12px; }
+    .kicker { font-size:0.85rem; text-transform:uppercase; letter-spacing:1.4px; color:var(--muted); font-weight:700 }
+    .feat-title { font-family:'Clash Display',serif; color:var(--purple); font-size:1.8rem; margin:6px 0 4px }
+    .feat-excerpt { color:var(--muted); line-height:1.65 }
+
+    /* Sidebar meta */
+    .feat-side { padding:20px; display:flex;flex-direction:column; gap:12px; justify-content:space-between; }
+    .meta-item { background:var(--specular); padding:12px; border-radius:12px; font-weight:700; color:var(--purple); }
+
+    /* ------------------------
+       Blog grid (3 / 2 / 1)
+       ------------------------ */
     .blog-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 32px; width: 100%;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:24px;
     }
-    .blog-card {
-      background: rgba(255,255,255,0.95); border-radius: var(--radius); overflow: hidden;
-      box-shadow: 0 20px 60px rgba(236,215,143,0.1); border: 1px solid rgba(191,166,88,0.15);
-      backdrop-filter: blur(12px); transition: all var(--transition-speed) ease;
-    }
-    .blog-card:hover {
-      transform: translateY(-10px); box-shadow: 0 30px 80px rgba(236,215,143,0.25);
-    }
-    .blog-image {
-      height: 240px; background: linear-gradient(45deg, var(--muted-gold), var(--highlight-gold));
-      display: flex; align-items: center; justify-content: center; font-size: 3rem;
-    }
-    .blog-content {
-      padding: 28px;
-    }
-    .blog-date { 
-      color: var(--muted-gold); font-size: 0.85rem; font-weight: 500; text-transform: uppercase;
-      letter-spacing: 1px; margin-bottom: 12px;
-    }
-    .blog-title {
-      font-family: 'Clash Display', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 16px;
-      line-height: 1.3;
-    }
-    .blog-excerpt {
-      color: rgba(75,67,55,0.8); line-height: 1.6; margin-bottom: 24px;
-    }
-    .read-more {
-      color: var(--muted-gold); font-weight: 600; text-decoration: none; font-size: 0.95rem;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .read-more:hover { color: var(--highlight-gold); }
+    @media (max-width:1100px){ .blog-grid { grid-template-columns: repeat(2, 1fr); } .featured { grid-template-columns: 1fr; } }
+    @media (max-width:680px){ .blog-grid { grid-template-columns: 1fr; } .feat-media{height:260px} .hero{padding:64px 16px} }
 
-    footer {
-      text-align: center; padding: 60px 5% 40px; background: rgba(252,250,246,0.85); margin-top: auto;
-      color: rgba(75,67,55,0.8); border-top: 1px solid var(--muted-gold); font-size: 0.95rem;
-      max-width: var(--max-w); margin-left: auto; margin-right: auto;
+    .card {
+      border-radius:14px; overflow:hidden; background:linear-gradient(180deg,#fff,#fbfbff); border:1px solid rgba(58,15,90,0.06);
+      box-shadow:0 18px 60px rgba(58,15,90,0.06); transition: transform .22s var(--ease), box-shadow .22s var(--ease);
+      display:flex; flex-direction:column; cursor:pointer;
     }
+    .card:hover{ transform:translateY(-10px); box-shadow:0 34px 100px rgba(58,15,90,0.12) }
+    .card-media { height:220px; display:flex;align-items:center;justify-content:center; background:linear-gradient(135deg, rgba(58,15,90,0.06), rgba(255,255,255,0.9)); font-size:3.5rem }
+    .card-body { padding:20px; display:flex;flex-direction:column; gap:12px; }
+    .card-date { font-size:0.82rem; text-transform:uppercase; letter-spacing:1px; color:var(--muted); font-weight:700 }
+    .card-title { font-family:'Clash Display',serif; color:var(--slate); font-size:1.15rem; margin:0; line-height:1.25 }
+    .card-excerpt { color:var(--muted); font-size:0.98rem; line-height:1.6 }
+    .card-actions { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:8px }
+    .sm { font-size:0.9rem; color:var(--purple); font-weight:700 }
 
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-      max-width: 350px;
-    }
-    .toast.show { transform: translateX(0); }
+    /* Summarize CTA */
+    .summarize-btn { padding:8px 12px; border-radius:10px; background:linear-gradient(135deg,var(--purple-2),var(--purple)); color:#fff; font-weight:700; cursor:pointer; border:none }
 
-    @media (max-width: 768px) {
-      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
-      nav ul { gap: 10px; justify-content: center; }
-      main { padding: 140px 18px 40px !important; }
-      .blog-grid { grid-template-columns: 1fr; gap: 24px; }
+    /* ------------------------
+       AI orb & modal (Sneh)
+       ------------------------ */
+    .ai-orb {
+      position:fixed; right:20px; bottom:20px; width:64px; height:64px; border-radius:999px;
+      background:linear-gradient(135deg,var(--purple-2),var(--purple)); color:white; display:flex;align-items:center;justify-content:center;
+      font-weight:800; font-size:1.2rem; box-shadow:0 18px 50px rgba(58,15,90,0.3); z-index:1400; cursor:pointer;
+      border:1px solid rgba(255,255,255,0.06);
     }
+    .modal-backdrop { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(12,10,15,0.48); z-index:1500; padding:18px }
+    .modal { background:#fff; border-radius:14px; padding:20px; max-width:760px; width:100%; box-shadow:0 30px 120px rgba(0,0,0,0.45) }
+    .modal h3{ font-family:'Clash Display',serif;color:var(--purple); margin:0 0 8px }
+
+    /* modal internals */
+    .ai-input { width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(58,15,90,0.08); font-size:1rem; margin-top:8px }
+    .modal .controls { display:flex; gap:12px; margin-top:12px; flex-wrap:wrap }
+    .ai-res-box { margin-top:12px; color:var(--muted); min-height:44px; }
+
+    /* toast */
+    #toast { position:fixed; top:18px; right:18px; background:linear-gradient(135deg,var(--purple-2),var(--purple)); color:white; padding:12px 16px; border-radius:10px; display:none; z-index:1600; box-shadow:0 12px 40px rgba(58,15,90,0.28) }
+
+    /* footer */
+    footer { max-width:var(--max); margin:48px auto 120px; padding:0 20px; text-align:center; color:var(--muted) }
+
+    /* accessibility */
+    button:focus, input:focus, a:focus { outline: 3px solid var(--focus); outline-offset:3px; border-radius:10px }
   </style>
 </head>
-
 <body>
+
+  <!-- Header -->
   <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-      </ul>
-    </nav>
+    <div class="nav" role="navigation" aria-label="Main">
+      <div class="brand">
+        <img src="images/logo.final.png" alt="Snehvastra logo" />
+        <div class="name">Snehvastra</div>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="wishlist.html">Wishlist</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
-  </div>
+  <!-- Hero -->
+  <section class="hero" role="banner" aria-labelledby="heroTitle">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="shine" aria-hidden="true"></div>
 
-  <main>
-    <div class="blog-hero">
-      <h1>Craftsmanship Stories</h1>
-      <p style="font-size: 1.2rem; color: rgba(75,67,55,0.8);">
-        Behind every thread, a tradition. Discover the art of Snehvastra.
-      </p>
+    <h1 id="heroTitle">Stories From The Studio</h1>
+    <p>Long-form craft and short-form insights — read how we make things, why drops matter, and what craft means for modern streetwear.</p>
+
+    <div class="cta">
+      <button class="btn purple" onclick="document.getElementById('aiQuery').focus()">Ask Sneh</button>
+      <button class="btn ghost" onclick="document.getElementById('featuredRead').scrollIntoView({behavior:'smooth'})">Featured Story</button>
     </div>
+  </section>
 
-    <div class="blog-grid">
-      <article class="blog-card">
-        <div class="blog-image">🧵</div>
-        <div class="blog-content">
-          <div class="blog-date">Nov 28, 2025</div>
-          <h2 class="blog-title">The 200-Year Loom Still Running</h2>
-          <p class="blog-excerpt">In a quiet village of Rajasthan, a loom from 1825 produces our finest weaves. Master weaver Shyamji shares his 7-generation legacy.</p>
-          <a href="blog-single.html" class="read-more">Read Story →</a>
-        </div>
-      </article>
+  <!-- Main wrap -->
+  <main class="wrap" role="main">
 
-      <article class="blog-card">
-        <div class="blog-image">🌿</div>
-        <div class="blog-content">
-          <div class="blog-date">Nov 25, 2025</div>
-          <h2 class="blog-title">Natural Dyes That Last Generations</h2>
-          <p class="blog-excerpt">From madder root to pomegranate rind, discover how we source colors straight from nature that never fade.</p>
-          <a href="blog-single.html" class="read-more">Read Story →</a>
+    <!-- AI Blog Assistant Search -->
+    <section aria-labelledby="aiTitle">
+      <div class="ai-search" style="display:flex;gap:20px;align-items:flex-start;flex-direction:column">
+        <div class="ai-search-section" style="width:100%">
+          <h3 id="aiTitle" style="margin:0 0 8px;font-family:'Clash Display',serif;color:var(--purple)">AI Blog Assistant</h3>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end">
+            <input id="aiQuery" class="ai-input" placeholder="Try: 'show dye articles', 'summarize looms', 'recommend me 2 stories'" aria-label="Search blog topics">
+            <button class="btn specular" onclick="runAiSearch()">Search</button>
+            <button class="btn" onclick="openSnehModal()">Full Assistant</button>
+          </div>
+          <div id="aiSearchRes" class="ai-res-box" aria-live="polite" style="display:none"></div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <article class="blog-card">
-        <div class="blog-image">👑</div>
-        <div class="blog-content">
-          <div class="blog-date">Nov 22, 2025</div>
-          <h2 class="blog-title">Why Snehvastra ONE Auction Matters</h2>
-          <p class="blog-excerpt">Our most exclusive drop yet. Limited pieces, live bidding, and why this changes everything for luxury craft.</p>
-          <a href="auction.html" class="read-more">Join Auction →</a>
+    <!-- Featured article wide -->
+    <section class="featured" id="featuredRead" aria-labelledby="featuredTitle">
+      <div class="feat-card" role="article" aria-labelledby="featuredTitle">
+        <div class="feat-media" aria-hidden="false">
+          <img src="images/featured-loom.jpg" alt="200-Year Loom — Snehvastra" style="width:100%;height:100%;object-fit:cover">
         </div>
-      </article>
-    </div>
+        <div class="feat-content">
+          <div class="kicker">Behind the Cloth</div>
+          <h2 id="featuredTitle" class="feat-title">The 200-Year Loom Still Running</h2>
+          <p class="feat-excerpt">In a village outside Jaipur a loom made in 1825 still weaves the fabric for our most tactile drops. Seven generations—handed down patterns, patient dying, and a slow attention to finish.</p>
+
+          <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
+            <button class="btn purple" onclick="openArticle('featured')">Read Full</button>
+            <button class="btn ghost" onclick="summarizeArticle('featured')">Summarize</button>
+            <button class="btn ghost" onclick="analyzeReadability('featured')">Reading level</button>
+          </div>
+
+        </div>
+      </div>
+
+      <aside class="feat-side" aria-hidden="false">
+        <div class="meta-item">Nov 28, 2025</div>
+        <div class="meta-item">Craft • Heritage</div>
+        <div style="margin-top:12px">
+          <strong style="display:block;margin-bottom:8px;color:var(--purple)">Editor's Pick</strong>
+          <p style="color:var(--muted);margin:0">This piece explains the care, the timeline, and why slow sampling matters for Snehvastra’s tactile finish.</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Grid of articles -->
+    <section aria-labelledby="gridTitle">
+      <h3 id="gridTitle" style="font-family:'Clash Display',serif;color:var(--purple);margin:0 0 8px">Latest Stories</h3>
+      <p style="color:var(--muted);margin:0 0 18px">Browse craft notes, drop insights, and auction stories.</p>
+
+      <div class="blog-grid" id="blogGrid" role="list" aria-live="polite">
+
+        <!-- Card 1 -->
+        <article class="card" role="article" tabindex="0" data-id="loom">
+          <div class="card-media" aria-hidden="true">🧵</div>
+          <div class="card-body">
+            <div class="card-date">Nov 28, 2025</div>
+            <h4 class="card-title">The 200-Year Loom Still Running</h4>
+            <p class="card-excerpt">How seven generations of weavers produce the distinctive long-staple textures used across our signature tees.</p>
+            <div class="card-actions">
+              <a class="sm" href="blog-single.html?slug=loom">Read →</a>
+              <div style="display:flex;gap:8px;">
+                <button class="summarize-btn" onclick="summarizeArticle('loom')">Summarize</button>
+                <button class="btn" onclick="recommendNext('loom')">Recommend</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card" role="article" tabindex="0" data-id="dyes">
+          <div class="card-media">🌿</div>
+          <div class="card-body">
+            <div class="card-date">Nov 25, 2025</div>
+            <h4 class="card-title">Natural Dyes That Last Generations</h4>
+            <p class="card-excerpt">From madder root to pomegranate rind — inside our hand-ordered, slow-dye process and why it matters for color longevity.</p>
+            <div class="card-actions">
+              <a class="sm" href="blog-single.html?slug=dyes">Read →</a>
+              <div style="display:flex;gap:8px;">
+                <button class="summarize-btn" onclick="summarizeArticle('dyes')">Summarize</button>
+                <button class="btn" onclick="recommendNext('dyes')">Recommend</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card" role="article" tabindex="0" data-id="auction">
+          <div class="card-media">👑</div>
+          <div class="card-body">
+            <div class="card-date">Nov 22, 2025</div>
+            <h4 class="card-title">Why SNEHVASTRA ONE Auction Matters</h4>
+            <p class="card-excerpt">A look at 1/1 collector pieces, NFC authentication, and why community auctions change how we own limited garments.</p>
+            <div class="card-actions">
+              <a class="sm" href="auction.html">Join Auction →</a>
+              <div style="display:flex;gap:8px;">
+                <button class="summarize-btn" onclick="summarizeArticle('auction')">Summarize</button>
+                <button class="btn" onclick="recommendNext('auction')">Recommend</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card" role="article" tabindex="0" data-id="care">
+          <div class="card-media">🧼</div>
+          <div class="card-body">
+            <div class="card-date">Nov 12, 2025</div>
+            <h4 class="card-title">Care Guide — Matte Finish Fabrics</h4>
+            <p class="card-excerpt">Practical washing and storage tips to keep the matte finish and preserve fit across years of wear.</p>
+            <div class="card-actions">
+              <a class="sm" href="blog-single.html?slug=care">Read →</a>
+              <div style="display:flex;gap:8px;">
+                <button class="summarize-btn" onclick="summarizeArticle('care')">Summarize</button>
+                <button class="btn" onclick="recommendNext('care')">Recommend</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card" role="article" tabindex="0" data-id="studio">
+          <div class="card-media">🏷️</div>
+          <div class="card-body">
+            <div class="card-date">Oct 29, 2025</div>
+            <h4 class="card-title">Studio Notes — Sampling Process</h4>
+            <p class="card-excerpt">How many samples it takes to arrive at a single silhouette, and what we measure in the studio at each pass.</p>
+            <div class="card-actions">
+              <a class="sm" href="blog-single.html?slug=studio">Read →</a>
+              <div style="display:flex;gap:8px;">
+                <button class="summarize-btn" onclick="summarizeArticle('studio')">Summarize</button>
+                <button class="btn" onclick="recommendNext('studio')">Recommend</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card" role="article" tabindex="0" data-id="people">
+          <div class="card-media">👥</div>
+          <div class="card-body">
+            <div class="card-date">Oct 07, 2025</div>
+            <h4 class="card-title">Meet the Makers — Conversations</h4>
+            <p class="card-excerpt">A short conversation with the tailor who stitches our lined jackets and why getting the seam right matters.</p>
+            <div class="card-actions">
+              <a class="sm" href="blog-single.html?slug=people">Read →</a>
+              <div style="display:flex;gap:8px;">
+                <button class="summarize-btn" onclick="summarizeArticle('people')">Summarize</button>
+                <button class="btn" onclick="recommendNext('people')">Recommend</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
   </main>
 
+  <!-- Footer -->
   <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
+    © <span id="currentYear"></span> Snehvastra — New Gen Luxury Streetwear
   </footer>
 
-  <div id="toast" class="toast"></div>
+  <!-- Floating AI orb (Sneh) -->
+  <button class="ai-orb" id="aiOrb" aria-label="Open Sneh — Blog Assistant">S</button>
+
+  <!-- Full AI Modal -->
+  <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Sneh — Blog Assistant</h3>
+      <p style="color:var(--muted);margin:6px 0 12px">Ask Sneh to summarize an article, recommend the next read, or get a short reading-level estimate.</p>
+
+      <label for="modalInput" style="font-weight:700;color:var(--purple);display:block;margin-bottom:8px">Question or article id</label>
+      <input id="modalInput" class="ai-input" placeholder="e.g. 'Summarize loom', 'Recommend after dyes'">
+
+      <div class="controls">
+        <button class="btn" id="modalAskBtn">Ask</button>
+        <button class="btn ghost" id="modalReadBtn">▶ Read Aloud</button>
+        <button class="btn ghost" id="modalStopBtn">■ Stop</button>
+        <button class="btn ghost" id="modalCloseBtn">Close</button>
+      </div>
+
+      <div id="modalRes" class="ai-res-box" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // MASTER SCRIPT (from 11 files)
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
+    /* -----------------------
+       Shared utilities & state
+       ----------------------- */
+    // Cart sync
+    let cart = JSON.parse(localStorage.getItem('snehvastra_cart') || '{}');
+    function updateCartCount(){ const el = document.getElementById('cartCount'); if(!el) return; const total = Object.values(cart).reduce((s,v)=>s+(v||0),0); el.textContent = total; }
+
+    // Sample article content store (in a real app this comes from server)
+    const ARTICLES = {
+      featured: {
+        id: 'featured',
+        title: 'The 200-Year Loom Still Running',
+        date: 'Nov 28, 2025',
+        body: `In a village near Jaipur, a loom built in 1825 still weaves fabric used in Snehvastra's finest drops. The loom's rhythm matches the slow sample cycles we favor — long-staple yarns, patient dye baths, and hand-finished trims. We spoke with the fourth-generation weaver about pattern memory, repair, and why a handmade selvedge still matters in a digital age.`,
+      },
+      loom: {
+        id: 'loom',
+        title: 'The 200-Year Loom Still Running',
+        date: 'Nov 28, 2025',
+        body: `Seven generations of weavers keep a living archive. The piece details the loom's maintenance, the dye schedules, and how sample-to-production ratios ensure our tactile finishes.`,
+      },
+      dyes: {
+        id:'dyes',
+        title:'Natural Dyes That Last Generations',
+        date:'Nov 25, 2025',
+        body:`We source madder and pomegranate rind. Natural dyestuffs require mordanting and controlled wash cycles. The result is color that ages with dignity.`,
+      },
+      auction: {
+        id:'auction',
+        title:'Why SNEHVASTRA ONE Auction Matters',
+        date:'Nov 22, 2025',
+        body:`ONE Auction repositions ownership—1/1 collectors can verify via NFC; the auction ties community to provenance.`,
+      },
+      care: { id:'care', title:'Care Guide — Matte Finish Fabrics', date:'Nov 12, 2025', body:'Gentle cold wash, hang flat, avoid tumble.' },
+      studio: { id:'studio', title:'Studio Notes — Sampling Process', date:'Oct 29, 2025', body:'We iterate 8-12 samples before finalization.' },
+      people: { id:'people', title:'Meet the Makers — Conversations', date:'Oct 07, 2025', body:'A tailor’s eye on seams and fit.' }
+    };
+
+    // Accessibility: focus trap for modal
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalInput = document.getElementById('modalInput');
+    const modalRes = document.getElementById('modalRes');
+
+    // TTS
+    let tts = null;
+    function speak(text){
+      if(!('speechSynthesis' in window)){ showToast('Voice not available'); return; }
+      if(tts){ speechSynthesis.cancel(); tts = null; return; }
+      tts = new SpeechSynthesisUtterance(text);
+      tts.rate = 0.98; tts.pitch = 0.96;
+      const voices = speechSynthesis.getVoices();
+      if(voices.length) tts.voice = voices.find(v => /en-?us|en-?gb|default/i.test(v.lang)) || voices[0];
+      tts.onend = ()=> { tts = null; };
+      speechSynthesis.speak(tts);
+    }
+    function stopSpeak(){ if(tts){ speechSynthesis.cancel(); tts = null; } }
+
+    // Toast
+    const toastEl = document.getElementById('toast');
+    let toastTimer = null;
+    function showToast(msg, ms=2600){
+      toastEl.textContent = msg; toastEl.style.display = 'block';
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>{ toastEl.style.display = 'none'; }, ms);
     }
 
-    function showToast(message, type = 'success') {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = `toast ${type}`;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4000);
+    /* -----------------------
+       AI features (rule-based for offline use)
+       ----------------------- */
+
+    // 1) Article summarizer (short abstract)
+    function summarizeArticle(id){
+      const a = ARTICLES[id];
+      if(!a){ showToast('Article not found'); return; }
+      // Simple summarizer: take first sentence(s)
+      const sentences = a.body.split('.').filter(s=>s.trim());
+      let summary = sentences.slice(0,2).join('.').trim();
+      if(summary && !summary.endsWith('.')) summary += '.';
+      openInlineModal(`Summary — ${a.title}`, summary);
     }
 
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
+    // 2) Reading level estimator (very simple: word count & sentence length)
+    function analyzeReadability(id){
+      const a = ARTICLES[id];
+      if(!a){ showToast('Article not found'); return; }
+      const words = a.body.split(/\s+/).filter(Boolean).length;
+      const sentences = a.body.split(/[.!?]+/).filter(Boolean).length || 1;
+      const avgWords = (words / sentences).toFixed(1);
+      let level = 'Easy';
+      if(avgWords > 20) level = 'Intermediate';
+      if(avgWords > 28) level = 'Advanced';
+      openInlineModal(`Reading level — ${a.title}`, `Estimated: ${level} — avg words/sentence ${avgWords}.`);
+    }
+
+    // 3) Recommend next story (simple tag map)
+    const RECOMMEND_MAP = {
+      'loom': ['dyes','studio'],
+      'dyes': ['loom','care'],
+      'auction': ['people','studio'],
+      'care': ['studio','loom'],
+      'studio': ['people','loom'],
+      'people': ['studio','auction'],
+      'featured': ['loom','dyes']
+    };
+    function recommendNext(id){
+      const list = RECOMMEND_MAP[id] || Object.keys(ARTICLES).slice(0,2);
+      const items = list.map(k => `• ${ARTICLES[k].title}`).join('\n');
+      openInlineModal('Recommended next', `We suggest:\n${items}`);
+    }
+
+    // AI Search (topic finder)
+    function runAiSearch(){
+      const q = (document.getElementById('aiQuery').value || '').trim().toLowerCase();
+      const out = document.getElementById('aiSearchRes');
+      out.style.display = 'block';
+      if(!q){ out.textContent = "Try: 'dye', 'loom', 'auction', or 'recommend reading order'"; return; }
+      if(q.includes('dye') || q.includes('color')) out.textContent = `Found: ${ARTICLES.dyes.title} — ${ARTICLES.dyes.date}`;
+      else if(q.includes('loom') || q.includes('weave')) out.textContent = `Found: ${ARTICLES.loom.title} — ${ARTICLES.loom.date}`;
+      else if(q.includes('auction') || q.includes('one')) out.textContent = `Found: ${ARTICLES.auction.title} — ${ARTICLES.auction.date}`;
+      else if(q.includes('recommend') || q.includes('suggest')) out.textContent = "Recommended reading: 1) The 200-Year Loom → 2) Natural Dyes → 3) ONE Auction.";
+      else out.textContent = "No exact match. Try 'loom', 'dye', or 'auction'.";
+      showToast('Search complete');
+    }
+
+    // Modal helpers: open small inline modal using the full assistant modal area
+    function openInlineModal(title, text){
+      modalRes.textContent = `${title}\n\n${text}`;
+      openSnehModal();
+    }
+
+    /* -----------------------
+       Full assistant modal controls
+       ----------------------- */
+    const aiOrb = document.getElementById('aiOrb');
+    const modalClose = document.getElementById('modalCloseBtn');
+    const modalAskBtn = document.getElementById('modalAskBtn');
+    const modalReadBtn = document.getElementById('modalReadBtn');
+    const modalStopBtn = document.getElementById('modalStopBtn');
+
+    function openSnehModal(){
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden','false');
+      modalInput.focus();
+    }
+    function closeSnehModal(){
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+      modalRes.textContent = '';
+    }
+
+    aiOrb.addEventListener('click', openSnehModal);
+    modalClose.addEventListener('click', closeSnehModal);
+    modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeSnehModal(); });
+
+    modalAskBtn.addEventListener('click', ()=>{
+      const q = (modalInput.value||'').trim().toLowerCase();
+      if(!q){ modalRes.textContent = "Try: 'summarize loom', 'recommend after dyes', 'reading level studio'"; return; }
+
+      // parse commands: 'summarize <id>', 'recommend <id>', 'reading level <id>'
+      if(q.startsWith('summarize')){
+        const parts = q.split(' ');
+        const id = parts[1] || 'featured';
+        const a = ARTICLES[id];
+        if(a){ summarizeArticle(id); modalRes.textContent = 'Summary generated.'; }
+        else modalRes.textContent = "Article not found. Try 'summarize loom'.";
+        return;
       }
-    }, 1000);
+      if(q.startsWith('recommend')){
+        const parts = q.split(' ');
+        const id = parts[1] || 'featured';
+        recommendNext(id);
+        modalRes.textContent = 'Recommendation shown.';
+        return;
+      }
+      if(q.includes('reading') || q.includes('level')){
+        const parts = q.split(' ');
+        const id = parts[parts.length-1] || 'featured';
+        analyzeReadability(id);
+        modalRes.textContent = 'Reading level estimated.';
+        return;
+      }
+      // fallback
+      modalRes.textContent = generateFallbackResponse(q);
+    });
 
-    window.addEventListener('load', () => {
+    modalReadBtn.addEventListener('click', ()=>{
+      const q = (modalInput.value||'').trim().toLowerCase();
+      const id = q.split(' ')[1] || 'featured';
+      const a = ARTICLES[id];
+      if(a) speak(a.body);
+      else speak("Try: summarize loom, recommend dyes, or read featured.");
+    });
+    modalStopBtn.addEventListener('click', stopSpeak);
+
+    function generateFallbackResponse(q){
+      if(q.includes('dye')) return "Try 'summarize dyes' to get a short summary of dyeing articles.";
+      if(q.includes('loom')) return "Type 'summarize loom' for a short summary of the loom story.";
+      return "I can summarize articles, recommend the next read, or estimate reading level. Try 'summarize loom'.";
+    }
+
+    // keyboard support: enter in modalInput triggers Ask
+    modalInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ modalAskBtn.click(); } });
+
+    // small accessibility focus trap
+    modalBackdrop.addEventListener('keydown', (e)=>{
+      if(e.key !== 'Tab') return;
+      const focusables = modalBackdrop.querySelectorAll('button, input, [href], select, textarea, [tabindex]:not([tabindex="-1"])');
+      if(!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length-1];
+      if(e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
+      else if(!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
+    });
+
+    /* -----------------------
+       Utility: open article (navigate)
+       ----------------------- */
+    function openArticle(id){
+      // In real app navigate to blog-single.html?slug=<id>
+      window.location.href = 'blog-single.html?slug=' + encodeURIComponent(id);
+    }
+
+    /* -----------------------
+       Init
+       ----------------------- */
+    window.addEventListener('load', ()=>{
       updateCartCount();
       document.getElementById('currentYear').textContent = new Date().getFullYear();
+      // pre-warm voices for TTS (some browsers only populate after interaction)
+      if('speechSynthesis' in window) speechSynthesis.getVoices();
     });
+
+    // quick enter-to-search
+    document.getElementById('aiQuery').addEventListener('keypress', (e)=>{ if(e.key === 'Enter') runAiSearch(); });
+
+    // small helper: summarize on featured click from hero CTA
+    window.summarizeArticle = summarizeArticle;
+    window.analyzeReadability = analyzeReadability;
+    window.recommendNext = recommendNext;
+    window.openArticle = openArticle;
+    window.runAiSearch = runAiSearch;
+    window.openSnehModal = openSnehModal;
+    window.showToast = showToast;
   </script>
 
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-  </script>
 </body>
 </html>
