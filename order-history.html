@@ -1,361 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Order History - Snehvastra</title>
-  <meta name="description" content="Track your Snehvastra orders: status, delivery, reorders. Auction wins + customizations included." />
-  <meta name="theme-color" content="#ECD78F">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#3A0F5A" />
+  <title>Orders — Collector Profile — Snehvastra</title>
+  <meta name="description" content="Your Snehvastra collector profile — orders, auction wins, customizations, tracking and quick reorders." />
 
-  <!-- FONTS -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-</head>
-
-<body>
-  <!-- MASTER HEADER -->
-  <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="order-history.html" class="active">Orders</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- AUCTION BANNER -->
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">LIVE NOW!</div>
-  </div>
-
-  <main>
-    <!-- ORDERS HERO -->
-    <div class="orders-hero">
-      <h1>Your Orders</h1>
-      <div class="orders-stats">
-        <div class="stat">
-          <span class="stat-number">3</span>
-          <span>Total Orders</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">₹17,997</span>
-          <span>Total Spent</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">2</span>
-          <span>Delivered</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ORDERS TABLE -->
-    <div class="orders-table">
-      <table id="ordersTable">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Date</th>
-            <th>Items</th>
-            <th>Total</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="ordersBody">
-          <!-- Dynamic orders loaded here -->
-        </tbody>
-      </table>
-
-      <div class="no-orders" id="noOrders" style="display:none;">
-        <p>No orders found. <a href="collection.html">Start shopping</a></p>
-      </div>
-    </div>
-
-    <!-- QUICK ACTIONS -->
-    <div class="quick-actions">
-      <a href="collection.html" class="action-btn primary">🧵 Shop New Collection</a>
-      <a href="customize.html" class="action-btn">✂️ Customize Old Garment</a>
-    </div>
-  </main>
-
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Need help? <a href="contact.html" style="color: var(--muted-gold);">Contact Support</a></span>
-  </footer>
-
-  <!-- TOAST -->
-  <div id="toast" class="toast"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600,700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg-light-1: #FCFAF6;
-      --bg-light-2: #FAF6E7;
-      --text-dark: #4B4337;
-      --muted-gold: #BFA658;
-      --highlight-gold: #ECD78F;
-      --max-w: 1100px;
-      --radius: 20px;
-      --transition-speed: 0.35s;
+    :root{
+      --bg:#FBF9FB;
+      --paper:#fff;
+      --purple:#3A0F5A;
+      --muted:#8E8F92;
+      --slate:#1F2024;
+      --glass: rgba(255,255,255,0.7);
+      --radius:14px;
+      --max-w:1200px;
+      --ease:.28s;
+      --accent: linear-gradient(90deg,#7b3bd1,#3a0f5a);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2)); color: var(--text-dark); line-height: 1.7; }
-
-    /* MASTER HEADER */
-    header {
-      background: rgba(252,250,246,0.95); display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 5%; position: sticky; top: 0; z-index: 100; max-width: var(--max-w); margin: 0 auto;
-      border-bottom: 1px solid var(--muted-gold); border-radius: 0 0 var(--radius) var(--radius);
-      backdrop-filter: blur(12px);
-    }
-    .logo { height: 50px; width: auto; filter: drop-shadow(0 0 12px var(--highlight-gold)); }
-    nav ul { display: flex; list-style: none; gap: 15px; flex-wrap: wrap; }
-    nav ul li a {
-      color: var(--muted-gold); font-size: 0.9rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-      transition: all var(--transition-speed) ease; text-decoration: none;
-    }
-    nav ul li a:hover, nav ul li a.active { 
-      color: var(--highlight-gold); background: rgba(236,215,143,0.15); 
-    }
-    #cartCount { 
-      background: var(--highlight-gold); color: var(--text-dark); border-radius: 50%; 
-      padding: 2px 6px; font-size: 0.8rem; font-weight: 700; margin-left: 4px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(180deg,var(--bg), #f4f3f6);
+      color:var(--slate);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
     }
 
-    .auction-banner {
-      background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 15px 20px; text-align: center; font-weight: 700;
-      position: sticky; top: 92px; z-index: 90; box-shadow: 0 4px 20px rgba(236,215,143,0.3);
-      margin: 0 5%; border-radius: var(--radius);
-    }
-    .auction-timer { 
-      font-family: 'Clash Display', serif; font-size: 0.9rem; background: rgba(255,255,255,0.95); 
-      padding: 6px 12px; border-radius: 12px; display: inline-block; margin-left: 8px; 
+    .wrap{max-width:var(--max-w);margin:0 auto;padding:28px;min-height:100vh}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;position:sticky;top:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);z-index:120}
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo{height:52px}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    nav a.active, nav a:hover{background:var(--glass);color:var(--slate)}
+
+    /* Collector hero */
+    .hero{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:center;margin:28px 0;background:linear-gradient(180deg, rgba(255,255,255,0.9), #fff);padding:28px;border-radius:20px;box-shadow:0 30px 80px rgba(58,15,90,0.06)}
+    .avatar{width:180px;height:180px;border-radius:22px;overflow:hidden;background:linear-gradient(135deg,#f5f3f7,#fff);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:10px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+    .collector-name{font-family:"Clash Display",serif;font-size:1.6rem;color:var(--purple);margin-top:10px;font-weight:700}
+    .collector-meta{color:var(--muted);font-weight:600;font-size:0.95rem}
+
+    .metrics{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .metric{background:linear-gradient(180deg,#fff,#fbfbff);padding:14px 18px;border-radius:12px;box-shadow:0 18px 48px rgba(58,15,90,0.04);min-width:140px;text-align:center}
+    .metric h4{margin:0;color:var(--purple);font-family:"Clash Display",serif;font-size:1.15rem}
+    .metric p{margin:6px 0 0;color:var(--muted);font-weight:600}
+
+    /* Auction banner */
+    .auction-banner{margin:18px 0;padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(58,15,90,0.08), rgba(123,59,209,0.03));display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid rgba(58,15,90,0.04)}
+    .auction-banner strong{color:var(--purple);font-weight:700}
+    .auction-timer{font-family:"Clash Display",serif;padding:8px 12px;border-radius:10px;background:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);font-weight:700}
+
+    /* Controls */
+    .controls{display:flex;gap:12px;align-items:center;margin:20px 0;flex-wrap:wrap}
+    .search{flex:1;min-width:200px}
+    .search input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid rgba(34,35,42,0.06);font-size:1rem}
+    .select, .btn {padding:12px 16px;border-radius:12px;border:1px solid rgba(34,35,42,0.06);background:#fff;cursor:pointer;font-weight:700}
+    .btn.primary{background:var(--accent);color:white;border:none;box-shadow:0 10px 30px rgba(58,15,90,0.12)}
+    .btn.ghost{background:transparent}
+
+    /* Orders table */
+    .panel{background:var(--paper);border-radius:14px;padding:18px;border:1px solid rgba(34,35,42,0.04);box-shadow:0 30px 80px rgba(58,15,90,0.04)}
+    table{width:100%;border-collapse:collapse;font-size:0.95rem}
+    thead th{padding:14px 12px;text-align:left;color:var(--muted);text-transform:uppercase;font-weight:700;font-size:0.78rem}
+    tbody td{padding:14px 12px;border-top:1px solid rgba(34,35,42,0.04);vertical-align:middle}
+    .order-id{font-weight:800;color:var(--purple)}
+    .items{color:var(--muted);font-weight:600}
+    .price{font-weight:800;color:var(--slate)}
+    .status{display:inline-block;padding:8px 12px;border-radius:999px;font-weight:700;font-size:0.85rem}
+    .status.completed{background:rgba(76,175,80,0.12);color:#2b7a2b}
+    .status.shipped{background:rgba(0,206,209,0.12);color:#0b7b82}
+    .status.processing{background:rgba(255,205,86,0.12);color:#9a6d00}
+    .status.cancelled{background:rgba(255,99,71,0.12);color:#b02a1b}
+    .status.auction{background:rgba(58,15,90,0.12);color:var(--purple)}
+
+    .row-actions{display:flex;gap:8px;flex-wrap:wrap}
+    a.action{padding:8px 12px;border-radius:10px;text-decoration:none;display:inline-block;font-weight:700;border:1px solid rgba(34,35,42,0.06);background:#fff;color:var(--purple)}
+    a.action.ghost{background:transparent;color:var(--muted)}
+
+    /* Empty state */
+    .empty{padding:48px;text-align:center;color:var(--muted);font-size:1.05rem;border-radius:12px}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(18,20,24,0.45);display:none;align-items:center;justify-content:center;z-index:500;padding:20px}
+    .modal{background:var(--paper);border-radius:12px;padding:18px;max-width:760px;width:100%;box-shadow:0 30px 120px rgba(18,20,24,0.5)}
+    .modal h3{margin:0 0 12px;font-family:"Clash Display",serif;color:var(--purple)}
+    .modal .grid{display:grid;grid-template-columns:1fr 240px;gap:16px}
+    .modal .grid img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+    .close-btn{background:transparent;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
+
+    /* responsive */
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr;gap:18px;padding:18px}
+      .avatar{width:120px;height:120px;border-radius:12px}
+      .modal .grid{grid-template-columns:1fr}
+      nav ul{display:none}
     }
 
-    main { padding: 180px 5% 80px; max-width: var(--max-w); margin: 0 auto; }
-    
-    .orders-hero {
-      text-align: center; background: rgba(255,255,255,0.95); padding: 80px 50px; 
-      border-radius: var(--radius); border: 1px solid rgba(191,166,88,0.15);
-      box-shadow: 0 30px 100px rgba(236,215,143,0.1); margin-bottom: 60px;
-      backdrop-filter: blur(20px);
-    }
-    .orders-hero h1 {
-      font-family: 'Clash Display', serif; font-size: clamp(3rem, 8vw, 4rem); font-weight: 700;
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 32px;
-    }
-    .orders-stats {
-      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-    }
-    .stat {
-      text-align: center;
-    }
-    .stat-number {
-      font-size: 2.5rem; font-weight: 700; color: var(--highlight-gold); 
-      font-family: 'Clash Display', serif; display: block;
-    }
-
-    .orders-table {
-      background: rgba(255,255,255,0.95); padding: 40px; border-radius: var(--radius);
-      border: 1px solid rgba(191,166,88,0.15); box-shadow: 0 25px 80px rgba(236,215,143,0.1);
-      backdrop-filter: blur(20px); margin-bottom: 60px; overflow: hidden;
-    }
-    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-    th {
-      text-align: left; padding: 20px 16px; font-weight: 600; color: var(--text-dark);
-      text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;
-    }
-    td { 
-      padding: 20px 16px; border-top: 1px solid rgba(191,166,88,0.1); vertical-align: middle;
-    }
-    tr:hover { background: rgba(236,215,143,0.08); }
-    .status {
-      font-weight: 600; padding: 8px 16px; border-radius: 20px; text-align: center;
-      position: relative; font-size: 0.85rem;
-    }
-    .status.completed { background: rgba(124,252,0,0.15); color: #4CAF50; }
-    .status.shipped { background: rgba(0,206,209,0.15); color: #00CED1; }
-    .status.processing { background: rgba(255,215,0,0.15); color: #FFD700; }
-    .status.custom { background: rgba(191,166,88,0.15); color: var(--muted-gold); }
-    .status.auction { background: rgba(236,215,143,0.25); color: var(--highlight-gold); font-weight: 700; }
-    .track-btn, .reorder-btn {
-      padding: 8px 16px; border: none; border-radius: 12px; font-size: 0.85rem;
-      cursor: pointer; font-weight: 600; transition: all var(--transition-speed);
-      text-decoration: none; display: inline-block;
-    }
-    .track-btn { 
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold)); 
-      color: var(--text-dark); 
-    }
-    .reorder-btn { 
-      background: rgba(76,175,80,0.15); color: #4CAF50; border: 1px solid #4CAF50;
-    }
-    .track-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(191,166,88,0.3); }
-    .reorder-btn:hover { background: rgba(76,175,80,0.25); }
-
-    .no-orders {
-      text-align: center; padding: 80px 40px; color: rgba(75,67,55,0.6);
-      font-size: 1.2rem;
-    }
-    .no-orders a { color: var(--muted-gold); }
-
-    .quick-actions {
-      display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
-    }
-    .action-btn {
-      padding: 20px 40px; border-radius: 16px; font-weight: 700; font-size: 1.1rem;
-      text-decoration: none; transition: all var(--transition-speed);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-    }
-    .action-btn.primary {
-      background: linear-gradient(135deg, var(--muted-gold), var(--highlight-gold));
-      color: var(--text-dark);
-    }
-    .action-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
-
-    @media (max-width: 768px) {
-      .orders-stats { gap: 24px; }
-      header { flex-direction: column; gap: 20px; padding: 18px 20px !important; }
-      main { padding: 160px 18px 40px !important; }
-      .orders-table { padding: 24px; }
-      table { font-size: 0.9rem; }
-      th, td { padding: 12px 8px; }
-      .quick-actions { flex-direction: column; align-items: center; }
-    }
-
-    .toast {
-      position: fixed; top: 120px; right: 20px; background: linear-gradient(135deg, var(--highlight-gold), var(--muted-gold));
-      color: var(--text-dark); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 35px rgba(236,215,143,0.4);
-      font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease;
-    }
-    .toast.show { transform: translateX(0); }
+    /* small UI niceties */
+    small.muted{color:var(--muted);display:block;margin-top:6px}
   </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header role="banner" aria-label="Top navigation">
+      <div class="brand">
+        <img src="images/logo.final.png" alt="Snehvastra" class="logo">
+        <div>
+          <div style="font-weight:800;color:var(--purple);font-family:'Clash Display',serif">Snehvastra</div>
+          <small class="muted">Collector Profile</small>
+        </div>
+      </div>
 
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="order-history.html" class="active" aria-current="page">Orders</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Collector Hero -->
+    <section class="hero" aria-labelledby="collectorTitle">
+      <div class="avatar" aria-hidden="true">
+        <!-- replace with user avatar if available -->
+        <img id="collectorAvatar" src="images/collector-placeholder.jpg" alt="Collector avatar" onerror="this.src='images/avatar-placeholder.png'">
+        <div class="collector-name" id="collectorName">Abhi Shek</div>
+        <div class="collector-meta">Member since <strong id="memberSince">2024</strong></div>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div style="flex:1">
+            <h2 id="collectorTitle" style="margin:0;font-family:'Clash Display',serif;color:var(--slate)">Your Collector Dashboard</h2>
+            <small class="muted">A refined view of purchases, auction wins and custom pieces.</small>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn ghost" id="exportCsvBtn" title="Export orders as CSV">Export CSV</button>
+            <button class="btn primary" id="newOrderBtn" onclick="location.href='collection.html'">Shop New Drops</button>
+          </div>
+        </div>
+
+        <div style="margin-top:18px" class="metrics" aria-hidden="false">
+          <div class="metric">
+            <h4 id="metricSpent">₹0</h4>
+            <p>Lifetime Spend</p>
+          </div>
+          <div class="metric">
+            <h4 id="metricOrders">0</h4>
+            <p>Orders</p>
+          </div>
+          <div class="metric">
+            <h4 id="metricPieces">0</h4>
+            <p>Pieces Owned</p>
+          </div>
+          <div class="metric">
+            <h4 id="metricWins">0</h4>
+            <p>Auction Wins</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Auction banner -->
+    <div class="auction-banner" role="region" aria-live="polite">
+      <div>🔥 <strong>SNEHVASTRA ONE AUCTION</strong> — Elite 1/1 pieces.</div>
+      <div class="auction-timer" id="auctionTimer">Loading...</div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls" role="search" aria-label="Order controls">
+      <div class="search" style="flex:1">
+        <input id="q" type="search" placeholder="Search orders, items, order ID, or tracking..." aria-label="Search orders">
+      </div>
+
+      <select id="filterStatus" class="select" aria-label="Filter by status">
+        <option value="all">All statuses</option>
+        <option value="processing">Processing</option>
+        <option value="shipped">Shipped</option>
+        <option value="completed">Completed</option>
+        <option value="auction">Auction</option>
+        <option value="custom">Custom</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+
+      <select id="sortBy" class="select" aria-label="Sort orders">
+        <option value="new">Newest</option>
+        <option value="old">Oldest</option>
+        <option value="high">Total: High → Low</option>
+        <option value="low">Total: Low → High</option>
+      </select>
+    </div>
+
+    <!-- Orders Panel -->
+    <section class="panel" aria-labelledby="ordersHeading">
+      <h3 id="ordersHeading" style="margin:0 0 12px;font-family:'Clash Display',serif;color:var(--purple);">Order History</h3>
+
+      <div id="ordersContainer" aria-live="polite">
+        <!-- Table inserted by JS -->
+      </div>
+    </section>
+
+    <!-- Quick actions -->
+    <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+      <a class="btn ghost" href="customize.html">Book Customization</a>
+      <a class="btn ghost" href="contact.html">Contact Support</a>
+    </div>
+  </div>
+
+  <!-- Order details modal -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal" role="document" aria-modal="true">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <h3 id="modalTitle">Order Details</h3>
+        <button class="close-btn" aria-label="Close details" id="modalCloseBtn">✕</button>
+      </div>
+      <div id="modalContent" style="margin-top:12px"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" style="position:fixed;top:26px;right:26px;background:linear-gradient(90deg,#7b3bd1,#3a0f5a);color:#fff;padding:12px 18px;border-radius:10px;display:none;z-index:600;font-weight:700">Saved</div>
+
+  <!-- Scripts -->
   <script>
-    // MASTER SCRIPT
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    
-    function updateCartCount() {
-      const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      document.getElementById('cartCount').textContent = totalItems;
-    }
+    /***********************
+     * Utilities & data model
+     ***********************/
+    // Local storage keys
+    const CART_KEY = 'snehvastra_cart';
+    const ORDERS_KEY = 'sneh_orders'; // optional persistent orders for demo
 
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4000);
-    }
-
-    // SAMPLE ORDERS DATA (localStorage in production)
+    // Sample seed orders (can be replaced by server data)
     const sampleOrders = [
       {
-        id: '#SNV-1001',
-        date: '2025-11-25',
-        items: 3,
-        total: 8499,
-        status: 'completed',
-        type: 'standard',
-        tracking: 'DTDCETR123456789'
+        id: '#SNV-1003',
+        date: '2025-11-30',
+        items: [
+          {sku:'Fusion Tee', qty:1, price:499},
+          {sku:'Tech Overshirt', qty:1, price:4999}
+        ],
+        total: 5498,
+        status: 'processing',
+        type: 'custom',
+        tracking: null,
+        notes: 'Custom embroidery requested'
       },
       {
         id: '#SNV-1002',
         date: '2025-11-28',
-        items: 1,
+        items: [
+          {sku:'ONE - Limited 1/1', qty:1, price:3499}
+        ],
         total: 3499,
         status: 'shipped',
         type: 'auction',
-        tracking: 'DHLIN987654321'
+        tracking: 'DHLIN987654321',
+        notes: 'Auction win — authenticated with NFC'
       },
       {
-        id: '#SNV-1003',
-        date: '2025-11-30',
-        items: 2,
-        total: 5999,
-        status: 'processing',
-        type: 'custom',
-        tracking: null
+        id: '#SNV-1001',
+        date: '2025-11-25',
+        items: [
+          {sku:'Casual Cloud Hoodie', qty:1, price:1999},
+          {sku:'Streetwear Fusion Tee', qty:2, price:499}
+        ],
+        total: 2997,
+        status: 'completed',
+        type: 'standard',
+        tracking: 'DTDCETR123456789',
+        notes: 'Delivered to doorstep'
       }
     ];
 
-    function formatPrice(num) {
-      return `₹${num.toLocaleString()}`;
+    // Save sample orders into localStorage if not present (demo flow)
+    if(!localStorage.getItem(ORDERS_KEY)){
+      localStorage.setItem(ORDERS_KEY, JSON.stringify(sampleOrders));
     }
 
-    function formatDate(dateStr) {
-      return new Date(dateStr).toLocaleDateString('en-IN');
+    function readOrders(){
+      try {
+        return JSON.parse(localStorage.getItem(ORDERS_KEY)) || [];
+      } catch(e){ return []; }
     }
 
-    function loadOrders() {
-      const tbody = document.getElementById('ordersBody');
-      const noOrders = document.getElementById('noOrders');
-      
-      if (sampleOrders.length === 0) {
-        noOrders.style.display = 'block';
-        tbody.innerHTML = '';
+    function writeOrders(list){
+      localStorage.setItem(ORDERS_KEY, JSON.stringify(list));
+    }
+
+    // Format helpers
+    function fmtPrice(n){ return '₹' + Number(n).toLocaleString('en-IN'); }
+    function fmtDate(iso){ const d = new Date(iso); if(isNaN(d)) return iso; return d.toLocaleDateString('en-IN'); }
+
+    /***********************
+     * UI wiring
+     ***********************/
+    const ordersContainer = document.getElementById('ordersContainer');
+    const qInput = document.getElementById('q');
+    const filterStatus = document.getElementById('filterStatus');
+    const sortBy = document.getElementById('sortBy');
+    const exportCsvBtn = document.getElementById('exportCsvBtn');
+    const toast = document.getElementById('toast');
+
+    function showToast(msg,ms=2000){
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(()=> toast.style.display = 'none', ms);
+    }
+
+    function calcMetrics(orders){
+      const totalSpent = orders.reduce((s,o)=>s+(o.total||0),0);
+      const totalOrders = orders.length;
+      const pieces = orders.reduce((s,o)=>s + (o.items? o.items.reduce((a,i)=>a+i.qty,0):0),0);
+      const wins = orders.filter(o=>o.type==='auction').length;
+      document.getElementById('metricSpent').textContent = fmtPrice(totalSpent);
+      document.getElementById('metricOrders').textContent = totalOrders;
+      document.getElementById('metricPieces').textContent = pieces;
+      document.getElementById('metricWins').textContent = wins;
+    }
+
+    function buildTableRows(orders){
+      if(!orders.length){
+        ordersContainer.innerHTML = `<div class="empty">You have no orders yet — start collecting unique pieces in <a href="collection.html">Collection</a>.</div>`;
         return;
       }
 
-      noOrders.style.display = 'none';
-      
-      tbody.innerHTML = sampleOrders.map(order => `
-        <tr>
-          <td><strong>${order.id}</strong></td>
-          <td>${formatDate(order.date)}</td>
-          <td>${order.items} items</td>
-          <td>${formatPrice(order.total)}</td>
-          <td><span class="status ${order.status}">${order.status.toUpperCase()}</span></td>
+      let html = `<div style="overflow:auto"><table role="table" aria-label="Your orders">
+        <thead><tr>
+          <th>Order</th>
+          <th>Date</th>
+          <th>Items</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr></thead><tbody>`;
+
+      orders.forEach(o=>{
+        const itemsCount = (o.items||[]).reduce((a,i)=>a+i.qty,0);
+        const statusClass = `status ${o.status}`;
+        html += `<tr>
+          <td><div class="order-id">${o.id}</div><small class="muted">${o.type === 'auction' ? 'Auction' : o.type}</small></td>
+          <td>${fmtDate(o.date)}</td>
+          <td class="items">${itemsCount} item${itemsCount>1?'s':''}</td>
+          <td class="price">${fmtPrice(o.total)}</td>
+          <td><span class="${statusClass}">${(o.status||'unknown').toUpperCase()}</span></td>
           <td>
-            ${order.tracking ? 
-              `<a href="shipping.html?track=${order.tracking}" class="track-btn">Track</a>` : 
-              '-'
-            }
-            <br><a href="collection.html" class="reorder-btn" style="margin-top:4px;">Reorder</a>
+            <div class="row-actions" role="group" aria-label="Order actions">
+              <button class="action" onclick="viewOrder('${o.id}')">Details</button>
+              ${o.tracking ? `<a class="action" href="https://www.google.com/search?q=${encodeURIComponent(o.tracking)}" target="_blank" rel="noopener">Track</a>` : `<button class="action ghost" onclick="requestTracking('${o.id}')">Request tracking</button>`}
+              <button class="action" onclick="reorder('${o.id}')">Reorder</button>
+            </div>
           </td>
-        </tr>
-      `).join('');
+        </tr>`;
+      });
+
+      html += `</tbody></table></div>`;
+      ordersContainer.innerHTML = html;
     }
 
-    // AUCTION TIMER
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
-      }
-    }, 1000);
+    // Filtering, sorting & searching
+    function applyFiltersAndRender(){
+      let orders = readOrders();
+      const q = (qInput.value || '').trim().toLowerCase();
+      const status = filterStatus.value;
+      const sort = sortBy.value;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      loadOrders();
+      if(status && status !== 'all'){
+        orders = orders.filter(o=>o.status === status);
+      }
+
+      if(q){
+        orders = orders.filter(o=>{
+          const inId = o.id && o.id.toLowerCase().includes(q);
+          const inItems = (o.items||[]).some(i=> (i.sku || '').toLowerCase().includes(q));
+          const inNotes = (o.notes || '').toLowerCase().includes(q);
+          const inTracking = (o.tracking || '').toLowerCase().includes(q);
+          return inId || inItems || inNotes || inTracking;
+        });
+      }
+
+      // Sorting
+      orders.sort((a,b)=>{
+        if(sort === 'new') return new Date(b.date) - new Date(a.date);
+        if(sort === 'old') return new Date(a.date) - new Date(b.date);
+        if(sort === 'high') return (b.total || 0) - (a.total || 0);
+        if(sort === 'low') return (a.total || 0) - (b.total || 0);
+        return 0;
+      });
+
+      calcMetrics(readOrders()); // metrics always based on full list
+      buildTableRows(orders);
+    }
+
+    // Modal logic
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalContent = document.getElementById('modalContent');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    function openModal(){
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+      modalContent.innerHTML = '';
+    }
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+    // View order details
+    function viewOrder(orderId){
+      const orders = readOrders();
+      const o = orders.find(x=>x.id === orderId);
+      if(!o) return showToast('Order not found');
+      const itemsHtml = (o.items||[]).map(i=>`<li>${i.sku} × ${i.qty} — ${fmtPrice(i.price)}</li>`).join('');
+      modalContent.innerHTML = `
+        <div class="grid">
+          <div>
+            <p><strong>Order:</strong> ${o.id}</p>
+            <p><strong>Date:</strong> ${fmtDate(o.date)}</p>
+            <p><strong>Status:</strong> <span class="status ${o.status}">${o.status.toUpperCase()}</span></p>
+            <p><strong>Notes:</strong> ${o.notes || '—'}</p>
+            <h4 style="margin-top:14px">Items</h4>
+            <ul style="margin:8px 0 0 16px">${itemsHtml}</ul>
+          </div>
+          <aside>
+            <div style="background:linear-gradient(180deg,#fbfbff,#fff);padding:12px;border-radius:8px;border:1px solid rgba(34,35,42,0.04)">
+              <h4 style="margin:0">Total</h4>
+              <div style="font-weight:900;font-size:1.25rem;margin-top:6px">${fmtPrice(o.total)}</div>
+              ${o.tracking ? `<div style="margin-top:12px"><a class="action" href="https://www.google.com/search?q=${encodeURIComponent(o.tracking)}" target="_blank" rel="noopener">Track</a></div>` : `<div style="margin-top:12px;color:var(--muted)">No tracking yet</div>`}
+              <div style="margin-top:10px"><button class="btn primary" onclick="reorder('${o.id}')">Reorder</button></div>
+            </div>
+          </aside>
+        </div>
+      `;
+      openModal();
+    }
+
+    // Reorder: put items back in cart
+    function reorder(orderId){
+      const orders = readOrders();
+      const o = orders.find(x=>x.id === orderId);
+      if(!o) return showToast('Order not found');
+      // cart structure: { productId: qty } — we keep a simple SKU:qty mapping
+      const cart = JSON.parse(localStorage.getItem(CART_KEY)) || {};
+      (o.items || []).forEach(item=>{
+        const key = item.sku.replace(/\s+/g,'_') + '_' + item.price; // ensure unique key per SKU+price
+        cart[key] = (cart[key] || 0) + item.qty;
+      });
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      updateCartBadge();
+      showToast('Items added to cart');
+      // optionally navigate to cart
+      setTimeout(()=> { window.location.href = 'cart.html'; }, 700);
+    }
+
+    // Request tracking (simulate)
+    function requestTracking(orderId){
+      showToast('We requested tracking for ' + orderId);
+      // In real app: call API -> update orders -> re-render
+    }
+
+    // CSV export
+    function ordersToCsv(orders){
+      const rows = [
+        ['Order ID','Date','Type','Status','Items','Total','Tracking','Notes']
+      ];
+      orders.forEach(o=>{
+        const items = (o.items||[]).map(i=> `${i.sku} x${i.qty}`).join(' | ');
+        rows.push([o.id, o.date, o.type, o.status, items, o.total, o.tracking || '', o.notes || '']);
+      });
+      return rows.map(r=> r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+    }
+
+    exportCsvBtn.addEventListener('click', ()=>{
+      const orders = readOrders();
+      const csv = ordersToCsv(orders);
+      const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'snehvastra-orders.csv';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Exported CSV');
     });
+
+    // Auction countdown
+    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+    function updateAuctionTimer(){
+      const el = document.getElementById('auctionTimer');
+      const now = Date.now();
+      const diff = auctionDate - now;
+      if(diff > 0){
+        const d = Math.floor(diff/86400000);
+        const h = Math.floor((diff%86400000)/3600000);
+        const m = Math.floor((diff%3600000)/60000);
+        const s = Math.floor((diff%60000)/1000);
+        el.textContent = `${d}d ${h}h ${m}m ${s}s`;
+      } else {
+        el.textContent = 'LIVE NOW!';
+      }
+    }
+    setInterval(updateAuctionTimer, 1000);
+    updateAuctionTimer();
+
+    // Search debounce
+    let searchTimer = null;
+    qInput.addEventListener('input', ()=>{
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(applyFiltersAndRender, 250);
+    });
+    filterStatus.addEventListener('change', applyFiltersAndRender);
+    sortBy.addEventListener('change', applyFiltersAndRender);
+
+    // Cart badge
+    function updateCartBadge(){
+      const cart = JSON.parse(localStorage.getItem(CART_KEY)) || {};
+      const total = Object.values(cart).reduce((s,n)=>s+n,0);
+      // create small badge in header if missing
+      let badge = document.getElementById('siteCartBadge');
+      if(!badge){
+        badge = document.createElement('div');
+        badge.id = 'siteCartBadge';
+        badge.style.cssText = 'position:fixed;top:18px;right:18px;background:var(--purple);color:#fff;padding:8px 12px;border-radius:999px;font-weight:800;z-index:99';
+        document.body.appendChild(badge);
+      }
+      badge.textContent = `${total} • Cart`;
+    }
+
+    // On load
+    window.addEventListener('DOMContentLoaded', ()=>{
+      const orders = readOrders();
+      calcMetrics(orders);
+      applyFiltersAndRender();
+      updateCartBadge();
+      document.getElementById('collectorName').textContent = localStorage.getItem('sneh_collector_name') || 'Abhi Shek';
+      document.getElementById('memberSince').textContent = localStorage.getItem('sneh_member_since') || '2024';
+    });
+
+    /***********************
+     * OPTIONAL: Admin helpers (for CEO)
+     ***********************/
+    // Allow adding a test order quickly (developer helper)
+    window.__addTestOrder = function(){
+      const orders = readOrders();
+      const id = '#SNV-' + Math.floor(Math.random()*9000+1000);
+      const now = new Date().toISOString().split('T')[0];
+      const newOrder = {
+        id, date: now, items:[{sku:'Test Tee',qty:1,price:499}], total:499, status:'processing', type:'standard', tracking:null, notes: 'Test order'
+      };
+      orders.unshift(newOrder);
+      writeOrders(orders);
+      applyFiltersAndRender();
+      showToast('Test order added');
+    };
   </script>
 
-  <!-- Analytics -->
+  <!-- Analytics (placeholder) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-CXQG6L0W01');
-    gtag('event', 'view_order_history');
+    gtag('event', 'view_collector_profile', { 'page': 'order-history-v2' });
   </script>
 </body>
 </html>
