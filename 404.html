@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Snehvastra — 404 Not Found</title>
+<meta name="theme-color" content="#3A0F5A" />
+
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* -------------------- ROOT -------------------- */
+:root {
+  --purple: #3A0F5A;
+  --purple-glow: rgba(58, 15, 90, 0.55);
+  --slate: #1d1d22;
+  --paper: #F5F4F6;
+  --silver: #c7c7ce;
+  --white: #ffffff;
+  --radius: 14px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* -------------------- RESET -------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(145deg, #f7f7f8, #ebe9ef);
+  font-family: 'Poppins', sans-serif;
+  color: var(--slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* -------------------- ORB (Global AI Assistant) -------------------- */
+.ai-orb {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #9f5aff, #3A0F5A);
+  box-shadow:
+    0 0 25px rgba(58, 15, 90, .6),
+    inset 0 0 20px rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+
+.ai-orb:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 38px rgba(58, 15, 90, .75),
+    inset 0 0 28px rgba(255,255,255,0.33);
+}
+
+.ai-orb span {
+  color: white;
+  font-size: 1.6rem;
+  user-select: none;
+}
+
+/* -------------------- CARD -------------------- */
+.card {
+  width: 100%;
+  max-width: 820px;
+  background: linear-gradient(180deg, #ffffff, #f8f7fa);
+  padding: 60px 48px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(58, 15, 90, 0.07);
+  box-shadow:
+    0 30px 60px rgba(58, 15, 90, 0.08),
+    0 6px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  animation: fadeIn .7s var(--ease) both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.logo {
+  height: 64px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.07));
+}
+
+/* -------------------- TEXT -------------------- */
+h1 {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 3.2rem;
+  letter-spacing: -0.5px;
+  font-weight: 600;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+
+p.sub {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #3c3c46;
+  max-width: 540px;
+  margin: 0 auto 32px;
+}
+
+/* -------------------- BUTTONS -------------------- */
+.btn {
+  padding: 14px 22px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(58, 15, 90, .85), rgba(58, 15, 90, .65));
+  color: white;
+  font-weight: 600;
+  border: none;
+  box-shadow:
+    0 8px 22px rgba(58, 15, 90, .25),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: transform .28s var(--ease), opacity .28s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  opacity: .92;
+}
+
+.btn-ghost {
+  background: rgba(58, 15, 90, .05);
+  color: var(--purple);
+  border: 1px solid rgba(58, 15, 90, .18);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  background: rgba(58, 15, 90, .08);
+}
+
+/* -------------------- INLINE MICRO AI -------------------- */
+.inline-ai {
+  margin-top: 42px;
+  padding: 22px;
+  border-radius: var(--radius);
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: inset 0 0 18px rgba(0,0,0,0.04);
+  text-align: left;
+}
+
+.inline-ai label {
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+  color: var(--purple);
+}
+
+.ai-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(58, 15, 90, 0.15);
+  margin-bottom: 12px;
+  font-size: 1rem;
+  background: #fafafa;
+}
+
+.ai-response {
+  margin-top: 12px;
+  color: #4a4a55;
+  min-height: 20px;
+}
+
+/* -------------------- FOOTER -------------------- */
+.footer {
+  margin-top: 32px;
+  color: #9c9aa2;
+  font-size: 0.95rem;
+}
+
+/* -------------------- MOBILE -------------------- */
+@media (max-width: 620px) {
+  h1 { font-size: 2.4rem; }
+  .card { padding: 42px 28px; }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- GLOBAL AI ORB -->
+<div class="ai-orb" onclick="openSnehAI()">
+  <span>⚪</span>
+</div>
+
+<!-- 404 CARD -->
+<div class="card" role="main" aria-labelledby="e404-title">
+
+  <img src="images/logo.final.png" class="logo" alt="Snehvastra Logo">
+
+  <h1 id="e404-title">404 — Not Found</h1>
+  <p class="sub">
+    This page slipped through the cracks.  
+    But don’t worry — Sneh will guide you back to the right drop.
+  </p>
+
+  <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:20px;">
+    <button class="btn" onclick="location.href='index.html'">Go Home</button>
+    <button class="btn-ghost" onclick="location.href='collection.html'">Browse Collection</button>
+  </div>
+
+  <!-- INLINE AI -->
+  <div class="inline-ai">
+    <label>Need help? Ask Sneh</label>
+    <input id="ai404" class="ai-input" placeholder="e.g. “Where is the Size Guide?”" />
+    <div style="display:flex; gap:12px;">
+      <button class="btn" onclick="handle404AI()">Ask</button>
+      <button class="btn-ghost" onclick="location.href='contact.html'">Contact Support</button>
+    </div>
+    <div id="ai404Res" class="ai-response"></div>
+  </div>
+
+  <div class="footer">© <span id="year"></span> Snehvastra</div>
+
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Inline Micro AI */
+function handle404AI() {
+  const q = (document.getElementById("ai404").value || "").toLowerCase();
+  const out = document.getElementById("ai404Res");
+
+  if (!q) {
+    out.textContent = "Try: “Size Guide”, “Contact”, or “Hoodies”.";
+    return;
+  }
+
+  if (q.includes("size")) out.textContent = "Size Guide → size-guide.html";
+  else if (q.includes("contact") || q.includes("support")) out.textContent = "You can reach us on contact.html or WhatsApp.";
+  else if (q.includes("collection") || q.includes("shop")) out.textContent = "Browse everything here → collection.html";
+  else out.textContent = "Sneh recommends visiting the Collection or Contact page.";
+}
+
+/* Floating Orb → Full AI Modal (to build later) */
+function openSnehAI() {
+  alert("Sneh AI Assistant will appear here (modal coming in final build).");
+}
+</script>
+
+</body>
+</html>

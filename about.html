@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — Snehvastra</title>
+<meta name="theme-color" content="#3A0F5A" />
+
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ------------------------------------------------------
+   Root / Design Tokens
+------------------------------------------------------ */
+:root {
+  --purple: #3A0F5A;
+  --purple-light: #9F65FF;
+  --slate: #1d1d23;
+  --silver: #C7C7CE;
+  --paper: #F6F6F7;
+  --white: #FFFFFF;
+  --radius: 14px;
+  --ease: cubic-bezier(.25,.7,.25,1);
+  --max: 1240px;
+}
+
+/* ------------------------------------------------------
+   Reset
+------------------------------------------------------ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f6f5f8;
+  font-family: 'Poppins', sans-serif;
+  color: var(--slate);
+  overflow-x: hidden;
+}
+
+/* ------------------------------------------------------
+   Header
+------------------------------------------------------ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px) saturate(140%);
+  background: rgba(255,255,255,0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding: 18px 32px;
+}
+
+nav {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+nav .brand img {
+  height: 52px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+nav a {
+  text-decoration: none;
+  color: var(--slate);
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: 0.3s var(--ease);
+}
+nav a:hover,
+nav a.active {
+  background: rgba(58, 15, 90, 0.08);
+  color: var(--purple);
+}
+
+/* ------------------------------------------------------
+   HERO — Animated Gradient
+------------------------------------------------------ */
+.hero {
+  position: relative;
+  padding: 120px 24px 140px;
+  overflow: hidden;
+  text-align: center;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, #3A0F5A, #7B3BBE, #2A0D3F);
+  animation: heroGrad 16s ease-in-out infinite alternate;
+  z-index: -1;
+}
+@keyframes heroGrad {
+  0% { background-position: 0% 50%; filter: brightness(1); }
+  100% { background-position: 100% 50%; filter: brightness(1.15); }
+}
+
+.hero h1 {
+  font-family: 'Clash Display', sans-serif;
+  color: var(--white);
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  letter-spacing: -1px;
+}
+.hero p {
+  color: rgba(255,255,255,0.85);
+  max-width: 800px;
+  margin: 12px auto 0;
+  font-size: 1.1rem;
+}
+
+/* Decorative specular shine */
+.hero .shine {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+  top: 20%;
+  left: 15%;
+  filter: blur(80px);
+}
+
+/* ------------------------------------------------------
+   Story Section (split-screen)
+------------------------------------------------------ */
+.section {
+  max-width: var(--max);
+  margin: 80px auto;
+  padding: 0 24px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.card {
+  background: linear-gradient(180deg, #ffffff, #f8f7fb);
+  border-radius: var(--radius);
+  padding: 36px;
+  border: 1px solid rgba(58, 15, 90, 0.06);
+  box-shadow: 0 30px 60px rgba(58, 15, 90, 0.06);
+}
+
+.card h2 {
+  font-family: 'Clash Display', sans-serif;
+  color: var(--purple);
+  margin-bottom: 12px;
+  font-size: 2rem;
+}
+.card p {
+  color: #4a4a52;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+/* Image panel */
+.visual {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 26px 70px rgba(58, 15, 90, 0.12);
+}
+.visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s var(--ease);
+}
+.visual img:hover {
+  transform: scale(1.04);
+}
+
+/* ------------------------------------------------------
+   Values Pills
+------------------------------------------------------ */
+.values {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.pill {
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(58, 15, 90, 0.06);
+  color: var(--purple);
+}
+
+/* ------------------------------------------------------
+   Inline AI — Ask About Our Craft
+------------------------------------------------------ */
+.inline-ai {
+  margin-top: 28px;
+  background: linear-gradient(180deg, #ffffff, #f4f2f7);
+  border: 1px solid rgba(58,15,90,0.06);
+  box-shadow: 0 10px 40px rgba(58,15,90,0.05);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.inline-ai label {
+  font-weight: 600;
+  color: var(--purple);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.inline-ai input {
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(58,15,90,0.15);
+  margin-bottom: 14px;
+}
+
+.btn {
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #7B3BBE, #3A0F5A);
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: .3s var(--ease);
+  box-shadow: 0 12px 28px rgba(58,15,90,0.22);
+}
+.btn:hover {
+  transform: translateY(-3px);
+  opacity: 0.92;
+}
+
+.btn.ghost {
+  background: rgba(58,15,90,0.06);
+  color: var(--purple);
+  border: 1px solid rgba(58,15,90,0.2);
+  box-shadow: none;
+}
+.btn.ghost:hover {
+  background: rgba(58,15,90,0.1);
+}
+
+.response {
+  margin-top: 12px;
+  color: #53535b;
+  min-height: 22px;
+}
+
+/* ------------------------------------------------------
+   Floating AI Orb
+------------------------------------------------------ */
+.ai-orb {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #9f5aff, #3A0F5A);
+  box-shadow: 0 0 38px rgba(58,15,90,0.5),
+              inset 0 0 18px rgba(255,255,255,0.33);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .3s var(--ease);
+  z-index: 200;
+}
+.ai-orb:hover {
+  transform: scale(1.07);
+}
+.ai-orb span {
+  color: white;
+  font-size: 1.6rem;
+}
+
+/* ------------------------------------------------------
+   Footer
+------------------------------------------------------ */
+footer {
+  margin: 80px auto 40px;
+  text-align: center;
+  color: #888;
+  font-size: 0.95rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <div class="brand">
+      <img src="images/logo.final.png" alt="Snehvastra Logo" />
+      <strong style="font-size:1.1rem;color:var(--purple);">Snehvastra</strong>
+    </div>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="user-login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="shine"></div>
+
+  <h1>Craft. Culture. Quiet Luxury.</h1>
+  <p>
+    Snehvastra is where artisan patience meets new-gen streetwear.
+    Every capsule drop is intentional — sampled slow, built to be kept, finished with care.
+  </p>
+</section>
+
+<!-- STORY SECTION -->
+<section class="section split">
+  <div class="card">
+    <h2>Our Story</h2>
+    <p>
+      Snehvastra began as a small studio idea — a space where silhouettes, fabrics,
+      and culture could meet without noise. We believe in slow sampling, matte tactility,
+      and garments that feel like memories.
+    </p>
+    <p style="font-style:italic;color:var(--purple)">
+      “Quiet luxury with a pulse.”
+    </p>
+
+    <div class="values">
+      <div class="pill">Limited Runs</div>
+      <div class="pill">Tactile Fabrics</div>
+      <div class="pill">Artisan Finish</div>
+      <div class="pill">Local Sampling</div>
+    </div>
+
+    <!-- INLINE AI -->
+    <div class="inline-ai">
+      <label>Ask Sneh — About Our Craft</label>
+      <input id="aiInput" type="text" placeholder="e.g. 'Why limited drops?'" />
+
+      <div style="display:flex;gap:12px;">
+        <button class="btn" onclick="askCraftAI()">Ask</button>
+        <button class="btn ghost" onclick="clearCraftAI()">Clear</button>
+      </div>
+
+      <div class="response" id="aiRes"></div>
+    </div>
+  </div>
+
+  <div class="visual">
+    <img src="images/mybanner.jpg" alt="Craft Visual" />
+  </div>
+</section>
+
+<!-- HOW DROPS WORK -->
+<section class="section">
+  <div class="card">
+    <h2>How Drops Work</h2>
+    <p>
+      Drops are curated windows — announced, released, then closed.
+      Each capsule exists for a moment, then joins the archive.
+      Collectors who miss a drop can explore echoes or special auctions.
+    </p>
+    <p style="color:#666;">Subscribe to get first access.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © <span id="year"></span> Snehvastra — New Gen Luxury Streetwear
+</footer>
+
+<!-- AI ORB -->
+<div class="ai-orb" onclick="openSnehAI()">
+  <span>S</span>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* Inline AI logic */
+function askCraftAI() {
+  const q = (document.getElementById("aiInput").value || "").toLowerCase();
+  const out = document.getElementById("aiRes");
+
+  if (!q) {
+    out.textContent = "Try: ‘Why limited drops?’, ‘What fabric do you use?’";
+    return;
+  }
+
+  if (q.includes("drop") || q.includes("limited"))
+    out.textContent = "We design in tight, intentional runs to maintain craft integrity.";
+  else if (q.includes("fabric") || q.includes("material"))
+    out.textContent = "We sample long-staple cotton and soft blends that give matte, tactile finishes.";
+  else if (q.includes("mission") || q.includes("why"))
+    out.textContent = "Snehvastra exists to blend artisan detail with new-gen silhouettes.";
+  else
+    out.textContent = "Great question. Try asking about drops, fabrics, or mission.";
+}
+
+function clearCraftAI() {
+  document.getElementById("aiInput").value = "";
+  document.getElementById("aiRes").textContent = "";
+}
+
+/* Orb → AI Modal (placeholder until global modal is built) */
+function openSnehAI() {
+  alert("Sneh AI modal will open here in the final build.");
+}
+</script>
+
+</body>
+</html>
