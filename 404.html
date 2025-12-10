@@ -1,265 +1,1254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Snehvastra — 404 Not Found</title>
-<meta name="theme-color" content="#3A0F5A" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snehvastra — Page Not Found</title>
+  <meta name="description" content="The page you’re looking for isn’t available. Jump back to Snehvastra’s latest drops, auctions, and collections." />
+  <meta name="theme-color" content="#3A0F5A" />
 
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style>
-/* -------------------- ROOT -------------------- */
-:root {
-  --purple: #3A0F5A;
-  --purple-glow: rgba(58, 15, 90, 0.55);
-  --slate: #1d1d22;
-  --paper: #F5F4F6;
-  --silver: #c7c7ce;
-  --white: #ffffff;
-  --radius: 14px;
-  --ease: cubic-bezier(.2, .8, .2, 1);
-}
+  <style>
+    /* -------------------- ROOT -------------------- */
+    :root {
+      --purple: #3A0F5A;
+      --purple-glow: rgba(58, 15, 90, 0.55);
+      --slate: #1d1d22;
+      --paper: #F5F4F6;
+      --silver: #c7c7ce;
+      --white: #ffffff;
+      --radius: 14px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
 
-/* -------------------- RESET -------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    /* -------------------- RESET -------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  height: 100vh;
-  background: linear-gradient(145deg, #f7f7f8, #ebe9ef);
-  font-family: 'Poppins', sans-serif;
-  color: var(--slate);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  position: relative;
-  overflow-x: hidden;
-}
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #f7f7f8, #ebe9ef);
+      font-family: 'Poppins', sans-serif;
+      color: var(--slate);
+      display: flex;
+      flex-direction: column;
+    }
 
-/* -------------------- ORB (Global AI Assistant) -------------------- */
-.ai-orb {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #9f5aff, #3A0F5A);
-  box-shadow:
-    0 0 25px rgba(58, 15, 90, .6),
-    inset 0 0 20px rgba(255,255,255,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.ai-orb:hover {
-  transform: scale(1.08);
-  box-shadow:
-    0 0 38px rgba(58, 15, 90, .75),
-    inset 0 0 28px rgba(255,255,255,0.33);
-}
+    button {
+      font-family: inherit;
+    }
 
-.ai-orb span {
-  color: white;
-  font-size: 1.6rem;
-  user-select: none;
-}
+    /* -------------------- HEADER -------------------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(245,244,246,0.92));
+      border-bottom: 1px solid rgba(58, 15, 90, 0.06);
+    }
 
-/* -------------------- CARD -------------------- */
-.card {
-  width: 100%;
-  max-width: 820px;
-  background: linear-gradient(180deg, #ffffff, #f8f7fa);
-  padding: 60px 48px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(58, 15, 90, 0.07);
-  box-shadow:
-    0 30px 60px rgba(58, 15, 90, 0.08),
-    0 6px 15px rgba(0,0,0,0.05);
-  text-align: center;
-  animation: fadeIn .7s var(--ease) both;
-}
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.logo {
-  height: 64px;
-  margin-bottom: 24px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.07));
-}
+    .brand-lockup .brand-logo {
+      height: 36px;
+      display: block;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.08));
+    }
 
-/* -------------------- TEXT -------------------- */
-h1 {
-  font-family: 'Clash Display', sans-serif;
-  font-size: 3.2rem;
-  letter-spacing: -0.5px;
-  font-weight: 600;
-  color: var(--purple);
-  margin-bottom: 12px;
-}
+    .brand-tagline {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #7a7389;
+      font-weight: 500;
+      display: none;
+    }
 
-p.sub {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #3c3c46;
-  max-width: 540px;
-  margin: 0 auto 32px;
-}
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.93rem;
+    }
 
-/* -------------------- BUTTONS -------------------- */
-.btn {
-  padding: 14px 22px;
-  border-radius: var(--radius);
-  background: linear-gradient(135deg, rgba(58, 15, 90, .85), rgba(58, 15, 90, .65));
-  color: white;
-  font-weight: 600;
-  border: none;
-  box-shadow:
-    0 8px 22px rgba(58, 15, 90, .25),
-    inset 0 1px 0 rgba(255,255,255,0.25);
-  cursor: pointer;
-  transition: transform .28s var(--ease), opacity .28s var(--ease);
-}
+    .header-link {
+      position: relative;
+      padding-bottom: 2px;
+      color: #4a435e;
+      font-weight: 500;
+      cursor: pointer;
+    }
 
-.btn:hover {
-  transform: translateY(-3px);
-  opacity: .92;
-}
+    .header-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #3A0F5A, #b37cff);
+      transition: width .22s var(--ease);
+    }
 
-.btn-ghost {
-  background: rgba(58, 15, 90, .05);
-  color: var(--purple);
-  border: 1px solid rgba(58, 15, 90, .18);
-  box-shadow: none;
-}
+    .header-link:hover::after {
+      width: 100%;
+    }
 
-.btn-ghost:hover {
-  background: rgba(58, 15, 90, .08);
-}
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-/* -------------------- INLINE MICRO AI -------------------- */
-.inline-ai {
-  margin-top: 42px;
-  padding: 22px;
-  border-radius: var(--radius);
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.05);
-  box-shadow: inset 0 0 18px rgba(0,0,0,0.04);
-  text-align: left;
-}
+    .pill-link {
+      font-size: 0.9rem;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(58, 15, 90, 0.18);
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background .22s var(--ease), transform .22s var(--ease), box-shadow .22s var(--ease);
+    }
 
-.inline-ai label {
-  font-weight: 600;
-  margin-bottom: 10px;
-  display: block;
-  color: var(--purple);
-}
+    .pill-link span.icon {
+      font-size: 1rem;
+    }
 
-.ai-input {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(58, 15, 90, 0.15);
-  margin-bottom: 12px;
-  font-size: 1rem;
-  background: #fafafa;
-}
+    .pill-link:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+    }
 
-.ai-response {
-  margin-top: 12px;
-  color: #4a4a55;
-  min-height: 20px;
-}
+    .cart-pill {
+      background: linear-gradient(135deg, rgba(58, 15, 90, .95), rgba(146, 83, 228, 0.95));
+      color: #ffffff;
+      border: none;
+    }
 
-/* -------------------- FOOTER -------------------- */
-.footer {
-  margin-top: 32px;
-  color: #9c9aa2;
-  font-size: 0.95rem;
-}
+    .cart-pill:hover {
+      background: linear-gradient(135deg, rgba(58, 15, 90, 1), rgba(146, 83, 228, 1));
+    }
 
-/* -------------------- MOBILE -------------------- */
-@media (max-width: 620px) {
-  h1 { font-size: 2.4rem; }
-  .card { padding: 42px 28px; }
-}
-</style>
+    .cart-count-badge {
+      min-width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #3A0F5A;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      padding: 0 5px;
+    }
 
+    .header-breadcrumb {
+      display: none;
+      font-size: 0.78rem;
+      color: #9b95aa;
+    }
+
+    /* -------------------- MAIN LAYOUT -------------------- */
+    .page-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px 80px;
+    }
+
+    /* -------------------- CARD -------------------- */
+    .card {
+      width: 100%;
+      max-width: 860px;
+      background: linear-gradient(180deg, #ffffff, #f8f7fa);
+      padding: 40px 40px 32px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(58, 15, 90, 0.07);
+      box-shadow:
+        0 30px 60px rgba(58, 15, 90, 0.08),
+        0 6px 15px rgba(0,0,0,0.05);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 36px;
+      animation: fadeIn .7s var(--ease) both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-left {
+      text-align: left;
+    }
+
+    .card-right {
+      border-left: 1px solid rgba(0,0,0,0.04);
+      padding-left: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .logo {
+      height: 52px;
+      margin-bottom: 18px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.07));
+    }
+
+    /* -------------------- TEXT -------------------- */
+    h1 {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 3.1rem;
+      letter-spacing: -0.5px;
+      font-weight: 600;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .code-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(58, 15, 90, 0.04);
+      border: 1px solid rgba(58, 15, 90, 0.16);
+      font-size: 0.78rem;
+      color: #6d6588;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 500;
+    }
+
+    p.sub {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: #3c3c46;
+      max-width: 540px;
+      margin-bottom: 16px;
+    }
+
+    .hint-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 24px;
+      font-size: 0.9rem;
+      color: #6c6a76;
+    }
+
+    .hint-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(90, 74, 120, 0.06);
+      border: 1px dashed rgba(90, 74, 120, 0.25);
+      font-size: 0.8rem;
+    }
+
+    /* -------------------- BUTTONS -------------------- */
+    .primary-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .btn {
+      padding: 13px 20px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(58, 15, 90, .85), rgba(58, 15, 90, .65));
+      color: white;
+      font-weight: 600;
+      border: none;
+      box-shadow:
+        0 8px 22px rgba(58, 15, 90, .25),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+      cursor: pointer;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .28s var(--ease), opacity .28s var(--ease), box-shadow .28s var(--ease);
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      opacity: .94;
+      box-shadow:
+        0 12px 26px rgba(58, 15, 90, .26),
+        inset 0 1px 0 rgba(255,255,255,0.27);
+    }
+
+    .btn-ghost {
+      background: rgba(58, 15, 90, .04);
+      color: var(--purple);
+      border: 1px solid rgba(58, 15, 90, .18);
+      box-shadow: none;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(58, 15, 90, .08);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+    }
+
+    .btn-text {
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-size: 0.9rem;
+      color: #726b8a;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .btn-text span.icon {
+      font-size: 1rem;
+    }
+
+    /* -------------------- INLINE MICRO AI -------------------- */
+    .inline-ai {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius);
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: inset 0 0 18px rgba(0,0,0,0.04);
+      text-align: left;
+    }
+
+    .inline-ai-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .inline-ai label {
+      font-weight: 600;
+      color: var(--purple);
+      font-size: 0.96rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .inline-ai label span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3ad47a;
+      box-shadow: 0 0 0 5px rgba(58, 212, 122, 0.18);
+    }
+
+    .ai-input {
+      width: 100%;
+      padding: 11px 13px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(58, 15, 90, 0.15);
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      background: #fafafa;
+      outline: none;
+      transition: border .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+    }
+
+    .ai-input:focus {
+      border-color: rgba(58, 15, 90, 0.5);
+      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(58, 15, 90, 0.15);
+    }
+
+    .ai-quick-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .ai-chip {
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(58, 15, 90, 0.16);
+      font-size: 0.78rem;
+      background: rgba(250, 248, 255, 0.9);
+      cursor: pointer;
+      transition: background .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
+    }
+
+    .ai-chip:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+    }
+
+    .ai-inline-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .ai-inline-actions .btn {
+      padding: 10px 14px;
+      font-size: 0.86rem;
+    }
+
+    .ai-response {
+      margin-top: 8px;
+      color: #4a4a55;
+      min-height: 20px;
+      font-size: 0.9rem;
+    }
+
+    .ai-response strong {
+      font-weight: 600;
+    }
+
+    /* -------------------- RIGHT COLUMN: TRUST / SHORTCUTS -------------------- */
+    .trust-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .trust-card {
+      padding: 12px 13px;
+      border-radius: var(--radius);
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.04);
+      font-size: 0.86rem;
+    }
+
+    .trust-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9b95aa;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .trust-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .trust-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #5c5866;
+    }
+
+    .trust-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f9f0ff, #3A0F5A);
+      box-shadow: 0 0 0 3px rgba(58, 15, 90, 0.12);
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .quick-link-btn {
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(58, 15, 90, 0.12);
+      background: rgba(255,255,255,0.9);
+      font-size: 0.83rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      transition: background .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+    }
+
+    .quick-link-btn span.icon {
+      font-size: 1rem;
+    }
+
+    .quick-link-btn:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    }
+
+    .cart-context {
+      font-size: 0.85rem;
+      color: #726f7c;
+      margin-top: 6px;
+    }
+
+    .cart-context strong {
+      color: #3A0F5A;
+    }
+
+    /* -------------------- GLOBAL AI ORB -------------------- */
+    .ai-orb {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #9f5aff, #3A0F5A);
+      box-shadow:
+        0 0 25px rgba(58, 15, 90, .6),
+        inset 0 0 20px rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), bottom .25s var(--ease), right .25s var(--ease);
+      z-index: 40;
+    }
+
+    .ai-orb:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow:
+        0 0 38px rgba(58, 15, 90, .75),
+        inset 0 0 28px rgba(255,255,255,0.33);
+    }
+
+    .ai-orb span {
+      color: white;
+      font-size: 1.6rem;
+      user-select: none;
+    }
+
+    /* -------------------- AI MODAL -------------------- */
+    .ai-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 5, 15, 0.32);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 20px;
+    }
+
+    .ai-modal-backdrop.active {
+      display: flex;
+    }
+
+    .ai-modal {
+      width: 100%;
+      max-width: 480px;
+      background: linear-gradient(180deg, #ffffff, #f7f5fb);
+      border-radius: 18px;
+      border: 1px solid rgba(58, 15, 90, 0.18);
+      box-shadow:
+        0 26px 60px rgba(0,0,0,0.28),
+        0 0 0 1px rgba(255,255,255,0.6);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ai-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .ai-modal-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .ai-modal-title span.label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #a59fba;
+      font-weight: 600;
+    }
+
+    .ai-modal-title h2 {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      color: var(--purple);
+    }
+
+    .ai-modal-header .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #3ad47a;
+      box-shadow: 0 0 0 5px rgba(58, 212, 122, 0.22);
+    }
+
+    .ai-modal-close {
+      border: none;
+      background: rgba(255,255,255,0.7);
+      border-radius: 999px;
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      font-size: 1rem;
+      color: #6f6688;
+      transition: background .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+    }
+
+    .ai-modal-close:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .ai-modal-body {
+      border-radius: 14px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.04);
+      padding: 10px 10px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ai-modal input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(58, 15, 90, 0.2);
+      font-size: 0.9rem;
+      outline: none;
+      background: #f7f6fb;
+      transition: border .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+    }
+
+    .ai-modal input:focus {
+      background: #ffffff;
+      border-color: rgba(58, 15, 90, 0.55);
+      box-shadow: 0 0 0 1px rgba(58, 15, 90, 0.15);
+    }
+
+    .ai-modal-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .ai-modal-chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: rgba(244, 240, 255, 0.92);
+      border: 1px solid rgba(58, 15, 90, 0.16);
+      cursor: pointer;
+      transition: background .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+    }
+
+    .ai-modal-chip:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .ai-modal-output {
+      font-size: 0.86rem;
+      color: #4c4758;
+      min-height: 20px;
+    }
+
+    .ai-modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .ai-modal-footer span.meta {
+      font-size: 0.74rem;
+      color: #a59fba;
+    }
+
+    .ai-modal-footer button {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(58, 15, 90, .9), rgba(146, 83, 228, 0.9));
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(58, 15, 90, .32);
+      transition: background .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+    }
+
+    .ai-modal-footer button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(58, 15, 90, .38);
+    }
+
+    /* -------------------- FOOTER -------------------- */
+    .footer {
+      max-width: 1120px;
+      margin: 0 auto 22px;
+      padding: 0 20px;
+      color: #9c9aa2;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      font-size: 0.85rem;
+    }
+
+    .footer-links a {
+      color: #9c9aa2;
+    }
+
+    .footer-links a:hover {
+      color: #6f6c80;
+    }
+
+    /* -------------------- MOBILE -------------------- */
+    @media (max-width: 900px) {
+      .card {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 30px 22px 26px;
+      }
+
+      .card-right {
+        border-left: none;
+        border-top: 1px solid rgba(0,0,0,0.04);
+        padding-left: 0;
+        padding-top: 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .page-main {
+        padding: 18px 12px 76px;
+      }
+
+      .header-inner {
+        padding-inline: 14px;
+      }
+
+      .brand-tagline {
+        display: none;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .header-actions {
+        gap: 6px;
+      }
+
+      .pill-link {
+        padding-inline: 10px;
+      }
+
+      .cart-pill span.label-text {
+        display: none;
+      }
+
+      .ai-orb {
+        bottom: 18px;
+        right: 18px;
+        width: 58px;
+        height: 58px;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (min-width: 901px) {
+      .brand-tagline {
+        display: block;
+      }
+      .header-breadcrumb {
+        display: block;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- GLOBAL AI ORB -->
-<div class="ai-orb" onclick="openSnehAI()">
-  <span>⚪</span>
-</div>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-lockup" aria-label="Back to Snehvastra home">
+        <img src="images/logo.final.png" class="brand-logo" alt="Snehvastra" />
+        <span class="brand-tagline">New Gen Luxury Streetwear</span>
+      </a>
 
-<!-- 404 CARD -->
-<div class="card" role="main" aria-labelledby="e404-title">
+      <nav class="header-nav" aria-label="Primary">
+        <a href="collection.html" class="header-link">Collection</a>
+        <a href="auction.html" class="header-link">Auction</a>
+        <a href="wishlist.html" class="header-link">Wishlist</a>
+        <a href="contact.html" class="header-link">Contact</a>
+      </nav>
 
-  <img src="images/logo.final.png" class="logo" alt="Snehvastra Logo">
-
-  <h1 id="e404-title">404 — Not Found</h1>
-  <p class="sub">
-    This page slipped through the cracks.  
-    But don’t worry — Sneh will guide you back to the right drop.
-  </p>
-
-  <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:20px;">
-    <button class="btn" onclick="location.href='index.html'">Go Home</button>
-    <button class="btn-ghost" onclick="location.href='collection.html'">Browse Collection</button>
-  </div>
-
-  <!-- INLINE AI -->
-  <div class="inline-ai">
-    <label>Need help? Ask Sneh</label>
-    <input id="ai404" class="ai-input" placeholder="e.g. “Where is the Size Guide?”" />
-    <div style="display:flex; gap:12px;">
-      <button class="btn" onclick="handle404AI()">Ask</button>
-      <button class="btn-ghost" onclick="location.href='contact.html'">Contact Support</button>
+      <div class="header-actions">
+        <button class="pill-link" onclick="location.href='user-login.html'" type="button">
+          <span class="icon">👤</span>
+          <span>Account</span>
+        </button>
+        <button class="pill-link cart-pill" onclick="location.href='cart.html'" type="button" aria-label="View cart">
+          <span class="icon">🛒</span>
+          <span class="label-text">Bag</span>
+          <span class="cart-count-badge" id="cartCount">0</span>
+        </button>
+      </div>
     </div>
-    <div id="ai404Res" class="ai-response"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="page-main" role="main" aria-labelledby="e404-title">
+    <section class="card">
+
+      <!-- LEFT: MESSAGE -->
+      <div class="card-left">
+        <span class="code-pill">
+          <span>404</span> • <span>Page Not Found</span>
+        </span>
+
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra Logo">
+
+        <h1 id="e404-title">This page missed the drop.</h1>
+        <p class="sub">
+          The link you opened doesn’t exist or has moved.  
+          Sneh will guide you back to live drops, auctions, and your bag in a second.
+        </p>
+
+        <div class="hint-row">
+          <span class="hint-badge">Most guests jump to Collection</span>
+          <span class="hint-badge">Your cart & wishlist are always safe</span>
+        </div>
+
+        <div class="primary-actions">
+          <button class="btn" type="button" onclick="location.href='index.html'">
+            <span>Back to Home</span>
+            <span>↩</span>
+          </button>
+          <button class="btn-ghost" type="button" onclick="location.href='collection.html'">
+            <span>View Current Drop</span>
+            <span>→</span>
+          </button>
+          <button class="btn-ghost" type="button" onclick="location.href='auction.html'">
+            <span>Go to Auction</span>
+            <span>⚡</span>
+          </button>
+        </div>
+
+        <button class="btn-text" type="button" onclick="location.href='shipping.html'">
+          <span class="icon">🚚</span>
+          <span>Track shipping & policies</span>
+        </button>
+      </div>
+
+      <!-- RIGHT: AI + TRUST -->
+      <div class="card-right">
+        <!-- INLINE AI -->
+        <div class="inline-ai">
+          <div class="inline-ai-header">
+            <label for="ai404">
+              <span class="dot"></span>
+              <span>Ask Sneh where to go</span>
+            </label>
+          </div>
+
+          <input
+            id="ai404"
+            class="ai-input"
+            placeholder='Try: "oversized hoodie", "login", "size guide", "auction"' />
+
+          <div class="ai-quick-row">
+            <button type="button" class="ai-chip" onclick="prefill404AI('Show me hoodies')">Hoodies</button>
+            <button type="button" class="ai-chip" onclick="prefill404AI('Where is my cart?')">My Bag</button>
+            <button type="button" class="ai-chip" onclick="prefill404AI('How do I contact support?')">Support</button>
+            <button type="button" class="ai-chip" onclick="prefill404AI('Where is the Size Guide?')">Size Guide</button>
+          </div>
+
+          <div class="ai-inline-actions">
+            <button class="btn" type="button" onclick="handle404AI()">
+              Ask Sneh
+            </button>
+            <button class="btn-ghost" type="button" onclick="location.href='contact.html'">
+              Contact Support
+            </button>
+          </div>
+
+          <div id="ai404Res" class="ai-response" aria-live="polite"></div>
+        </div>
+
+        <!-- TRUST + SHORTCUTS -->
+        <div class="trust-stack">
+          <div class="trust-card">
+            <div class="trust-title">Fast paths</div>
+            <div class="quick-links">
+              <button class="quick-link-btn" type="button" onclick="location.href='wishlist.html'">
+                <span>Open Wishlist</span>
+                <span class="icon">♡</span>
+              </button>
+              <button class="quick-link-btn" type="button" onclick="location.href='user-login.html'">
+                <span>Go to Login</span>
+                <span class="icon">👤</span>
+              </button>
+              <button class="quick-link-btn" type="button" onclick="location.href='shipping.html'">
+                <span>Shipping & Returns</span>
+                <span class="icon">🚚</span>
+              </button>
+              <button class="quick-link-btn" type="button" onclick="location.href='cart.html'">
+                <span>Review Your Bag</span>
+                <span class="icon">🛒</span>
+              </button>
+            </div>
+            <div class="cart-context" id="cartContextText"></div>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-title">Snehvastra guarantees</div>
+            <ul class="trust-list">
+              <li>
+                <span class="trust-dot"></span>
+                <span>Authentic Snehvastra pieces only</span>
+              </li>
+              <li>
+                <span class="trust-dot"></span>
+                <span>Pre-drop quality checks on every item</span>
+              </li>
+              <li>
+                <span class="trust-dot"></span>
+                <span>Secure checkout & encrypted payments</span>
+              </li>
+              <li>
+                <span class="trust-dot"></span>
+                <span>Order tracking + dedicated support</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>© <span id="year"></span> Snehvastra. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="shipping.html">Shipping & Returns</a>
+      <a href="contact.html">Support</a>
+      <a href="collection.html">Shop Collection</a>
+    </div>
+  </footer>
+
+  <!-- GLOBAL AI ORB -->
+  <div class="ai-orb" onclick="openSnehAI()" aria-label="Open Sneh AI assistant">
+    <span>◎</span>
   </div>
 
-  <div class="footer">© <span id="year"></span> Snehvastra</div>
+  <!-- AI MODAL -->
+  <div class="ai-modal-backdrop" id="snehAiModal" aria-hidden="true">
+    <div class="ai-modal" role="dialog" aria-modal="true" aria-labelledby="snehAiTitle">
+      <div class="ai-modal-header">
+        <div class="ai-modal-title">
+          <span class="label">Sneh AI</span>
+          <h2 id="snehAiTitle">Where do you want to go?</h2>
+        </div>
+        <span class="status-dot" aria-hidden="true"></span>
+        <button class="ai-modal-close" type="button" onclick="closeSnehAI()" aria-label="Close Sneh AI">
+          ✕
+        </button>
+      </div>
 
-</div>
+      <div class="ai-modal-body">
+        <input
+          id="snehAiInput"
+          type="text"
+          placeholder='Ask: "show drop hoodies", "open my cart", "help with size"' />
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
+        <div class="ai-modal-chips">
+          <button type="button" class="ai-modal-chip" onclick="prefillOrbAI('Show me today’s drop.')">Today’s Drop</button>
+          <button type="button" class="ai-modal-chip" onclick="prefillOrbAI('Take me to auction.')">Auction</button>
+          <button type="button" class="ai-modal-chip" onclick="prefillOrbAI('Open my bag.')">My Bag</button>
+          <button type="button" class="ai-modal-chip" onclick="prefillOrbAI('I need help with sizing.')">Sizing Help</button>
+        </div>
 
-/* Inline Micro AI */
-function handle404AI() {
-  const q = (document.getElementById("ai404").value || "").toLowerCase();
-  const out = document.getElementById("ai404Res");
+        <div id="snehAiOutput" class="ai-modal-output" aria-live="polite"></div>
+      </div>
 
-  if (!q) {
-    out.textContent = "Try: “Size Guide”, “Contact”, or “Hoodies”.";
-    return;
-  }
+      <div class="ai-modal-footer">
+        <span class="meta">Instant routing across Snehvastra — no dead ends.</span>
+        <button type="button" onclick="handleOrbAI()">
+          <span>Ask Sneh</span>
+          <span>↗</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
-  if (q.includes("size")) out.textContent = "Size Guide → size-guide.html";
-  else if (q.includes("contact") || q.includes("support")) out.textContent = "You can reach us on contact.html or WhatsApp.";
-  else if (q.includes("collection") || q.includes("shop")) out.textContent = "Browse everything here → collection.html";
-  else out.textContent = "Sneh recommends visiting the Collection or Contact page.";
-}
+  <script>
+    // Year in footer
+    (function() {
+      var yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
 
-/* Floating Orb → Full AI Modal (to build later) */
-function openSnehAI() {
-  alert("Sneh AI Assistant will appear here (modal coming in final build).");
-}
-</script>
+    // Cart count & context from localStorage
+    (function() {
+      var countEl = document.getElementById("cartCount");
+      var contextEl = document.getElementById("cartContextText");
+
+      function getCartCount() {
+        try {
+          var raw = localStorage.getItem("snehvastra_cart");
+          if (!raw) return 0;
+
+          var cart = JSON.parse(raw);
+          var total = 0;
+
+          if (Array.isArray(cart)) {
+            for (var i = 0; i < cart.length; i++) {
+              var item = cart[i] || {};
+              total += item.quantity ? Number(item.quantity) || 0 : 1;
+            }
+          } else if (cart && typeof cart === "object") {
+            var keys = Object.keys(cart);
+            for (var j = 0; j < keys.length; j++) {
+              var it = cart[keys[j]] || {};
+              total += it.quantity ? Number(it.quantity) || 0 : 1;
+            }
+          }
+          return total || 0;
+        } catch (e) {
+          return 0;
+        }
+      }
+
+      var count = getCartCount();
+      if (countEl) {
+        countEl.textContent = count;
+      }
+
+      if (contextEl) {
+        if (count > 0) {
+          contextEl.innerHTML = 'You have <strong>' + count + '</strong> item' + (count > 1 ? 's' : '') + ' waiting in your bag.';
+        } else {
+          contextEl.textContent = "Your bag is currently empty — most guests head to the Collection next.";
+        }
+      }
+    })();
+
+    // Inline 404 AI helpers
+    function prefill404AI(text) {
+      var input = document.getElementById("ai404");
+      if (input) {
+        input.value = text;
+        input.focus();
+      }
+    }
+
+    function handle404AI() {
+      var input = document.getElementById("ai404");
+      var out = document.getElementById("ai404Res");
+      if (!input || !out) return;
+
+      var q = (input.value || "").toLowerCase().trim();
+
+      if (!q) {
+        out.textContent = 'Try: "Size Guide", "Contact", "Hoodies", or "Login".';
+        return;
+      }
+
+      function set(msg, action) {
+        out.innerHTML = msg;
+        if (action) {
+          // auto-navigation can be added here if needed
+        }
+      }
+
+      if (q.includes("size")) {
+        set('<strong>Size Guide:</strong> You can view detailed sizing on our product pages and at <strong>shipping.html</strong> under "Size & Fit".');
+      } else if (q.includes("contact") || q.includes("support") || q.includes("help")) {
+        set('<strong>Support:</strong> Open our support page at <strong>contact.html</strong>. We also respond quickly via WhatsApp and email from there.');
+      } else if (q.includes("hoodie") || q.includes("oversized") || q.includes("tee") || q.includes("t-shirt") || q.includes("tshirt")) {
+        set('<strong>Products:</strong> Tap <strong>Collection</strong> to browse hoodies, tees, and upcoming drops in <strong>collection.html</strong>.');
+      } else if (q.includes("bag") || q.includes("cart")) {
+        set('<strong>Your bag:</strong> All items are stored securely. Open <strong>cart.html</strong> to review and checkout.');
+      } else if (q.includes("auction") || q.includes("bid")) {
+        set('<strong>Auction hub:</strong> Live auctions and bids run on <strong>auction.html</strong>.');
+      } else if (q.includes("login") || q.includes("account") || q.includes("signup") || q.includes("register")) {
+        set('<strong>Account:</strong> Manage your profile, orders, and saved addresses from <strong>user-login.html</strong> and <strong>user-register.html</strong>.');
+      } else if (q.includes("shipping") || q.includes("return") || q.includes("delivery")) {
+        set('<strong>Shipping & Returns:</strong> Everything is detailed at <strong>shipping.html</strong>, including delivery timelines and return windows.');
+      } else {
+        set('Sneh suggests starting from <strong>collection.html</strong> or <strong>auction.html</strong>, or connecting with us on <strong>contact.html</strong>.');
+      }
+    }
+
+    // Global AI Orb modal
+    function openSnehAI() {
+      var backdrop = document.getElementById("snehAiModal");
+      if (!backdrop) return;
+      backdrop.classList.add("active");
+      backdrop.setAttribute("aria-hidden", "false");
+
+      var input = document.getElementById("snehAiInput");
+      var output = document.getElementById("snehAiOutput");
+      if (output) {
+        output.textContent = "Ask Sneh to route you — for example: “Show me today’s drop” or “Open my cart”.";
+      }
+      if (input) {
+        input.focus();
+      }
+    }
+
+    function closeSnehAI() {
+      var backdrop = document.getElementById("snehAiModal");
+      if (!backdrop) return;
+      backdrop.classList.remove("active");
+      backdrop.setAttribute("aria-hidden", "true");
+    }
+
+    function prefillOrbAI(text) {
+      var input = document.getElementById("snehAiInput");
+      if (input) {
+        input.value = text;
+        input.focus();
+      }
+      handleOrbAI();
+    }
+
+    function handleOrbAI() {
+      var input = document.getElementById("snehAiInput");
+      var out = document.getElementById("snehAiOutput");
+      if (!input || !out) return;
+
+      var q = (input.value || "").toLowerCase().trim();
+
+      if (!q) {
+        out.textContent = 'You can ask Sneh to open your bag, show today’s drop, or go to auction.';
+        return;
+      }
+
+      function go(target, message) {
+        out.innerHTML = message;
+        setTimeout(function() {
+          window.location.href = target;
+        }, 550);
+      }
+
+      if (q.includes("cart") || q.includes("bag") || q.includes("checkout")) {
+        go("cart.html", "Opening your bag and checkout…");
+      } else if (q.includes("auction") || q.includes("bid")) {
+        go("auction.html", "Taking you to live auctions…");
+      } else if (q.includes("drop") || q.includes("collection") || q.includes("shop") || q.includes("products")) {
+        go("collection.html", "Routing you to the latest Snehvastra drop…");
+      } else if (q.includes("login") || q.includes("account") || q.includes("profile")) {
+        go("user-login.html", "Opening your account login…");
+      } else if (q.includes("register") || q.includes("signup") || q.includes("sign up")) {
+        go("user-register.html", "Let’s get you your Snehvastra account…");
+      } else if (q.includes("shipping") || q.includes("delivery") || q.includes("return")) {
+        go("shipping.html", "Showing shipping & returns details…");
+      } else if (q.includes("help") || q.includes("support") || q.includes("contact")) {
+        go("contact.html", "Connecting you with Snehvastra support…");
+      } else if (q.includes("home") || q.includes("index")) {
+        go("index.html", "Back to the Snehvastra home experience…");
+      } else {
+        out.textContent = "I’m routing you to the main collection so you can continue browsing.";
+        setTimeout(function() {
+          window.location.href = "collection.html";
+        }, 650);
+      }
+    }
+
+    // Close AI modal when clicking outside
+    (function() {
+      var backdrop = document.getElementById("snehAiModal");
+      if (!backdrop) return;
+      backdrop.addEventListener("click", function(e) {
+        if (e.target === backdrop) {
+          closeSnehAI();
+        }
+      });
+
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") {
+          closeSnehAI();
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
