@@ -3,688 +3,274 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Checkout — SNEHVASTRA V2</title>
+  <title>Checkout — Snehvastra</title>
   <meta name="description" content="Secure checkout — Snehvastra. Smart COD, Razorpay-ready, WhatsApp verification, AI checkout assistant." />
   <meta name="theme-color" content="#3A0F5A" />
-  <!-- Fonts -->
+
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Razorpay SDK (kept, used as demo) -->
   <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 
   <style>
-    /* ---------- DESIGN TOKENS (V2) ---------- */
     :root{
       --purple:#3A0F5A;
       --purple-2:#7B3BBE;
       --slate:#1F2024;
       --muted:#7B7A80;
-      --silver:#BFC4C7;
       --paper:#F6F6F8;
       --radius:14px;
       --maxw:1200px;
       --focus: rgba(186,178,255,0.18);
       --ease: cubic-bezier(.18,.9,.32,1);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,#f7f6f8,#f2edf6);color:var(--slate);-webkit-font-smoothing:antialiased}
-    a{color:var(--purple)}
-    img{max-width:100%;display:block}
-
-    /* ---------- Header ---------- */
-    header{position:sticky;top:0;z-index:120;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(58,15,90,0.04)}
-    .nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-    .brand{display:flex;gap:14px;align-items:center}
-    .brand img{height:48px;filter:drop-shadow(0 10px 30px rgba(58,15,90,0.06))}
-    nav ul{display:flex;gap:12px;align-items:center;list-style:none;margin:0;padding:0}
-    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:var(--purple);transition:all .18s var(--ease)}
-    nav a.active, nav a:hover{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));box-shadow:0 10px 28px rgba(58,15,90,0.04);color:var(--slate)}
-
-    /* ---------- Hero ---------- */
-    .hero{max-width:var(--maxw);margin:28px auto 6px;padding:30px 22px;border-radius:16px;background:linear-gradient(180deg,rgba(58,15,90,0.03),rgba(255,255,255,0.92));border:1px solid rgba(58,15,90,0.04);box-shadow:0 24px 80px rgba(58,15,90,0.04)}
-    .hero h1{font-family:'Clash Display',serif;color:var(--purple);margin:0;font-size:clamp(1.6rem,3.6vw,2.4rem)}
-    .hero p{color:var(--muted);margin:6px 0 0}
-
-    /* ---------- Layout ---------- */
-    .wrap{max-width:var(--maxw);margin:24px auto;padding:0 20px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
-    @media(max-width:980px){ .wrap{grid-template-columns:1fr} }
-
-    /* ---------- Form (left) ---------- */
-    .panel{background:linear-gradient(180deg,#fff,#fbfbff);border-radius:16px;padding:22px;border:1px solid rgba(58,15,90,0.04);box-shadow:0 28px 80px rgba(58,15,90,0.06)}
-    .form-group{margin-bottom:18px}
-    label{display:block;font-weight:700;margin-bottom:8px;color:var(--slate)}
-    input[type=text], input[type=tel], input[type=email], textarea, select{
-      width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(58,15,90,0.06);font-size:1rem;background:#fff;transition:box-shadow .15s, border-color .15s
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,#f7f6f8,#f2edf6);
+      color:var(--slate);
+      -webkit-font-smoothing:antialiased
     }
-    input:focus, textarea:focus, select:focus{outline:none;box-shadow:0 0 0 4px var(--focus);border-color:var(--purple)}
-    textarea{min-height:100px;resize:vertical}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{font-family:inherit}
 
-    .small{font-size:0.92rem;color:var(--muted)}
+    /* ---------------- HEADER ---------------- */
+    header{
+      position:sticky;top:0;z-index:120;
+      backdrop-filter:blur(12px);
+      background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(245,244,246,.92));
+      border-bottom:1px solid rgba(58,15,90,.06)
+    }
+    .nav{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px
+    }
+    .brand img{height:36px}
+    nav ul{
+      display:flex;
+      gap:14px;
+      list-style:none
+    }
+    nav a{
+      padding-bottom:2px;
+      font-weight:600;
+      color:#4a435e;
+      position:relative
+    }
+    nav a.active::after,nav a:hover::after{
+      content:"";
+      position:absolute;
+      left:0;bottom:0;
+      width:100%;height:2px;
+      background:linear-gradient(90deg,#3A0F5A,#b37cff);
+      border-radius:999px
+    }
 
-    /* shipping & payment options */
+    /* ---------------- HERO ---------------- */
+    .hero{
+      max-width:var(--maxw);
+      margin:24px auto 8px;
+      padding:28px 20px;
+      border-radius:16px;
+      background:linear-gradient(180deg,rgba(58,15,90,0.03),rgba(255,255,255,0.96));
+      border:1px solid rgba(58,15,90,0.06)
+    }
+
+    /* ---------------- LAYOUT ---------------- */
+    .wrap{
+      max-width:var(--maxw);
+      margin:24px auto;
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px
+    }
+    @media(max-width:980px){.wrap{grid-template-columns:1fr}}
+
+    .panel{
+      background:#fff;
+      border-radius:16px;
+      padding:22px;
+      border:1px solid rgba(58,15,90,0.06);
+      box-shadow:0 30px 80px rgba(58,15,90,0.08)
+    }
+
+    label{display:block;font-weight:700;margin-bottom:6px}
+    input,textarea{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(58,15,90,0.12)
+    }
+    input:focus,textarea:focus{
+      outline:none;
+      box-shadow:0 0 0 4px var(--focus);
+      border-color:var(--purple)
+    }
+
     .options{display:flex;flex-direction:column;gap:10px}
-    .option{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;border:1px solid rgba(58,15,90,0.06);cursor:pointer;background:#fff}
-    .option input{transform:scale(1.15)}
-    .option.active{border-color:var(--purple);box-shadow:0 12px 40px rgba(58,15,90,0.06);background:linear-gradient(180deg,rgba(58,15,90,0.03),#fff)}
+    .option{
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(58,15,90,0.12);
+      display:flex;gap:10px;
+      align-items:center;
+      cursor:pointer
+    }
+    .option.active{
+      border-color:var(--purple);
+      background:linear-gradient(180deg,rgba(58,15,90,0.04),#fff)
+    }
 
-    /* action */
-    .pay-btn{display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:14px 18px;border-radius:12px;background:linear-gradient(135deg,var(--purple),#2a0a3f);color:#fff;font-weight:900;border:none;cursor:pointer;font-family:'Clash Display',serif}
-    .pay-btn[disabled]{opacity:0.6;cursor:not-allowed}
+    .pay-btn{
+      padding:14px 18px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--purple),#2a0a3f);
+      color:#fff;
+      font-family:'Clash Display',serif;
+      font-weight:800;
+      border:none;
+      cursor:pointer
+    }
 
-    .meta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-
-    /* ---------- Order summary (right) ---------- */
     .summary{position:sticky;top:120px}
-    .summary .panel{padding:18px}
-    .summary h3{font-family:'Clash Display',serif;color:var(--purple);margin:0 0 12px}
-    .cart-line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(58,15,90,0.06)}
-    .cart-line:last-child{border-bottom:none}
-    .totals{margin-top:12px}
-    .totals .row{display:flex;justify-content:space-between;padding:8px 0;color:var(--muted)}
-    .totals .grand{font-weight:900;color:var(--purple);font-size:1.15rem;padding-top:10px;border-top:2px solid rgba(58,15,90,0.08);margin-top:10px}
+    @media(max-width:980px){.summary{position:static}}
 
-    /* helper strip */
-    .strip{background:linear-gradient(90deg, rgba(58,15,90,0.06), rgba(255,255,255,0.02));padding:10px;border-radius:10px;margin-bottom:12px;font-weight:700;color:var(--muted)}
+    .cart-line{
+      display:flex;
+      justify-content:space-between;
+      padding:8px 0;
+      border-bottom:1px dashed rgba(58,15,90,0.12)
+    }
 
-    /* AI orb & modal */
-    .ai-orb{position:fixed;right:20px;bottom:20px;width:66px;height:66px;border-radius:999px;background:linear-gradient(135deg,var(--purple-2),var(--purple));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.25rem;box-shadow:0 22px 60px rgba(58,15,90,0.34);z-index:2000;cursor:pointer}
-    .modal-backdrop{position:fixed;inset:0;background:rgba(6,4,8,0.45);display:none;align-items:center;justify-content:center;padding:18px;z-index:2100}
-    .modal{background:#fff;border-radius:12px;padding:18px;max-width:720px;width:100%;box-shadow:0 30px 120px rgba(0,0,0,0.4)}
-    .ai-input{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(58,15,90,0.06);margin-top:8px}
+    footer{
+      max-width:var(--maxw);
+      margin:60px auto 80px;
+      padding:0 20px;
+      text-align:center;
+      color:var(--muted)
+    }
 
-    /* toast */
-    #toast{position:fixed;top:18px;right:18px;background:linear-gradient(135deg,var(--purple-2),var(--purple));color:white;padding:12px 16px;border-radius:10px;display:none;z-index:2500}
-
-    footer{max-width:var(--maxw);margin:48px auto 80px;padding:0 20px;text-align:center;color:var(--muted);font-size:0.95rem}
-    @media(max-width:980px){ .summary{position:static;top:auto} }
+    .ai-orb{
+      position:fixed;
+      right:20px;bottom:20px;
+      width:66px;height:66px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--purple-2),var(--purple));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      cursor:pointer;
+      z-index:3000
+    }
   </style>
 </head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="nav" role="navigation" aria-label="Main navigation">
-      <div class="brand">
-        <img src="images/logo.final.png" alt="Snehvastra logo">
-        <div style="font-family:'Clash Display',serif;color:var(--purple)">Snehvastra</div>
-      </div>
-      <nav aria-label="top">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="cart.html">Cart</a></li>
-          <li><a href="checkout.html" class="active">Checkout</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="heroTitle">
-    <div style="max-width:var(--maxw);margin:0 auto">
-      <h1 id="heroTitle">Secure Checkout</h1>
-      <p class="small">Fast, secure payments + WhatsApp verification for safe COD. Sneh — your checkout assistant is available in the bottom-right.</p>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <img src="images/logo.final.png" alt="Snehvastra Logo">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html" class="active">Checkout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 style="font-family:'Clash Display',serif;color:var(--purple)">Secure Checkout</h1>
+  <p style="color:var(--muted)">Fast payments • Verified COD • Protected delivery</p>
+</section>
+
+<div class="wrap">
+
+  <!-- LEFT -->
+  <section class="panel">
+    <h2 style="font-family:'Clash Display',serif;color:var(--purple);margin-bottom:12px">Shipping & Payment</h2>
+
+    <label>Full Name</label>
+    <input id="fullName">
+
+    <label>Phone / WhatsApp</label>
+    <input id="phone">
+
+    <label>Pincode</label>
+    <input id="pincode">
+
+    <label>Address</label>
+    <textarea id="address"></textarea>
+
+    <label>Payment Method</label>
+    <div class="options">
+      <div class="option active"><input type="radio" checked> Online Payment</div>
+      <div class="option"><input type="radio"> Cash on Delivery</div>
     </div>
+
+    <button class="pay-btn" id="payNow" style="margin-top:18px">Pay Now</button>
   </section>
 
-  <!-- Main wrapper -->
-  <div class="wrap" role="main">
-    <!-- LEFT: Checkout form -->
-    <section class="panel" aria-labelledby="checkoutHeading">
-      <h2 id="checkoutHeading" style="font-family:'Clash Display',serif;color:var(--purple);margin:0 0 10px">Shipping & Payment</h2>
-
-      <div class="strip" id="freeStrip">Free shipping over <strong id="freeThresholdLabel">₹5,000</strong></div>
-
-      <form id="checkoutForm" novalidate>
-        <div class="form-group">
-          <label for="fullName">Full name *</label>
-          <input id="fullName" type="text" autocomplete="name" required />
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <div class="form-group">
-            <label for="phone">Phone / WhatsApp *</label>
-            <input id="phone" type="tel" autocomplete="tel" placeholder="7597152209" required />
-            <div class="small" style="margin-top:6px">We will send an OTP / WhatsApp verification for COD orders.</div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" autocomplete="email" placeholder="you@domain.com" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="pincode">Pincode *</label>
-          <input id="pincode" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 302001" required />
-          <div id="pincodeHint" class="small" style="margin-top:6px">Enter pincode to get ETA & courier options.</div>
-        </div>
-
-        <div class="form-group">
-          <label for="address">Full address *</label>
-          <textarea id="address" placeholder="House number, street, landmark, city, state" required></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>Shipping method</label>
-          <div class="options" id="shippingOptions">
-            <label class="option active" data-price="0" data-code="auto">
-              <input type="radio" name="shipping" value="auto" checked /> <div><strong id="autoShippingLabel">Auto</strong><div class="small">We select best courier (based on pincode)</div></div>
-            </label>
-            <label class="option" data-price="199" data-code="standard">
-              <input type="radio" name="shipping" value="standard" /> <div>Standard — ₹199 (3–5 days)</div>
-            </label>
-            <label class="option" data-price="499" data-code="express">
-              <input type="radio" name="shipping" value="express" /> <div>Express — ₹499 (1–2 days)</div>
-            </label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Payment method</label>
-          <div class="options" id="paymentOptions">
-            <label class="option active" data-method="razorpay">
-              <input type="radio" name="payment" value="razorpay" checked /> <div>⚡ Card / UPI / Wallet (Razorpay)</div>
-            </label>
-            <label class="option" data-method="whatsapp">
-              <input type="radio" name="payment" value="whatsapp" /> <div>💬 WhatsApp payment link</div>
-            </label>
-            <label class="option" data-method="cod">
-              <input type="radio" name="payment" value="cod" /> <div>📦 Cash on Delivery — <strong id="codFeeLabel">₹99</strong></div>
-            </label>
-          </div>
-        </div>
-
-        <div style="display:flex;gap:12px;align-items:center;margin-top:6px">
-          <button type="button" id="payNow" class="pay-btn" aria-label="Pay now">Pay <span id="payNowAmount" style="margin-left:8px;font-weight:900">₹0</span></button>
-          <button type="button" id="saveDraft" class="pay-btn" style="background:#fff;color:var(--purple);border:1px solid rgba(58,15,90,0.06)">Save for later</button>
-        </div>
-
-        <div class="small" style="margin-top:12px;color:var(--muted)">By continuing, you agree to our <a href="terms.html">Terms</a> & <a href="privacy.html">Privacy Policy</a>. For COD orders we may require WhatsApp verification or OTP.</div>
-      </form>
-    </section>
-
-    <!-- RIGHT: Summary -->
-    <aside class="summary">
-      <div class="panel">
-        <h3>Order summary</h3>
-        <div id="cartLines" aria-live="polite"></div>
-        <div class="totals" aria-hidden="false" id="totalsBlock">
-          <div class="row"><span>Subtotal</span><span id="subtotal">₹0</span></div>
-          <div class="row"><span>Discount</span><span id="discount">-₹0</span></div>
-          <div class="row"><span>Shipping</span><span id="shippingCost">₹0</span></div>
-          <div class="row grand"><span>Total</span><span id="grandTotal">₹0</span></div>
-        </div>
-
-        <div style="margin-top:12px">
-          <div class="small">Need help? <button id="openAI" style="background:none;border:none;color:var(--purple);font-weight:800;cursor:pointer">Ask Sneh</button></div>
-        </div>
-      </div>
-    </aside>
-  </div>
-
-  <footer>
-    © <span id="year"></span> Snehvastra — New Gen Luxury Streetwear • WhatsApp: <strong>7597152209</strong>
-  </footer>
-
-  <!-- AI ORB -->
-  <button class="ai-orb" id="aiOrb" aria-label="Open Sneh — checkout assistant">S</button>
-
-  <!-- AI Modal -->
-  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal" role="document" aria-labelledby="modalTitle">
-      <h3 id="modalTitle" style="margin:0 0 8px;color:var(--purple)">Sneh — Checkout Assistant</h3>
-      <p class="small" style="margin:0 0 12px;color:var(--muted)">I can verify your address, predict delivery ETA, and explain why COD may be restricted.</p>
-      <label for="aiQuestion" style="font-weight:700;color:var(--slate);display:block">Ask Sneh</label>
-      <input id="aiQuestion" class="ai-input" placeholder="e.g. 'Will COD work for my pin 302001?', 'What is ETA for 400001?'" />
-      <div style="display:flex;gap:8px;margin-top:12px">
-        <button id="aiAskBtn" class="pay-btn" style="padding:10px 14px">Ask</button>
-        <button id="aiSpeakBtn" class="pay-btn" style="padding:10px 14px;background:#fff;color:var(--purple);border:1px solid rgba(58,15,90,0.06)">▶ Read</button>
-        <button id="aiCloseBtn" class="pay-btn" style="padding:10px 14px;background:#fff;color:#ff5b6b;border:1px solid rgba(255,91,107,0.08)">Close</button>
-      </div>
-      <div id="aiAnswer" style="margin-top:12px;color:var(--muted);font-weight:700" aria-live="polite"></div>
+  <!-- RIGHT -->
+  <aside class="summary">
+    <div class="panel">
+      <h3 style="font-family:'Clash Display',serif;color:var(--purple)">Order Summary</h3>
+      <div id="cartLines"></div>
+      <div class="cart-line"><strong>Total</strong><strong id="grandTotal">₹0</strong></div>
     </div>
-  </div>
+  </aside>
 
-  <!-- Toast -->
-  <div id="toast"></div>
+</div>
 
-  <script>
-  /**************************************************
-   * SNEHVASTRA V2 — Checkout (Full)
-   * - Smart COD policy
-   * - Pincode ETA simulation
-   * - Razorpay demo integration
-   * - AI assistant (rule-based)
-   **************************************************/
+<footer>
+  © <span id="year"></span> Snehvastra
+</footer>
 
-  // ---------- CONFIG (CEO / conversion) ----------
-  const FREE_SHIPPING_THRESHOLD = 5000;
-  const COD_FEE = 99;
-  const COD_MAX_ALLOWED = 5000;    // COD allowed only when subtotal <= this
-  const COD_BLOCK_PRICE_THRESHOLD = 10000; // any individual item >= this blocks COD
-  const RESTRICTED_ITEM_IDS = ['one']; // auction / 1-of-1 always block COD
-  const CURRENCY = '₹';
+<div class="ai-orb">S</div>
 
-  // ---------- PRODUCTS (match Cart V2) ----------
+<script>
   const PRODUCTS = {
-    "1": { id:"1", name:"Streetwear Fusion Tee", price:4999 },
-    "2": { id:"2", name:"Luxury Midnight Jacket", price:29999 },
-    "3": { id:"3", name:"Casual Cloud Hoodie", price:19999 },
-    "4": { id:"4", name:"Tech Overshirt", price:4999 },
-    "one":{ id:"one", name:"Snehvastra ONE (Auction)", price:999999 }
+    "1": { name:"Streetwear Fusion Tee", price:4999 },
+    "2": { name:"Luxury Midnight Jacket", price:29999 },
+    "3": { name:"Casual Cloud Hoodie", price:19999 },
+    "4": { name:"Tech Overshirt", price:4999 },
+    "one":{ name:"Snehvastra ONE", price:999999 }
   };
 
-  // ---------- Helpers ----------
-  const $ = (sel, ctx=document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
-  function money(v){ return CURRENCY + Number(v).toLocaleString('en-IN'); }
-  function showToast(txt, ms=2800){ const t=$('#toast'); t.textContent=txt; t.style.display='block'; setTimeout(()=>t.style.display='none', ms); }
+  let cart = JSON.parse(localStorage.getItem("snehvastra_cart") || "{}");
 
-  // ---------- Cart state ----------
-  let cart = JSON.parse(localStorage.getItem('snehvastra_cart') || "{}");
+  function money(v){return "₹"+Number(v).toLocaleString("en-IN");}
 
-  // ---------- Pincode -> ETA sample dataset (simulated) ----------
-  // In production, replace with real courier API / pincode dataset
-  const PINCODE_DATA = {
-    "302001": { city:"Kota, Rajasthan", etaDays: [2,4], codEligible:true },
-    "400001": { city:"Mumbai", etaDays: [1,2], codEligible:true },
-    "110001": { city:"New Delhi", etaDays: [2,3], codEligible:true },
-    "560001": { city:"Bengaluru", etaDays: [2,4], codEligible:false } // example COD blocked for courier
-  };
-
-  // ---------- Compute totals ----------
-  function computeSubtotal(){
-    return Object.entries(cart).reduce((s,[id,qty])=>{
-      const p = PRODUCTS[id] || {price:0};
-      return s + (Number(qty)||0) * (Number(p.price)||0);
-    },0);
-  }
-
-  function containsRestrictedItems(){
-    return Object.keys(cart).some(id => RESTRICTED_ITEM_IDS.includes(id) || (PRODUCTS[id] && PRODUCTS[id].price >= COD_BLOCK_PRICE_THRESHOLD));
-  }
-
-  // ---------- Render cart summary lines ----------
-  function renderCartLines(){
-    const container = $('#cartLines');
-    container.innerHTML = '';
-    const entries = Object.entries(cart);
-    if(entries.length === 0){
-      container.innerHTML = `<div class="cart-line"><div class="small">Your cart is empty. <a href="collection.html">Continue shopping →</a></div></div>`;
-      return;
-    }
-    entries.forEach(([id, qty])=>{
-      const p = PRODUCTS[id] || {name:'Item',price:0};
-      const line = document.createElement('div');
-      line.className = 'cart-line';
-      line.innerHTML = `<div>${p.name} × ${qty}</div><div>${money(p.price * qty)}</div>`;
-      container.appendChild(line);
+  function render(){
+    const box=document.getElementById("cartLines");
+    box.innerHTML="";
+    let total=0;
+    Object.entries(cart).forEach(([id,qty])=>{
+      const p=PRODUCTS[id];
+      const line=p.price*qty;
+      total+=line;
+      box.innerHTML+=`<div class="cart-line"><span>${p.name} × ${qty}</span><strong>${money(line)}</strong></div>`;
     });
+    document.getElementById("grandTotal").textContent=money(total);
   }
 
-  // ---------- Update totals & UI ----------
-  function updateTotals(){
-    const subtotal = computeSubtotal();
-    const freeShipping = subtotal >= FREE_SHIPPING_THRESHOLD;
-    const selectedShippingEl = document.querySelector('.option.active[data-code], .option.active[data-price]');
-    let shipping = 0;
-    // if shipping option explicit
-    const selected = document.querySelector('input[name="shipping"]:checked');
-    if(selected){
-      const parent = selected.closest('.option');
-      if(parent) shipping = Number(parent.dataset.price || 0);
-    }
-    // if auto and free shipping threshold met -> shipping 0
-    // auto shipping uses shipping=0 shown then backend chooses courier
-    if(selected && selected.value === 'auto'){
-      shipping = freeShipping ? 0 : 199; // default fallback for auto
-    }
+  document.getElementById("year").textContent=new Date().getFullYear();
+  render();
+</script>
 
-    // COD rules
-    const codRequested = document.querySelector('input[name="payment"]:checked')?.value === 'cod';
-    const codAllowedOverall = !containsRestrictedItems() && subtotal <= COD_MAX_ALLOWED;
-    const codEnabled = codRequested && codAllowedOverall;
-
-    // apply COD fee if selected and allowed
-    const codFee = codEnabled ? COD_FEE : 0;
-
-    // compute grand total
-    const discount = 0; // placeholder for coupon logic
-    const grand = Math.max(0, subtotal - discount + shipping + codFee);
-
-    $('#subtotal').textContent = money(subtotal);
-    $('#discount').textContent = discount ? '-' + money(discount) : '-₹0';
-    $('#shippingCost').textContent = shipping === 0 ? 'FREE' : money(shipping);
-    $('#grandTotal').textContent = money(grand);
-    $('#payNowAmount').textContent = money(grand);
-
-    // free shipping strip
-    $('#freeThresholdLabel').textContent = money(FREE_SHIPPING_THRESHOLD);
-    const freeStrip = $('#freeStrip');
-    if(subtotal >= FREE_SHIPPING_THRESHOLD) freeStrip.textContent = `You have free shipping ✔ — total ${money(subtotal)}`;
-    else freeStrip.textContent = `${money(FREE_SHIPPING_THRESHOLD - subtotal)} away from free shipping`;
-
-    // COD UI adjustments
-    const codOptionEl = Array.from($$('label.option[data-method]')).find(l => l.dataset.method === 'cod');
-    if(codOptionEl){
-      if(containsRestrictedItems()){
-        // block COD if restricted item found
-        codOptionEl.classList.add('disabled');
-        codOptionEl.style.opacity = '0.5';
-        codOptionEl.title = 'COD not available for high-value or auction items';
-      } else {
-        codOptionEl.classList.remove('disabled');
-        codOptionEl.style.opacity = '';
-        codOptionEl.title = '';
-      }
-    }
-
-    // enable / disable pay button if cart empty
-    const payBtn = $('#payNow');
-    if(Object.keys(cart).length === 0){
-      payBtn.setAttribute('disabled','disabled');
-    } else {
-      payBtn.removeAttribute('disabled');
-    }
-  }
-
-  // ---------- Pincode lookup (simulated) ----------
-  function lookupPincode(pin){
-    const el = $('#pincodeHint');
-    if(!pin || pin.length < 6){ el.textContent = 'Enter 6-digit pincode to get ETA'; return; }
-    if(PINCODE_DATA[pin]){
-      const data = PINCODE_DATA[pin];
-      el.innerHTML = `Serviceable: <strong>${data.city}</strong> — ETA <strong>${data.etaDays[0]}–${data.etaDays[1]} days</strong>. COD ${data.codEligible ? 'available' : 'not available'}.`;
-    } else {
-      el.innerHTML = 'Pincode not in our quick dataset — generally serviceable. We will confirm at checkout.';
-    }
-  }
-
-  // ---------- Simple address validation ----------
-  function validateAddressFields(){
-    const name = $('#fullName').value.trim();
-    const phone = $('#phone').value.trim();
-    const pincode = $('#pincode').value.trim();
-    const address = $('#address').value.trim();
-    if(!name || !phone || !pincode || !address) return false;
-    if(!/^\d{6}$/.test(pincode)) return false;
-    if(!/^\d{7,12}$/.test(phone) && !/^\d{10}$/.test(phone)) {
-      // accept 10-digit or 7-12 generic formats for intl — basic check
-      // phone validation improved later with OTP
-    }
-    return true;
-  }
-
-  // ---------- WhatsApp verification (simulated) ----------
-  function requestWhatsAppVerification(phone){
-    // In production: send real WhatsApp template via API and await confirmation.
-    // Here we simulate user clicking a link and then confirming.
-    const confirmMsg = `We will open WhatsApp to verify ${phone}. After sending, click CONFIRM.`;
-    if(!confirm(confirmMsg)) return false;
-    // simulate success
-    showToast('WhatsApp verification simulated ✔');
-    localStorage.setItem('sneh_whatsapp_verified_' + phone, '1');
-    return true;
-  }
-
-  function isWhatsAppVerified(phone){
-    return !!localStorage.getItem('sneh_whatsapp_verified_' + phone);
-  }
-
-  // ---------- Payment handlers ----------
-  function handleRazorpayPayment(amountInRupees, metadata){
-    // In production: create order server-side and call Razorpay with order_id
-    // Here: demo client-side Razorpay flow (test key placeholder)
-    const options = {
-      key: 'rzp_test_XXXXXXXXXXXX', // TODO: replace with your key
-      amount: Math.round(amountInRupees * 100), // in paise
-      currency: 'INR',
-      name: 'Snehvastra',
-      description: 'Order payment',
-      image: window.location.origin + '/images/logo.final.png',
-      handler: function (res){
-        // payment success
-        showToast('Payment successful — Thank you!');
-        // clear cart & redirect
-        localStorage.removeItem('snehvastra_cart');
-        setTimeout(()=> window.location.href = 'thank-you.html', 1200);
-      },
-      prefill: { contact: $('#phone').value.trim(), email: $('#email').value.trim(), name: $('#fullName').value.trim()},
-      theme: { color: '#3A0F5A' }
-    };
-    try {
-      const rzp = new Razorpay(options);
-      rzp.open();
-    } catch (err){
-      console.error('Razorpay open error', err);
-      showToast('Payment failed to initiate. Try WhatsApp checkout.');
-    }
-  }
-
-  function handleWhatsAppCheckout(message){
-    const waURL = `https://wa.me/7597152209?text=${encodeURIComponent(message)}`;
-    window.open(waURL, '_blank');
-    showToast('WhatsApp opened with order — confirm to complete');
-    // don't clear cart until payment confirmed externally
-  }
-
-  // ---------- COD flow ----------
-  function handleCODFlow(grandTotal){
-    // check rules
-    const subtotal = computeSubtotal();
-    if(subtotal > COD_MAX_ALLOWED){
-      showToast('COD not available for orders above ' + money(COD_MAX_ALLOWED));
-      return false;
-    }
-    if(containsRestrictedItems()){
-      showToast('COD is not available for auction / high-value items.');
-      return false;
-    }
-    const phone = $('#phone').value.trim();
-    if(!isWhatsAppVerified(phone)){
-      const ok = confirm('COD requires WhatsApp verification. Open WhatsApp to verify now?');
-      if(!ok) return false;
-      const success = requestWhatsAppVerification(phone);
-      if(!success) return false;
-    }
-    // Add COD fee to order and confirm
-    const confirmMsg = `Confirm COD order with additional fee of ${money(COD_FEE)}?`;
-    if(!confirm(confirmMsg)) return false;
-    // Create "order" (simulate)
-    showToast('COD confirmed — we will message you with confirmation.');
-    localStorage.removeItem('snehvastra_cart');
-    setTimeout(()=> window.location.href = 'thank-you.html', 1200);
-    return true;
-  }
-
-  // ---------- Build WhatsApp order message ----------
-  function buildWhatsAppMessage(grandTotal){
-    const name = $('#fullName').value.trim();
-    const phone = $('#phone').value.trim();
-    const address = $('#address').value.trim();
-    let items = Object.entries(cart).map(([id,q])=>{
-      const p = PRODUCTS[id] || {name:'Item',price:0};
-      return `${p.name} x${q} — ${money(p.price * q)}`;
-    }).join('\n');
-    const shipping = document.querySelector('input[name="shipping"]:checked')?.closest('.option')?.dataset.price || 0;
-    return `🛍️ *SNEHVASTRA ORDER*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*\n${items}\n\n*Shipping:* ${money(Number(shipping))}\n*Total:* ${money(grandTotal)}\n\nPlease confirm sizes and ETA.`;
-  }
-
-  // ---------- Event wiring ----------
-  document.addEventListener('DOMContentLoaded', ()=>{
-
-    // initial render
-    renderCartLines();
-    updateTotals();
-
-    // show year
-    $('#year').textContent = new Date().getFullYear();
-
-    // pincode lookup
-    $('#pincode').addEventListener('input', (e)=>{
-      const pin = e.target.value.trim();
-      if(pin.length === 6) lookupPincode(pin);
-      else $('#pincodeHint').textContent = 'Enter 6-digit pincode to get ETA & COD availability';
-    });
-
-    // shipping option toggle via click on label
-    Array.from($$('.option')).forEach(opt=>{
-      opt.addEventListener('click', (ev)=>{
-        // If option is disabled by CSS/logic, ignore
-        if(opt.classList.contains('disabled')) return;
-        // mark radio inside as checked
-        const input = opt.querySelector('input');
-        if(input) input.checked = true;
-        // style toggle for siblings within same group
-        const parent = opt.closest('.options');
-        if(parent){
-          parent.querySelectorAll('.option').forEach(o=>{
-            o.classList.remove('active');
-            const ip = o.querySelector('input');
-            if(ip) ip.checked = false;
-          });
-        }
-        opt.classList.add('active');
-        const ip = opt.querySelector('input');
-        if(ip) ip.checked = true;
-        updateTotals();
-      });
-    });
-
-    // payment option click -> toggle active class and update totals
-    Array.from($$('.option[data-method]')).forEach(m=>{
-      m.addEventListener('click', ()=>{
-        Array.from($$('.option[data-method]')).forEach(x=>{
-          x.classList.remove('active');
-        });
-        m.classList.add('active');
-        const radio = m.querySelector('input');
-        if(radio) radio.checked = true;
-        updateTotals();
-      });
-    });
-
-    // payNow click
-    $('#payNow').addEventListener('click', ()=>{
-      // validate basic fields
-      if(!validateAddressFields()){
-        showToast('Please complete name, phone, pincode, and address.');
-        return;
-      }
-      const payment = document.querySelector('input[name="payment"]:checked')?.value || 'razorpay';
-      const grandText = $('#grandTotal').textContent.replace(/[₹,]/g,'');
-      const grandTotal = parseInt(grandText || '0');
-      if(grandTotal <= 0){ showToast('Your cart is empty.'); return; }
-
-      // COD flow
-      if(payment === 'cod'){
-        // enforce COD rules
-        if(containsRestrictedItems() || computeSubtotal() > COD_MAX_ALLOWED){
-          showToast('COD not permitted for this order. Please choose card or WhatsApp.');
-          return;
-        }
-        handleCODFlow(grandTotal);
-        return;
-      }
-
-      // Razorpay flow (demo)
-      if(payment === 'razorpay'){
-        // For high-value orders, recommend server-side order creation
-        handleRazorpayPayment(grandTotal, {cart, customer: {name: $('#fullName').value, phone: $('#phone').value}});
-        return;
-      }
-
-      // WhatsApp payment chosen
-      if(payment === 'whatsapp'){
-        const message = buildWhatsAppMessage(grandTotal);
-        handleWhatsAppCheckout(message);
-        return;
-      }
-    });
-
-    // Save for later
-    $('#saveDraft').addEventListener('click', ()=>{
-      localStorage.setItem('sneh_checkout_draft', JSON.stringify({
-        fullName: $('#fullName').value,
-        phone: $('#phone').value,
-        email: $('#email').value,
-        pincode: $('#pincode').value,
-        address: $('#address').value
-      }));
-      showToast('Saved draft locally');
-    });
-
-    // AI assistant
-    const openAI = $('#openAI'), aiOrb = $('#aiOrb'), modal = $('#modalBackdrop'), aiAskBtn = $('#aiAskBtn'), aiSpeakBtn = $('#aiSpeakBtn'), aiCloseBtn = $('#aiCloseBtn');
-    openAI.addEventListener('click', ()=> openAIFlow());
-    aiOrb.addEventListener('click', ()=> openAIFlow());
-    aiCloseBtn.addEventListener('click', ()=> { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); });
-
-    aiAskBtn.addEventListener('click', ()=>{
-      const q = ($('#aiQuestion').value || '').toLowerCase().trim();
-      $('#aiAnswer').textContent = generateAIAnswer(q);
-    });
-
-    aiSpeakBtn.addEventListener('click', ()=>{
-      const text = $('#aiAnswer').textContent || 'Sneh suggests selecting a fast payment method for high-value pieces.';
-      speak(text);
-    });
-
-    // small keyboard accessibility
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape' && modal.style.display === 'flex'){
-        modal.style.display = 'none'; modal.setAttribute('aria-hidden','true');
-      }
-    });
-
-    // load draft if exists
-    const draft = JSON.parse(localStorage.getItem('sneh_checkout_draft') || '{}');
-    if(draft){
-      if(draft.fullName) $('#fullName').value = draft.fullName;
-      if(draft.phone) $('#phone').value = draft.phone;
-      if(draft.email) $('#email').value = draft.email;
-      if(draft.pincode) { $('#pincode').value = draft.pincode; lookupPincode(draft.pincode); }
-      if(draft.address) $('#address').value = draft.address;
-    }
-
-    // final UI refresh
-    updateTotals();
-  });
-
-  // ---------- AI assistant (rule-based) ----------
-  function openAIFlow(){
-    $('#modalBackdrop').style.display = 'flex';
-    $('#modalBackdrop').setAttribute('aria-hidden','false');
-    $('#aiQuestion').focus();
-    $('#aiAnswer').textContent = 'Ask me about COD, ETA, address validation, or payment options.';
-  }
-
-  function generateAIAnswer(q){
-    if(!q) return 'Try: "Will COD work for pincode 302001?", "ETA for 400001?", "Why is COD blocked?"';
-    if(q.includes('cod') && q.includes('302001')) return 'Pincode 302001 (Kota) supports COD in our dataset. You must verify via WhatsApp for high safety.';
-    if(q.includes('cod') && q.includes('400001')) return 'Mumbai (400001) generally supports COD, but for orders above ₹5,000 we prefer pre-paid for speed.';
-    if(q.includes('eta') && q.match(/\d{6}/)) {
-      const pin = q.match(/\d{6}/)[0];
-      if(PINCODE_DATA[pin]) return `ETA for ${pin} (${PINCODE_DATA[pin].city}): ${PINCODE_DATA[pin].etaDays[0]}–${PINCODE_DATA[pin].etaDays[1]} days.`;
-      return 'Pincode not in our quick lookup. We will confirm with courier at checkout — expect 2–6 days typically.';
-    }
-    if(q.includes('address') || q.includes('validate')) return 'Ensure street, landmark, city, and 6-digit pincode are correct. Ambiguous addresses risk failed delivery.';
-    if(q.includes('payment') || q.includes('razorpay')) return 'Razorpay (cards/UPI) is instant and recommended for high-value items. WhatsApp is useful for confirmation-first flows.';
-    return 'I can help with COD rules, pincode ETA, payment options, or packing & delivery. Try asking about your pincode or order total.';
-  }
-
-  // ---------- Text to speech ----------
-  let utter = null;
-  function speak(text){
-    if(!('speechSynthesis' in window)){ showToast('Voice not available'); return; }
-    if(utter){ speechSynthesis.cancel(); utter=null; return; }
-    utter = new SpeechSynthesisUtterance(text);
-    utter.rate = 0.98; utter.pitch = 0.95;
-    const voices = speechSynthesis.getVoices();
-    if(voices && voices.length) utter.voice = voices.find(v=>/en-?gb|en-?us/i.test(v.lang)) || voices[0];
-    utter.onend = ()=> utter = null;
-    speechSynthesis.speak(utter);
-  }
-
-  </script>
 </body>
 </html>
