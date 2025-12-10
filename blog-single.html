@@ -1,523 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The 200-Year Loom Still Running — Snehvastra · V2</title>
-  <meta name="description" content="Explore the legacy of the 200-year-old loom that produces Snehvastra's finest weaves, crafted by master artisan Shyamji." />
-  <meta name="theme-color" content="#3A0F5A" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>The 200-Year Loom Still Running — Snehvastra</title>
+  <meta name="description" content="Explore the legacy of the 200-year-old loom that produces Snehvastra's finest weaves, crafted by master artisan Shyamji."/>
+  <meta name="theme-color" content="#3A0F5A"/>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------------
-       Tokens (V2)
-       ------------------------ */
     :root{
-      --purple: #3A0F5A;
-      --purple-2: #7B3BBE;
-      --slate: #1f1f25;
-      --muted: #6f6e75;
-      --silver: #C7C7CE;
-      --paper: #F6F6F8;
-      --radius: 14px;
-      --ease: cubic-bezier(.18,.9,.32,1);
-      --max: 1240px;
-      --focus: rgba(186,178,255,0.18);
-      --specular: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      --purple:#3A0F5A;
+      --purple-2:#7B3BBE;
+      --slate:#1f1f25;
+      --muted:#6f6e75;
+      --paper:#F6F6F8;
+      --radius:14px;
+      --ease:cubic-bezier(.18,.9,.32,1);
+      --max:1200px;
+      --focus:rgba(186,178,255,0.18);
     }
 
-    /* ------------------------
-       Reset
-       ------------------------ */
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;margin:0;padding:0}
     body{
-      margin:0;
       font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,#f7f7f9,#eee9f4);
       color:var(--slate);
-      background: linear-gradient(180deg,#f6f5f8,#efeaf5);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.65;
+      line-height:1.7;
     }
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{font-family:inherit}
 
-    /* ------------------------
-       Header
-       ------------------------ */
-    header{
-      position:sticky;top:0;z-index:120;
-      backdrop-filter: blur(10px) saturate(120%);
-      background: rgba(255,255,255,0.78);
-      border-bottom:1px solid rgba(58,15,90,0.04);
+    /* ---------------- HEADER ---------------- */
+    .site-header{
+      position:sticky;top:0;z-index:100;
+      backdrop-filter:blur(14px);
+      background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(245,244,246,.92));
+      border-bottom:1px solid rgba(58,15,90,.06);
+    }
+    .header-inner{
+      max-width:var(--max);
+      margin:0 auto;
       padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
     }
-    .nav{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:52px;filter:drop-shadow(0 10px 30px rgba(58,15,90,0.08))}
-    .brand .name{font-family:'Clash Display',serif;color:var(--purple);font-weight:600}
-    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;align-items:center}
-    nav a{padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600;color:var(--purple);transition:all .18s var(--ease)}
-    nav a:hover, nav a.active{background:var(--specular);box-shadow:0 10px 28px rgba(58,15,90,0.06);color:var(--slate)}
-
-    /* ------------------------
-       Cinematic hero banner
-       ------------------------ */
-    .hero {
-      position:relative; overflow:hidden; padding:40px 20px 32px; margin-top:18px;
+    .brand-lockup{
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
-    .hero .bg { position:absolute; inset:0; background:linear-gradient(120deg,var(--purple),var(--purple-2)); z-index:-2; filter:contrast(1.06) saturate(1.05); animation:gradShift 18s ease-in-out infinite alternate; }
-    @keyframes gradShift { from{transform:scale(1.01)} to{transform:scale(1.05)} }
-    .hero .spec { position:absolute; right:-6%; top:-10%; width:60%; height:110%; background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 40%); filter:blur(84px); z-index:-1; mix-blend-mode:overlay; }
-    .hero-inner{ max-width:var(--max); margin:0 auto; color:#fff; text-align:left; display:flex; gap:24px; align-items:center; padding:36px 18px; }
-    .hero-left{ flex:1; }
-    .hero h1{ font-family:'Clash Display',serif; font-size:clamp(2.2rem,4.6vw,3.6rem); margin:0 0 8px; text-shadow:0 14px 40px rgba(58,15,90,0.36) }
-    .hero p{ margin:0; color:rgba(255,255,255,0.9); font-size:1.05rem; max-width:880px; }
-    .hero-cta{ margin-top:16px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
-    .btn {
-      padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,0.06);
-      background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      color:#fff; font-weight:700; cursor:pointer; box-shadow:0 12px 36px rgba(58,15,90,0.22); transition: transform .22s var(--ease);
+    .brand-lockup img{height:36px}
+
+    .header-nav{
+      display:flex;
+      gap:18px;
+      font-size:.92rem;
     }
-    .btn.primary { background: linear-gradient(135deg,var(--purple-2),var(--purple)); }
-    .btn.ghost { background: rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.06); box-shadow:none; }
-    .hero-right{ width:420px; display:flex; justify-content:center; align-items:center; }
-    .hero-image { width:100%; height:260px; border-radius:12px; overflow:hidden; box-shadow:0 24px 80px rgba(58,15,90,0.12); border:1px solid rgba(255,255,255,0.06) }
-    .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
-
-    /* ------------------------
-       Main container (magazine)
-       ------------------------ */
-    .container { max-width:var(--max); margin:40px auto 80px; padding:0 20px; display:grid; grid-template-columns: 1fr 360px; gap:32px; align-items:start; }
-    @media (max-width:1100px){ .container{ grid-template-columns:1fr } .hero-inner{ flex-direction:column } .hero-right{ width:100% } .hero-image{ height:340px } }
-    @media (max-width:680px){ .hero-image{ height:220px } }
-
-    /* article area */
-    .article {
-      background: linear-gradient(180deg,#fff,#fbfbff);
-      border-radius:16px; padding:28px; border:1px solid rgba(58,15,90,0.06);
-      box-shadow:0 28px 80px rgba(58,15,90,0.06);
+    .header-link{
+      position:relative;
+      padding-bottom:2px;
+      font-weight:500;
+      color:#4a435e;
+    }
+    .header-link.active::after,
+    .header-link:hover::after{
+      content:"";
+      position:absolute;
+      left:0;bottom:0;
+      width:100%;height:2px;
+      background:linear-gradient(90deg,#3A0F5A,#b37cff);
+      border-radius:999px;
     }
 
-    .post-meta-row { display:flex; gap:12px; align-items:center; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px }
-    .post-title { font-family:'Clash Display',serif; color:var(--purple); font-size:clamp(2rem,4.2vw,3.2rem); margin:0 0 12px; line-height:1.12 }
-    .post-sub { color:var(--muted); margin-bottom:18px }
-
-    .pull-quote {
-      margin:22px 0; padding:22px; border-left:4px solid var(--purple); background:linear-gradient(180deg, rgba(58,15,90,0.02), rgba(255,255,255,0.6));
-      font-style:italic; color:var(--slate); border-radius:10px;
+    .header-actions{display:flex;gap:10px}
+    .pill-link{
+      font-size:.9rem;
+      padding:7px 14px;
+      border-radius:999px;
+      border:1px solid rgba(58,15,90,.18);
+      background:white;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .cart-pill{
+      background:linear-gradient(135deg,rgba(58,15,90,.95),rgba(146,83,228,.95));
+      color:#fff;
+      border:none;
+    }
+    .cart-count{
+      background:#fff;
+      color:#3A0F5A;
+      border-radius:999px;
+      padding:1px 7px;
+      font-size:.75rem;
+      font-weight:600;
     }
 
-    .post-image { width:100%; height:460px; object-fit:cover; border-radius:12px; margin-bottom:18px; box-shadow:0 32px 100px rgba(58,15,90,0.12) }
-
-    .post-content { color:var(--slate); font-size:1.08rem; line-height:1.9; }
-    .post-content p { margin-bottom:22px; }
-
-    /* helpful actions */
-    .actions-row { display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
-    .small-cta { padding:8px 12px; border-radius:10px; font-weight:700; background:linear-gradient(135deg,var(--purple-2),var(--purple)); color:#fff; border:none; cursor:pointer }
-
-    /* ------------------------
-       Side meta column
-       ------------------------ */
-    .meta-card {
-      position:sticky; top:100px; align-self:start;
-      background:linear-gradient(180deg,#fff,#fbfbff); border-radius:16px; padding:20px; border:1px solid rgba(58,15,90,0.06);
-      box-shadow:0 20px 60px rgba(58,15,90,0.05);
+    /* ---------------- HERO ---------------- */
+    .hero{
+      background:linear-gradient(120deg,var(--purple),var(--purple-2));
+      padding:80px 20px 64px;
+      color:white;
     }
-    .meta-item { display:flex; gap:10px; align-items:center; justify-content:space-between; padding:10px 12px; border-radius:10px; background:var(--specular); margin-bottom:10px; font-weight:700; color:var(--purple) }
-    .meta-item small { color:var(--muted); font-weight:600 }
-
-    /* reading meter */
-    .meter { height:10px; background:linear-gradient(90deg, rgba(58,15,90,0.06), rgba(255,255,255,0.9)); border-radius:999px; overflow:hidden }
-    .meter > i { display:block; height:100%; background:linear-gradient(90deg,var(--purple-2),var(--purple)); width:40% }
-
-    /* recommend block */
-    .recommend { margin-top:18px; padding:12px; border-radius:12px; background:linear-gradient(180deg,#fff,#fbfbff); border:1px solid rgba(58,15,90,0.04) }
-    .recommend h4{ margin:0 0 8px; color:var(--purple); font-family:'Clash Display',serif }
-
-    /* footer CTA */
-    .footer-cta { margin-top:28px; padding:20px; border-radius:12px; background:linear-gradient(135deg,rgba(58,15,90,0.04),rgba(255,255,255,0.6)); text-align:center; border:1px solid rgba(58,15,90,0.06) }
-
-    /* AI orb & modal */
-    .ai-orb {
-      position:fixed; right:22px; bottom:22px; width:66px; height:66px; border-radius:999px;
-      background:linear-gradient(135deg,var(--purple-2),var(--purple)); color:#fff; display:flex;align-items:center;justify-content:center;
-      font-weight:800; font-size:1.3rem; box-shadow:0 22px 60px rgba(58,15,90,0.34); z-index:2000; cursor:pointer;
-      border:1px solid rgba(255,255,255,0.06);
+    .hero-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:32px;
+      align-items:center;
     }
-    .modal-backdrop{ position:fixed; inset:0; background:rgba(12,10,15,0.48); display:none; align-items:center; justify-content:center; z-index:2200; padding:20px }
-    .modal { background:#fff; padding:20px; border-radius:12px; max-width:760px; width:100%; box-shadow:0 30px 120px rgba(0,0,0,0.45) }
-    .ai-input{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(58,15,90,0.08); margin-top:8px }
-
-    /* toast */
-    #toast { position:fixed; top:18px; right:18px; background:linear-gradient(135deg,var(--purple-2),var(--purple)); color:white; padding:12px 16px; border-radius:10px; display:none; z-index:2300; box-shadow:0 12px 48px rgba(58,15,90,0.28) }
-
-    /* footer */
-    footer{ max-width:var(--max); margin:60px auto 100px; padding:0 20px; text-align:center; color:var(--muted) }
-
-    /* responsive */
-    @media (max-width:1100px){
-      .container{ grid-template-columns: 1fr; }
-      .meta-card{ position:relative; top:0; }
-      .hero-inner{ align-items:flex-start }
-    }
-    @media (max-width:680px){
-      .post-title{ font-size:1.6rem }
-      .post-image{ height:220px }
+    .hero h1{
+      font-family:'Clash Display',serif;
+      font-size:clamp(2rem,5vw,3.2rem);
     }
 
-    /* accessibility */
-    button:focus, input:focus, a:focus { outline: 3px solid var(--focus); outline-offset:3px; border-radius:10px }
+    .hero-image{
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 30px 90px rgba(0,0,0,.25);
+    }
+
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr}
+    }
+
+    /* ---------------- LAYOUT ---------------- */
+    .container{
+      max-width:var(--max);
+      margin:48px auto;
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:1fr 340px;
+      gap:36px;
+    }
+
+    @media(max-width:1000px){
+      .container{grid-template-columns:1fr}
+    }
+
+    .article{
+      background:#fff;
+      border-radius:16px;
+      padding:28px;
+      box-shadow:0 30px 80px rgba(58,15,90,.08);
+    }
+
+    .post-title{
+      font-family:'Clash Display',serif;
+      color:var(--purple);
+      font-size:clamp(1.8rem,4vw,2.8rem);
+      margin:12px 0;
+    }
+
+    .post-content p{margin-bottom:20px}
+
+    .meta-card{
+      background:#fff;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 18px 50px rgba(58,15,90,.06);
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      margin:80px 20px;
+    }
+
+    .ai-orb{
+      position:fixed;right:22px;bottom:22px;
+      width:64px;height:64px;border-radius:50%;
+      background:linear-gradient(135deg,var(--purple-2),var(--purple));
+      color:#fff;display:flex;align-items:center;justify-content:center;
+      cursor:pointer;z-index:3000;
+    }
   </style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="nav" role="navigation" aria-label="main">
-      <div class="brand">
-        <img src="images/logo.final.png" alt="Snehvastra logo">
-        <div class="name">Snehvastra</div>
-      </div>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand-lockup">
+      <img src="images/logo.final.png" alt="Snehvastra Logo">
+    </a>
 
-      <nav aria-label="primary">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="auction.html">Auction</a></li>
-          <li><a href="blog.html" class="active">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <nav class="header-nav">
+      <a href="collection.html" class="header-link">Collection</a>
+      <a href="auction.html" class="header-link">Auction</a>
+      <a href="blog.html" class="header-link active">Blog</a>
+      <a href="contact.html" class="header-link">Contact</a>
+    </nav>
 
-  <!-- hero -->
-  <section class="hero" aria-labelledby="heroTitle">
-    <div class="bg" aria-hidden="true"></div>
-    <div class="spec" aria-hidden="true"></div>
-
-    <div class="hero-inner" role="banner">
-      <div class="hero-left">
-        <h1 id="heroTitle">The 200-Year Loom Still Running</h1>
-        <p>Inside a village outside Jaipur, a loom built in 1825 continues to weave — shaping the textures, patterns and soul of Snehvastra’s finest drops. This is a story about patience, lineage and a tactile approach to modern luxury.</p>
-
-        <div class="hero-cta">
-          <button class="btn primary" onclick="document.getElementById('article').scrollIntoView({behavior:'smooth'})">Read Article</button>
-          <button class="btn ghost" onclick="openSnehModal()">Ask Sneh</button>
-        </div>
-      </div>
-
-      <div class="hero-right" aria-hidden="true">
-        <div class="hero-image" role="img" aria-label="Master weaver at handloom">
-          <img src="images/blog/loom-1825.jpg" alt="Master weaver Shyamji at the 200-year-old loom">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- container -->
-  <div class="container" role="main">
-
-    <!-- article column -->
-    <article class="article" id="article" aria-labelledby="postTitle">
-      <div class="post-meta-row">
-        <div>Nov 28, 2025</div>
-        <div>•</div>
-        <div>By <strong>Shyamji</strong></div>
-        <div style="margin-left:auto;font-weight:700;color:var(--muted)" id="readingTime">—</div>
-      </div>
-
-      <h2 id="postTitle" class="post-title">The 200-Year Loom Still Running</h2>
-      <div class="post-sub">A living archive of patience — seven generations of weavers keeping rhythm, pattern and care alive.</div>
-
-      <!-- pull quote -->
-      <div class="pull-quote" aria-hidden="false">“This loom doesn’t just weave cloth — it remembers the hand that fed it the yarn.” — Shyamji</div>
-
-      <!-- article image (already shown in hero, repeat for in-article visual) -->
-      <img src="images/blog/loom-1825.jpg" alt="200-year-old handloom in Rajasthan" class="post-image" loading="lazy">
-
-      <!-- ai summary box -->
-      <div id="aiSummaryBox" class="ai-summary" aria-live="polite" role="region" aria-labelledby="summaryLabel">
-        <h4 id="summaryLabel" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Article summary</h4>
-        <p id="aiSummaryText">Snehvastra: a 200-year-old loom maintained by a lineage of weavers creates our most tactile textiles. Each piece is a slow process — a careful counter to fast fashion.</p>
-      </div>
-
-      <!-- full article content -->
-      <div class="post-content" id="postContent">
-        <p>Nestled in the heart of Rajasthan, this centuries-old loom represents more than machinery — it stands as a beating archive of tradition, craft, and identity.</p>
-
-        <p>For seven generations, master weaver Shyamji has preserved its rhythm. Each piece requires up to 27 hours of focused work, a slow and intentional process that refuses to be rushed by modern speed.</p>
-
-        <p>Every thread woven carries echoes of heritage. This loom does not simply produce fabric — it tells a story of patience, skill, and connection to the earth.</p>
-      </div>
-
-      <!-- actions -->
-      <div class="actions-row" role="toolbar" aria-label="Article actions">
-        <button class="small-cta" onclick="summarizeArticleClient()">Summarize</button>
-        <button class="small-cta" onclick="estimateReadingLevel()">Reading level</button>
-        <button class="small-cta" onclick="recommendNextClient()">Recommend next</button>
-        <button class="small-cta" onclick="speakArticle()">▶ Read aloud</button>
-      </div>
-
-      <div class="footer-cta" style="margin-top:22px">
-        <p style="margin:0 0 12px;color:var(--muted)">See the pieces made with this weave in our auction — limited and authenticated.</p>
-        <a href="auction.html" class="btn primary" style="text-decoration:none">Join SNEHVASTRA ONE</a>
-      </div>
-    </article>
-
-    <!-- meta column -->
-    <aside class="meta-card" aria-labelledby="metaTitle">
-      <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <strong id="metaTitle" style="color:var(--purple);font-family:'Clash Display',serif">Story Details</strong>
-        <small style="color:var(--muted)">Heritage</small>
-      </div>
-
-      <div class="meta-item" role="group" aria-label="Reading time">
-        <div>Reading time</div>
-        <div><small id="metaReadTime">—</small></div>
-      </div>
-
-      <div class="meta-item" role="group" aria-label="Estimated difficulty">
-        <div>Difficulty</div>
-        <div><small id="metaDifficulty">—</small></div>
-      </div>
-
-      <div style="margin-top:12px">
-        <div style="font-weight:800;color:var(--purple);margin-bottom:8px">Quick links</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <a href="blog.html" class="btn ghost" style="text-align:left">All Stories</a>
-          <a href="blog.html?filter=craft" class="btn ghost" style="text-align:left">Craft Notes</a>
-          <a href="auction.html" class="btn ghost" style="text-align:left">SNEHVASTRA ONE</a>
-        </div>
-      </div>
-
-      <div class="recommend" aria-label="Recommended reads">
-        <h4>Recommended next</h4>
-        <div id="recommendList" style="color:var(--muted);line-height:1.6">
-          <!-- filled by JS -->
-        </div>
-      </div>
-    </aside>
-  </div>
-
-  <!-- footer -->
-  <footer>
-    © <span id="currentYear"></span> Snehvastra — New Gen Luxury Streetwear
-  </footer>
-
-  <!-- floating Sneh orb -->
-  <button class="ai-orb" id="aiOrb" aria-label="Open Sneh — Article Assistant">S</button>
-
-  <!-- assistant modal -->
-  <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal" role="document" aria-labelledby="modalTitle">
-      <h3 id="modalTitle">Sneh — Article Assistant</h3>
-      <p style="color:var(--muted);margin:6px 0 12px">Ask Sneh to summarize, explain technique, or recommend the next article. Tip: try "Summarize" or "Explain the loom".</p>
-      <label for="modalInput" style="font-weight:700;color:var(--purple);display:block;margin-bottom:8px">Your question</label>
-      <input id="modalInput" class="ai-input" placeholder="e.g. 'Summarize this', 'Explain the loom process'">
-      <div class="controls" style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
-        <button class="btn" id="modalAskBtn">Ask</button>
-        <button class="btn ghost" id="modalReadBtn">▶ Read aloud</button>
-        <button class="btn ghost" id="modalStopBtn">■ Stop</button>
-        <button class="btn ghost" id="modalCloseBtn">Close</button>
-      </div>
-      <div id="modalRes" class="ai-res" aria-live="polite" style="margin-top:12px;color:var(--muted)"></div>
+    <div class="header-actions">
+      <button class="pill-link" onclick="location.href='user-login.html'">👤 Account</button>
+      <button class="pill-link cart-pill" onclick="location.href='cart.html'">
+        🛒 Bag <span class="cart-count" id="cartCount">0</span>
+      </button>
     </div>
   </div>
+</header>
 
-  <!-- toast -->
-  <div id="toast" role="status" aria-live="polite"></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>The 200-Year Loom Still Running</h1>
+      <p>Inside a village outside Jaipur, a loom built in 1825 still weaves textures for Snehvastra’s most tactile garments.</p>
+    </div>
+    <div class="hero-image">
+      <img src="images/blog/loom-1825.jpg" alt="200-year-old loom">
+    </div>
+  </div>
+</section>
 
-  <script>
-    /* ==========================
-       Client-side state & utils
-       ========================== */
-    // Cart sync
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart') || '{}');
-    function updateCartCount(){ const el = document.getElementById('cartCount'); if(!el) return; const total = Object.values(cart).reduce((s,v)=>s+(v||0),0); el.textContent = total; }
+<!-- MAIN -->
+<div class="container">
 
-    // Article content (single-page store for offline)
-    const ARTICLE = {
-      id: 'loom',
-      title: 'The 200-Year Loom Still Running',
-      date: 'Nov 28, 2025',
-      author: 'Shyamji',
-      body: `Nestled in the heart of Rajasthan, this centuries-old loom represents more than machinery — it stands as a beating archive of tradition, craft, and identity.
+  <article class="article">
+    <h2 class="post-title">A Living Archive of Craft</h2>
+    <div class="post-content">
+      <p>Nestled in the heart of Rajasthan, this centuries-old loom represents more than machinery — it stands as a beating archive of tradition, craft, and identity.</p>
+      <p>For seven generations, master weaver Shyamji has preserved its rhythm. Each piece requires up to 27 hours of focused work.</p>
+      <p>Every thread carries memory. This loom does not simply produce fabric — it holds lineage stitched into time.</p>
+    </div>
+  </article>
 
-For seven generations, master weaver Shyamji has preserved its rhythm. Each piece requires up to 27 hours of focused work, a slow and intentional process that refuses to be rushed by modern speed.
+  <aside class="meta-card">
+    <h3 style="color:var(--purple)">Story Details</h3>
+    <p style="margin-top:8px;color:var(--muted)">Reading time: 4 min</p>
+    <p style="margin-top:4px;color:var(--muted)">Difficulty: Easy</p>
+  </aside>
 
-Every thread woven carries echoes of heritage. This loom does not simply produce fabric — it tells a story of patience, skill, and connection to the earth.`
-    };
+</div>
 
-    // small article store for recommendations
-    const ARTICLE_STORE = {
-      loom: { title: 'The 200-Year Loom Still Running', id:'loom'},
-      dyes: { title: 'Natural Dyes That Last Generations', id:'dyes'},
-      auction: { title: 'Why SNEHVASTRA ONE Auction Matters', id:'auction'},
-      care: { title: 'Care Guide — Matte Finish Fabrics', id:'care'},
-      studio: { title: 'Studio Notes — Sampling Process', id:'studio'},
-      people: { title: 'Meet the Makers — Conversations', id:'people' }
-    };
+<footer>
+  © <span id="year"></span> Snehvastra — New Gen Luxury Streetwear
+</footer>
 
-    // UI helpers
-    const toastEl = document.getElementById('toast');
-    let toastTimer = null;
-    function showToast(msg, ms=2600){
-      toastEl.textContent = msg; toastEl.style.display = 'block';
-      clearTimeout(toastTimer); toastTimer = setTimeout(()=>{ toastEl.style.display = 'none'; }, ms);
-    }
+<div class="ai-orb">◎</div>
 
-    // compute reading time
-    function computeReadingTime(text){
-      const words = (text||'').split(/\s+/).filter(Boolean).length;
-      const minutes = Math.max(1, Math.round(words / 180));
-      return { words, minutes };
-    }
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // populate reading time & meta
-    function populateMeta(){
-      const {minutes, words} = computeReadingTime(ARTICLE.body);
-      document.getElementById('metaReadTime').textContent = minutes + ' min';
-      document.getElementById('readingTime').textContent = `${minutes} min read · ${words} words`;
-      // difficulty estimate
-      const sentences = ARTICLE.body.split(/[.!?]+/).filter(Boolean).length || 1;
-      const avgWords = words / sentences;
-      let difficulty = 'Easy';
-      if(avgWords > 20) difficulty = 'Intermediate';
-      if(avgWords > 28) difficulty = 'Advanced';
-      document.getElementById('metaDifficulty').textContent = difficulty;
-      // recommend next (simple)
-      const recommends = ['dyes','studio'].map(k => ARTICLE_STORE[k].title);
-      document.getElementById('recommendList').textContent = recommends.join('\n');
-    }
-
-    // summarizer (simple rule-based)
-    function summarizeArticleClient(){
-      const text = ARTICLE.body;
-      const sentences = text.split(/[\.\n]+/).map(s=>s.trim()).filter(Boolean);
-      let summary = sentences.slice(0,2).join('. ').trim();
-      if(summary && !summary.endsWith('.')) summary += '.';
-      document.getElementById('aiSummaryText').textContent = summary;
-      showToast('Summary generated');
-      // update meta recommended
-      recommendNextClient();
-    }
-
-    // reading level (reuse computeReadingTime)
-    function estimateReadingLevel(){
-      const {words} = computeReadingTime(ARTICLE.body);
-      const sentences = ARTICLE.body.split(/[.!?]+/).filter(Boolean).length || 1;
-      const avgWords = (words / sentences).toFixed(1);
-      let level = 'Easy';
-      if(avgWords > 20) level = 'Intermediate';
-      if(avgWords > 28) level = 'Advanced';
-      openModalResponse(`Estimated reading level: ${level} — avg words per sentence ${avgWords}`);
-    }
-
-    // recommend next
-    function recommendNextClient(){
-      const map = { loom: ['dyes','studio'], dyes:['loom','care'], auction:['people','studio'] };
-      const list = map[ARTICLE.id] || ['dyes','care'];
-      const titles = list.map(k => '• ' + (ARTICLE_STORE[k] && ARTICLE_STORE[k].title ? ARTICLE_STORE[k].title : k)).join('\n');
-      openModalResponse('Recommended next reads:\n' + titles);
-    }
-
-    // TTS
-    let utterance = null;
-    function speakArticle(){
-      if(!('speechSynthesis' in window)){ showToast('Voice not available'); return; }
-      if(utterance){ speechSynthesis.cancel(); utterance = null; return; }
-      const text = ARTICLE.body.replace(/\n/g,' ');
-      utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.98; utterance.pitch = 0.96;
-      const voices = speechSynthesis.getVoices();
-      if(voices && voices.length) utterance.voice = voices.find(v => /en-?us|en-?gb|default/i.test(v.lang)) || voices[0];
-      utterance.onend = ()=> utterance = null;
-      speechSynthesis.speak(utterance);
-    }
-    function stopSpeak(){ if(utterance){ speechSynthesis.cancel(); utterance = null; } }
-
-    // modal helpers
-    const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalInput = document.getElementById('modalInput');
-    const modalRes = document.getElementById('modalRes');
-    const aiOrb = document.getElementById('aiOrb');
-    const modalAskBtn = document.getElementById('modalAskBtn');
-    const modalReadBtn = document.getElementById('modalReadBtn');
-    const modalStopBtn = document.getElementById('modalStopBtn');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-
-    function openSnehModal(){
-      modalBackdrop.style.display = 'flex';
-      modalBackdrop.setAttribute('aria-hidden','false');
-      modalInput.focus();
-    }
-    function closeSnehModal(){
-      modalBackdrop.style.display = 'none';
-      modalBackdrop.setAttribute('aria-hidden','true');
-      modalRes.textContent = '';
-    }
-    aiOrb.addEventListener('click', openSnehModal);
-    modalCloseBtn.addEventListener('click', closeSnehModal);
-    modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeSnehModal(); });
-
-    // assistant logic (simple, rule-based, safe)
-    function assistantResponse(query){
-      const q = (query||'').toLowerCase().trim();
-      if(!q) return "Try: 'Summarize', 'Explain the loom', 'Recommend next'.";
-      if(q.includes('summar')) return "Summary: This is a living loom in Rajasthan, maintained for seven generations. Each piece takes ~27 hours and embodies slow craft.";
-      if(q.includes('loom') || q.includes('process')) return "Traditional handloom weaving—warp and weft cycles, tension adjustments, hand-dyed yarns. The process prioritizes texture and longevity over speed.";
-      if(q.includes('shyam') || q.includes('weaver')) return "Shyamji is the seventh-generation master weaver who maintains the loom and teaches apprentices, preserving pattern memory and repair knowledge.";
-      if(q.includes('recommend')) return "Recommended next reads: 'Natural Dyes That Last Generations' and 'Studio Notes — Sampling Process'.";
-      if(q.includes('reading') || q.includes('level')) return "Type 'reading level' or click the Reading level button to estimate complexity.";
-      return "I can summarize the article, explain the loom process, or recommend next reads. Try: 'Summarize' or 'Recommend next'.";
-    }
-
-    modalAskBtn.addEventListener('click', ()=>{
-      const q = modalInput.value || '';
-      const ans = assistantResponse(q);
-      modalRes.textContent = ans;
-      showToast('Sneh answered');
-    });
-    modalReadBtn.addEventListener('click', ()=>{ speakArticle(); });
-    modalStopBtn.addEventListener('click', ()=>{ stopSpeak(); });
-
-    // helper to open modal with response text
-    function openModalResponse(text){
-      modalRes.textContent = text;
-      openSnehModal();
-    }
-
-    // small accessibility: close with Esc
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ if(modalBackdrop.style.display === 'flex') closeSnehModal(); stopSpeak(); } });
-
-    // bind top-level actions
-    window.summarizeArticleClient = summarizeArticleClient;
-    window.estimateReadingLevel = estimateReadingLevel;
-    window.recommendNextClient = recommendNextClient;
-    window.speakArticle = speakArticle;
-    window.openSnehModal = openSnehModal;
-    window.showToast = showToast;
-
-    // init on load
-    window.addEventListener('load', ()=>{
-      // set initial summary & meta
-      document.getElementById('aiSummaryText').textContent = ARTICLE.body.split(/\n+/).slice(0,2).join(' ').trim();
-      populateMeta();
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      // pre-warm voices
-      if('speechSynthesis' in window) speechSynthesis.getVoices();
-    });
-
-  </script>
+  function getCartCount(){
+    try{
+      const raw = localStorage.getItem("snehvastra_cart");
+      if(!raw) return 0;
+      const cart = JSON.parse(raw);
+      let total = 0;
+      if(Array.isArray(cart)){
+        cart.forEach(i=>total += Number(i.quantity||1));
+      }else{
+        Object.values(cart).forEach(i=>total += Number(i.quantity||1));
+      }
+      return total;
+    }catch{return 0;}
+  }
+  document.getElementById("cartCount").textContent = getCartCount();
+</script>
 
 </body>
 </html>
