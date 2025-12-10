@@ -12,15 +12,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
-/* ROOT */
 :root{
   --purple:#3A0F5A; --purple-light:#5a1c85;
   --slate:#22232A; --mid:#3B3D45; --silver:#B7B9BD;
   --paper:#F6F6F6; --muted:#C7C6C8;
   --radius:14px; --max-w:1100px; --ease:.28s;
 }
-
-/* GLOBAL */
 *{box-sizing:border-box;}
 body{
   margin:0;
@@ -42,7 +39,7 @@ header{
   padding:14px 20px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{height:46px;}
+.logo{height:46px;cursor:pointer;}
 nav ul{
   list-style:none;margin:0;padding:0;
   display:flex;gap:12px;flex-wrap:wrap;
@@ -90,7 +87,7 @@ main{
   line-height:1.8;
 }
 
-/* AI INLINE PROMPT */
+/* AI INLINE */
 .ai-inline{
   margin:24px auto 0;
   max-width:560px;
@@ -115,7 +112,7 @@ main{
   font-weight:600;cursor:pointer;
 }
 
-/* FORM CARD */
+/* FORM */
 .customize-section{
   background:#fff;
   border-radius:var(--radius);
@@ -136,13 +133,8 @@ main{
   border:1px solid rgba(183,185,189,0.3);
   border-radius:10px;
   font-size:1rem;
-  transition:.25s;
 }
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{
-  border-color:var(--purple);outline:none;
-  box-shadow:0 0 0 3px rgba(58,15,90,0.1);
-}
-textarea{min-height:120px;resize:vertical;}
+textarea{min-height:120px;resize:vertical}
 
 /* UPLOAD */
 .upload-preview{
@@ -156,14 +148,9 @@ textarea{min-height:120px;resize:vertical;}
 }
 .upload-preview img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
 
-/* CHECKBOX */
-.checkbox-row{
-  display:flex;gap:12px;
-  align-items:flex-start;
-  margin:20px 0;
-}
+.checkbox-row{display:flex;gap:12px;margin:20px 0}
 
-/* PRICE ESTIMATE */
+/* PRICE */
 .price-estimate{
   margin:40px 0 20px;
   background:rgba(58,15,90,0.03);
@@ -171,17 +158,11 @@ textarea{min-height:120px;resize:vertical;}
   padding:26px;
   border:1px solid rgba(58,15,90,0.15);
 }
-.estimate-row{
-  display:flex;justify-content:space-between;
-  padding:6px 0;
-  font-size:1rem;
-}
+.estimate-row{display:flex;justify-content:space-between;padding:6px 0}
 .estimate-total{
-  margin-top:14px;
-  padding-top:12px;
-  font-size:1.3rem;
+  margin-top:14px;padding-top:12px;
   border-top:1px solid rgba(58,15,90,0.2);
-  color:var(--purple);font-weight:700;
+  color:var(--purple);font-weight:700
 }
 
 /* BUTTON */
@@ -192,11 +173,7 @@ textarea{min-height:120px;resize:vertical;}
   background:linear-gradient(135deg,var(--purple),#2e0b4a);
   color:#fff;font-size:1.2rem;
   font-family:'Clash Display',serif;
-  cursor:pointer;transition:.25s;
-}
-.submit-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 32px rgba(58,15,90,0.32);
+  cursor:pointer;
 }
 
 /* FAQ */
@@ -207,26 +184,12 @@ textarea{min-height:120px;resize:vertical;}
   padding:40px;
   box-shadow:0 16px 40px rgba(34,35,42,0.08);
 }
-.faq-section h2{
-  text-align:center;
-  font-family:'Clash Display',serif;
-  font-size:1.8rem;
-  margin-bottom:32px;
-}
-.faq-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:24px;
-}
-.faq-item h3{
-  margin-bottom:10px;
-  font-family:'Clash Display',serif;
-}
 
 /* TOAST */
 .toast{
   position:fixed;top:20px;right:20px;
-  background:linear-gradient(180deg,var(--silver),#aeb0b2);
-  padding:14px 18px;color:var(--slate);
+  background:#fff;
+  padding:14px 18px;
   border-radius:10px;
   box-shadow:0 14px 30px rgba(34,35,42,0.25);
   transform:translateX(300px);
@@ -234,7 +197,7 @@ textarea{min-height:120px;resize:vertical;}
 }
 .toast.show{transform:translateX(0);}
 
-/* WHATSAPP FLOAT */
+/* FLOAT */
 .whatsapp-float{
   position:fixed;bottom:22px;right:22px;
   width:62px;height:62px;border-radius:999px;
@@ -244,22 +207,17 @@ textarea{min-height:120px;resize:vertical;}
   box-shadow:0 12px 28px rgba(37,211,102,0.35);
   cursor:pointer;text-decoration:none;
 }
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .form-grid{grid-template-columns:1fr;}
-  .customize-section{padding:30px;}
-}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:12px">
-      <img src="images/logo.final.png" class="logo" />
+      <a href="index.html">
+        <img src="images/logo.final.png" class="logo" />
+      </a>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -274,26 +232,23 @@ textarea{min-height:120px;resize:vertical;}
 
 <main>
 
-<!-- HERO -->
 <section class="customize-hero">
   <h1>Revive Your Story</h1>
-  <p>Every garment carries memories. Our Jaipur artisans reimagine your cherished pieces into timeless heirlooms — with AI & craft working together.</p>
+  <p>Every garment carries memories. Our Kota artisans reimagine your cherished pieces into timeless heirlooms — with AI & craft working together.</p>
 </section>
 
-<!-- AI INLINE -->
 <div class="ai-inline">
   <input id="aiInput" placeholder="Ask Sneh: 'What design suits a black hoodie?'" />
   <button onclick="askAI()">Ask</button>
 </div>
 
-<!-- CUSTOMIZE FORM -->
 <section class="customize-section">
 <form id="customizeForm">
 
   <div class="form-grid">
     <div class="form-group">
       <label>Garment Photo *</label>
-      <input type="file" id="uploadPic" accept="image/*" required />
+      <input type="file" id="uploadPic" required />
       <div class="upload-preview" id="uploadPreview">📷</div>
     </div>
 
@@ -301,24 +256,22 @@ textarea{min-height:120px;resize:vertical;}
       <label>Garment Type *</label>
       <select id="garmentType" required>
         <option value="">Select garment</option>
-        <option value="hoodie">Hoodie</option>
-        <option value="tee">T-Shirt</option>
-        <option value="shirt">Shirt</option>
-        <option value="jacket">Jacket</option>
-        <option value="denim">Denim</option>
-        <option value="other">Other</option>
+        <option>Hoodie</option>
+        <option>T-Shirt</option>
+        <option>Jacket</option>
+        <option>Denim</option>
       </select>
     </div>
   </div>
 
   <div class="form-group">
-    <label>Your Story (Optional)</label>
-    <textarea id="customDescription" placeholder="Tell us what this garment means to you..."></textarea>
+    <label>Your Story</label>
+    <textarea id="customDescription"></textarea>
   </div>
 
   <div class="checkbox-row">
     <input type="checkbox" id="creativeFreedom">
-    <label for="creativeFreedom">Give artisans full creative freedom 🎨</label>
+    <label for="creativeFreedom">Give artisans full creative freedom</label>
   </div>
 
   <div class="form-grid">
@@ -328,7 +281,7 @@ textarea{min-height:120px;resize:vertical;}
     </div>
 
     <div class="form-group">
-      <label>Phone/WhatsApp *</label>
+      <label>Phone *</label>
       <input id="pickupPhone" required />
     </div>
 
@@ -339,11 +292,9 @@ textarea{min-height:120px;resize:vertical;}
   </div>
 
   <div class="price-estimate">
-    <div class="estimate-row"><span>Customization:</span><span id="basePrice">₹3,499+</span></div>
+    <div class="estimate-row"><span>Customization:</span><span>₹3,499+</span></div>
     <div class="estimate-row"><span>Pickup:</span><span>₹199</span></div>
-    <div class="estimate-total">
-      Estimated Total: <strong>₹3,698+</strong>
-    </div>
+    <div class="estimate-total">Estimated Total: ₹3,698+</div>
   </div>
 
   <button class="submit-btn" type="submit">🚚 Schedule Pickup</button>
@@ -351,102 +302,50 @@ textarea{min-height:120px;resize:vertical;}
 </form>
 </section>
 
-<!-- FAQ -->
 <section class="faq-section">
 <h2>Customization Questions</h2>
-<div class="faq-grid">
-
-  <div class="faq-item">
-    <h3>What can be customized?</h3>
-    <p>Anything wearable — hoodies, tees, jackets, denim, and heirloom fabrics.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>How long does it take?</h3>
-    <p>Pickup 1–2 days → Customization 7–14 days → Delivery 2–3 days.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Creative freedom?</h3>
-    <p>Our artisans can completely reimagine your piece — if you enable the option.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Guarantee</h3>
-    <p>30-day satisfaction or free re-customization.</p>
-  </div>
-
-</div>
+<p>Any wearable garment can be customized. Typical turnaround: 10–16 days. 30-day satisfaction supported.</p>
 </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer>
-  © <span id="currentYear"></span> Snehvastra • WhatsApp: <strong>7597152209</strong>
+<footer style="text-align:center;padding:24px;color:#555">
+  © <span id="currentYear"></span> Snehvastra • WhatsApp: 7597152209
 </footer>
 
-<!-- FLOAT -->
-<a class="whatsapp-float" href="https://wa.me/917597152209?text=Hi!%20I%20want%20a%20custom%20design." target="_blank">💬</a>
+<a class="whatsapp-float" href="https://wa.me/917597152209" target="_blank">💬</a>
 <div id="toast" class="toast"></div>
 
-<!-- SCRIPTS -->
 <script>
 let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-function updateCartCount(){
-  document.getElementById('cartCount').textContent =
-    Object.values(cart).reduce((a,b)=>a+b,0) || 0;
-}
-updateCartCount();
-
+document.getElementById('cartCount').textContent = Object.values(cart).reduce((a,b)=>a+b,0);
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-/* IMAGE PREVIEW */
 document.getElementById('uploadPic').addEventListener('change', e=>{
   const file = e.target.files[0];
   if(!file) return;
   const reader = new FileReader();
   reader.onload = ev=>{
-    document.getElementById('uploadPreview').innerHTML =
-      `<img src="${ev.target.result}">`;
+    document.getElementById('uploadPreview').innerHTML = `<img src="${ev.target.result}">`;
   };
   reader.readAsDataURL(file);
 });
 
-/* DATE MIN */
-let t = new Date(); t.setDate(t.getDate()+1);
-document.getElementById('pickupDate').min = t.toISOString().split('T')[0];
+function askAI(){
+  const q = document.getElementById('aiInput').value.toLowerCase();
+  let r = "Try layered embroidery, metallic trims, and subtle purple accents.";
+  if(q.includes('denim')) r = "Distressed raw denim with contrast thread and matte black panels.";
+  if(q.includes('hoodie')) r = "Minimal chest typography with luxury sleeve embroidery.";
+  toast(r, 5000);
+}
 
-/* FORM SUBMIT */
 document.getElementById('customizeForm').addEventListener('submit', e=>{
   e.preventDefault();
-  let r = ['uploadPic','garmentType','pickupAddress','pickupPhone','pickupDate'];
-  for(let id of r){ if(!document.getElementById(id).value){ toast("Fill all required fields"); return; } }
-
-  toast("✅ Request sent! Our artisans will contact you within 24 hours.");
+  toast("✅ Pickup scheduled. Our team will confirm via WhatsApp.");
   e.target.reset();
   document.getElementById('uploadPreview').innerHTML = '📷';
 });
 
-/* AI INLINE */
-function askAI(){
-  let q = document.getElementById('aiInput').value.trim().toLowerCase();
-  if(!q){ toast("Try: 'Ideas for a vintage denim jacket'"); return; }
-
-  let response = "Here’s what I suggest: ";
-  if(q.includes('black') && q.includes('hoodie')){
-    response += "Metallic silver typography + deep purple textures + minimal sleeve patch.";
-  }
-  else if(q.includes('denim')){
-    response += "Hand-distressed textures + raw edges + bold thread contrast.";
-  }
-  else{
-    response += "Try asymmetrical panels, layered textures, or purple–silver gradients.";
-  }
-  toast(response, 6000);
-}
-
-/* TOAST */
 function toast(msg,d=3500){
   const t = document.getElementById('toast');
   t.textContent = msg;
