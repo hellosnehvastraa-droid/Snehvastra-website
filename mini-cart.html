@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
 <meta name="theme-color" content="#3A0F5A" />
 <title>Mini Cart — Snehvastra</title>
-<meta name="description" content="Snehvastra Mini Cart — Instant preview of your items with a glassy V2 UI." />
+<meta name="description" content="Instant luxury preview of your Snehvastra cart." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,17 +23,26 @@
 body{
   margin:0; background:linear-gradient(180deg,var(--paper),#FBFAF8);
   font-family:'Poppins',sans-serif; color:var(--slate);
-  display:flex; justify-content:center; align-items:center;
-  height:100vh; padding:20px;
+  min-height:100vh;
 }
 
 /* NAV */
+nav{
+  position:fixed;
+  top:16px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  z-index:200;
+}
+
 nav ul{
   list-style:none; display:flex; gap:1.4rem;
-  background:rgba(255,255,255,0.92); backdrop-filter:blur(18px);
+  background:rgba(255,255,255,0.96); backdrop-filter:blur(18px);
   border-radius:60px; padding:0.85rem 2rem;
   border:1px solid rgba(58,15,90,0.08);
   box-shadow:0 10px 40px rgba(58,15,90,0.08);
+  align-items:center;
 }
 
 nav a, .mini-toggle{
@@ -53,25 +62,34 @@ nav a:hover, .mini-toggle:hover{color:var(--purple)}
 
 /* MINI CART PANEL */
 .mini-cart{
-  position:absolute; top:100px; right:50%;
+  position:fixed;
+  top:86px;
+  right:50%;
   transform:translateX(50%) scale(.95);
-  width:360px; background:rgba(255,255,255,0.97);
+  width:360px;
+  background:rgba(255,255,255,0.98);
   backdrop-filter:blur(20px);
   border-radius:var(--radius);
-  box-shadow:0 22px 60px rgba(58,15,90,0.2);
+  box-shadow:0 22px 60px rgba(58,15,90,0.25);
   border:1px solid rgba(58,15,90,0.1);
-
-  opacity:0; pointer-events:none;
+  opacity:0;
+  pointer-events:none;
   transition:all var(--ease);
+  z-index:300;
 }
 
 .mini-cart.active{
-  opacity:1; pointer-events:auto;
+  opacity:1;
+  pointer-events:auto;
   transform:translateX(50%) scale(1);
 }
 
 @media(max-width:480px){
-  .mini-cart{width:92vw; right:4%; transform:scale(.94)}
+  .mini-cart{
+    width:92vw;
+    right:4%;
+    transform:scale(.94)
+  }
   .mini-cart.active{transform:scale(1)}
 }
 
@@ -85,6 +103,7 @@ nav a:hover, .mini-toggle:hover{color:var(--purple)}
 
 /* ITEM LIST */
 #cartItems{max-height:260px; overflow-y:auto; padding:1rem}
+
 .cart-line{
   display:flex; align-items:center; gap:14px;
   background:rgba(58,15,90,0.03);
@@ -92,6 +111,7 @@ nav a:hover, .mini-toggle:hover{color:var(--purple)}
   padding:12px; border-radius:12px;
   margin-bottom:12px; transition:.25s;
 }
+
 .cart-line:hover{
   box-shadow:0 8px 25px rgba(58,15,90,0.1);
   transform:translateY(-2px);
@@ -140,6 +160,7 @@ nav a:hover, .mini-toggle:hover{color:var(--purple)}
 }
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -149,12 +170,12 @@ nav a:hover, .mini-toggle:hover{color:var(--purple)}
     <li><a href="faq.html">FAQ</a></li>
     <li><a href="auction.html">Auction</a></li>
     <li>
-      <button class="mini-toggle" id="miniToggle">
+      <button class="mini-toggle" id="miniToggle" aria-expanded="false">
         Cart <span id="cartCount">0</span>
       </button>
 
       <!-- MINI CART -->
-      <div class="mini-cart" id="miniCart">
+      <div class="mini-cart" id="miniCart" role="dialog" aria-label="Mini Cart">
         <div class="mini-h">Your Cart</div>
         <div id="cartItems"></div>
         <div class="total" id="cartTotal">Total: ₹0</div>
@@ -168,17 +189,21 @@ nav a:hover, .mini-toggle:hover{color:var(--purple)}
 
 <script>
 /****************************************
-  CART SYSTEM — UNIVERSAL ENGINE V2
+  CART SYSTEM — UNIVERSAL ENGINE (LOCKED)
 ****************************************/
+const CART_KEY = "snehvastra_cart";
+
 function readCart(){
-  try { return JSON.parse(localStorage.getItem("snehvastra_cart")) || {}; }
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
   catch { return {}; }
 }
 function saveCart(c){
-  localStorage.setItem("snehvastra_cart", JSON.stringify(c));
+  localStorage.setItem(CART_KEY, JSON.stringify(c));
 }
 
-function formatINR(n){ return "₹" + n.toLocaleString("en-IN"); }
+function formatINR(n){
+  return "₹" + n.toLocaleString("en-IN");
+}
 
 const miniCart = document.getElementById("miniCart");
 const toggleBtn = document.getElementById("miniToggle");
@@ -216,7 +241,7 @@ function updateMiniCart(){
         <p>${name}</p>
         <p>${formatINR(price)} × ${qty}</p>
       </div>
-      <button class="remove">×</button>
+      <button class="remove" aria-label="Remove item">×</button>
     `;
 
     div.querySelector(".remove").onclick = () => {
@@ -257,7 +282,8 @@ document.addEventListener("keydown", e => {
   }
 });
 
-window.onload = updateMiniCart;
+window.addEventListener("load", updateMiniCart);
+window.addEventListener("storage", updateMiniCart);
 </script>
 
 </body>
