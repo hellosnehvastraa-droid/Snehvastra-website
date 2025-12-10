@@ -37,7 +37,6 @@
       overflow-x:hidden;
     }
 
-    /* ✅ FIXED HEADER + SCROLL NAV */
     .topbar{
       position:sticky;
       top:0;
@@ -61,6 +60,7 @@
       display:flex;
       gap:12px;
       align-items:center;
+      cursor:pointer;
     }
 
     .logo{
@@ -68,10 +68,7 @@
       border-radius:10px;
     }
 
-    nav{
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-    }
+    nav{ overflow-x:auto; }
 
     nav ul{
       display:flex;
@@ -91,11 +88,8 @@
       border-radius:10px;
     }
 
-    nav a.active{
-      background:rgba(58,15,90,0.06);
-    }
+    nav a.active{ background:rgba(58,15,90,0.06); }
 
-    /* HERO */
     header.main-hero{
       max-width:var(--max-w);
       margin:26px auto 8px;
@@ -107,12 +101,8 @@
       font-size:clamp(1.6rem,2.6vw,2.6rem);
     }
 
-    .hero-sub{
-      color:var(--muted);
-      margin-top:6px;
-    }
+    .hero-sub{ color:var(--muted); margin-top:6px; }
 
-    /* CONTROLS */
     .controls{
       max-width:var(--max-w);
       margin:12px auto 0;
@@ -135,6 +125,11 @@
       background:#fff;
       font-weight:700;
       color:var(--plum);
+      cursor:pointer;
+    }
+
+    .chip.active{
+      background:rgba(58,15,90,0.1);
     }
 
     .search{
@@ -150,7 +145,6 @@
       width:100%;
     }
 
-    /* GRID */
     .grid-wrap{
       max-width:var(--max-w);
       margin:16px auto 80px;
@@ -191,12 +185,7 @@
       background:linear-gradient(135deg,var(--plum),var(--plum-2));
       color:#fff;
       font-weight:800;
-    }
-
-    .btn.ghost{
-      background:transparent;
-      color:var(--plum);
-      border:2px solid rgba(58,15,90,0.12);
+      cursor:pointer;
     }
 
     footer{
@@ -213,7 +202,9 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand">
+
+    <!-- ✅ LOGO NOW GOES HOME -->
+    <div class="brand" onclick="location.href='index.html'">
       <img src="images/logo.final.png" class="logo" />
       <div>
         <strong>SNEHVASTRA</strong>
@@ -242,7 +233,7 @@
 
 <section class="controls">
   <div class="filters">
-    <button class="chip" id="showAll">All</button>
+    <button class="chip active" id="showAll">All</button>
     <button class="chip" id="showStreet">Street</button>
     <button class="chip" id="showLuxury">Luxury</button>
   </div>
@@ -263,10 +254,10 @@
 
 <script>
   const PRODUCTS = [
-    { id:'1', name:'Streetwear Fusion Tee', price:4999, image:'images/products/tee.jpg' },
-    { id:'2', name:'Luxury Midnight Jacket', price:29999, image:'images/products/jacket.jpg' },
-    { id:'3', name:'Casual Cloud Hoodie', price:19999, image:'images/products/hoodie.jpg' },
-    { id:'4', name:'Tech Overshirt', price:49999, image:'images/products/overshirt.jpg' }
+    { id:'1', name:'Streetwear Fusion Tee', price:4999, category:'street', image:'images/products/tee.jpg' },
+    { id:'2', name:'Luxury Midnight Jacket', price:29999, category:'luxury', image:'images/products/jacket.jpg' },
+    { id:'3', name:'Casual Cloud Hoodie', price:19999, category:'street', image:'images/products/hoodie.jpg' },
+    { id:'4', name:'Tech Overshirt', price:49999, category:'luxury', image:'images/products/overshirt.jpg' }
   ];
 
   let cart = JSON.parse(localStorage.getItem('snehvastra_cart') || '{}');
@@ -278,9 +269,9 @@
 
   const grid = document.getElementById('productsGrid');
 
-  function renderAll(){
+  function render(list){
     grid.innerHTML = '';
-    PRODUCTS.forEach(p=>{
+    list.forEach(p=>{
       const el = document.createElement('div');
       el.className='card';
       el.innerHTML = `
@@ -303,8 +294,29 @@
     alert("Sneh AI is active in Phase 2.");
   }
 
+  // ✅ FILTER FIX
+  document.getElementById("showAll").onclick = function(){
+    setActive(this);
+    render(PRODUCTS);
+  };
+
+  document.getElementById("showStreet").onclick = function(){
+    setActive(this);
+    render(PRODUCTS.filter(p=>p.category==="street"));
+  };
+
+  document.getElementById("showLuxury").onclick = function(){
+    setActive(this);
+    render(PRODUCTS.filter(p=>p.category==="luxury"));
+  };
+
+  function setActive(btn){
+    document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+    btn.classList.add("active");
+  }
+
   window.onload = ()=>{
-    renderAll();
+    render(PRODUCTS);
     updateCartCount();
     document.getElementById('currentYear').textContent = new Date().getFullYear();
   };
