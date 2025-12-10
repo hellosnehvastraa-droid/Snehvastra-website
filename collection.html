@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Collection — SNEHVASTRA V2</title>
   <meta name="description" content="Snehvastra Echo Drops — premium limited streetwear. Shop limited runs, curated pieces, and Snehvastra ONE auctioned rarities." />
   <meta name="theme-color" content="#3A0F5A" />
-  <link rel="canonical" href="https://www.snehvastra.store/collection.html" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,557 +20,295 @@
       --muted:#8E8F92;
       --silver:#BFC4C7;
       --paper:#F5F4F6;
-      --glass: rgba(255,255,255,0.6);
       --radius:14px;
       --shadow-soft: 0 20px 70px rgba(58,15,90,0.06);
       --ease: 0.28s;
       --max-w:1200px;
       --font-display: 'Clash Display', serif;
       --font-sans: 'Poppins', sans-serif;
-      --focus: rgba(186,178,255,0.22);
     }
 
-    /* Base */
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;}
     body{
       margin:0;
       font-family:var(--font-sans);
       background: linear-gradient(180deg,#f7f6f8,#f3f3f5);
       color:var(--slate);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
+      overflow-x:hidden;
     }
 
-    /* Top nav */
+    /* ✅ FIXED HEADER + SCROLL NAV */
     .topbar{
-      position:sticky;top:0;z-index:140;
-      backdrop-filter: blur(8px) saturate(120%);
-      background: rgba(250,249,251,0.92);
-      border-bottom:1px solid rgba(47,18,66,0.04);
-      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;
+      position:sticky;
+      top:0;
+      z-index:140;
+      background: rgba(250,249,251,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(47,18,66,0.06);
     }
-    .wrap{max-width:var(--max-w);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{height:52px;width:auto;border-radius:10px;filter:drop-shadow(0 12px 36px rgba(58,15,90,0.08))}
-    nav ul{display:flex;gap:12px;align-items:center;margin:0;padding:0;list-style:none}
-    nav a{color:var(--plum);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px;transition:all var(--ease)}
-    nav a.active, nav a[aria-current="page"]{background: linear-gradient(180deg, rgba(58,15,90,0.04), rgba(255,255,255,0.6)); box-shadow:0 8px 30px rgba(58,15,90,0.04); color:var(--slate)}
 
-    /* Header hero */
-    header.main-hero{max-width:var(--max-w);margin:28px auto 6px;padding:28px 20px;display:flex;flex-direction:column;gap:16px}
-    .hero-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .eyebrow{font-size:0.85rem;color:var(--muted);letter-spacing:1.6px;font-weight:700;text-transform:uppercase}
-    .page-title{font-family:var(--font-display);font-size:clamp(1.6rem,2.6vw,2.6rem);margin:0;color:var(--slate)}
-    .hero-sub{color:var(--muted);max-width:760px}
+    .wrap{
+      max-width:var(--max-w);
+      margin:0 auto;
+      width:100%;
+      padding:12px 5%;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
 
-    /* Filters */
-    .controls{max-width:var(--max-w);margin:10px auto 0;padding:18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:space-between}
-    .filters{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .chip{background:linear-gradient(180deg, #fff, #fbfbfc);padding:10px 12px;border-radius:999px;border:1px solid rgba(47,18,66,0.04);font-weight:700;color:var(--plum);cursor:pointer}
-    .search{display:flex;gap:8px;align-items:center}
-    .search input{padding:12px 14px;border-radius:12px;border:1px solid rgba(47,18,66,0.06);min-width:280px;font-size:0.96rem}
-    .sort select{padding:10px 12px;border-radius:12px;border:1px solid rgba(47,18,66,0.06)}
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
 
-    /* Grid */
-    .grid-wrap{max-width:var(--max-w);margin:18px auto 80px;padding:0 20px}
-    .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+    .logo{
+      height:44px;
+      border-radius:10px;
+    }
+
+    nav{
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    nav ul{
+      display:flex;
+      gap:12px;
+      list-style:none;
+      margin:0;
+      padding:6px 0;
+      min-width:max-content;
+    }
+
+    nav a{
+      white-space:nowrap;
+      color:var(--plum);
+      text-decoration:none;
+      font-weight:600;
+      padding:8px 14px;
+      border-radius:10px;
+    }
+
+    nav a.active{
+      background:rgba(58,15,90,0.06);
+    }
+
+    /* HERO */
+    header.main-hero{
+      max-width:var(--max-w);
+      margin:26px auto 8px;
+      padding:0 5%;
+    }
+
+    .page-title{
+      font-family:var(--font-display);
+      font-size:clamp(1.6rem,2.6vw,2.6rem);
+    }
+
+    .hero-sub{
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    /* CONTROLS */
+    .controls{
+      max-width:var(--max-w);
+      margin:12px auto 0;
+      padding:12px 5%;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .filters{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .chip{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(47,18,66,0.06);
+      background:#fff;
+      font-weight:700;
+      color:var(--plum);
+    }
+
+    .search{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .search input{
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid rgba(47,18,66,0.06);
+      width:100%;
+    }
+
+    /* GRID */
+    .grid-wrap{
+      max-width:var(--max-w);
+      margin:16px auto 80px;
+      padding:0 5%;
+    }
+
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+    }
 
     .card{
-      background:linear-gradient(180deg,#fff,#fbfbfc);
-      border-radius:16px;padding:18px;border:1px solid rgba(47,18,66,0.04);
-      box-shadow:var(--shadow-soft);transition:transform var(--ease), box-shadow var(--ease);
-      display:flex;flex-direction:column;gap:12px;height:100%;
+      background:#fff;
+      border-radius:16px;
+      padding:16px;
+      box-shadow:var(--shadow-soft);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
-    .card:hover{transform:translateY(-8px);box-shadow:0 30px 110px rgba(58,15,90,0.12)}
-    .media{height:220px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, rgba(58,15,90,0.04), rgba(0,0,0,0.02));font-size:2rem;color:var(--muted)}
-    .status-pill{font-size:0.8rem;padding:6px 10px;border-radius:999px;border:1px solid rgba(58,15,90,0.06);background:linear-gradient(180deg,rgba(58,15,90,0.03),rgba(255,255,255,0.4));color:var(--plum);font-weight:700;display:inline-block}
-    .title{font-family:var(--font-display);font-size:1.05rem;margin:0;color:var(--slate)}
-    .excerpt{color:var(--muted);font-size:0.95rem;flex:1}
-    .price{font-weight:900;color:var(--plum);font-size:1.05rem}
-    .actions{display:flex;gap:8px;align-items:center}
+
+    .media{
+      height:200px;
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    .price{
+      font-weight:900;
+      color:var(--plum);
+    }
+
     .btn{
-      padding:10px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:800;transition:all var(--ease);
-      background:linear-gradient(135deg,var(--plum),var(--plum-2));color:white;box-shadow:0 12px 36px rgba(58,15,90,0.28);
-    }
-    .btn.ghost{background:transparent;color:var(--plum);border:2px solid rgba(58,15,90,0.06);box-shadow:none}
-    .btn.small{padding:8px 10px;border-radius:10px;font-weight:700}
-
-    /* AI Panel */
-    .ai-panel{max-width:720px;margin:18px auto;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfc);box-shadow:0 12px 40px rgba(58,15,90,0.06);display:none}
-    .ai-panel h4{margin:0 0 8px;font-family:var(--font-display);color:var(--plum)}
-
-    /* Quick view modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(18,20,24,0.5);display:none;align-items:center;justify-content:center;z-index:900;padding:20px}
-    .modal{background:#fff;border-radius:14px;padding:22px;max-width:920px;width:100%;box-shadow:0 40px 160px rgba(18,20,24,0.6);display:grid;grid-template-columns:1fr 420px;gap:20px}
-    .modal .media{height:380px}
-    .modal h3{margin:0;font-family:var(--font-display);color:var(--plum)}
-    .specs{color:var(--muted);margin-top:10px}
-    .modal .actions{justify-content:flex-end;margin-top:12px}
-
-    /* Floating AI orb */
-    .ai-orb{
-      position:fixed;right:22px;bottom:22px;width:64px;height:64px;border-radius:999px;background:linear-gradient(180deg,#eef0f2,#dde0e3);box-shadow:0 18px 48px rgba(46,46,46,0.14), inset 0 2px 8px rgba(255,255,255,0.6);
-      display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:980;border:1px solid rgba(47,18,66,0.04)
-    }
-    .ai-orb .ico{font-weight:900;color:var(--plum);font-size:22px}
-
-    /* Toast */
-    .toast{position:fixed;top:18px;right:18px;background:linear-gradient(135deg,var(--plum),#2a0a3f);color:white;padding:12px 18px;border-radius:12px;box-shadow:0 18px 60px rgba(58,15,90,0.32);display:none;z-index:980;font-weight:700}
-
-    footer{max-width:var(--max-w);margin:60px auto 100px;padding:24px;color:var(--muted);border-top:1px solid rgba(47,18,66,0.03);text-align:center}
-
-    /* Responsive */
-    @media(max-width:980px){
-      .modal{grid-template-columns:1fr; padding:18px}
-      .modal .media{height:260px}
-      .search input{min-width:180px}
-      nav ul{display:none}
+      padding:10px 16px;
+      border-radius:12px;
+      border:none;
+      background:linear-gradient(135deg,var(--plum),var(--plum-2));
+      color:#fff;
+      font-weight:800;
     }
 
-    /* Focus */
-    a:focus, button:focus, input:focus { outline: 3px solid var(--focus); outline-offset: 3px; border-radius:10px; }
+    .btn.ghost{
+      background:transparent;
+      color:var(--plum);
+      border:2px solid rgba(58,15,90,0.12);
+    }
+
+    footer{
+      max-width:var(--max-w);
+      margin:60px auto 40px;
+      padding:24px;
+      text-align:center;
+      color:var(--muted);
+    }
   </style>
 </head>
 
 <body>
-  <!-- Top nav -->
-  <div class="topbar" role="banner">
-    <div class="wrap">
-      <div class="brand">
-        <img src="images/logo.final.png" alt="Snehvastra" class="logo" />
-        <div>
-          <div style="font-weight:800;color:var(--plum);font-size:0.98rem">SNEHVASTRA</div>
-          <div style="font-size:12px;color:var(--muted)">New Gen Luxury Streetwear</div>
-        </div>
-      </div>
 
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="collection.html" aria-current="page" class="active">Collection</a></li>
-          <li><a href="auction.html">Auction</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        </ul>
-      </nav>
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <img src="images/logo.final.png" class="logo" />
+      <div>
+        <strong>SNEHVASTRA</strong>
+        <div style="font-size:12px;color:var(--muted)">New Gen Luxury Streetwear</div>
+      </div>
     </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html" class="active">Collection</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<header class="main-hero">
+  <h1 class="page-title">Collection — curated, limited, considered</h1>
+  <div class="hero-sub">
+    Shop limited runs and crafted pieces. Each drop is small-batched with NFC authentication.
+  </div>
+</header>
+
+<section class="controls">
+  <div class="filters">
+    <button class="chip" id="showAll">All</button>
+    <button class="chip" id="showStreet">Street</button>
+    <button class="chip" id="showLuxury">Luxury</button>
   </div>
 
-  <!-- Hero -->
-  <header class="main-hero" role="region" aria-labelledby="collectionTitle">
-    <div class="hero-top">
-      <div>
-        <div class="eyebrow">Echo Drops</div>
-        <h1 id="collectionTitle" class="page-title">Collection — curated, limited, considered</h1>
-        <div class="hero-sub">Shop limited runs and crafted pieces. Each drop is small-batched with NFC authentication and a living craft story.</div>
-      </div>
-      <div style="text-align:right">
-        <div class="status-pill" title="Limited runs & 1/1 auctions">Limited Drops • Crafted</div>
-        <div style="margin-top:8px;font-size:0.9rem;color:var(--muted)">Free shipping over ₹50,000 • Secure payments</div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Controls -->
-  <section class="controls" aria-label="Product controls">
-    <div class="filters" role="region" aria-label="Filters">
-      <button class="chip" data-filter-presets="all" id="showAll">All</button>
-      <button class="chip" data-filter-presets="street" id="showStreet">Street</button>
-      <button class="chip" data-filter-presets="luxury" id="showLuxury">Luxury</button>
-      <button class="chip" id="showLimited">Limited</button>
-    </div>
-
-    <div class="search">
-      <input id="aiSearch" placeholder="Ask Sneh: 'show black hoodies under 50k' or 'best layering'" aria-label="AI search" />
-      <button class="chip" onclick="askAI()">Ask Sneh</button>
-      <div class="sort">
-        <label for="sort" style="font-weight:700;color:var(--muted);margin-left:6px">Sort</label>
-        <select id="sort" aria-label="Sort products">
-          <option value="featured">Featured</option>
-          <option value="price-low">Price: Low → High</option>
-          <option value="price-high">Price: High → Low</option>
-          <option value="name">Name A → Z</option>
-        </select>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI Panel -->
-  <div id="aiPanel" class="ai-panel" role="region" aria-live="polite"></div>
-
-  <!-- Products grid -->
-  <section class="grid-wrap" aria-label="Product grid">
-    <div class="products-grid" id="productsGrid">
-      <!-- Product cards generated by script -->
-    </div>
-
-    <!-- Auction highlight -->
-    <div style="margin-top:28px;display:flex;gap:18px;align-items:center;justify-content:center">
-      <a href="auction.html" class="btn ghost" style="display:inline-flex;align-items:center;gap:10px">Join Snehvastra ONE Auction →</a>
-      <div style="color:var(--muted);font-weight:700">1/1 • NFC authenticated • Highest bidder wins</div>
-    </div>
-  </section>
-
-  <!-- Quick view modal -->
-  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" role="document">
-      <div>
-        <div class="media" id="modalMedia">IMAGE</div>
-      </div>
-      <aside>
-        <h3 id="modalTitle">Title</h3>
-        <div class="specs" id="modalTags">Tags • Category</div>
-        <div style="margin-top:12px" class="price" id="modalPrice">₹0</div>
-        <p style="margin-top:14px;color:var(--muted)" id="modalExcerpt">Excerpt</p>
-
-        <div style="margin-top:18px;display:flex;gap:12px;align-items:center" class="actions">
-          <button id="modalAdd" class="btn">Add to Cart</button>
-          <button id="modalView" class="btn ghost small" onclick="location.href='product-single.html'">View Product</button>
-        </div>
-
-        <div style="margin-top:18px;color:var(--muted);font-size:0.95rem">
-          <strong>Sizing hint:</strong> true-to-size. Use product page for precise measurements.
-        </div>
-      </aside>
-    </div>
+  <div class="search">
+    <input id="aiSearch" placeholder="Ask Sneh: 'show black hoodie under 50k'" />
+    <button class="chip" onclick="askAI()">Ask Sneh</button>
   </div>
+</section>
 
-  <!-- Floating AI orb -->
-  <button id="aiOrb" class="ai-orb" aria-label="Open Sneh — shopping assistant" title="Ask Sneh">
-    <span class="ico">S</span>
-  </button>
+<section class="grid-wrap">
+  <div class="products-grid" id="productsGrid"></div>
+</section>
 
-  <!-- Toast -->
-  <div id="toast" class="toast" role="status" aria-live="polite">Saved</div>
+<footer>
+  © <span id="currentYear"></span> Snehvastra • Instagram: <strong>@sneh_vastra</strong>
+</footer>
 
-  <footer>
-    © <span id="currentYear"></span> Snehvastra • Crafted limited drops • Instagram: <strong>@sneh_vastra</strong>
-  </footer>
+<script>
+  const PRODUCTS = [
+    { id:'1', name:'Streetwear Fusion Tee', price:4999, image:'images/products/tee.jpg' },
+    { id:'2', name:'Luxury Midnight Jacket', price:29999, image:'images/products/jacket.jpg' },
+    { id:'3', name:'Casual Cloud Hoodie', price:19999, image:'images/products/hoodie.jpg' },
+    { id:'4', name:'Tech Overshirt', price:49999, image:'images/products/overshirt.jpg' }
+  ];
 
-  <script>
-    /* -------------------------
-       DATA: Finalized products
-       (prices locked by CEO decision)
-       ------------------------- */
-    const PRODUCTS = [
-      {
-        id: '1',
-        name: 'Streetwear Fusion Tee',
-        price: 4999,
-        category: 'Streetwear',
-        tags: ['black','tee','street'],
-        status: 'instock',
-        excerpt: 'Bold yet minimal — crafted for statement comfort.',
-        image: 'images/products/tee.jpg'
-      },
-      {
-        id: '2',
-        name: 'Luxury Midnight Jacket',
-        price: 29999,
-        category: 'Luxury',
-        tags: ['jacket','luxury','black'],
-        status: 'limited',
-        excerpt: 'Tailored craftsmanship with modern luxury essence.',
-        image: 'images/products/jacket.jpg'
-      },
-      {
-        id: '3',
-        name: 'Casual Cloud Hoodie',
-        price: 19999,
-        category: 'Casual',
-        tags: ['hoodie','casual','oversized'],
-        status: 'instock',
-        excerpt: 'Soft fleece touch — urban comfort meets class.',
-        image: 'images/products/hoodie.jpg'
-      },
-      {
-        id: '4',
-        name: 'Tech Overshirt',
-        price: 49999,
-        category: 'Streetwear',
-        tags: ['overshirt','tech','layer'],
-        status: 'limited',
-        excerpt: 'Structured overshirt with advanced technical fabric.',
-        image: 'images/products/overshirt.jpg'
-      },
-      {
-        id: 'one',
-        name: 'Snehvastra ONE (Auction)',
-        price: 999999,
-        category: 'Auction',
-        tags: ['one','auction','1/1'],
-        status: 'auction',
-        excerpt: 'One-of-one heritage piece — NFC authenticated.',
-        image: 'images/products/one.jpg'
-      }
-    ];
+  let cart = JSON.parse(localStorage.getItem('snehvastra_cart') || '{}');
 
-    /* -------------------------
-       CART (localStorage)
-       ------------------------- */
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart') || '{}');
+  function updateCartCount(){
+    document.getElementById('cartCount').textContent =
+      Object.values(cart).reduce((a,b)=>a+b,0);
+  }
 
-    function saveCart(){
-      localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
-      updateCartCount();
-    }
+  const grid = document.getElementById('productsGrid');
 
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((s,n)=>s+n,0);
-      document.getElementById('cartCount').textContent = total;
-    }
-
-    /* -------------------------
-       RENDER PRODUCTS
-       ------------------------- */
-    const grid = document.getElementById('productsGrid');
-
-    function money(x){ return '₹' + Number(x).toLocaleString(); }
-
-    function createCard(p){
-      const el = document.createElement('article');
-      el.className = 'card';
-      el.setAttribute('data-id', p.id);
-      el.setAttribute('data-price', p.price);
-      el.setAttribute('data-category', p.category);
-      el.setAttribute('data-status', p.status);
-      el.setAttribute('data-tags', p.tags.join(','));
+  function renderAll(){
+    grid.innerHTML = '';
+    PRODUCTS.forEach(p=>{
+      const el = document.createElement('div');
+      el.className='card';
       el.innerHTML = `
-        <div class="media" role="img" aria-label="${p.name} visual">
-          <img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='block';this.textContent='${p.name.charAt(0)}'">
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3 class="title">${p.name}</h3>
-            <div class="status-pill" aria-hidden="true">${p.status === 'limited' ? 'Limited' : (p.status==='auction'?'Auction':'In stock')}</div>
-          </div>
-          <p class="excerpt">${p.excerpt}</p>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto">
-          <div class="price">${money(p.price)}</div>
-          <div class="actions">
-            <button class="btn ghost small" data-action="quick" data-id="${p.id}">Quick view</button>
-            <button class="btn" data-action="add" data-id="${p.id}">Add</button>
-          </div>
-        </div>
+        <div class="media"><img src="${p.image}" style="width:100%;height:100%;object-fit:cover"></div>
+        <h3>${p.name}</h3>
+        <div class="price">₹${p.price}</div>
+        <button class="btn" onclick="addToCart('${p.id}')">Add to Cart</button>
       `;
-      return el;
-    }
-
-    function renderAll(products = PRODUCTS){
-      grid.innerHTML = '';
-      products.forEach(p => grid.appendChild(createCard(p)));
-    }
-
-    /* -------------------------
-       EVENTS: add to cart, quick view
-       ------------------------- */
-    grid.addEventListener('click', (e)=>{
-      const action = e.target.getAttribute('data-action');
-      const id = e.target.getAttribute('data-id');
-      if(!action || !id) return;
-
-      if(action === 'add'){
-        cart[id] = (cart[id] || 0) + 1;
-        saveCart();
-        showToast(`${PRODUCTS.find(x=>x.id===id).name} added • ${money(PRODUCTS.find(x=>x.id===id).price)}`);
-        e.target.animate([{transform:'scale(1)'},{transform:'scale(.96)'},{transform:'scale(1)'}],{duration:200});
-      }
-
-      if(action === 'quick'){
-        openQuickView(id);
-      }
+      grid.appendChild(el);
     });
+  }
 
-    /* -------------------------
-       Quick view modal
-       ------------------------- */
-    const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMedia = document.getElementById('modalMedia');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalTags = document.getElementById('modalTags');
-    const modalExcerpt = document.getElementById('modalExcerpt');
-    const modalAdd = document.getElementById('modalAdd');
-    let currentModalId = null;
+  function addToCart(id){
+    cart[id] = (cart[id]||0)+1;
+    localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
+    updateCartCount();
+  }
 
-    function openQuickView(id){
-      const p = PRODUCTS.find(x=>x.id===id);
-      if(!p) return;
-      currentModalId = id;
-      modalTitle.textContent = p.name;
-      modalPrice.textContent = money(p.price);
-      modalTags.textContent = `${p.category} • ${p.tags.join(' • ')}`;
-      modalExcerpt.textContent = p.excerpt;
-      modalMedia.innerHTML = `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block">`;
-      modalBackdrop.style.display = 'flex';
-      modalBackdrop.setAttribute('aria-hidden','false');
-      modalAdd.focus();
-    }
+  function askAI(){
+    alert("Sneh AI is active in Phase 2.");
+  }
 
-    modalBackdrop.addEventListener('click', (e)=>{
-      if(e.target === modalBackdrop) closeModal();
-    });
+  window.onload = ()=>{
+    renderAll();
+    updateCartCount();
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  };
+</script>
 
-    function closeModal(){
-      modalBackdrop.style.display = 'none';
-      modalBackdrop.setAttribute('aria-hidden','true');
-      currentModalId = null;
-    }
-
-    document.getElementById('modalAdd').addEventListener('click', ()=>{
-      if(!currentModalId) return;
-      cart[currentModalId] = (cart[currentModalId]||0) + 1;
-      saveCart();
-      showToast(`${PRODUCTS.find(x=>x.id===currentModalId).name} added`);
-      closeModal();
-    });
-
-    /* -------------------------
-       Filters & Sort
-       ------------------------- */
-    function applyFiltersAndSort(){
-      let items = Array.from(PRODUCTS);
-      const sort = document.getElementById('sort').value;
-
-      // apply any UI preset filters (chip active)
-      // simple behavior: chips with data-filter-presets
-      const activePreset = document.querySelector('.chip.active');
-      if(activePreset){
-        const preset = activePreset.dataset.filterPresets;
-        if(preset === 'street') items = items.filter(i => i.category.toLowerCase().includes('street'));
-        if(preset === 'luxury') items = items.filter(i => i.category.toLowerCase().includes('luxury'));
-        if(preset === 'all') items = items; // nothing
-      }
-
-      // sort
-      if(sort === 'price-low') items.sort((a,b)=>a.price-b.price);
-      if(sort === 'price-high') items.sort((a,b)=>b.price-a.price);
-      if(sort === 'name') items.sort((a,b)=>a.name.localeCompare(b.name));
-
-      renderAll(items);
-    }
-
-    // chip toggles
-    document.querySelectorAll('.chip[data-filter-presets]').forEach(c=>{
-      c.addEventListener('click', ()=>{
-        document.querySelectorAll('.chip[data-filter-presets]').forEach(x=>x.classList.remove('active'));
-        c.classList.add('active');
-        applyFiltersAndSort();
-      });
-    });
-
-    document.getElementById('sort').addEventListener('change', applyFiltersAndSort);
-
-    /* -------------------------
-       AI assistant — local rules
-       ------------------------- */
-    const aiPanel = document.getElementById('aiPanel');
-    const aiSearch = document.getElementById('aiSearch');
-
-    function askAI(){
-      const q = aiSearch.value.trim().toLowerCase();
-      if(!q){ aiPanel.style.display='none'; return; }
-
-      // quick rule-based intents (upgradeable)
-      let resp = '';
-      if(/under\s?₹?\s?50k|under 50k|<50k/.test(q) || /under\s?50,000/.test(q)){
-        const matches = PRODUCTS.filter(p=>p.price < 50000);
-        resp = `<strong>Showing items under ₹50,000 — ${matches.length} result(s):</strong><br>` + matches.map(m=>`${m.name} • ${money(m.price)}`).join('<br>');
-        renderFilteredList(matches);
-      } else if(/black|all black|show black/.test(q)){
-        const matches = PRODUCTS.filter(p=>p.tags.join(',').includes('black'));
-        resp = `<strong>Black items:</strong><br>` + (matches.length ? matches.map(m=>`${m.name} • ${money(m.price)}`).join('<br>') : 'No exact black items found.');
-        renderFilteredList(matches);
-      } else if(/layer|layering|hoodie|overshirt/.test(q)){
-        const rec = PRODUCTS.filter(p=>p.tags.includes('overshirt') || p.tags.includes('hoodie'));
-        resp = `<strong>Layering picks:</strong><br>` + rec.map(m=>`${m.name} • ${money(m.price)}`).join('<br>');
-        renderFilteredList(rec);
-      } else if(/suggest|style|match|outfit/.test(q)){
-        // smart outfit suggestions (simple rules)
-        const tee = PRODUCTS.find(p=>p.name.includes('Tee'));
-        const overshirt = PRODUCTS.find(p=>p.name.includes('Overshirt'));
-        const hoodie = PRODUCTS.find(p=>p.name.includes('Hoodie'));
-        resp = `<strong>Styling suggestion:</strong><br>Try: ${tee ? tee.name + ' (paired with)' : ''} ${overshirt ? overshirt.name : hoodie.name}.`;
-        renderFilteredList([tee, overshirt].filter(Boolean));
-      } else {
-        resp = "Try prompts like: 'show black items', 'under 50k', 'layering picks', or 'suggest outfit'.";
-      }
-
-      aiPanel.innerHTML = `<h4>Sneh — Shopping Assistant</h4><div style="color:var(--muted);line-height:1.6">${resp}</div>`;
-      aiPanel.style.display = 'block';
-      aiSearch.focus();
-    }
-
-    // helper to render a filtered small list (keeps main grid)
-    function renderFilteredList(list){
-      if(!list || !list.length){ renderAll(); return; }
-      renderAll(list);
-      window.scrollTo({top: document.querySelector('.grid-wrap').offsetTop - 24, behavior:'smooth'});
-    }
-
-    /* -------------------------
-       Toast
-       ------------------------- */
-    const toast = document.getElementById('toast');
-    let toastTimer = null;
-    function showToast(msg, ms=2600){
-      toast.textContent = msg;
-      toast.style.display = 'block';
-      toast.style.opacity = '1';
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(()=>{ toast.style.display = 'none'; }, ms);
-    }
-
-    /* -------------------------
-       AI Orb modal (deep questions)
-       ------------------------- */
-    const aiOrbBtn = document.getElementById('aiOrb');
-    aiOrbBtn.addEventListener('click', ()=> {
-      const q = prompt('Sneh — Ask me anything about fit, fabric, or drops. e.g. "Will this shrink?"');
-      if(q === null) return;
-      const ans = generateSnehResponse(q);
-      alert('Sneh says:\n\n' + ans);
-    });
-
-    function generateSnehResponse(q){
-      q = q.toLowerCase();
-      if(q.includes('shrink')||q.includes('wash')||q.includes('care')) return 'Care: gentle cold wash, hang dry flat. Follow product label. Natural fibers relax slightly.';
-      if(q.includes('size')||q.includes('fit')) return 'Fit: our pieces run true-to-size. For relaxed fit size up one. Check product page for specific measurements.';
-      if(q.includes('auction')) return 'ONE Auction: 1/1 pieces, NFC-authenticated. Join live auction page to bid.';
-      if(q.includes('delivery')||q.includes('shipping')) return 'Shipping: Standard 3-7 business days. Express available at checkout. Free over ₹50,000.';
-      if(q.includes('material')||q.includes('fabric')) return 'We use long-staple cotton, responsibly sourced blends, and technical finishes for texture and longevity.';
-      return "Great question — for full specifics we will open a chat on WhatsApp. Or try 'size', 'care', or 'auction'.";
-    }
-
-    /* -------------------------
-       Init
-       ------------------------- */
-    window.addEventListener('load', ()=>{
-      renderAll();
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      // default activate 'All' chip
-      document.getElementById('showAll').classList.add('active');
-
-      // keyboard: enter triggers AI search
-      document.getElementById('aiSearch').addEventListener('keypress', (e)=> {
-        if(e.key === 'Enter') askAI();
-      });
-
-      // quick-access chips (some pre-filters)
-      document.getElementById('showStreet').addEventListener('click', ()=> document.getElementById('showStreet').click());
-    });
-
-    // small accessibility: close modal on esc
-    document.addEventListener('keydown', (e)=> {
-      if(e.key === 'Escape') {
-        if(modalBackdrop.style.display === 'flex') closeModal();
-      }
-    });
-
-  </script>
 </body>
 </html>
