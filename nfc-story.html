@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Snehvastra — NFC Story (V2)</title>
-  <meta name="description" content="Snehvastra NFC Story — scan, authenticate and meet the artisan behind your garment. Cinematic unlock, timeline, rarity & AI assistant."/>
+  <title>Snehvastra — NFC Story</title>
+  <meta name="description" content="Scan your Snehvastra garment to unlock authenticity, artisan story, rarity, and collector certification."/>
   <meta name="theme-color" content="#3A0F5A" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,512 +14,165 @@
   <style>
     :root{
       --purple:#3A0F5A; --deep:#2a0a3f; --slate:#1F2024; --muted:#7d7f82;
-      --glass: rgba(255,255,255,0.8); --radius:16px; --maxw:1180px; --ease: .36s;
+      --glass: rgba(255,255,255,0.88); --radius:16px; --maxw:1180px; --ease: .36s;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
       font-family:"Poppins",sans-serif;
       background: linear-gradient(180deg,#f8f7f9,#f2f2f4);
       color:var(--slate);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
       padding:28px 18px;
     }
 
-    .wrap{max-width:var(--maxw);width:100%;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
-    @media(max-width:980px){ .wrap{grid-template-columns:1fr; padding-bottom:40px} }
+    .wrap{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:28px}
+    @media(max-width:980px){ .wrap{grid-template-columns:1fr} }
 
-    /* Header / nav */
-    header{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;background: rgba(255,255,255,0.9);border-radius:12px;padding:12px 18px;border:1px solid rgba(47,18,66,0.04);box-shadow:0 8px 30px rgba(58,15,90,0.04)}
+    header{
+      grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;
+      background: var(--glass);border-radius:12px;padding:12px 18px;
+      border:1px solid rgba(47,18,66,0.04);
+      box-shadow:0 8px 30px rgba(58,15,90,0.04)
+    }
     .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:48px;border-radius:8px}
-    .brand h1{font-family:"Clash Display",serif;font-size:1.05rem;margin:0;color:var(--purple)}
-    nav a{color:var(--muted);text-decoration:none;margin-left:12px;font-weight:600}
-    nav a.active{color:var(--purple);}
+    .brand img{height:46px;cursor:pointer}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-weight:600}
+    nav a.active{color:var(--purple)}
 
-    /* Left: Cinematic stage */
-    .stage{background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff);border-radius:18px;padding:28px;border:1px solid rgba(47,18,66,0.05);box-shadow:0 30px 100px rgba(58,15,90,0.06)}
-    .stage .intro{
-      height:420px;border-radius:14px;overflow:hidden;position:relative;background:radial-gradient(circle at 10% 20%, rgba(58,15,90,0.05), rgba(0,0,0,0.01));
-      display:flex;align-items:center;justify-content:center;
-    }
-    /* simulated 3D box */
+    .stage{background:#fff;border-radius:18px;padding:28px;border:1px solid rgba(47,18,66,0.05);box-shadow:0 30px 100px rgba(58,15,90,0.06)}
+    .intro{height:420px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+
     .garment-3d{
-      width:320px;height:360px;border-radius:20px;background:linear-gradient(135deg,#fefefe,#f6f4f7);
-      display:flex;flex-direction:column;align-items:center;justify-content:center;transform-style:preserve-3d;
-      box-shadow:0 18px 60px rgba(46,18,68,0.12);position:relative;perspective:1200px;transition:transform .9s cubic-bezier(.2,.9,.2,1);
+      width:320px;height:360px;border-radius:20px;background:#fff;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 18px 60px rgba(46,18,68,0.12);
+      cursor:pointer
     }
-    .garment-3d img{width:86%;height:auto;border-radius:12px;transform:translateZ(28px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
-    .garment-3d .tag{position:absolute;left:18px;bottom:18px;background:linear-gradient(90deg,var(--purple),#2e0b4a);color:#fff;padding:8px 12px;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 8px 28px rgba(58,15,90,0.15)}
+    .garment-3d img{width:86%;border-radius:12px}
 
-    /* cinematic overlays */
-    .scan-overlay{position:absolute;inset:0;pointer-events:none}
-    canvas#particles{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:screen;opacity:.9}
+    .story{margin-top:24px}
+    .story h2{font-family:"Clash Display",serif;color:var(--purple)}
+    .meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+    .chip{background:#fff;border-radius:12px;padding:12px;border:1px solid rgba(47,18,66,0.05);text-align:center}
 
-    /* Unlock text & progress */
-    .unlock-panel{position:absolute;left:18px;top:18px;background:rgba(255,255,255,0.6);padding:8px 12px;border-radius:10px;font-weight:700;color:var(--purple);backdrop-filter:blur(6px);border:1px solid rgba(58,15,90,0.06)}
-    .status-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
-    .status-item{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--muted)}
-    .status-dot{width:12px;height:12px;border-radius:999px;background:rgba(47,18,66,0.06);display:inline-block;box-shadow:0 4px 12px rgba(58,15,90,0.06)}
-    .status-dot.on{background:linear-gradient(135deg,var(--purple),#2e0b4a);box-shadow:0 8px 22px rgba(58,15,90,0.2)}
+    .timeline{margin-top:18px}
+    .step{display:flex;gap:10px;margin-bottom:10px}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--purple);margin-top:6px}
 
-    /* Story content */
-    .story{margin-top:18px}
-    .story h2{font-family:"Clash Display",serif;margin:0 0 8px;font-size:1.6rem;color:var(--purple)}
-    .sub{color:var(--muted);margin:0 0 18px}
-    .meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
-    .chip{background:linear-gradient(180deg,#fff,#fbfbfc);border-radius:12px;padding:12px;border:1px solid rgba(47,18,66,0.04);text-align:center;font-weight:700}
-    .chip small{display:block;color:var(--muted);font-weight:600;font-size:.82rem;margin-top:6px}
+    .panel{background:#fff;border-radius:18px;padding:20px;border:1px solid rgba(47,18,66,0.05);box-shadow:0 20px 60px rgba(58,15,90,0.06)}
 
-    /* Timeline */
-    .timeline{margin-top:20px;border-radius:12px;padding:16px;background:linear-gradient(180deg,#fff,#fbfbfc);border:1px solid rgba(47,18,66,0.04)}
-    .timeline .step{display:flex;gap:12px;align-items:flex-start;padding:10px 6px;border-radius:8px;transition:all var(--ease)}
-    .timeline .step + .step{margin-top:8px}
-    .timeline .dot{width:12px;height:12px;border-radius:50%;background:var(--purple);margin-top:5px;flex-shrink:0}
-    .timeline .step h4{margin:0;font-size:1rem;font-weight:700}
-    .timeline .step p{margin:4px 0 0;color:var(--muted);font-size:.95rem}
+    .register-btn{
+      width:100%;padding:12px;border-radius:12px;border:none;
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      color:#fff;font-weight:800;cursor:pointer;margin-top:10px;
+      font-family:'Clash Display',serif
+    }
 
-    /* Right column */
-    .panel{background:linear-gradient(180deg,#fff,#fbfbfc);border-radius:18px;padding:20px;border:1px solid rgba(47,18,66,0.05);box-shadow:0 20px 60px rgba(58,15,90,0.06);position:sticky;top:28px}
-    .panel h3{font-family:"Clash Display",serif;margin:0 0 10px;color:var(--purple)}
-    .certificate{border-radius:12px;padding:12px;border:1px dashed rgba(58,15,90,0.08);background:rgba(255,255,255,0.9);margin-bottom:14px}
-    .cert-row{display:flex;justify-content:space-between;gap:12px;margin:6px 0}
-    .register-btn{width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;font-weight:800;cursor:pointer;margin-top:10px;font-family:'Clash Display',serif}
-    .small{font-size:.88rem;color:var(--muted)}
-
-    /* AI orb */
-    .ai-orb{position:fixed;right:22px;bottom:22px;width:64px;height:64px;border-radius:999px;background:linear-gradient(180deg,#eef0f2,#dde0e3);box-shadow:0 12px 36px rgba(46,46,46,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(47,18,66,0.04);z-index:500}
-    .ai-orb .icon{font-weight:800;color:var(--purple)}
-
-    /* modal / assistant */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(6,8,10,0.45);display:none;align-items:center;justify-content:center;z-index:520;padding:20px}
-    .modal{background:#fff;border-radius:14px;padding:20px;max-width:720px;width:100%;box-shadow:0 30px 120px rgba(18,20,24,0.5)}
-    .modal h4{margin:0 0 8px;color:var(--purple);font-family:'Clash Display',serif}
-    .modal .controls{display:flex;gap:8px;margin-top:8px}
-    .input{width:100%;padding:12px;border:1px solid rgba(47,18,66,0.06);border-radius:10px}
-
-    /* toast */
-    #toast{position:fixed;top:18px;right:18px;background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:12px 18px;border-radius:10px;display:none;z-index:600}
-
-    footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:.92rem;margin-top:18px}
+    footer{text-align:center;color:var(--muted);margin-top:24px}
   </style>
 </head>
 <body>
-  <div class="wrap" role="main" aria-labelledby="pageTitle">
-    <header>
-      <div class="brand" aria-hidden="false">
-        <img src="images/logo.final.png" alt="Snehvastra logo" onerror="this.style.display='none'"/>
-        <div>
-          <h1 id="pageTitle">Snehvastra • Garment Story</h1>
-          <div class="small">Authenticity & Heritage — Scan to unlock</div>
-        </div>
-      </div>
-      <nav aria-label="Main">
-        <a href="index.html">Home</a>
-        <a href="collection.html">Collection</a>
-        <a href="nfc-story-v2.html" class="active">NFC Story</a>
-      </nav>
-    </header>
 
-    <!-- LEFT: cinematic + story -->
-    <section class="stage" aria-labelledby="stageTitle">
-      <div class="intro" id="stageCanvas" aria-hidden="false">
-        <div class="garment-3d" id="garment3d" role="img" aria-label="Garment preview">
-          <img id="garmentImage" src="images/placeholder-garment.jpg" alt="Garment preview" />
-          <div class="tag" id="garmentTag">SNEHVASTRA — ONE</div>
-        </div>
+<div class="wrap">
 
-        <!-- overlay -->
-        <div class="scan-overlay" aria-hidden="true">
-          <canvas id="particles"></canvas>
-          <div class="unlock-panel" id="unlockPanel" aria-live="polite">
-            <div id="scanStatus" style="font-weight:800">Tap to Scan • NFC</div>
-            <div class="status-list" id="statusList">
-              <div class="status-item"><span class="status-dot" id="s1"></span> Authenticating</div>
-              <div class="status-item"><span class="status-dot" id="s2"></span> Verifying Artisan</div>
-              <div class="status-item"><span class="status-dot" id="s3"></span> Loading Story</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="story" id="storySection" aria-hidden="true">
-        <h2 id="storyTitle">—</h2>
-        <p class="sub" id="storySubtitle">—</p>
-
-        <div class="meta-grid" id="metaGrid" role="list">
-          <div class="chip">
-            <div id="metaArtisan">—</div>
-            <small>Artisan</small>
-          </div>
-          <div class="chip">
-            <div id="metaHours">—</div>
-            <small>Hours</small>
-          </div>
-          <div class="chip">
-            <div id="metaRarity">—</div>
-            <small>Rarity</small>
-          </div>
-        </div>
-
-        <div class="timeline" aria-label="Craft timeline" id="timeline">
-          <!-- steps injected -->
-        </div>
-
-        <div style="display:flex;gap:12px;margin-top:14px;align-items:center">
-          <button class="register-btn" id="registerOwnership">Register Ownership</button>
-          <button class="register-btn" id="shareBtn" style="background:linear-gradient(90deg,#25D366,#128C7E)">Share (WhatsApp)</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- RIGHT: certificate & controls -->
-    <aside class="panel" aria-labelledby="panelTitle">
-      <h3 id="panelTitle">Authenticity Certificate</h3>
-
-      <div class="certificate" aria-live="polite">
-        <div class="cert-row"><strong>ID</strong><span id="certId">—</span></div>
-        <div class="cert-row"><strong>Batch</strong><span id="certBatch">—</span></div>
-        <div class="cert-row"><strong>Weave</strong><span id="certWeave">—</span></div>
-        <div class="cert-row"><strong>Dye</strong><span id="certDye">—</span></div>
-        <div class="cert-row"><strong>Made By</strong><span id="certMaker">—</span></div>
-        <div class="cert-row"><strong>Crafted</strong><span id="certDate">—</span></div>
-      </div>
-
-      <div>
-        <div class="small">Owner</div>
-        <div style="display:flex;gap:8px;margin-top:8px;">
-          <input id="ownerName" class="input" placeholder="Your name (optional)"/>
-        </div>
-        <button class="register-btn" id="claimBtn" style="margin-top:10px">Claim as Owner</button>
-        <div class="small" style="margin-top:12px">Registered owners help build the Snehvastra Collector community.</div>
-      </div>
-
-      <hr style="margin:16px 0;border:none;border-top:1px solid rgba(47,18,66,0.04)"/>
-
-      <h3>Quick Actions</h3>
-      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-        <button class="register-btn" id="downloadCert" style="background:linear-gradient(90deg,#444,#222)">Download Certificate</button>
-        <button class="register-btn" id="careBtn" style="background:linear-gradient(90deg,#f3f3f3,#efefef);color:var(--slate);border:1px solid rgba(47,18,66,0.05)">Care Instructions</button>
-        <button class="register-btn" id="auctionBtn" style="background:linear-gradient(90deg,#ff8a00,#ff3d00)">View Auction</button>
-      </div>
-
-      <div style="margin-top:14px">
-        <div class="small">Pro-tip</div>
-        <div class="small" style="margin-top:6px;color:var(--muted)">Register ownership and share to get early access to future ONE auction drops.</div>
-      </div>
-    </aside>
-
-    <footer>© <span id="year"></span> Snehvastra — Crafted with heritage</footer>
-  </div>
-
-  <!-- AI Orb -->
-  <button class="ai-orb" id="aiOrb" aria-haspopup="dialog" title="Ask Sneh — your garment assistant">
-    <span class="icon">S</span>
-  </button>
-
-  <!-- Modal -->
-  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" role="document">
-      <h4>Ask Sneh — Garment Assistant</h4>
-      <input id="aiInput" class="input" placeholder="Ask: washing, rarity, who made it..." aria-label="Ask your garment"/>
-      <div class="controls" style="margin-top:10px">
-        <button class="register-btn" id="aiAsk">Ask</button>
-        <button class="register-btn" id="aiRead" style="background:linear-gradient(90deg,#f3f3f3,#efefef);color:var(--slate);border:1px solid rgba(47,18,66,0.05)">Read Aloud</button>
-        <button class="register-btn" id="aiClose" style="background:transparent;border:1px solid rgba(47,18,66,0.06);color:var(--muted)">Close</button>
-      </div>
-      <div id="aiResponse" style="margin-top:12px;color:var(--muted);min-height:48px"></div>
+  <header>
+    <div class="brand">
+      <img src="images/logo.final.png" alt="Snehvastra" onclick="location.href='index.html'">
+      <strong>Snehvastra • Garment Story</strong>
     </div>
-  </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="collection.html">Collection</a>
+      <a href="nfc-story.html" class="active">NFC Story</a>
+    </nav>
+  </header>
 
-  <!-- toast -->
-  <div id="toast" role="status" aria-live="polite"></div>
+  <section class="stage">
+    <div class="intro" onclick="unlock()">
+      <div class="garment-3d">
+        <img id="garmentImage" src="images/placeholder-garment.jpg">
+      </div>
+    </div>
 
-  <script>
-    // ---------- Sample garments metadata (would come from server in production) ----------
-    const GARMENTS = {
-      'SV-ONE-1825': {
-        id: 'SV-ONE-1825',
-        name: 'Snehvastra ONE — Loom Edition',
-        image: 'images/blog/loom-1825.jpg',
-        artisan: 'Shyamji',
-        hours: 27,
-        rarity: '1/1',
-        batch: 'ONE-001',
-        weave: 'Handloom - Heritage Matte',
-        dye: 'Madder root (natural)',
-        date: '2025-11-28',
-        story: 'A 200-year-old loom continues weaving in Rajasthan. Seven generations, mindful 27-hour pieces.',
-        timeline: [
-          { step:'Thread Preparation', note:'Hand-sourced cotton and silk blends' },
-          { step:'Loom Setup', note:'Adjustments for matte finish' },
-          { step:'Weaving', note:'27 hours of focused weaving' },
-          { step:'Dye Bath', note:'Natural madder root dye' },
-          { step:'Quality Check', note:'Hand inspection & finishing' },
-          { step:'NFC Activation', note:'Serialized and stitched' }
-        ],
-        auctionEstimate: 45000
-      },
-      'SV-ECHO-003': {
-        id: 'SV-ECHO-003',
-        name: 'Casual Cloud Hoodie — Echo',
-        image: 'images/hoodie-sample.jpg',
-        artisan: 'Meera',
-        hours: 9,
-        rarity: 'Limited (50)',
-        batch: 'ECHO-003',
-        weave: 'Soft Fleece Knit',
-        dye: 'Indigo blend',
-        date: '2025-10-02',
-        story: 'Relaxed urban hoodie, hand-finished cuffs and signature seam.',
-        timeline: [
-          { step:'Knit', note:'Seamless knit machine + hand finish' },
-          { step:'Detailing', note:'Hand-stitched cuffs' },
-          { step:'Dye', note:'Indigo blend, enzyme finish' },
-          { step:'Final', note:'Iron & tag' }
-        ],
-        auctionEstimate: 4999
-      }
-    };
+    <div class="story" id="story" style="display:none">
+      <h2 id="title"></h2>
+      <p id="desc"></p>
 
-    // Pick garment by param ?id=... otherwise default to SV-ONE-1825
-    const urlParams = new URLSearchParams(location.search);
-    const garmentId = urlParams.get('id') || 'SV-ONE-1825';
-    const GAR = GARMENTS[garmentId] || GARMENTS['SV-ONE-1825'];
+      <div class="meta-grid">
+        <div class="chip"><div id="artisan"></div><small>Artisan</small></div>
+        <div class="chip"><div id="hours"></div><small>Hours</small></div>
+        <div class="chip"><div id="rarity"></div><small>Rarity</small></div>
+      </div>
 
-    // DOM refs
-    const garmentImage = document.getElementById('garmentImage');
-    const garmentTag = document.getElementById('garmentTag');
-    const storyTitle = document.getElementById('storyTitle');
-    const storySubtitle = document.getElementById('storySubtitle');
-    const metaArtisan = document.getElementById('metaArtisan');
-    const metaHours = document.getElementById('metaHours');
-    const metaRarity = document.getElementById('metaRarity');
-    const certId = document.getElementById('certId');
-    const certBatch = document.getElementById('certBatch');
-    const certWeave = document.getElementById('certWeave');
-    const certDye = document.getElementById('certDye');
-    const certMaker = document.getElementById('certMaker');
-    const certDate = document.getElementById('certDate');
-    const timelineEl = document.getElementById('timeline');
-    const storySection = document.getElementById('storySection');
-    const s1 = document.getElementById('s1'), s2 = document.getElementById('s2'), s3 = document.getElementById('s3'), scanStatus = document.getElementById('scanStatus');
-    const toast = document.getElementById('toast');
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
 
-    // set year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <aside class="panel">
+    <h3>Authenticity Certificate</h3>
+    <div><strong>ID:</strong> <span id="cid"></span></div>
+    <div><strong>Batch:</strong> <span id="cbatch"></span></div>
+    <div><strong>Weave:</strong> <span id="cweave"></span></div>
 
-    // Particle background - lightweight
-    ;(function particlesInit(){
-      const canvas = document.getElementById('particles');
-      if(!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w,h,particles=[];
-      function resize(){ w=canvas.width=canvas.clientWidth; h=canvas.height=canvas.clientHeight; }
-      window.addEventListener('resize', resize); resize();
+    <button class="register-btn" onclick="downloadCert()">Download Certificate</button>
+    <button class="register-btn" onclick="share()">Share on WhatsApp</button>
+    <button class="register-btn" onclick="location.href='auction.html'">Go to Auction</button>
+  </aside>
 
-      function create(){ for(let i=0;i<65;i++){ particles.push({
-        x: Math.random()*w, y: Math.random()*h,
-        vx:(Math.random()-0.5)*0.3, vy:(Math.random()-0.3)*0.3,
-        r: Math.random()*2.4+0.6, alpha: Math.random()*0.8+0.2
-      })} }
-      create();
-      function draw(){
-        ctx.clearRect(0,0,w,h);
-        particles.forEach(p=>{
-          p.x += p.vx; p.y += p.vy;
-          if(p.x< -10) p.x=w+10; if(p.x> w+10) p.x=-10;
-          if(p.y< -10) p.y=h+10; if(p.y> h+10) p.y=-10;
-          ctx.beginPath();
-          ctx.fillStyle = 'rgba(58,15,90,'+(p.alpha*0.7)+')';
-          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-          ctx.fill();
-        });
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
+  <footer>© <span id="year"></span> Snehvastra</footer>
 
-    // Simulated unlock sequence — cinematic
-    function runUnlockSequence(cb){
-      // reset
-      [s1,s2,s3].forEach(d=>d.classList.remove('on'));
-      scanStatus.textContent = 'Authenticating garment...';
-      storySection.setAttribute('aria-hidden','true');
+</div>
 
-      // subtle 3D tilt animate
-      const g3 = document.getElementById('garment3d');
-      g3.style.transform = 'rotateX(6deg) rotateY(18deg) translateZ(6px)';
+<script>
+const GARMENT={
+  id:"SV-ONE-1825",
+  title:"Snehvastra ONE — Loom Edition",
+  desc:"Handloom crafted by Shyamji over 27 hours using natural dye.",
+  artisan:"Shyamji",
+  hours:"27",
+  rarity:"1/1",
+  batch:"ONE-001",
+  weave:"Handloom",
+  image:"images/blog/loom-1825.jpg",
+  timeline:["Thread Prep","Loom Setup","Weaving","Natural Dye","Finishing"]
+};
 
-      setTimeout(()=>{ s1.classList.add('on'); scanStatus.textContent='Verifying artisan...'; g3.style.transform='rotateX(4deg) rotateY(6deg) translateZ(4px)'; }, 900);
-      setTimeout(()=>{ s2.classList.add('on'); scanStatus.textContent='Matching heritage pattern...'; g3.style.transform='rotateX(2deg) rotateY(-6deg) translateZ(2px)'; }, 1700);
-      setTimeout(()=>{ s3.classList.add('on'); scanStatus.textContent='Loading story...'; g3.style.transform='rotateX(0deg) rotateY(0deg) translateZ(0px)'; }, 2600);
-      setTimeout(()=>{ scanStatus.textContent='Unlocked • Story ready'; storySection.setAttribute('aria-hidden','false'); if(cb) cb(); }, 3200);
-    }
+document.getElementById("year").textContent=new Date().getFullYear();
 
-    // Populate UI with metadata
-    function populateGarment(g){
-      garmentImage.src = g.image || 'images/placeholder-garment.jpg';
-      garmentImage.onerror = ()=> garmentImage.src='images/placeholder-garment.jpg';
-      garmentTag.textContent = g.name.split('—')[0] || g.name;
-      storyTitle.textContent = g.name;
-      storySubtitle.textContent = g.story;
-      metaArtisan.textContent = g.artisan;
-      metaHours.textContent = g.hours + ' hrs';
-      metaRarity.textContent = g.rarity;
-      certId.textContent = g.id;
-      certBatch.textContent = g.batch;
-      certWeave.textContent = g.weave;
-      certDye.textContent = g.dye;
-      certMaker.textContent = g.artisan;
-      certDate.textContent = g.date;
+function unlock(){
+  document.getElementById("story").style.display="block";
+  document.getElementById("title").textContent=GARMENT.title;
+  document.getElementById("desc").textContent=GARMENT.desc;
+  document.getElementById("artisan").textContent=GARMENT.artisan;
+  document.getElementById("hours").textContent=GARMENT.hours+" hrs";
+  document.getElementById("rarity").textContent=GARMENT.rarity;
+  document.getElementById("cid").textContent=GARMENT.id;
+  document.getElementById("cbatch").textContent=GARMENT.batch;
+  document.getElementById("cweave").textContent=GARMENT.weave;
+  document.getElementById("garmentImage").src=GARMENT.image;
 
-      // build timeline
-      timelineEl.innerHTML = '';
-      g.timeline.forEach(t => {
-        const step = document.createElement('div'); step.className='step';
-        step.innerHTML = `<div class="dot" aria-hidden="true"></div><div><h4>${t.step}</h4><p>${t.note}</p></div>`;
-        timelineEl.appendChild(step);
-      });
-    }
+  let t=document.getElementById("timeline"); t.innerHTML="";
+  GARMENT.timeline.forEach(s=>{
+    let d=document.createElement("div");
+    d.className="step";
+    d.innerHTML=`<div class="dot"></div><div>${s}</div>`;
+    t.appendChild(d);
+  });
+}
 
-    // Register ownership
-    function showToast(msg, timeout=2800){
-      toast.textContent = msg; toast.style.display = 'block'; toast.style.opacity = '1';
-      setTimeout(()=>{ toast.style.opacity='0'; setTimeout(()=> toast.style.display='none',300); }, timeout);
-    }
+function downloadCert(){
+  const text=`SNEHVASTRA CERTIFICATE\nID: ${GARMENT.id}\nArtisan: ${GARMENT.artisan}`;
+  const blob=new Blob([text],{type:"text/plain"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=GARMENT.id+".txt";
+  a.click();
+}
 
-    // share via WhatsApp
-    function shareWhatsApp(){
-      const text = `🔥 Check my Snehvastra piece: ${GAR.name}\nID: ${GAR.id}\nMade by: ${GAR.artisan}\nStory: ${GAR.story}\nView: ${location.href}`;
-      const url = `https://wa.me/917597152209?text=${encodeURIComponent(text)}`;
-      window.open(url,'_blank');
-    }
+function share(){
+  window.open("https://wa.me/917597152209?text="+encodeURIComponent(GARMENT.title));
+}
+</script>
 
-    // claim owner
-    function claimOwner(name){
-      const owners = JSON.parse(localStorage.getItem('sneh_owners')||'{}');
-      owners[GAR.id] = { name: name || 'Anonymous', date: new Date().toISOString() };
-      localStorage.setItem('sneh_owners', JSON.stringify(owners));
-      showToast('Ownership recorded — welcome to the Collector community!');
-      updateOwnerUI();
-    }
-
-    function updateOwnerUI(){
-      const owners = JSON.parse(localStorage.getItem('sneh_owners')||'{}');
-      const owner = owners[GAR.id];
-      const ownerNameInput = document.getElementById('ownerName');
-      if(owner){ ownerNameInput.value = owner.name; ownerNameInput.disabled = true; document.getElementById('claimBtn').textContent = 'Owned • Thank you'; document.getElementById('claimBtn').disabled = true; }
-    }
-
-    // download certificate (simple text file)
-    function downloadCertificate(){
-      const txt = `SNEHVASTRA AUTHENTICITY CERTIFICATE\n\nID: ${GAR.id}\nName: ${GAR.name}\nArtisan: ${GAR.artisan}\nBatch: ${GAR.batch}\nWeave: ${GAR.weave}\nDye: ${GAR.dye}\nCrafted: ${GAR.date}\nRarity: ${GAR.rarity}\n\nStory:\n${GAR.story}\n\nIssued: ${new Date().toLocaleString()}`;
-      const blob = new Blob([txt], { type: 'text/plain' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `${GAR.id}-certificate.txt`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }
-
-    // Care instructions panel
-    function showCare(){
-      const care = `Care Instructions for ${GAR.name}:\n• Cold hand wash only\n• Use mild detergent\n• Air dry in shade\n• Iron low heat inside-out\n\nWarranty: 2-year dye & stitch guarantee.`;
-      alert(care);
-    }
-
-    // AI assistant simple rule-based
-    function answerAI(q){
-      const Q = (q||'').toLowerCase();
-      if(Q.includes('wash') || Q.includes('care')) return `Care: Cold hand wash only. Avoid chlorine. Detailed care in the certificate.`;
-      if(Q.includes('who') || Q.includes('artisan')) return `This piece was made by ${GAR.artisan}. They are a master artisan carrying a family tradition.`;
-      if(Q.includes('rare') || Q.includes('rarity') ) return `Rarity: ${GAR.rarity}. Auction estimate ₹${(GAR.auctionEstimate || 0).toLocaleString()}.`;
-      if(Q.includes('hours') || Q.includes('time')) return `It took approximately ${GAR.hours} focused hours to craft this piece.`;
-      if(Q.includes('dye')) return `Dye used: ${GAR.dye}. Natural dyes recommended gentle care.`;
-      if(Q.includes('what') || Q.includes('story')) return GAR.story;
-      return "Try: 'How to wash?', 'Who made this?', 'Is it rare?', 'What dye was used?'";
-    }
-
-    // INIT flow: show short cinematic then populate
-    populateGarment(GAR);
-    // Hide story until unlocked
-    storySection.setAttribute('aria-hidden','true');
-
-    // Click to simulate NFC scan - clicking the unlock panel
-    document.getElementById('unlockPanel').addEventListener('click', ()=>{
-      runUnlockSequence(()=>{ storySection.style.opacity='1'; populateGarment(GAR); updateOwnerUI(); });
-    });
-
-    // also allow clicking garment 3D to trigger
-    document.getElementById('garment3d').addEventListener('click', ()=>{
-      runUnlockSequence(()=>{ storySection.style.opacity='1'; populateGarment(GAR); updateOwnerUI(); });
-    });
-
-    // buttons
-    document.getElementById('registerOwnership').addEventListener('click', ()=>{
-      const name = prompt('Enter name to register ownership (public):') || '';
-      if(name.trim() === '') { showToast('Registration cancelled'); return; }
-      claimOwner(name.trim());
-    });
-
-    document.getElementById('shareBtn').addEventListener('click', shareWhatsApp);
-    document.getElementById('downloadCert').addEventListener('click', downloadCertificate);
-    document.getElementById('careBtn').addEventListener('click', showCare);
-    document.getElementById('auctionBtn').addEventListener('click', ()=> { location.href='auction.html'; });
-
-    // Claim from right panel
-    document.getElementById('claimBtn').addEventListener('click', ()=>{
-      const nm = document.getElementById('ownerName').value.trim();
-      if(!nm){ showToast('Please enter a name'); return; }
-      claimOwner(nm);
-      document.getElementById('ownerName').disabled = true;
-    });
-
-    // AI modal
-    const aiOrb = document.getElementById('aiOrb'), modal = document.getElementById('modalBackdrop');
-    aiOrb.addEventListener('click', ()=> { modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false'); document.getElementById('aiInput').focus(); });
-    document.getElementById('aiClose').addEventListener('click', ()=> { modal.style.display='none'; modal.setAttribute('aria-hidden','true'); });
-    document.getElementById('aiAsk').addEventListener('click', ()=>{
-      const q = document.getElementById('aiInput').value.trim();
-      const out = document.getElementById('aiResponse');
-      if(!q){ out.textContent = "Try: 'How to wash', 'Who made it', 'Is it rare'"; return; }
-      out.textContent = answerAI(q);
-    });
-    document.getElementById('aiRead').addEventListener('click', ()=>{
-      const txt = document.getElementById('aiResponse').textContent || GAR.story;
-      if('speechSynthesis' in window){
-        const u = new SpeechSynthesisUtterance(txt); u.rate = 0.95; speechSynthesis.speak(u);
-      } else { showToast('Voice not supported'); }
-    });
-
-    // allow enter to ask
-    document.getElementById('aiInput').addEventListener('keyup', (e)=>{ if(e.key==='Enter'){ document.getElementById('aiAsk').click(); } });
-
-    // update owner UI on load
-    updateOwnerUI();
-
-    // small accessibility: keyboard ESC closes modal
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); } });
-
-    // small guided initial unlock hint
-    setTimeout(()=> showToast('Tip: Tap the small panel or the garment to scan & unlock'), 1200);
-  </script>
-
-  <!-- Analytics (keep existing GA id if you want) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-  </script>
 </body>
 </html>
