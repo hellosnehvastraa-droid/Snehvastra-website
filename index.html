@@ -98,7 +98,7 @@
       position:fixed;
       top:0;
       right:-100%;
-      width:280px;
+      width:300px;
       height:100vh;
       background:rgba(255,255,255,0.98);
       backdrop-filter:blur(20px);
@@ -149,31 +149,76 @@
       padding:4px;
     }
 
-    .mobile-nav ul{
+    /* ✅ PRIMARY NAV SECTION */
+    .primary-nav{
+      list-style:none;
+      margin:0 0 24px 0;
+      padding:0;
+      border-bottom:1px solid rgba(183,185,189,0.08);
+    }
+
+    .primary-nav li{
+      margin-bottom:4px;
+    }
+
+    .primary-nav a{
+      display:block;
+      text-decoration:none;
+      font-weight:700;
+      font-size:1rem;
+      padding:14px 16px;
+      border-radius:12px;
+      color:var(--purple);
+      transition:all var(--ease);
+      border-left:3px solid transparent;
+    }
+
+    .primary-nav a:hover,
+    .primary-nav a.active{
+      background:rgba(58,15,90,0.08);
+      border-left-color:var(--purple);
+    }
+
+    /* ✅ SECONDARY SECTIONS */
+    .drawer-section{
+      margin-bottom:28px;
+    }
+
+    .drawer-section h4{
+      font-family:'Clash Display',serif;
+      font-size:0.95rem;
+      color:var(--purple);
+      margin:0 0 16px 0;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+
+    .drawer-section ul{
       list-style:none;
       margin:0;
       padding:0;
     }
 
-    .mobile-nav li{
-      margin-bottom:8px;
+    .drawer-section li{
+      margin-bottom:4px;
     }
 
-    .mobile-nav a{
+    .drawer-section a{
       display:block;
       text-decoration:none;
       font-weight:600;
-      font-size:0.95rem;
-      padding:12px 16px;
-      border-radius:12px;
+      font-size:0.9rem;
+      padding:10px 12px;
+      border-radius:10px;
       color:var(--slate-mid);
       transition:all var(--ease);
     }
 
-    .mobile-nav a:hover,
-    .mobile-nav a.active{
-      background:rgba(58,15,90,0.08);
+    .drawer-section a:hover{
+      background:rgba(58,15,90,0.05);
       color:var(--purple);
+      padding-left:16px;
     }
 
     nav{
@@ -372,7 +417,7 @@
       <span></span>
     </button>
 
-    <!-- ✅ DESKTOP NAV (UNCHANGED) -->
+    <!-- ✅ DESKTOP NAV (PRIMARY 5 LINKS ONLY) -->
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
@@ -386,7 +431,7 @@
   </div>
 </header>
 
-<!-- ✅ MOBILE DRAWER -->
+<!-- ✅ ENHANCED MOBILE DRAWER -->
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <div class="mobile-drawer" id="mobileDrawer">
   <div class="drawer-header">
@@ -400,16 +445,70 @@
     <button class="drawer-close" id="drawerClose">&times;</button>
   </div>
   
-  <nav class="mobile-nav">
+  <!-- ✅ PRIMARY NAV (BOLD/PROMINENT) -->
+  <ul class="primary-nav">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="auction.html">Auction</a></li>
+    <li><a href="wishlist.html">Wishlist</a></li>
+    <li><a href="cart.html">Cart (<span id="mobileCartCount">0</span>)</a></li>
+  </ul>
+
+  <!-- ✅ AUTH SECTION -->
+  <div id="mobileAuthArea" class="drawer-section">
+    <ul></ul>
+  </div>
+
+  <!-- ✅ SHOP & INFO SECTIONS -->
+  <div class="drawer-section">
+    <h4>Shop</h4>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="collection.html">Collection</a></li>
-      <li><a href="auction.html">Auction</a></li>
-      <li><a href="wishlist.html">Wishlist</a></li>
-      <li><a href="cart.html">Cart (<span id="mobileCartCount">0</span>)</a></li>
-      <li id="mobileAuthArea"></li>
+      <li><a href="checkout.html">Checkout</a></li>
+      <li><a href="mini-cart.html">Mini Cart</a></li>
+      <li><a href="product-single.html">Product</a></li>
+      <li><a href="customize.html">Customize</a></li>
+      <li><a href="size-guide.html">Size Guide</a></li>
     </ul>
-  </nav>
+  </div>
+
+  <div class="drawer-section">
+    <h4>Account</h4>
+    <ul>
+      <li><a href="order-history.html">Order History</a></li>
+      <li><a href="user-login.html">Login</a></li>
+      <li><a href="user-register.html">Register</a></li>
+    </ul>
+  </div>
+
+  <div class="drawer-section">
+    <h4>Info</h4>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="nfc-story.html">NFC Story</a></li>
+      <li><a href="shipping.html">Shipping</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="drawer-section">
+    <h4>Legal</h4>
+    <ul>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="return-policy.html">Returns</a></li>
+    </ul>
+  </div>
+
+  <!-- ✅ BLOG SECTION -->
+  <div class="drawer-section">
+    <h4>Blog</h4>
+    <ul>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="blog-single.html">Blog Post</a></li>
+    </ul>
+  </div>
 </div>
 
 <section class="hero">
@@ -440,7 +539,7 @@
 <script>
   const USER_KEY = "snehvastra_user";
 
-  // ✅ DESKTOP AUTH (UNCHANGED)
+  // ✅ DESKTOP + MOBILE AUTH (ENHANCED)
   const user = JSON.parse(localStorage.getItem(USER_KEY));
   const authArea = document.getElementById("authArea");
   const mobileAuthArea = document.getElementById("mobileAuthArea");
@@ -452,10 +551,11 @@
         <button class="logout-btn" onclick="logout()">Logout</button>
       `;
       mobileAuthArea.innerHTML = `
-        <li>
-          <span class="user-badge" style="display:block;padding:12px 16px;font-size:0.95rem;font-weight:600;color:var(--purple);">Hi, ${user.name}</span>
-        </li>
-        <li><a href="#" onclick="logout();return false;" style="justify-content:flex-start;"><span>Logout</span></a></li>
+        <h4>Account</h4>
+        <ul>
+          <li><span style="display:block;padding:12px 12px;font-size:0.95rem;font-weight:700;color:var(--purple);">Hi, ${user.name}</span></li>
+          <li><a href="#" onclick="logout();return false;" style="justify-content:flex-start;padding:10px 12px;font-weight:600;color:var(--slate);">Logout</a></li>
+        </ul>
       `;
     } else {
       authArea.innerHTML = `
@@ -463,8 +563,11 @@
         <a href="user-register.html">Register</a>
       `;
       mobileAuthArea.innerHTML = `
-        <li><a href="user-login.html">Login</a></li>
-        <li><a href="user-register.html">Register</a></li>
+        <h4>Account</h4>
+        <ul>
+          <li><a href="user-login.html">Login</a></li>
+          <li><a href="user-register.html">Register</a></li>
+        </ul>
       `;
     }
   }
@@ -508,13 +611,10 @@
   closeBtn.addEventListener("click", closeDrawer);
   overlay.addEventListener("click", closeDrawer);
 
-  // ✅ ACTIVE NAV TRACKING
+  // ✅ ACTIVE NAV TRACKING (ALL LINKS)
   function setActiveNav(){
     const currentPath = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll("nav a").forEach(link => {
-      link.classList.toggle("active", link.getAttribute("href") === currentPath);
-    });
-    document.querySelectorAll(".mobile-nav a").forEach(link => {
+    document.querySelectorAll("nav a, .primary-nav a, .drawer-section a").forEach(link => {
       link.classList.toggle("active", link.getAttribute("href") === currentPath);
     });
   }
