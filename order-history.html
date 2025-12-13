@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#3A0F5A" />
+<title>Order History — Snehvastra Collector</title>
+<meta name="description" content="View your Snehvastra orders, auction wins, tracking, and reorders." />
+
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F7F6F9; --paper:#fff; --purple:#3A0F5A;
+  --muted:#8E8F92; --slate:#1F2024;
+  --radius:14px; --max:1200px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Poppins,sans-serif;
+  background:linear-gradient(180deg,var(--bg),#f0eff3);
+  color:var(--slate);
+}
+.wrap{max-width:var(--max);margin:auto;padding:24px}
+
+/* Header */
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 0;position:sticky;top:0;background:#fff;z-index:100;
+}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:48px;cursor:pointer}
+nav a{margin-left:12px;text-decoration:none;font-weight:600;color:var(--muted);padding:8px 12px;border-radius:10px}
+nav a.active,nav a:hover{background:#f1eef6;color:var(--purple)}
+
+/* Hero */
+.hero{
+  margin:28px 0;background:#fff;border-radius:22px;padding:28px;
+  box-shadow:0 30px 80px rgba(58,15,90,.05);
+  display:grid;grid-template-columns:200px 1fr;gap:28px
+}
+.avatar{
+  width:180px;height:180px;border-radius:20px;background:#faf9fd;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:12px
+}
+.avatar img{width:100%;height:120px;object-fit:cover;border-radius:12px}
+.collector-name{font-family:"Clash Display",serif;font-size:1.4rem;color:var(--purple)}
+
+.metrics{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px}
+.metric{background:#fbfbff;padding:14px 18px;border-radius:12px;text-align:center;min-width:140px}
+.metric h4{font-family:"Clash Display";color:var(--purple);margin:0}
+.metric p{margin:6px 0 0;color:var(--muted)}
+
+/* Banner */
+.banner{
+  background:linear-gradient(90deg,#ece7f6,#f5f3fb);
+  padding:12px 16px;border-radius:12px;
+  display:flex;justify-content:space-between;align-items:center;
+  margin:18px 0
+}
+
+/* Controls */
+.controls{display:flex;gap:12px;margin:20px 0;flex-wrap:wrap}
+.controls input,.controls select{
+  padding:12px 16px;border-radius:12px;border:1px solid rgba(0,0,0,.08)
+}
+
+/* Table */
+.panel{
+  background:#fff;border-radius:14px;padding:18px;
+  box-shadow:0 20px 60px rgba(58,15,90,.04)
+}
+table{width:100%;border-collapse:collapse}
+thead th{text-align:left;font-size:.8rem;color:var(--muted);padding:12px}
+tbody td{padding:14px;border-top:1px solid #eee}
+
+.status{padding:6px 12px;border-radius:999px;font-weight:700;font-size:.8rem}
+.completed{background:#def4e5;color:#1d7a3e}
+.processing{background:#fff3c4;color:#9a6d00}
+.shipped{background:#e4fdff;color:#0b7b82}
+.auction{background:#ede5f7;color:#3A0F5A}
+
+.action{padding:8px 12px;border-radius:10px;border:1px solid #ddd;background:#fff;cursor:pointer}
+
+/* Modal */
+.modal-back{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:500}
+.modal{background:#fff;padding:20px;border-radius:14px;width:100%;max-width:720px}
+
+footer{text-align:center;margin:28px 0;color:var(--muted)}
+
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
+.avatar{margin:auto}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <img src="images/logo.final.png" onclick="location.href='index.html'">
+    <strong>Snehvastra Collector</strong>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="collection.html">Collection</a>
+    <a href="auction.html">Auction</a>
+    <a href="order-history.html" class="active">Orders</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="avatar">
+    <img src="images/avatar-placeholder.png">
+    <div class="collector-name" id="collectorName">Collector</div>
+    <small>Member since 2024</small>
+  </div>
+
+  <div>
+    <h2 style="margin:0;font-family:'Clash Display'">Your Order Dashboard</h2>
+
+    <div class="metrics">
+      <div class="metric"><h4 id="spent">₹0</h4><p>Total Spent</p></div>
+      <div class="metric"><h4 id="orders">0</h4><p>Orders</p></div>
+      <div class="metric"><h4 id="pieces">0</h4><p>Pieces</p></div>
+      <div class="metric"><h4 id="wins">0</h4><p>Auction Wins</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="banner">
+  <div>🔥 SNEHVASTRA ONE AUCTION</div>
+  <div id="auctionTimer">Loading…</div>
+</div>
+
+<div class="controls">
+  <input id="search" placeholder="Search orders">
+  <select id="filter">
+    <option value="all">All</option>
+    <option value="processing">Processing</option>
+    <option value="shipped">Shipped</option>
+    <option value="completed">Completed</option>
+    <option value="auction">Auction</option>
+  </select>
+</div>
+
+<section class="panel">
+  <div id="ordersContainer"></div>
+</section>
+
+<footer>© <span id="year"></span> Snehvastra</footer>
+
+</div>
+
+<div class="modal-back" id="modalBack">
+  <div class="modal">
+    <h3>Order Details</h3>
+    <div id="modalContent"></div>
+    <button class="action" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+const ORDERS_KEY="sneh_orders";
+const CART_KEY="snehvastra_cart";
+
+if(!localStorage.getItem(ORDERS_KEY)){
+localStorage.setItem(ORDERS_KEY,JSON.stringify([
+{ id:"#SNV-1001",date:"2025-11-25",items:[{sku:"Cloud Hoodie",qty:1,price:1999}],total:1999,status:"completed",type:"standard",tracking:"DTDC123"},
+{ id:"#SNV-1002",date:"2025-11-28",items:[{sku:"ONE 1/1",qty:1,price:3499}],total:3499,status:"auction",type:"auction",tracking:null}
+]));
+}
+
+const readOrders=()=>JSON.parse(localStorage.getItem(ORDERS_KEY)||"[]");
+const fmt=n=>"₹"+n.toLocaleString("en-IN");
+
+function render(){
+const q=document.getElementById("search").value.toLowerCase();
+const f=document.getElementById("filter").value;
+let o=readOrders().filter(x=>{
+if(f!=="all" && x.status!==f) return false;
+return x.id.toLowerCase().includes(q) || x.items.some(i=>i.sku.toLowerCase().includes(q));
+});
+
+let html=`<table><thead><tr><th>Order</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody>`;
+o.forEach(x=>{
+const qty=x.items.reduce((a,b)=>a+b.qty,0);
+html+=`
+<tr>
+<td>${x.id}</td>
+<td>${x.date}</td>
+<td>${qty}</td>
+<td>${fmt(x.total)}</td>
+<td><span class="status ${x.status}">${x.status.toUpperCase()}</span></td>
+<td>
+<button class="action" onclick="view('${x.id}')">Details</button>
+<button class="action" onclick="reorder('${x.id}')">Reorder</button>
+</td>
+</tr>`;
+});
+html+="</tbody></table>";
+document.getElementById("ordersContainer").innerHTML=html;
+
+document.getElementById("orders").textContent=o.length;
+document.getElementById("spent").textContent=fmt(o.reduce((s,x)=>s+x.total,0));
+document.getElementById("pieces").textContent=o.reduce((s,x)=>s+x.items.reduce((a,b)=>a+b.qty,0),0);
+document.getElementById("wins").textContent=o.filter(x=>x.type==="auction").length;
+}
+
+function view(id){
+const o=readOrders().find(x=>x.id===id);
+document.getElementById("modalContent").innerHTML=
+`<p>Status: ${o.status}</p>
+<p>Total: ${fmt(o.total)}</p>
+<p>Items: ${o.items.map(i=>i.sku+" ×"+i.qty).join(", ")}</p>`;
+document.getElementById("modalBack").style.display="flex";
+}
+function closeModal(){document.getElementById("modalBack").style.display="none"}
+
+function reorder(id){
+const o=readOrders().find(x=>x.id===id);
+let cart=JSON.parse(localStorage.getItem(CART_KEY)||"{}");
+o.items.forEach(i=>{
+const key=i.sku+"_"+i.price;
+cart[key]=(cart[key]||0)+i.qty;
+});
+localStorage.setItem(CART_KEY,JSON.stringify(cart));
+location.href="cart.html";
+}
+
+document.getElementById("search").oninput=render;
+document.getElementById("filter").onchange=render;
+document.getElementById("collectorName").textContent=localStorage.getItem("sneh_collector_name")||"Abhi Shek";
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* Auction timer */
+const AUCTION=new Date("2025-12-01T18:00:00").getTime();
+setInterval(()=>{
+const now=Date.now(),d=AUCTION-now;
+document.getElementById("auctionTimer").textContent=
+d>0?Math.floor(d/864e5)+"d "+Math.floor(d%864e5/36e5)+"h":"LIVE NOW!";
+},1000);
+
+render();
+</script>
+
+</body>
+</html>
