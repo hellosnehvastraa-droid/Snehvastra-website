@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#3A0F5A" />
 
   <title>Customer Reviews — Snehvastra</title>
-  <meta name="description" content="4.9⭐ from 1,247+ real collectors. Read how Snehvastra has become India's leading handcrafted luxury experience." />
+  <meta name="description" content="4.9⭐ from 1,247+ verified collectors. Read how Snehvastra became India’s most trusted handcrafted luxury streetwear brand." />
 
   <!-- SEO: Review Schema -->
   <script type="application/ld+json">
@@ -18,18 +18,11 @@
       "@type":"AggregateRating",
       "ratingValue":"4.9",
       "reviewCount":"1247"
-    },
-    "review":[
-      {
-        "@type":"Review",
-        "author":"Rajiv Rao",
-        "reviewRating":{"@type":"Rating","ratingValue":5},
-        "reviewBody":"Jaipur artisans are unreal. Zero defects. Perfect stitch."
-      }
-    ]
+    }
   }
   </script>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -52,6 +45,7 @@
       font-family:'Poppins',sans-serif;
       color:var(--slate);
       line-height:1.7;
+      -webkit-font-smoothing:antialiased;
     }
 
     /* HEADER */
@@ -59,14 +53,14 @@
       position:sticky; top:0;
       background:rgba(255,255,255,0.98);
       backdrop-filter:blur(8px);
-      padding:20px 5%;
+      padding:16px 5%;
       display:flex; align-items:center; justify-content:space-between;
       border-bottom:1px solid rgba(0,0,0,0.04);
       z-index:100;
       max-width:var(--max-w); margin:0 auto;
     }
-    .logo{height:52px;filter:drop-shadow(0 0 6px rgba(58,15,90,0.3))}
-    nav ul{display:flex;list-style:none;gap:16px;margin:0;padding:0}
+    .logo{height:48px;cursor:pointer}
+    nav ul{display:flex;list-style:none;gap:16px;margin:0;padding:0;align-items:center}
     nav a{
       color:var(--muted);text-decoration:none;
       font-weight:600; padding:8px 12px;
@@ -80,12 +74,13 @@
     #cartCount{
       background:var(--purple);
       padding:2px 8px; border-radius:999px;
-      color:white; margin-left:3px; font-size:.8rem;
+      color:white; margin-left:4px; font-size:.8rem;
     }
 
     /* AUCTION STRIP */
     .auction-banner{
-      margin:0 5%; margin-top:10px;
+      margin:12px auto 0;
+      max-width:var(--max-w);
       background:linear-gradient(135deg,var(--purple),var(--accent));
       color:white; padding:14px;
       border-radius:var(--radius);
@@ -95,7 +90,7 @@
     .auction-timer{
       margin-left:8px; background:white;
       padding:4px 12px; border-radius:10px;
-      color:var(--slate); font-weight:600;
+      color:var(--slate); font-weight:700;
       font-family:'Clash Display',serif;
     }
 
@@ -103,7 +98,7 @@
     main{
       max-width:var(--max-w);
       margin:0 auto;
-      padding:180px 5% 120px;
+      padding:120px 5% 120px;
     }
 
     /* HERO */
@@ -118,7 +113,7 @@
     }
     .hero h1{
       margin:20px 0;
-      font-size:4rem;
+      font-size:3.8rem;
       font-family:'Clash Display',serif;
       background:linear-gradient(135deg,var(--purple),var(--accent));
       -webkit-background-clip:text;
@@ -131,7 +126,7 @@
       font-weight:700;
     }
     .hero .sub{
-      color:var(--muted); font-size:1.2rem;
+      color:var(--muted); font-size:1.1rem;
     }
 
     /* STAT BAR */
@@ -154,7 +149,9 @@
 
     /* REVIEWS */
     .reviews{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:32px;
     }
     .card{
       background:white;
@@ -162,12 +159,14 @@
       border-radius:var(--radius);
       border:1px solid rgba(0,0,0,0.04);
       box-shadow:0 20px 60px rgba(58,15,90,0.1);
+      transition:.25s;
     }
+    .card:hover{transform:translateY(-4px)}
     .card.featured{
       border-top:5px solid var(--purple);
       transform:scale(1.02);
     }
-    .header{
+    .review-header{
       display:flex;gap:16px;align-items:center;margin-bottom:20px;
     }
     .avatar{
@@ -177,7 +176,7 @@
       color:white;display:flex;align-items:center;justify-content:center;
       font-weight:700;font-size:1rem;
     }
-    .name{font-weight:600;margin-bottom:4px}
+    .name{font-weight:700;margin-bottom:4px}
     .meta{color:var(--muted);font-size:.9rem;margin-top:16px}
 
     /* CTA BLOCK */
@@ -207,7 +206,6 @@
     }
     .cta-btn:hover{transform:translateY(-4px)}
 
-    /* FOOTER */
     footer{
       margin-top:100px;
       text-align:center;
@@ -215,21 +213,21 @@
       background:rgba(255,255,255,0.85);
       border-top:1px solid rgba(0,0,0,0.05);
       color:var(--muted);
+      font-weight:600;
     }
 
     @media(max-width:768px){
       .hero{padding:60px 28px}
       .cta{padding:50px 22px}
-      main{padding:150px 20px}
+      main{padding:100px 20px}
     }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
-  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <a href="index.html"><img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" /></a>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -241,7 +239,6 @@
   </nav>
 </header>
 
-<!-- AUCTION -->
 <div class="auction-banner">
   🔥 SNEHVASTRA ONE AUCTION
   <span class="auction-timer" id="auctionTimer">Loading...</span>
@@ -249,18 +246,16 @@
 
 <main>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="stars">⭐⭐⭐⭐⭐</div>
     <div class="score">4.9</div>
     <div class="sub">Based on 1,247 Verified Collectors</div>
     <h1>Stories That Build Legacy</h1>
     <p style="color:var(--muted);max-width:650px;margin:0 auto;">
-      Each Snehvastra piece lives many lives — through craft, through memory, and through our collectors.
+      Each Snehvastra piece lives many lives — through craft, memory, and the collectors who wear them.
     </p>
   </section>
 
-  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat"><div class="stat-number">98%</div><div>Repeat Buyers</div></div>
     <div class="stat"><div class="stat-number">24h</div><div>Avg Support Reply</div></div>
@@ -268,15 +263,14 @@
     <div class="stat"><div class="stat-number">5⭐</div><div>Craft Rating</div></div>
   </div>
 
-  <!-- REVIEWS -->
   <div class="reviews">
 
     <div class="card featured">
-      <div class="header">
+      <div class="review-header">
         <div class="avatar">RR</div>
         <div>
           <div class="name">Rajiv Rao</div>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div>⭐⭐⭐⭐⭐</div>
         </div>
       </div>
       <p>“Feels like wearing heritage. The stitch accuracy is unreal. This isn't fashion — this is culture.”</p>
@@ -284,11 +278,11 @@
     </div>
 
     <div class="card">
-      <div class="header">
+      <div class="review-header">
         <div class="avatar">AS</div>
         <div>
           <div class="name">Anika Sharma</div>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div>⭐⭐⭐⭐⭐</div>
         </div>
       </div>
       <p>“Auction piece came exactly as promised. Packaging alone feels luxury. Will bid again.”</p>
@@ -296,32 +290,31 @@
     </div>
 
     <div class="card">
-      <div class="header">
+      <div class="review-header">
         <div class="avatar">VK</div>
         <div>
           <div class="name">Vikram Kapoor</div>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div>⭐⭐⭐⭐⭐</div>
         </div>
       </div>
-      <p>“Wore the Overshirt to a product launch. People asked if it's international brand — Nope, Jaipur-made.”</p>
+      <p>“Wore the Overshirt to a launch event. People asked if it's international — Nope, Jaipur-made.”</p>
       <div class="meta">Overshirt • 3 weeks ago</div>
     </div>
 
     <div class="card">
-      <div class="header">
+      <div class="review-header">
         <div class="avatar">PS</div>
         <div>
           <div class="name">Priya Sen</div>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div>⭐⭐⭐⭐⭐</div>
         </div>
       </div>
-      <p>“Size issue fixed in two hours. Never seen support this fast in India.”</p>
+      <p>“Size issue fixed within two hours. Never seen support this fast in India.”</p>
       <div class="meta">Signature Tee • 1 month ago</div>
     </div>
 
   </div>
 
-  <!-- CTA -->
   <section class="cta">
     <h2>Join India’s Fastest Growing Luxury Movement</h2>
     <a href="collection.html" class="cta-btn">Explore Collection</a>
@@ -333,14 +326,14 @@
   © <span id="currentYear"></span> Snehvastra • 1,247+ Collectors Strong
 </footer>
 
-<!-- JS -->
 <script>
-  /* Cart */
-  let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-  document.getElementById('cartCount').textContent =
-    Object.values(cart).reduce((a,b)=>a+b,0);
+  function updateCartCount(){
+    const cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    const total = Object.values(cart).reduce((a,b)=>a + b.qty,0);
+    document.getElementById('cartCount').textContent = total;
+  }
+  updateCartCount();
 
-  /* Auction Timer */
   const auctionDate = new Date('2025-12-01T18:00:00').getTime();
   setInterval(()=>{
     const now = Date.now();
