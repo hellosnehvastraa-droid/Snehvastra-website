@@ -3,585 +3,462 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>Signature Tee — Matte Black — Snehvastra</title>
-  <meta name="description" content="Signature Tee — Matte Black. Handcrafted by Rajasthan master artisans with natural dyes and premium cotton." />
+  <title>Signature Tee — Matte Black • Snehvastra</title>
+  <meta name="description" content="Signature Tee — Matte Black. Handcrafted premium cotton with heritage craftsmanship. Limited Snehvastra edition." />
   <meta name="theme-color" content="#3A0F5A" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600,700&display=swap" rel="stylesheet" />
-
-  <!-- Structured data (product) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Product",
-    "name":"Signature Tee — Matte Black",
-    "image":["/images/products/tee-black-1.jpg","/images/products/tee-black-2.jpg"],
-    "description":"Handcrafted Signature Tee — Matte Black. 200-thread Egyptian cotton, natural indigo dye, limited edition.",
-    "sku":"SNV-TEE-BLK-01",
-    "offers":{"@type":"Offer","url":"https://www.snehvastra.store/product-single.html","priceCurrency":"INR","price":"4999","availability":"https://schema.org/InStock"}
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      --purple:#3A0F5A; --accent:#2e0b4a; --slate:#111215; --muted:#6f7074;
-      --paper:#FBFAF8; --glass: rgba(255,255,255,0.7); --radius:14px; --ease:.28s;
+      --purple:#3A0F5A;
+      --accent:#2e0b4a;
+      --slate:#111215;
+      --muted:#7a7b80;
+      --paper:#FBFAF8;
+      --radius:14px;
+      --ease:.28s;
       --max-w:1200px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{margin:0;padding:0}
     body{
-      margin:0; font-family:'Poppins',sans-serif; color:var(--slate);
-      background: linear-gradient(180deg,#faf8fb,#f3f3f5);
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,#faf8fb,#f4f3f6);
+      color:var(--slate);
     }
 
-    header{position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(34,35,42,0.04);z-index:120}
-    .topbar{max-width:var(--max-w);margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .logo{height:46px}
-    nav a{color:var(--muted);text-decoration:none;margin-left:12px;font-weight:600}
-
-    main{max-width:var(--max-w);margin:0 auto;padding:88px 20px 80px;display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:start}
-    @media(max-width:980px){ main{grid-template-columns:1fr; padding:80px 16px} }
-
-    /* Left column: gallery & story */
-    .gallery{
-      position:relative;
+    /* HEADER (GLOBAL UNIFIED) */
+    header{
+      position:sticky;top:0;z-index:200;
+      background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(34,35,42,0.06);
+    }
+    .topbar{
+      max-width:var(--max-w);
+      margin:0 auto;
+      padding:14px 20px;
       display:flex;
-      gap:18px;
-      flex-direction:column;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
     }
+    .brand-group{display:flex;align-items:center;gap:14px}
+    .logo{height:46px;cursor:pointer}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:14px;flex-wrap:wrap}
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:8px;
+      transition:.25s;
+    }
+    nav a:hover, nav a.active{
+      background:rgba(58,15,90,0.06);
+      color:var(--purple);
+    }
+
+    main{
+      max-width:var(--max-w);
+      margin:0 auto;
+      padding:90px 20px 90px;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:38px;
+      align-items:start;
+    }
+
+    @media(max-width:980px){
+      main{grid-template-columns:1fr;padding:80px 16px}
+    }
+
+    /* GALLERY */
+    .gallery{display:flex;flex-direction:column;gap:18px}
     .hero-media{
-      width:100%;height:64vh;min-height:420px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,rgba(58,15,90,0.03),rgba(0,0,0,0.03));
-      display:flex;align-items:center;justify-content:center;position:relative;
-      box-shadow:0 30px 80px rgba(58,15,90,0.06);
+      width:100%;
+      height:64vh;
+      min-height:420px;
+      border-radius:18px;
+      overflow:hidden;
+      background:linear-gradient(180deg,#eceaf0,#e0dee6);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      box-shadow:0 30px 90px rgba(58,15,90,0.08);
     }
-    .hero-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
-    .hero-media.zoomed img{transform:scale(1.9)}
-    .thumbnail-row{display:flex;gap:12px;margin-top:12px}
-    .thumb{width:84px;height:84px;border-radius:10px;overflow:hidden;flex-shrink:0;border:1px solid rgba(34,35,42,0.04);cursor:pointer;display:flex;align-items:center;justify-content:center}
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .45s ease;
+    }
+    .hero-media.zoomed img{transform:scale(1.8)}
 
-    /* Right column: info */
+    .zoom-btn{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      padding:8px 12px;
+      border-radius:10px;
+      border:none;
+      background:rgba(255,255,255,0.9);
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .thumbnail-row{
+      display:flex;
+      gap:12px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+    .thumb{
+      width:86px;
+      height:86px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(34,35,42,0.08);
+      cursor:pointer;
+      transition:.25s;
+    }
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .thumb:hover{transform:translateY(-3px)}
+
+    /* STORY */
+    .details{
+      margin-top:26px;
+      background:#fff;
+      border:1px solid rgba(34,35,42,0.06);
+      border-radius:14px;
+      padding:22px;
+      box-shadow:0 18px 50px rgba(34,35,42,0.08);
+    }
+    .details h3{
+      font-family:'Clash Display',serif;
+      color:var(--purple);
+      margin:0 0 8px;
+    }
+    .specs{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .spec{
+      padding:8px 12px;
+      border-radius:10px;
+      background:linear-gradient(180deg,#fff,#f7f7f9);
+      border:1px solid rgba(34,35,42,0.04);
+      font-weight:600;
+      color:var(--muted);
+    }
+
+    /* INFO COLUMN */
     .info{position:relative}
-    .product-title{font-family:'Clash Display',serif;font-size:2.1rem;color:var(--purple);margin:0 0 6px}
-    .price{font-size:1.8rem;font-weight:800;color:var(--purple);margin-bottom:8px}
-    .badge{display:inline-block;padding:8px 12px;border-radius:999px;background:linear-gradient(180deg,#f3f2f6,#efeef1);font-weight:700;color:var(--accent);margin-bottom:14px}
+    .product-title{
+      font-family:'Clash Display',serif;
+      font-size:2.2rem;
+      margin:0;
+      color:var(--purple);
+    }
+    .price{
+      font-size:1.9rem;
+      font-weight:800;
+      color:var(--purple);
+      margin:10px 0;
+    }
+    .badge{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#f1eff5,#eceaf0);
+      font-weight:700;
+      margin-bottom:14px;
+    }
     .desc{color:var(--muted);line-height:1.7;margin-bottom:18px}
-    .specs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-    .spec{background:linear-gradient(180deg,#fff,#fbfbfc);padding:8px 12px;border-radius:10px;border:1px solid rgba(34,35,42,0.04);font-weight:600;color:var(--muted)}
 
-    /* size selector */
-    .size-grid{display:flex;gap:10px;margin-bottom:18px}
-    .size-pill{padding:10px 14px;border-radius:10px;border:1px solid rgba(34,35,42,0.06);cursor:pointer;font-weight:700;background:transparent}
-    .size-pill.active{background:linear-gradient(180deg,rgba(58,15,90,0.06),rgba(58,15,90,0.03));box-shadow:0 12px 30px rgba(58,15,90,0.06);color:var(--slate)}
+    .size-grid{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+    .size-pill{
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(34,35,42,0.08);
+      background:#fff;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .size-pill.active{
+      background:linear-gradient(180deg,rgba(58,15,90,0.08),rgba(58,15,90,0.04));
+      color:var(--purple);
+    }
 
-    /* add-to-cart dock */
-    .floating-dock{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;display:flex;gap:12px;z-index:240;max-width:calc(var(--max-w) - 40px)}
-    .dock-inner{display:flex;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfc);align-items:center;border:1px solid rgba(34,35,42,0.06);box-shadow:0 20px 60px rgba(58,15,90,0.08)}
-    .qty{display:flex;gap:8px;align-items:center}
-    .qty button{width:36px;height:36px;border-radius:8px;border:none;background:var(--glass);font-weight:800;cursor:pointer}
-    .cta{padding:12px 18px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--accent));color:#fff;font-weight:800;cursor:pointer;border:none;box-shadow:0 12px 40px rgba(58,15,90,0.3)}
+    .cta{
+      padding:14px 20px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--purple),var(--accent));
+      color:#fff;
+      border:none;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 14px 40px rgba(58,15,90,0.35);
+    }
 
-    /* AI panel */
-    .ai-panel{margin-top:20px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfc);border:1px solid rgba(34,35,42,0.04);box-shadow:0 18px 50px rgba(34,35,42,0.06)}
-    .ai-panel h3{font-family:'Clash Display',serif;margin:0 0 8px;color:var(--purple)}
-    .ai-row{display:flex;gap:10px;flex-wrap:wrap}
+    /* FLOATING DOCK UI */
+    .floating-dock{
+      position:fixed;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:22px;
+      z-index:250;
+      display:none;
+    }
+    .dock-inner{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      padding:14px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid rgba(34,35,42,0.08);
+      box-shadow:0 22px 70px rgba(58,15,90,0.25);
+    }
 
-    /* Visualizer canvas */
-    #visualizerCanvas{width:100%;height:360px;border-radius:12px;border:1px solid rgba(34,35,42,0.04);background:linear-gradient(180deg,#fff,#fbfbfc);display:block}
-
-    /* reviews & details */
-    .details{margin-top:28px;padding:20px;background:linear-gradient(180deg,#fff,#fbfbfc);border-radius:12px;border:1px solid rgba(34,35,42,0.04);box-shadow:0 12px 30px rgba(34,35,42,0.06)}
-    .reviews{margin-top:18px}
-    .review{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(34,35,42,0.04)}
-
-    .toast{position:fixed;top:18px;right:18px;background:linear-gradient(135deg,var(--purple),var(--accent));color:#fff;padding:12px 18px;border-radius:10px;box-shadow:0 12px 40px rgba(58,15,90,0.3);z-index:300;transform:translateX(400px);transition:transform .28s}
-    .toast.show{transform:translateX(0)}
-
-    footer{padding:36px 20px;text-align:center;color:var(--muted)}
-    small.note{display:block;color:var(--muted);margin-top:8px}
-    a.wa-float{position:fixed;right:18px;bottom:18px;background:linear-gradient(135deg,#25D366,#128C7E);width:64px;height:64px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;z-index:260;box-shadow:0 12px 36px rgba(0,0,0,0.12)}
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="topbar" role="banner" aria-label="Main header">
-      <div style="display:flex;align-items:center;gap:12px">
-        <img src="images/logo.final.png" alt="Snehvastra" class="logo" />
-        <nav aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="collection.html">Collection</a>
-          <a href="faq.html">FAQ</a>
-        </nav>
-      </div>
-      <div>
-        <a href="cart.html" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</a>
-      </div>
+
+<!-- HEADER -->
+<header>
+  <div class="topbar">
+    <div class="brand-group">
+      <img src="images/logo.final.png" class="logo" onclick="location.href='index.html'" />
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="customize.html">Customize</a></li>
+          <li><a href="order-history.html">Orders</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </header>
-
-  <main>
-    <!-- LEFT: Gallery + storytelling -->
-    <section class="gallery" aria-labelledby="productTitle">
-      <div class="hero-media" id="heroMedia" aria-live="polite">
-        <img id="heroImg" src="images/products/tee-black-1.jpg" alt="Signature Tee — Matte Black" />
-        <!-- zoom hint -->
-        <button id="zoomHint" style="position:absolute;left:12px;bottom:12px;padding:8px 10px;border-radius:8px;border:none;background:rgba(255,255,255,0.85);font-weight:700;cursor:pointer">🔍 Zoom</button>
-      </div>
-
-      <div class="thumbnail-row" role="list" aria-label="Product images">
-        <div class="thumb" role="listitem" data-src="images/products/tee-black-1.jpg"><img src="images/products/tee-black-1.jpg" alt="Front view"></div>
-        <div class="thumb" role="listitem" data-src="images/products/tee-black-2.jpg"><img src="images/products/tee-black-2.jpg" alt="Back view"></div>
-        <div class="thumb" role="listitem" data-src="images/products/tee-black-3.jpg"><img src="images/products/tee-black-3.jpg" alt="Detail"></div>
-        <div class="thumb" role="listitem" data-src="images/products/tee-black-4.jpg"><img src="images/products/tee-black-4.jpg" alt="Styled look"></div>
-      </div>
-
-      <div class="details" id="story">
-        <h3 style="margin:0;font-family:'Clash Display',serif;color:var(--purple)">About this piece</h3>
-        <p class="desc" style="margin-top:8px">
-          The Signature Tee — Matte Black: 200-thread Egyptian cotton, fermented indigo finish, 27 hours of handwork by Rajasthan master artisans. Limited drop.
-        </p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <div class="spec">200-thread cotton</div>
-          <div class="spec">Natural indigo</div>
-          <div class="spec">Limited edition</div>
-          <div class="spec">Free returns (15 days)</div>
-        </div>
-
-        <div class="reviews" aria-label="Customer reviews">
-          <h4 style="margin:14px 0 6px">Customer reviews</h4>
-          <div class="review"><div style="width:48px;height:48px;border-radius:999px;background:linear-gradient(180deg,var(--purple),var(--accent));"></div>
-            <div><strong>Rahul K.</strong> <div style="color:var(--purple)">★★★★★</div><p style="margin:6px 0;color:var(--muted)">Perfect fit and color depth. Best tee I've owned.</p></div>
-          </div>
-          <div class="review"><div style="width:48px;height:48px;border-radius:999px;background:linear-gradient(180deg,#b3b3b8,#8e8e92);"></div>
-            <div><strong>Priya S.</strong> <div style="color:var(--purple)">★★★★★</div><p style="margin:6px 0;color:var(--muted)">Matte black looks premium in daylight.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RIGHT: Product info, AI & visualizer -->
-    <aside class="info" aria-labelledby="productTitle">
-      <h1 id="productTitle" class="product-title">Signature Tee — Matte Black</h1>
-      <div class="price">₹4,999 <span style="font-size:0.9rem;color:var(--muted);font-weight:600;margin-left:8px">Incl. GST</span></div>
-      <div class="badge">LIMITED • HANDCRAFTED</div>
-
-      <p class="desc">A modern staple crafted with heritage. The matte black uses a fermented indigo process that deepens with wear.</p>
-
-      <div class="size-grid" role="radiogroup" aria-label="Choose a size">
-        <button class="size-pill" data-size="S" role="radio" aria-checked="false">S</button>
-        <button class="size-pill active" data-size="M" role="radio" aria-checked="true">M</button>
-        <button class="size-pill" data-size="L" role="radio" aria-checked="false">L</button>
-        <button class="size-pill" data-size="XL" role="radio" aria-checked="false">XL</button>
-      </div>
-
-      <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px">
-        <label style="font-weight:700">Quantity</label>
-        <input type="number" id="qty" min="1" value="1" style="width:80px;padding:8px;border-radius:8px;border:1px solid rgba(34,35,42,0.06)">
-      </div>
-
-      <div style="display:flex;gap:12px;margin-bottom:16px;align-items:center">
-        <button id="addBtn" class="cta" aria-label="Add to cart">Add to Cart — ₹<span id="priceInline">4,999</span></button>
-        <button id="wishBtn" style="padding:10px 12px;border-radius:10px;border:1px solid rgba(34,35,42,0.06);background:#fff;cursor:pointer">🤍 Wishlist</button>
-      </div>
-
-      <small class="note">Fast shipping • Easy returns • Secure payments</small>
-
-      <!-- AI panel -->
-      <div class="ai-panel" aria-label="AI styling assistant">
-        <h3>AI Fit Advisor & Visualizer (beta)</h3>
-        <p style="margin:6px 0 12px;color:var(--muted)">Enter your measurements to get a recommended size and generate a quick outfit preview.</p>
-
-        <div class="ai-row" style="margin-bottom:12px">
-          <input id="height" type="number" min="120" max="230" placeholder="Height cm" style="padding:10px;border-radius:10px;border:1px solid rgba(34,35,42,0.06);min-width:120px">
-          <input id="weight" type="number" min="30" max="200" placeholder="Weight kg" style="padding:10px;border-radius:10px;border:1px solid rgba(34,35,42,0.06);min-width:120px">
-          <select id="bodyType" style="padding:10px;border-radius:10px;border:1px solid rgba(34,35,42,0.06)">
-            <option value="average">Average</option>
-            <option value="athletic">Athletic</option>
-            <option value="slim">Slim</option>
-            <option value="curvy">Curvy</option>
-          </select>
-        </div>
-
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button id="recommendBtn" class="size-pill" style="background:linear-gradient(135deg,var(--purple),var(--accent));color:white;border:none">Recommend Size</button>
-          <button id="visualizeBtn" class="size-pill" style="background:linear-gradient(135deg,#222, #444); color:white; border:none">Generate Outfit Preview</button>
-          <button id="downloadPreview" class="size-pill" style="display:none">Download Preview</button>
-        </div>
-
-        <div id="sizeRec" style="margin-top:12px;color:var(--muted);font-weight:700"></div>
-
-        <div style="margin-top:12px">
-          <canvas id="visualizerCanvas" width="720" height="360" role="img" aria-label="Outfit preview canvas"></canvas>
-          <small style="display:block;margin-top:8px;color:var(--muted)">AI Visualizer is a beta preview — images are composited placeholders representing outfit ideas. Final styling by Snehvastra team.</small>
-        </div>
-      </div>
-
-      <div class="details" style="margin-top:18px">
-        <h4 style="margin:0 0 8px">Care & details</h4>
-        <p style="margin:0;color:var(--muted)">Cold wash, gentle spin. Natural dye may fade — intended for vintage finish. Each piece includes a unique NFC story tag.</p>
-      </div>
-    </aside>
-  </main>
-
-  <!-- floating add-to-cart dock for mobile -->
-  <div class="floating-dock" id="floatingDock" aria-hidden="true" style="display:none">
-    <div class="dock-inner" role="region" aria-label="Quick purchase">
-      <div style="display:flex;gap:12px;align-items:center">
-        <div style="width:56px;height:56px;border-radius:8px;background:linear-gradient(180deg,#eee,#ddd);display:flex;align-items:center;justify-content:center;font-weight:700">T</div>
-        <div>
-          <div style="font-weight:700">Signature Tee</div>
-          <div style="color:var(--muted);font-size:0.9rem">₹4,999</div>
-        </div>
-      </div>
-
-      <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
-        <div class="qty" aria-hidden="true">
-          <button id="dockMinus">−</button>
-          <div id="dockQty" style="min-width:24px;text-align:center;font-weight:700">1</div>
-          <button id="dockPlus">+</button>
-        </div>
-        <button id="dockBuy" class="cta">Buy Now</button>
-      </div>
-    </div>
+    <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
   </div>
+</header>
 
-  <a class="wa-float" href="https://wa.me/917597152209?text=Hi%20Snehvastra!%20I%20have%20a%20question%20about%20the%20Signature%20Tee." aria-label="WhatsApp">💬</a>
+<main>
 
-  <div id="toast" class="toast" role="status" aria-live="polite" style="display:none"></div>
+  <!-- LEFT COLUMN -->
+  <section class="gallery">
+    <div class="hero-media" id="heroMedia">
+      <img id="heroImg" src="images/products/tee-black-1.jpg" alt="Signature Tee — Matte Black" />
+      <button class="zoom-btn" id="zoomBtn">🔍 Zoom</button>
+    </div>
 
-  <footer>
-    © <span id="currentYear"></span> Snehvastra — Crafted with heritage.
-  </footer>
+    <div class="thumbnail-row">
+      <div class="thumb" data-src="images/products/tee-black-1.jpg"><img src="images/products/tee-black-1.jpg"></div>
+      <div class="thumb" data-src="images/products/tee-black-2.jpg"><img src="images/products/tee-black-2.jpg"></div>
+      <div class="thumb" data-src="images/products/tee-black-3.jpg"><img src="images/products/tee-black-3.jpg"></div>
+      <div class="thumb" data-src="images/products/tee-black-4.jpg"><img src="images/products/tee-black-4.jpg"></div>
+    </div>
 
-  <script>
-    /***** Basic state + cart/wishlist (localStorage) *****/
-    const productId = 'tee-black';
-    const productName = 'Signature Tee — Matte Black';
-    const productPrice = 4999;
+    <div class="details">
+      <h3>About this piece</h3>
+      <p class="desc">
+        The Signature Tee — Matte Black is crafted from 200-thread premium cotton and finished using heritage dyeing techniques for timeless depth and texture.
+      </p>
+      <div class="specs">
+        <div class="spec">200-thread cotton</div>
+        <div class="spec">Natural dye</div>
+        <div class="spec">Limited edition</div>
+        <div class="spec">15-day returns</div>
+      </div>
+    </div>
+  </section>
 
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    let wishlist = JSON.parse(localStorage.getItem('snehvastra_wishlist')) || [];
+  <!-- RIGHT COLUMN -->
+  <aside class="info">
+    <h1 class="product-title">Signature Tee — Matte Black</h1>
+    <div class="price">₹4,999</div>
+    <div class="badge">LIMITED • HANDCRAFTED</div>
+    <p class="desc">
+      A modern essential refined through heritage craftsmanship. Designed for premium everyday wear.
+    </p>
 
-    const toastEl = document.getElementById('toast');
-    function showToast(msg, ms=2800){
-      toastEl.textContent = msg;
-      toastEl.style.display = 'block';
-      toastEl.classList.add('show');
-      setTimeout(()=>{ toastEl.classList.remove('show'); setTimeout(()=>toastEl.style.display='none',200); }, ms);
-    }
+    <div class="size-grid">
+      <button class="size-pill">S</button>
+      <button class="size-pill active">M</button>
+      <button class="size-pill">L</button>
+      <button class="size-pill">XL</button>
+    </div>
 
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((s,n)=>s+n,0);
-      document.getElementById('cartCount').textContent = total;
-    }
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+      <label style="font-weight:700">Qty</label>
+      <input type="number" id="qty" value="1" min="1" style="width:72px;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.15)">
+    </div>
 
-    // init
-    updateCartCount();
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    <div style="display:flex;gap:12px">
+      <button class="cta" id="addToCartBtn">Add to Cart</button>
+      <button class="size-pill" id="wishlistBtn">🤍 Wishlist</button>
+    </div>
+  </aside>
 
-    /***** Gallery: thumbnails, zoom, drag-to-pan for mobile *****/
-    const heroImg = document.getElementById('heroImg');
-    const heroMedia = document.getElementById('heroMedia');
-    document.querySelectorAll('.thumb').forEach(t => {
-      t.addEventListener('click', () => {
-        const src = t.dataset.src;
-        heroImg.src = src;
-        // subtle highlight
-        t.animate([{ transform: 'scale(0.96)' }, { transform: 'scale(1)' }], { duration:160 });
-      });
-    });
+</main>
 
-    // zoom toggle
-    const zoomHint = document.getElementById('zoomHint');
-    zoomHint.addEventListener('click', () => {
-      const zoomed = heroMedia.classList.toggle('zoomed');
-      zoomHint.textContent = zoomed ? 'Close zoom' : '🔍 Zoom';
-      // enable pan when zoomed
-      if(zoomed){
-        enablePan(heroImg, heroMedia);
-      } else {
-        disablePan(heroImg);
-      }
-    });
+<!-- FLOATING MOBILE DOCK -->
+<div class="floating-dock" id="floatingDock">
+  <div class="dock-inner">
+    <strong>Signature Tee</strong>
+    <button class="cta" id="dockBuy">Buy Now</button>
+  </div>
+</div>
 
-    let panState = {enabled:false, startX:0, startY:0, x:0, y:0};
-    function enablePan(img, container){
-      panState.enabled = true;
-      container.style.cursor = 'grab';
-      container.addEventListener('pointerdown', panPointerDown);
-    }
-    function disablePan(img){
-      panState.enabled = false;
-      heroImg.style.transform = '';
-      heroMedia.style.cursor = 'default';
-      heroMedia.removeEventListener('pointerdown', panPointerDown);
-    }
-    function panPointerDown(e){
-      e.preventDefault();
-      heroMedia.setPointerCapture(e.pointerId);
-      panState.startX = e.clientX; panState.startY = e.clientY;
-      panState.origX = panState.x; panState.origY = panState.y;
-      heroMedia.addEventListener('pointermove', panPointerMove);
-      heroMedia.addEventListener('pointerup', panPointerUp);
-      heroMedia.addEventListener('pointercancel', panPointerUp);
-    }
-    function panPointerMove(e){
-      const dx = e.clientX - panState.startX;
-      const dy = e.clientY - panState.startY;
-      panState.x = Math.max(Math.min(panState.origX + dx, heroImg.clientWidth/2), -heroImg.clientWidth/2);
-      panState.y = Math.max(Math.min(panState.origY + dy, heroImg.clientHeight/2), -heroImg.clientHeight/2);
-      heroImg.style.transform = `translate(${panState.x}px, ${panState.y}px) scale(1.9)`;
-    }
-    function panPointerUp(e){
-      heroMedia.releasePointerCapture(e.pointerId);
-      heroMedia.removeEventListener('pointermove', panPointerMove);
-      heroMedia.removeEventListener('pointerup', panPointerUp);
-      heroMedia.removeEventListener('pointercancel', panPointerUp);
-    }
+<!-- FLOAT -->
+<a class="wa-float" href="https://wa.me/917597152209?text=Hi%20Snehvastra!%20I%20have%20a%20question%20about%20the%20Signature%20Tee." target="_blank">💬</a>
 
-    /***** Size selector & quantity *****/
-    document.querySelectorAll('.size-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.size-pill').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        // aria
-        document.querySelectorAll('.size-pill').forEach(b=>b.setAttribute('aria-checked','false'));
-        btn.setAttribute('aria-checked','true');
-      });
-    });
+<div id="toast" class="toast"></div>
 
-    /***** Add to cart / wishlist *****/
-    document.getElementById('addBtn').addEventListener('click', ()=> {
-      const qty = parseInt(document.getElementById('qty').value) || 1;
-      cart[productId] = (cart[productId] || 0) + qty;
-      localStorage.setItem('snehvastra_cart', JSON.stringify(cart));
-      updateCartCount();
-      showToast('✅ Added to cart');
-      openFloatingDock();
-    });
+<footer>
+  © <span id="currentYear"></span> Snehvastra — Crafted with heritage.
+</footer>
 
-    document.getElementById('wishBtn').addEventListener('click', () => {
-      if(!wishlist.find(p=>p.id===productId)){
-        wishlist.push({id:productId,name:productName,price:productPrice});
-        localStorage.setItem('snehvastra_wishlist', JSON.stringify(wishlist));
-        showToast('❤️ Added to wishlist');
-      } else showToast('Already in wishlist');
-    });
+<script>
+/* -------------------------------
+   CORE PRODUCT DATA
+-------------------------------- */
+const PRODUCT = {
+  id: "tee-black",
+  name: "Signature Tee — Matte Black",
+  price: 4999,
+  img: "images/products/tee-black-1.jpg"
+};
 
-    /***** Floating dock controls (mobile quick-buy) *****/
-    const floatingDock = document.getElementById('floatingDock');
-    const dockQtyEl = document.getElementById('dockQty');
-    const dockMinus = document.getElementById('dockMinus');
-    const dockPlus = document.getElementById('dockPlus');
-    const dockBuy = document.getElementById('dockBuy');
+/* -------------------------------
+   CART ENGINE (UNIFIED)
+-------------------------------- */
+function readCart(){
+  return JSON.parse(localStorage.getItem("snehvastra_cart")) || {};
+}
+function saveCart(cart){
+  localStorage.setItem("snehvastra_cart", JSON.stringify(cart));
+}
+function updateCartCount(){
+  const cart = readCart();
+  const total = Object.values(cart).reduce((s,i)=>s + i.qty, 0);
+  const el = document.getElementById("cartCount");
+  if(el) el.textContent = total;
+}
+updateCartCount();
 
-    function openFloatingDock(){
-      // show on mobile & briefly on desktop
-      floatingDock.style.display = 'flex';
-      document.getElementById('dockQty').textContent = (cart[productId] || 1);
-      setTimeout(()=> floatingDock.style.opacity = '1', 50);
-      // auto-hide after 6s on desktop
-      setTimeout(()=>{ if(window.innerWidth>900) floatingDock.style.display='none'; }, 7000);
-    }
+/* -------------------------------
+   WISHLIST ENGINE (UNIFIED)
+-------------------------------- */
+function readWishlist(){
+  return JSON.parse(localStorage.getItem("snehvastra_wishlist")) || [];
+}
+function saveWishlist(list){
+  localStorage.setItem("snehvastra_wishlist", JSON.stringify(list));
+}
 
-    dockMinus.addEventListener('click', ()=>{
-      let q = Math.max(1, parseInt(dockQtyEl.textContent) - 1);
-      dockQtyEl.textContent = q;
-      document.getElementById('qty').value = q;
-    });
-    dockPlus.addEventListener('click', ()=>{
-      let q = parseInt(dockQtyEl.textContent) + 1;
-      dockQtyEl.textContent = q;
-      document.getElementById('qty').value = q;
-    });
-    dockBuy.addEventListener('click', ()=> { window.location.href = 'checkout.html'; });
+/* -------------------------------
+   TOAST
+-------------------------------- */
+function toast(msg, t=2800){
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  setTimeout(()=> el.classList.remove("show"), t);
+}
 
-    /***** Size recommendation logic (improved) *****/
-    function recommendSize(){
-      const h = parseInt(document.getElementById('height').value,10);
-      const w = parseInt(document.getElementById('weight').value,10);
-      const bt = document.getElementById('bodyType').value;
-      if(!h || !w){ showToast('Enter height & weight for a recommendation'); return; }
+/* -------------------------------
+   ADD TO CART
+-------------------------------- */
+document.getElementById("addToCartBtn").addEventListener("click", ()=>{
+  const qty = parseInt(document.getElementById("qty").value) || 1;
+  const cart = readCart();
 
-      // BMI-ish baseline then map to garment fit rules (tuned for this premium tee)
-      const bmi = w / Math.pow(h/100,2);
-      let rec = 'M';
-      if(bmi < 19) rec = (h>185 ? 'L' : 'M');
-      else if(bmi < 23) rec = (h>180 ? 'L' : 'M');
-      else if(bmi < 27) rec = (h>175 ? 'L' : 'L');
-      else rec = 'XL';
+  if(cart[PRODUCT.id]){
+    cart[PRODUCT.id].qty += qty;
+  }else{
+    cart[PRODUCT.id] = {
+      name: PRODUCT.name,
+      price: PRODUCT.price,
+      qty: qty,
+      img: PRODUCT.img
+    };
+  }
 
-      // body type tweaks
-      if(bt === 'slim' && rec === 'M') rec = 'S';
-      if(bt === 'athletic' && rec === 'M') rec = 'M';
-      if(bt === 'curvy' && (rec === 'S' || rec === 'M')) rec = 'L';
+  saveCart(cart);
+  updateCartCount();
+  toast("✅ Added to cart");
+  openFloatingDock();
+});
 
-      document.getElementById('sizeRec').textContent = `Recommended: ${rec} — ${recommendationText(rec)}`;
-      // visually select that size
-      const target = Array.from(document.querySelectorAll('.size-pill')).find(b=>b.dataset.size === rec);
-      if(target){ target.click(); target.scrollIntoView({behavior:'smooth',block:'center'}); }
-    }
+/* -------------------------------
+   WISHLIST ADD
+-------------------------------- */
+document.getElementById("wishlistBtn").addEventListener("click", ()=>{
+  const list = readWishlist();
+  if(!list.find(p=>p.id === PRODUCT.id)){
+    list.push(PRODUCT);
+    saveWishlist(list);
+    toast("❤️ Added to wishlist");
+  }else{
+    toast("Already in wishlist");
+  }
+});
 
-    function recommendationText(size){
-      return {
-        S:'Slim fit — closer to body',
-        M:'Balanced — most customers',
-        L:'Relaxed — good for layering',
-        XL:'Roomy — oversized feel'
-      }[size] || '';
-    }
-    document.getElementById('recommendBtn').addEventListener('click', recommendSize);
+/* -------------------------------
+   FLOATING DOCK
+-------------------------------- */
+function openFloatingDock(){
+  const dock = document.getElementById("floatingDock");
+  dock.style.display = "block";
+  setTimeout(()=> dock.style.opacity = "1", 40);
+  setTimeout(()=> {
+    if(window.innerWidth > 900) dock.style.display = "none";
+  }, 6000);
+}
 
-    /***** AI Outfit Visualizer (beta) *****/
-    // This visualizer composes simple placeholders to show outfit ideas.
-    const canvas = document.getElementById('visualizerCanvas');
-    const ctx = canvas.getContext('2d');
-    const visualizeBtn = document.getElementById('visualizeBtn');
-    const downloadBtn = document.getElementById('downloadPreview');
+document.getElementById("dockBuy").addEventListener("click", ()=>{
+  window.location.href = "checkout.html";
+});
 
-    function clearCanvas(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      // soft background
-      const g = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
-      g.addColorStop(0,'#fff'); g.addColorStop(1,'#f7f7f9');
-      ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width,canvas.height);
-    }
+/* -------------------------------
+   GALLERY THUMB SWITCH
+-------------------------------- */
+const heroImg = document.getElementById("heroImg");
+document.querySelectorAll(".thumb").forEach(t=>{
+  t.addEventListener("click", ()=>{
+    heroImg.src = t.dataset.src;
+  });
+});
 
-    // basic compositing: model silhouette + tee + pants + shoes + caption
-    function drawPreview(style='evening'){
-      clearCanvas();
+/* -------------------------------
+   ZOOM TOGGLE
+-------------------------------- */
+const heroMedia = document.getElementById("heroMedia");
+document.getElementById("zoomBtn").addEventListener("click", ()=>{
+  heroMedia.classList.toggle("zoomed");
+});
 
-      // draw a simple model silhouette
-      ctx.save();
-      ctx.translate(canvas.width/2, canvas.height*0.18);
-      ctx.fillStyle = '#e9e6ef';
-      ctx.beginPath();
-      ctx.ellipse(0,40,60,70,0,0,Math.PI*2); // torso
-      ctx.fill();
-      ctx.beginPath(); ctx.ellipse(0, -90, 42, 42, 0, 0, Math.PI*2); ctx.fill(); // head
-      ctx.restore();
+/* -------------------------------
+   SIZE SELECTION
+-------------------------------- */
+document.querySelectorAll(".size-pill").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".size-pill").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
 
-      // tee (product) - black rectangle with texture
-      ctx.save();
-      ctx.fillStyle = '#0b0a0a';
-      ctx.fillRect(canvas.width/2 - 80, canvas.height*0.18 + 10, 160, 120);
-      // subtle fabric noise
-      for(let i=0;i<150;i++){ ctx.fillStyle = 'rgba(255,255,255,'+(Math.random()*0.03)+')'; ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, 1,1); }
-      ctx.restore();
+/* -------------------------------
+   YEAR
+-------------------------------- */
+document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
 
-      // bottom (varies by style)
-      if(style === 'evening'){
-        // dark slim jeans
-        ctx.fillStyle = '#0f1720';
-        ctx.fillRect(canvas.width/2 - 70, canvas.height*0.18 + 130, 46, 110);
-        ctx.fillRect(canvas.width/2 + 24, canvas.height*0.18 + 130, 46, 110);
-        // boots
-        ctx.fillStyle = '#2b2b2b';
-        ctx.fillRect(canvas.width/2 - 80, canvas.height*0.18 + 240, 36,18);
-        ctx.fillRect(canvas.width/2 + 44, canvas.height*0.18 + 240, 36,18);
-      } else if(style === 'casual'){
-        ctx.fillStyle = '#6b6d75';
-        ctx.fillRect(canvas.width/2 - 70, canvas.height*0.18 + 130, 46, 110);
-        ctx.fillRect(canvas.width/2 + 24, canvas.height*0.18 + 130, 46, 110);
-        // sneakers
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(canvas.width/2 - 82, canvas.height*0.18 + 240, 40,16);
-        ctx.fillRect(canvas.width/2 + 42, canvas.height*0.18 + 240, 40,16);
-      } else {
-        // smart-casual trousers
-        ctx.fillStyle = '#2f3540';
-        ctx.fillRect(canvas.width/2 - 70, canvas.height*0.18 + 130, 46, 110);
-        ctx.fillRect(canvas.width/2 + 24, canvas.height*0.18 + 130, 46, 110);
-      }
-
-      // accessory: overshirt for evening
-      if(style === 'evening'){
-        ctx.fillStyle = 'rgba(30,18,40,0.8)';
-        ctx.fillRect(canvas.width/2 - 90, canvas.height*0.18 + 10, 180, 20);
-      }
-
-      // caption & items
-      ctx.fillStyle = '#222';
-      ctx.font = '600 18px Poppins, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(style === 'evening' ? 'Evening • Leather Boots • Tailored Jeans' : style === 'casual' ? 'Casual • Cargo Trousers • Low Sneakers' : 'Smart-Casual • Blazer • Loafers', canvas.width/2, canvas.height - 18);
-    }
-
-    visualizeBtn.addEventListener('click', ()=>{
-      // choose style semi-randomish based on query/size selection
-      const q = (document.getElementById('stylingQuery')||{}).value || '';
-      // if user provided nothing, pick based on time
-      let style = 'casual';
-      // derive style from simple heuristics: keywords or time
-      if(/\bevening|party|night|date\b/i.test(q)) style = 'evening';
-      else if(/\bformal|office|smart|blazer\b/i.test(q)) style = 'smart';
-      // else alternate based on time
-      const hour = new Date().getHours();
-      if(hour>=18 || style==='evening') style = 'evening';
-      drawPreview(style);
-      downloadBtn.style.display = 'inline-block';
-      showToast('🎨 Outfit preview generated (beta)');
-    });
-
-    // enable download (PNG)
-    downloadBtn.addEventListener('click', ()=>{
-      const link = document.createElement('a');
-      link.download = `${productId}-preview.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-      showToast('Preview downloaded');
-    });
-
-    // simple stylingQuery input assignment (optional)
-    // Add an input box to influence style if desired:
-    const stylingArea = document.createElement('textarea');
-    stylingArea.id = 'stylingQuery';
-    stylingArea.placeholder = 'Optional: type "Evening", "Casual", "Smart-casual" to guide the preview';
-    stylingArea.style.width='100%';
-    stylingArea.style.marginTop='8px';
-    stylingArea.style.padding='10px';
-    stylingArea.style.borderRadius='8px';
-    stylingArea.style.border='1px solid rgba(34,35,42,0.06)';
-    // Append inside AI panel for user control
-    document.querySelector('.ai-panel').appendChild(stylingArea);
-
-    /***** lightweight stylist text suggestions (on-demand) *****/
-    function suggestOutfit(){
-      const q = (document.getElementById('stylingQuery')||{}).value || '';
-      const area = document.getElementById('sizeRec');
-      if(/evening|party|date/i.test(q)) area.textContent = 'Try: Tailored indigo jeans, minimal leather boots, single-breasted overshirt.';
-      else if(/casual|college|day/i.test(q)) area.textContent = 'Try: Relaxed cargos, low-profile sneakers, minimal cap.';
-      else if(/formal|office/i.test(q)) area.textContent = 'Try: Tuck into high-waist trousers, add a lightweight blazer and loafers.';
-      else area.textContent = 'Try: "Evening", "Casual", or "Smart-casual" in the box above to guide the preview.';
-    }
-    // call on input change
-    stylingArea.addEventListener('input', () => { suggestOutfit(); });
-
-    /***** accessibility: keyboard shortcuts & escape handlers *****/
-    document.addEventListener('keydown', e => {
-      if(e.key === 'Escape'){
-        // close zoom if open
-        if(heroMedia.classList.contains('zoomed')){ heroMedia.classList.remove('zoomed'); disablePan(heroImg); zoomHint.textContent='🔍 Zoom'; }
-      }
-    });
-
-    /***** tiny analytics hooks (local events) *****/
-    function trackEvent(name, payload={}){
-      // simple console log for now; wire to GTM later
-      console.log('track:', name, payload);
-    }
-    // example track
-    document.getElementById('addBtn').addEventListener('click', ()=> trackEvent('add_to_cart', {product:productId,price:productPrice}));
-
-    /***** init canvas background *****/
-    clearCanvas();
-    drawPreview('casual'); // initial placeholder
-
-  </script>
 </body>
 </html>
