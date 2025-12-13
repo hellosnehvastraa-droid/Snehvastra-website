@@ -1,290 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#3A0F5A"/>
   <title>Signature Tee — Matte Black • Snehvastra</title>
-  <meta name="description" content="Signature Tee — Matte Black. Handcrafted premium cotton with heritage craftsmanship. Limited Snehvastra edition." />
-  <meta name="theme-color" content="#3A0F5A" />
+  <meta name="description" content="Signature Tee — Matte Black. Handcrafted premium cotton with heritage craftsmanship. Limited Snehvastra edition."/>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
     :root{
       --purple:#3A0F5A;
-      --accent:#2e0b4a;
-      --slate:#111215;
-      --muted:#7a7b80;
-      --paper:#FBFAF8;
-      --radius:14px;
-      --ease:.28s;
-      --max-w:1200px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,#faf8fb,#f4f3f6);
-      color:var(--slate);
+      --purple-dark:#2e0b4a;
+      --slate:#22232A;
+      --slate-mid:#3B3D45;
+      --muted:#C7C6C8;
+      --paper:#F6F6F6;
+      --radius:16px;
+      --ease:.35s;
+      --max-width:1200px;
     }
 
-    /* HEADER (GLOBAL UNIFIED) */
-    header{
-      position:sticky;top:0;z-index:200;
-      background:rgba(255,255,255,0.97);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(34,35,42,0.06);
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,var(--paper),#FBFAF8);
+      color:var(--slate);
+      overflow-x:hidden;
     }
+
+    /* ✅ FULL HEADER SYSTEM */
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,0.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(183,185,189,0.12);
+    }
+
     .topbar{
-      max-width:var(--max-w);
-      margin:0 auto;
-      padding:14px 20px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:16px;
+      padding:14px 5%;
+      max-width:var(--max-width);
+      margin:0 auto;
+      flex-wrap:wrap;
     }
-    .brand-group{display:flex;align-items:center;gap:14px}
-    .logo{height:46px;cursor:pointer}
-    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:14px;flex-wrap:wrap}
-    nav a{
-      text-decoration:none;
-      color:var(--muted);
-      font-weight:600;
-      padding:8px 12px;
-      border-radius:8px;
-      transition:.25s;
+
+    .brand{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-shrink:0;
+      cursor:pointer;
     }
-    nav a:hover, nav a.active{
-      background:rgba(58,15,90,0.06);
+    .brand img{
+      height:42px;
+      border-radius:10px;
+    }
+    .brand h1{
+      font-family:'Clash Display',serif;
+      margin:0;
+      font-size:1.1rem;
       color:var(--purple);
     }
 
-    main{
-      max-width:var(--max-w);
-      margin:0 auto;
-      padding:90px 20px 90px;
+    .mobile-hamburger{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      padding:6px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      z-index:200;
+    }
+    .mobile-hamburger span{
+      width:24px;height:2px;background:var(--purple);border-radius:2px;transition:var(--ease);
+    }
+
+    nav{
+      width:100%;
+      overflow-x:auto;
+    }
+    nav ul{
+      display:flex;
+      gap:12px;
+      list-style:none;
+      margin:0;
+      padding:6px 0;
+      min-width:max-content;
+      align-items:center;
+    }
+    nav a{
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.9rem;
+      padding:8px 14px;
+      border-radius:10px;
+      color:var(--muted);
+      transition:all var(--ease);
+      white-space:nowrap;
+    }
+    nav a:hover, nav a.active{
+      background:rgba(58,15,90,0.05);
+      color:var(--purple);
+    }
+
+    .account-area{display:flex;align-items:center;gap:10px;}
+    .user-badge{font-weight:700;color:var(--purple);font-size:0.9rem;}
+    .logout-btn{
+      border:none;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;padding:8px 14px;border-radius:12px;font-weight:700;cursor:pointer;
+    }
+
+    @media (max-width: 920px){
+      .mobile-hamburger{display:flex;}
+      nav{display:none;}
+      .account-area{display:none;}
+    }
+
+    /* ✅ MOBILE DRAWER */
+    .mobile-drawer{
+      position:fixed;top:0;right:-100%;width:300px;height:100vh;
+      background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);
+      border-left:1px solid rgba(183,185,189,0.2);z-index:150;
+      padding:80px 24px 40px;transition:all var(--ease);overflow-y:auto;
+    }
+    .mobile-drawer.open{right:0;}
+    .drawer-overlay{
+      position:fixed;top:0;left:0;width:100vw;height:100vh;
+      background:rgba(0,0,0,0.4);z-index:140;opacity:0;visibility:hidden;
+      transition:all var(--ease);
+    }
+    .drawer-overlay.open{opacity:1;visibility:visible;}
+    .drawer-header{display:flex;justify-content:space-between;align-items:center;
+      margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid rgba(183,185,189,0.12);
+    }
+    .drawer-close{background:none;border:none;font-size:1.4rem;color:var(--slate);
+      cursor:pointer;padding:4px;
+    }
+    .primary-nav{list-style:none;margin:0 0 24px 0;padding:0;border-bottom:1px solid rgba(183,185,189,0.08);}
+    .primary-nav li{margin-bottom:4px;}
+    .primary-nav a{display:block;text-decoration:none;font-weight:700;font-size:1rem;
+      padding:14px 16px;border-radius:12px;color:var(--purple);transition:all var(--ease);
+      border-left:3px solid transparent;
+    }
+    .primary-nav a:hover,.primary-nav a.active{background:rgba(58,15,90,0.08);border-left-color:var(--purple);}
+
+    /* ✅ PRODUCT PAGE */
+    .page{
+      max-width:var(--max-width);
+      margin:120px auto 80px;
+      padding:0 5%;
       display:grid;
       grid-template-columns:1fr 420px;
-      gap:38px;
+      gap:40px;
       align-items:start;
     }
 
-    @media(max-width:980px){
-      main{grid-template-columns:1fr;padding:80px 16px}
+    @media(max-width:960px){
+      .page{grid-template-columns:1fr;padding:0 16px;gap:32px;}
     }
 
-    /* GALLERY */
-    .gallery{display:flex;flex-direction:column;gap:18px}
+    /* ✅ GALLERY */
+    .gallery{display:flex;flex-direction:column;gap:24px;}
+    
     .hero-media{
       width:100%;
-      height:64vh;
-      min-height:420px;
-      border-radius:18px;
+      height:70vh;
+      min-height:500px;
+      border-radius:var(--radius);
       overflow:hidden;
-      background:linear-gradient(180deg,#eceaf0,#e0dee6);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      background:linear-gradient(135deg,#f8f7ff,#f0eeff);
       position:relative;
-      box-shadow:0 30px 90px rgba(58,15,90,0.08);
+      box-shadow:0 32px 100px rgba(58,15,90,0.15);
+      cursor:pointer;
+      transition:all var(--ease);
     }
+    .hero-media:hover{transform:translateY(-4px);}
     .hero-media img{
       width:100%;
       height:100%;
       object-fit:cover;
-      transition:transform .45s ease;
+      transition:all var(--ease);
     }
-    .hero-media.zoomed img{transform:scale(1.8)}
+    .hero-media.zoomed img{transform:scale(1.6);}
 
     .zoom-btn{
       position:absolute;
-      left:14px;
-      bottom:14px;
-      padding:8px 12px;
-      border-radius:10px;
-      border:none;
-      background:rgba(255,255,255,0.9);
+      bottom:20px;
+      left:20px;
+      padding:12px 18px;
+      border-radius:12px;
+      border:2px solid rgba(255,255,255,0.9);
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px);
       font-weight:700;
+      font-size:0.9rem;
       cursor:pointer;
+      transition:all var(--ease);
     }
+    .zoom-btn:hover{background:#fff;box-shadow:0 8px 24px rgba(0,0,0,0.15);}
 
     .thumbnail-row{
       display:flex;
-      gap:12px;
-      margin-top:12px;
+      gap:14px;
       flex-wrap:wrap;
     }
     .thumb{
-      width:86px;
-      height:86px;
-      border-radius:12px;
-      overflow:hidden;
-      border:1px solid rgba(34,35,42,0.08);
-      cursor:pointer;
-      transition:.25s;
-    }
-    .thumb img{width:100%;height:100%;object-fit:cover}
-    .thumb:hover{transform:translateY(-3px)}
-
-    /* STORY */
-    .details{
-      margin-top:26px;
-      background:#fff;
-      border:1px solid rgba(34,35,42,0.06);
+      width:90px;
+      height:90px;
       border-radius:14px;
-      padding:22px;
-      box-shadow:0 18px 50px rgba(34,35,42,0.08);
+      overflow:hidden;
+      border:2px solid rgba(183,185,189,0.2);
+      cursor:pointer;
+      transition:all var(--ease);
+      flex-shrink:0;
     }
-    .details h3{
-      font-family:'Clash Display',serif;
-      color:var(--purple);
-      margin:0 0 8px;
+    .thumb:hover{
+      transform:translateY(-4px);
+      border-color:var(--purple);
+      box-shadow:0 12px 32px rgba(58,15,90,0.2);
     }
-    .specs{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .spec{
-      padding:8px 12px;
-      border-radius:10px;
-      background:linear-gradient(180deg,#fff,#f7f7f9);
-      border:1px solid rgba(34,35,42,0.04);
-      font-weight:600;
-      color:var(--muted);
+    .thumb.active{border-color:var(--purple);box-shadow:0 0 0 2px rgba(58,15,90,0.2);}
+    .thumb img{width:100%;height:100%;object-fit:cover;}
+
+    /* ✅ PRODUCT INFO */
+    .product-info{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:40px;
+      box-shadow:0 32px 100px rgba(58,15,90,0.12);
+      border:1px solid rgba(183,185,189,0.12);
     }
 
-    /* INFO COLUMN */
-    .info{position:relative}
     .product-title{
       font-family:'Clash Display',serif;
+      font-size:clamp(1.8rem,4vw,2.6rem);
+      color:var(--purple);
+      margin:0 0 12px;
+      line-height:1.2;
+      font-weight:700;
+    }
+
+    .product-price{
+      font-family:'Clash Display',serif;
       font-size:2.2rem;
-      margin:0;
-      color:var(--purple);
-    }
-    .price{
-      font-size:1.9rem;
       font-weight:800;
       color:var(--purple);
-      margin:10px 0;
-    }
-    .badge{
-      display:inline-block;
-      padding:8px 14px;
-      border-radius:999px;
-      background:linear-gradient(180deg,#f1eff5,#eceaf0);
-      font-weight:700;
-      margin-bottom:14px;
-    }
-    .desc{color:var(--muted);line-height:1.7;margin-bottom:18px}
-
-    .size-grid{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-    .size-pill{
-      padding:10px 14px;
-      border-radius:10px;
-      border:1px solid rgba(34,35,42,0.08);
-      background:#fff;
-      font-weight:700;
-      cursor:pointer;
-    }
-    .size-pill.active{
-      background:linear-gradient(180deg,rgba(58,15,90,0.08),rgba(58,15,90,0.04));
-      color:var(--purple);
+      margin:16px 0;
     }
 
-    .cta{
-      padding:14px 20px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      color:#fff;
-      border:none;
-      font-weight:800;
-      cursor:pointer;
-      box-shadow:0 14px 40px rgba(58,15,90,0.35);
-    }
-
-    /* FLOATING DOCK UI */
-    .floating-dock{
-      position:fixed;
-      left:50%;
-      transform:translateX(-50%);
-      bottom:22px;
-      z-index:250;
-      display:none;
-    }
-    .dock-inner{
-      display:flex;
-      gap:14px;
+    .product-badge{
+      display:inline-flex;
       align-items:center;
-      padding:14px;
+      gap:8px;
+      padding:12px 20px;
+      border-radius:999px;
+      background:linear-gradient(135deg,rgba(58,15,90,0.08),rgba(58,15,90,0.04));
+      color:var(--purple);
+      font-weight:700;
+      font-size:0.9rem;
+      margin-bottom:24px;
+    }
+
+    .product-desc{
+      color:var(--slate-mid);
+      line-height:1.7;
+      margin-bottom:32px;
+      font-size:1.05rem;
+    }
+
+    .product-details{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:28px;
+      margin-bottom:32px;
+      border:1px solid rgba(183,185,189,0.12);
+      box-shadow:0 16px 48px rgba(58,15,90,0.08);
+    }
+    .product-details h3{
+      font-family:'Clash Display',serif;
+      color:var(--purple);
+      margin:0 0 20px;
+      font-size:1.3rem;
+    }
+    .product-specs{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .product-spec{
+      padding:10px 18px;
+      border-radius:12px;
+      background:rgba(58,15,90,0.04);
+      border:1px solid rgba(58,15,90,0.1);
+      font-weight:600;
+      font-size:0.9rem;
+      color:var(--slate-mid);
+    }
+
+    .size-grid{
+      display:flex;
+      gap:12px;
+      margin-bottom:24px;
+      flex-wrap:wrap;
+    }
+    .size-pill{
+      padding:14px 20px;
+      border:2px solid rgba(183,185,189,0.3);
       border-radius:14px;
       background:#fff;
-      border:1px solid rgba(34,35,42,0.08);
-      box-shadow:0 22px 70px rgba(58,15,90,0.25);
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      transition:all var(--ease);
+      min-width:52px;
+      text-align:center;
+    }
+    .size-pill:hover{border-color:var(--purple);}
+    .size-pill.active{
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;
+      border-color:var(--purple);
+      box-shadow:0 8px 24px rgba(58,15,90,0.3);
     }
 
+    .qty-group{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .qty-group label{
+      font-weight:700;
+      color:var(--slate);
+      font-size:1rem;
+      white-space:nowrap;
+    }
+    .qty-input{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      border:2px solid rgba(183,185,189,0.3);
+      border-radius:14px;
+      background:#fff;
+    }
+    .qty-btn{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      border:none;
+      background:#f8f7ff;
+      font-weight:700;
+      font-size:1.2rem;
+      cursor:pointer;
+      transition:all var(--ease);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .qty-btn:hover{background:var(--purple);color:#fff;}
+    .qty-value{
+      font-weight:700;
+      font-size:1.1rem;
+      width:36px;
+      text-align:center;
+      border:none;
+      background:none;
+    }
+
+    .product-actions{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      flex:1;
+      padding:20px 32px;
+      border:none;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;
+      font-family:'Clash Display',serif;
+      font-weight:700;
+      font-size:1.1rem;
+      cursor:pointer;
+      transition:all var(--ease);
+      box-shadow:0 20px 60px rgba(58,15,90,0.35);
+      min-width:160px;
+    }
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 28px 80px rgba(58,15,90,0.45);
+    }
+
+    .btn-wishlist{
+      padding:20px 24px;
+      border:2px solid rgba(58,15,90,0.2);
+      border-radius:16px;
+      background:#fff;
+      color:var(--purple);
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      transition:all var(--ease);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex:0 0 auto;
+    }
+    .btn-wishlist:hover{
+      background:rgba(58,15,90,0.05);
+      border-color:var(--purple);
+    }
+    .btn-wishlist.active{color:#dc3545;border-color:#dc3545;}
+
+    footer{
+      padding:60px 5%;text-align:center;color:var(--muted);
+      border-top:1px solid rgba(183,185,189,0.12);
+      font-size:0.9rem;margin-top:40px;
+    }
+
+    #toast{
+      position:fixed;top:24px;right:24px;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;padding:16px 24px;border-radius:14px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.25);
+      font-size:0.95rem;font-weight:600;
+      transform:translateX(400px);transition:all var(--ease);
+      z-index:300;max-width:360px;
+    }
+    #toast.show{transform:translateX(0);}
   </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
+<!-- ✅ FULL HEADER SYSTEM -->
 <header>
   <div class="topbar">
-    <div class="brand-group">
-      <img src="images/logo.final.png" class="logo" onclick="location.href='index.html'" />
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="auction.html">Auction</a></li>
-          <li><a href="customize.html">Customize</a></li>
-          <li><a href="order-history.html">Orders</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+    <div class="brand" onclick="location.href='index.html'">
+      <img src="images/logo.final.png"/>
+      <div>
+        <h1>Snehvastra</h1>
+        <div style="font-size:0.8rem;color:var(--muted)">New Gen Luxury Streetwear</div>
+      </div>
     </div>
-    <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+
+    <button class="mobile-hamburger" id="mobileHamburger">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        <li id="authArea"></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<main>
+<!-- ✅ MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <div class="brand" style="gap:8px;">
+      <img src="images/logo.final.png" style="height:36px;"/>
+      <div>
+        <h1 style="font-size:1rem;margin:0;">Snehvastra</h1>
+        <div style="font-size:0.75rem;color:var(--muted);">New Gen Luxury</div>
+      </div>
+    </div>
+    <button class="drawer-close" id="drawerClose">&times;</button>
+  </div>
+  
+  <ul class="primary-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="auction.html">Auction</a></li>
+    <li><a href="wishlist.html">Wishlist</a></li>
+    <li><a href="cart.html">Cart (<span id="mobileCartCount">0</span>)</a></li>
+  </ul>
 
-  <!-- LEFT COLUMN -->
+  <div id="mobileAuthArea" class="drawer-section"></div>
+</div>
+
+<main class="page">
+  <!-- ✅ GALLERY -->
   <section class="gallery">
     <div class="hero-media" id="heroMedia">
-      <img id="heroImg" src="images/products/tee-black-1.jpg" alt="Signature Tee — Matte Black" />
+      <img id="heroImg" src="images/products/tee-black-1.jpg" alt="Signature Tee — Matte Black"/>
       <button class="zoom-btn" id="zoomBtn">🔍 Zoom</button>
     </div>
 
     <div class="thumbnail-row">
-      <div class="thumb" data-src="images/products/tee-black-1.jpg"><img src="images/products/tee-black-1.jpg"></div>
-      <div class="thumb" data-src="images/products/tee-black-2.jpg"><img src="images/products/tee-black-2.jpg"></div>
-      <div class="thumb" data-src="images/products/tee-black-3.jpg"><img src="images/products/tee-black-3.jpg"></div>
-      <div class="thumb" data-src="images/products/tee-black-4.jpg"><img src="images/products/tee-black-4.jpg"></div>
+      <div class="thumb active" data-src="images/products/tee-black-1.jpg">
+        <img src="images/products/tee-black-1.jpg" alt="Angle 1">
+      </div>
+      <div class="thumb" data-src="images/products/tee-black-2.jpg">
+        <img src="images/products/tee-black-2.jpg" alt="Angle 2">
+      </div>
+      <div class="thumb" data-src="images/products/tee-black-3.jpg">
+        <img src="images/products/tee-black-3.jpg" alt="Angle 3">
+      </div>
+      <div class="thumb" data-src="images/products/tee-black-4.jpg">
+        <img src="images/products/tee-black-4.jpg" alt="Angle 4">
+      </div>
     </div>
 
-    <div class="details">
+    <!-- ✅ PRODUCT DETAILS -->
+    <div class="product-details">
       <h3>About this piece</h3>
-      <p class="desc">
+      <p style="color:var(--slate-mid);line-height:1.7;margin-bottom:24px;font-size:1.05rem;">
         The Signature Tee — Matte Black is crafted from 200-thread premium cotton and finished using heritage dyeing techniques for timeless depth and texture.
       </p>
-      <div class="specs">
-        <div class="spec">200-thread cotton</div>
-        <div class="spec">Natural dye</div>
-        <div class="spec">Limited edition</div>
-        <div class="spec">15-day returns</div>
+      <div class="product-specs">
+        <div class="product-spec">200-thread cotton</div>
+        <div class="product-spec">Natural dye</div>
+        <div class="product-spec">Limited edition</div>
+        <div class="product-spec">15-day returns</div>
+        <div class="product-spec">NFC authenticated</div>
       </div>
     </div>
   </section>
 
-  <!-- RIGHT COLUMN -->
-  <aside class="info">
+  <!-- ✅ PRODUCT INFO -->
+  <aside class="product-info">
     <h1 class="product-title">Signature Tee — Matte Black</h1>
-    <div class="price">₹4,999</div>
-    <div class="badge">LIMITED • HANDCRAFTED</div>
-    <p class="desc">
-      A modern essential refined through heritage craftsmanship. Designed for premium everyday wear.
+    <div class="product-price">₹4,999</div>
+    <div class="product-badge">
+      LIMITED • HANDCRAFTED
+    </div>
+    <p class="product-desc">
+      A modern essential refined through heritage craftsmanship. Designed for premium everyday wear with NFC authentication.
     </p>
 
     <div class="size-grid">
@@ -294,170 +556,177 @@
       <button class="size-pill">XL</button>
     </div>
 
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-      <label style="font-weight:700">Qty</label>
-      <input type="number" id="qty" value="1" min="1" style="width:72px;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.15)">
+    <div class="qty-group">
+      <label>Quantity</label>
+      <div class="qty-input">
+        <button class="qty-btn" id="qtyMinus">-</button>
+        <input type="number" class="qty-value" id="qtyInput" value="1" min="1" max="10">
+        <button class="qty-btn" id="qtyPlus">+</button>
+      </div>
     </div>
 
-    <div style="display:flex;gap:12px">
-      <button class="cta" id="addToCartBtn">Add to Cart</button>
-      <button class="size-pill" id="wishlistBtn">🤍 Wishlist</button>
+    <div class="product-actions">
+      <button class="btn-primary" id="addToCartBtn">Add to Cart</button>
+      <button class="btn-wishlist" id="wishlistBtn">🤍 Wishlist</button>
     </div>
   </aside>
-
 </main>
 
-<!-- FLOATING MOBILE DOCK -->
-<div class="floating-dock" id="floatingDock">
-  <div class="dock-inner">
-    <strong>Signature Tee</strong>
-    <button class="cta" id="dockBuy">Buy Now</button>
-  </div>
-</div>
-
-<!-- FLOAT -->
-<a class="wa-float" href="https://wa.me/917597152209?text=Hi%20Snehvastra!%20I%20have%20a%20question%20about%20the%20Signature%20Tee." target="_blank">💬</a>
-
-<div id="toast" class="toast"></div>
-
 <footer>
-  © <span id="currentYear"></span> Snehvastra — Crafted with heritage.
+  © <span id="year"></span> Snehvastra. All Rights Reserved.
 </footer>
 
+<div id="toast"></div>
+
 <script>
-/* -------------------------------
-   CORE PRODUCT DATA
--------------------------------- */
-const PRODUCT = {
-  id: "tee-black",
-  name: "Signature Tee — Matte Black",
-  price: 4999,
-  img: "images/products/tee-black-1.jpg"
-};
+  const USER_KEY = "snehvastra_user";
+  const CART_KEY = "snehvastra_cart";
+  const WISHLIST_KEY = "snehvastra_wishlist";
 
-/* -------------------------------
-   CART ENGINE (UNIFIED)
--------------------------------- */
-function readCart(){
-  return JSON.parse(localStorage.getItem("snehvastra_cart")) || {};
-}
-function saveCart(cart){
-  localStorage.setItem("snehvastra_cart", JSON.stringify(cart));
-}
-function updateCartCount(){
-  const cart = readCart();
-  const total = Object.values(cart).reduce((s,i)=>s + i.qty, 0);
-  const el = document.getElementById("cartCount");
-  if(el) el.textContent = total;
-}
-updateCartCount();
+  /* ✅ PRODUCT DATA */
+  const PRODUCT = {
+    id: "1",
+    name: "Signature Tee — Matte Black",
+    price: 4999,
+    image: "images/products/tee.jpg"
+  };
 
-/* -------------------------------
-   WISHLIST ENGINE (UNIFIED)
--------------------------------- */
-function readWishlist(){
-  return JSON.parse(localStorage.getItem("snehvastra_wishlist")) || [];
-}
-function saveWishlist(list){
-  localStorage.setItem("snehvastra_wishlist", JSON.stringify(list));
-}
+  let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+  const user = JSON.parse(localStorage.getItem(USER_KEY));
 
-/* -------------------------------
-   TOAST
--------------------------------- */
-function toast(msg, t=2800){
-  const el = document.getElementById("toast");
-  el.textContent = msg;
-  el.classList.add("show");
-  setTimeout(()=> el.classList.remove("show"), t);
-}
+  // ✅ SYSTEM INTEGRATION
+  const authArea = document.getElementById("authArea");
+  const mobileAuthArea = document.getElementById("mobileAuthArea");
+  const cartCountEl = document.getElementById("cartCount");
 
-/* -------------------------------
-   ADD TO CART
--------------------------------- */
-document.getElementById("addToCartBtn").addEventListener("click", ()=>{
-  const qty = parseInt(document.getElementById("qty").value) || 1;
-  const cart = readCart();
-
-  if(cart[PRODUCT.id]){
-    cart[PRODUCT.id].qty += qty;
-  }else{
-    cart[PRODUCT.id] = {
-      name: PRODUCT.name,
-      price: PRODUCT.price,
-      qty: qty,
-      img: PRODUCT.img
-    };
+  function renderAuth(){
+    if(user && user.loggedIn){
+      authArea.innerHTML = `
+        <span class="user-badge">Hi, ${user.name}</span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      `;
+    } else {
+      authArea.innerHTML = `<a href="user-login.html">Login</a><a href="user-register.html">Register</a>`;
+    }
   }
 
-  saveCart(cart);
-  updateCartCount();
-  toast("✅ Added to cart");
-  openFloatingDock();
-});
-
-/* -------------------------------
-   WISHLIST ADD
--------------------------------- */
-document.getElementById("wishlistBtn").addEventListener("click", ()=>{
-  const list = readWishlist();
-  if(!list.find(p=>p.id === PRODUCT.id)){
-    list.push(PRODUCT);
-    saveWishlist(list);
-    toast("❤️ Added to wishlist");
-  }else{
-    toast("Already in wishlist");
+  function updateCartCount(){
+    const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+    cartCountEl.textContent = total;
   }
-});
 
-/* -------------------------------
-   FLOATING DOCK
--------------------------------- */
-function openFloatingDock(){
-  const dock = document.getElementById("floatingDock");
-  dock.style.display = "block";
-  setTimeout(()=> dock.style.opacity = "1", 40);
-  setTimeout(()=> {
-    if(window.innerWidth > 900) dock.style.display = "none";
-  }, 6000);
-}
+  function logout(){
+    localStorage.removeItem(USER_KEY);
+    location.reload();
+  }
 
-document.getElementById("dockBuy").addEventListener("click", ()=>{
-  window.location.href = "checkout.html";
-});
+  function money(n){
+    return "₹" + Number(n).toLocaleString("en-IN");
+  }
 
-/* -------------------------------
-   GALLERY THUMB SWITCH
--------------------------------- */
-const heroImg = document.getElementById("heroImg");
-document.querySelectorAll(".thumb").forEach(t=>{
-  t.addEventListener("click", ()=>{
-    heroImg.src = t.dataset.src;
+  function showToast(msg){
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2800);
+  }
+
+  // ✅ GALLERY
+  const heroMedia = document.getElementById("heroMedia");
+  const heroImg = document.getElementById("heroImg");
+  const zoomBtn = document.getElementById("zoomBtn");
+
+  document.querySelectorAll(".thumb").forEach(thumb => {
+    thumb.addEventListener("click", () => {
+      document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+      heroImg.src = thumb.dataset.src;
+      heroMedia.classList.remove("zoomed");
+    });
   });
-});
 
-/* -------------------------------
-   ZOOM TOGGLE
--------------------------------- */
-const heroMedia = document.getElementById("heroMedia");
-document.getElementById("zoomBtn").addEventListener("click", ()=>{
-  heroMedia.classList.toggle("zoomed");
-});
-
-/* -------------------------------
-   SIZE SELECTION
--------------------------------- */
-document.querySelectorAll(".size-pill").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    document.querySelectorAll(".size-pill").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
+  zoomBtn.addEventListener("click", () => {
+    heroMedia.classList.toggle("zoomed");
+    zoomBtn.textContent = heroMedia.classList.contains("zoomed") ? "↻ Reset" : "🔍 Zoom";
   });
-});
 
-/* -------------------------------
-   YEAR
--------------------------------- */
-document.getElementById("currentYear").textContent = new Date().getFullYear();
+  // ✅ SIZE SELECTION
+  document.querySelectorAll(".size-pill").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".size-pill").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  // ✅ QUANTITY CONTROLS
+  const qtyInput = document.getElementById("qtyInput");
+  document.getElementById("qtyPlus").onclick = () => {
+    let val = parseInt(qtyInput.value) || 1;
+    if(val < 10) qtyInput.value = val + 1;
+  };
+  document.getElementById("qtyMinus").onclick = () => {
+    let val = parseInt(qtyInput.value) || 1;
+    if(val > 1) qtyInput.value = val - 1;
+  };
+
+  // ✅ CART FUNCTIONALITY
+  document.getElementById("addToCartBtn").onclick = () => {
+    const qty = parseInt(qtyInput.value) || 1;
+    cart[PRODUCT.id] = (cart[PRODUCT.id] || 0) + qty;
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    updateCartCount();
+    showToast("✅ Added to cart!");
+  };
+
+  // ✅ WISHLIST
+  document.getElementById("wishlistBtn").onclick = () => {
+    let wishlist = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]");
+    if(!wishlist.find(p => p.id === PRODUCT.id)){
+      wishlist.push(PRODUCT);
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+      document.getElementById("wishlistBtn").classList.add("active");
+      showToast("❤️ Added to wishlist");
+    } else {
+      showToast("Already in wishlist");
+    }
+  };
+
+  // ✅ MOBILE DRAWER
+  const hamburger = document.getElementById("mobileHamburger");
+  const drawer = document.getElementById("mobileDrawer");
+  const overlay = document.getElementById("drawerOverlay");
+  const closeBtn = document.getElementById("drawerClose");
+
+  function openDrawer(){
+    drawer.classList.add("open");
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeDrawer(){
+    drawer.classList.remove("open");
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  hamburger?.addEventListener("click", openDrawer);
+  closeBtn?.addEventListener("click", closeDrawer);
+  overlay?.addEventListener("click", closeDrawer);
+
+  // ✅ ACTIVE NAV
+  function setActiveNav(){
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll("nav a, .primary-nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPath);
+    });
+  }
+
+  // ✅ INIT
+  window.addEventListener("load", () => {
+    renderAuth();
+    updateCartCount();
+    setActiveNav();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  });
 </script>
 
 </body>
