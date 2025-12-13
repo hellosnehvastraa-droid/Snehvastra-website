@@ -6,27 +6,9 @@
   <meta name="theme-color" content="#3A0F5A" />
 
   <title>Return Policy — Snehvastra</title>
-  <meta name="description" content="Snehvastra's handcrafted return policy. 7-day defect window, artisan protection protocol, auction restrictions, instant support, 24-hour resolution guarantee." />
+  <meta name="description" content="Snehvastra handcrafted return policy. 7-day defect window, artisan protection protocol, auction restrictions, instant support." />
 
-  <!-- SEO Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"RefundPolicy",
-    "name":"Snehvastra Return & Refund Policy",
-    "url":"https://snehvastra.store/return-policy",
-    "provider":{
-      "@type":"Organization",
-      "name":"Snehvastra",
-      "logo":"https://snehvastra.store/images/logo.final.png"
-    },
-    "returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow",
-    "merchantReturnDays":7,
-    "merchantReturnLink":"https://snehvastra.store/return-policy",
-    "inStoreReturnsOffered":false
-  }
-  </script>
-
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -34,7 +16,7 @@
   <style>
     :root {
       --purple:#3A0F5A; --accent:#2e0b4a; --slate:#1a1a1d; --muted:#6f7074;
-      --paper:#FBFAF8; --radius:14px; --max-w:1000px; --ease:.28s;
+      --paper:#FBFAF8; --radius:14px; --max-w:1100px;
     }
     *{box-sizing:border-box}
     body{
@@ -50,22 +32,22 @@
     header{
       position:sticky; top:0;
       background:rgba(255,255,255,0.98);
-      backdrop-filter:blur(6px);
-      padding:20px 5%;
+      backdrop-filter:blur(8px);
+      padding:16px 5%;
       display:flex; align-items:center; justify-content:space-between;
       border-bottom:1px solid rgba(0,0,0,0.04);
       z-index:100;
       max-width:var(--max-w); margin:0 auto;
     }
-    .logo{height:52px;filter:drop-shadow(0 0 8px rgba(58,15,90,0.3))}
-    nav ul{display:flex;list-style:none;gap:16px;margin:0;padding:0}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:6px 12px;border-radius:10px;transition:.25s}
+    .logo{height:48px;cursor:pointer}
+    nav ul{display:flex;list-style:none;gap:16px;margin:0;padding:0;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:6px 12px;border-radius:10px}
     nav a:hover,nav a.active{color:var(--purple);background:rgba(58,15,90,0.06)}
     #cartCount{background:var(--purple);color:#fff;border-radius:50%;padding:2px 8px;margin-left:4px;font-size:.8rem}
 
-    /* AUCTION banner */
     .auction-banner{
-      margin:0 5%; margin-top:10px;
+      margin:12px auto 0;
+      max-width:var(--max-w);
       background:linear-gradient(135deg,var(--purple),var(--accent));
       color:white; padding:14px;
       border-radius:var(--radius);
@@ -75,17 +57,15 @@
     .auction-timer{
       margin-left:8px;
       padding:4px 10px;
-      background:rgba(255,255,255,0.92);
+      background:#fff;
       color:var(--slate);
       border-radius:8px;
-      font-weight:600;
+      font-weight:700;
       font-family:'Clash Display',serif;
     }
 
-    /* MAIN */
-    main{max-width:var(--max-w);margin:0 auto;padding:160px 5% 80px;}
+    main{max-width:var(--max-w);margin:0 auto;padding:80px 5% 80px;}
 
-    /* HERO */
     .hero{
       background:white;
       padding:70px 40px;
@@ -96,7 +76,7 @@
     }
     .hero h1{
       font-family:'Clash Display',serif;
-      font-size:3.4rem;
+      font-size:3.2rem;
       margin:0 0 12px;
       background:linear-gradient(135deg,var(--purple),var(--accent));
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
@@ -108,9 +88,7 @@
       font-weight:600; margin:16px 0;
       font-family:'Clash Display',serif;
     }
-    .hero p{font-size:1.2rem;color:var(--muted);max-width:700px;margin:0 auto}
 
-    /* SECTIONS */
     .section{
       margin-top:60px;
       padding:50px;
@@ -123,16 +101,14 @@
       font-family:'Clash Display',serif;
       font-size:2rem;
       margin:0 0 20px;
-      color:var(--slate);
-      position:relative;
       padding-left:48px;
+      position:relative;
     }
     .section h2::before{
       content:attr(data-icon);
       font-size:2rem; position:absolute; left:0; top:-6px;
     }
-    .section ul{padding-left:20px;margin:12px 0}
-    .section li{margin-bottom:10px;color:var(--muted)}
+
     .notice{
       background:rgba(58,15,90,0.08);
       padding:20px;
@@ -142,23 +118,15 @@
       font-weight:600;
     }
 
-    /* Cards */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
     .card{
-      background:rgba(58,15,90,0.05);
-      padding:32px 24px;
+      background:rgba(58,15,90,0.04);
+      padding:28px 22px;
       border-radius:var(--radius);
-      border:1px solid rgba(58,15,90,0.12);
       text-align:center;
-      transition:.25s;
+      border:1px solid rgba(58,15,90,0.1);
     }
-    .card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 30px 60px rgba(58,15,90,0.18);
-    }
-    .card-icon{font-size:3rem;margin-bottom:10px}
 
-    /* CTA */
     .cta-block{
       text-align:center;
       margin-top:80px;
@@ -167,32 +135,15 @@
       border-radius:var(--radius);
       border-left:6px solid var(--purple);
     }
-    .cta-block h2{
-      font-family:'Clash Display',serif;
-      font-size:2.2rem; margin:0 0 12px;
-    }
-    .cta-btn{
-      display:inline-block;
-      margin-top:24px;
-      padding:18px 36px;
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      color:white; border-radius:16px;
-      font-family:'Clash Display',serif;
-      font-size:1.1rem;
-      text-decoration:none;
-      box-shadow:0 20px 60px rgba(58,15,90,0.34);
-      transition:.25s;
-    }
-    .cta-btn:hover{transform:translateY(-3px)}
 
-    /* FOOTER */
     footer{
       text-align:center;
-      padding:50px 5% 40px;
+      padding:50px 10px 40px;
       margin-top:60px;
       background:rgba(255,255,255,0.92);
       border-top:1px solid rgba(0,0,0,0.05);
       color:var(--muted);
+      font-weight:600;
     }
 
     @media(max-width:768px){
@@ -206,7 +157,7 @@
 <body>
 
 <header>
-  <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
+  <a href="index.html"><img src="images/logo.final.png" class="logo" alt="Snehvastra"></a>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -223,126 +174,71 @@
 
 <main>
 
-  <!-- HERO -->
   <section class="hero">
     <h1>Return Policy</h1>
     <span class="updated">Updated: Dec 04, 2025</span>
-    <p>
-      Every handcrafted piece deserves respect.  
-      We maintain strict return standards to protect artisan effort, quality, and sustainability.
-    </p>
+    <p>Every handcrafted piece deserves respect. We maintain strict return standards to protect artisan effort, quality, and sustainability.</p>
   </section>
 
-  <!-- SECTION 1 -->
   <section class="section">
     <h2 data-icon="🧵">Return Window</h2>
-
     <div class="notice">
-      7-Day Return Window — <strong>Only for manufacturing defects</strong>.  
-      Handcrafted garments cannot be returned for size preference, aesthetic preference, or change of mind.
+      7-Day Return Window — <strong>Only for manufacturing defects</strong>.
     </div>
-
     <ul>
-      <li><strong>Accepted:</strong> Stitching issues, incorrect sizing delivered, dye irregularities, fabric defects.</li>
-      <li><strong>Rejected:</strong> Used/washed garments, fragrance/odor, fit preferences, accidental damage, machine-wash damage.</li>
+      <li>Accepted: Stitching issues, incorrect size sent, fabric defects.</li>
+      <li>Rejected: Washed, worn, fit preference, accidental damage.</li>
     </ul>
   </section>
 
-  <!-- SECTION 2 -->
   <section class="section">
     <h2 data-icon="🚫">Non-Returnable Items</h2>
-
     <div class="grid">
-      <div class="card">
-        <div class="card-icon">🎨</div>
-        <h3>Auction Pieces</h3>
-        <p>Sold “as-is”. Only forgery claims accepted after dual-artisan verification.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">✂️</div>
-        <h3>Custom Works</h3>
-        <p>Personalized, monogrammed, altered, or tailored items are final.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🧼</div>
-        <h3>Used or Washed</h3>
-        <p>Any signs of wear, washing, or fragrance void eligibility.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">⚖️</div>
-        <h3>Final Sale</h3>
-        <p>Discounted items marked ‘Final Sale’ cannot be returned.</p>
-      </div>
+      <div class="card">Auction Pieces (Forgery Only)</div>
+      <div class="card">Custom Tailored Items</div>
+      <div class="card">Used or Washed Items</div>
+      <div class="card">Final Sale Products</div>
     </div>
   </section>
 
-  <!-- SECTION 3 -->
   <section class="section">
     <h2 data-icon="📦">Return Process</h2>
-
     <div class="grid">
-      <div class="card">
-        <div class="card-icon">1️⃣</div>
-        <h3>Contact</h3>
-        <p>Email <b>returns@snehvastra.store</b> with order ID + defect photos.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">2️⃣</div>
-        <h3>Approval</h3>
-        <p>Within 24 hours you receive a return label & review confirmation.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">3️⃣</div>
-        <h3>Ship Back</h3>
-        <p>Pack securely & ship using our prepaid or self-ship instructions.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">4️⃣</div>
-        <h3>Refund</h3>
-        <p>Refund issued within 5–7 working days after QC verification.</p>
-      </div>
+      <div class="card">Email Support</div>
+      <div class="card">Approval</div>
+      <div class="card">Ship Back</div>
+      <div class="card">Refund Issued</div>
     </div>
   </section>
 
-  <!-- SECTION 4 -->
   <section class="section">
     <h2 data-icon="💰">Refund Details</h2>
     <ul>
-      <li><strong>Full Refund:</strong> Confirmed manufacturing defects.</li>
-      <li><strong>Store Credit (Recommended):</strong> Immediate processing + free priority shipping.</li>
-      <li><strong>Restocking Fee:</strong> 15% (rare exception cases).</li>
-      <li><strong>Auction Items:</strong> No refunds unless artisan forgery verified.</li>
+      <li>Full refund for verified defects</li>
+      <li>Store credit preferred</li>
+      <li>No refund on auction items unless forged</li>
     </ul>
-
-    <div class="notice">
-      Return shipping free only if defect is approved.  
-      Otherwise shipping cost is borne by customer.
-    </div>
   </section>
 
-  <!-- FINAL CTA -->
   <section class="cta-block">
     <h2>Need Help with a Return?</h2>
-    <p>Our team resolves 98% cases within <b>24 hours</b>.</p>
-    <a href="contact.html" class="cta-btn">💬 Chat with Support</a>
+    <p>Our team resolves 98% cases within 24 hours.</p>
+    <a href="contact.html" style="display:inline-block;margin-top:18px;padding:18px 36px;background:linear-gradient(135deg,var(--purple),var(--accent));color:#fff;border-radius:16px;font-family:'Clash Display',serif;text-decoration:none">Contact Support</a>
   </section>
 
 </main>
 
-<footer>
-  © <span id="currentYear"></span> Snehvastra • Handcrafted with Precision  
-</footer>
+<footer>© <span id="currentYear"></span> Snehvastra — Handcrafted with Precision</footer>
 
 <script>
-  /* Cart count */
-  let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-  document.getElementById('cartCount').textContent =
-    Object.values(cart).reduce((a,b)=>a+b,0);
+  function updateCartCount(){
+    const cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
+    const total = Object.values(cart).reduce((a,b)=>a + b.qty,0);
+    const el = document.getElementById('cartCount');
+    if(el) el.textContent = total;
+  }
+  updateCartCount();
 
-  /* Auction Timer */
   const auctionDate = new Date('2025-12-01T18:00:00').getTime();
   setInterval(()=>{
     const now = Date.now();
