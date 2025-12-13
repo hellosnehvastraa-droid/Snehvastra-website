@@ -1,183 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#3A0F5A" />
-  <title>Register - Snehvastra</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#3A0F5A"/>
+  <title>Register — Snehvastra</title>
+  <meta name="description" content="Create your Snehvastra account to access exclusive drops, personalized styling, and NFC-authenticated purchases."/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-    :root{--purple:#3A0F5A;--mid:#444;--muted:#999;--radius:14px}
-    body{margin:0;font-family:'Poppins',sans-serif;background:#f7f6fb}
-    header{background:#fff;padding:18px 5%;display:flex;justify-content:space-between;align-items:center}
-    .logo{height:44px}
-    nav a{text-decoration:none;margin-left:14px;color:#555;font-weight:600}
-    main{max-width:520px;margin:80px auto;background:#fff;padding:40px;border-radius:var(--radius);box-shadow:0 10px 40px rgba(0,0,0,0.08)}
-    h1{font-family:'Clash Display';text-align:center;color:var(--purple)}
-    .form-group{margin-bottom:18px}
-    label{display:block;margin-bottom:6px;font-weight:600;color:#444}
-    input{width:100%;padding:14px;border-radius:12px;border:1px solid #ccc;font-size:1rem}
+    :root{
+      --purple:#3A0F5A;
+      --purple-dark:#2e0b4a;
+      --slate:#22232A;
+      --slate-mid:#3B3D45;
+      --silver:#B7B9BD;
+      --paper:#F6F6F6;
+      --muted:#C7C6C8;
+      --radius:16px;
+      --ease:.35s;
+      --max-width:1200px;
+    }
 
-    .password-container{position:relative}
-    .password-container input{padding-right:56px}
-    .password-toggle{
-      position:absolute;
-      right:12px;
-      top:50%;
-      transform:translateY(-50%);
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,var(--paper),#FBFAF8);
+      color:var(--slate);
+      overflow-x:hidden;
+    }
+
+    /* ✅ HEADER - IDENTICAL TO INDEX.HTML */
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,0.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(183,185,189,0.12);
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 5%;
+      max-width:var(--max-width);
+      margin:0 auto;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-shrink:0;
+      cursor:pointer;
+    }
+    .brand img{
+      height:42px;
+      border-radius:10px;
+    }
+    .brand h1{
+      font-family:'Clash Display',serif;
+      margin:0;
+      font-size:1.1rem;
+      color:var(--purple);
+    }
+
+    /* ✅ MOBILE HAMBURGER */
+    .mobile-hamburger{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      padding:6px;
       background:none;
       border:none;
-      font-size:1.1rem;
       cursor:pointer;
-      color:#444;
+      z-index:200;
+    }
+    .mobile-hamburger span{
+      width:24px;height:2px;background:var(--purple);border-radius:2px;transition:var(--ease);
     }
 
-    button{
+    /* ✅ DESKTOP NAV */
+    nav{
       width:100%;
-      padding:16px;
-      border:none;
-      border-radius:14px;
-      background:#3A0F5A;
-      color:white;
-      font-weight:700;
-      cursor:pointer
+      overflow-x:auto;
     }
-
-    .error{color:red;font-size:0.85rem;display:none}
-
-    .toast{
-      position:fixed;
-      top:20px;
-      right:20px;
-      background:#3A0F5A;
-      color:#fff;
-      padding:14px 18px;
+    nav ul{
+      display:flex;
+      gap:12px;
+      list-style:none;
+      margin:0;
+      padding:6px 0;
+      min-width:max-content;
+      align-items:center;
+    }
+    nav a{
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.9rem;
+      padding:8px 14px;
       border-radius:10px;
-      transform:translateX(400px);
-      transition:.3s
+      color:var(--muted);
+      transition:all var(--ease);
+      white-space:nowrap;
     }
-    .toast.show{transform:translateX(0)}
+    nav a:hover, nav a.active{
+      background:rgba(58,15,90,0.05);
+      color:var(--purple);
+    }
+
+    .account-area{
+      display:flex;align-items:center;gap:10px;
+    }
+    .user-badge{font-weight:700;color:var(--purple);font-size:0.9rem;}
+    .logout-btn{
+      border:none;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;padding:8px 14px;border-radius:12px;font-weight:700;cursor:pointer;
+    }
+
+    /* ✅ MOBILE BREAKPOINT */
+    @media (max-width: 920px){
+      .mobile-hamburger{display:flex;}
+      nav{display:none;}
+      .account-area{display:none;}
+    }
+
+    /* ✅ MOBILE DRAWER */
+    .mobile-drawer{
+      position:fixed;top:0;right:-100%;width:300px;height:100vh;
+      background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);
+      border-left:1px solid rgba(183,185,189,0.2);z-index:150;
+      padding:80px 24px 40px;transition:all var(--ease);overflow-y:auto;
+    }
+    .mobile-drawer.open{right:0;}
+    .drawer-overlay{
+      position:fixed;top:0;left:0;width:100vw;height:100vh;
+      background:rgba(0,0,0,0.4);z-index:140;opacity:0;visibility:hidden;
+      transition:all var(--ease);
+    }
+    .drawer-overlay.open{opacity:1;visibility:visible;}
+    .drawer-header{display:flex;justify-content:space-between;align-items:center;
+      margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid rgba(183,185,189,0.12);
+    }
+    .drawer-close{background:none;border:none;font-size:1.4rem;color:var(--slate);
+      cursor:pointer;padding:4px;
+    }
+    .primary-nav{list-style:none;margin:0 0 24px 0;padding:0;border-bottom:1px solid rgba(183,185,189,0.08);}
+    .primary-nav li{margin-bottom:4px;}
+    .primary-nav a{display:block;text-decoration:none;font-weight:700;font-size:1rem;
+      padding:14px 16px;border-radius:12px;color:var(--purple);transition:all var(--ease);
+      border-left:3px solid transparent;
+    }
+    .primary-nav a:hover,.primary-nav a.active{background:rgba(58,15,90,0.08);border-left-color:var(--purple);}
+
+    /* ✅ FORM PAGE */
+    .page{
+      max-width:480px;
+      margin:100px auto 120px;
+      padding:0 24px;
+    }
+
+    .page-header{
+      text-align:center;
+      margin-bottom:40px;
+    }
+    .page-title{
+      font-family:'Clash Display',serif;
+      font-size:clamp(2.2rem,6vw,2.8rem);
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      margin:0 0 12px;
+      font-weight:700;
+    }
+    .page-subtitle{
+      color:var(--slate-mid);
+      font-size:1.05rem;
+      line-height:1.6;
+      max-width:360px;
+      margin:0 auto;
+    }
+
+    .form-card{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:48px 32px;
+      box-shadow:0 32px 80px rgba(58,15,90,0.12);
+      border:1px solid rgba(183,185,189,0.12);
+    }
+
+    .form-group{
+      margin-bottom:24px;
+      position:relative;
+    }
+    .form-group label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+      color:var(--slate);
+      font-size:0.95rem;
+    }
+    .form-group input{
+      width:100%;
+      padding:16px 20px;
+      border:2px solid rgba(183,185,189,0.3);
+      border-radius:14px;
+      font-size:1rem;
+      font-family:'Poppins',sans-serif;
+      background:#fff;
+      transition:all var(--ease);
+      color:var(--slate);
+    }
+    .form-group input:focus{
+      outline:none;
+      border-color:var(--purple);
+      box-shadow:0 0 0 4px rgba(58,15,90,0.08);
+    }
+    .form-group input::placeholder{color:var(--muted);}
+
+    .password-container{position:relative;}
+    .password-container input{padding-right:60px;}
+    .password-toggle{
+      position:absolute;right:16px;top:50%;transform:translateY(-50%);
+      background:none;border:none;font-size:1.2rem;cursor:pointer;
+      color:var(--slate-mid);padding:4px;transition:all var(--ease);
+    }
+    .password-toggle:hover{color:var(--purple);}
+
+    .terms-group{
+      display:flex;align-items:flex-start;gap:12px;
+      margin:28px 0 32px;
+      font-size:0.95rem;
+      color:var(--slate-mid);
+    }
+    .terms-group input{width:auto;margin:2px 0 0;flex-shrink:0;}
+    .terms-group label{margin:0;font-weight:500;cursor:pointer;}
+    .terms-link{color:var(--purple);text-decoration:none;font-weight:600;}
+
+    .btn-primary{
+      width:100%;
+      padding:18px 24px;
+      border:none;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;
+      font-weight:700;
+      font-size:1.05rem;
+      cursor:pointer;
+      transition:all var(--ease);
+      box-shadow:0 12px 40px rgba(58,15,90,0.3);
+    }
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 20px 50px rgba(58,15,90,0.4);
+    }
+    .btn-primary:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+
+    .form-divider{
+      text-align:center;
+      margin:32px 0;
+      color:var(--slate-mid);
+      font-size:0.9rem;
+      position:relative;
+    }
+    .form-divider::before{
+      content:'';position:absolute;top:50%;left:0;right:0;
+      height:1px;background:rgba(183,185,189,0.4);z-index:1;
+    }
+    .form-divider span{
+      background:#fff;padding:0 16px;position:relative;z-index:2;
+    }
+
+    .login-link{
+      text-align:center;
+      color:var(--slate-mid);
+      font-size:0.95rem;
+    }
+    .login-link a{
+      color:var(--purple);
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    .error{
+      color:#dc3545;
+      font-size:0.85rem;
+      margin-top:6px;
+      display:none;
+      font-weight:500;
+    }
+
+    /* TOAST */
+    #toast{
+      position:fixed;top:24px;right:24px;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;padding:16px 24px;border-radius:14px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.25);
+      font-size:0.95rem;font-weight:600;
+      transform:translateX(400px);transition:all var(--ease);
+      z-index:300;max-width:360px;
+    }
+    #toast.show{transform:translateX(0);}
+
+    footer{
+      padding:60px 5%;text-align:center;color:var(--muted);
+      border-top:1px solid rgba(183,185,189,0.12);
+      font-size:0.9rem;margin-top:40px;
+    }
+
+    @media(max-width:480px){
+      .form-card{padding:32px 24px;}
+      .page{padding:0 16px;}
+    }
   </style>
 </head>
 
 <body>
-
+<!-- ✅ HEADER - FULL SYSTEM MATCH -->
 <header>
-  <img src="images/logo.final.png" class="logo">
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="collection.html">Collection</a>
-    <a href="user-login.html">Login</a>
-  </nav>
+  <div class="topbar">
+    <div class="brand" onclick="location.href='index.html'">
+      <img src="images/logo.final.png"/>
+      <div>
+        <h1>Snehvastra</h1>
+        <div style="font-size:0.8rem;color:var(--muted)">New Gen Luxury Streetwear</div>
+      </div>
+    </div>
+
+    <button class="mobile-hamburger" id="mobileHamburger">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        <li id="authArea"></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<main>
-  <h1>Create Account</h1>
-
-  <form id="register-form">
-
-    <div class="form-group">
-      <label>Full Name</label>
-      <input type="text" id="fullname" required>
-    </div>
-
-    <div class="form-group">
-      <label>Email Address</label>
-      <input type="email" id="email" required>
-    </div>
-
-    <div class="form-group">
-      <label>Password</label>
-      <div class="password-container">
-        <input type="password" id="password" required>
-        <button type="button" class="password-toggle" id="togglePass">👁</button>
+<!-- ✅ MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <div class="brand" style="gap:8px;">
+      <img src="images/logo.final.png" style="height:36px;"/>
+      <div>
+        <h1 style="font-size:1rem;margin:0;">Snehvastra</h1>
+        <div style="font-size:0.75rem;color:var(--muted);">New Gen Luxury</div>
       </div>
     </div>
+    <button class="drawer-close" id="drawerClose">&times;</button>
+  </div>
+  
+  <ul class="primary-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="auction.html">Auction</a></li>
+    <li><a href="wishlist.html">Wishlist</a></li>
+    <li><a href="cart.html">Cart (<span id="mobileCartCount">0</span>)</a></li>
+  </ul>
 
-    <div class="form-group">
-      <label>Confirm Password</label>
-      <div class="password-container">
-        <input type="password" id="confirmpassword" required>
-        <button type="button" class="password-toggle" id="toggleConfirm">👁</button>
+  <div id="mobileAuthArea" class="drawer-section"></div>
+</div>
+
+<main class="page">
+  <div class="page-header">
+    <h1 class="page-title">Create Account</h1>
+    <p class="page-subtitle">
+      Join to access exclusive drops, AI styling, and NFC-authenticated purchases.
+    </p>
+  </div>
+
+  <div class="form-card">
+    <form id="register-form">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name" required>
+        <div class="error" id="nameError"></div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <input type="checkbox" id="terms"> I accept Terms & Privacy Policy
-    </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="your@email.com" required>
+        <div class="error" id="emailError"></div>
+      </div>
 
-    <button>Create Account</button>
-  </form>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-container">
+          <input type="password" id="password" placeholder="Minimum 8 characters" required>
+          <button type="button" class="password-toggle" id="togglePass">👁</button>
+        </div>
+        <div class="error" id="passError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmpassword">Confirm Password</label>
+        <div class="password-container">
+          <input type="password" id="confirmpassword" placeholder="Confirm your password" required>
+          <button type="button" class="password-toggle" id="toggleConfirm">👁</button>
+        </div>
+        <div class="error" id="confirmError"></div>
+      </div>
+
+      <div class="terms-group">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">
+          I accept <a href="terms.html" class="terms-link">Terms</a> & <a href="privacy.html" class="terms-link">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-primary" id="submitBtn">Create Account</button>
+    </form>
+
+    <div class="form-divider">or</div>
+
+    <div class="login-link">
+      Already have an account? <a href="user-login.html">Sign in</a>
+    </div>
+  </div>
 </main>
 
-<div id="toast" class="toast"></div>
+<footer>
+  © <span id="year"></span> Snehvastra. All Rights Reserved.
+</footer>
+
+<div id="toast"></div>
 
 <script>
+  const USER_KEY = "snehvastra_user";
   const USERS_KEY = "snehvastra_users";
-  const USER_KEY  = "snehvastra_user";
 
-  // ✅ AUTO REDIRECT IF LOGGED IN
-  const existingUser = JSON.parse(localStorage.getItem(USER_KEY));
-  if(existingUser && existingUser.loggedIn){
-    location.href = "index.html";
+  // ✅ FULL SYSTEM INTEGRATION
+  let cart = JSON.parse(localStorage.getItem("snehvastra_cart") || "{}");
+
+  // AUTH + CART RENDERING
+  const user = JSON.parse(localStorage.getItem(USER_KEY));
+  const authArea = document.getElementById("authArea");
+  const mobileAuthArea = document.getElementById("mobileAuthArea");
+
+  function renderAuth(){
+    if(user && user.loggedIn){
+      authArea.innerHTML = `
+        <span class="user-badge">Hi, ${user.name}</span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      `;
+      mobileAuthArea.innerHTML = `
+        <h4 style="font-family:'Clash Display',serif;font-size:0.95rem;color:var(--purple);margin:0 0 16px 0;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Account</h4>
+        <ul style="list-style:none;margin:0;padding:0;">
+          <li style="margin-bottom:8px;"><span style="display:block;padding:12px 12px;font-size:0.95rem;font-weight:700;color:var(--purple);">Hi, ${user.name}</span></li>
+          <li><a href="#" onclick="logout();return false;" style="display:block;padding:12px 16px;font-weight:600;color:var(--slate);">Logout</a></li>
+        </ul>
+      `;
+    } else {
+      authArea.innerHTML = `<a href="user-login.html">Login</a><a href="user-register.html">Register</a>`;
+      mobileAuthArea.innerHTML = `
+        <h4 style="font-family:'Clash Display',serif;font-size:0.95rem;color:var(--purple);margin:0 0 16px 0;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Account</h4>
+        <ul style="list-style:none;margin:0;padding:0;">
+          <li><a href="user-login.html" style="display:block;padding:12px 16px;">Login</a></li>
+          <li><a href="user-register.html" style="display:block;padding:12px 16px;">Register</a></li>
+        </ul>
+      `;
+    }
   }
 
-  // ✅ PASSWORD TOGGLES — FIXED
-  const pass = document.getElementById("password");
-  const confirmPass = document.getElementById("confirmpassword");
-  document.getElementById("togglePass").onclick = ()=> toggle(pass, togglePass);
-  document.getElementById("toggleConfirm").onclick = ()=> toggle(confirmPass, toggleConfirm);
-
-  function toggle(field, btn){
-    field.type = field.type === "password" ? "text" : "password";
-    btn.textContent = field.type === "text" ? "🙈" : "👁";
+  function logout(){
+    localStorage.removeItem(USER_KEY);
+    location.reload();
   }
 
-  // ✅ REGISTER SUBMIT
+  function updateCartCount(){
+    const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+    document.getElementById("cartCount").textContent = total;
+    const mobileCart = document.getElementById("mobileCartCount");
+    if(mobileCart) mobileCart.textContent = total;
+  }
+
+  // ✅ PASSWORD TOGGLES
+  function setupPasswordToggles(){
+    const pass = document.getElementById("password");
+    const confirmPass = document.getElementById("confirmpassword");
+    const togglePass = document.getElementById("togglePass");
+    const toggleConfirm = document.getElementById("toggleConfirm");
+
+    togglePass.onclick = () => {
+      pass.type = pass.type === "password" ? "text" : "password";
+      togglePass.textContent = pass.type === "text" ? "🙈" : "👁";
+    };
+    toggleConfirm.onclick = () => {
+      confirmPass.type = confirmPass.type === "password" ? "text" : "password";
+      toggleConfirm.textContent = confirmPass.type === "text" ? "🙈" : "👁";
+    };
+  }
+
+  // ✅ FORM VALIDATION + REGISTER
   document.getElementById("register-form").addEventListener("submit", function(e){
     e.preventDefault();
-
-    const name = fullname.value.trim();
-    const email = email.value.trim().toLowerCase();
-    const passVal = password.value;
-    const confirm = confirmpassword.value;
+    
+    // Clear previous errors
+    document.querySelectorAll(".error").forEach(el => el.style.display = "none");
+    
+    const name = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmpassword").value;
     const terms = document.getElementById("terms").checked;
 
-    if(!terms) return showToast("Accept Terms first");
-    if(passVal.length < 8) return showToast("Password must be 8+ characters");
-    if(passVal !== confirm) return showToast("Passwords do not match");
+    // Validation
+    if(!name) return showError("nameError", "Name is required");
+    if(!email || !/\S+@\S+\.\S+/.test(email)) return showError("emailError", "Valid email required");
+    if(password.length < 8) return showError("passError", "Password must be 8+ characters");
+    if(password !== confirmPassword) return showError("confirmError", "Passwords don't match");
+    if(!terms) return showToast("Please accept Terms & Privacy Policy");
 
-    const users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+    // Check existing user
+    const users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
     if(users.find(u => u.email === email)){
-      return showToast("Email already registered");
+      return showError("emailError", "Email already registered");
     }
 
-    const user = {
+    // Create user
+    const newUser = {
       id: Date.now(),
       name,
       email,
-      password: passVal,
-      loggedIn: true
+      password,
+      loggedIn: true,
+      createdAt: new Date().toISOString()
     };
 
-    users.push(user);
+    users.push(newUser);
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
+    localStorage.setItem(USER_KEY, JSON.stringify(newUser));
 
-    showToast("Account created successfully!");
-    setTimeout(()=>location.href="index.html", 1200);
+    showToast("✅ Account created! Welcome to Snehvastra");
+    setTimeout(() => location.href = "index.html", 1500);
   });
 
-  function showToast(msg){
-    const t = document.getElementById("toast");
-    t.textContent = msg;
-    t.classList.add("show");
-    setTimeout(()=>t.classList.remove("show"),2500);
+  function showError(id, msg){
+    document.getElementById(id).textContent = msg;
+    document.getElementById(id).style.display = "block";
+    showToast(msg);
   }
+
+  function showToast(msg){
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
+  }
+
+  // ✅ MOBILE DRAWER
+  const hamburger = document.getElementById("mobileHamburger");
+  const drawer = document.getElementById("mobileDrawer");
+  const overlay = document.getElementById("drawerOverlay");
+  const closeBtn = document.getElementById("drawerClose");
+
+  function openDrawer(){
+    drawer.classList.add("open");
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeDrawer(){
+    drawer.classList.remove("open");
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  hamburger?.addEventListener("click", openDrawer);
+  closeBtn?.addEventListener("click", closeDrawer);
+  overlay?.addEventListener("click", closeDrawer);
+
+  // ✅ ACTIVE NAV
+  function setActiveNav(){
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll("nav a, .primary-nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPath);
+    });
+  }
+
+  // ✅ INIT
+  window.addEventListener("load", ()=>{
+    // Auto-redirect if logged in
+    if(user && user.loggedIn) location.href = "index.html";
+    
+    renderAuth();
+    updateCartCount();
+    setupPasswordToggles();
+    setActiveNav();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if(e.key === "Escape" && drawer?.classList.contains("open")) closeDrawer();
+  });
 </script>
 
 </body>
