@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
   <meta name="theme-color" content="#3A0F5A" />
-  <title>Login - Snehvastra</title>
-  <meta name="description" content="Snehvastra User Login - Secure access to exclusive drops and auctions." />
+
+  <title>Login — Snehvastra</title>
+  <meta name="description" content="Secure login to Snehvastra for exclusive drops, auctions and order tracking." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,110 +14,253 @@
 
   <style>
     :root{
-      --purple:#3A0F5A; --slate:#22232A; --mid:#3B3D45; --muted:#C7C6C8; --paper:#F6F6F6;
-      --text:#EDECEF; --radius:22px; --ease:.28s; --max-w:1100px;
+      --purple:#3A0F5A; 
+      --slate:#22232A; 
+      --mid:#3B3D45; 
+      --muted:#C7C6C8; 
+      --paper:#F6F6F6;
+      --radius:20px; 
+      --ease:.28s; 
+      --max-w:1100px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#FBFAF8);color:var(--slate);
-      min-height:100vh;display:flex;flex-direction:column;align-items:center;overflow-x:hidden}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,var(--paper),#FBFAF8);
+      color:var(--slate);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
 
-    /* HEADER */
-    header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:90%;max-width:var(--max-w);
-      display:flex;justify-content:space-between;align-items:center;padding:18px 28px;
-      background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(58,15,90,0.1);
-      border-radius:0 0 var(--radius) var(--radius);z-index:100}
-    .logo{height:48px;filter:drop-shadow(0 0 12px var(--purple))}
-    nav ul{display:flex;gap:16px;list-style:none}
-    nav a{color:var(--mid);text-decoration:none;font-size:0.9rem;padding:8px 14px;border-radius:10px;
-      transition:all var(--ease);font-weight:600}
-    nav a:hover,nav a.active{color:var(--purple);background:rgba(58,15,90,0.05)}
-    #cartCount{background:var(--purple);color:#fff;border-radius:50%;padding:2px 6px;font-size:0.8rem;margin-left:4px}
+    header{
+      position:fixed;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:92%;
+      max-width:var(--max-w);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 28px;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(58,15,90,0.08);
+      border-radius:0 0 var(--radius) var(--radius);
+      z-index:100;
+    }
 
-    /* AUCTION BAR */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:90%;max-width:500px;
-      background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:12px 16px;text-align:center;
-      font-weight:700;border-radius:12px;box-shadow:0 4px 20px rgba(58,15,90,0.35);z-index:90;font-size:0.88rem}
-    .auction-timer{font-family:'Clash Display',serif;background:#fff;padding:4px 10px;border-radius:8px;color:var(--slate);margin-left:8px}
+    .logo{height:48px;cursor:pointer}
+    nav ul{display:flex;gap:14px;list-style:none}
+    nav a{
+      color:var(--mid);
+      text-decoration:none;
+      font-size:0.9rem;
+      padding:8px 14px;
+      border-radius:10px;
+      font-weight:600;
+    }
+    nav a.active{color:var(--purple);background:rgba(58,15,90,0.06)}
 
-    /* LOGIN BOX */
-    main{margin-top:180px;background:#fff;border-radius:var(--radius);padding:55px 40px;width:90%;max-width:420px;
-      box-shadow:0 25px 80px rgba(58,15,90,0.12);border:1px solid rgba(58,15,90,0.12)}
+    #cartCount{
+      background:var(--purple);
+      color:#fff;
+      border-radius:50%;
+      padding:2px 7px;
+      font-size:0.8rem;
+      margin-left:4px;
+      font-weight:700;
+    }
 
-    h1{font-family:'Clash Display',serif;font-size:2.3rem;text-align:center;
-      background:linear-gradient(135deg,var(--purple),#2e0b4a);-webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;margin-bottom:32px}
+    .auction-banner{
+      position:fixed;
+      top:88px;
+      width:92%;
+      max-width:520px;
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      color:#fff;
+      padding:12px 16px;
+      text-align:center;
+      font-weight:700;
+      border-radius:12px;
+    }
+
+    .auction-timer{
+      background:#fff;
+      padding:4px 10px;
+      border-radius:8px;
+      color:var(--slate);
+      font-weight:700;
+      margin-left:8px;
+    }
+
+    main{
+      margin-top:190px;
+      background:#fff;
+      border-radius:var(--radius);
+      padding:54px 42px;
+      width:92%;
+      max-width:420px;
+      box-shadow:0 25px 80px rgba(58,15,90,0.15);
+      border:1px solid rgba(58,15,90,0.12);
+    }
+
+    h1{
+      font-family:'Clash Display',serif;
+      font-size:2.3rem;
+      text-align:center;
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:34px;
+    }
 
     form{display:flex;flex-direction:column;gap:20px}
-    label{color:var(--mid);font-size:0.9rem;font-weight:500;text-align:left;margin-bottom:4px}
-    input{padding:15px;border-radius:14px;border:1px solid rgba(58,15,90,0.2);font-size:1rem;
-      background:rgba(255,255,255,0.95);transition:all var(--ease)}
-    input:focus{border-color:var(--purple);box-shadow:0 0 0 4px rgba(58,15,90,0.13);outline:none}
+    label{font-weight:600}
+
+    input{
+      width:100%;
+      padding:15px;
+      border-radius:14px;
+      border:1px solid rgba(58,15,90,0.2);
+      font-size:1rem;
+    }
 
     .password-wrap{position:relative}
-    .password-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);
-      background:none;border:none;font-size:1.1rem;color:var(--muted);cursor:pointer}
-
-    .forgot-password{text-align:right;margin-top:-10px}
-    .forgot-password a{font-size:0.85rem;color:var(--purple);text-decoration:none}
-
-    button{padding:16px;border:none;border-radius:16px;background:linear-gradient(135deg,var(--purple),#2e0b4a);
-      color:#fff;font-weight:700;font-size:1rem;cursor:pointer;transition:all var(--ease);
-      box-shadow:0 10px 35px rgba(58,15,90,0.35)}
-    button:hover{transform:translateY(-3px);box-shadow:0 16px 45px rgba(58,15,90,0.55)}
-
-    .register-link{text-align:center;margin-top:16px;font-size:0.9rem;color:var(--mid)}
-    .register-link a{color:var(--purple);font-weight:600;text-decoration:none}
-
-    /* TOAST */
-    .toast{position:fixed;top:120px;right:20px;background:linear-gradient(135deg,var(--purple),#2e0b4a);
-      color:#fff;padding:16px 22px;border-radius:14px;transform:translateX(400px);
-      transition:transform 0.4s;box-shadow:0 10px 35px rgba(58,15,90,0.35);font-weight:600;z-index:200}
-    .toast.show{transform:translateX(0)}
-    .toast.error{background:linear-gradient(135deg,#e94b4b,#ff7b7b)}
-    .toast.success{background:linear-gradient(135deg,#4CAF50,#7edc88)}
-
-    footer{text-align:center;margin:40px 0 20px;color:var(--mid);font-size:0.9rem}
-    footer strong{color:var(--purple)}
-
-    @media(max-width:480px){
-      main{padding:40px 25px}
-      h1{font-size:1.9rem}
-      nav a{font-size:0.78rem;padding:6px 10px}
+    .password-toggle{
+      position:absolute;
+      right:14px;
+      top:50%;
+      transform:translateY(-50%);
+      background:none;
+      border:none;
+      font-size:1.1rem;
+      cursor:pointer;
     }
+
+    button[type="submit"]{
+      padding:16px;
+      border:none;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      color:#fff;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    .toast{
+      position:fixed;
+      top:120px;
+      right:20px;
+      padding:16px 22px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      color:white;
+      transform:translateX(400px);
+      transition:0.4s;
+    }
+    .toast.show{transform:translateX(0)}
+    .toast.error{background:#e74c3c}
+
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <img src="images/logo.final.png" class="logo" alt="Snehvastra Logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li><a href="user-login.html" class="active">Login</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <a href="index.html"><img src="images/logo.final.png" class="logo"></a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="auction.html">Auction</a></li>
+      <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      <li><a class="active">Login</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- AUCTION BAR -->
-  <div class="auction-banner">🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span></div>
+<div class="auction-banner">🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span></div>
 
-  <!-- LOGIN BOX -->
-  <main>
-    <h1>Welcome Back</h1>
+<main>
+  <h1>Welcome Back</h1>
 
-    <form id="login-form">
-      <div>
-        <label>Email Address</label>
-        <input type="email" id="email" required placeholder="email@example.com" />
-      </div>
+  <form id="login-form">
+    <label>Email</label>
+    <input type="email" id="email" required>
 
-      <div>
-        <label>Password</label>
-        <div class="password-wrap">
-          <input type="password" id="password" required placeholder="Enter your password" />
-          <button type="button" class="password-toggle" onclick="togglePassword()">👁</button
+    <label>Password</label>
+    <div class="password-wrap">
+      <input type="password" id="password" required>
+      <button type="button" class="password-toggle" id="togglePassword">👁</button>
+    </div>
+
+    <button type="submit">Secure Login</button>
+  </form>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script>
+  const USERS_KEY = "snehvastra_users";
+  const USER_KEY = "snehvastra_user";
+
+  const toast = document.getElementById("toast");
+  function showToast(msg,type="success"){
+    toast.textContent = msg;
+    toast.className = "toast show " + type;
+    setTimeout(()=>toast.classList.remove("show"),3000);
+  }
+
+  // ✅ REDIRECT IF ALREADY LOGGED IN
+  const existingUser = JSON.parse(localStorage.getItem(USER_KEY));
+  if(existingUser && existingUser.loggedIn){
+    window.location.href = "index.html";
+  }
+
+  // ✅ PASSWORD TOGGLE FIXED
+  const pass = document.getElementById("password");
+  const toggle = document.getElementById("togglePassword");
+  toggle.onclick = ()=>{
+    pass.type = pass.type === "password" ? "text" : "password";
+    toggle.textContent = pass.type === "text" ? "🙈" : "👁";
+  };
+
+  // ✅ LOGIN AUTHENTICATION
+  document.getElementById("login-form").addEventListener("submit", e=>{
+    e.preventDefault();
+
+    const email = emailInput.value.trim().toLowerCase();
+    const password = pass.value.trim();
+
+    const users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+    const found = users.find(u => u.email === email && u.password === password);
+
+    if(!found){
+      showToast("Invalid email or password","error");
+      return;
+    }
+
+    found.loggedIn = true;
+    localStorage.setItem(USER_KEY, JSON.stringify(found));
+    showToast("Login successful");
+    setTimeout(()=>window.location.href="index.html",1200);
+  });
+
+  const auctionDate = new Date("2025-12-01T18:00:00").getTime();
+  setInterval(()=>{
+    const diff = auctionDate - Date.now();
+    const t = document.getElementById("auctionTimer");
+    if(diff > 0){
+      const s = Math.floor((diff/1000)%60);
+      t.textContent = s+"s";
+    } else t.textContent = "LIVE NOW!";
+  },1000);
+</script>
+
+</body>
+</html>
