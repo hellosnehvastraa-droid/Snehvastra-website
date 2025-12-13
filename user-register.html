@@ -2,386 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#3A0F5A" />
   <title>Register - Snehvastra</title>
-  <meta name="description" content="Snehvastra User Registration - Join exclusive drops and auctions." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <style>
-    :root{
-      --purple:#3A0F5A; --slate:#22232A; --mid:#3B3D45; --silver:#B7B9BD; --paper:#F6F6F6;
-      --text:#EDECEF; --muted:#C7C6C8; --max-w:1200px; --radius:14px; --ease:.28s;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#FBFAF8);color:var(--slate);min-height:100vh;overflow-x:hidden;line-height:1.6;display:flex;flex-direction:column}
+    :root{--purple:#3A0F5A;--mid:#444;--muted:#999;--radius:14px}
+    body{margin:0;font-family:'Poppins',sans-serif;background:#f7f6fb}
+    header{background:#fff;padding:18px 5%;display:flex;justify-content:space-between;align-items:center}
+    .logo{height:44px}
+    nav a{text-decoration:none;margin-left:14px;color:#555;font-weight:600}
+    main{max-width:520px;margin:80px auto;background:#fff;padding:40px;border-radius:var(--radius);box-shadow:0 10px 40px rgba(0,0,0,0.08)}
+    h1{font-family:'Clash Display';text-align:center;color:var(--purple)}
+    .form-group{margin-bottom:18px}
+    label{display:block;margin-bottom:6px;font-weight:600;color:#444}
+    input{width:100%;padding:14px;border-radius:12px;border:1px solid #ccc;font-size:1rem}
 
-    /* HEADER */
-    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.95));border-bottom:1px solid rgba(183,185,189,0.08);border-radius:0 0 var(--radius) var(--radius);z-index:100;max-width:var(--max-w);margin:0 auto;padding:20px 5%;display:flex;align-items:center;justify-content:space-between}
-    .logo{height:50px;filter:drop-shadow(0 0 12px var(--purple))}
-    nav ul{display:flex;list-style:none;gap:15px;flex-wrap:wrap;margin:0;padding:0}
-    nav a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:600;padding:8px 14px;border-radius:8px;transition:all var(--ease)}
-    nav a:hover, nav a.active{background:rgba(58,15,90,0.04);color:var(--purple)}
-    #cartCount{background:var(--purple);color:#fff;border-radius:50%;padding:2px 6px;font-size:0.8rem;font-weight:700;margin-left:4px}
-
-    /* AUCTION BANNER */
-    .auction-banner{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:12px 20px;text-align:center;font-weight:700;position:sticky;top:92px;z-index:90;box-shadow:0 4px 20px rgba(58,15,90,0.3);margin:0 auto;width:calc(100% - 10%);max-width:var(--max-w);border-radius:12px}
-    .auction-timer{font-family:'Clash Display',serif;background:rgba(255,255,255,0.95);padding:4px 10px;border-radius:8px;display:inline-block;margin-left:8px;color:var(--slate);font-size:0.85rem}
-
-    /* MAIN */
-    main{padding:160px 5% 80px;max-width:var(--max-w);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
-
-    h1{font-family:'Clash Display',serif;font-weight:600;font-size:clamp(2rem,5vw,2.5rem);background:linear-gradient(90deg,var(--purple),#2e0b4a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1.5px;margin:0}
-
-    /* FORM */
-    form{width:100%;max-width:520px;background:#fff;padding:36px;border-radius:var(--radius);box-shadow:0 12px 40px rgba(58,15,90,0.12);border:1px solid rgba(58,15,90,0.06);backdrop-filter:blur(10px)}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .form-group{margin-bottom:18px;position:relative}
-    label{display:block;margin-bottom:8px;font-size:0.95rem;color:var(--mid);font-weight:500;letter-spacing:0.3px}
-    input, select{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(58,15,90,0.12);background:rgba(255,255,255,0.98);color:var(--slate);font-size:1rem;outline:none;transition:all var(--ease);font-family:inherit}
-    input:focus, select:focus{border-color:var(--purple);box-shadow:0 0 15px rgba(58,15,90,0.08);background:#fff}
-
-    /* password toggle (no overlap) */
     .password-container{position:relative}
-    .password-container input{padding-right:52px}
-    .password-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--mid);cursor:pointer;font-size:1.05rem;padding:6px;border-radius:6px}
+    .password-container input{padding-right:56px}
+    .password-toggle{
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      background:none;
+      border:none;
+      font-size:1.1rem;
+      cursor:pointer;
+      color:#444;
+    }
 
-    .helper{font-size:0.85rem;color:var(--muted);margin-top:6px}
-    .error{color:#ff6b6b;font-size:0.86rem;margin-top:6px;display:none;font-weight:600}
+    button{
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:14px;
+      background:#3A0F5A;
+      color:white;
+      font-weight:700;
+      cursor:pointer
+    }
 
-    .strength-meter{height:8px;border-radius:8px;background:rgba(0,0,0,0.06);overflow:hidden;margin-top:8px}
-    .strength-bar{height:100%;width:0%;transition:width .35s ease}
+    .error{color:red;font-size:0.85rem;display:none}
 
-    .checkbox-group{display:flex;align-items:flex-start;gap:12px;margin:18px 0}
-    .checkbox-group input[type="checkbox"]{margin:0;transform:scale(1.25);accent-color:var(--purple);margin-top:3px}
-
-    button{width:100%;padding:16px 18px;background:linear-gradient(135deg,var(--purple),#2e0b4a);border:none;border-radius:12px;color:#fff;font-weight:700;font-size:1.02rem;cursor:pointer;transition:all var(--ease);box-shadow:0 8px 25px rgba(58,15,90,0.3);font-family:inherit}
-    button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 35px rgba(58,15,90,0.6)}
-    button:disabled{opacity:0.6;cursor:not-allowed}
-
-    .login-link{font-size:0.95rem;color:var(--mid);text-align:center;margin-top:6px}
-    .login-link a{color:var(--purple);text-decoration:none;font-weight:600}
-
-    /* FOOTER */
-    footer{text-align:center;padding:40px 5%;background:rgba(255,255,255,0.85);margin-top:auto;color:var(--muted);border-top:1px solid rgba(183,185,189,0.1);font-size:0.95rem;max-width:var(--max-w);margin-left:auto;margin-right:auto}
-    footer strong{color:var(--purple)}
-
-    /* TOAST */
-    .toast{position:fixed;top:120px;right:20px;background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:16px 24px;border-radius:12px;box-shadow:0 10px 35px rgba(58,15,90,0.4);font-weight:600;z-index:1000;transform:translateX(400px);transition:transform 0.3s ease;max-width:360px}
+    .toast{
+      position:fixed;
+      top:20px;
+      right:20px;
+      background:#3A0F5A;
+      color:#fff;
+      padding:14px 18px;
+      border-radius:10px;
+      transform:translateX(400px);
+      transition:.3s
+    }
     .toast.show{transform:translateX(0)}
-    .toast.success{background:linear-gradient(135deg,#4CAF50,#81C784)}
-    .toast.error{background:linear-gradient(135deg,#ff6b6b,#ff8e8e)}
-
-    /* responsive adjustments */
-    @media(max-width:880px){
-      .form-row{grid-template-columns:1fr}
-      main{padding:140px 5% 60px}
-      header{padding:18px 5%}
-      .auction-banner{top:110px}
-    }
-    @media(max-width:480px){
-      form{padding:20px}
-      h1{font-size:1.8rem}
-      .auction-banner{padding:10px 12px}
-    }
   </style>
 </head>
+
 <body>
-  <!-- HEADER -->
-  <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li><a href="user-login.html">Login</a></li>
-        <li><a href="user-register.html" class="active">Register</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- AUCTION BANNER -->
-  <div class="auction-banner" role="region" aria-live="polite">
-    🔥 SNEHVASTRA ONE AUCTION
-    <span class="auction-timer" id="auctionTimer">Loading...</span>
-  </div>
+<header>
+  <img src="images/logo.final.png" class="logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="collection.html">Collection</a>
+    <a href="user-login.html">Login</a>
+  </nav>
+</header>
 
-  <main>
-    <h1>Create Account</h1>
+<main>
+  <h1>Create Account</h1>
 
-    <form id="register-form" aria-label="Registration form" novalidate>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="fullname">Full Name</label>
-          <input type="text" id="fullname" name="fullname" placeholder="Your full name" required autocomplete="name" />
-          <div class="error" id="fullname-error" aria-live="polite"></div>
-        </div>
+  <form id="register-form">
 
-        <div class="form-group">
-          <label for="phone">Phone (optional)</label>
-          <input type="tel" id="phone" name="phone" placeholder="+91 9XXXXXXXXX" autocomplete="tel" />
-          <div class="error" id="phone-error" aria-live="polite"></div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="email@example.com" required autocomplete="email" />
-        <div class="error" id="email-error" aria-live="polite"></div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group password-container">
-          <label for="password">Password</label>
-          <div class="password-container">
-            <input type="password" id="password" name="password" placeholder="Create password (8+ chars)" required autocomplete="new-password" aria-describedby="pwd-help" />
-            <button type="button" class="password-toggle" aria-label="Toggle password visibility" onclick="togglePassword('password')">👁</button>
-          </div>
-          <div class="helper" id="pwd-help">Use 8+ characters. Try mixing letters & numbers.</div>
-          <div class="strength-meter" aria-hidden="true"><div id="strengthBar" class="strength-bar"></div></div>
-          <div class="error" id="password-error" aria-live="polite"></div>
-        </div>
-
-        <div class="form-group password-container">
-          <label for="confirmpassword">Confirm Password</label>
-          <div class="password-container">
-            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required autocomplete="new-password" />
-            <button type="button" class="password-toggle" aria-label="Toggle confirm password visibility" onclick="togglePassword('confirmpassword')">👁</button>
-          </div>
-          <div class="error" id="confirm-error" aria-live="polite"></div>
-        </div>
-      </div>
-
-      <div class="checkbox-group">
-        <input type="checkbox" id="terms" />
-        <label for="terms" style="font-weight:500; cursor:pointer; flex:1;">I agree to <a href="terms.html" style="color:var(--purple);text-decoration:none">Terms & Conditions</a> and <a href="privacy.html" style="color:var(--purple);text-decoration:none">Privacy Policy</a></label>
-      </div>
-
-      <button type="submit" id="registerBtn" aria-live="polite">Create Account</button>
-    </form>
-
-    <div class="login-link">
-      Already have an account? <a href="user-login.html">Login here</a>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="fullname" required>
     </div>
-  </main>
 
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
-  </footer>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" id="email" required>
+    </div>
 
-  <!-- TOAST -->
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div class="form-group">
+      <label>Password</label>
+      <div class="password-container">
+        <input type="password" id="password" required>
+        <button type="button" class="password-toggle" id="togglePass">👁</button>
+      </div>
+    </div>
 
-  <script>
-    // --- Local references & initial data ---
-    const cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    const users = JSON.parse(localStorage.getItem('snehvastra_users')) || [];
-    const currentUser = JSON.parse(localStorage.getItem('snehvastra_user')) || null;
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <div class="password-container">
+        <input type="password" id="confirmpassword" required>
+        <button type="button" class="password-toggle" id="toggleConfirm">👁</button>
+      </div>
+    </div>
 
-    // Small helpers
-    function el(id){ return document.getElementById(id); }
-    function showToast(message, type='') {
-      const toast = el('toast');
-      toast.textContent = message;
-      toast.className = `toast ${type}`;
-      toast.classList.add('show');
-      setTimeout(()=> toast.classList.remove('show'), 4200);
+    <div class="form-group">
+      <input type="checkbox" id="terms"> I accept Terms & Privacy Policy
+    </div>
+
+    <button>Create Account</button>
+  </form>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script>
+  const USERS_KEY = "snehvastra_users";
+  const USER_KEY  = "snehvastra_user";
+
+  // ✅ AUTO REDIRECT IF LOGGED IN
+  const existingUser = JSON.parse(localStorage.getItem(USER_KEY));
+  if(existingUser && existingUser.loggedIn){
+    location.href = "index.html";
+  }
+
+  // ✅ PASSWORD TOGGLES — FIXED
+  const pass = document.getElementById("password");
+  const confirmPass = document.getElementById("confirmpassword");
+  document.getElementById("togglePass").onclick = ()=> toggle(pass, togglePass);
+  document.getElementById("toggleConfirm").onclick = ()=> toggle(confirmPass, toggleConfirm);
+
+  function toggle(field, btn){
+    field.type = field.type === "password" ? "text" : "password";
+    btn.textContent = field.type === "text" ? "🙈" : "👁";
+  }
+
+  // ✅ REGISTER SUBMIT
+  document.getElementById("register-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const name = fullname.value.trim();
+    const email = email.value.trim().toLowerCase();
+    const passVal = password.value;
+    const confirm = confirmpassword.value;
+    const terms = document.getElementById("terms").checked;
+
+    if(!terms) return showToast("Accept Terms first");
+    if(passVal.length < 8) return showToast("Password must be 8+ characters");
+    if(passVal !== confirm) return showToast("Passwords do not match");
+
+    const users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+    if(users.find(u => u.email === email)){
+      return showToast("Email already registered");
     }
 
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((s,q)=>s+q,0);
-      const cc = document.getElementById('cartCount');
-      if(cc) cc.textContent = total;
-    }
+    const user = {
+      id: Date.now(),
+      name,
+      email,
+      password: passVal,
+      loggedIn: true
+    };
 
-    // Auction timer (shared pattern)
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(()=>{
-      const now = Date.now();
-      const diff = auctionDate - now;
-      const t = el('auctionTimer');
-      if(!t) return;
-      if(diff > 0){
-        const d = Math.floor(diff/86400000);
-        const h = Math.floor((diff%86400000)/3600000);
-        const m = Math.floor((diff%3600000)/60000);
-        const s = Math.floor((diff%60000)/1000);
-        t.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else t.textContent = 'LIVE NOW!';
-    }, 1000);
+    users.push(user);
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
 
-    // Password toggle
-    function togglePassword(fieldId){
-      const f = el(fieldId);
-      const btn = f.parentElement.querySelector('.password-toggle');
-      if(f.type === 'password'){ f.type='text'; if(btn) btn.textContent='🙈'; }
-      else { f.type='password'; if(btn) btn.textContent='👁'; }
-    }
+    showToast("Account created successfully!");
+    setTimeout(()=>location.href="index.html", 1200);
+  });
 
-    // Simple password strength estimation
-    function passwordStrength(pwd){
-      let score = 0;
-      if(!pwd) return 0;
-      if(pwd.length >= 8) score += 1;
-      if(/[A-Z]/.test(pwd)) score += 1;
-      if(/[0-9]/.test(pwd)) score += 1;
-      if(/[^A-Za-z0-9]/.test(pwd)) score += 1;
-      return score; // 0..4
-    }
-    function updateStrengthBar(){
-      const pwd = el('password').value || '';
-      const score = passwordStrength(pwd);
-      const bar = el('strengthBar');
-      const perc = (score/4)*100;
-      bar.style.width = perc + '%';
-      // color
-      if(score <= 1) bar.style.background = '#ff6b6b';
-      else if(score === 2) bar.style.background = '#ffb86b';
-      else if(score === 3) bar.style.background = '#81c784';
-      else bar.style.background = '#4CAF50';
-    }
+  function showToast(msg){
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(()=>t.classList.remove("show"),2500);
+  }
+</script>
 
-    // Input helpers
-    function normalizeName(name){
-      return name.split(' ').filter(Boolean).map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
-    }
-
-    // Validation
-    function validateForm(){
-      // reset errors
-      ['fullname-error','email-error','phone-error','password-error','confirm-error'].forEach(id=>{
-        const elErr = el(id);
-        if(elErr){ elErr.style.display='none'; elErr.textContent=''; }
-      });
-
-      let ok = true;
-      const fullname = el('fullname').value.trim();
-      const phone = el('phone').value.trim();
-      const email = el('email').value.trim().toLowerCase();
-      const password = el('password').value;
-      const confirm = el('confirmpassword').value;
-      const terms = el('terms').checked;
-
-      if(fullname.length < 2){
-        el('fullname-error').textContent = 'Name must be 2+ characters';
-        el('fullname-error').style.display = 'block';
-        ok = false;
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!emailRegex.test(email)){
-        el('email-error').textContent = 'Enter a valid email';
-        el('email-error').style.display = 'block';
-        ok = false;
-      } else if(users.find(u => u.email === email)){
-        el('email-error').textContent = 'Email already registered';
-        el('email-error').style.display = 'block';
-        ok = false;
-      }
-
-      if(phone){
-        const phoneDigits = phone.replace(/\D/g,'');
-        if(!(phoneDigits.length >= 10 && phoneDigits.length <= 13)){
-          el('phone-error').textContent = 'Enter a valid phone number';
-          el('phone-error').style.display = 'block';
-          ok = false;
-        }
-      }
-
-      if(password.length < 8){
-        el('password-error').textContent = 'Password must be 8+ characters';
-        el('password-error').style.display = 'block';
-        ok = false;
-      }
-
-      if(password !== confirm){
-        el('confirm-error').textContent = 'Passwords do not match';
-        el('confirm-error').style.display = 'block';
-        ok = false;
-      }
-
-      if(!terms){
-        showToast('Please accept Terms & Conditions', 'error');
-        ok = false;
-      }
-
-      return ok;
-    }
-
-    // Register submission
-    document.getElementById('register-form').addEventListener('submit', function(e){
-      e.preventDefault();
-      const registerBtn = el('registerBtn');
-      if(!validateForm()) return;
-
-      registerBtn.disabled = true;
-      registerBtn.textContent = 'Creating Account...';
-
-      // prepare user
-      const nameRaw = el('fullname').value.trim();
-      const phoneRaw = el('phone').value.trim();
-      const emailRaw = el('email').value.trim().toLowerCase();
-      const pwd = el('password').value;
-
-      const newUser = {
-        id: Date.now(),
-        name: normalizeName(nameRaw),
-        phone: phoneRaw || null,
-        email: emailRaw,
-        password: pwd,
-        joined: new Date().toISOString(),
-        loggedIn: true
-      };
-
-      // save in localStorage (existing array)
-      const existing = JSON.parse(localStorage.getItem('snehvastra_users')) || [];
-      existing.push(newUser);
-      localStorage.setItem('snehvastra_users', JSON.stringify(existing));
-      localStorage.setItem('snehvastra_user', JSON.stringify(newUser));
-
-      // small success flow
-      setTimeout(()=>{
-        showToast(`Welcome ${newUser.name}! Account created 🎉`, 'success');
-        updateCartCount();
-        setTimeout(()=>{
-          window.location.href = 'index.html';
-        }, 1200);
-      }, 700);
-    });
-
-    // Live UX
-    el('password').addEventListener('input', updateStrengthBar);
-    el('fullname').addEventListener('blur', ()=>{ el('fullname').value = normalizeName(el('fullname').value) });
-
-    // On load
-    window.addEventListener('load', ()=>{
-      updateCartCount();
-      el('currentYear') && (el('currentYear').textContent = new Date().getFullYear());
-
-      // If already logged in, redirect (keeps consistent with login file)
-      const user = JSON.parse(localStorage.getItem('snehvastra_user')) || null;
-      if(user && user.loggedIn){
-        showToast(`Welcome back, ${user.name}!`, 'success');
-        setTimeout(()=> window.location.href = 'index.html', 900);
-      }
-    });
-  </script>
-
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-  </script>
 </body>
 </html>
