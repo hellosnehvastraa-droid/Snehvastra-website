@@ -14,11 +14,10 @@
   <style>
     :root{
       --purple:#3A0F5A; 
+      --accent:#2e0b4a;
       --slate:#1d1c22; 
       --mid:#3B3D45; 
-      --silver:#B7B9BD; 
       --paper:#F6F6F6;
-      --text-dark:#26262c;
       --muted:#8e8e95;
       --max-w:1100px; 
       --radius:18px; 
@@ -41,42 +40,43 @@
       position:sticky;
       top:0;
       background:rgba(255,255,255,0.96);
-      backdrop-filter:blur(18px);
+      backdrop-filter:blur(14px);
       border-bottom:1px solid rgba(0,0,0,0.06);
-      border-radius:0 0 var(--radius) var(--radius);
       z-index:100;
+    }
+    .topbar{
       max-width:var(--max-w);
       margin:0 auto;
-      padding:22px 5%;
+      padding:20px 5%;
       display:flex;
       align-items:center;
       justify-content:space-between;
     }
-    .logo{height:52px;filter:drop-shadow(0 3px 10px rgba(58,15,90,0.3));}
+    .logo{height:50px}
 
-    nav ul{display:flex;list-style:none;gap:18px;margin:0;padding:0;}
+    nav ul{display:flex;list-style:none;gap:16px;margin:0;padding:0;}
     nav a{
       color:var(--muted);
       text-decoration:none;
       font-size:0.92rem;
       font-weight:600;
-      padding:8px 16px;
+      padding:8px 14px;
       border-radius:10px;
       transition:all var(--ease);
     }
     nav a:hover, nav a.active{
-      background:rgba(58,15,90,0.08);
+      background:rgba(58,15,90,0.07);
       color:var(--purple);
     }
     #cartCount{
       background:var(--purple);color:#fff;
-      border-radius:50%;padding:2px 7px;
+      border-radius:999px;padding:2px 7px;
       font-size:0.8rem;font-weight:700;margin-left:4px;
     }
 
     /* AUCTION BANNER */
     .auction-banner{
-      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      background:linear-gradient(135deg,var(--purple),var(--accent));
       color:#fff;
       padding:15px 20px;
       text-align:center;
@@ -127,87 +127,62 @@
       text-decoration:none;
       color:var(--mid);
       font-weight:500;
-      transition:all var(--ease);
     }
     .toc a:hover{
       color:var(--purple);
       transform:translateX(4px);
     }
 
-    /* MAIN AREA */
     main{
       padding:180px 5% 80px;
       max-width:var(--max-w);
       margin:0 auto;
-      position:relative;
     }
 
-    /* HERO */
     .terms-hero{
       background:#fff;
-      padding:90px 50px;
+      padding:80px 48px;
       border-radius:var(--radius);
-      border:1px solid rgba(34,35,42,0.06);
+      border:1px solid rgba(0,0,0,0.06);
       box-shadow:0 35px 110px rgba(58,15,90,0.12);
-      backdrop-filter:blur(22px);
       margin-bottom:60px;
       text-align:center;
-      position:relative;
-      overflow:hidden;
     }
-
-    .terms-hero::after{
-      content:'⚖️';
-      font-size:140px;
-      opacity:0.04;
-      position:absolute;
-      bottom:-20px;
-      right:20px;
-      color:var(--purple);
-    }
-
     .terms-hero h1{
       font-family:'Clash Display',serif;
-      font-size:clamp(3rem,8vw,4.4rem);
-      font-weight:700;
-      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      font-size:3.5rem;
+      background:linear-gradient(135deg,var(--purple),var(--accent));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      margin-bottom:20px;
     }
-
     .terms-hero p{
-      font-size:1.2rem;
+      font-size:1.15rem;
       color:var(--mid);
       max-width:650px;
-      margin:0 auto;
+      margin:14px auto 0;
     }
 
-    /* LAST UPDATED */
     .last-updated{
-      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      background:linear-gradient(135deg,var(--purple),var(--accent));
       color:#fff;
       padding:12px 24px;
       border-radius:12px;
       font-weight:600;
       display:inline-block;
       margin-bottom:32px;
-      text-align:center;
       font-size:0.95rem;
     }
 
-    /* SECTIONS */
     .terms-section{
       background:#fff;
       margin-bottom:45px;
-      padding:50px 40px;
+      padding:46px 40px;
       border-radius:var(--radius);
-      border:1px solid rgba(34,35,42,0.05);
-      box-shadow:0 20px 60px rgba(58,15,90,0.1);
-      backdrop-filter:blur(18px);
+      border:1px solid rgba(0,0,0,0.05);
+      box-shadow:0 20px 60px rgba(58,15,90,0.08);
       opacity:0;
       transform:translateY(40px);
-      transition:all 0.7s ease;
+      transition:.6s ease;
     }
     .terms-section.visible{
       opacity:1;
@@ -217,48 +192,30 @@
     .terms-section h2{
       font-family:'Clash Display',serif;
       font-size:1.9rem;
-      margin-bottom:12px;
-      color:var(--slate);
+      margin-bottom:14px;
+      padding-left:38px;
       position:relative;
-      padding-left:44px;
     }
-
     .terms-section h2::before{
       content:"⚖️";
       position:absolute;
       left:0;
-      top:4px;
-      font-size:1.6rem;
+      top:2px;
+      font-size:1.5rem;
       color:var(--purple);
     }
 
-    .terms-section h3{
-      font-family:'Clash Display',serif;
-      font-size:1.25rem;
-      margin:25px 0 10px;
-      color:#b6a9e6;
-    }
-
-    .terms-section ul{
-      padding-left:24px;
-      margin:16px 0;
-      color:var(--slate);
-    }
-    .terms-section li{
-      margin-bottom:12px;
-      line-height:1.55;
-    }
+    .terms-section ul{padding-left:22px}
+    .terms-section li{margin-bottom:10px}
 
     .important-notice{
-      background:rgba(255,235,59,0.17);
+      background:rgba(255,235,59,0.18);
       border-left:5px solid #d8c26e;
-      padding:20px;
-      margin:24px 0;
+      padding:18px;
+      margin:20px 0;
       border-radius:10px;
-      color:var(--slate);
     }
 
-    /* FOOTER */
     footer{
       text-align:center;
       padding:60px 5% 40px;
@@ -271,14 +228,12 @@
       margin-left:auto;
       margin-right:auto;
     }
-    footer strong{color:var(--purple);}
 
-    /* SCROLL TO TOP */
     #topBtn{
       position:fixed;
       bottom:40px;
       right:40px;
-      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      background:linear-gradient(135deg,var(--purple),var(--accent));
       color:#fff;
       border:none;
       padding:14px 18px;
@@ -287,29 +242,22 @@
       cursor:pointer;
       box-shadow:0 20px 60px rgba(58,15,90,0.4);
       display:none;
-      transition:all var(--ease);
       z-index:90;
     }
-    #topBtn:hover{
-      transform:translateY(-4px);
-    }
 
-    @media(max-width:900px){
-      .toc{display:none;}
-    }
+    @media(max-width:900px){.toc{display:none}}
     @media(max-width:768px){
-      header{flex-direction:column;gap:20px;padding:18px 20px!important;}
-      main{padding:160px 18px 40px!important;}
-      .terms-section{padding:32px 24px;}
+      main{padding:150px 18px 40px}
+      .terms-section{padding:32px 24px}
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <img src="images/logo.final.png" class="logo" />
+<header>
+  <div class="topbar">
+    <a href="index.html"><img src="images/logo.final.png" class="logo"></a>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -319,211 +267,76 @@
         <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
       </ul>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- AUCTION BANNER -->
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+<div class="auction-banner">
+  🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+</div>
+
+<div class="toc">
+  <h4>Contents</h4>
+  <a href="#s1">1. Introduction</a>
+  <a href="#s2">2. Orders & Payments</a>
+  <a href="#s3">3. Shipping</a>
+  <a href="#s4">4. Returns</a>
+  <a href="#s5">5. Warranty</a>
+  <a href="#s6">6. Auction</a>
+  <a href="#s7">7. Liability</a>
+  <a href="#s8">8. IP</a>
+  <a href="#s9">9. Termination</a>
+  <a href="#s10">10. Law</a>
+</div>
+
+<main>
+
+  <div class="terms-hero">
+    <h1>Terms of Service</h1>
+    <p>Your agreement with Jaipur’s master artisans.</p>
   </div>
 
-  <!-- FLOATING TABLE OF CONTENTS -->
-  <div class="toc">
-    <h4>Contents</h4>
-    <a href="#s1">1. Introduction</a>
-    <a href="#s2">2. Orders & Payments</a>
-    <a href="#s3">3. Shipping & Delivery</a>
-    <a href="#s4">4. Returns & Refunds</a>
-    <a href="#s5">5. Product Warranty</a>
-    <a href="#s6">6. Auction Terms</a>
-    <a href="#s7">7. Liability Limit</a>
-    <a href="#s8">8. Intellectual Property</a>
-    <a href="#s9">9. Termination</a>
-    <a href="#s10">10. Governing Law</a>
-  </div>
+  <div class="last-updated">Updated: December 6, 2025</div>
 
-  <main>
+  <div class="terms-section" id="s1"><h2>1. Introduction</h2><p>These Terms govern your use of Snehvastra.</p></div>
+  <div class="terms-section" id="s2"><h2>2. Orders & Payments</h2><ul><li>All items are handcrafted</li><li>Prices include GST</li></ul></div>
+  <div class="terms-section" id="s3"><h2>3. Shipping</h2><ul><li>India: 3–7 days</li><li>International: 7–21 days</li></ul></div>
+  <div class="terms-section" id="s4"><h2>4. Returns</h2><div class="important-notice">7-day defect only return window</div></div>
+  <div class="terms-section" id="s5"><h2>5. Warranty</h2><ul><li>6 months stitching</li></ul></div>
+  <div class="terms-section" id="s6"><h2>6. Auction</h2><ul><li>Bids are binding</li></ul></div>
+  <div class="terms-section" id="s7"><h2>7. Liability</h2><p>Limited to order value</p></div>
+  <div class="terms-section" id="s8"><h2>8. IP Rights</h2><p>All brand assets belong to Snehvastra</p></div>
+  <div class="terms-section" id="s9"><h2>9. Termination</h2><p>Access may be revoked for violations</p></div>
+  <div class="terms-section" id="s10"><h2>10. Governing Law</h2><p>Jaipur jurisdiction only</p></div>
 
-    <!-- HERO -->
-    <div class="terms-hero">
-      <h1>Terms of Service</h1>
-      <p>Your agreement with Jaipur’s master artisans. By using Snehvastra, you accept these terms.</p>
-    </div>
+</main>
 
-    <div class="last-updated">Updated: December 6, 2025</div>
+<button id="topBtn">↑</button>
 
-    <!-- SECTION 1 -->
-    <div class="terms-section" id="s1">
-      <h2>1. Introduction</h2>
-      <p>These Terms govern all interactions with snehvastra.store (“Site”). By browsing, purchasing, or participating in Auctions, you legally agree to these terms.</p>
-      <div class="important-notice">
-        <strong>Age Requirement:</strong> You must be 18+ to place an order or bid.
-      </div>
-    </div>
+<footer>
+  © <span id="year"></span> Snehvastra
+</footer>
 
-    <!-- SECTION 2 -->
-    <div class="terms-section" id="s2">
-      <h2>2. Orders & Payments</h2>
+<script>
+  const cart = JSON.parse(localStorage.getItem("snehvastra_cart")) || {};
+  document.getElementById("cartCount").textContent =
+    Object.values(cart).reduce((s,i)=>s+(i.qty||0),0);
 
-      <h3>Orders</h3>
-      <ul>
-        <li>All items handcrafted; minor variations natural and expected.</li>
-        <li>Prices include GST for India. International duties are buyer’s responsibility.</li>
-        <li>Order is final after successful payment.</li>
-        <li>We reserve the right to refuse or cancel any order.</li>
-      </ul>
+  const auctionDate = new Date('2025-12-01T18:00:00').getTime();
+  setInterval(()=>{
+    const diff = auctionDate - Date.now();
+    const el = document.getElementById("auctionTimer");
+    if(diff<=0) el.textContent="LIVE NOW!";
+  },1000);
 
-      <h3>Payments</h3>
-      <ul>
-        <li>Accepted: Razorpay, Stripe, UPI, Debit/Credit Cards.</li>
-        <li>PCI-DSS certified encrypted transactions.</li>
-      </ul>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-      <h3>Auction Payments</h3>
-      <ul>
-        <li>Winning bid payable within 24 hours.</li>
-        <li>Non-payment results in forfeiture and re-auction.</li>
-      </ul>
-    </div>
+  const observer = new IntersectionObserver((e)=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("visible")));
+  document.querySelectorAll(".terms-section").forEach(x=>observer.observe(x));
 
-    <!-- SECTION 3 -->
-    <div class="terms-section" id="s3">
-      <h2>3. Shipping & Delivery</h2>
-      <ul>
-        <li>India: 3–7 business days.</li>
-        <li>International: 7–21 days.</li>
-        <li>Tracking provided on dispatch.</li>
-        <li>Risk transfers to buyer post-dispatch.</li>
-      </ul>
-    </div>
-
-    <!-- SECTION 4 -->
-    <div class="terms-section" id="s4">
-      <h2>4. Returns & Refunds</h2>
-      <div class="important-notice">
-        Handcrafted items have a strict 7-day defect-only return window.
-      </div>
-      <ul>
-        <li>Defects must be evidenced with photos.</li>
-        <li>Change of mind not accepted.</li>
-        <li>Auction items: No returns except artisan-verified forgery cases.</li>
-        <li>Refunds processed within 5–7 business days.</li>
-      </ul>
-    </div>
-
-    <!-- SECTION 5 -->
-    <div class="terms-section" id="s5">
-      <h2>5. Product Warranty</h2>
-      <ul>
-        <li>6-month stitching warranty.</li>
-        <li>Natural dyes vary slightly — not a defect.</li>
-        <li>Misuse voids warranty.</li>
-      </ul>
-    </div>
-
-    <!-- SECTION 6 -->
-    <div class="terms-section" id="s6">
-      <h2>6. Auction Terms</h2>
-      <ul>
-        <li>Bids binding. No withdrawal.</li>
-        <li>15% buyer premium applied.</li>
-        <li>Snehvastra may reject bids or end auctions early.</li>
-      </ul>
-    </div>
-
-    <!-- SECTION 7 -->
-    <div class="terms-section" id="s7">
-      <h2>7. Limitation of Liability</h2>
-      <p>Our liability is capped at the order value. We are not responsible for indirect or consequential losses.</p>
-    </div>
-
-    <!-- SECTION 8 -->
-    <div class="terms-section" id="s8">
-      <h2>8. Intellectual Property</h2>
-      <p>All designs, product names, images, and brand assets belong exclusively to Snehvastra Artisans.</p>
-    </div>
-
-    <!-- SECTION 9 -->
-    <div class="terms-section" id="s9">
-      <h2>9. Termination</h2>
-      <p>We may terminate or restrict access for any Terms violation.</p>
-    </div>
-
-    <!-- SECTION 10 -->
-    <div class="terms-section" id="s10">
-      <h2>10. Governing Law</h2>
-      <p>All disputes fall under Rajasthan jurisdiction, resolved in Jaipur courts.</p>
-    </div>
-
-  </main>
-
-  <button id="topBtn">↑</button>
-
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved • <strong>@sneh_vastra</strong>
-  </footer>
-
-  <script>
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-
-    function updateCartCount() {
-      const total = Object.values(cart).reduce((s, q) => s + q, 0);
-      document.getElementById('cartCount').textContent = total;
-    }
-
-    // Auction Timer
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = Date.now();
-      const diff = auctionDate - now;
-      const el = document.getElementById('auctionTimer');
-      if (!el) return;
-
-      if (diff <= 0) {
-        el.textContent = "LIVE NOW!";
-      } else {
-        const d = Math.floor(diff/86400000);
-        const h = Math.floor((diff%86400000)/3600000);
-        const m = Math.floor((diff%3600000)/60000);
-        const s = Math.floor((diff%60000)/1000);
-        el.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      }
-    }, 1000);
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach((entry)=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    },{threshold:0.15});
-
-    document.querySelectorAll('.terms-section').forEach(sec=>observer.observe(sec));
-
-    // Scroll top button
-    const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll',()=>{
-      if(window.scrollY > 500){
-        topBtn.style.display="block";
-      } else topBtn.style.display="none";
-    });
-
-    topBtn.onclick = ()=> window.scrollTo({top:0,behavior:"smooth"});
-
-    window.onload = ()=>{
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-    };
-  </script>
-
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-  </script>
+  const topBtn = document.getElementById("topBtn");
+  window.addEventListener("scroll",()=>topBtn.style.display = window.scrollY>500?"block":"none");
+  topBtn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+</script>
 
 </body>
 </html>
