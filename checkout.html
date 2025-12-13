@@ -1,275 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#3A0F5A"/>
   <title>Checkout — Snehvastra</title>
-  <meta name="description" content="Secure checkout — Snehvastra. Smart COD, Razorpay-ready, WhatsApp verification, AI checkout assistant." />
-  <meta name="theme-color" content="#3A0F5A" />
+  <meta name="description" content="Secure checkout — Snehvastra. Smart COD, Razorpay-ready, WhatsApp verification, AI checkout assistant."/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 
   <style>
     :root{
       --purple:#3A0F5A;
-      --purple-2:#7B3BBE;
-      --slate:#1F2024;
-      --muted:#7B7A80;
-      --paper:#F6F6F8;
-      --radius:14px;
-      --maxw:1200px;
-      --focus: rgba(186,178,255,0.18);
-      --ease: cubic-bezier(.18,.9,.32,1);
+      --purple-dark:#2e0b4a;
+      --slate:#22232A;
+      --slate-mid:#3B3D45;
+      --muted:#C7C6C8;
+      --paper:#F6F6F6;
+      --radius:16px;
+      --ease:.35s;
+      --max-width:1200px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,#f7f6f8,#f2edf6);
-      color:var(--slate);
-      -webkit-font-smoothing:antialiased
-    }
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
-    button{font-family:inherit}
 
-    /* ---------------- HEADER ---------------- */
-    header{
-      position:sticky;top:0;z-index:120;
-      backdrop-filter:blur(12px);
-      background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(245,244,246,.92));
-      border-bottom:1px solid rgba(58,15,90,.06)
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,var(--paper),#FBFAF8);
+      color:var(--slate);
+      overflow-x:hidden;
     }
-    .nav{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:14px 20px;
+
+    /* ✅ HEADER - SYSTEM MATCH */
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,0.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(183,185,189,0.12);
+    }
+
+    .topbar{
       display:flex;
       align-items:center;
-      justify-content:space-between
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 5%;
+      max-width:var(--max-width);
+      margin:0 auto;
+      flex-wrap:wrap;
     }
+
     .brand{
       display:flex;
+      gap:10px;
       align-items:center;
-      gap:10px
+      flex-shrink:0;
+      cursor:pointer;
     }
-    .brand img{height:36px}
+    .brand img{
+      height:42px;
+      border-radius:10px;
+    }
+    .brand h1{
+      font-family:'Clash Display',serif;
+      margin:0;
+      font-size:1.1rem;
+      color:var(--purple);
+    }
+
+    .mobile-hamburger{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      padding:6px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      z-index:200;
+    }
+    .mobile-hamburger span{
+      width:24px;height:2px;background:var(--purple);border-radius:2px;transition:var(--ease);
+    }
+
+    nav{
+      width:100%;
+      overflow-x:auto;
+    }
     nav ul{
       display:flex;
-      gap:14px;
-      list-style:none
+      gap:12px;
+      list-style:none;
+      margin:0;
+      padding:6px 0;
+      min-width:max-content;
+      align-items:center;
     }
     nav a{
-      padding-bottom:2px;
+      text-decoration:none;
       font-weight:600;
-      color:#4a435e;
-      position:relative
+      font-size:0.9rem;
+      padding:8px 14px;
+      border-radius:10px;
+      color:var(--muted);
+      transition:all var(--ease);
+      white-space:nowrap;
     }
-    nav a.active::after,nav a:hover::after{
-      content:"";
-      position:absolute;
-      left:0;bottom:0;
-      width:100%;height:2px;
-      background:linear-gradient(90deg,#3A0F5A,#b37cff);
-      border-radius:999px
+    nav a:hover, nav a.active{
+      background:rgba(58,15,90,0.05);
+      color:var(--purple);
     }
 
-    /* ---------------- HERO ---------------- */
+    .account-area{display:flex;align-items:center;gap:10px;}
+    .user-badge{font-weight:700;color:var(--purple);font-size:0.9rem;}
+    .logout-btn{
+      border:none;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;padding:8px 14px;border-radius:12px;font-weight:700;cursor:pointer;
+    }
+
+    @media (max-width: 920px){
+      .mobile-hamburger{display:flex;}
+      nav{display:none;}
+      .account-area{display:none;}
+    }
+
+    /* ✅ MOBILE DRAWER */
+    .mobile-drawer{
+      position:fixed;top:0;right:-100%;width:300px;height:100vh;
+      background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);
+      border-left:1px solid rgba(183,185,189,0.2);z-index:150;
+      padding:80px 24px 40px;transition:all var(--ease);overflow-y:auto;
+    }
+    .mobile-drawer.open{right:0;}
+    .drawer-overlay{
+      position:fixed;top:0;left:0;width:100vw;height:100vh;
+      background:rgba(0,0,0,0.4);z-index:140;opacity:0;visibility:hidden;
+      transition:all var(--ease);
+    }
+    .drawer-overlay.open{opacity:1;visibility:visible;}
+    .drawer-header{display:flex;justify-content:space-between;align-items:center;
+      margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid rgba(183,185,189,0.12);
+    }
+    .drawer-close{background:none;border:none;font-size:1.4rem;color:var(--slate);
+      cursor:pointer;padding:4px;
+    }
+    .primary-nav{list-style:none;margin:0 0 24px 0;padding:0;border-bottom:1px solid rgba(183,185,189,0.08);}
+    .primary-nav li{margin-bottom:4px;}
+    .primary-nav a{display:block;text-decoration:none;font-weight:700;font-size:1rem;
+      padding:14px 16px;border-radius:12px;color:var(--purple);transition:all var(--ease);
+      border-left:3px solid transparent;
+    }
+    .primary-nav a:hover,.primary-nav a.active{background:rgba(58,15,90,0.08);border-left-color:var(--purple);}
+
+    /* ✅ CHECKOUT PAGE */
     .hero{
-      max-width:var(--maxw);
-      margin:24px auto 8px;
-      padding:28px 20px;
-      border-radius:16px;
-      background:linear-gradient(180deg,rgba(58,15,90,0.03),rgba(255,255,255,0.96));
-      border:1px solid rgba(58,15,90,0.06)
-    }
-
-    /* ---------------- LAYOUT ---------------- */
-    .wrap{
-      max-width:var(--maxw);
-      margin:24px auto;
-      padding:0 20px;
-      display:grid;
-      grid-template-columns:1fr 420px;
-      gap:28px
-    }
-    @media(max-width:980px){.wrap{grid-template-columns:1fr}}
-
-    .panel{
-      background:#fff;
-      border-radius:16px;
-      padding:22px;
-      border:1px solid rgba(58,15,90,0.06);
-      box-shadow:0 30px 80px rgba(58,15,90,0.08)
-    }
-
-    label{display:block;font-weight:700;margin-bottom:6px}
-    input,textarea{
-      width:100%;
-      padding:12px 14px;
-      border-radius:10px;
-      border:1px solid rgba(58,15,90,0.12)
-    }
-    input:focus,textarea:focus{
-      outline:none;
-      box-shadow:0 0 0 4px var(--focus);
-      border-color:var(--purple)
-    }
-
-    .options{display:flex;flex-direction:column;gap:10px}
-    .option{
-      padding:12px;
-      border-radius:10px;
-      border:1px solid rgba(58,15,90,0.12);
-      display:flex;gap:10px;
-      align-items:center;
-      cursor:pointer
-    }
-    .option.active{
-      border-color:var(--purple);
-      background:linear-gradient(180deg,rgba(58,15,90,0.04),#fff)
-    }
-
-    .pay-btn{
-      padding:14px 18px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--purple),#2a0a3f);
-      color:#fff;
-      font-family:'Clash Display',serif;
-      font-weight:800;
-      border:none;
-      cursor:pointer
-    }
-
-    .summary{position:sticky;top:120px}
-    @media(max-width:980px){.summary{position:static}}
-
-    .cart-line{
-      display:flex;
-      justify-content:space-between;
-      padding:8px 0;
-      border-bottom:1px dashed rgba(58,15,90,0.12)
-    }
-
-    footer{
-      max-width:var(--maxw);
-      margin:60px auto 80px;
-      padding:0 20px;
+      max-width:var(--max-width);
+      margin:80px auto 40px;
+      padding:40px 5%;
       text-align:center;
-      color:var(--muted)
+      background:rgba(255,255,255,0.8);
+      backdrop-filter:blur(20px);
+      border-radius:24px;
+      border:1px solid rgba(183,185,189,0.2);
+      box-shadow:0 20px 60px rgba(58,15,90,0.1);
+    }
+    .hero h1{
+      font-family:'Clash Display',serif;
+      font-size:clamp(2rem,5vw,2.8rem);
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      margin:0 0 12px;
+    }
+    .hero p{
+      color:var(--slate-mid);
+      font-size:1.1rem;
+      max-width:500px;
+      margin:0 auto;
+      line-height:1.6;
     }
 
-    .ai-orb{
-      position:fixed;
-      right:20px;bottom:20px;
-      width:66px;height:66px;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--purple-2),var(--purple));
-      color:#fff;
+    .checkout-wrap{
+      max-width:var(--max-width);
+      margin:0 auto 80px;
+      padding:0 5%;
+      display:grid;
+      grid-template-columns:1fr 380px;
+      gap:32px;
+      align-items:start;
+    }
+    @media(max-width:960px){
+      .checkout-wrap{grid-template-columns:1fr;padding:0 16px;}
+    }
+
+    .checkout-panel{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:32px;
+      box-shadow:0 24px 80px rgba(58,15,90,0.12);
+      border:1px solid rgba(183,185,189,0.12);
+    }
+
+    .panel-title{
+      font-family:'Clash Display',serif;
+      font-size:1.4rem;
+      color:var(--purple);
+      margin-bottom:24px;
+      font-weight:700;
+      padding-bottom:12px;
+      border-bottom:2px solid rgba(58,15,90,0.1);
+    }
+
+    .form-group{
+      margin-bottom:24px;
+    }
+    .form-group label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+      color:var(--slate);
+      font-size:0.95rem;
+    }
+    .form-group input,
+    .form-group textarea{
+      width:100%;
+      padding:16px 20px;
+      border:2px solid rgba(183,185,189,0.3);
+      border-radius:14px;
+      font-size:1rem;
+      font-family:'Poppins',sans-serif;
+      background:#fff;
+      transition:all var(--ease);
+      color:var(--slate);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus{
+      outline:none;
+      border-color:var(--purple);
+      box-shadow:0 0 0 4px rgba(58,15,90,0.08);
+    }
+
+    .payment-options{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-bottom:28px;
+    }
+    .payment-option{
+      padding:16px 20px;
+      border:2px solid rgba(183,185,189,0.3);
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      cursor:pointer;
+      transition:all var(--ease);
+      background:#fff;
+    }
+    .payment-option input[type="radio"]{
+      width:20px;height:20px;margin:0;
+    }
+    .payment-option.active{
+      border-color:var(--purple);
+      background:linear-gradient(135deg,rgba(58,15,90,0.05),transparent);
+      box-shadow:0 8px 24px rgba(58,15,90,0.12);
+    }
+    .payment-icon{
+      width:24px;height:24px;
+      background:#eee;
+      border-radius:6px;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-weight:900;
-      cursor:pointer;
-      z-index:3000
+      font-size:0.8rem;
+      font-weight:700;
     }
+
+    .pay-btn{
+      width:100%;
+      padding:20px;
+      border:none;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;
+      font-family:'Clash Display',serif;
+      font-weight:700;
+      font-size:1.1rem;
+      cursor:pointer;
+      transition:all var(--ease);
+      box-shadow:0 16px 48px rgba(58,15,90,0.3);
+      margin-top:8px;
+    }
+    .pay-btn:hover{transform:translateY(-2px);box-shadow:0 24px 60px rgba(58,15,90,0.4);}
+    .pay-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+
+    .summary-panel{
+      position:sticky;top:120px;
+      background:#fff;
+      border-radius:var(--radius);
+      padding:32px;
+      box-shadow:0 24px 80px rgba(58,15,90,0.12);
+      border:1px solid rgba(183,185,189,0.12);
+    }
+    .summary-line{
+      display:flex;
+      justify-content:space-between;
+      padding:12px 0;
+      border-bottom:1px solid rgba(183,185,189,0.12);
+      font-size:1rem;
+    }
+    .summary-line:last-child{border-bottom:none;padding:16px 0 0;}
+    .summary-line strong{font-weight:700;color:var(--slate);}
+    .summary-total{
+      font-family:'Clash Display',serif;
+      font-size:1.4rem;
+      font-weight:800;
+      color:var(--purple);
+    }
+
+    footer{
+      padding:60px 5%;text-align:center;color:var(--muted);
+      border-top:1px solid rgba(183,185,189,0.12);
+      font-size:0.9rem;margin-top:40px;
+    }
+
+    #toast{
+      position:fixed;top:24px;right:24px;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;padding:16px 24px;border-radius:14px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.25);
+      font-size:0.95rem;font-weight:600;
+      transform:translateX(400px);transition:all var(--ease);
+      z-index:300;max-width:360px;
+    }
+    #toast.show{transform:translateX(0);}
   </style>
 </head>
 
 <body>
-
+<!-- ✅ HEADER SYSTEM -->
 <header>
-  <div class="nav">
-    <a href="index.html" class="brand">
-      <img src="images/logo.final.png" alt="Snehvastra Logo">
-    </a>
+  <div class="topbar">
+    <div class="brand" onclick="location.href='index.html'">
+      <img src="images/logo.final.png"/>
+      <div>
+        <h1>Snehvastra</h1>
+        <div style="font-size:0.8rem;color:var(--muted)">New Gen Luxury Streetwear</div>
+      </div>
+    </div>
+
+    <button class="mobile-hamburger" id="mobileHamburger">
+      <span></span><span></span><span></span>
+    </button>
+
     <nav>
       <ul>
+        <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="checkout.html" class="active">Checkout</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        <li id="authArea"></li>
       </ul>
     </nav>
   </div>
 </header>
 
+<!-- ✅ MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <div class="brand" style="gap:8px;">
+      <img src="images/logo.final.png" style="height:36px;"/>
+      <div>
+        <h1 style="font-size:1rem;margin:0;">Snehvastra</h1>
+        <div style="font-size:0.75rem;color:var(--muted);">New Gen Luxury</div>
+      </div>
+    </div>
+    <button class="drawer-close" id="drawerClose">&times;</button>
+  </div>
+  
+  <ul class="primary-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="auction.html">Auction</a></li>
+    <li><a href="wishlist.html">Wishlist</a></li>
+    <li><a href="cart.html">Cart (<span id="mobileCartCount">0</span>)</a></li>
+  </ul>
+
+  <div id="mobileAuthArea" class="drawer-section"></div>
+</div>
+
+<!-- ✅ CHECKOUT CONTENT -->
 <section class="hero">
-  <h1 style="font-family:'Clash Display',serif;color:var(--purple)">Secure Checkout</h1>
-  <p style="color:var(--muted)">Fast payments • Verified COD • Protected delivery</p>
+  <h1>Secure Checkout</h1>
+  <p>Fast payments • Verified COD • NFC-authenticated delivery</p>
 </section>
 
-<div class="wrap">
+<div class="checkout-wrap">
+  <!-- ✅ SHIPPING FORM -->
+  <section class="checkout-panel">
+    <h2 class="panel-title">Shipping & Payment</h2>
 
-  <!-- LEFT -->
-  <section class="panel">
-    <h2 style="font-family:'Clash Display',serif;color:var(--purple);margin-bottom:12px">Shipping & Payment</h2>
-
-    <label>Full Name</label>
-    <input id="fullName">
-
-    <label>Phone / WhatsApp</label>
-    <input id="phone">
-
-    <label>Pincode</label>
-    <input id="pincode">
-
-    <label>Address</label>
-    <textarea id="address"></textarea>
-
-    <label>Payment Method</label>
-    <div class="options">
-      <div class="option active"><input type="radio" checked> Online Payment</div>
-      <div class="option"><input type="radio"> Cash on Delivery</div>
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" placeholder="John Doe" required>
     </div>
 
-    <button class="pay-btn" id="payNow" style="margin-top:18px">Pay Now</button>
+    <div class="form-group">
+      <label for="phone">Phone / WhatsApp</label>
+      <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="form-group">
+        <label for="pincode">Pincode</label>
+        <input type="text" id="pincode" placeholder="400001" required>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="Mumbai" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Complete Address</label>
+      <textarea id="address" rows="3" placeholder="House no, Street, Area, Landmark" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Payment Method</label>
+      <div class="payment-options">
+        <label class="payment-option active" data-method="online">
+          <input type="radio" name="payment" checked>
+          <div class="payment-icon">💳</div>
+          <div>
+            <div style="font-weight:700;color:var(--slate);">Online Payment</div>
+            <div style="font-size:0.85rem;color:var(--muted);">Razorpay • Cards • UPI • Wallets</div>
+          </div>
+        </label>
+        <label class="payment-option" data-method="cod">
+          <input type="radio" name="payment">
+          <div class="payment-icon">💰</div>
+          <div>
+            <div style="font-weight:700;color:var(--slate);">Cash on Delivery</div>
+            <div style="font-size:0.85rem;color:var(--muted);">Verified • No prepayment</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <button class="pay-btn" id="payNow">Complete Order →</button>
   </section>
 
-  <!-- RIGHT -->
-  <aside class="summary">
-    <div class="panel">
-      <h3 style="font-family:'Clash Display',serif;color:var(--purple)">Order Summary</h3>
-      <div id="cartLines"></div>
-      <div class="cart-line"><strong>Total</strong><strong id="grandTotal">₹0</strong></div>
+  <!-- ✅ ORDER SUMMARY -->
+  <aside class="summary-panel">
+    <h3 class="panel-title">Order Summary</h3>
+    <div id="cartLines"></div>
+    <div class="summary-line">
+      <span>Shipping</span>
+      <strong id="shippingAmount">₹499</strong>
+    </div>
+    <div class="summary-line summary-total">
+      <span>Total</span>
+      <strong id="grandTotal">₹0</strong>
+    </div>
+    <div style="font-size:0.85rem;color:var(--muted);margin-top:16px;line-height:1.5;">
+      Free shipping above ₹50,000 • NFC tags included
     </div>
   </aside>
-
 </div>
 
 <footer>
-  © <span id="year"></span> Snehvastra
+  © <span id="year"></span> Snehvastra. Secure checkout powered by Razorpay.
 </footer>
 
-<div class="ai-orb">S</div>
+<div id="toast"></div>
 
 <script>
-  const PRODUCTS = {
-    "1": { name:"Streetwear Fusion Tee", price:4999 },
-    "2": { name:"Luxury Midnight Jacket", price:29999 },
-    "3": { name:"Casual Cloud Hoodie", price:19999 },
-    "4": { name:"Tech Overshirt", price:4999 },
-    "one":{ name:"Snehvastra ONE", price:999999 }
+  const USER_KEY = "snehvastra_user";
+  const PRODUCT_DB = {
+    "1": {name:"Streetwear Fusion Tee",price:4999,image:"images/products/tee.jpg"},
+    "2": {name:"Luxury Midnight Jacket",price:29999,image:"images/products/jacket.jpg"},
+    "3": {name:"Casual Cloud Hoodie",price:19999,image:"images/products/hoodie.jpg"},
+    "4": {name:"Tech Overshirt",price:49999,image:"images/products/overshirt.jpg"},
+    "one": {name:"Snehvastra ONE (Auction)",price:999999,image:"images/products/one.jpg"}
   };
 
   let cart = JSON.parse(localStorage.getItem("snehvastra_cart") || "{}");
 
-  function money(v){return "₹"+Number(v).toLocaleString("en-IN");}
+  // ✅ FULL SYSTEM INTEGRATION
+  const user = JSON.parse(localStorage.getItem(USER_KEY));
+  const authArea = document.getElementById("authArea");
+  const mobileAuthArea = document.getElementById("mobileAuthArea");
 
-  function render(){
-    const box=document.getElementById("cartLines");
-    box.innerHTML="";
-    let total=0;
-    Object.entries(cart).forEach(([id,qty])=>{
-      const p=PRODUCTS[id];
-      const line=p.price*qty;
-      total+=line;
-      box.innerHTML+=`<div class="cart-line"><span>${p.name} × ${qty}</span><strong>${money(line)}</strong></div>`;
-    });
-    document.getElementById("grandTotal").textContent=money(total);
+  function renderAuth(){
+    if(user && user.loggedIn){
+      authArea.innerHTML = `
+        <span class="user-badge">Hi, ${user.name}</span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      `;
+      // Mobile auth logic...
+    } else {
+      authArea.innerHTML = `<a href="user-login.html">Login</a><a href="user-register.html">Register</a>`;
+    }
   }
 
-  document.getElementById("year").textContent=new Date().getFullYear();
-  render();
+  function updateCartCount(){
+    const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+    document.getElementById("cartCount").textContent = total;
+  }
+
+  function money(v){return "₹" + Number(v).toLocaleString("en-IN");}
+
+  function renderSummary(){
+    const linesEl = document.getElementById("cartLines");
+    linesEl.innerHTML = "";
+    
+    let subtotal = 0;
+    Object.entries(cart).forEach(([id,qty]) => {
+      if(qty > 0 && PRODUCT_DB[id]){
+        const product = PRODUCT_DB[id];
+        const lineTotal = product.price * qty;
+        subtotal += lineTotal;
+        
+        const line = document.createElement("div");
+        line.className = "summary-line";
+        line.innerHTML = `
+          <span>${product.name} × ${qty}</span>
+          <strong>${money(lineTotal)}</strong>
+        `;
+        linesEl.appendChild(line);
+      }
+    });
+
+    const shipping = subtotal >= 50000 ? 0 : 499;
+    document.getElementById("shippingAmount").textContent = shipping ? money(shipping) : "FREE";
+    document.getElementById("grandTotal").textContent = money(subtotal + shipping);
+    
+    return subtotal + shipping;
+  }
+
+  // ✅ PAYMENT HANDLING
+  document.getElementById("payNow").onclick = function(){
+    const total = renderSummary();
+    if(total === 0){
+      showToast("Add items to cart first");
+      return;
+    }
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const pincode = document.getElementById("pincode").value.trim();
+    const address = document.getElementById("address").value.trim();
+
+    if(!fullName || !phone || !pincode || !address){
+      showToast("Please fill all shipping details");
+      return;
+    }
+
+    const paymentMethod = document.querySelector('input[name="payment"]:checked').closest('.payment-option').dataset.method;
+
+    if(paymentMethod === "online"){
+      // Razorpay integration
+      const options = {
+        key: "rzp_test_your_key_here", // Replace with real key
+        amount: total * 100,
+        currency: "INR",
+        name: "Snehvastra",
+        description: "NFC-Authenticated Luxury Streetwear",
+        handler: function(response){
+          showToast("✅ Payment successful! Order confirmed.");
+          localStorage.removeItem("snehvastra_cart");
+          setTimeout(() => location.href = "thank-you.html", 1500);
+        }
+      };
+      const rzp = new Razorpay(options);
+      rzp.open();
+    } else {
+      // COD - Save order
+      const order = {
+        id: Date.now(),
+        items: cart,
+        total,
+        shipping: shipping,
+        customer: {name: fullName, phone, pincode, address},
+        method: "COD",
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem("snehvastra_orders", JSON.stringify([order]));
+      localStorage.removeItem("snehvastra_cart");
+      showToast("✅ COD confirmed! We'll call to verify.");
+      setTimeout(() => location.href = "thank-you.html", 1500);
+    }
+  };
+
+  // ✅ PAYMENT OPTIONS
+  document.querySelectorAll(".payment-option").forEach(option => {
+    option.addEventListener("click", () => {
+      document.querySelectorAll(".payment-option").forEach(opt => opt.classList.remove("active"));
+      option.classList.add("active");
+      option.querySelector("input").checked = true;
+    });
+  });
+
+  function showToast(msg){
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
+  }
+
+  // ✅ MOBILE DRAWER LOGIC (same as other pages)
+  const hamburger = document.getElementById("mobileHamburger");
+  const drawer = document.getElementById("mobileDrawer");
+  const overlay = document.getElementById("drawerOverlay");
+  const closeBtn = document.getElementById("drawerClose");
+
+  function openDrawer(){drawer.classList.add("open");overlay.classList.add("open");document.body.style.overflow="hidden";}
+  function closeDrawer(){drawer.classList.remove("open");overlay.classList.remove("open");document.body.style.overflow="";}
+
+  hamburger?.addEventListener("click", openDrawer);
+  closeBtn?.addEventListener("click", closeDrawer);
+  overlay?.addEventListener("click", closeDrawer);
+
+  // ✅ INIT
+  window.addEventListener("load", () => {
+    renderAuth();
+    updateCartCount();
+    renderSummary();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  });
 </script>
 
 </body>
