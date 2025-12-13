@@ -3,166 +3,156 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>SNEHVASTRA ONE — Live Brand Auction</title>
-<meta name="description" content="Luxury live auction by Snehvastra. Bid in real-time. Leaderboards update instantly."/>
+<title>SNEHVASTRA ONE — Live Auction</title>
+<meta name="description" content="Luxury live auction by Snehvastra. Bid in real-time."/>
 <meta name="theme-color" content="#3A0F5A"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
 
 <style>
 :root{
   --purple:#3A0F5A;
   --purple-dark:#2e0b4a;
-  --slate:#1f1f25;
+  --slate:#22232A;
   --muted:#777;
-  --paper:#F6F6F8;
-  --max:1240px;
-  --radius:18px;
+  --paper:#F6F6F6;
+  --radius:16px;
+  --max:1200px;
 }
 
-/* RESET */
 *{box-sizing:border-box}
 body{
   margin:0;
   font-family:Poppins,sans-serif;
-  background:linear-gradient(180deg,#faf8fc,#f0edf5);
+  background:linear-gradient(180deg,var(--paper),#FBFAF8);
   color:var(--slate);
   overflow-x:hidden;
 }
-a{text-decoration:none;color:inherit}
 
-/* ================= HEADER ================= */
+/* ================= HEADER (MATCHES INDEX) ================= */
 header{
   position:sticky;
   top:0;
-  z-index:500;
-  background:rgba(255,255,255,.95);
+  z-index:1000;
+  background:rgba(255,255,255,0.96);
   backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(0,0,0,.06);
+  border-bottom:1px solid rgba(183,185,189,0.12);
 }
-.nav{
+
+.topbar{
   max-width:var(--max);
-  margin:auto;
+  margin:0 auto;
   padding:14px 5%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:14px;
 }
+
 .brand{
   display:flex;
-  align-items:center;
   gap:10px;
+  align-items:center;
   cursor:pointer;
-  flex-shrink:0;
 }
 .brand img{height:42px;border-radius:10px}
 .brand span{
-  font-family:"Clash Display",serif;
+  font-family:'Clash Display',serif;
+  color:var(--purple);
   font-weight:700;
+}
+
+/* Desktop Nav */
+nav ul{
+  display:flex;
+  gap:12px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+nav a{
+  text-decoration:none;
+  font-weight:600;
+  font-size:0.9rem;
+  padding:8px 14px;
+  border-radius:10px;
+  color:#777;
+}
+nav a.active,
+nav a:hover{
+  background:rgba(58,15,90,0.05);
   color:var(--purple);
 }
 
-/* Scroll-safe nav */
-nav{overflow-x:auto}
-nav ul{
-  display:flex;
-  gap:10px;
-  list-style:none;
-  margin:0;
-  padding:4px 0;
-  min-width:max-content;
+/* Hamburger */
+.hamburger{
+  display:none;
+  font-size:1.6rem;
+  background:none;
+  border:none;
+  cursor:pointer;
 }
-nav a{
-  padding:8px 14px;
-  border-radius:10px;
+
+/* Mobile Menu */
+.mobile-menu{
+  display:none;
+  flex-direction:column;
+  border-top:1px solid #eee;
+}
+.mobile-menu a{
+  padding:14px 5%;
   font-weight:600;
-  color:var(--purple);
-  white-space:nowrap;
+  border-bottom:1px solid #f1f1f1;
+  text-decoration:none;
+  color:#333;
 }
-nav a.active{
-  background:rgba(58,15,90,.08);
-  color:#000;
-}
+.mobile-menu a.active{color:var(--purple)}
+.mobile-menu.show{display:flex}
 
 /* ================= HERO ================= */
 .hero{
   text-align:center;
-  padding:80px 5% 60px;
+  padding:70px 5% 50px;
   background:linear-gradient(135deg,var(--purple),var(--purple-dark));
   color:#fff;
 }
 .hero h1{
-  font-family:"Clash Display",serif;
-  font-size:clamp(1.9rem,6vw,3.4rem);
+  font-family:'Clash Display',serif;
+  font-size:clamp(1.8rem,5vw,2.6rem);
   margin-bottom:10px;
 }
-.hero p{
-  opacity:.95;
-  max-width:760px;
-  margin:auto;
-  line-height:1.6;
-}
-.hero .cta{
-  margin-top:24px;
-}
-.hero button{
-  padding:14px 26px;
-  border-radius:14px;
-  border:none;
-  font-weight:800;
-  cursor:pointer;
-  background:#fff;
-  color:var(--purple);
-}
+.hero p{opacity:.95}
 
-/* ================= SECTION ================= */
+/* ================= AUCTION ================= */
 .section{
   max-width:var(--max);
   margin:50px auto;
   padding:0 5%;
 }
-
-/* ================= GRID ================= */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
 }
 .card{
   background:#fff;
-  border-radius:22px;
-  box-shadow:0 18px 60px rgba(0,0,0,.08);
+  border-radius:18px;
+  box-shadow:0 16px 50px rgba(0,0,0,.08);
   overflow:hidden;
   display:flex;
   flex-direction:column;
 }
-.media{
-  height:220px;
-}
-.media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.body{
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
+.media{height:230px}
+.media img{width:100%;height:100%;object-fit:cover}
+.body{padding:18px}
 .title{
-  font-family:"Clash Display",serif;
-  font-size:1.1rem;
+  font-family:'Clash Display',serif;
   color:var(--purple);
 }
 .bid{
-  font-size:1.6rem;
+  font-size:1.5rem;
   font-weight:900;
-  color:var(--purple);
+  margin:8px 0;
 }
-
-/* Bid controls */
 .controls{
   display:flex;
   gap:10px;
@@ -170,33 +160,27 @@ nav a.active{
 }
 .controls input{
   flex:1;
-  min-width:0;
   padding:12px;
   border-radius:10px;
   border:1px solid #ccc;
 }
 .controls button{
-  padding:12px 18px;
-  border-radius:10px;
+  padding:12px 16px;
   border:none;
+  border-radius:10px;
   background:var(--purple);
   color:#fff;
   font-weight:800;
   cursor:pointer;
 }
 
-/* ================= LEADERBOARD ================= */
+/* Leaderboard */
 .leaderboard{
   background:#fff;
-  border-radius:22px;
-  box-shadow:0 20px 70px rgba(0,0,0,.1);
+  border-radius:20px;
+  box-shadow:0 18px 60px rgba(0,0,0,.1);
   padding:24px;
-  margin-top:50px;
-}
-.leaderboard h2{
-  font-family:"Clash Display",serif;
-  color:var(--purple);
-  margin-bottom:12px;
+  margin:60px 5%;
 }
 .leader{
   display:flex;
@@ -205,34 +189,26 @@ nav a.active{
   border-bottom:1px solid #eee;
   font-weight:700;
 }
-.you{color:#c800ff}
+.you{color:#d900ff}
 
-/* ================= FOOTER ================= */
+/* Footer */
 footer{
   text-align:center;
   padding:50px 20px;
   color:#777;
-  font-size:.9rem;
 }
 
-/* ================= TOAST ================= */
-#toast{
-  position:fixed;
-  top:20px;
-  right:20px;
-  background:var(--purple);
-  color:white;
-  padding:12px 18px;
-  border-radius:12px;
-  display:none;
-  z-index:9999;
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:480px){
-  .controls{flex-direction:column}
-  .controls button{width:100%}
-  .hero{padding:70px 5% 50px}
+/* ================= MOBILE FIX ================= */
+@media(max-width:820px){
+  nav{display:none}
+  .hamburger{display:block}
+  .controls{
+    flex-direction:column;
+  }
+  .controls input,
+  .controls button{
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -240,31 +216,38 @@ footer{
 <body>
 
 <header>
-  <div class="nav">
+  <div class="topbar">
     <div class="brand" onclick="location.href='index.html'">
       <img src="images/logo.final.png">
       <span>Snehvastra</span>
     </div>
+
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
         <li><a href="auction.html" class="active">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        <li><a href="cart.html">Cart</a></li>
       </ul>
     </nav>
+
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="collection.html">Collection</a>
+    <a href="auction.html" class="active">Auction</a>
+    <a href="cart.html">Cart</a>
   </div>
 </header>
 
 <section class="hero">
   <h1>SNEHVASTRA ONE — Live Auction</h1>
-  <p>Real collectors. Real competition. Limited pieces. Bid in real time.</p>
-  <div class="cta">
-    <button onclick="document.getElementById('auctionArea').scrollIntoView({behavior:'smooth'})">Start Bidding</button>
-  </div>
+  <p>Real collectors. Real competition. Real-time luxury bidding.</p>
 </section>
 
-<section class="section" id="auctionArea">
+<section class="section">
   <div class="grid">
 
     <div class="card">
@@ -291,73 +274,55 @@ footer{
       </div>
     </div>
 
-    <div class="card">
-      <div class="media"><img src="images/item-sneaker.jpg"></div>
-      <div class="body">
-        <div class="title">Drop Edition Sneakers</div>
-        <div class="bid" id="bid3">₹45,000</div>
-        <div class="controls">
-          <input type="number" id="input3" placeholder="₹46,000+">
-          <button onclick="placeBid(3)">BID</button>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<section class="section leaderboard">
-  <h2>Top Bidders</h2>
+<section class="leaderboard">
+  <h2 style="font-family:'Clash Display',serif;color:var(--purple)">Top Bidders</h2>
   <div id="leaderboard"></div>
 </section>
 
 <footer>
-  © <span id="year"></span> Snehvastra — All Rights Reserved
+  © <span id="year"></span> Snehvastra
 </footer>
 
-<div id="toast"></div>
-
 <script>
-let bids={1:12500,2:28500,3:45000};
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+
+let bids={1:12500,2:28500};
 let leaderboard=[
-{name:"arun_v",bid:120000},
-{name:"priya.k",bid:98000},
-{name:"nikhil_design",bid:87000}
+  {name:"arun_v",bid:120000},
+  {name:"priya.k",bid:98000},
+  {name:"nikhil_design",bid:87000}
 ];
 
 function placeBid(id){
   const input=document.getElementById("input"+id);
-  let val=parseInt(input.value);
-  if(!val||val<=bids[id]) return showToast("Bid must be higher");
-
+  const val=parseInt(input.value);
+  if(!val||val<=bids[id])return;
   bids[id]=val;
   document.getElementById("bid"+id).innerText="₹"+val.toLocaleString();
   leaderboard.push({name:"YOU",bid:val});
   leaderboard.sort((a,b)=>b.bid-a.bid);
   leaderboard=leaderboard.slice(0,3);
   renderLeaderboard();
-  showToast("You're now a top bidder!");
   input.value="";
 }
 
 function renderLeaderboard(){
-  document.getElementById("leaderboard").innerHTML=leaderboard.map((x,i)=>`
-    <div class="leader ${x.name==="YOU"?"you":""}">
-      <span>${i+1}. ${x.name}</span>
-      <span>₹${x.bid.toLocaleString()}</span>
-    </div>
-  `).join("");
+  document.getElementById("leaderboard").innerHTML=
+    leaderboard.map((x,i)=>`
+      <div class="leader ${x.name==="YOU"?"you":""}">
+        <span>${i+1}. ${x.name}</span>
+        <span>₹${x.bid.toLocaleString()}</span>
+      </div>
+    `).join("");
 }
-
-function showToast(msg){
-  const t=document.getElementById("toast");
-  t.innerText=msg;
-  t.style.display="block";
-  setTimeout(()=>t.style.display="none",2200);
-}
-
-document.getElementById("year").innerText=new Date().getFullYear();
 renderLeaderboard();
+
+document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 
 </body>
