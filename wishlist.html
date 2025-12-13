@@ -2,487 +2,240 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <meta name="theme-color" content="#3A0F5A" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Wishlist - Snehvastra</title>
-  <meta name="description" content="Your saved Snehvastra pieces. Track exclusive drops and auction items. Priority notifications." />
+  <meta name="theme-color" content="#3A0F5A" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      --purple:#3A0F5A; --slate:#22232A; --mid:#3B3D45; --silver:#B7B9BD; --paper:#F6F6F6;
-      --text:#EDECEF; --muted:#C7C6C8; --max-w:1200px; --radius:14px; --ease:.28s;
+      --purple:#3A0F5A; --slate:#22232A; --mid:#3B3D45;
+      --muted:#6f6f7a; --paper:#F6F6F6; --radius:14px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#FBFAF8);color:var(--slate);min-height:100vh;overflow-x:hidden;line-height:1.7}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#fff);color:var(--slate)}
 
-    /* HEADER */
-    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.95));border-bottom:1px solid rgba(183,185,189,0.08);border-radius:0 0 var(--radius) var(--radius);z-index:100;max-width:var(--max-w);margin:0 auto;padding:20px 5%;display:flex;align-items:center;justify-content:space-between}
-    .logo{height:50px;filter:drop-shadow(0 0 12px var(--purple))}
-    nav ul{display:flex;list-style:none;gap:15px;flex-wrap:wrap;margin:0;padding:0}
-    nav a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:600;padding:8px 14px;border-radius:8px;transition:all var(--ease)}
-    nav a:hover, nav a.active{background:rgba(58,15,90,0.04);color:var(--purple)}
-    #cartCount{background:var(--purple);color:#fff;border-radius:50%;padding:2px 6px;font-size:0.8rem;font-weight:700;margin-left:4px}
+    header{position:sticky;top:0;background:#fff;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;z-index:100}
+    .logo{height:46px}
 
-    .auction-banner{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:15px 20px;text-align:center;font-weight:700;position:sticky;top:92px;z-index:90;box-shadow:0 4px 20px rgba(58,15,90,0.3);margin:0 5%;border-radius:var(--radius)}
-    .auction-timer{font-family:'Clash Display',serif;font-size:0.9rem;background:rgba(255,255,255,0.95);padding:6px 12px;border-radius:12px;display:inline-block;margin-left:8px;color:var(--slate)}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{text-decoration:none;color:var(--mid);font-weight:600}
+    nav a.active{color:var(--purple)}
 
-    main{padding:180px 5% 80px;max-width:var(--max-w);margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:40px}
-
-    /* HERO */
-    .hero-badge{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:12px 28px;border-radius:50px;font-weight:700;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;display:inline-block;box-shadow:0 8px 25px rgba(58,15,90,0.3)}
-    .hero h1{font-family:'Clash Display',serif;font-weight:700;font-size:clamp(2.2rem,5vw,3rem);background:linear-gradient(135deg,var(--purple),#2e0b4a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:6px 0}
-    .hero .subtitle{font-size:1.05rem;color:var(--mid);max-width:700px;margin:0 auto 0;font-weight:400;line-height:1.6}
-
-    /* LAYOUT */
-    .content{display:grid;grid-template-columns:1fr 360px;gap:32px;width:100%;max-width:1100px;align-items:start}
-    .panel{background:#fff;backdrop-filter:blur(12px);border-radius:16px;padding:24px;border:1px solid rgba(58,15,90,0.06);box-shadow:0 20px 60px rgba(58,15,90,0.06)}
-    .wishlist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-
-    .item-card{display:flex;gap:16px;align-items:center;padding:14px;border-radius:12px;border:1px solid rgba(34,35,42,0.04);transition:all var(--ease);text-align:left}
-    .item-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(58,15,90,0.06)}
-    .item-thumb{width:96px;height:96px;border-radius:12px;object-fit:cover;background:linear-gradient(180deg,rgba(58,15,90,0.02),rgba(34,35,42,0.02))}
-    .item-info{flex:1}
-    .item-title{font-weight:700;color:var(--slate);margin-bottom:6px}
-    .item-meta{color:var(--mid);font-size:0.95rem;margin-bottom:8px}
-    .item-actions{display:flex;gap:8px;flex-wrap:wrap}
-    .btn{padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:700;font-size:0.95rem}
-    .btn.primary{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff}
-    .btn.ghost{background:transparent;border:1px solid rgba(58,15,90,0.09);color:var(--purple)}
-
-    .sidebar .counter{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:14px;border-radius:12px;font-weight:700;font-size:1rem;display:block;margin-bottom:18px}
-    .sidebar .note{color:var(--mid);font-size:0.95rem;margin-bottom:18px}
-    .sidebar .notif-group{display:flex;gap:8px;align-items:center;margin-bottom:12px}
-    .sidebar input[type="email"]{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(58,15,90,0.08);font-size:0.95rem}
-    .sidebar .small{font-size:0.9rem;color:var(--muted);margin-top:8px}
-
-    .empty{padding:60px;border-radius:12px;text-align:center;color:var(--mid)}
-    .empty a{color:var(--purple);text-decoration:none;font-weight:700}
-
-    footer{text-align:center;padding:60px 5% 40px;background:rgba(255,255,255,0.85);margin-top:40px;color:var(--muted);border-top:1px solid rgba(183,185,189,0.1);font-size:0.95rem;max-width:var(--max-w);margin-left:auto;margin-right:auto}
-
-    @media(max-width:980px){
-      .content{grid-template-columns:1fr;gap:18px}
-      main{padding:140px 5% 60px}
-      .sidebar{order:2}
+    .user-box{display:flex;align-items:center;gap:10px}
+    .user-name{font-weight:700;color:var(--purple)}
+    .logout-btn{
+      background:linear-gradient(135deg,var(--purple),#2e0b4a);
+      color:#fff;border:none;border-radius:10px;
+      padding:6px 12px;font-weight:700;cursor:pointer
     }
 
-    .toast{position:fixed;top:120px;right:20px;background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:16px 24px;border-radius:12px;box-shadow:0 10px 35px rgba(58,15,90,0.4);font-weight:600;z-index:1000;transform:translateX(400px);transition:transform 0.3s ease;max-width:350px}
+    .auction-banner{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:14px;text-align:center;font-weight:700}
+
+    main{padding:60px 5%;max-width:1100px;margin:auto}
+    .content{display:grid;grid-template-columns:1fr 320px;gap:24px}
+    .panel{background:#fff;border-radius:16px;padding:22px;border:1px solid #eee}
+
+    .wishlist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .item-card{display:flex;gap:12px;padding:12px;border-radius:12px;border:1px solid #eee}
+    .item-thumb{width:90px;height:90px;object-fit:cover;border-radius:12px}
+    .item-title{font-weight:700}
+    .item-meta{color:var(--muted)}
+
+    .btn{padding:7px 11px;border:none;border-radius:8px;font-weight:700;cursor:pointer}
+    .primary{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff}
+    .ghost{background:#f2f2f2;color:var(--purple)}
+
+    .empty{padding:40px;text-align:center;color:var(--muted)}
+
+    footer{text-align:center;padding:40px;color:var(--muted)}
+
+    .toast{position:fixed;top:120px;right:20px;background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:16px 24px;border-radius:12px;transform:translateX(400px);transition:.3s}
     .toast.show{transform:translateX(0)}
-    .toast.success{background:linear-gradient(135deg,#4CAF50,#81C784);color:#fff}
   </style>
 </head>
-<body>
-  <!-- HEADER -->
-  <header>
-    <img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="wishlist.html" class="active">Wishlist</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- AUCTION BANNER -->
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <div class="auction-timer" id="auctionTimer">Loading...</div>
+<body>
+
+<header>
+  <img src="images/logo.final.png" class="logo" />
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="wishlist.html" class="active">Wishlist</a></li>
+      <li><a href="auction.html">Auction</a></li>
+      <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      <li id="authArea"></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="auction-banner">🔥 SNEHVASTRA ONE AUCTION</div>
+
+<main>
+
+  <h1>Your Wishlist</h1>
+  <p>Signed in as: <strong id="signedInName">Guest</strong></p>
+
+  <div class="content">
+
+    <div class="panel">
+      <div id="wishlistArea"></div>
+    </div>
+
+    <aside class="panel">
+      <div style="font-weight:700;margin-bottom:10px">Quick Actions</div>
+      <button class="btn ghost" id="moveAllToCart">Move All To Cart</button><br><br>
+      <button class="btn ghost" id="clearWishlist">Clear Wishlist</button>
+    </aside>
+
   </div>
 
-  <main>
-    <div class="hero">
-      <div class="hero-badge">YOUR SAVED PIECES</div>
-      <h1>Your Wishlist</h1>
-      <p class="subtitle">Track exclusive Snehvastra drops and auction items. Save for later, move to cart, or get restock alerts.</p>
-    </div>
+</main>
 
-    <div class="content">
-      <!-- LEFT: WISHLIST GRID -->
-      <div class="panel">
-        <div id="wishlistArea">
-          <!-- Filled by JS -->
+<footer>
+  © <span id="currentYear"></span> Snehvastra
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY_USER = 'snehvastra_user';
+const KEY_USERS = 'snehvastra_users';
+const KEY_CART = 'snehvastra_cart';
+const KEY_WISHLIST = 'snehvastra_wishlist';
+
+const SAMPLE_PRODUCTS = {
+  "tee-black": { title:"Signature Tee", price:4999, img:"images/products/tee-black-1.jpg" },
+  "hoodie-gray": { title:"Heritage Hoodie", price:6499, img:"images/products/hoodie-gray.jpg" }
+};
+
+function getUser(){ return JSON.parse(localStorage.getItem(KEY_USER)||"null"); }
+function getCart(){ return JSON.parse(localStorage.getItem(KEY_CART)||"{}"); }
+function setCart(c){ localStorage.setItem(KEY_CART,JSON.stringify(c)); updateCart(); }
+
+function getWishlist(){
+  const user=getUser();
+  if(user && user.wishlist) return user.wishlist;
+  return JSON.parse(localStorage.getItem(KEY_WISHLIST)||"[]");
+}
+
+function saveWishlist(arr){
+  const user=getUser();
+  if(user){
+    const users=JSON.parse(localStorage.getItem(KEY_USERS)||"[]");
+    const idx=users.findIndex(u=>u.id===user.id);
+    if(idx>-1){
+      users[idx].wishlist=arr;
+      localStorage.setItem(KEY_USERS,JSON.stringify(users));
+      user.wishlist=arr;
+      localStorage.setItem(KEY_USER,JSON.stringify(user));
+    }
+  } else {
+    localStorage.setItem(KEY_WISHLIST,JSON.stringify(arr));
+  }
+}
+
+function renderWishlist(){
+  const w=getWishlist();
+  const nameEl=document.getElementById("signedInName");
+  const user=getUser();
+  nameEl.textContent=user?user.name:"Guest";
+
+  if(w.length===0){
+    wishlistArea.innerHTML="<div class='empty'>Your wishlist is empty.</div>";
+    return;
+  }
+
+  wishlistArea.innerHTML='<div class="wishlist-grid">'+w.map(id=>{
+    const p=SAMPLE_PRODUCTS[id];
+    return `
+      <div class="item-card">
+        <img src="${p.img}" class="item-thumb">
+        <div>
+          <div class="item-title">${p.title}</div>
+          <div class="item-meta">₹${p.price}</div><br>
+          <button class="btn primary" onclick="moveToCart('${id}')">Move</button>
+          <button class="btn ghost" onclick="removeItem('${id}')">Remove</button>
         </div>
       </div>
+    `;
+  }).join("")+'</div>';
+}
 
-      <!-- RIGHT: SIDEBAR -->
-      <aside class="panel sidebar">
-        <div class="counter" id="wishlistCounter">0 ITEMS</div>
-        <div class="note">Signed in as: <strong id="signedInName">Guest</strong></div>
+function moveToCart(id){
+  const cart=getCart();
+  cart[id]=(cart[id]||0)+1;
+  setCart(cart);
+  saveWishlist(getWishlist().filter(x=>x!==id));
+  renderWishlist();
+  showToast("Moved to Cart");
+}
 
-        <div style="margin-bottom:12px;">
-          <label for="notifEmail" style="display:block;font-weight:700;margin-bottom:8px">Enable restock notifications</label>
-          <div class="notif-group">
-            <input type="email" id="notifEmail" placeholder="your@email.com" />
-            <button class="btn primary" id="enableNotifBtn">Enable</button>
-          </div>
-          <div class="small">We'll only email you for wishlist changes and restocks. You can unsubscribe anytime.</div>
-        </div>
+function removeItem(id){
+  saveWishlist(getWishlist().filter(x=>x!==id));
+  renderWishlist();
+  showToast("Removed");
+}
 
-        <div style="margin-top:18px;">
-          <div style="font-weight:700;margin-bottom:8px">Quick actions</div>
-          <button class="btn ghost" id="moveAllToCart">Move All to Cart</button>
-          <button class="btn ghost" id="clearWishlist">Clear Wishlist</button>
-        </div>
-      </aside>
-    </div>
-  </main>
+document.getElementById("moveAllToCart").onclick=()=>{
+  const w=getWishlist();
+  if(!w.length) return;
+  const cart=getCart();
+  w.forEach(id=>cart[id]=(cart[id]||0)+1);
+  setCart(cart);
+  saveWishlist([]);
+  renderWishlist();
+  showToast("All Moved To Cart");
+};
 
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. •
-    <span style="opacity: 0.85;">Instagram: <strong>@sneh_vastra</strong></span>
-  </footer>
+document.getElementById("clearWishlist").onclick=()=>{
+  saveWishlist([]);
+  renderWishlist();
+  showToast("Wishlist Cleared");
+};
 
-  <!-- TOAST -->
-  <div id="toast" class="toast"></div>
+function updateCart(){
+  const t=Object.values(getCart()).reduce((a,b)=>a+b,0);
+  document.getElementById("cartCount").textContent=t;
+}
 
-  <script>
-    /* ========= Utilities & storage keys ========= */
-    const KEY_USERS = 'snehvastra_users';
-    const KEY_USER = 'snehvastra_user'; // logged-in user object
-    const KEY_WISHLIST = 'snehvastra_wishlist'; // for guests or fallback
-    const KEY_CART = 'snehvastra_cart';
+function showToast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2500);
+}
 
-    // Helper: show toast
-    function showToast(message, type='') {
-      const t = document.getElementById('toast');
-      t.textContent = message;
-      t.className = 'toast' + (type ? ' ' + type : '');
-      t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 3000);
-    }
+/* ✅ AUTH UI */
+const authArea=document.getElementById("authArea");
+const user=getUser();
+if(user){
+  authArea.innerHTML=`
+    <span class="user-name">${user.name}</span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  `;
+}else{
+  authArea.innerHTML=`
+    <a href="user-login.html">Login</a>
+    <a href="user-register.html">Register</a>
+  `;
+}
+function logout(){
+  localStorage.removeItem(KEY_USER);
+  location.reload();
+}
 
-    // Simple sample product lookup (used if product data not provided).
-    // Replace this with real product data or fetch later.
-    const SAMPLE_PRODUCTS = {
-      'tee-black': { id:'tee-black', title:'Signature Tee - Matte Black', price:4999, img:'images/products/tee-black-1.jpg', type:'tee' },
-      'bomber-olive': { id:'bomber-olive', title:'Crafted Bomber - Olive', price:12500, img:'images/products/bomber-olive.jpg', type:'jacket' },
-      'hoodie-gray': { id:'hoodie-gray', title:'Heritage Hoodie - Gray', price:6499, img:'images/products/hoodie-gray.jpg', type:'hoodie' }
-    };
+window.onload=()=>{
+  document.getElementById("currentYear").textContent=new Date().getFullYear();
+  updateCart();
+  renderWishlist();
+};
+</script>
 
-    // Get storage helpers
-    function getLocalWishlist() {
-      return JSON.parse(localStorage.getItem(KEY_WISHLIST) || '[]');
-    }
-    function setLocalWishlist(arr) {
-      localStorage.setItem(KEY_WISHLIST, JSON.stringify(arr));
-      window.dispatchEvent(new Event('wishlistUpdated'));
-    }
-
-    function getCart() {
-      return JSON.parse(localStorage.getItem(KEY_CART) || '{}');
-    }
-    function setCart(cart) {
-      localStorage.setItem(KEY_CART, JSON.stringify(cart));
-      updateCartCount();
-    }
-
-    function getLoggedUser() {
-      return JSON.parse(localStorage.getItem(KEY_USER) || 'null');
-    }
-    function saveLoggedUser(u) {
-      if (u) localStorage.setItem(KEY_USER, JSON.stringify(u));
-      else localStorage.removeItem(KEY_USER);
-      window.dispatchEvent(new Event('userUpdated'));
-    }
-
-    /* ========= Wishlist model =============
-       For logged-in users, wishlist is stored on user.wishlist (array of productIds).
-       For guests, a local list of items (with productId and snapshot) is used.
-       Each wishlist entry: { productId, title, price, img, addedAt }
-    ======================================= */
-
-    function loadEffectiveWishlist() {
-      const user = getLoggedUser();
-      if (user && user.wishlist && Array.isArray(user.wishlist)) {
-        // ensure entries are enriched: if it's just productIds, map to sample
-        return user.wishlist.map(entry => {
-          if (typeof entry === 'string') {
-            const p = SAMPLE_PRODUCTS[entry] || { id: entry, title: entry, price: 0, img:'images/placeholder.png' };
-            return { productId: p.id, title: p.title, price: p.price, img: p.img, addedAt: new Date().toISOString() };
-          }
-          return entry;
-        });
-      }
-      return getLocalWishlist();
-    }
-
-    function persistWishlist(wlist) {
-      const user = getLoggedUser();
-      if (user && user.id) {
-        // store under user object (only productIds to keep it small)
-        const users = JSON.parse(localStorage.getItem(KEY_USERS) || '[]');
-        const idx = users.findIndex(u => u.id === user.id);
-        const ids = wlist.map(i => i.productId);
-        if (idx >= 0) {
-          users[idx].wishlist = ids;
-          localStorage.setItem(KEY_USERS, JSON.stringify(users));
-          // update logged-in copy
-          user.wishlist = ids;
-          saveLoggedUser(user);
-        } else {
-          // fallback: save directly on logged-in user and users array
-          user.wishlist = ids;
-          saveLoggedUser(user);
-          users.push(user);
-          localStorage.setItem(KEY_USERS, JSON.stringify(users));
-        }
-      } else {
-        // guest
-        setLocalWishlist(wlist);
-      }
-      window.dispatchEvent(new Event('wishlistUpdated'));
-    }
-
-    /* ========= Render ========= */
-    const wishlistArea = document.getElementById('wishlistArea');
-    const wishlistCounter = document.getElementById('wishlistCounter');
-    const signedInName = document.getElementById('signedInName');
-
-    function renderWishlist() {
-      const w = loadEffectiveWishlist();
-      wishlistCounter.textContent = (w.length) + ' ITEM' + (w.length !== 1 ? 'S' : '');
-      const user = getLoggedUser();
-      signedInName.textContent = user && user.name ? user.name : 'Guest';
-
-      if (w.length === 0) {
-        wishlistArea.innerHTML = `
-          <div class="empty panel">
-            <h3>Your wishlist is empty</h3>
-            <p>Save pieces you love and we'll keep them safe. Get restock alerts or add to cart later.</p>
-            <p style="margin-top:18px">
-              <a href="collection.html">Browse collection</a> • <a href="auction.html">See auction</a>
-            </p>
-          </div>
-        `;
-        return;
-      }
-
-      // Build grid
-      const cards = w.map(item => {
-        const img = item.img || (SAMPLE_PRODUCTS[item.productId] ? SAMPLE_PRODUCTS[item.productId].img : 'images/placeholder.png');
-        const title = item.title || (SAMPLE_PRODUCTS[item.productId] ? SAMPLE_PRODUCTS[item.productId].title : item.productId);
-        const price = (item.price != null) ? item.price : (SAMPLE_PRODUCTS[item.productId] ? SAMPLE_PRODUCTS[item.productId].price : 0);
-        const id = item.productId;
-        return `
-          <div class="item-card" data-id="${id}">
-            <img class="item-thumb" src="${img}" alt="${escapeHtml(title)}" />
-            <div class="item-info">
-              <div class="item-title">${escapeHtml(title)}</div>
-              <div class="item-meta">₹${price.toLocaleString('en-IN')} • ${escapeHtml(item.type || (SAMPLE_PRODUCTS[id] && SAMPLE_PRODUCTS[id].type) || '—')}</div>
-              <div class="item-actions">
-                <button class="btn primary move-to-cart" data-id="${id}">Move to cart</button>
-                <button class="btn ghost remove-item" data-id="${id}">Remove</button>
-                <a href="product-single.html?pid=${encodeURIComponent(id)}" class="btn ghost">View</a>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      wishlistArea.innerHTML = `<div class="wishlist-grid">${cards}</div>`;
-      attachItemHandlers();
-    }
-
-    function attachItemHandlers(){
-      document.querySelectorAll('.remove-item').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = btn.dataset.id;
-          removeFromWishlist(id);
-        });
-      });
-      document.querySelectorAll('.move-to-cart').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = btn.dataset.id;
-          moveToCart(id);
-        });
-      });
-    }
-
-    /* ========= Actions ========= */
-
-    function addToWishlist(product) {
-      // product: {productId, title, price, img}
-      const w = loadEffectiveWishlist();
-      if (w.find(i => i.productId === product.productId)) {
-        showToast('Already in wishlist', 'success');
-        return;
-      }
-      w.unshift({...product, addedAt: new Date().toISOString()});
-      persistWishlist(w);
-      renderWishlist();
-      showToast('Added to wishlist', 'success');
-    }
-
-    function removeFromWishlist(productId) {
-      let w = loadEffectiveWishlist();
-      w = w.filter(i => i.productId !== productId);
-      persistWishlist(w);
-      renderWishlist();
-      showToast('Removed from wishlist', 'success');
-    }
-
-    function moveToCart(productId) {
-      const w = loadEffectiveWishlist();
-      const item = w.find(i => i.productId === productId);
-      if (!item) { showToast('Item not found', 'error'); return; }
-      const cart = getCart();
-      cart[productId] = cart[productId] ? cart[productId] + 1 : 1;
-      setCart(cart);
-      // remove from wishlist
-      removeFromWishlist(productId);
-      showToast('Moved to cart', 'success');
-    }
-
-    // Move all
-    document.getElementById('moveAllToCart').addEventListener('click', () => {
-      const w = loadEffectiveWishlist();
-      if (!w.length) return showToast('Wishlist is empty', 'error');
-      const cart = getCart();
-      w.forEach(item => {
-        cart[item.productId] = cart[item.productId] ? cart[item.productId] + 1 : 1;
-      });
-      setCart(cart);
-      persistWishlist([]); // clear wishlist after move
-      renderWishlist();
-      showToast('All items moved to cart', 'success');
-    });
-
-    // Clear wishlist
-    document.getElementById('clearWishlist').addEventListener('click', () => {
-      persistWishlist([]);
-      renderWishlist();
-      showToast('Wishlist cleared', 'success');
-    });
-
-    // Enable notifications
-    document.getElementById('enableNotifBtn').addEventListener('click', () => {
-      const email = document.getElementById('notifEmail').value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showToast('Enter valid email', 'error');
-      // store email per user or in local wishlists subscriptions
-      const user = getLoggedUser();
-      if (user && user.id) {
-        user.wishlistEmail = email;
-        saveLoggedUser(user);
-      } else {
-        localStorage.setItem('snehvastra_wishlist_email', email);
-      }
-      showToast('Notifications enabled', 'success');
-      document.getElementById('notifEmail').value = '';
-    });
-
-    /* ========= Helper: Escape HTML ========= */
-    function escapeHtml(str){
-      if (!str) return '';
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-    }
-
-    /* ========= Sync when user logs in or wishlist updates ========= */
-    window.addEventListener('userUpdated', () => {
-      renderWishlist();
-    });
-    window.addEventListener('wishlistUpdated', () => {
-      renderWishlist();
-    });
-
-    /* ========= Page init & small helpers ========= */
-    function updateCartCount() {
-      const total = Object.values(getCart()).reduce((s, q) => s + q, 0);
-      document.getElementById('cartCount').textContent = total;
-    }
-
-    // If the user logs in after being a guest, merge local wishlist into user wishlist
-    function mergeGuestWishlistIntoUser() {
-      const user = getLoggedUser();
-      if (!user || !user.id) return;
-      const guest = getLocalWishlist();
-      if (!guest || !guest.length) return;
-      const userWishlistIds = (user.wishlist && Array.isArray(user.wishlist)) ? user.wishlist.slice() : [];
-      guest.forEach(item => {
-        if (!userWishlistIds.includes(item.productId)) userWishlistIds.push(item.productId);
-      });
-      user.wishlist = userWishlistIds;
-      saveLoggedUser(user);
-      // clear guest wishlist
-      setLocalWishlist([]);
-      window.dispatchEvent(new Event('wishlistUpdated'));
-    }
-
-    // Render initial
-    window.addEventListener('load', () => {
-      updateCartCount();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-      // Sample fallback: if there's no wishlist stored anywhere, seed with a few items (only for first-run)
-      if (!localStorage.getItem(KEY_WISHLIST) && !localStorage.getItem(KEY_USERS)) {
-        const seed = [
-          { productId:'tee-black', title:SAMPLE_PRODUCTS['tee-black'].title, price:SAMPLE_PRODUCTS['tee-black'].price, img:SAMPLE_PRODUCTS['tee-black'].img },
-          { productId:'bomber-olive', title:SAMPLE_PRODUCTS['bomber-olive'].title, price:SAMPLE_PRODUCTS['bomber-olive'].price, img:SAMPLE_PRODUCTS['bomber-olive'].img }
-        ];
-        setLocalWishlist(seed);
-      }
-
-      // If user logged in and there was a guest wishlist, merge
-      mergeGuestWishlistIntoUser();
-
-      renderWishlist();
-
-      // Pre-fill notification email if present
-      const user = getLoggedUser();
-      if (user && user.wishlistEmail) document.getElementById('notifEmail').value = user.wishlistEmail;
-      else if (localStorage.getItem('snehvastra_wishlist_email')) document.getElementById('notifEmail').value = localStorage.getItem('snehvastra_wishlist_email');
-    });
-
-    /* ========= Auction timer (kept from other files) ========= */
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = auctionDate - now;
-      const timer = document.getElementById('auctionTimer');
-      if (timer && diff > 0) {
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else if (timer) {
-        timer.textContent = 'LIVE NOW!';
-      }
-    }, 1000);
-
-    /* ========= Expose utility for product pages to add to wishlist ========= */
-    // Example usage from product page:
-    // window.snehvastraAddToWishlist({ productId:'tee-black', title:'...', price:4999, img:'...' })
-    window.snehvastraAddToWishlist = (product) => {
-      if (!product || !product.productId) return;
-      addToWishlist(product);
-    };
-
-    // Also allow removing programmatically
-    window.snehvastraRemoveFromWishlist = (productId) => {
-      removeFromWishlist(productId);
-    };
-
-  </script>
-
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CXQG6L0W01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CXQG6L0W01');
-    gtag('event', 'view_wishlist');
-  </script>
 </body>
 </html>
