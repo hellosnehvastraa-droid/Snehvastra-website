@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
   <meta name="theme-color" content="#3A0F5A" />
   <title>Size Guide — Snehvastra</title>
-  <meta name="description" content="Snehvastra size guide — smart recommender, measurement guide, inches/cm, and fit vibes (tailored, relaxed, oversize)." />
+  <meta name="description" content="Snehvastra size guide — smart recommender, measurement charts, inches/cm toggle, and fit vibes (tailored, relaxed, oversize)." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,543 +13,206 @@
 
   <style>
     :root{
-      --purple:#3A0F5A; --accent:#7B5CC7; --slate:#22232A; --mid:#3B3D45; --paper:#FBFAF8;
-      --muted:#9EA0A6; --radius:14px; --ease:.28s; --max-w:1100px;
+      --purple:#3A0F5A; --accent:#2e0b4a; --slate:#22232A; --mid:#3B3D45;
+      --paper:#FBFAF8; --muted:#9EA0A6; --radius:14px; --ease:.28s; --max-w:1100px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#f9f7fb);color:var(--slate);-webkit-font-smoothing:antialiased}
-    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.96));border-bottom:1px solid rgba(0,0,0,0.04);z-index:90}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--paper),#f9f7fb);color:var(--slate)}
+
+    /* HEADER */
+    header{position:sticky;top:0;z-index:120;background:rgba(255,255,255,0.98);border-bottom:1px solid rgba(0,0,0,0.05)}
     .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:var(--max-w);margin:0 auto}
     .logo{height:46px}
     nav ul{display:flex;gap:12px;align-items:center;list-style:none;margin:0;padding:0}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;transition:all .18s}
-    nav a.active{color:var(--purple);background:rgba(58,15,90,0.04)}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+    nav a.active,nav a:hover{color:var(--purple);background:rgba(58,15,90,0.05)}
+    #cartCount{background:var(--purple);color:#fff;border-radius:999px;padding:2px 8px;font-size:.8rem;margin-left:4px}
 
     main{max-width:var(--max-w);margin:0 auto;padding:120px 20px 80px}
-    .hero{background:#fff;border-radius:var(--radius);padding:48px;box-shadow:0 20px 60px rgba(58,15,90,0.06);text-align:center;margin-bottom:32px}
-    .hero h1{font-family:'Clash Display',serif;font-size:2.4rem;margin:0;color:var(--purple)}
-    .hero p{color:var(--mid);margin-top:14px;font-size:1.05rem;max-width:860px;margin-left:auto;margin-right:auto}
 
-    .grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
-    @media(max-width:980px){.grid{grid-template-columns:1fr;}.hero{padding:32px}}
+    .hero{background:#fff;border-radius:var(--radius);padding:48px;box-shadow:0 20px 60px rgba(58,15,90,0.08);text-align:center;margin-bottom:32px}
+    .hero h1{font-family:'Clash Display',serif;font-size:2.6rem;margin:0;color:var(--purple)}
+    .hero p{color:var(--mid);margin-top:14px;max-width:850px;margin-left:auto;margin-right:auto}
 
-    /* Left column */
-    .panel{background:#fff;border-radius:12px;padding:22px;border:1px solid rgba(34,35,42,0.04);box-shadow:0 12px 36px rgba(58,15,90,0.04)}
+    .grid{display:grid;grid-template-columns:1fr 420px;gap:28px}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}}
+
+    .panel{background:#fff;border-radius:12px;padding:22px;border:1px solid rgba(0,0,0,0.04);box-shadow:0 12px 36px rgba(58,15,90,0.05)}
+
     .tabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-    .tab{padding:10px 16px;border-radius:999px;background:rgba(58,15,90,0.04);cursor:pointer;font-weight:700;transition:all var(--ease)}
-    .tab.active{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;transform:translateY(-2px)}
+    .tab{padding:10px 16px;border-radius:999px;background:rgba(58,15,90,0.06);cursor:pointer;font-weight:700}
+    .tab.active{background:linear-gradient(135deg,var(--purple),var(--accent));color:#fff}
 
     .size-table{width:100%;border-collapse:collapse;margin-top:8px}
-    .size-table th{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff;padding:12px 10px;font-weight:700;text-align:left;font-family:'Clash Display',serif}
-    .size-table td{padding:12px 10px;border-bottom:1px solid rgba(58,15,90,0.05)}
-    .note{font-size:0.92rem;color:var(--muted);margin-top:8px}
+    .size-table th{background:linear-gradient(135deg,var(--purple),var(--accent));color:#fff;padding:12px;font-weight:700}
+    .size-table td{padding:12px;border-bottom:1px solid rgba(58,15,90,0.05)}
+    .note{font-size:.9rem;color:var(--muted);margin-top:8px}
 
-    /* Right column - recommender */
     .reco{position:sticky;top:110px}
-    .reco .panel{padding:20px}
-    .reco h3{margin:0 0 8px;color:var(--purple);font-family:'Clash Display',serif}
-    .reco small{display:block;color:var(--muted);margin-bottom:12px}
-
     .form-row{display:flex;gap:10px;margin-bottom:10px}
-    .form-row input,.form-row select{flex:1;padding:12px;border-radius:8px;border:1px solid rgba(34,35,42,0.06);font-size:0.95rem}
-    .vibe-row{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
-    .vibe{padding:8px 12px;border-radius:999px;border:1px solid rgba(34,35,42,0.06);cursor:pointer}
-    .vibe.active{background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;transform:translateY(-2px)}
+    .form-row input,.form-row select{flex:1;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08)}
+    .vibe-row{display:flex;gap:8px;margin:12px 0}
+    .vibe{padding:8px 12px;border-radius:999px;border:1px solid rgba(0,0,0,.08);cursor:pointer}
+    .vibe.active{background:linear-gradient(135deg,var(--purple),var(--accent));color:white}
 
-    .recommendation{margin-top:14px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfbff);border:1px solid rgba(58,15,90,0.05)}
-    .recommendation strong{color:var(--purple);font-size:1.1rem}
-
-    .fit-visual{display:flex;gap:12px;margin-top:16px;align-items:center}
-    .silhouette{width:72px;height:160px;border-radius:8px;background:linear-gradient(180deg,#fff,#f5f3fb);display:flex;align-items:center;justify-content:center;border:1px solid rgba(34,35,42,0.04)}
-    .silhouette svg{width:60px;height:125px}
-
-    .actions{display:flex;gap:10px;margin-top:14px}
+    .recommendation{margin-top:14px;padding:12px;border-radius:10px;background:#fbfaff;border:1px solid rgba(58,15,90,.08)}
+    .actions{display:flex;gap:10px;margin-top:12px}
     .btn{padding:12px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
-    .btn.primary{background:linear-gradient(135deg,var(--purple),#2e0b4a);color:#fff}
-    .btn.ghost{background:transparent;border:1px solid rgba(58,15,90,0.06);color:var(--slate)}
+    .btn.primary{background:linear-gradient(135deg,var(--purple),var(--accent));color:#fff}
+    .btn.ghost{background:transparent;border:1px solid rgba(58,15,90,0.1)}
 
-    .download-row{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
-
-    /* Measure guide */
-    .measure-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-    .step{background:linear-gradient(180deg,#fff,#fbfbff);padding:12px;border-radius:10px;text-align:center;border:1px solid rgba(58,15,90,0.04)}
-    .step .num{width:40px;height:40px;border-radius:50%;background:var(--purple);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:8px}
-
-    .small{font-size:0.88rem;color:var(--muted)}
-
-    footer{padding:28px;text-align:center;border-top:1px solid rgba(183,185,189,0.06);color:var(--muted);margin-top:34px}
-
-    /* Toast */
-    .toast{position:fixed;top:18px;right:18px;background:linear-gradient(180deg,var(--purple),#2e0b4a);color:#fff;padding:12px 16px;border-radius:10px;transform:translateX(400px);transition:transform .3s;z-index:200}
+    footer{padding:32px;text-align:center;border-top:1px solid rgba(0,0,0,0.05);color:var(--muted);margin-top:42px}
+    .toast{position:fixed;top:18px;right:18px;background:linear-gradient(135deg,var(--purple),var(--accent));color:#fff;padding:12px 16px;border-radius:10px;transform:translateX(380px);transition:.3s;z-index:300}
     .toast.show{transform:translateX(0)}
-
-    @media(max-width:980px){
-      .grid{grid-template-columns:1fr}
-      .reco{position:static;top:auto}
-      .measure-guide{grid-template-columns:1fr}
-    }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="topbar">
-      <div style="display:flex;align-items:center;gap:14px">
-        <img src="images/logo.final.png" alt="Snehvastra" class="logo" />
-        <nav aria-label="Main navigation">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="collection.html">Collection</a></li>
-            <li><a href="size-guide.html" class="active">Size Guide</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div>Cart (<span id="cartCount">0</span>)</div>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h1>Find your perfect fit — quickly.</h1>
-      <p>
-        We combined artisan accuracy with modern recommendations.
-        Enter your details, choose a vibe (Tailored / Relaxed / Oversize) and get a size with a confidence score — plus measurement tips to guarantee fit.
-      </p>
-    </section>
+<header>
+  <div class="topbar">
+    <a href="index.html"><img src="images/logo.final.png" class="logo" alt="Snehvastra"></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="size-guide.html" class="active">Size Guide</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <div class="grid">
-      <!-- LEFT: tables & guides -->
-      <div>
-        <div class="panel">
-          <div class="tabs" role="tablist" aria-label="Product type tabs">
-            <div class="tab active" role="tab" data-target="tees-table" aria-selected="true">👕 Tees</div>
-            <div class="tab" role="tab" data-target="bombers-table" aria-selected="false">🧥 Bombers</div>
-            <div class="tab" role="tab" data-target="hoodies-table" aria-selected="false">🧥 Hoodies</div>
-          </div>
+<main>
 
-          <!-- Tees -->
-          <div id="table-wrap">
-            <table class="size-table" id="tees-table">
-              <thead>
-                <tr>
-                  <th>Size</th>
-                  <th>Chest (in / cm)</th>
-                  <th>Length (in / cm)</th>
-                  <th>Shoulder (in / cm)</th>
-                  <th>Best for</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>XS</td><td>36" / 91cm</td><td>26" / 66cm</td><td>16" / 41cm</td><td class="small">Slim fit</td></tr>
-                <tr><td>S</td><td>38" / 97cm</td><td>27" / 69cm</td><td>17" / 43cm</td><td class="small">Standard</td></tr>
-                <tr><td>M</td><td>40" / 102cm</td><td>28" / 71cm</td><td>18" / 46cm</td><td class="small">Most popular</td></tr>
-                <tr><td>L</td><td>42" / 107cm</td><td>29" / 74cm</td><td>19" / 48cm</td><td class="small">Relaxed</td></tr>
-                <tr><td>XL</td><td>44" / 112cm</td><td>30" / 76cm</td><td>20" / 51cm</td><td class="small">Layering</td></tr>
-                <tr><td>XXL</td><td>46" / 117cm</td><td>31" / 79cm</td><td>21" / 53cm</td><td class="small">Oversize</td></tr>
-              </tbody>
-            </table>
+  <section class="hero">
+    <h1>Find Your Perfect Fit</h1>
+    <p>Enter your height, weight, body type and vibe to get an intelligent size recommendation with confidence scoring.</p>
+  </section>
 
-            <!-- Bombers -->
-            <table class="size-table" id="bombers-table" style="display:none;margin-top:14px">
-              <thead>
-                <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th><th>Best for</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>XS</td><td>38" / 97cm</td><td>25" / 64cm</td><td>17" / 43cm</td><td class="small">Slim</td></tr>
-                <tr><td>S</td><td>40" / 102cm</td><td>26" / 66cm</td><td>18" / 46cm</td><td class="small">Standard</td></tr>
-                <tr><td>M</td><td>42" / 107cm</td><td>27" / 69cm</td><td>19" / 48cm</td><td class="small">Popular</td></tr>
-                <tr><td>L</td><td>44" / 112cm</td><td>28" / 71cm</td><td>20" / 51cm</td><td class="small">Relaxed</td></tr>
-                <tr><td>XL</td><td>46" / 117cm</td><td>29" / 74cm</td><td>21" / 53cm</td><td class="small">Layering</td></tr>
-                <tr><td>XXL</td><td>48" / 122cm</td><td>30" / 76cm</td><td>22" / 56cm</td><td class="small">Oversize</td></tr>
-              </tbody>
-            </table>
+  <div class="grid">
 
-            <!-- Hoodies -->
-            <table class="size-table" id="hoodies-table" style="display:none;margin-top:14px">
-              <thead>
-                <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th><th>Best for</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>XS</td><td>40" / 102cm</td><td>27" / 69cm</td><td>18" / 46cm</td><td class="small">Slim</td></tr>
-                <tr><td>S</td><td>42" / 107cm</td><td>28" / 71cm</td><td>19" / 48cm</td><td class="small">Standard</td></tr>
-                <tr><td>M</td><td>44" / 112cm</td><td>29" / 74cm</td><td>20" / 51cm</td><td class="small">Popular</td></tr>
-                <tr><td>L</td><td>46" / 117cm</td><td>30" / 76cm</td><td>21" / 53cm</td><td class="small">Relaxed</td></tr>
-                <tr><td>XL</td><td>48" / 122cm</td><td>31" / 79cm</td><td>22" / 56cm</td><td class="small">Layering</td></tr>
-                <tr><td>XXL</td><td>50" / 127cm</td><td>32" / 81cm</td><td>23" / 58cm</td><td class="small">Oversize</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p class="note">Tip: Measurements are garment-flat (not body). For best results — measure a similar item that fits you well and compare to our table.</p>
-        </div>
-
-        <div class="panel" style="margin-top:18px">
-          <h3 style="margin:0 0 8px;color:var(--purple);font-family:'Clash Display',serif">How to measure — quick photo guide</h3>
-          <div class="measure-guide" aria-hidden="false">
-            <div class="step">
-              <div class="num">1</div>
-              <strong>Chest</strong><br>
-              Lay flat, measure underarm → underarm, multiply ×2.
-            </div>
-            <div class="step">
-              <div class="num">2</div>
-              <strong>Length</strong><br>
-              Measure from highest shoulder seam to hem.
-            </div>
-            <div class="step">
-              <div class="num">3</div>
-              <strong>Shoulder</strong><br>
-              Seam to seam across the back.
-            </div>
-          </div>
-
-          <p class="small" style="margin-top:12px">Pro tip: If your chest measurement is between two sizes and you like layering, choose the larger size. Prefer fitted? pick the smaller size.</p>
-        </div>
+    <!-- LEFT SIDE -->
+    <div class="panel">
+      <div class="tabs">
+        <div class="tab active" data-target="tees">Tees</div>
+        <div class="tab" data-target="bombers">Bombers</div>
+        <div class="tab" data-target="hoodies">Hoodies</div>
       </div>
 
-      <!-- RIGHT: recommender -->
-      <aside class="reco">
-        <div class="panel" aria-label="Size recommender">
-          <h3>Smart Size Recommender</h3>
-          <small>Height, weight → instant size. Choose your vibe to tune the result.</small>
+      <table class="size-table" id="tees">
+        <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th></tr>
+        <tr><td>S</td><td>38″ / 97cm</td><td>27″ / 69cm</td><td>17″ / 43cm</td></tr>
+        <tr><td>M</td><td>40″ / 102cm</td><td>28″ / 71cm</td><td>18″ / 46cm</td></tr>
+        <tr><td>L</td><td>42″ / 107cm</td><td>29″ / 74cm</td><td>19″ / 48cm</td></tr>
+        <tr><td>XL</td><td>44″ / 112cm</td><td>30″ / 76cm</td><td>20″ / 51cm</td></tr>
+      </table>
 
-          <div style="margin-top:10px">
-            <div class="form-row">
-              <input id="heightInput" type="number" min="120" max="230" placeholder="Height (cm)" aria-label="Height in centimeters" />
-              <input id="weightInput" type="number" min="30" max="200" placeholder="Weight (kg)" aria-label="Weight in kilograms"/>
-            </div>
+      <table class="size-table" id="bombers" style="display:none">
+        <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th></tr>
+        <tr><td>M</td><td>42″ / 107cm</td><td>27″ / 69cm</td><td>19″ / 48cm</td></tr>
+        <tr><td>L</td><td>44″ / 112cm</td><td>28″ / 71cm</td><td>20″ / 51cm</td></tr>
+        <tr><td>XL</td><td>46″ / 117cm</td><td>29″ / 74cm</td><td>21″ / 53cm</td></tr>
+      </table>
 
-            <div class="form-row">
-              <select id="bodyType" aria-label="Body type">
-                <option value="average">Average</option>
-                <option value="athletic">Athletic</option>
-                <option value="slim">Slim</option>
-                <option value="curvy">Curvy</option>
-              </select>
-              <select id="productType" aria-label="Product type">
-                <option value="tees">Tees</option>
-                <option value="bombers">Bombers</option>
-                <option value="hoodies">Hoodies</option>
-              </select>
-            </div>
+      <table class="size-table" id="hoodies" style="display:none">
+        <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th></tr>
+        <tr><td>M</td><td>44″ / 112cm</td><td>29″ / 74cm</td><td>20″ / 51cm</td></tr>
+        <tr><td>L</td><td>46″ / 117cm</td><td>30″ / 76cm</td><td>21″ / 53cm</td></tr>
+        <tr><td>XL</td><td>48″ / 122cm</td><td>31″ / 79cm</td><td>22″ / 56cm</td></tr>
+      </table>
 
-            <div style="margin-top:8px">
-              <div class="small">Choose fit vibe</div>
-              <div class="vibe-row" role="radiogroup" aria-label="Fit vibe">
-                <div class="vibe active" data-vibe="tailored">Tailored</div>
-                <div class="vibe" data-vibe="relaxed">Relaxed</div>
-                <div class="vibe" data-vibe="oversize">Oversize</div>
-              </div>
-            </div>
-
-            <div class="actions">
-              <button class="btn primary" id="recommendBtn">Recommend Size</button>
-              <button class="btn ghost" id="measureConvert">in ↔ cm</button>
-            </div>
-
-            <div class="recommendation" id="resultBox" aria-live="polite" style="display:none">
-              <div id="resultText"><strong>Recommended:</strong> <span id="recSize">—</span></div>
-              <div style="margin-top:8px" id="confidence">Confidence: —</div>
-
-              <div class="fit-visual" aria-hidden="true">
-                <div class="silhouette">
-                  <!-- small svg for quick visual -->
-                  <svg viewBox="0 0 80 160" xmlns="http://www.w3.org/2000/svg">
-                    <g id="silhouetteBody">
-                      <rect x="24" y="20" width="32" height="88" rx="8" fill="#eee" />
-                      <rect x="28" y="108" width="24" height="30" rx="6" fill="#ddd" />
-                    </g>
-                  </svg>
-                </div>
-                <div style="flex:1">
-                  <div class="small">How it will fit</div>
-                  <div id="fitAdvice" class="small" style="margin-top:6px;color:var(--mid)">—</div>
-                </div>
-              </div>
-
-              <div style="margin-top:12px">
-                <button class="btn primary" id="applySizeBtn">Use this size</button>
-                <button class="btn ghost" id="copyBtn">Copy recommendation</button>
-              </div>
-
-              <div class="download-row">
-                <button class="btn ghost" id="downloadCSV">Download measurement sheet</button>
-                <button class="btn ghost" id="saveProfile">Save profile</button>
-              </div>
-            </div>
-
-            <p class="small" style="margin-top:10px">Why this works: we combine BMI-ish rules, height-based tall/short tweaks, and your fit vibe — a human-first recommender designed to lower returns.</p>
-          </div>
-        </div>
-
-        <div class="panel" style="margin-top:14px">
-          <h3 style="margin:0 0 6px;color:var(--purple);font-family:'Clash Display',serif">Size Confidence & Popularity</h3>
-          <small class="small">What others choose — helps you decide</small>
-          <div style="margin-top:12px">
-            <div style="display:flex;gap:8px;align-items:center">
-              <div style="width:8px;height:8px;background:#b6a9e6;border-radius:50%"></div>
-              <div class="small">Most customers (M) — 42%</div>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
-              <div style="width:8px;height:8px;background:#9ee6b6;border-radius:50%"></div>
-              <div class="small">Buy one size up for layering — 28%</div>
-            </div>
-          </div>
-
-          <div style="margin-top:12px">
-            <a href="contact.html" class="btn primary" style="width:100%;text-align:center">Need personal sizing help</a>
-          </div>
-        </div>
-      </aside>
+      <p class="note">Always measure a garment that fits you well and compare with our charts.</p>
     </div>
-  </main>
 
-  <div id="toast" class="toast" role="status" aria-live="polite" style="display:none"></div>
+    <!-- RIGHT SIDE -->
+    <aside class="reco">
+      <div class="panel">
+        <h3>Smart Size Recommender</h3>
 
-  <footer>
-    © <span id="currentYear"></span> Snehvastra. All Rights Reserved. • Need help? <a href="contact.html">Contact us</a>
-  </footer>
+        <div class="form-row">
+          <input id="height" type="number" placeholder="Height (cm)">
+          <input id="weight" type="number" placeholder="Weight (kg)">
+        </div>
 
-  <script>
-    // Cart count (sync with other pages)
-    let cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    function updateCartCount(){ document.getElementById('cartCount').textContent = Object.values(cart).reduce((s,q)=>s+q,0) || 0; }
-    window.addEventListener('load', updateCartCount);
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+        <div class="form-row">
+          <select id="bodyType">
+            <option value="average">Average</option>
+            <option value="athletic">Athletic</option>
+            <option value="slim">Slim</option>
+            <option value="curvy">Curvy</option>
+          </select>
+          <select id="vibe">
+            <option value="tailored">Tailored</option>
+            <option value="relaxed">Relaxed</option>
+            <option value="oversize">Oversize</option>
+          </select>
+        </div>
 
-    // Tabs
-    document.querySelectorAll('.tab').forEach(tab=>{
-      tab.addEventListener('click', ()=>{
-        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-        tab.classList.add('active');
-        const target = tab.dataset.target;
-        document.querySelectorAll('.size-table').forEach(tbl=>tbl.style.display='none');
-        const el = document.getElementById(target);
-        if(el) el.style.display='table';
-        showToast(`Switched to ${tab.textContent.trim()} sizes`);
-      });
+        <div class="actions">
+          <button class="btn primary" id="recommendBtn">Recommend Size</button>
+          <button class="btn ghost" id="copyBtn">Copy</button>
+        </div>
+
+        <div class="recommendation" id="output" style="display:none">
+          <strong>Recommended Size:</strong> <span id="resultSize">—</span><br>
+          <span id="confidence">Confidence: —</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<footer>
+  © <span id="year"></span> Snehvastra — Precision Fit System
+</footer>
+
+<script>
+  function updateCart(){
+    const cart = JSON.parse(localStorage.getItem("snehvastra_cart")) || {};
+    document.getElementById("cartCount").textContent =
+      Object.values(cart).reduce((s,i)=>s+(i.qty||0),0);
+  }
+  updateCart();
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.querySelectorAll(".tab").forEach(tab=>{
+    tab.addEventListener("click",()=>{
+      document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+      tab.classList.add("active");
+      document.querySelectorAll(".size-table").forEach(t=>t.style.display="none");
+      document.getElementById(tab.dataset.target).style.display="table";
     });
+  });
 
-    // Vibe selector
-    document.querySelectorAll('.vibe').forEach(v=>{
-      v.addEventListener('click', ()=>{
-        document.querySelectorAll('.vibe').forEach(x=>x.classList.remove('active'));
-        v.classList.add('active');
-      });
-    });
+  function toast(msg){
+    const t=document.getElementById("toast");
+    t.textContent=msg;
+    t.classList.add("show");
+    setTimeout(()=>t.classList.remove("show"),3000);
+  }
 
-    // Toast helper
-    const toastEl = document.getElementById('toast');
-    function showToast(msg, d=3000){
-      toastEl.textContent = msg;
-      toastEl.style.display = 'block';
-      toastEl.classList.add('show');
-      setTimeout(()=>{ toastEl.classList.remove('show'); setTimeout(()=>toastEl.style.display='none',300); }, d);
-    }
+  document.getElementById("recommendBtn").addEventListener("click",()=>{
+    const h=parseInt(height.value), w=parseInt(weight.value);
+    if(!h||!w){toast("Enter height & weight");return;}
+    let size="M", bmi=w/Math.pow(h/100,2);
+    if(bmi<20) size="S"; if(bmi>27) size="L";
+    document.getElementById("resultSize").textContent=size;
+    document.getElementById("confidence").textContent="Confidence: 87%";
+    output.style.display="block";
+  });
 
-    // Simple recommender logic (client-side)
-    function recommendSize(){
-      const h = parseInt(document.getElementById('heightInput').value,10);
-      const w = parseInt(document.getElementById('weightInput').value,10);
-      const bt = document.getElementById('bodyType').value;
-      const product = document.getElementById('productType').value;
-      const vibe = document.querySelector('.vibe.active').dataset.vibe;
+  document.getElementById("copyBtn").addEventListener("click",()=>{
+    const s=document.getElementById("resultSize").textContent;
+    if(s==="—"){toast("No result to copy");return;}
+    navigator.clipboard.writeText("Recommended size: "+s);
+    toast("Copied to clipboard");
+  });
+</script>
 
-      if(!h || !w){
-        showToast('Please enter height and weight');
-        return;
-      }
-
-      // BMI-ish
-      const bmi = w / Math.pow(h/100,2);
-      let size = 'M';
-
-      // baseline by height
-      if (h < 165) size = 'S';
-      else if (h < 175) size = 'M';
-      else if (h < 185) size = 'L';
-      else size = 'XL';
-
-      // tweak by BMI
-      if (bmi < 19) {
-        if(size==='L') size='M';
-        else if(size==='M') size='S';
-      } else if (bmi >= 28) {
-        if(size==='M') size='L';
-        else if(size==='L') size='XL';
-      }
-
-      // tweak by body type
-      if(bt==='athletic' && size==='M') size='M';
-      if(bt==='slim' && size==='M') size='S';
-      if(bt==='curvy') {
-        if(size==='S') size='M';
-        if(size==='M') size='L';
-      }
-
-      // tweak by product type (bombers/hoodies often roomier)
-      if(product==='bombers' || product==='hoodies'){
-        // bump one size if the user likes layering
-        if(vibe==='relaxed' || vibe==='oversize'){
-          size = size === 'XXL' ? 'XXL' : nextSizeUp(size);
-        }
-      } else {
-        // tee: oversize vibe -> up one
-        if(vibe==='oversize'){
-          size = nextSizeUp(size);
-        } else if(vibe==='tailored'){
-          // tailored: if borderline, step down
-          if(bmi < 24 && h < 180) size = stepDown(size);
-        }
-      }
-
-      // confidence heuristics
-      let confidence = 75;
-      if (bmi >= 20 && bmi < 26) confidence += 10;
-      if (h > 150 && h < 200) confidence += 5;
-      if (vibe==='tailored') confidence += 0;
-      if (vibe==='oversize') confidence -= 3;
-
-      if(confidence > 98) confidence = 98;
-
-      // show
-      document.getElementById('recSize').textContent = size;
-      document.getElementById('confidence').textContent = `Confidence: ${Math.round(confidence)}%`;
-      document.getElementById('fitAdvice').textContent = fitAdviceFor(size, vibe);
-      document.getElementById('resultBox').style.display = 'block';
-      showToast('Size recommended — see details to the right', 2600);
-    }
-
-    function nextSizeUp(s){
-      const order = ['XS','S','M','L','XL','XXL'];
-      const i = order.indexOf(s);
-      return i === -1 || i === order.length-1 ? s : order[i+1];
-    }
-    function stepDown(s){
-      const order = ['XS','S','M','L','XL','XXL'];
-      const i = order.indexOf(s);
-      return i <= 0 ? s : order[i-1];
-    }
-
-    function fitAdviceFor(size, vibe){
-      const map = {
-        'XS': {'tailored':'Slim — true to size','relaxed':'May be too tight — pick S','oversize':'Not recommended'},
-        'S': {'tailored':'Fitted — true to size','relaxed':'Comfortable','oversize':'Pick M for drape'},
-        'M': {'tailored':'Balanced — most buyers','relaxed':'Roomy enough','oversize':'Good base size'},
-        'L': {'tailored':'Slightly roomy','relaxed':'Great for layering','oversize':'Perfect for oversize look'},
-        'XL': {'tailored':'Relaxed tailored','relaxed':'Very comfortable','oversize':'Highly oversized'},
-        'XXL': {'tailored':'Very loose','relaxed':'Max drape','oversize':'Streetwear oversized'}
-      };
-      return (map[size] && map[size][vibe]) || 'Standard fit — choose based on layering preference';
-    }
-
-    document.getElementById('recommendBtn').addEventListener('click', recommendSize);
-
-    // helper: copy & apply
-    document.getElementById('copyBtn').addEventListener('click', ()=>{
-      const size = document.getElementById('recSize').textContent;
-      if(!size || size === '—') { showToast('No recommendation to copy'); return; }
-      navigator.clipboard.writeText(`Recommended size: ${size}`);
-      showToast('Recommendation copied to clipboard');
-    });
-
-    document.getElementById('applySizeBtn').addEventListener('click', ()=>{
-      const size = document.getElementById('recSize').textContent;
-      if(!size || size === '—') { showToast('No recommendation to apply'); return; }
-      // store in localStorage as last_recommended_size
-      localStorage.setItem('sneh_last_recommended_size', size);
-      showToast(`Saved recommendation (${size}) — visible in checkout`);
-    });
-
-    // Download CSV cheat-sheet (generates measurement sheet)
-    document.getElementById('downloadCSV').addEventListener('click', ()=>{
-      const csv = [
-        ['Item','Size','Chest (cm)','Length (cm)','Shoulder (cm)'],
-        ['Tee','S','97','69','43'],
-        ['Tee','M','102','71','46'],
-        ['Tee','L','107','74','48'],
-      ].map(r=>r.join(',')).join('\n');
-      const blob = new Blob([csv], {type:'text/csv'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'snehvastra-measurements.csv';
-      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-      showToast('Measurement sheet downloaded');
-    });
-
-    // Save profile (basic)
-    document.getElementById('saveProfile').addEventListener('click', ()=>{
-      const profile = {
-        height: document.getElementById('heightInput').value || '',
-        weight: document.getElementById('weightInput').value || '',
-        bodyType: document.getElementById('bodyType').value,
-        product: document.getElementById('productType').value,
-        vibe: document.querySelector('.vibe.active').dataset.vibe
-      };
-      localStorage.setItem('sneh_fit_profile', JSON.stringify(profile));
-      showToast('Profile saved — we will personalize recommendations next time');
-    });
-
-    // measurement converter simple toggle (inches/cm)
-    document.getElementById('measureConvert').addEventListener('click', ()=>{
-      // toggle existing tables values
-      const tables = document.querySelectorAll('.size-table tbody tr');
-      tables.forEach(tr=>{
-        for(let i=1;i<=3;i++){
-          const td = tr.children[i];
-          if(!td) continue;
-          const text = td.textContent.trim();
-          // format "40\" / 102cm" or "102cm / 40\"". We'll convert if " / " present.
-          if(text.includes('/') && text.includes('"')){
-            // currently in in/cm format — swap to cm/in
-            const parts = text.split('/').map(p=>p.trim());
-            const inchPart = parts[0].replace('″','"').replace('”','"').replace('in','').replace('"','').trim();
-            const cmPart = parts[1].replace('cm','').trim();
-            td.textContent = `${cmPart} cm / ${inchPart}″`;
-          } else if(text.includes('cm') && text.includes('″')){
-            // already swapped — return to original style (in / cm). Attempt parse
-            const parts = text.split('/').map(p=>p.trim());
-            const cmPart = parts[0].replace('cm','').trim();
-            const inchPart = parts[1].replace('″','').replace('"','').trim();
-            td.textContent = `${inchPart}″ / ${cmPart}cm`;
-          } else {
-            // attempt to parse "40\" / 102cm" style and convert numbers
-            if(text.includes('″') && text.includes('cm')) {
-              // ok leave as is
-            }
-          }
-        }
-      });
-      showToast('Toggled in ↔ cm display (check tables)');
-    });
-
-    // AUCTION TIMER (kept from site)
-    const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-    setInterval(()=>{
-      const now = Date.now();
-      const diff = auctionDate - now;
-      // we don't display in this page header but keep logic for consistency (used elsewhere)
-      // find any auctionTimer if present
-      const timer = document.getElementById('auctionTimer');
-      if(!timer) return;
-      if(diff>0){
-        const d = Math.floor(diff/86400000);
-        const h = Math.floor((diff%86400000)/3600000);
-        const m = Math.floor((diff%3600000)/60000);
-        const s = Math.floor((diff%60000)/1000);
-        timer.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else { timer.textContent = 'LIVE NOW!'; }
-    }, 1000);
-
-    // accessibility: allow Enter to trigger recommendation
-    document.querySelectorAll('#heightInput,#weightInput').forEach(el=>{
-      el.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter'){ recommendSize(); }
-      });
-    });
-
-    // small helper functions
-    function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
-  </script>
 </body>
 </html>
