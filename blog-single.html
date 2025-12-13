@@ -3,270 +3,360 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>The 200-Year Loom Still Running — Snehvastra</title>
-  <meta name="description" content="Explore the legacy of the 200-year-old loom that produces Snehvastra's finest weaves, crafted by master artisan Shyamji."/>
   <meta name="theme-color" content="#3A0F5A"/>
+  <title>Blog Single — Snehvastra</title>
+  <meta name="description" content="Snehvastra craftsmanship stories and studio insights."/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
     :root{
       --purple:#3A0F5A;
-      --purple-2:#7B3BBE;
-      --slate:#1f1f25;
-      --muted:#6f6e75;
-      --paper:#F6F6F8;
-      --radius:14px;
-      --ease:cubic-bezier(.18,.9,.32,1);
-      --max:1200px;
-      --focus:rgba(186,178,255,0.18);
+      --purple-dark:#2e0b4a;
+      --slate:#22232A;
+      --slate-mid:#3B3D45;
+      --muted:#C7C6C8;
+      --paper:#F6F6F6;
+      --radius:16px;
+      --ease:.35s;
+      --max-width:1200px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{box-sizing:border-box;}
     body{
+      margin:0;
       font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,#f7f7f9,#eee9f4);
+      background:linear-gradient(180deg,var(--paper),#FBFAF8);
       color:var(--slate);
-      line-height:1.7;
+      overflow-x:hidden;
+      line-height:1.6;
     }
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
-    button{font-family:inherit}
 
-    /* ---------------- HEADER ---------------- */
-    .site-header{
+    /* ✅ FULL HEADER SYSTEM */
+    header{
       position:sticky;top:0;z-index:100;
-      backdrop-filter:blur(14px);
-      background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(245,244,246,.92));
-      border-bottom:1px solid rgba(58,15,90,.06);
+      background:rgba(255,255,255,0.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(183,185,189,0.12);
     }
-    .header-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:14px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;padding:14px 5%;max-width:var(--max-width);margin:0 auto;flex-wrap:wrap;
     }
-    .brand-lockup{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .brand-lockup img{height:36px}
+    .brand{display:flex;gap:10px;align-items:center;flex-shrink:0;cursor:pointer;}
+    .brand img{height:42px;border-radius:10px;}
+    .brand h1{font-family:'Clash Display',serif;margin:0;font-size:1.1rem;color:var(--purple);}
+    .brand-subtitle{font-size:0.8rem;color:var(--muted);font-weight:500;}
+    .mobile-hamburger{display:none;flex-direction:column;gap:4px;padding:6px;background:none;border:none;cursor:pointer;z-index:200;}
+    .mobile-hamburger span{width:24px;height:2px;background:var(--purple);border-radius:2px;transition:var(--ease);}
+    nav{width:100%;overflow-x:auto;}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:6px 0;min-width:max-content;align-items:center;}
+    nav a{text-decoration:none;font-weight:600;font-size:0.9rem;padding:8px 14px;border-radius:10px;color:var(--muted);transition:all var(--ease);white-space:nowrap;}
+    nav a:hover, nav a.active{background:rgba(58,15,90,0.05);color:var(--purple);}
+    .account-area{display:flex;align-items:center;gap:10px;}
+    .user-badge{font-weight:700;color:var(--purple);font-size:0.9rem;}
+    .logout-btn{border:none;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:8px 14px;border-radius:12px;font-weight:700;cursor:pointer;}
+    .cart-link{position:relative;display:flex;align-items:center;text-decoration:none;padding:8px 14px;border-radius:12px;font-weight:600;color:var(--purple);border:2px solid rgba(58,15,90,0.2);transition:all var(--ease);}
+    .cart-link:hover{background:rgba(58,15,90,0.05);transform:translateY(-1px);}
+    .cart-badge{position:absolute;top:-8px;right:-8px;background:var(--purple);color:#fff;width:20px;height:20px;border-radius:50%;font-size:0.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+    @media (max-width: 920px){.mobile-hamburger{display:flex;}nav{display:none;}.account-area{display:none;}}
 
-    .header-nav{
-      display:flex;
-      gap:18px;
-      font-size:.92rem;
-    }
-    .header-link{
-      position:relative;
-      padding-bottom:2px;
-      font-weight:500;
-      color:#4a435e;
-    }
-    .header-link.active::after,
-    .header-link:hover::after{
-      content:"";
-      position:absolute;
-      left:0;bottom:0;
-      width:100%;height:2px;
-      background:linear-gradient(90deg,#3A0F5A,#b37cff);
-      border-radius:999px;
-    }
+    /* ✅ MOBILE DRAWER */
+    .mobile-drawer{position:fixed;top:0;right:-100%;width:300px;height:100vh;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);border-left:1px solid rgba(183,185,189,0.2);z-index:150;padding:80px 24px 40px;transition:all var(--ease);overflow-y:auto;}
+    .mobile-drawer.open{right:0;}
+    .drawer-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:140;opacity:0;visibility:hidden;transition:all var(--ease);}
+    .drawer-overlay.open{opacity:1;visibility:visible;}
+    .drawer-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid rgba(183,185,189,0.12);}
+    .drawer-close{background:none;border:none;font-size:1.4rem;color:var(--slate);cursor:pointer;padding:4px;}
+    .primary-nav{list-style:none;margin:0 0 24px 0;padding:0;border-bottom:1px solid rgba(183,185,189,0.08);}
+    .primary-nav li{margin-bottom:4px;}
+    .primary-nav a{display:block;text-decoration:none;font-weight:700;font-size:1rem;padding:14px 16px;border-radius:12px;color:var(--purple);transition:all var(--ease);border-left:3px solid transparent;}
+    .primary-nav a:hover,.primary-nav a.active{background:rgba(58,15,90,0.08);border-left-color:var(--purple);}
 
-    .header-actions{display:flex;gap:10px}
-    .pill-link{
-      font-size:.9rem;
-      padding:7px 14px;
-      border-radius:999px;
-      border:1px solid rgba(58,15,90,.18);
-      background:white;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      gap:6px;
-    }
-    .cart-pill{
-      background:linear-gradient(135deg,rgba(58,15,90,.95),rgba(146,83,228,.95));
-      color:#fff;
-      border:none;
-    }
-    .cart-count{
-      background:#fff;
-      color:#3A0F5A;
-      border-radius:999px;
-      padding:1px 7px;
-      font-size:.75rem;
-      font-weight:600;
-    }
+    /* ✅ BLOG SINGLE */
+    .page{max-width:var(--max-width);margin:120px auto 80px;padding:0 5%;}
+    .hero{background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:var(--radius);padding:100px 60px;text-align:center;color:#fff;margin-bottom:60px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);}
+    .hero h1{font-family:'Clash Display',serif;font-size:clamp(2.8rem,7vw,4.5rem);margin:0 0 24px;position:relative;z-index:1;font-weight:700;}
+    .hero .subtitle{font-size:1.25rem;max-width:700px;margin:0 auto 32px;position:relative;z-index:1;opacity:0.95;}
+    .hero-image{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 60px 160px rgba(0,0,0,0.3);max-width:800px;margin:0 auto;height:500px;background:linear-gradient(135deg,rgba(58,15,90,0.08),rgba(58,15,90,0.03));display:flex;align-items:center;justify-content:center;font-size:6rem;}
+    @media(max-width:768px){.hero{padding:80px 40px;}}
 
-    /* ---------------- HERO ---------------- */
-    .hero{
-      background:linear-gradient(120deg,var(--purple),var(--purple-2));
-      padding:80px 20px 64px;
-      color:white;
-    }
-    .hero-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:1fr 420px;
-      gap:32px;
-      align-items:center;
-    }
-    .hero h1{
-      font-family:'Clash Display',serif;
-      font-size:clamp(2rem,5vw,3.2rem);
-    }
+    .content-grid{display:grid;grid-template-columns:1fr 380px;gap:48px;margin-bottom:64px;}
+    @media(max-width:1100px){.content-grid{grid-template-columns:1fr;gap:32px;}}
 
-    .hero-image{
-      border-radius:14px;
-      overflow:hidden;
-      box-shadow:0 30px 90px rgba(0,0,0,.25);
-    }
+    .article{background:#fff;border-radius:var(--radius);padding:48px;box-shadow:0 40px 120px rgba(58,15,90,0.12);border:1px solid rgba(183,185,189,0.12);}
+    .post-title{font-family:'Clash Display',serif;font-size:2.8rem;color:var(--purple);margin:0 0 32px;line-height:1.2;font-weight:700;}
+    .post-meta{display:flex;gap:24px;align-items:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(183,185,189,0.2);}
+    .meta-item{display:flex;align-items:center;gap:8px;color:var(--slate-mid);font-size:0.95rem;}
+    .post-content{font-size:1.1rem;line-height:1.75;color:var(--slate);}
+    .post-content p{margin-bottom:24px;}
+    .post-content h2{font-family:'Clash Display',serif;font-size:1.8rem;color:var(--purple);margin:40px 0 20px;}
+    .post-content h3{font-size:1.3rem;color:var(--purple);margin:32px 0 16px;font-weight:600;}
+    .post-image{display:block;border-radius:14px;margin:32px 0;box-shadow:0 20px 60px rgba(58,15,90,0.15);}
 
-    @media(max-width:900px){
-      .hero-inner{grid-template-columns:1fr}
-    }
+    .sidebar{background:#fff;border-radius:var(--radius);padding:40px;box-shadow:0 24px 80px rgba(58,15,90,0.1);border:1px solid rgba(183,185,189,0.12);}
+    .sidebar-title{font-family:'Clash Display',serif;font-size:1.8rem;color:var(--purple);margin:0 0 32px;}
+    .story-details{list-style:none;padding:0;}
+    .story-detail{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(183,185,189,0.1);}
+    .story-detail:last-child{border-bottom:none;}
+    .detail-label{color:var(--slate-mid);font-size:0.9rem;}
+    .detail-value{font-weight:600;color:var(--purple);}
+    .related-stories{margin-top:40px;}
+    .related-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid rgba(183,185,189,0.1);}
+    .related-item:last-child{border-bottom:none;}
+    .related-emoji{font-size:2rem;}
+    .related-link{font-weight:600;color:var(--purple);font-size:1rem;transition:all var(--ease);}
+    .related-link:hover{opacity:0.8;transform:translateX(4px);}
 
-    /* ---------------- LAYOUT ---------------- */
-    .container{
-      max-width:var(--max);
-      margin:48px auto;
-      padding:0 20px;
-      display:grid;
-      grid-template-columns:1fr 340px;
-      gap:36px;
-    }
+    .back-link{display:inline-flex;align-items:center;gap:12px;color:var(--purple);font-weight:600;font-size:1rem;padding:16px 0 0;margin-bottom:24px;transition:all var(--ease);}
+    .back-link:hover{opacity:0.8;transform:translateX(-4px);}
 
-    @media(max-width:1000px){
-      .container{grid-template-columns:1fr}
-    }
-
-    .article{
-      background:#fff;
-      border-radius:16px;
-      padding:28px;
-      box-shadow:0 30px 80px rgba(58,15,90,.08);
-    }
-
-    .post-title{
-      font-family:'Clash Display',serif;
-      color:var(--purple);
-      font-size:clamp(1.8rem,4vw,2.8rem);
-      margin:12px 0;
-    }
-
-    .post-content p{margin-bottom:20px}
-
-    .meta-card{
-      background:#fff;
-      border-radius:16px;
-      padding:20px;
-      box-shadow:0 18px 50px rgba(58,15,90,.06);
-    }
-
-    footer{
-      text-align:center;
-      color:var(--muted);
-      margin:80px 20px;
-    }
-
-    .ai-orb{
-      position:fixed;right:22px;bottom:22px;
-      width:64px;height:64px;border-radius:50%;
-      background:linear-gradient(135deg,var(--purple-2),var(--purple));
-      color:#fff;display:flex;align-items:center;justify-content:center;
-      cursor:pointer;z-index:3000;
-    }
+    footer{padding:80px 5% 40px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.9rem;}
+    #toast{position:fixed;top:24px;right:24px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:16px 24px;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,0.25);font-size:0.95rem;font-weight:600;transform:translateX(400px);transition:all var(--ease);z-index:300;max-width:360px;}
+    #toast.show{transform:translateX(0);}
   </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand-lockup">
-      <img src="images/logo.final.png" alt="Snehvastra Logo">
-    </a>
-
-    <nav class="header-nav">
-      <a href="collection.html" class="header-link">Collection</a>
-      <a href="auction.html" class="header-link">Auction</a>
-      <a href="blog.html" class="header-link active">Blog</a>
-      <a href="contact.html" class="header-link">Contact</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="pill-link" onclick="location.href='user-login.html'">👤 Account</button>
-      <button class="pill-link cart-pill" onclick="location.href='cart.html'">
-        🛒 Bag <span class="cart-count" id="cartCount">0</span>
-      </button>
+<!-- ✅ FULL HEADER -->
+<header>
+  <div class="topbar">
+    <div class="brand" onclick="location.href='index.html'">
+      <img src="images/logo.final.png"/>
+      <div>
+        <h1>Snehvastra</h1>
+        <div class="brand-subtitle">Stories & Craft</div>
+      </div>
     </div>
+    <button class="mobile-hamburger" id="mobileHamburger"><span></span><span></span><span></span></button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="order-history.html">Orders</a></li>
+        <li id="cartLink"></li>
+        <li id="authArea"></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <h1>The 200-Year Loom Still Running</h1>
-      <p>Inside a village outside Jaipur, a loom built in 1825 still weaves textures for Snehvastra’s most tactile garments.</p>
+<!-- ✅ MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <div class="brand" style="gap:8px;">
+      <img src="images/logo.final.png" style="height:36px;"/>
+      <div>
+        <h1 style="font-size:1rem;margin:0;">Snehvastra</h1>
+        <div style="font-size:0.75rem;color:var(--muted);">Stories</div>
+      </div>
     </div>
-    <div class="hero-image">
-      <img src="images/blog/loom-1825.jpg" alt="200-year-old loom">
-    </div>
+    <button class="drawer-close" id="drawerClose">&times;</button>
   </div>
-</section>
-
-<!-- MAIN -->
-<div class="container">
-
-  <article class="article">
-    <h2 class="post-title">A Living Archive of Craft</h2>
-    <div class="post-content">
-      <p>Nestled in the heart of Rajasthan, this centuries-old loom represents more than machinery — it stands as a beating archive of tradition, craft, and identity.</p>
-      <p>For seven generations, master weaver Shyamji has preserved its rhythm. Each piece requires up to 27 hours of focused work.</p>
-      <p>Every thread carries memory. This loom does not simply produce fabric — it holds lineage stitched into time.</p>
-    </div>
-  </article>
-
-  <aside class="meta-card">
-    <h3 style="color:var(--purple)">Story Details</h3>
-    <p style="margin-top:8px;color:var(--muted)">Reading time: 4 min</p>
-    <p style="margin-top:4px;color:var(--muted)">Difficulty: Easy</p>
-  </aside>
-
+  <ul class="primary-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="auction.html">Auction</a></li>
+    <li><a href="order-history.html">Orders</a></li>
+  </ul>
+  <div id="mobileCartLink"></div>
+  <div id="mobileAuthArea"></div>
 </div>
 
-<footer>
-  © <span id="year"></span> Snehvastra — New Gen Luxury Streetwear
-</footer>
+<main class="page">
+  <!-- ✅ HERO -->
+  <section class="hero">
+    <h1>The 200-Year Loom Still Running</h1>
+    <p class="subtitle">Inside a village outside Jaipur, a loom built in 1825 still weaves textures for Snehvastra's most tactile garments.</p>
+    <div class="hero-image">🧵</div>
+  </section>
 
-<div class="ai-orb">◎</div>
+  <div class="content-grid">
+    <!-- ✅ MAIN CONTENT -->
+    <article class="article">
+      <a href="blog.html" class="back-link">← Back to Stories</a>
+      
+      <h1 class="post-title">A Living Archive of Craft</h1>
+      
+      <div class="post-meta">
+        <div class="meta-item">📅 Dec 13, 2025</div>
+        <div class="meta-item">⏱️ 4 min read</div>
+        <div class="meta-item">👤 Shyamji</div>
+      </div>
+
+      <div class="post-content">
+        <p>Nestled in the heart of Rajasthan, this centuries-old loom represents more than machinery — it stands as a beating archive of tradition, craft, and identity.</p>
+        
+        <img src="images/blog/loom-1825.jpg" alt="200-year-old loom" class="post-image">
+        
+        <p>For seven generations, master weaver Shyamji has preserved its rhythm. Each piece requires up to 27 hours of focused work. The loom's wooden frame creaks with every pass, but its precision never falters.</p>
+        
+        <h2>The Rhythm of Generations</h2>
+        <p>Shyamji learned from his father, who learned from his grandfather. "This loom has seen more winters than I can count," he says. Every thread carries memory. This loom does not simply produce fabric — it holds lineage stitched into time.</p>
+        
+        <h3>Why It Matters</h3>
+        <p>In an age of machines, this 200-year-old relic produces textures no modern loom can replicate. The subtle irregularities in the weave create depth and character that define Snehvastra's signature tactility.</p>
+        
+        <p>Each garment from this loom carries a story — not just of craft, but of unbroken continuity across two centuries.</p>
+      </div>
+    </article>
+
+    <!-- ✅ SIDEBAR -->
+    <aside class="sidebar">
+      <h3 class="sidebar-title">Story Details</h3>
+      <ul class="story-details">
+        <li class="story-detail">
+          <span class="detail-label">Reading Time</span>
+          <span class="detail-value">4 min</span>
+        </li>
+        <li class="story-detail">
+          <span class="detail-label">Difficulty</span>
+          <span class="detail-value">Easy</span>
+        </li>
+        <li class="story-detail">
+          <span class="detail-label">Category</span>
+          <span class="detail-value">Craft</span>
+        </li>
+        <li class="story-detail">
+          <span class="detail-label">Artisan</span>
+          <span class="detail-value">Shyamji</span>
+        </li>
+      </ul>
+
+      <div class="related-stories">
+        <h4 style="font-family:'Clash Display',serif;color:var(--purple);margin:0 0 24px;font-size:1.2rem;">Related Stories</h4>
+        <div class="related-item">
+          <span class="related-emoji">🌿</span>
+          <a href="blog-single.html?slug=dyes" class="related-link">Natural Dyes From Forgotten Forests</a>
+        </div>
+        <div class="related-item">
+          <span class="related-emoji">👑</span>
+          <a href="blog-single.html?slug=auction" class="related-link">ONE Auction: The Making Of</a>
+        </div>
+        <div class="related-item">
+          <span class="related-emoji">⚡</span>
+          <a href="blog-single.html?slug=drop" class="related-link">Drop Model Explained</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>© <span id="year"></span> Snehvastra. Stories by the Studio.</footer>
+<div id="toast"></div>
 
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const USER_KEY = "snehvastra_user";
+  const CART_KEY = "snehvastra_cart";
+
+  let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+  let user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
 
   function getCartCount(){
-    try{
-      const raw = localStorage.getItem("snehvastra_cart");
-      if(!raw) return 0;
-      const cart = JSON.parse(raw);
-      let total = 0;
-      if(Array.isArray(cart)){
-        cart.forEach(i=>total += Number(i.quantity||1));
-      }else{
-        Object.values(cart).forEach(i=>total += Number(i.quantity||1));
-      }
-      return total;
-    }catch{return 0;}
+    return Object.values(cart).reduce((sum, item) => sum + (item?.quantity || 0), 0);
   }
-  document.getElementById("cartCount").textContent = getCartCount();
+
+  function renderAuth(){
+    const authArea = document.getElementById("authArea");
+    const mobileAuthArea = document.getElementById("mobileAuthArea");
+    
+    if(user && user.loggedIn){
+      authArea.innerHTML = `
+        <span class="user-badge">Hi, ${user.name}</span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      `;
+      mobileAuthArea.innerHTML = `
+        <span style="font-size:0.9rem;color:var(--slate-mid);margin-bottom:16px;display:block;">Hi, ${user.name}</span>
+        <button class="logout-btn" onclick="logout()" style="width:100%;">Logout</button>
+      `;
+    } else {
+      authArea.innerHTML = `
+        <a href="user-login.html" style="margin-right:8px;">Login</a>
+        <a href="user-register.html">Join</a>
+      `;
+      mobileAuthArea.innerHTML = `
+        <a href="user-login.html" style="display:block;margin-bottom:12px;font-weight:700;">Login</a>
+        <a href="user-register.html" style="display:block;font-weight:700;">Join</a>
+      `;
+    }
+  }
+
+  function renderCart(){
+    const count = getCartCount();
+    const cartLink = document.getElementById("cartLink");
+    const mobileCartLink = document.getElementById("mobileCartLink");
+    
+    cartLink.innerHTML = `
+      <a href="cart.html" class="cart-link">
+        Cart <span class="cart-badge">${count || ''}</span>
+      </a>
+    `;
+    mobileCartLink.innerHTML = `
+      <a href="cart.html" class="cart-link" style="justify-content:center;margin:16px 0;padding:16px;">
+        Cart ${count ? `(${count})` : ''}
+      </a>
+    `;
+  }
+
+  window.logout = function(){
+    localStorage.removeItem(USER_KEY);
+    location.reload();
+  };
+
+  function showToast(msg){
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
+  }
+
+  // ✅ MOBILE DRAWER
+  function initMobileDrawer(){
+    const hamburger = document.getElementById("mobileHamburger");
+    const drawer = document.getElementById("mobileDrawer");
+    const overlay = document.getElementById("drawerOverlay");
+    const closeBtn = document.getElementById("drawerClose");
+
+    function openDrawer(){
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeDrawer(){
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    hamburger?.addEventListener("click", openDrawer);
+    closeBtn?.addEventListener("click", closeDrawer);
+    overlay?.addEventListener("click", closeDrawer);
+  }
+
+  // ✅ ACTIVE NAV
+  function setActiveNav(){
+    const currentPath = window.location.search.includes('blog') ? 'blog.html' : (window.location.pathname.split("/").pop() || "index.html");
+    document.querySelectorAll("nav a, .primary-nav a").forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === currentPath || (link.getAttribute("href") === 'blog.html' && currentPath.includes('blog')));
+    });
+  }
+
+  // ✅ INIT
+  window.addEventListener("load", () => {
+    user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+    renderAuth();
+    renderCart();
+    initMobileDrawer();
+    setActiveNav();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  });
 </script>
 
 </body>
