@@ -454,7 +454,7 @@
     <li><a href="order-history.html" class="active">Orders</a></li>
   </ul>
 
-  <div id="mobileAuthArea" class="drawer-section"></div>
+  <div id="mobileAuthArea"></div>
 </div>
 
 <main class="page">
@@ -542,40 +542,95 @@
   const CART_KEY = "snehvastra_cart";
 
   let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-  const user = JSON.parse(localStorage.getItem(USER_KEY));
+  let user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+
+  // ✅ GLOBAL FUNCTIONS (MAKE AVAILABLE GLOBALLY)
+  window.money = function(n){
+    return "₹" + Number(n).toLocaleString("en-IN");
+  };
+
+  window.showToast = function(msg){
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
+  };
+
+  window.closeModal = function(){
+    document.getElementById("modalOverlay").style.display = "none";
+  };
+
+  window.viewOrder = function(orderId){
+    const orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
+    const order = orders.find(o => o.id === orderId);
+    
+    if(order){
+      document.getElementById("modalContent").innerHTML = `
+        <div style="font-size:1.1rem;margin-bottom:24px;">
+          <strong>Order ${order.id}</strong> • ${new Date(order.date).toLocaleDateString()}
+        </div>
+        <div style="margin-bottom:24px;">
+          <strong>Status:</strong> <span class="status-badge status-${order.status}">${order.status.toUpperCase()}</span>
+        </div>
+        <div style="margin-bottom:24px;">
+          <strong>Total:</strong> ${window.money(order.total)}
+        </div>
+        <div style="margin-bottom:24px;">
+          <strong>Items:</strong>
+          <ul style="margin:12px 0 0 20px;">
+            ${order.items.map(item => `<li>${item.name} × ${item.qty} — ${window.money(item.price * item.qty)}</li>`).join('')}
+          </ul>
+        </div>
+        ${order.tracking ? `
+        <div>
+          <strong>Tracking:</strong> <a href="#" style="color:var(--purple);">${order.tracking}</a>
+        </div>` : ''}
+      `;
+      document.getElementById("modalOverlay").style.display = "flex";
+    }
+  };
+
+  window.reorder = function(orderId){
+    const orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
+    const order = orders.find(o => o.id === orderId);
+    
+    if(order){
+      order.items.forEach(item => {
+        const key = item.name.toLowerCase().replace(/\s+/g, '-');
+        cart[key] = (cart[key] || 0) + item.qty;
+      });
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      showToast("✅ Items added to cart!");
+      setTimeout(() => location.href = "cart.html", 1000);
+    }
+  };
 
   // ✅ SYSTEM INTEGRATION
-  const authArea = document.getElementById("authArea");
-  const mobileAuthArea = document.getElementById("mobileAuthArea");
-
   function renderAuth(){
+    const authArea = document.getElementById("authArea");
+    const mobileAuthArea = document.getElementById("mobileAuthArea");
+    
     if(user && user.loggedIn){
       authArea.innerHTML = `
         <span class="user-badge">Hi, ${user.name}</span>
         <button class="logout-btn" onclick="logout()">Logout</button>
       `;
+      mobileAuthArea.innerHTML = `
+        <span class="user-badge" style="font-size:0.9rem;">Hi, ${user.name}</span>
+        <button class="logout-btn" onclick="logout()" style="width:100%;margin-top:12px;">Logout</button>
+      `;
       document.getElementById("collectorName").textContent = user.name || "Premium Collector";
     } else {
-      authArea.innerHTML = `<a href="user-login.html">Login</a>`;
+      authArea.innerHTML = `<a href="user-login.html" style="margin-right:8px;">Login</a>`;
+      mobileAuthArea.innerHTML = `<a href="user-login.html" style="display:block;margin-bottom:12px;">Login</a>`;
       document.getElementById("collectorName").textContent = "Premium Collector";
     }
   }
 
-  function logout(){
+  window.logout = function(){
     localStorage.removeItem(USER_KEY);
     location.reload();
-  }
-
-  function money(n){
-    return "₹" + Number(n).toLocaleString("en-IN");
-  }
-
-  function showToast(msg){
-    const toast = document.getElementById("toast");
-    toast.textContent = msg;
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3000);
-  }
+  };
 
   // ✅ INITIALIZE ORDERS
   function initOrders(){
@@ -584,8 +639,8 @@
         {
           id: "#SNV-1001",
           date: "2025-11-25",
-          items: [{name: "Cloud Hoodie", qty: 1, price: 19999}],
-          total: 19999,
+          items: [{name: "Cloud Hoodie", qty: 1, price: 1999}],
+          total: 1999,
           status: "completed",
           type: "standard",
           tracking: "DTDC123456"
@@ -593,8 +648,8 @@
         {
           id: "#SNV-1002", 
           date: "2025-11-28",
-          items: [{name: "Snehvastra ONE 1/1", qty: 1, price: 999999}],
-          total: 999999,
+          items: [{name: "Snehvastra ONE 1/1", qty: 1, price: 3499}],
+          total: 3499,
           status: "auction",
           type: "auction",
           tracking: null
@@ -615,8 +670,10 @@
              order.items.some(item => item.name.toLowerCase().includes(search));
     });
 
+    const container = document.getElementById("ordersContainer");
+    
     if(filteredOrders.length === 0){
-      document.getElementById("ordersContainer").innerHTML = `
+      container.innerHTML = `
         <div class="empty-state">
           <h3>No orders match your search</h3>
           <p>Try adjusting your search terms or filters.</p>
@@ -646,7 +703,7 @@
           <td><strong>${order.id}</strong></td>
           <td>${new Date(order.date).toLocaleDateString()}</td>
           <td>${itemCount} item${itemCount > 1 ? 's' : ''}</td>
-          <td>${money(order.total)}</td>
+          <td>${window.money(order.total)}</td>
           <td><span class="status-badge status-${order.status}">${order.status.toUpperCase()}</span></td>
           <td>
             <button class="action-btn action-details" onclick="viewOrder('${order.id}')">Details</button>
@@ -656,101 +713,51 @@
     });
 
     html += `</tbody></table>`;
+    container.innerHTML = html;
 
-    document.getElementById("ordersContainer").innerHTML = html;
-
-    // ✅ UPDATE METRICS
-    document.getElementById("totalSpent").textContent = money(filteredOrders.reduce((sum, order) => sum + order.total, 0));
-    document.getElementById("totalOrders").textContent = filteredOrders.length;
-    document.getElementById("totalPieces").textContent = filteredOrders.reduce((sum, order) => sum + order.items.reduce((s, i) => s + i.qty, 0), 0);
-    document.getElementById("auctionWins").textContent = filteredOrders.filter(o => o.type === "auction").length;
-  }
-
-  // ✅ MODAL
-  function viewOrder(orderId){
-    const orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
-    const order = orders.find(o => o.id === orderId);
-    
-    if(order){
-      document.getElementById("modalContent").innerHTML = `
-        <div style="font-size:1.1rem;margin-bottom:24px;">
-          <strong>Order ${order.id}</strong> • ${new Date(order.date).toLocaleDateString()}
-        </div>
-        <div style="margin-bottom:24px;">
-          <strong>Status:</strong> <span class="status-badge status-${order.status}">${order.status.toUpperCase()}</span>
-        </div>
-        <div style="margin-bottom:24px;">
-          <strong>Total:</strong> ${money(order.total)}
-        </div>
-        <div style="margin-bottom:24px;">
-          <strong>Items:</strong>
-          <ul style="margin:12px 0 0 20px;">
-            ${order.items.map(item => `<li>${item.name} × ${item.qty} — ${money(item.price * item.qty)}</li>`).join('')}
-          </ul>
-        </div>
-        ${order.tracking ? `
-        <div>
-          <strong>Tracking:</strong> <a href="#" style="color:var(--purple);">${order.tracking}</a>
-        </div>` : ''}
-      `;
-      document.getElementById("modalOverlay").style.display = "flex";
-    }
-  }
-
-  function closeModal(){
-    document.getElementById("modalOverlay").style.display = "none";
-  }
-
-  function reorder(orderId){
-    const orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
-    const order = orders.find(o => o.id === orderId);
-    
-    if(order){
-      order.items.forEach(item => {
-        const key = item.name.toLowerCase().replace(/\s+/g, '-');
-        cart[key] = (cart[key] || 0) + item.qty;
-      });
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
-      showToast("✅ Items added to cart!");
-      setTimeout(() => location.href = "cart.html", 1000);
-    }
+    // ✅ UPDATE METRICS (ALL ORDERS, not filtered)
+    const allOrders = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
+    document.getElementById("totalSpent").textContent = window.money(allOrders.reduce((sum, order) => sum + order.total, 0));
+    document.getElementById("totalOrders").textContent = allOrders.length;
+    document.getElementById("totalPieces").textContent = allOrders.reduce((sum, order) => sum + order.items.reduce((s, i) => s + i.qty, 0), 0);
+    document.getElementById("auctionWins").textContent = allOrders.filter(o => o.type === "auction").length;
   }
 
   // ✅ AUCTION TIMER
-  const auctionEnd = new Date("2025-12-20T18:00:00").getTime();
-  setInterval(() => {
-    const now = Date.now();
-    const diff = auctionEnd - now;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    document.getElementById("auctionTimer").textContent = 
-      diff > 0 ? `${days}d ${hours}h` : "LIVE NOW!";
-  }, 1000);
-
-  // ✅ EVENT LISTENERS
-  document.getElementById("searchInput").addEventListener("input", renderOrders);
-  document.getElementById("filterSelect").addEventListener("change", renderOrders);
+  function initAuctionTimer(){
+    const auctionEnd = new Date("2025-12-20T18:00:00").getTime();
+    setInterval(() => {
+      const now = Date.now();
+      const diff = auctionEnd - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById("auctionTimer").textContent = 
+        diff > 0 ? `${days}d ${hours}h` : "LIVE NOW!";
+    }, 1000);
+  }
 
   // ✅ MOBILE DRAWER
-  const hamburger = document.getElementById("mobileHamburger");
-  const drawer = document.getElementById("mobileDrawer");
-  const overlay = document.getElementById("drawerOverlay");
-  const closeBtn = document.getElementById("drawerClose");
+  function initMobileDrawer(){
+    const hamburger = document.getElementById("mobileHamburger");
+    const drawer = document.getElementById("mobileDrawer");
+    const overlay = document.getElementById("drawerOverlay");
+    const closeBtn = document.getElementById("drawerClose");
 
-  function openDrawer(){
-    drawer.classList.add("open");
-    overlay.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeDrawer(){
-    drawer.classList.remove("open");
-    overlay.classList.remove("open");
-    document.body.style.overflow = "";
-  }
+    function openDrawer(){
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeDrawer(){
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
 
-  hamburger?.addEventListener("click", openDrawer);
-  closeBtn?.addEventListener("click", closeDrawer);
-  overlay?.addEventListener("click", closeDrawer);
+    hamburger?.addEventListener("click", openDrawer);
+    closeBtn?.addEventListener("click", closeDrawer);
+    overlay?.addEventListener("click", closeDrawer);
+  }
 
   // ✅ ACTIVE NAV
   function setActiveNav(){
@@ -762,11 +769,18 @@
 
   // ✅ INIT
   window.addEventListener("load", () => {
+    user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
     initOrders();
     renderAuth();
     renderOrders();
+    initAuctionTimer();
+    initMobileDrawer();
     setActiveNav();
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ✅ EVENT LISTENERS
+    document.getElementById("searchInput").addEventListener("input", renderOrders);
+    document.getElementById("filterSelect").addEventListener("change", renderOrders);
   });
 </script>
 
