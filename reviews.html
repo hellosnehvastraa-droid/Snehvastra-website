@@ -1,356 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <meta name="theme-color" content="#3A0F5A" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#3A0F5A"/>
+  <title>Collector Reviews — Snehvastra</title>
+  <meta name="description" content="4.9⭐ from 2,847+ verified Surat collectors. Video testimonials, auction stories, 99% repeat rate."/>
 
-  <title>Customer Reviews — Snehvastra</title>
-  <meta name="description" content="4.9⭐ from 1,247+ verified collectors. Read how Snehvastra became India’s most trusted handcrafted luxury streetwear brand." />
-
-  <!-- SEO: Review Schema -->
+  <!-- Enhanced Review Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Product",
-    "name":"Snehvastra Handcrafted Apparel",
+    "name":"Snehvastra Luxury Streetwear",
     "aggregateRating":{
       "@type":"AggregateRating",
-      "ratingValue":"4.9",
-      "reviewCount":"1247"
-    }
+      "ratingValue":"4.92",
+      "reviewCount":"2847",
+      "bestRating":"5"
+    },
+    "review":[
+      {"@type":"Review","author":"Rajiv Rao","reviewRating":{"ratingValue":"5"}}
+    ]
   }
   </script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
-    :root {
-      --purple:#3A0F5A;
-      --accent:#2e0b4a;
-      --slate:#1d1e21;
-      --muted:#85878c;
-      --paper:#fbfaf8;
-      --radius:16px;
-      --max-w:1100px;
+    :root{
+      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --gold:#F59E0B;
+      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
+      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      --max-width:1400px;
     }
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
 
-    body{
-      margin:0;
-      background:linear-gradient(180deg,#fcfbff,#f5f4f7);
-      font-family:'Poppins',sans-serif;
-      color:var(--slate);
-      line-height:1.7;
-      -webkit-font-smoothing:antialiased;
-    }
+    /* Perfect System Header */
+    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
+    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
+    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
+    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
 
-    /* HEADER */
-    header{
-      position:sticky; top:0;
-      background:rgba(255,255,255,0.98);
-      backdrop-filter:blur(8px);
-      padding:16px 5%;
-      display:flex; align-items:center; justify-content:space-between;
-      border-bottom:1px solid rgba(0,0,0,0.04);
-      z-index:100;
-      max-width:var(--max-w); margin:0 auto;
-    }
-    .logo{height:48px;cursor:pointer}
-    nav ul{display:flex;list-style:none;gap:16px;margin:0;padding:0;align-items:center}
-    nav a{
-      color:var(--muted);text-decoration:none;
-      font-weight:600; padding:8px 12px;
-      border-radius:10px; transition:.25s;
-    }
-    nav a:hover,nav a.active{
-      background:rgba(58,15,90,0.08);
-      color:var(--purple);
-    }
+    /* Enhanced Auction Banner */
+    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
+    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
 
-    #cartCount{
-      background:var(--purple);
-      padding:2px 8px; border-radius:999px;
-      color:white; margin-left:4px; font-size:.8rem;
-    }
+    /* Hero Section */
+    .reviews-hero{max-width:var(--max-width);margin:200px auto 100px;padding:0 5%;text-align:center;}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4rem,10vw,6.5rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 40px;}
+    .rating-display{display:flex;align-items:center;justify-content:center;gap:24px;margin:48px 0;}
+    .stars-container{display:flex;gap:4px;}
+    .star{fill:#D4D4D4;width:48px;height:48px;transition:all var(--ease);}
+    .star.filled{fill:var(--gold);animation:star-glow 1s ease-out;}
+    .score-badge{background:linear-gradient(135deg,var(--gold),#F59E0B);color:#fff;padding:32px 56px;border-radius:40px;font-family:'Clash Display',serif;font-size:4rem;font-weight:900;box-shadow:0 32px 100px rgba(245,158,11,0.4);}
+    .review-count{font-size:1.4rem;color:var(--slate-mid);font-weight:700;margin-top:16px;}
+    .hero-subtitle{font-size:1.3rem;color:var(--slate-mid);max-width:900px;margin:0 auto 80px;line-height:1.9;}
 
-    /* AUCTION STRIP */
-    .auction-banner{
-      margin:12px auto 0;
-      max-width:var(--max-w);
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      color:white; padding:14px;
-      border-radius:var(--radius);
-      text-align:center; font-weight:700;
-      box-shadow:0 10px 35px rgba(58,15,90,0.3);
-    }
-    .auction-timer{
-      margin-left:8px; background:white;
-      padding:4px 12px; border-radius:10px;
-      color:var(--slate); font-weight:700;
-      font-family:'Clash Display',serif;
-    }
+    /* Live Stats */
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;}
+    .stat-card{background:#fff;border-radius:var(--radius);padding:64px 48px;text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:relative;overflow:hidden;}
+    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--purple),var(--gold));}
+    .stat-number{font-family:'Clash Display',serif;font-size:4rem;font-weight:900;color:var(--purple);margin-bottom:16px;}
+    .stat-label{font-size:1.2rem;color:var(--slate-mid);font-weight:600;}
 
-    /* MAIN */
-    main{
-      max-width:var(--max-w);
-      margin:0 auto;
-      padding:120px 5% 120px;
-    }
+    /* Video Reviews */
+    .video-reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:48px;max-width:var(--max-width);margin:120px auto;padding:0 5%;}
+    .video-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);transition:all var(--ease);}
+    .video-card:hover{transform:translateY(-12px);box-shadow:0 60px 160px rgba(58,15,90,0.25);}
+    .video-thumbnail{position:relative;width:100%;height:240px;background:linear-gradient(135deg,#1F2024,#2D2D3A);cursor:pointer;}
+    .video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;}
+    .video-info{padding:40px;}
+    .reviewer-name{font-family:'Clash Display',serif;font-size:1.8rem;color:var(--purple);font-weight:700;margin-bottom:8px;}
+    .reviewer-title{font-size:1rem;color:var(--gold);font-weight:600;margin-bottom:20px;}
+    .verified-badge{background:linear-gradient(135deg,var(--success),#059669);color:#fff;padding:8px 20px;border-radius:20px;font-size:0.9rem;font-weight:700;display:inline-block;}
 
-    /* HERO */
-    .hero{
-      background:white;
-      padding:90px 48px;
-      border-radius:var(--radius);
-      text-align:center;
-      box-shadow:0 30px 100px rgba(58,15,90,0.16);
-      border:1px solid rgba(0,0,0,0.04);
-      margin-bottom:70px;
-    }
-    .hero h1{
-      margin:20px 0;
-      font-size:3.8rem;
-      font-family:'Clash Display',serif;
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .hero .stars{font-size:2.5rem;margin-bottom:16px}
-    .hero .score{
-      font-size:4rem; color:var(--purple);
-      font-family:'Clash Display',serif;
-      font-weight:700;
-    }
-    .hero .sub{
-      color:var(--muted); font-size:1.1rem;
-    }
+    /* Collector Grid */
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:40px;max-width:var(--max-width);margin:120px auto;padding:0 5%;}
+    .review-card{background:#fff;border-radius:var(--radius);padding:56px 48px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:relative;transition:all var(--ease);}
+    .review-card.featured{border-top:6px solid var(--gold);transform:scale(1.03);}
+    .review-card:hover{transform:translateY(-8px);}
+    .review-header{display:flex;gap:20px;align-items:center;margin-bottom:28px;}
+    .avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;}
+    .reviewer-info h4{font-family:'Clash Display',serif;font-size:1.6rem;color:var(--purple);margin:0 0 4px;font-weight:700;}
+    .stars-row{display:flex;gap:4px;margin:12px 0;}
+    .star-small{width:20px;height:20px;fill:#D4D4D4;transition:all var(--ease);}
+    .star-small.filled{fill:var(--gold);}
+    .review-text{font-size:1.15rem;color:var(--slate);line-height:1.8;margin-bottom:28px;}
+    .review-meta{font-size:1rem;color:var(--slate-mid);padding:20px;background:rgba(58,15,90,0.03);border-radius:20px;border-left:4px solid var(--purple);}
 
-    /* STAT BAR */
-    .stats-bar{
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:24px; margin-bottom:70px;
-    }
-    .stat{
-      background:white;
-      padding:32px;
-      border-radius:var(--radius);
-      text-align:center;
-      border:1px solid rgba(0,0,0,0.05);
-      box-shadow:0 20px 60px rgba(58,15,90,0.1);
-    }
-    .stat-number{
-      font-size:2.6rem;font-family:'Clash Display',serif;
-      font-weight:700;color:var(--purple);
-    }
+    /* CTA Section */
+    .cta-section{max-width:1000px;margin:140px auto 100px;padding:0 5%;text-align:center;}
+    .cta-card{background:linear-gradient(135deg,var(--purple),var(--purple-dark));padding:96px 64px;border-radius:var(--radius);box-shadow:0 40px 120px rgba(58,15,90,0.4);color:#fff;position:relative;overflow:hidden;}
+    .cta-card::before{content:'';position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,var(--gold),var(--success));}
+    .cta-title{font-family:'Clash Display',serif;font-size:3.5rem;font-weight:900;margin:0 0 32px;}
+    .cta-subtitle{font-size:1.4rem;margin:0 0 60px;line-height:1.7;max-width:700px;margin-left:auto;margin-right:auto;}
+    .cta-buttons{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
+    .btn-primary,.btn-secondary{padding:24px 56px;border-radius:32px;font-family:'Clash Display',serif;font-weight:900;font-size:1.2rem;text-decoration:none;transition:all var(--ease);border:none;cursor:pointer;}
+    .btn-primary{background:#fff;color:var(--purple);box-shadow:0 24px 80px rgba(255,255,255,0.3);}
+    .btn-primary:hover{transform:translateY(-6px);box-shadow:0 32px 100px rgba(255,255,255,0.4);}
+    .btn-secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.3);}
 
-    /* REVIEWS */
-    .reviews{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:32px;
-    }
-    .card{
-      background:white;
-      padding:40px 32px;
-      border-radius:var(--radius);
-      border:1px solid rgba(0,0,0,0.04);
-      box-shadow:0 20px 60px rgba(58,15,90,0.1);
-      transition:.25s;
-    }
-    .card:hover{transform:translateY(-4px)}
-    .card.featured{
-      border-top:5px solid var(--purple);
-      transform:scale(1.02);
-    }
-    .review-header{
-      display:flex;gap:16px;align-items:center;margin-bottom:20px;
-    }
-    .avatar{
-      width:48px;height:48px;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--muted),var(--purple));
-      color:white;display:flex;align-items:center;justify-content:center;
-      font-weight:700;font-size:1rem;
-    }
-    .name{font-weight:700;margin-bottom:4px}
-    .meta{color:var(--muted);font-size:.9rem;margin-top:16px}
+    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
+    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
+    #toast.show{transform:translateX(0);}
 
-    /* CTA BLOCK */
-    .cta{
-      margin-top:90px;
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      padding:70px 40px;
-      text-align:center;
-      border-radius:var(--radius);
-      box-shadow:0 20px 80px rgba(58,15,90,0.3);
-    }
-    .cta h2{
-      font-family:'Clash Display',serif;
-      font-size:2.6rem;color:white;margin-bottom:18px;
-    }
-    .cta-btn{
-      background:white;
-      padding:20px 50px;
-      border-radius:14px;
-      text-decoration:none;
-      color:var(--purple);
-      font-weight:700;
-      font-family:'Clash Display',serif;
-      font-size:1.3rem;
-      box-shadow:0 20px 60px rgba(0,0,0,0.25);
-      transition:.25s;
-    }
-    .cta-btn:hover{transform:translateY(-4px)}
-
-    footer{
-      margin-top:100px;
-      text-align:center;
-      padding:60px 5% 40px;
-      background:rgba(255,255,255,0.85);
-      border-top:1px solid rgba(0,0,0,0.05);
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    @media(max-width:768px){
-      .hero{padding:60px 28px}
-      .cta{padding:50px 22px}
-      main{padding:100px 20px}
-    }
+    @keyframes star-glow{0%{transform:scale(1);filter:drop-shadow(0 0 0 #F59E0B);}50%{transform:scale(1.2);filter:drop-shadow(0 0 12px #F59E0B);}100%{transform:scale(1);filter:drop-shadow(0 0 0 #F59E0B);}}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
   </style>
 </head>
-
 <body>
+  <!-- Perfect System Header -->
+  <header>
+    <div class="brand" onclick="location.href='index.html'">
+      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+      <div>
+        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
+        <div style="font-size:0.85rem;color:var(--muted);">Collector Reviews</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="reviews.html" class="active">Reviews</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        <li id="authArea"></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <a href="index.html"><img src="images/logo.final.png" alt="Snehvastra Logo" class="logo" /></a>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="collection.html">Collection</a></li>
-      <li><a href="reviews.html" class="active">Reviews</a></li>
-      <li><a href="auction.html">Auction</a></li>
-      <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-    </ul>
-  </nav>
-</header>
-
-<div class="auction-banner">
-  🔥 SNEHVASTRA ONE AUCTION
-  <span class="auction-timer" id="auctionTimer">Loading...</span>
-</div>
-
-<main>
-
-  <section class="hero">
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <div class="score">4.9</div>
-    <div class="sub">Based on 1,247 Verified Collectors</div>
-    <h1>Stories That Build Legacy</h1>
-    <p style="color:var(--muted);max-width:650px;margin:0 auto;">
-      Each Snehvastra piece lives many lives — through craft, memory, and the collectors who wear them.
-    </p>
-  </section>
-
-  <div class="stats-bar">
-    <div class="stat"><div class="stat-number">98%</div><div>Repeat Buyers</div></div>
-    <div class="stat"><div class="stat-number">24h</div><div>Avg Support Reply</div></div>
-    <div class="stat"><div class="stat-number">99.8%</div><div>On-Time Delivery</div></div>
-    <div class="stat"><div class="stat-number">5⭐</div><div>Craft Rating</div></div>
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
-  <div class="reviews">
+  <section class="reviews-hero">
+    <h1 class="hero-title" data-aos="fade-down">What Collectors Say</h1>
+    <div class="rating-display">
+      <div class="stars-container" id="heroStars">
+        <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="score-badge" data-aos="zoom-in">4.9</div>
+    </div>
+    <div class="review-count" data-aos="fade-up">2,847 Verified Collectors • 99% Recommend</div>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Real stories from Suratgarh to global collectors. Every piece verified, every review authentic.</p>
+  </section>
 
-    <div class="card featured">
+  <!-- Live Trust Metrics -->
+  <section class="stats-grid">
+    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="stat-number" data-count="99">0</div>
+      <div class="stat-label">% Repeat Collectors</div>
+    </div>
+    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="stat-number" data-count="2847">0</div>
+      <div class="stat-label">Total Reviews</div>
+    </div>
+    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="stat-number" data-count="12">0</div>
+      <div class="stat-label">Hours Support Response</div>
+    </div>
+    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+      <div class="stat-number" data-count="100">0</div>
+      <div class="stat-label">% Verified Purchases</div>
+    </div>
+  </section>
+
+  <!-- Video Testimonials -->
+  <section class="video-reviews">
+    <div class="video-card" data-aos="fade-right">
+      <div class="video-thumbnail" onclick="playVideo(this)">
+        <div class="video-play">▶</div>
+      </div>
+      <div class="video-info">
+        <h3 class="reviewer-name">Rajiv Rao</h3>
+        <div class="reviewer-title">Auction Winner #847</div>
+        <span class="verified-badge">Suratgarh Collector</span>
+      </div>
+    </div>
+    <div class="video-card" data-aos="fade-left">
+      <div class="video-thumbnail" onclick="playVideo(this)">
+        <div class="video-play">▶</div>
+      </div>
+      <div class="video-info">
+        <h3 class="reviewer-name">Anika S.</h3>
+        <div class="reviewer-title">3-Drop Collector</div>
+        <span class="verified-badge">Verified Purchase</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Collector Reviews -->
+  <section class="reviews-grid">
+    <div class="review-card featured" data-aos="fade-up">
       <div class="review-header">
         <div class="avatar">RR</div>
-        <div>
-          <div class="name">Rajiv Rao</div>
-          <div>⭐⭐⭐⭐⭐</div>
+        <div class="reviewer-info">
+          <h4>Rajiv Rao</h4>
+          <div class="stars-row">
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
         </div>
       </div>
-      <p>“Feels like wearing heritage. The stitch accuracy is unreal. This isn't fashion — this is culture.”</p>
-      <div class="meta">Bomber Jacket • 2 days ago</div>
+      <p class="review-text">"The Bomber is museum quality. Wore it to Dubai Fashion Week—people thought international brand. 100% recommending."</p>
+      <div class="review-meta">Auction Bomber • Suratgarh • Dec 20, 2025 <span style="color:var(--success);">✅ Verified</span></div>
     </div>
 
-    <div class="card">
+    <div class="review-card" data-aos="fade-up" data-aos-delay="100">
       <div class="review-header">
         <div class="avatar">AS</div>
-        <div>
-          <div class="name">Anika Sharma</div>
-          <div>⭐⭐⭐⭐⭐</div>
+        <div class="reviewer-info">
+          <h4>Anika Sharma</h4>
+          <div class="stars-row">
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-small filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
         </div>
       </div>
-      <p>“Auction piece came exactly as promised. Packaging alone feels luxury. Will bid again.”</p>
-      <div class="meta">Auction Tee • 1 week ago</div>
+      <p class="review-text">"Packaging = luxury unboxing experience. Fits perfect, feels premium. Dropped ₹50K on auction—worth every rupee."</p>
+      <div class="review-meta">Signature Tee • Verified Purchase • Dec 18</div>
     </div>
-
-    <div class="card">
-      <div class="review-header">
-        <div class="avatar">VK</div>
-        <div>
-          <div class="name">Vikram Kapoor</div>
-          <div>⭐⭐⭐⭐⭐</div>
-        </div>
-      </div>
-      <p>“Wore the Overshirt to a launch event. People asked if it's international — Nope, Jaipur-made.”</p>
-      <div class="meta">Overshirt • 3 weeks ago</div>
-    </div>
-
-    <div class="card">
-      <div class="review-header">
-        <div class="avatar">PS</div>
-        <div>
-          <div class="name">Priya Sen</div>
-          <div>⭐⭐⭐⭐⭐</div>
-        </div>
-      </div>
-      <p>“Size issue fixed within two hours. Never seen support this fast in India.”</p>
-      <div class="meta">Signature Tee • 1 month ago</div>
-    </div>
-
-  </div>
-
-  <section class="cta">
-    <h2>Join India’s Fastest Growing Luxury Movement</h2>
-    <a href="collection.html" class="cta-btn">Explore Collection</a>
   </section>
 
-</main>
+  <section class="cta-section">
+    <div class="cta-card" data-aos="zoom-in">
+      <h2 class="cta-title">Join 2,847+ Elite Collectors</h2>
+      <p class="cta-subtitle">Experience handcrafted perfection trusted by India's most discerning collectors.</p>
+      <div class="cta-buttons">
+        <a href="collection.html" class="btn-primary">Shop Collection</a>
+        <a href="auction.html" class="btn-secondary">Enter Auction</a>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  © <span id="currentYear"></span> Snehvastra • 1,247+ Collectors Strong
-</footer>
+  <footer>
+    © <span id="year"></span> Snehvastra. 2,847 verified collector reviews. <strong>4.9⭐ average.</strong>
+  </footer>
 
-<script>
-  function updateCartCount(){
-    const cart = JSON.parse(localStorage.getItem('snehvastra_cart')) || {};
-    const total = Object.values(cart).reduce((a,b)=>a + b.qty,0);
-    document.getElementById('cartCount').textContent = total;
-  }
-  updateCartCount();
+  <div id="toast"></div>
 
-  const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-  setInterval(()=>{
-    const now = Date.now();
-    const diff = auctionDate - now;
-    const el = document.getElementById('auctionTimer');
-    if(diff>0){
-      const d=Math.floor(diff/86400000),
-            h=Math.floor((diff%86400000)/3600000),
-            m=Math.floor((diff%3600000)/60000),
-            s=Math.floor((diff%60000)/1000);
-      el.textContent = `${d}d ${h}h ${m}m ${s}s`;
-    } else el.textContent="LIVE NOW!";
-  },1000);
+  <script>
+    // Perfect system sync
+    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+    const user = JSON.parse(localStorage.getItem(USER_KEY));
 
-  document.getElementById('currentYear').textContent =
-    new Date().getFullYear();
-</script>
+    function renderAuth(){
+      const authArea = document.getElementById("authArea");
+      if(user && user.loggedIn){
+        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
+      } else {
+        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
+      }
+    }
 
+    function updateCartCount(){
+      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+      document.getElementById("cartCount").textContent = total;
+    }
+
+    function showToast(msg){
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 3200);
+    }
+
+    // Animate stars on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.star.filled, .star-small.filled').forEach((star, i) => {
+        setTimeout(() => {
+          star.style.animation = 'star-glow 0.8s ease-out';
+        }, i * 100);
+      });
+    });
+
+    // Counter animations
+    function animateCounters(){
+      const counters = document.querySelectorAll('[data-count]');
+      counters.forEach(counter => {
+        const target = parseInt(counter.dataset.count);
+        const increment = target / 100;
+        let current = 0;
+        const timer = setInterval(() => {
+          current += increment;
+          if(current >= target) {
+            counter.textContent = target;
+            clearInterval(timer);
+          } else {
+            counter.textContent = Math.floor(current);
+          }
+        }, 20);
+      });
+    }
+
+    // Video play simulation
+    function playVideo(thumbnail){
+      showToast('🎥 Playing Rajiv Rao testimonial (2:47)');
+      gsap.to(thumbnail, {scale: 0.95, duration: 0.2, yoyo: true, repeat: 1});
+    }
+
+    // Auction timer
+    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
+    setInterval(()=>{
+      const diff = auctionDate - Date.now();
+      const timer = document.getElementById("auctionTimer");
+      if(diff > 0){
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        timer.textContent = `${days}d ${hours}h`;
+      } else {
+        timer.textContent = "LIVE NOW!";
+        timer.style.background = "linear-gradient(135deg,#10B981,#059669)";
+      }
+    }, 60000);
+
+    // Init
+    AOS.init({duration: 1200, once: true});
+    renderAuth();
+    updateCartCount();
+    animateCounters();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
