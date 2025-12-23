@@ -5,371 +5,95 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="theme-color" content="#3A0F5A"/>
   <title>FAQ — Snehvastra</title>
-  <meta name="description" content="Snehvastra FAQ: shipping, returns, sizing, auctions, payments, craftsmanship, and more."/>
+  <meta name="description" content="Suratgarh artisan FAQs, NFC verification, auction rules, 2-day shipping, collector authentication, live support."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A;
-      --purple-dark:#2e0b4a;
-      --slate:#22232A;
-      --slate-mid:#3B3D45;
-      --muted:#C7C6C8;
-      --paper:#F6F6F6;
-      --radius:16px;
-      --ease:.35s;
-      --max-width:1200px;
+      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --gold:#F59E0B;
+      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
+      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      --max-width:1400px;
     }
-
     *{box-sizing:border-box;}
-    body{
-      margin:0;
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,var(--paper),#FBFAF8);
-      color:var(--slate);
-      overflow-x:hidden;
-    }
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
 
-    /* ✅ FULL HEADER SYSTEM */
-    header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background:rgba(255,255,255,0.96);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(183,185,189,0.12);
-    }
+    /* Perfect System Header */
+    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
+    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
+    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
+    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:14px 5%;
-      max-width:var(--max-width);
-      margin:0 auto;
-      flex-wrap:wrap;
-    }
+    /* Enhanced Auction Banner */
+    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
+    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
 
-    .brand{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-shrink:0;
-      cursor:pointer;
-    }
-    .brand img{
-      height:42px;
-      border-radius:10px;
-    }
-    .brand h1{
-      font-family:'Clash Display',serif;
-      margin:0;
-      font-size:1.1rem;
-      color:var(--purple);
-    }
+    /* Hero Section */
+    .hero{max-width:var(--max-width);margin:160px auto 100px;padding:0 5%;text-align:center;}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4.5rem,12vw,7rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 32px;}
+    .hero-subtitle{font-size:1.4rem;color:var(--slate-mid);max-width:800px;margin:0 auto 64px;line-height:1.8;}
+    .ai-search{position:relative;max-width:680px;margin:0 auto;}
+    .search-input{width:100%;padding:28px 80px 28px 32px;border:3px solid rgba(58,15,90,0.15);border-radius:32px;font-size:1.3rem;font-weight:600;background:var(--glass);backdrop-filter:blur(20px);transition:all var(--ease);}
+    .search-input:focus{outline:none;border-color:var(--purple);box-shadow:0 20px 60px rgba(58,15,90,0.2);}
+    .search-icon{position:absolute;right:32px;top:50%;transform:translateY(-50%);font-size:1.8rem;color:var(--purple);}
+    .search-results{font-size:1.1rem;color:var(--success);margin-top:16px;font-weight:600;}
 
-    .mobile-hamburger{
-      display:none;
-      flex-direction:column;
-      gap:4px;
-      padding:6px;
-      background:none;
-      border:none;
-      cursor:pointer;
-      z-index:200;
-    }
-    .mobile-hamburger span{
-      width:24px;height:2px;background:var(--purple);border-radius:2px;transition:var(--ease);
-    }
+    /* FAQ Grid */
+    .faq-grid{max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:start;}
+    @media(max-width:1200px){.faq-grid{grid-template-columns:1fr;gap:60px;}}
 
-    nav{
-      width:100%;
-      overflow-x:auto;
-    }
-    nav ul{
-      display:flex;
-      gap:12px;
-      list-style:none;
-      margin:0;
-      padding:6px 0;
-      min-width:max-content;
-      align-items:center;
-    }
-    nav a{
-      text-decoration:none;
-      font-weight:600;
-      font-size:0.9rem;
-      padding:8px 14px;
-      border-radius:10px;
-      color:var(--muted);
-      transition:all var(--ease);
-      white-space:nowrap;
-    }
-    nav a:hover, nav a.active{
-      background:rgba(58,15,90,0.05);
-      color:var(--purple);
-    }
-
-    .account-area{display:flex;align-items:center;gap:10px;}
-    .user-badge{font-weight:700;color:var(--purple);font-size:0.9rem;}
-    .logout-btn{
-      border:none;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;padding:8px 14px;border-radius:12px;font-weight:700;cursor:pointer;
-    }
-
-    @media (max-width: 920px){
-      .mobile-hamburger{display:flex;}
-      nav{display:none;}
-      .account-area{display:none;}
-    }
-
-    /* ✅ MOBILE DRAWER */
-    .mobile-drawer{
-      position:fixed;top:0;right:-100%;width:300px;height:100vh;
-      background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);
-      border-left:1px solid rgba(183,185,189,0.2);z-index:150;
-      padding:80px 24px 40px;transition:all var(--ease);overflow-y:auto;
-    }
-    .mobile-drawer.open{right:0;}
-    .drawer-overlay{
-      position:fixed;top:0;left:0;width:100vw;height:100vh;
-      background:rgba(0,0,0,0.4);z-index:140;opacity:0;visibility:hidden;
-      transition:all var(--ease);
-    }
-    .drawer-overlay.open{opacity:1;visibility:visible;}
-    .drawer-header{display:flex;justify-content:space-between;align-items:center;
-      margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid rgba(183,185,189,0.12);
-    }
-    .drawer-close{background:none;border:none;font-size:1.4rem;color:var(--slate);
-      cursor:pointer;padding:4px;
-    }
-    .primary-nav{list-style:none;margin:0 0 24px 0;padding:0;border-bottom:1px solid rgba(183,185,189,0.08);}
-    .primary-nav li{margin-bottom:4px;}
-    .primary-nav a{display:block;text-decoration:none;font-weight:700;font-size:1rem;
-      padding:14px 16px;border-radius:12px;color:var(--purple);transition:all var(--ease);
-      border-left:3px solid transparent;
-    }
-    .primary-nav a:hover,.primary-nav a.active{background:rgba(58,15,90,0.08);border-left-color:var(--purple);}
-
-    /* ✅ FAQ PAGE */
-    .page{
-      max-width:var(--max-width);
-      margin:120px auto 80px;
-      padding:0 5%;
-    }
-
-    .hero{
-      background:#fff;
-      border-radius:var(--radius);
-      padding:60px 40px;
-      text-align:center;
-      box-shadow:0 32px 100px rgba(58,15,90,0.12);
-      border:1px solid rgba(183,185,189,0.12);
-      margin-bottom:48px;
-    }
-    .hero h1{
-      font-family:'Clash Display',serif;
-      font-size:clamp(2.2rem,6vw,3rem);
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      margin:0 0 20px;
-    }
-    .hero p{
-      color:var(--slate-mid);
-      font-size:1.15rem;
-      max-width:700px;
-      margin:0 auto;
-      line-height:1.7;
-    }
-
-    .faq-grid{
-      display:grid;
-      grid-template-columns:1fr 380px;
-      gap:40px;
-      align-items:start;
-    }
-    @media(max-width:960px){
-      .faq-grid{grid-template-columns:1fr;gap:32px;}
-    }
-
-    .faq-section{
-      background:#fff;
-      border-radius:var(--radius);
-      box-shadow:0 32px 100px rgba(58,15,90,0.12);
-      border:1px solid rgba(183,185,189,0.12);
-      overflow:hidden;
-      margin-bottom:32px;
-    }
-
-    .section-header{
-      font-family:'Clash Display',serif;
-      font-size:1.6rem;
-      color:var(--purple);
-      padding:32px 32px 24px;
-      margin:0;
-      font-weight:700;
-      border-bottom:2px solid rgba(58,15,90,0.1);
-    }
-
-    .faq-item{
-      border-bottom:1px solid rgba(183,185,189,0.15);
-      transition:all var(--ease);
-    }
+    /* FAQ Sections */
+    .faq-section{background:#fff;border-radius:var(--radius);padding:0;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);overflow:hidden;margin-bottom:48px;}
+    .section-header{font-family:'Clash Display',serif;font-size:2.4rem;color:var(--purple);padding:48px 48px 36px;margin:0;font-weight:900;border-bottom:3px solid rgba(58,15,90,0.1);}
+    .faq-item{border-bottom:2px solid rgba(58,15,90,0.05);transition:all var(--ease);}
     .faq-item:last-child{border-bottom:none;}
     .faq-item:hover{background:rgba(58,15,90,0.02);}
 
-    .question{
-      width:100%;
-      background:none;
-      border:none;
-      padding:28px 32px;
-      font-weight:700;
-      font-size:1.05rem;
-      cursor:pointer;
-      text-align:left;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      transition:all var(--ease);
-    }
-    .question:hover{color:var(--purple);}
+    .question{width:100%;background:none;border:none;padding:40px 48px;font-family:'Clash Display',serif;font-size:1.4rem;font-weight:800;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all var(--ease);}
+    .question:hover{color:var(--purple-dark);}
     .question.active{color:var(--purple);}
 
-    .question-icon{
-      font-size:1.4rem;
-      transition:transform var(--ease);
-    }
+    .question-icon{font-size:2rem;transition:transform var(--ease);}
     .question.active .question-icon{transform:rotate(45deg);}
 
-    .answer{
-      padding:0 32px 28px;
-      max-height:0;
-      overflow:hidden;
-      transition:all var(--ease);
-      color:var(--slate-mid);
-      line-height:1.7;
-      font-size:1rem;
-    }
-    .answer.show{max-height:500px;padding:28px 32px 32px;}
+    .answer{padding:0 48px 40px;max-height:0;overflow:hidden;transition:all var(--ease);color:var(--slate-mid);line-height:1.8;font-size:1.1rem;}
+    .answer.show{max-height:600px;padding:40px 48px 48px;}
 
-    .search-container{
-      margin:32px 0;
-      padding:0 32px;
-    }
-    .search-input{
-      width:100%;
-      padding:20px 24px;
-      border:2px solid rgba(183,185,189,0.3);
-      border-radius:16px;
-      font-size:1.1rem;
-      background:#fff;
-      transition:all var(--ease);
-    }
-    .search-input:focus{
-      outline:none;
-      border-color:var(--purple);
-      box-shadow:0 0 0 4px rgba(58,15,90,0.08);
-    }
-    .search-results{
-      font-size:0.9rem;
-      color:var(--slate-mid);
-      margin-top:12px;
-      text-align:center;
-    }
+    /* Support Panel */
+    .support-panel{background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:var(--radius);padding:64px;color:#fff;position:sticky;top:160px;align-self:start;height:fit-content;box-shadow:0 40px 120px rgba(58,15,90,0.4);}
+    .support-title{font-family:'Clash Display',serif;font-size:2.8rem;font-weight:900;margin:0 0 48px;text-align:center;}
+    .support-badge{background:var(--glass);backdrop-filter:blur(20px);padding:16px 28px;border-radius:24px;font-weight:800;color:var(--purple);margin-bottom:48px;text-align:center;display:block;font-size:1.1rem;}
+    .support-btn{width:100%;padding:28px 40px;border:none;border-radius:24px;font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;cursor:pointer;transition:all var(--ease);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:16px;height:84px;}
+    .btn-ai{background:var(--gold);color:var(--purple);box-shadow:0 20px 60px rgba(245,158,11,0.4);}
+    .btn-ai:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(245,158,11,0.5);}
+    .btn-contact{background:var(--glass);color:#fff;border:2px solid rgba(255,255,255,0.3);}
+    .btn-contact:hover{background:rgba(255,255,255,0.2);transform:translateY(-4px);}
 
-    .support-panel{
-      background:#fff;
-      border-radius:var(--radius);
-      padding:40px;
-      box-shadow:0 32px 100px rgba(58,15,90,0.12);
-      border:1px solid rgba(183,185,189,0.12);
-    }
-
-    .support-title{
-      font-family:'Clash Display',serif;
-      font-size:1.5rem;
-      color:var(--purple);
-      margin:0 0 32px;
-      font-weight:700;
-      text-align:center;
-    }
-
-    .support-btn{
-      width:100%;
-      padding:20px 28px;
-      border:none;
-      border-radius:16px;
-      font-weight:700;
-      font-size:1.1rem;
-      cursor:pointer;
-      transition:all var(--ease);
-      margin-bottom:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-    }
-    .support-primary{
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;
-      box-shadow:0 20px 60px rgba(58,15,90,0.3);
-    }
-    .support-primary:hover{
-      transform:translateY(-3px);
-      box-shadow:0 28px 80px rgba(58,15,90,0.4);
-    }
-    .support-secondary{
-      background:#fff;
-      color:var(--purple);
-      border:2px solid rgba(58,15,90,0.2);
-      font-weight:600;
-    }
-    .support-secondary:hover{
-      background:rgba(58,15,90,0.05);
-      border-color:var(--purple);
-    }
-
-    footer{
-      padding:60px 5%;text-align:center;color:var(--muted);
-      border-top:1px solid rgba(183,185,189,0.12);
-      font-size:0.9rem;margin-top:40px;
-    }
-
-    #toast{
-      position:fixed;top:24px;right:24px;
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;padding:16px 24px;border-radius:14px;
-      box-shadow:0 20px 50px rgba(0,0,0,0.25);
-      font-size:0.95rem;font-weight:600;
-      transform:translateX(400px);transition:all var(--ease);
-      z-index:300;max-width:360px;
-    }
+    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
+    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
     #toast.show{transform:translateX(0);}
+
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
   </style>
 </head>
-
 <body>
-<!-- ✅ FULL HEADER SYSTEM -->
-<header>
-  <div class="topbar">
+  <!-- Perfect System Header -->
+  <header>
     <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png"/>
+      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
       <div>
-        <h1>Snehvastra</h1>
-        <div style="font-size:0.8rem;color:var(--muted)">Help & Support</div>
+        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
+        <div style="font-size:0.85rem;color:var(--muted);">Help Center</div>
       </div>
     </div>
-
-    <button class="mobile-hamburger" id="mobileHamburger">
-      <span></span><span></span><span></span>
-    </button>
-
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -380,279 +104,245 @@
         <li id="authArea"></li>
       </ul>
     </nav>
+  </header>
+
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
-</header>
 
-<!-- ✅ MOBILE DRAWER -->
-<div class="drawer-overlay" id="drawerOverlay"></div>
-<div class="mobile-drawer" id="mobileDrawer">
-  <div class="drawer-header">
-    <div class="brand" style="gap:8px;">
-      <img src="images/logo.final.png" style="height:36px;"/>
-      <div>
-        <h1 style="font-size:1rem;margin:0;">Snehvastra</h1>
-        <div style="font-size:0.75rem;color:var(--muted);">Help Center</div>
-      </div>
-    </div>
-    <button class="drawer-close" id="drawerClose">&times;</button>
-  </div>
-  
-  <ul class="primary-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="collection.html">Collection</a></li>
-    <li><a href="faq.html" class="active">FAQ</a></li>
-    <li><a href="auction.html">Auction</a></li>
-    <li><a href="cart.html">Cart (<span id="mobileCartCount">0</span>)</a></li>
-  </ul>
-
-  <div id="mobileAuthArea" class="drawer-section"></div>
-</div>
-
-<main class="page">
   <section class="hero">
-    <h1>Help & Frequently Asked Questions</h1>
-    <p>Everything you need to know about Snehvastra orders, sizing, auctions, returns, payments, and craftsmanship. Search or browse below.</p>
+    <h1 class="hero-title" data-aos="fade-down">Help Center</h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Suratgarh artisan craftsmanship, NFC authentication, auction rules, 2-day delivery, collector verification—all answered instantly.</p>
     
-    <div class="search-container">
-      <input class="search-input" id="faqSearch" type="search" placeholder="Search FAQs (e.g. shipping, returns, sizing)..."/>
-      <div class="search-results" id="searchResults">0 results</div>
+    <div class="ai-search" data-aos="zoom-in" data-aos-delay="400">
+      <input class="search-input" id="faqSearch" type="search" placeholder="Ask anything... (shipping, NFC, auctions, sizing)"/>
+      <span class="search-icon">🔍</span>
+      <div class="search-results" id="searchResults">Ready to help</div>
     </div>
   </section>
 
   <div class="faq-grid">
-    <!-- ✅ FAQ SECTIONS -->
-    <div>
+    <!-- Elite FAQ Sections -->
+    <div data-aos="fade-right">
       <div class="faq-section">
-        <h2 class="section-header">Orders & Shipping</h2>
+        <h2 class="section-header">Suratgarh Delivery</h2>
         <div class="faq-item">
           <button class="question">
-            How long does shipping take?
+            How fast is shipping from Suratgarh?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            India: 3–5 business days via premium courier. Free shipping on orders above ₹10,000. International shipping available (7–14 days).
+            🚚 <strong>India:</strong> 2 days standard, 24hr express from Suratgarh. Free shipping over ₹15,000. Live tracking via WhatsApp + email.
           </div>
         </div>
         <div class="faq-item">
           <button class="question">
-            Can I track my order?
+            International shipping available?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            Yes! Tracking link is sent via email and WhatsApp within 24 hours of dispatch. Check Order History for live updates.
+            🌍 Yes! 5-10 days worldwide via DHL. Duties calculated at checkout. Suratgarh direct to your door.
           </div>
         </div>
         <div class="faq-item">
           <button class="question">
-            What payment methods are accepted?
+            Cash on Delivery (COD) supported?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            Razorpay (cards, UPI, wallets), Cash on Delivery (COD), and bank transfers. All transactions are 100% secure.
+            💰 Yes! Razorpay UPI, cards, wallets + COD nationwide. 100% secure payments.
           </div>
         </div>
       </div>
 
       <div class="faq-section">
-        <h2 class="section-header">Returns & Sizing</h2>
+        <h2 class="section-header">NFC Authentication</h2>
         <div class="faq-item">
           <button class="question">
-            What is your return policy?
+            How does NFC verification work?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            15-day returns for unworn standard items (tags attached). Auction items and custom pieces are final sale. Free return shipping.
+            📱 Tap any Android/iPhone to garment NFC tag. Unlocks artisan story, blockchain cert, rarity rank, and collector certificate instantly.
           </div>
         </div>
         <div class="faq-item">
           <button class="question">
-            How do I know my size?
+            Is every piece NFC verified?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            Use our Smart Size Guide or chat with Sneh AI assistant. Measure a garment you own and compare with our detailed charts.
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="question">
-            Do items shrink after washing?
-            <span class="question-icon">+</span>
-          </button>
-          <div class="answer">
-            Minimal shrinkage (<2%). Cold wash recommended. Follow care instructions on garment tag for best results.
+            ✅ Yes! Every Snehvastra garment has embedded NFC chip with blockchain authenticity proof from Suratgarh artisans.
           </div>
         </div>
       </div>
 
       <div class="faq-section">
-        <h2 class="section-header">Auctions & Special Editions</h2>
+        <h2 class="section-header">Auction Rules</h2>
         <div class="faq-item">
           <button class="question">
-            How do auctions work?
+            How do live auctions work?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            Live bidding periods. Highest bidder wins and must complete payment within 24 hours. Winner notified via email + WhatsApp.
+            🏆 Bid during live window. Highest bid wins. 24hr payment required. Winner gets NFC cert + artisan video.
           </div>
         </div>
         <div class="faq-item">
           <button class="question">
-            Are auction items authentic?
+            Are auction pieces final sale?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            100% authentic with NFC authentication. Each piece includes digital certificate and blockchain verification.
+            🔒 Yes. 1/1 collector pieces. Full NFC authenticity + blockchain certificate included.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section">
+        <h2 class="section-header">Returns & Care</h2>
+        <div class="faq-item">
+          <button class="question">
+            What is the return policy?
+            <span class="question-icon">+</span>
+          </button>
+          <div class="answer">
+            ↩️ 15 days for standard items (unworn, tags attached). Free return shipping. Auctions final sale.
           </div>
         </div>
         <div class="faq-item">
           <button class="question">
-            What makes Snehvastra special?
+            Sizing & fit guide?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            Heritage craftsmanship + modern streetwear. Limited drops, NFC tech, and collector-grade quality. Join the movement.
+            📏 Smart Size Guide on product pages. Relaxed streetwear fit. Size up for layering. Detailed charts available.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ✅ SUPPORT PANEL -->
-    <aside>
-      <div class="support-panel">
-        <h3 class="support-title">Quick Support</h3>
-        <button class="support-btn support-primary">
-          💬 Ask Sneh (AI)
-        </button>
-        <a href="contact.html">
-          <button class="support-btn support-secondary">
-            📧 Contact Support
-          </button>
-        </a>
-        <div style="margin-top:32px;text-align:center;color:var(--slate-mid);font-size:0.95rem;">
-          Response time: <strong>under 2 hours</strong>
-        </div>
+    <!-- Elite Support Panel -->
+    <aside class="support-panel" data-aos="fade-left">
+      <h3 class="support-title">Instant Help</h3>
+      <div class="support-badge">🕒 Response: <strong>&lt; 30 min</strong></div>
+      
+      <button class="support-btn btn-ai" onclick="launchAI()">
+        🤖 Ask Sneh AI
+      </button>
+      
+      <button class="support-btn btn-contact" onclick="launchWhatsApp()">
+        💬 WhatsApp Support
+      </button>
+      
+      <div style="margin-top:48px;text-align:center;font-size:1rem;opacity:0.9;">
+        <div>📍 Suratgarh, Rajasthan</div>
+        <div>🛡️ 100% Authentic</div>
+        <div>🔒 NFC Verified</div>
       </div>
     </aside>
   </div>
-</main>
 
-<footer>
-  © <span id="year"></span> Snehvastra. All Rights Reserved.
-</footer>
+  <footer>
+    © <span id="year"></span> Snehvastra. Suratgarh Crafted • Blockchain Verified.
+  </footer>
 
-<div id="toast"></div>
+  <div id="toast"></div>
 
-<script>
-  const USER_KEY = "snehvastra_user";
-  const CART_KEY = "snehvastra_cart";
+  <script>
+    // Perfect system sync
+    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+    const user = JSON.parse(localStorage.getItem(USER_KEY));
 
-  let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-  const user = JSON.parse(localStorage.getItem(USER_KEY));
-
-  // ✅ SYSTEM INTEGRATION
-  const authArea = document.getElementById("authArea");
-  const mobileAuthArea = document.getElementById("mobileAuthArea");
-  const cartCountEl = document.getElementById("cartCount");
-
-  function renderAuth(){
-    if(user && user.loggedIn){
-      authArea.innerHTML = `
-        <span class="user-badge">Hi, ${user.name}</span>
-        <button class="logout-btn" onclick="logout()">Logout</button>
-      `;
-    } else {
-      authArea.innerHTML = `<a href="user-login.html">Login</a><a href="user-register.html">Register</a>`;
+    function renderAuth(){
+      const authArea = document.getElementById("authArea");
+      if(user && user.loggedIn){
+        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
+      } else {
+        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
+      }
     }
-  }
 
-  function updateCartCount(){
-    const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-    cartCountEl.textContent = total;
-  }
+    function updateCartCount(){
+      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+      document.getElementById("cartCount").textContent = total;
+    }
 
-  function logout(){
-    localStorage.removeItem(USER_KEY);
-    location.reload();
-  }
+    function showToast(msg){
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 3200);
+    }
 
-  function showToast(msg){
-    const toast = document.getElementById("toast");
-    toast.textContent = msg;
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3000);
-  }
-
-  // ✅ FAQ FUNCTIONALITY
-  document.querySelectorAll('.question').forEach(question => {
-    question.addEventListener('click', () => {
-      const answer = question.nextElementSibling;
-      const isOpen = answer.classList.contains('show');
-      
-      // Close all others
-      document.querySelectorAll('.answer').forEach(a => a.classList.remove('show'));
-      document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
-      
-      // Toggle current
-      if(!isOpen){
-        answer.classList.add('show');
-        question.classList.add('active');
+    // Elite FAQ Interactions
+    document.addEventListener('click', (e) => {
+      if(e.target.closest('.question')){
+        const question = e.target.closest('.question');
+        const answer = question.nextElementSibling;
+        const isOpen = answer.classList.contains('show');
+        
+        // Close all
+        document.querySelectorAll('.answer').forEach(a => a.classList.remove('show'));
+        document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+        
+        // Toggle current
+        if(!isOpen){
+          answer.classList.add('show');
+          question.classList.add('active');
+          gsap.fromTo(answer, {opacity:0, height:0}, {opacity:1, height:'auto', duration:0.6, ease:"power2.out"});
+        }
       }
     });
-  });
 
-  // ✅ SEARCH
-  document.getElementById('faqSearch').addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
-    let visibleCount = 0;
-
-    document.querySelectorAll('.faq-item').forEach(item => {
-      const text = item.textContent.toLowerCase();
-      const isVisible = text.includes(query);
-      item.style.display = isVisible ? 'block' : 'none';
-      if(isVisible) visibleCount++;
+    // AI Search
+    document.getElementById('faqSearch').addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      let visibleCount = 0;
+      
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        const isVisible = !query || text.includes(query);
+        item.style.display = isVisible ? 'block' : 'none';
+        if(isVisible) visibleCount++;
+      });
+      
+      const resultsEl = document.getElementById('searchResults');
+      resultsEl.textContent = query ? `${visibleCount} results` : 'Ready to help';
+      gsap.fromTo(resultsEl, {opacity:0, scale:0.95}, {opacity:1, scale:1, duration:0.3});
     });
 
-    document.getElementById('searchResults').textContent = 
-      query ? `${visibleCount} result${visibleCount !== 1 ? 's' : ''}` : '0 results';
-  });
+    function launchAI(){
+      showToast("🤖 Sneh AI launching...");
+      // Integrate your AI chat here
+    }
 
-  // ✅ MOBILE DRAWER
-  const hamburger = document.getElementById("mobileHamburger");
-  const drawer = document.getElementById("mobileDrawer");
-  const overlay = document.getElementById("drawerOverlay");
-  const closeBtn = document.getElementById("drawerClose");
+    function launchWhatsApp(){
+      const message = encodeURIComponent("Hi Snehvastra! I need help with:\n• Order tracking\n• NFC verification\n• Auction bidding");
+      window.open(`https://wa.me/917597152209?text=${message}`);
+      showToast("💬 WhatsApp support opened");
+    }
 
-  function openDrawer(){
-    drawer.classList.add("open");
-    overlay.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeDrawer(){
-    drawer.classList.remove("open");
-    overlay.classList.remove("open");
-    document.body.style.overflow = "";
-  }
+    // Auction timer
+    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
+    setInterval(()=>{
+      const diff = auctionDate - Date.now();
+      const timer = document.getElementById("auctionTimer");
+      if(diff > 0){
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        timer.textContent = `${days}d ${hours}h`;
+      } else {
+        timer.textContent = "LIVE NOW!";
+      }
+    }, 60000);
 
-  hamburger?.addEventListener("click", openDrawer);
-  closeBtn?.addEventListener("click", closeDrawer);
-  overlay?.addEventListener("click", closeDrawer);
-
-  // ✅ ACTIVE NAV
-  function setActiveNav(){
-    const currentPath = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll("nav a, .primary-nav a").forEach(link => {
-      link.classList.toggle("active", link.getAttribute("href") === currentPath);
-    });
-  }
-
-  // ✅ INIT
-  window.addEventListener("load", () => {
+    // Init
+    AOS.init({duration: 1200, once: true});
     renderAuth();
     updateCartCount();
-    setActiveNav();
     document.getElementById("year").textContent = new Date().getFullYear();
-  });
-</script>
-
+  </script>
 </body>
 </html>
