@@ -1,353 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <meta name="theme-color" content="#3A0F5A" />
-  <title>Shipping & Delivery — Snehvastra</title>
-  <meta name="description" content="Snehvastra shipping: Free India delivery over ₹10,000, DHL international, auction priority dispatch, live tracking." />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#3A0F5A"/>
+  <title>Premium Shipping — Snehvastra</title>
+  <meta name="description" content="Live tracking, free India delivery over ₹10K, DHL international, auction 24hr dispatch from Surat."/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600&family=Poppins:wght@400;500;600,700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --accent:#2e0b4a;
-      --slate:#22232A; --mid:#3B3D45; --muted:#8f9095;
-      --paper:#F6F6F6; --radius:14px; --ease:.28s; --max-w:1100px;
+      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --slate:#1F2024;
+      --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95); --radius:28px;
+      --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      --max-width:1400px;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,var(--paper),#FBFAF8);
-      color:var(--slate);line-height:1.7;
-    }
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
 
-    /* HEADER */
-    header{
-      position:sticky;top:0;z-index:120;
-      background:rgba(255,255,255,0.98);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(0,0,0,0.05);
-    }
-    .topbar{
-      max-width:var(--max-w);
-      margin:0 auto;padding:14px 20px;
-      display:flex;align-items:center;justify-content:space-between;
-    }
-    .logo{height:46px;cursor:pointer}
-    nav ul{display:flex;list-style:none;gap:14px;margin:0;padding:0}
-    nav a{
-      color:var(--muted);text-decoration:none;
-      font-weight:600;padding:8px 12px;border-radius:8px;
-    }
-    nav a.active,nav a:hover{
-      background:rgba(58,15,90,0.06);color:var(--purple)
-    }
-    #cartCount{
-      background:var(--purple);color:#fff;
-      border-radius:999px;padding:2px 8px;
-      font-size:.8rem;margin-left:4px;
-    }
+    /* Perfect System Header */
+    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
+    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
+    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
+    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
 
-    /* AUCTION BANNER */
-    .auction-banner{
-      max-width:var(--max-w);
-      margin:12px auto 0;
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      color:white;padding:14px;
-      border-radius:var(--radius);
-      text-align:center;font-weight:700;
-      box-shadow:0 10px 35px rgba(58,15,90,0.3);
-    }
-    .auction-timer{
-      margin-left:8px;background:white;
-      padding:4px 12px;border-radius:10px;
-      color:var(--slate);font-weight:700;
-      font-family:'Clash Display',serif;
-    }
+    /* Enhanced Auction Banner */
+    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
+    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;display:inline-block;animation:pulse 2s infinite;}
 
-    main{max-width:var(--max-w);margin:0 auto;padding:120px 20px 80px}
+    /* Hero Section */
+    .shipping-hero{max-width:var(--max-width);margin:200px auto 80px;padding:0 5%;text-align:center;}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(3.5rem,9vw,5.5rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 32px;}
+    .hero-subtitle{font-size:1.25rem;color:var(--slate-mid);max-width:900px;margin:0 auto 60px;line-height:1.8;}
+    .surat-badge{background:linear-gradient(135deg,#10B981,#059669);color:#fff;padding:24px 48px;border-radius:32px;font-weight:700;font-size:1.3rem;display:inline-block;box-shadow:0 24px 80px rgba(16,185,129,0.4);}
 
-    /* HERO */
-    .shipping-hero{
-      text-align:center;background:#fff;
-      padding:80px 40px;border-radius:var(--radius);
-      border:1px solid rgba(0,0,0,0.04);
-      box-shadow:0 30px 100px rgba(58,15,90,0.1);
-      margin-bottom:60px;
-    }
-    .shipping-hero h1{
-      font-family:'Clash Display',serif;
-      font-size:clamp(2.6rem,7vw,3.8rem);
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    }
-    .shipping-hero p{font-size:1.2rem;color:var(--mid)}
+    /* Live Tracker */
+    .tracker-section{max-width:var(--max-width);margin:0 auto 100px;padding:0 5%;}
+    .tracker-card{background:#fff;border-radius:var(--radius);padding:80px 64px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);text-align:center;position:relative;overflow:hidden;}
+    .tracker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--purple),var(--success));}
+    .tracker-title{font-family:'Clash Display',serif;font-size:2.5rem;color:var(--purple);margin:0 0 48px;font-weight:700;}
+    .tracker-input{position:relative;max-width:520px;margin:0 auto 32px;}
+    .tracker-input input{width:100%;padding:28px 32px 28px 80px;border:3px solid rgba(58,15,90,0.15);border-radius:32px;font-size:1.2rem;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);font-weight:600;}
+    .tracker-icon{position:absolute;left:32px;top:50%;transform:translateY(-50%);font-size:2.2rem;color:var(--purple);}
+    .live-track-btn{padding:28px 60px;border:none;border-radius:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;cursor:pointer;box-shadow:0 24px 80px rgba(58,15,90,0.4);transition:all var(--ease);}
+    .live-track-btn:hover{transform:translateY(-6px);box-shadow:0 32px 100px rgba(58,15,90,0.5);}
 
-    /* TRACKER */
-    .tracker-section{
-      background:#fff;padding:48px;
-      border-radius:var(--radius);
-      border:1px solid rgba(0,0,0,0.04);
-      box-shadow:0 25px 80px rgba(58,15,90,0.1);
-      margin-bottom:60px;text-align:center;
-    }
-    .tracker-input{
-      max-width:480px;margin:0 auto 24px;
-      position:relative;
-    }
-    .tracker-input input{
-      width:100%;padding:18px 24px 18px 54px;
-      border:2px solid rgba(58,15,90,0.2);
-      border-radius:14px;font-size:1.1rem;
-    }
-    .tracker-icon{
-      position:absolute;left:20px;top:50%;
-      transform:translateY(-50%);
-      color:var(--purple);
-    }
-    .track-btn{
-      padding:16px 36px;border:none;
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      color:#fff;border-radius:14px;
-      font-weight:700;cursor:pointer;
-      font-family:'Clash Display',serif;
-    }
+    /* Premium Shipping Grid */
+    .shipping-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:48px;max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;}
+    .shipping-card{background:#fff;border-radius:var(--radius);padding:72px 56px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);text-align:center;position:relative;overflow:hidden;transition:all var(--ease);}
+    .shipping-card:hover{transform:translateY(-12px);box-shadow:0 60px 160px rgba(58,15,90,0.25);}
+    .shipping-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--purple),var(--success));}
+    .shipping-icon{font-size:4.5rem;margin-bottom:32px;display:block;}
+    .shipping-title{font-family:'Clash Display',serif;font-size:2.2rem;color:var(--purple);margin:0 0 24px;font-weight:700;}
+    .price-display{font-family:'Clash Display',serif;font-size:2.8rem;color:var(--purple);font-weight:900;margin:24px 0;}
+    .free-badge{background:linear-gradient(135deg,var(--success),#059669);color:#fff;padding:20px 36px;border-radius:32px;font-weight:900;font-size:1.2rem;display:inline-block;box-shadow:0 16px 48px rgba(16,185,129,0.3);}
+    .shipping-features{list-style:none;padding:0;margin:32px 0;}
+    .shipping-features li{font-size:1.1rem;color:var(--slate-mid);margin-bottom:16px;position:relative;padding-left:40px;}
+    .shipping-features li::before{content:'✅';position:absolute;left:0;color:var(--success);font-weight:900;font-size:1.2rem;}
 
-    /* SHIPPING GRID */
-    .shipping-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:36px;margin-bottom:60px;
-    }
-    .shipping-card{
-      background:#fff;padding:40px 32px;
-      border-radius:var(--radius);
-      border:1px solid rgba(0,0,0,0.04);
-      box-shadow:0 20px 60px rgba(58,15,90,0.1);
-      text-align:center;
-    }
-    .shipping-icon{font-size:3rem;margin-bottom:18px}
-    .shipping-card h3{
-      font-family:'Clash Display',serif;
-      margin-bottom:12px;
-    }
-    .price-tag{
-      font-family:'Clash Display',serif;
-      font-size:1.8rem;color:var(--purple);
-      margin:12px 0;
-    }
-    .free-tag{
-      background:rgba(76,175,80,0.12);
-      color:#2e7d32;padding:6px 16px;
-      border-radius:999px;font-weight:700;
-      display:inline-block;
-    }
-    .shipping-card ul{list-style:none;padding:0;margin:0}
-    .shipping-card li{margin-bottom:10px;color:var(--mid)}
+    /* Animated Timeline */
+    .delivery-timeline{max-width:1000px;margin:120px auto 100px;padding:0 5%;}
+    .timeline-title{font-family:'Clash Display',serif;font-size:3rem;color:var(--purple);text-align:center;margin:0 0 80px;font-weight:700;}
+    .timeline-container{position:relative;max-width:800px;margin:0 auto;}
+    .timeline-line{position:absolute;left:28px;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--purple),var(--success));border-radius:2px;}
+    .timeline-step{display:flex;align-items:center;margin-bottom:80px;position:relative;}
+    .step-number{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-size:1.6rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin-right:32px;box-shadow:0 16px 48px rgba(58,15,90,0.3);z-index:2;}
+    .step-content{flex:1;background:#fff;padding:48px;border-radius:28px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);}
+    .step-title{font-family:'Clash Display',serif;font-size:1.8rem;color:var(--purple);margin:0 0 16px;font-weight:700;}
+    .step-details{font-size:1.1rem;color:var(--slate-mid);line-height:1.7;}
 
-    /* TIMELINE */
-    .timeline{max-width:800px;margin:60px auto 0}
-    .timeline h2{
-      text-align:center;font-family:'Clash Display',serif;
-      margin-bottom:42px;
-    }
-    .timeline-item{
-      display:flex;align-items:center;
-      margin-bottom:36px;
-    }
-    .timeline-icon{
-      width:56px;height:56px;border-radius:50%;
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      color:#fff;display:flex;
-      align-items:center;justify-content:center;
-      font-weight:800;margin-right:24px;
-    }
+    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
+    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
+    #toast.show{transform:translateX(0);}
 
-    footer{
-      text-align:center;padding:60px 20px 40px;
-      background:rgba(255,255,255,0.85);
-      border-top:1px solid rgba(0,0,0,0.05);
-      color:var(--muted);
-      max-width:var(--max-w);margin:0 auto;
-    }
-
-    .toast{
-      position:fixed;top:120px;right:20px;
-      background:linear-gradient(135deg,var(--purple),var(--accent));
-      color:#fff;padding:14px 22px;
-      border-radius:12px;box-shadow:0 12px 36px rgba(58,15,90,0.4);
-      transform:translateX(360px);transition:.3s;z-index:400;
-    }
-    .toast.show{transform:translateX(0)}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
+    @media(max-width:1100px){.shipping-grid{grid-template-columns:1fr;}}
   </style>
 </head>
-
 <body>
-
-<header>
-  <div class="topbar">
-    <a href="index.html"><img src="images/logo.final.png" class="logo" alt="Snehvastra"></a>
+  <!-- Perfect System Header -->
+  <header>
+    <div class="brand" onclick="location.href='index.html'">
+      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+      <div>
+        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
+        <div style="font-size:0.85rem;color:var(--muted);">Premium Shipping</div>
+      </div>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
-        <li><a href="shipping.html" class="active">Shipping</a></li>
+        <li><a href="size-guide.html">Size Guide</a></li>
         <li><a href="auction.html">Auction</a></li>
         <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+        <li id="authArea"></li>
       </ul>
     </nav>
-  </div>
-</header>
+  </header>
 
-<div class="auction-banner">
-  🔥 SNEHVASTRA ONE AUCTION
-  <span class="auction-timer" id="auctionTimer">Loading…</span>
-</div>
-
-<main>
-
-  <div class="shipping-hero">
-    <h1>Fast & Luxurious Delivery</h1>
-    <p>Your handcrafted order is packed in Jaipur and delivered worldwide with full tracking.</p>
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
-  <div class="tracker-section">
-    <h2>Track Your Order</h2>
-    <div class="tracker-input">
-      <span class="tracker-icon">📦</span>
-      <input type="text" id="trackingNumber" placeholder="Enter your Order ID">
+  <section class="shipping-hero">
+    <h1 class="hero-title" data-aos="fade-down">Lightning Fast Luxury Delivery</h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Dispatched from Surat workshop with live NFC tracking. Free India delivery over ₹10,000.</p>
+    <div class="surat-badge" data-aos="zoom-in" data-aos-delay="400">Surat to Suratgarh: 1-2 Days 🚀</div>
+  </section>
+
+  <!-- Live Order Tracker -->
+  <section class="tracker-section">
+    <div class="tracker-card" data-aos="fade-up">
+      <h2 class="tracker-title">Live Order Tracker</h2>
+      <div class="tracker-input">
+        <span class="tracker-icon">📦</span>
+        <input type="text" id="trackingNumber" placeholder="SNV-2025-XXXXX or tracking ID">
+      </div>
+      <button class="live-track-btn" id="liveTrackBtn" data-aos="zoom-in" data-aos-delay="200">Track Live</button>
+      <div style="margin-top:48px;padding-top:40px;border-top:2px solid rgba(58,15,90,0.1);font-size:1rem;color:var(--slate-mid);">
+        NFC authenticated • Fully insured • Signature required
+      </div>
     </div>
-    <button class="track-btn" id="trackBtn">Track Order</button>
-  </div>
+  </section>
 
-  <div class="shipping-grid">
-    <div class="shipping-card">
+  <!-- Premium Shipping Options -->
+  <section class="shipping-grid">
+    <div class="shipping-card" data-aos="fade-up" data-aos-delay="100">
       <div class="shipping-icon">🇮🇳</div>
-      <h3>India Delivery</h3>
-      <div class="price-tag"><span class="free-tag">FREE over ₹10,000</span><br>₹199 otherwise</div>
-      <ul>
-        <li>3–5 business days</li>
-        <li>Live tracking</li>
-        <li>Free returns (defects)</li>
+      <h3 class="shipping-title">India Express</h3>
+      <div class="price-display">
+        <span class="free-badge">FREE over ₹10K</span><br><small>₹199 otherwise</small>
+      </div>
+      <ul class="shipping-features">
+        <li>1-3 days Suratgarh delivery</li>
+        <li>Live GPS + NFC tracking</li>
+        <li>Free defect returns</li>
+        <li>COD available</li>
       </ul>
     </div>
 
-    <div class="shipping-card">
+    <div class="shipping-card" data-aos="fade-up" data-aos-delay="200">
       <div class="shipping-icon">🌍</div>
-      <h3>International</h3>
-      <div class="price-tag">DHL Express<br>₹2,999+</div>
-      <ul>
-        <li>7–14 business days</li>
-        <li>Global tracking</li>
-        <li>Duties by customer</li>
+      <h3 class="shipping-title">DHL International</h3>
+      <div class="price-display">₹2,999+</div>
+      <ul class="shipping-features">
+        <li>5-10 business days worldwide</li>
+        <li>DHL door-to-door tracking</li>
+        <li>Duties paid at checkout</li>
+        <li>Signature + photo proof</li>
       </ul>
     </div>
 
-    <div class="shipping-card">
+    <div class="shipping-card" data-aos="fade-up" data-aos-delay="300">
       <div class="shipping-icon">🔥</div>
-      <h3>Auction Winners</h3>
-      <div class="price-tag">Priority Dispatch</div>
-      <ul>
-        <li>24-hour dispatch</li>
-        <li>Insurance included</li>
-        <li>Signature required</li>
+      <h3 class="shipping-title">Auction Priority</h3>
+      <div class="price-display">24hr Dispatch</div>
+      <ul class="shipping-features">
+        <li>Lightning 24hr processing</li>
+        <li>₹5M insurance included</li>
+        <li>Signature + NFC verification</li>
+        <li>Collector white-glove service</li>
       </ul>
     </div>
-  </div>
+  </section>
 
-  <div class="timeline">
-    <h2>Delivery Journey</h2>
+  <!-- Animated Delivery Timeline -->
+  <section class="delivery-timeline">
+    <h2 class="timeline-title" data-aos="fade-up">Your Delivery Journey</h2>
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      
+      <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4 class="step-title">Order Confirmed</h4>
+          <p class="step-details">Payment verified • Artisan quality check • NFC authentication embedded</p>
+        </div>
+      </div>
 
-    <div class="timeline-item">
-      <div class="timeline-icon">1</div>
-      <div>
-        <h4>Order Confirmed</h4>
-        <p>Payment verified & artisan quality check begins.</p>
+      <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4 class="step-title">Surat Studio Packed</h4>
+          <p class="step-details">Hand-packed with collector care kit • Temperature controlled • Ready for dispatch</p>
+        </div>
+      </div>
+
+      <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4 class="step-title">Live Tracked</h4>
+          <p class="step-details">Courier pickup confirmed • SMS + email alerts • Real-time GPS + NFC status</p>
+        </div>
+      </div>
+
+      <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4 class="step-title">Suratgarh Delivered</h4>
+          <p class="step-details">Signature + photo verification • NFC ownership transfer complete • Collector unboxing</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="timeline-item">
-      <div class="timeline-icon">2</div>
-      <div>
-        <h4>Packed in Studio</h4>
-        <p>Hand-packed in Jaipur with care booklet & NFC tag.</p>
-      </div>
-    </div>
+  <footer>
+    © <span id="year"></span> Snehvastra. Dispatched from Surat, Rajasthan. <a href="mailto:shipping@snehvastra.store" style="color:var(--purple);">shipping@snehvastra.store</a>
+  </footer>
 
-    <div class="timeline-item">
-      <div class="timeline-icon">3</div>
-      <div>
-        <h4>Shipped</h4>
-        <p>Courier pickup & tracking sent via SMS + email.</p>
-      </div>
-    </div>
+  <div id="toast"></div>
 
-    <div class="timeline-item">
-      <div class="timeline-icon">4</div>
-      <div>
-        <h4>Delivered</h4>
-        <p>Secure doorstep delivery with signature verification.</p>
-      </div>
-    </div>
-  </div>
+  <script>
+    // Perfect system sync
+    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+    const user = JSON.parse(localStorage.getItem(USER_KEY));
 
-</main>
-
-<footer>
-  © <span id="currentYear"></span> Snehvastra • Handcrafted Worldwide
-</footer>
-
-<div id="toast" class="toast"></div>
-
-<script>
-  function readCart(){
-    try {
-      return JSON.parse(localStorage.getItem("snehvastra_cart")) || {};
-    } catch {
-      return {};
+    // Auth rendering
+    function renderAuth(){
+      const authArea = document.getElementById("authArea");
+      if(user && user.loggedIn){
+        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
+      } else {
+        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
+      }
     }
-  }
 
-  function updateCartCount(){
-    const cart = readCart();
-    const total = Object.values(cart).reduce((sum,i)=>sum + (i.qty || 0), 0);
-    document.getElementById("cartCount").textContent = total;
-  }
-  updateCartCount();
-
-  function showToast(msg){
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'), 4200);
-  }
-
-  document.getElementById("trackBtn").addEventListener("click", ()=>{
-    const id = document.getElementById("trackingNumber").value.trim();
-    if(!id){ showToast("Enter your valid Order ID"); return; }
-    showToast(`📦 Order ${id} is in transit — ETA: 1–2 days`);
-  });
-
-  const auctionDate = new Date('2025-12-01T18:00:00').getTime();
-  setInterval(()=>{
-    const diff = auctionDate - Date.now();
-    const el = document.getElementById('auctionTimer');
-    if(diff > 0){
-      const d = Math.floor(diff/86400000);
-      const h = Math.floor((diff%86400000)/3600000);
-      const m = Math.floor((diff%3600000)/60000);
-      const s = Math.floor((diff%60000)/1000);
-      el.textContent = `${d}d ${h}h ${m}m ${s}s`;
-    } else {
-      el.textContent = "LIVE NOW!";
+    function updateCartCount(){
+      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+      document.getElementById("cartCount").textContent = total;
     }
-  },1000);
 
-  document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
+    function showToast(msg){
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 4000);
+    }
 
+    // Live tracking simulation
+    document.getElementById("liveTrackBtn").addEventListener("click", () => {
+      const id = document.getElementById("trackingNumber").value.trim();
+      if(!id) return showToast("Enter SNV-XXXXX order ID");
+      
+      showToast(`📦 #${id} LIVE: Packed in Surat → En route to Suratgarh (ETA: Dec 25)`);
+      
+      // Animate button
+      gsap.to("#liveTrackBtn", {
+        scale: 0.95,
+        duration: 0.1,
+        yoyo: true,
+        repeat: 1
+      });
+    });
+
+    // Enhanced auction timer
+    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
+    setInterval(()=>{
+      const diff = auctionDate - Date.now();
+      const timer = document.getElementById("auctionTimer");
+      if(diff > 0){
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        timer.textContent = `${days}d ${hours}h`;
+      } else {
+        timer.textContent = "LIVE NOW!";
+        timer.style.background = "linear-gradient(135deg,#10B981,#059669)";
+      }
+    }, 60000);
+
+    // Init
+    AOS.init({duration: 1200, once: true});
+    renderAuth();
+    updateCartCount();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
