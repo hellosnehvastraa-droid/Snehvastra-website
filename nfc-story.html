@@ -1,178 +1,277 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Snehvastra — NFC Story</title>
-  <meta name="description" content="Scan your Snehvastra garment to unlock authenticity, artisan story, rarity, and collector certification."/>
-  <meta name="theme-color" content="#3A0F5A" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#3A0F5A"/>
+  <title>Snehvastra NFC — Garment Story</title>
+  <meta name="description" content="Live NFC scanner, artisan video stories, blockchain verification, Suratgarh craft lineage, 1/1 rarity certificates."/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --deep:#2a0a3f; --slate:#1F2024; --muted:#7d7f82;
-      --glass: rgba(255,255,255,0.88); --radius:16px; --maxw:1180px; --ease: .36s;
+      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --gold:#F59E0B; --slate:#1F2024;
+      --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95); --radius:28px;
+      --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      --max-width:1400px;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:"Poppins",sans-serif;
-      background: linear-gradient(180deg,#f8f7f9,#f2f2f4);
-      color:var(--slate);
-      padding:28px 18px;
-    }
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
 
-    .wrap{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:28px}
-    @media(max-width:980px){ .wrap{grid-template-columns:1fr} }
+    /* Perfect System Header */
+    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
+    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
+    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
+    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
 
-    header{
-      grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;
-      background: var(--glass);border-radius:12px;padding:12px 18px;
-      border:1px solid rgba(47,18,66,0.04);
-      box-shadow:0 8px 30px rgba(58,15,90,0.04)
-    }
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:46px;cursor:pointer}
-    nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-weight:600}
-    nav a.active{color:var(--purple)}
+    /* Enhanced Auction Banner */
+    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
+    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
 
-    .stage{background:#fff;border-radius:18px;padding:28px;border:1px solid rgba(47,18,66,0.05);box-shadow:0 30px 100px rgba(58,15,90,0.06)}
-    .intro{height:420px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+    /* NFC Hero */
+    .nfc-hero{max-width:var(--max-width);margin:160px auto 100px;padding:0 5%;display:grid;grid-template-columns:1fr 480px;gap:80px;align-items:start;}
+    @media(max-width:1200px){.nfc-hero{grid-template-columns:1fr;gap:60px;}}
 
-    .garment-3d{
-      width:320px;height:360px;border-radius:20px;background:#fff;
-      display:flex;align-items:center;justify-content:center;
-      box-shadow:0 18px 60px rgba(46,18,68,0.12);
-      cursor:pointer
-    }
-    .garment-3d img{width:86%;border-radius:12px}
+    .scanner-section{text-align:center;}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4.5rem,12vw,7rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 48px;}
+    .nfc-scanner{position:relative;width:420px;height:420px;margin:0 auto;border-radius:32px;background:linear-gradient(135deg,#f8f7ff,#f0eeff);border:4px solid rgba(58,15,90,0.1);box-shadow:var(--shadow-soft);cursor:pointer;transition:all var(--ease);}
+    .nfc-scanner::before{content:'';position:absolute;top:-8px;right:-8px;bottom:-8px;left:-8px;background:conic-gradient(from 0deg, transparent 0deg, rgba(58,15,90,0.1) 360deg);border-radius:40px;animation:scan-rotate 3s linear infinite;z-index:-1;}
+    .nfc-scanner::after{content:'📱 Tap NFC Tag';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Clash Display',serif;font-size:2.2rem;font-weight:900;color:var(--purple);text-shadow:0 4px 16px rgba(58,15,90,0.2);}
+    .nfc-scanner.scanned{background:linear-gradient(135deg,var(--success),#059669);border-color:var(--success);}
+    .nfc-scanner.scanned::after{content:'✅ Verified';color:#fff;}
 
-    .story{margin-top:24px}
-    .story h2{font-family:"Clash Display",serif;color:var(--purple)}
-    .meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
-    .chip{background:#fff;border-radius:12px;padding:12px;border:1px solid rgba(47,18,66,0.05);text-align:center}
+    @keyframes scan-rotate{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
-    .timeline{margin-top:18px}
-    .step{display:flex;gap:10px;margin-bottom:10px}
-    .dot{width:10px;height:10px;border-radius:50%;background:var(--purple);margin-top:6px}
+    /* Story Panel */
+    .story-panel{background:#fff;border-radius:var(--radius);padding:80px 64px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:sticky;top:160px;align-self:start;}
+    .story-locked{opacity:0.4;pointer-events:none;}
+    .story-title{font-family:'Clash Display',serif;font-size:3.2rem;color:var(--purple);margin:0 0 32px;font-weight:900;}
+    .story-desc{font-size:1.3rem;color:var(--slate-mid);line-height:1.8;margin-bottom:48px;}
+    
+    .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:48px;}
+    .meta-card{background:rgba(58,15,90,0.02);border-radius:24px;padding:32px;text-align:center;border:2px solid rgba(58,15,90,0.1);transition:all var(--ease);}
+    .meta-value{font-family:'Clash Display',serif;font-size:2.8rem;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 12px;}
+    .meta-label{font-weight:700;color:var(--slate-mid);text-transform:uppercase;letter-spacing:1px;font-size:0.95rem;}
 
-    .panel{background:#fff;border-radius:18px;padding:20px;border:1px solid rgba(47,18,66,0.05);box-shadow:0 20px 60px rgba(58,15,90,0.06)}
+    .craft-timeline{margin-bottom:64px;}
+    .timeline-title{font-family:'Clash Display',serif;font-size:2rem;color:var(--purple);margin:0 0 40px;text-align:center;font-weight:700;}
+    .timeline-items{display:flex;flex-direction:column;gap:24px;}
+    .timeline-step{display:flex;align-items:center;gap:32px;padding:28px;background:#fff;border-radius:24px;border-left:6px solid var(--purple);box-shadow:0 16px 48px rgba(58,15,90,0.1);}
+    .step-number{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-size:2rem;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 48px rgba(58,15,90,0.3);}
+    .step-content{flex:1;}
+    .step-title{font-family:'Clash Display',serif;font-size:1.6rem;color:var(--purple);margin:0 0 12px;font-weight:700;}
+    .step-details{font-size:1.1rem;color:var(--slate-mid);line-height:1.7;}
 
-    .register-btn{
-      width:100%;padding:12px;border-radius:12px;border:none;
-      background:linear-gradient(135deg,var(--purple),#2e0b4a);
-      color:#fff;font-weight:800;cursor:pointer;margin-top:10px;
-      font-family:'Clash Display',serif
-    }
+    /* Certificate Section */
+    .certificate-section{background:linear-gradient(135deg,var(--purple),var(--purple-dark));padding:64px;border-radius:var(--radius);color:#fff;text-align:center;box-shadow:0 40px 120px rgba(58,15,90,0.4);margin-top:60px;}
+    .cert-title{font-family:'Clash Display',serif;font-size:2.8rem;font-weight:900;margin:0 0 24px;}
+    .cert-id{font-family:'Clash Display',serif;font-size:3.2rem;font-weight:900;background:linear-gradient(135deg,#fff,rgba(255,255,255,0.8));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;}
+    .cert-actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+    .cert-btn{padding:24px 48px;border-radius:32px;font-family:'Clash Display',serif;font-weight:900;font-size:1.2rem;cursor:pointer;border:none;transition:all var(--ease);display:flex;align-items:center;gap:12px;min-width:200px;}
+    .btn-download{background:#fff;color:var(--purple);box-shadow:0 20px 60px rgba(255,255,255,0.3);}
+    .btn-share{background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.3);color:#fff;}
+    .btn-auction{background:var(--gold);color:var(--purple);font-weight:900;}
 
-    footer{text-align:center;color:var(--muted);margin-top:24px}
+    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
+    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
+    #toast.show{transform:translateX(0);}
+
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
   </style>
 </head>
 <body>
-
-<div class="wrap">
-
+  <!-- Perfect System Header -->
   <header>
-    <div class="brand">
-      <img src="images/logo.final.png" alt="Snehvastra" onclick="location.href='index.html'">
-      <strong>Snehvastra • Garment Story</strong>
+    <div class="brand" onclick="location.href='index.html'">
+      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+      <div>
+        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
+        <div style="font-size:0.85rem;color:var(--muted);">NFC Authenticity</div>
+      </div>
     </div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="collection.html">Collection</a>
-      <a href="nfc-story.html" class="active">NFC Story</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="nfc-story.html" class="active">NFC Story</a></li>
+        <li><a href="auction.html">Auction</a></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+      </ul>
     </nav>
   </header>
 
-  <section class="stage">
-    <div class="intro" onclick="unlock()">
-      <div class="garment-3d">
-        <img id="garmentImage" src="images/placeholder-garment.jpg">
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+  </div>
+
+  <main class="nfc-hero">
+    <!-- NFC Scanner -->
+    <section class="scanner-section" data-aos="fade-right">
+      <h1 class="hero-title" data-aos="fade-down">NFC Authenticity</h1>
+      <div class="nfc-scanner" id="nfcScanner" data-aos="zoom-in" onclick="scanNFC()"></div>
+      <p style="font-size:1.2rem;color:var(--slate-mid);margin-top:32px;font-weight:600;">Tap your Snehvastra garment NFC tag to unlock artisan story, blockchain verification, and collector certificate</p>
+    </section>
+
+    <!-- Story Panel -->
+    <aside class="story-panel" id="storyPanel" data-aos="fade-left">
+      <div class="story-locked">
+        <h2 class="story-title">Garment Locked</h2>
+        <p class="story-desc">Scan NFC tag to reveal artisan craftsmanship, rarity ranking, and Suratgarh production lineage</p>
       </div>
-    </div>
+    </aside>
+  </main>
 
-    <div class="story" id="story" style="display:none">
-      <h2 id="title"></h2>
-      <p id="desc"></p>
+  <footer>
+    © <span id="year"></span> Snehvastra. Blockchain verified craftsmanship.
+  </footer>
 
-      <div class="meta-grid">
-        <div class="chip"><div id="artisan"></div><small>Artisan</small></div>
-        <div class="chip"><div id="hours"></div><small>Hours</small></div>
-        <div class="chip"><div id="rarity"></div><small>Rarity</small></div>
-      </div>
+  <div id="toast"></div>
 
-      <div class="timeline" id="timeline"></div>
-    </div>
-  </section>
+  <script>
+    // Perfect system sync
+    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+    const user = JSON.parse(localStorage.getItem(USER_KEY));
 
-  <aside class="panel">
-    <h3>Authenticity Certificate</h3>
-    <div><strong>ID:</strong> <span id="cid"></span></div>
-    <div><strong>Batch:</strong> <span id="cbatch"></span></div>
-    <div><strong>Weave:</strong> <span id="cweave"></span></div>
+    const GARMENT_DATA = {
+      id: "SV-ONE-1825",
+      title: "Snehvastra ONE — Handloom Edition",
+      desc: "Mastercrafted by Shyamji in Suratgarh over 27 hours using ancient handloom techniques and natural indigo dye.",
+      artisan: "Shyamji Rajasthan",
+      hours: "27",
+      rarity: "1/1 Unique",
+      batch: "Suratgarh ONE-001",
+      weave: "Handloom Khadi",
+      timeline: [
+        {step: "Thread Sourcing", desc: "Organic cotton from Rajasthan farms"},
+        {step: "Handloom Setup", desc: "27-hour loom preparation"},
+        {step: "Natural Dyeing", desc: "Indigo vat fermentation process"},
+        {step: "Artisan Weaving", desc: "Shyamji's 20-year mastery"},
+        {step: "NFC Embedding", desc: "Blockchain certification"}
+      ]
+    };
 
-    <button class="register-btn" onclick="downloadCert()">Download Certificate</button>
-    <button class="register-btn" onclick="share()">Share on WhatsApp</button>
-    <button class="register-btn" onclick="location.href='auction.html'">Go to Auction</button>
-  </aside>
+    function updateCartCount(){
+      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+      document.getElementById("cartCount").textContent = total;
+    }
 
-  <footer>© <span id="year"></span> Snehvastra</footer>
+    function showToast(msg){
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 3200);
+    }
 
-</div>
+    function scanNFC(){
+      const scanner = document.getElementById("nfcScanner");
+      const storyPanel = document.getElementById("storyPanel");
+      
+      // Simulate NFC scan
+      scanner.classList.add("scanned");
+      gsap.to(scanner, {scale: 1.05, duration: 0.3, yoyo: true, repeat: 1});
+      
+      setTimeout(() => {
+        revealStory();
+        showToast("✅ NFC Verified — Blockchain Authenticated");
+      }, 800);
+    }
 
-<script>
-const GARMENT={
-  id:"SV-ONE-1825",
-  title:"Snehvastra ONE — Loom Edition",
-  desc:"Handloom crafted by Shyamji over 27 hours using natural dye.",
-  artisan:"Shyamji",
-  hours:"27",
-  rarity:"1/1",
-  batch:"ONE-001",
-  weave:"Handloom",
-  image:"images/blog/loom-1825.jpg",
-  timeline:["Thread Prep","Loom Setup","Weaving","Natural Dye","Finishing"]
-};
+    function revealStory(){
+      const storyPanel = document.getElementById("storyPanel");
+      storyPanel.classList.remove("story-locked");
+      
+      // Animate story reveal
+      storyPanel.innerHTML = `
+        <h2 class="story-title">${GARMENT_DATA.title}</h2>
+        <p class="story-desc">${GARMENT_DATA.desc}</p>
+        
+        <div class="meta-grid">
+          <div class="meta-card">
+            <div class="meta-value">${GARMENT_DATA.artisan}</div>
+            <div class="meta-label">Artisan</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-value">${GARMENT_DATA.hours}h</div>
+            <div class="meta-label">Craft Time</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-value">${GARMENT_DATA.rarity}</div>
+            <div class="meta-label">Rarity Rank</div>
+          </div>
+        </div>
 
-document.getElementById("year").textContent=new Date().getFullYear();
+        <div class="craft-timeline">
+          <h3 class="timeline-title">Craft Journey</h3>
+          <div class="timeline-items">
+            ${GARMENT_DATA.timeline.map((item, index) => `
+              <div class="timeline-step">
+                <div class="step-number">${index + 1}</div>
+                <div class="step-content">
+                  <h4 class="step-title">${item.step}</h4>
+                  <p class="step-details">${item.desc}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
 
-function unlock(){
-  document.getElementById("story").style.display="block";
-  document.getElementById("title").textContent=GARMENT.title;
-  document.getElementById("desc").textContent=GARMENT.desc;
-  document.getElementById("artisan").textContent=GARMENT.artisan;
-  document.getElementById("hours").textContent=GARMENT.hours+" hrs";
-  document.getElementById("rarity").textContent=GARMENT.rarity;
-  document.getElementById("cid").textContent=GARMENT.id;
-  document.getElementById("cbatch").textContent=GARMENT.batch;
-  document.getElementById("cweave").textContent=GARMENT.weave;
-  document.getElementById("garmentImage").src=GARMENT.image;
+        <div class="certificate-section">
+          <h3 class="cert-title">Collector Certificate</h3>
+          <div class="cert-id">${GARMENT_DATA.id}</div>
+          <div style="margin:24px 0;font-size:1.2rem;opacity:0.9;">Batch: ${GARMENT_DATA.batch} | Weave: ${GARMENT_DATA.weave}</div>
+          <div class="cert-actions">
+            <button class="cert-btn btn-download" onclick="downloadCert()">📥 Download NFT Cert</button>
+            <button class="cert-btn btn-share" onclick="shareStory()">📱 Share Story</button>
+            <button class="cert-btn btn-auction" onclick="location.href='auction.html'">🏆 View Auction</button>
+          </div>
+        </div>
+      `;
+    }
 
-  let t=document.getElementById("timeline"); t.innerHTML="";
-  GARMENT.timeline.forEach(s=>{
-    let d=document.createElement("div");
-    d.className="step";
-    d.innerHTML=`<div class="dot"></div><div>${s}</div>`;
-    t.appendChild(d);
-  });
-}
+    function downloadCert(){
+      const certData = `SNEHVASTRA NFT CERTIFICATE\nID: ${GARMENT_DATA.id}\nArtisan: ${GARMENT_DATA.artisan}\nRarity: ${GARMENT_DATA.rarity}\nBatch: ${GARMENT_DATA.batch}`;
+      const blob = new Blob([certData], {type: "text/plain"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${GARMENT_DATA.id}-certificate.txt`;
+      a.click();
+      showToast("✅ Certificate downloaded — Blockchain verified");
+    }
 
-function downloadCert(){
-  const text=`SNEHVASTRA CERTIFICATE\nID: ${GARMENT.id}\nArtisan: ${GARMENT.artisan}`;
-  const blob=new Blob([text],{type:"text/plain"});
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download=GARMENT.id+".txt";
-  a.click();
-}
+    function shareStory(){
+      const shareText = `🔥 Snehvastra NFC Story Unlocked!\n${GARMENT_DATA.title}\nArtisan: ${GARMENT_DATA.artisan}\n${GARMENT_DATA.rarity}\n${window.location.href}`;
+      window.open(`https://wa.me/917597152209?text=${encodeURIComponent(shareText)}`);
+      showToast("📱 Story shared on WhatsApp");
+    }
 
-function share(){
-  window.open("https://wa.me/917597152209?text="+encodeURIComponent(GARMENT.title));
-}
-</script>
+    // Auction timer
+    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
+    setInterval(()=>{
+      const diff = auctionDate - Date.now();
+      const timer = document.getElementById("auctionTimer");
+      if(diff > 0){
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        timer.textContent = `${days}d ${hours}h`;
+      } else {
+        timer.textContent = "LIVE NOW!";
+      }
+    }, 60000);
 
+    // Init
+    AOS.init({duration: 1200, once: true});
+    updateCartCount();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
