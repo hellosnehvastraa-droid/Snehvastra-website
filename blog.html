@@ -4,590 +4,241 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="theme-color" content="#3A0F5A"/>
-  <title>Blog — Snehvastra</title>
-  <meta name="description" content="Snehvastra craftsmanship stories, drop insights, and fashion culture."/>
+  <title>Stories — Snehvastra</title>
+  <meta name="description" content="Snehvastra studio chronicles, NFC craft stories, artisan lineages, collector-exclusive craftsmanship narratives."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A;
-      --purple-dark:#2e0b4a;
-      --slate:#22232A;
-      --slate-mid:#3B3D45;
-      --muted:#C7C6C8;
-      --paper:#F6F6F6;
-      --radius:16px;
-      --ease:.35s;
-      --max-width:1200px;
+      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --gold:#F59E0B;
+      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
+      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      --max-width:1400px;
     }
-
     *{box-sizing:border-box;}
-    body{
-      margin:0;
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,var(--paper),#FBFAF8);
-      color:var(--slate);
-      overflow-x:hidden;
-      line-height:1.6;
-    }
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;line-height:1.7;}
 
-    /* ✅ FULL HEADER SYSTEM */
-    header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background:rgba(255,255,255,0.96);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(183,185,189,0.12);
-    }
+    /* Perfect System Header */
+    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
+    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
+    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
+    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:14px 5%;
-      max-width:var(--max-width);
-      margin:0 auto;
-      flex-wrap:wrap;
-    }
+    /* Enhanced Auction Banner */
+    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
+    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
 
-    .brand{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-shrink:0;
-      cursor:pointer;
-    }
-    .brand img{
-      height:42px;
-      border-radius:10px;
-    }
-    .brand h1{
-      font-family:'Clash Display',serif;
-      margin:0;
-      font-size:1.1rem;
-      color:var(--purple);
-    }
-    .brand-subtitle{
-      font-size:0.8rem;
-      color:var(--muted);
-      font-weight:500;
-    }
+    /* Hero */
+    .hero{max-width:var(--max-width);margin:140px auto 80px;padding:0 5%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:var(--radius);padding:120px 80px;text-align:center;color:#fff;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(5rem,12vw,8rem);margin:0 0 32px;position:relative;z-index:1;font-weight:900;line-height:1;}
+    .hero-subtitle{font-size:1.6rem;max-width:900px;margin:0 auto 48px;position:relative;z-index:1;opacity:0.95;line-height:1.7;}
+    .story-stats{display:flex;justify-content:center;gap:64px;margin-top:64px;flex-wrap:wrap;}
+    .stat{background:var(--glass);padding:32px 48px;border-radius:32px;font-weight:900;color:var(--purple);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.2);min-width:180px;text-align:center;}
 
-    .mobile-hamburger{
-      display:none;
-      flex-direction:column;
-      gap:4px;
-      padding:6px;
-      background:none;
-      border:none;
-      cursor:pointer;
-      z-index:200;
-    }
-    .mobile-hamburger span{
-      width:24px;height:2px;background:var(--purple);border-radius:2px;transition:var(--ease);
-    }
+    /* Stories Grid */
+    .stories-grid{max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:64px;}
+    @media(max-width:1200px){.stories-grid{grid-template-columns:1fr;gap:48px;}}
 
-    nav{
-      width:100%;
-      overflow-x:auto;
-    }
-    nav ul{
-      display:flex;
-      gap:12px;
-      list-style:none;
-      margin:0;
-      padding:6px 0;
-      min-width:max-content;
-      align-items:center;
-    }
-    nav a{
-      text-decoration:none;
-      font-weight:600;
-      font-size:0.9rem;
-      padding:8px 14px;
-      border-radius:10px;
-      color:var(--muted);
-      transition:all var(--ease);
-      white-space:nowrap;
-    }
-    nav a:hover, nav a.active{
-      background:rgba(58,15,90,0.05);
-      color:var(--purple);
-    }
+    /* Featured Story */
+    .featured-story{background:#fff;border-radius:var(--radius);padding:80px;overflow:hidden;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);display:grid;grid-template-columns:1fr 520px;gap:80px;}
+    @media(max-width:1200px){.featured-story{grid-template-columns:1fr;gap:48px;}}
+    .featured-image{height:600px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);background:linear-gradient(135deg,rgba(58,15,90,0.08),rgba(58,15,90,0.03));display:flex;align-items:center;justify-content:center;font-size:12rem;border:1px solid rgba(58,15,90,0.1);}
+    .featured-content{padding:0;}
+    .featured-badge{background:linear-gradient(135deg,var(--gold),#D97706);color:var(--purple);padding:16px 32px;border-radius:999px;font-family:'Clash Display',serif;font-weight:900;font-size:1.1rem;display:inline-block;margin-bottom:48px;}
+    .featured-title{font-family:'Clash Display',serif;font-size:4.8rem;color:var(--purple);margin:0 0 48px;line-height:1.1;font-weight:900;}
+    .featured-excerpt{font-size:1.4rem;color:var(--slate-mid);line-height:1.9;margin-bottom:64px;max-width:700px;}
+    .read-more-btn{display:inline-flex;align-items:center;gap:20px;padding:24px 48px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border-radius:32px;font-family:'Clash Display',serif;font-weight:900;font-size:1.4rem;text-decoration:none;box-shadow:0 28px 90px rgba(58,15,90,0.45);transition:all var(--ease);}
+    .read-more-btn:hover{transform:translateY(-8px);box-shadow:0 40px 120px rgba(58,15,90,0.55);}
 
-    .account-area{display:flex;align-items:center;gap:10px;}
-    .user-badge{font-weight:700;color:var(--purple);font-size:0.9rem;}
-    .logout-btn{
-      border:none;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;padding:8px 14px;border-radius:12px;font-weight:700;cursor:pointer;
-    }
-    .cart-link{
-      position:relative;
-      display:flex;align-items:center;
-      text-decoration:none;
-      padding:8px 14px;
-      border-radius:12px;
-      font-weight:600;
-      color:var(--purple);
-      border:2px solid rgba(58,15,90,0.2);
-      transition:all var(--ease);
-    }
-    .cart-link:hover{
-      background:rgba(58,15,90,0.05);
-      transform:translateY(-1px);
-    }
-    .cart-badge{
-      position:absolute;top:-8px;right:-8px;
-      background:var(--purple);color:#fff;
-      width:20px;height:20px;border-radius:50%;
-      font-size:0.75rem;font-weight:700;
-      display:flex;align-items:center;justify-content:center;
-    }
+    /* Story Cards */
+    .story-card{background:#fff;border-radius:var(--radius);padding:64px;overflow:hidden;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);transition:all var(--ease);height:100%;display:flex;flex-direction:column;}
+    .story-card:hover{transform:translateY(-12px);box-shadow:0 60px 160px rgba(58,15,90,0.25);}
+    .story-image{height:320px;border-radius:var(--radius);overflow:hidden;margin:-64px -64px 48px;background:linear-gradient(135deg,rgba(58,15,90,0.06),rgba(58,15,90,0.02));display:flex;align-items:center;justify-content:center;font-size:6rem;border:1px solid rgba(58,15,90,0.08);}
+    .story-meta{display:flex;gap:24px;align-items:center;margin-bottom:24px;}
+    .meta-item{display:flex;align-items:center;gap:8px;color:var(--slate-mid);font-size:1rem;font-weight:600;}
+    .story-title{font-family:'Clash Display',serif;font-size:2.4rem;color:var(--purple);margin:0 0 24px;line-height:1.3;font-weight:900;}
+    .story-excerpt{font-size:1.2rem;color:var(--slate-mid);line-height:1.8;margin-bottom:48px;flex-grow:1;}
+    .story-link{display:inline-flex;align-items:center;gap:16px;color:var(--purple);font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;padding:20px 0;text-decoration:none;transition:all var(--ease);}
+    .story-link:hover{transform:translateX(12px);color:var(--purple-dark);}
 
-    @media (max-width: 920px){
-      .mobile-hamburger{display:flex;}
-      nav{display:none;}
-      .account-area{display:none;}
-    }
-
-    /* ✅ MOBILE DRAWER */
-    .mobile-drawer{
-      position:fixed;top:0;right:-100%;width:300px;height:100vh;
-      background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);
-      border-left:1px solid rgba(183,185,189,0.2);z-index:150;
-      padding:80px 24px 40px;transition:all var(--ease);overflow-y:auto;
-    }
-    .mobile-drawer.open{right:0;}
-    .drawer-overlay{
-      position:fixed;top:0;left:0;width:100vw;height:100vh;
-      background:rgba(0,0,0,0.4);z-index:140;opacity:0;visibility:hidden;
-      transition:all var(--ease);
-    }
-    .drawer-overlay.open{opacity:1;visibility:visible;}
-    .drawer-header{display:flex;justify-content:space-between;align-items:center;
-      margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid rgba(183,185,189,0.12);
-    }
-    .drawer-close{background:none;border:none;font-size:1.4rem;color:var(--slate);
-      cursor:pointer;padding:4px;
-    }
-    .primary-nav{list-style:none;margin:0 0 24px 0;padding:0;border-bottom:1px solid rgba(183,185,189,0.08);}
-    .primary-nav li{margin-bottom:4px;}
-    .primary-nav a{display:block;text-decoration:none;font-weight:700;font-size:1rem;
-      padding:14px 16px;border-radius:12px;color:var(--purple);transition:all var(--ease);
-      border-left:3px solid transparent;
-    }
-    .primary-nav a:hover,.primary-nav a.active{background:rgba(58,15,90,0.08);border-left-color:var(--purple);}
-
-    /* ✅ BLOG PAGE */
-    .page{
-      max-width:var(--max-width);
-      margin:120px auto 80px;
-      padding:0 5%;
-    }
-
-    .hero{
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      border-radius:var(--radius);
-      padding:80px 60px;
-      text-align:center;
-      color:#fff;
-      margin-bottom:60px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:'';
-      position:absolute;top:0;left:0;right:0;bottom:0;
-      background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    }
-    .hero h1{
-      font-family:'Clash Display',serif;
-      font-size:clamp(2.8rem,7vw,4.2rem);
-      margin:0 0 24px;
-      position:relative;z-index:1;
-      font-weight:700;
-    }
-    .hero p{
-      font-size:1.2rem;
-      max-width:700px;
-      margin:0 auto 32px;
-      position:relative;z-index:1;
-      opacity:0.95;
-    }
-
-    .section-title{
-      font-family:'Clash Display',serif;
-      font-size:2.2rem;
-      color:var(--purple);
-      margin:0 0 48px;
-      text-align:center;
-    }
-
-    .featured-grid{
-      display:grid;
-      grid-template-columns:1fr 400px;
-      gap:48px;
-      margin-bottom:64px;
-    }
-    @media(max-width:1100px){
-      .featured-grid{grid-template-columns:1fr;gap:32px;}
-    }
-
-    .featured-card{
-      background:#fff;
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:0 40px 120px rgba(58,15,90,0.12);
-      border:1px solid rgba(183,185,189,0.12);
-      transition:all var(--ease);
-    }
-    .featured-card:hover{transform:translateY(-8px);}
-    .featured-image{
-      height:480px;
-      background:linear-gradient(135deg,rgba(58,15,90,0.08),rgba(58,15,90,0.03));
-      display:flex;align-items:center;justify-content:center;
-      font-size:6rem;
-      position:relative;
-    }
-    .featured-content{
-      padding:48px;
-    }
-    .featured-title{
-      font-family:'Clash Display',serif;
-      font-size:2.4rem;
-      color:var(--purple);
-      margin:0 0 24px;
-      line-height:1.2;
-    }
-    .featured-excerpt{
-      color:var(--slate-mid);
-      font-size:1.1rem;
-      line-height:1.7;
-      margin-bottom:32px;
-    }
-    .read-more{
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
-      padding:16px 28px;
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;
-      border-radius:12px;
-      font-weight:700;
-      text-decoration:none;
-      transition:all var(--ease);
-    }
-    .read-more:hover{
-      transform:translateY(-2px);
-      box-shadow:0 20px 60px rgba(58,15,90,0.3);
-    }
-
-    .blog-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
-      gap:32px;
-    }
-    @media(max-width:768px){
-      .blog-grid{grid-template-columns:1fr;}
-    }
-
-    .blog-card{
-      background:#fff;
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:0 24px 80px rgba(58,15,90,0.1);
-      border:1px solid rgba(183,185,189,0.12);
-      transition:all var(--ease);
-      height:100%;
-    }
-    .blog-card:hover{transform:translateY(-6px);}
-    .blog-image{
-      height:280px;
-      background:linear-gradient(135deg,rgba(58,15,90,0.06),rgba(58,15,90,0.02));
-      display:flex;align-items:center;justify-content:center;
-      font-size:4rem;
-    }
-    .blog-content{
-      padding:32px;
-    }
-    .blog-title{
-      font-family:'Clash Display',serif;
-      font-size:1.6rem;
-      color:var(--purple);
-      margin:0 0 16px;
-      font-weight:700;
-      line-height:1.3;
-    }
-    .blog-link{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:var(--purple);
-      font-weight:600;
-      font-size:0.95rem;
-      padding:12px 0;
-      border-bottom:2px solid transparent;
-      transition:all var(--ease);
-    }
-    .blog-link:hover{
-      border-color:var(--purple);
-      transform:translateX(4px);
-    }
-
-    footer{
-      padding:80px 5% 40px;text-align:center;color:var(--muted);
-      border-top:1px solid rgba(183,185,189,0.12);
-      font-size:0.9rem;
-    }
-
-    #toast{
-      position:fixed;top:24px;right:24px;
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;padding:16px 24px;border-radius:14px;
-      box-shadow:0 20px 50px rgba(0,0,0,0.25);
-      font-size:0.95rem;font-weight:600;
-      transform:translateX(400px);transition:all var(--ease);
-      z-index:300;max-width:360px;
-    }
+    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
+    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
     #toast.show{transform:translateX(0);}
+
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
   </style>
 </head>
-
 <body>
-<!-- ✅ FULL HEADER SYSTEM -->
-<header>
-  <div class="topbar">
+  <!-- Perfect System Header -->
+  <header>
     <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png"/>
+      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
       <div>
-        <h1>Snehvastra</h1>
-        <div class="brand-subtitle">Stories & Craft</div>
+        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
+        <div style="font-size:0.85rem;color:var(--muted);">Studio Stories</div>
       </div>
     </div>
-
-    <button class="mobile-hamburger" id="mobileHamburger">
-      <span></span><span></span><span></span>
-    </button>
-
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="blog.html" class="active">Stories</a></li>
         <li><a href="auction.html">Auction</a></li>
-        <li><a href="order-history.html">Orders</a></li>
-        <li id="cartLink"></li>
+        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
         <li id="authArea"></li>
       </ul>
     </nav>
+  </header>
+
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
-</header>
 
-<!-- ✅ MOBILE DRAWER -->
-<div class="drawer-overlay" id="drawerOverlay"></div>
-<div class="mobile-drawer" id="mobileDrawer">
-  <div class="drawer-header">
-    <div class="brand" style="gap:8px;">
-      <img src="images/logo.final.png" style="height:36px;"/>
-      <div>
-        <h1 style="font-size:1rem;margin:0;">Snehvastra</h1>
-        <div style="font-size:0.75rem;color:var(--muted);">Stories</div>
-      </div>
-    </div>
-    <button class="drawer-close" id="drawerClose">&times;</button>
-  </div>
-  
-  <ul class="primary-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="collection.html">Collection</a></li>
-    <li><a href="blog.html" class="active">Blog</a></li>
-    <li><a href="auction.html">Auction</a></li>
-    <li><a href="order-history.html">Orders</a></li>
-  </ul>
-
-  <div id="mobileCartLink"></div>
-  <div id="mobileAuthArea" class="drawer-section"></div>
-</div>
-
-<main class="page">
-  <!-- ✅ HERO -->
-  <section class="hero">
-    <h1>Stories From The Studio</h1>
-    <p>Craftsmanship notes, drop breakdowns, and the heritage behind Snehvastra's new gen luxury streetwear.</p>
-  </section>
-
-  <!-- ✅ FEATURED POST -->
-  <section>
-    <div class="featured-grid">
-      <div class="featured-card">
-        <div class="featured-image">🧵</div>
-        <div class="featured-content">
-          <h2 class="featured-title">The 200-Year Loom Still Running</h2>
-          <p class="featured-excerpt">
-            Seven generations of textile mastery. One living archive of handwoven memory that powers every Snehvastra piece.
-          </p>
-          <a href="blog-single.html?slug=loom" class="read-more">Read Full Story →</a>
+  <main class="page">
+    <!-- Hero -->
+    <section class="hero" data-aos="zoom-in">
+      <h1 class="hero-title">Studio Stories</h1>
+      <p class="hero-subtitle">Snehvastra artisan chronicles, NFC craft lineages, 200-year loom legacies, collector-exclusive craftsmanship narratives.</p>
+      <div class="story-stats">
+        <div class="stat" data-aos="fade-up" data-aos-delay="100">
+          <div style="font-size:3.6rem;color:var(--purple);">12</div>
+          <div>Stories</div>
+        </div>
+        <div class="stat" data-aos="fade-up" data-aos-delay="200">
+          <div style="font-size:3.6rem;color:var(--purple);">7</div>
+          <div>Artisans</div>
+        </div>
+        <div class="stat" data-aos="fade-up" data-aos-delay="300">
+          <div style="font-size:3.6rem;color:var(--success);">✓</div>
+          <div>NFC Tracked</div>
         </div>
       </div>
+    </section>
+
+    <!-- Featured Story -->
+    <section class="featured-story" data-aos="fade-up">
+      <div class="featured-image">🧵</div>
+      <div class="featured-content">
+        <div class="featured-badge">Featured Story</div>
+        <h2 class="featured-title">The 200-Year Loom Still Running</h2>
+        <p class="featured-excerpt">Seven generations unbroken. Snehvastra studio uncovers a living archive: the 1825 handloom weaving Snehvastra's signature textures. 27 hours per piece. NFC lineage verified.</p>
+        <a href="blog-single.html" class="read-more-btn">Read Full Chronicle →</a>
+      </div>
+    </section>
+
+    <div class="stories-grid">
+      <!-- Story Cards -->
+      <article class="story-card" data-aos="fade-up">
+        <div class="story-image">🌿</div>
+        <div class="story-meta">
+          <div class="meta-item">📅 Dec 20</div>
+          <div class="meta-item">👤 Dye Master</div>
+          <div class="meta-item">⏱️ 6 min</div>
+        </div>
+        <h3 class="story-title">Natural Dyes From Forgotten Forests</h3>
+        <p class="story-excerpt">Snehvastra artisans extract impossible colors from indigenous plants extinct in commercial cultivation. NFC traces every batch to source tree.</p>
+        <a href="blog-single.html?dyes" class="story-link">Read Story →</a>
+      </article>
+
+      <article class="story-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="story-image">👑</div>
+        <div class="story-meta">
+          <div class="meta-item">📅 Dec 22</div>
+          <div class="meta-item">👤 Studio Lead</div>
+          <div class="meta-item">⏱️ 8 min</div>
+        </div>
+        <h3 class="story-title">Snehvastra ONE: Auction Origin</h3>
+        <p class="story-excerpt">The 1/1 collector piece journey—from raw Snehvastra cotton to NFC-embedded heritage masterpiece. Live auction December 24th.</p>
+        <a href="blog-single.html?auction" class="story-link">Read Story →</a>
+      </article>
+
+      <article class="story-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="story-image">⚡</div>
+        <div class="story-meta">
+          <div class="meta-item">📅 Dec 18</div>
+          <div class="meta-item">👤 Operations</div>
+          <div class="meta-item">⏱️ 4 min</div>
+        </div>
+        <h3 class="story-title">Drop Model Deep Dive</h3>
+        <p class="story-excerpt">Why Snehvastra releases operate on limited drops. Scarcity economics, artisan preservation, collector value creation explained.</p>
+        <a href="blog-single.html?drop" class="story-link">Read Story →</a>
+      </article>
+
+      <article class="story-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="story-image">🔒</div>
+        <div class="story-meta">
+          <div class="meta-item">📅 Dec 15</div>
+          <div class="meta-item">👤 Tech Lead</div>
+          <div class="meta-item">⏱️ 7 min</div>
+        </div>
+        <h3 class="story-title">NFC Authentication System</h3>
+        <p class="story-excerpt">How every Snehvastra garment carries embedded lineage. From Snehvastra loom to collector verification. Full tech breakdown.</p>
+        <a href="blog-single.html?nfc" class="story-link">Read Story →</a>
+      </article>
     </div>
-  </section>
+  </main>
 
-  <!-- ✅ LATEST STORIES -->
-  <section>
-    <h2 class="section-title">Latest Stories</h2>
-    <div class="blog-grid">
-      <article class="blog-card">
-        <div class="blog-image">🌿</div>
-        <div class="blog-content">
-          <h3 class="blog-title">Natural Dyes From Forgotten Forests</h3>
-          <a href="blog-single.html?slug=dyes" class="blog-link">Read Story →</a>
-        </div>
-      </article>
+  <footer>
+    © <span id="year"></span> Snehvastra. Snehvastra Studio Chronicles • NFC Craft Verified.
+  </footer>
 
-      <article class="blog-card">
-        <div class="blog-image">👑</div>
-        <div class="blog-content">
-          <h3 class="blog-title">ONE Auction: The Making Of</h3>
-          <a href="blog-single.html?slug=auction" class="blog-link">Read Story →</a>
-        </div>
-      </article>
+  <div id="toast"></div>
 
-      <article class="blog-card">
-        <div class="blog-image">⚡</div>
-        <div class="blog-content">
-          <h3 class="blog-title">Drop Model Explained</h3>
-          <a href="blog-single.html?slug=drop" class="blog-link">Read Story →</a>
-        </div>
-      </article>
+  <script>
+    // Perfect system sync
+    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
+    const user = JSON.parse(localStorage.getItem(USER_KEY));
 
-      <article class="blog-card">
-        <div class="blog-image">🪡</div>
-        <div class="blog-content">
-          <h3 class="blog-title">NFC Authentication Deep Dive</h3>
-          <a href="blog-single.html?slug=nfc" class="blog-link">Read Story →</a>
-        </div>
-      </article>
-    </div>
-  </section>
-</main>
-
-<footer>
-  © <span id="year"></span> Snehvastra. Stories by the Studio.
-</footer>
-
-<div id="toast"></div>
-
-<script>
-  const USER_KEY = "snehvastra_user";
-  const CART_KEY = "snehvastra_cart";
-
-  let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-  let user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
-
-  function getCartCount(){
-    return Object.values(cart).reduce((sum, qty) => sum + (qty || 0), 0);
-  }
-
-  function renderAuth(){
-    const authArea = document.getElementById("authArea");
-    const mobileAuthArea = document.getElementById("mobileAuthArea");
-    
-    if(user && user.loggedIn){
-      authArea.innerHTML = `
-        <span class="user-badge">Hi, ${user.name}</span>
-        <button class="logout-btn" onclick="logout()">Logout</button>
-      `;
-      mobileAuthArea.innerHTML = `
-        <span style="font-size:0.9rem;color:var(--slate-mid);margin-bottom:16px;display:block;">Hi, ${user.name}</span>
-        <button class="logout-btn" onclick="logout()" style="width:100%;">Logout</button>
-      `;
-    } else {
-      authArea.innerHTML = `
-        <a href="user-login.html" style="margin-right:8px;">Login</a>
-        <a href="user-register.html">Join</a>
-      `;
-      mobileAuthArea.innerHTML = `
-        <a href="user-login.html" style="display:block;margin-bottom:12px;font-weight:700;">Login</a>
-        <a href="user-register.html" style="display:block;font-weight:700;">Join</a>
-      `;
-    }
-  }
-
-  function renderCart(){
-    const count = getCartCount();
-    const cartLink = document.getElementById("cartLink");
-    const mobileCartLink = document.getElementById("mobileCartLink");
-    
-    cartLink.innerHTML = `
-      <a href="cart.html" class="cart-link">
-        Cart <span class="cart-badge">${count || ''}</span>
-      </a>
-    `;
-    mobileCartLink.innerHTML = `
-      <a href="cart.html" class="cart-link" style="justify-content:center;margin:16px 0;padding:16px;">
-        Cart ${count ? `(${count})` : ''}
-      </a>
-    `;
-  }
-
-  window.logout = function(){
-    localStorage.removeItem(USER_KEY);
-    location.reload();
-  };
-
-  function showToast(msg){
-    const toast = document.getElementById("toast");
-    toast.textContent = msg;
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3000);
-  }
-
-  // ✅ MOBILE DRAWER
-  function initMobileDrawer(){
-    const hamburger = document.getElementById("mobileHamburger");
-    const drawer = document.getElementById("mobileDrawer");
-    const overlay = document.getElementById("drawerOverlay");
-    const closeBtn = document.getElementById("drawerClose");
-
-    function openDrawer(){
-      drawer.classList.add("open");
-      overlay.classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
-    function closeDrawer(){
-      drawer.classList.remove("open");
-      overlay.classList.remove("open");
-      document.body.style.overflow = "";
+    function renderAuth(){
+      const authArea = document.getElementById("authArea");
+      if(user && user.loggedIn){
+        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
+      } else {
+        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
+      }
     }
 
-    hamburger?.addEventListener("click", openDrawer);
-    closeBtn?.addEventListener("click", closeDrawer);
-    overlay?.addEventListener("click", closeDrawer);
-  }
+    function updateCartCount(){
+      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+      document.getElementById("cartCount").textContent = total || 0;
+    }
 
-  // ✅ ACTIVE NAV
-  function setActiveNav(){
-    const currentPath = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll("nav a, .primary-nav a").forEach(link => {
-      link.classList.toggle("active", link.getAttribute("href") === currentPath);
-    });
-  }
+    function showToast(msg){
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 3200);
+    }
 
-  // ✅ INIT
-  window.addEventListener("load", () => {
-    user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+    // Auction timer
+    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
+    setInterval(()=>{
+      const diff = auctionDate - Date.now();
+      const timer = document.getElementById("auctionTimer");
+      if(diff > 0){
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        timer.textContent = `${days}d ${hours}h`;
+      } else {
+        timer.textContent = "LIVE NOW!";
+      }
+    }, 60000);
+
+    // Init
+    AOS.init({duration: 1200, once: true});
     renderAuth();
-    renderCart();
-    initMobileDrawer();
-    setActiveNav();
+    updateCartCount();
     document.getElementById("year").textContent = new Date().getFullYear();
-  });
-</script>
-
+  </script>
 </body>
 </html>
