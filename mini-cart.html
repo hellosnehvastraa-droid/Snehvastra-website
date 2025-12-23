@@ -5,616 +5,299 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="theme-color" content="#3A0F5A"/>
   <title>Mini Cart — Snehvastra</title>
-  <meta name="description" content="Instant luxury preview of your Snehvastra cart."/>
+  <meta name="description" content="Live Suratgarh delivery calculator, NFC verified cart, auction items separated, instant checkout preview."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A;
-      --purple-dark:#2e0b4a;
-      --slate:#22232A;
-      --slate-mid:#3B3D45;
-      --muted:#C7C6C8;
-      --paper:#F6F6F6;
-      --radius:16px;
-      --ease:.35s;
-      --max-width:1200px;
+      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --warning:#F59E0B; --gold:#F59E0B;
+      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
+      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      --max-width:1400px;
     }
-
     *{box-sizing:border-box;}
-    body{
-      margin:0;
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(180deg,var(--paper),#FBFAF8);
-      color:var(--slate);
-      overflow-x:hidden;
-    }
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
 
-    /* ✅ FULL HEADER SYSTEM */
-    header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background:rgba(255,255,255,0.96);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(183,185,189,0.12);
-    }
+    /* Perfect System Header */
+    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
+    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
+    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
+    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:14px 5%;
-      max-width:var(--max-width);
-      margin:0 auto;
-      flex-wrap:wrap;
-    }
+    /* Enhanced Auction Banner */
+    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
+    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
 
-    .brand{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-shrink:0;
-    }
-    .brand img{
-      height:42px;
-      border-radius:10px;
-    }
-    .brand h1{
-      font-family:'Clash Display',serif;
-      margin:0;
-      font-size:1.1rem;
-      color:var(--purple);
-    }
+    /* Page Header */
+    .page-header{max-width:var(--max-width);margin:200px auto 80px;padding:0 5%;text-align:center;}
+    .page-title{font-family:'Clash Display',serif;font-size:clamp(4rem,10vw,6rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 24px;}
+    .page-subtitle{font-size:1.4rem;color:var(--slate-mid);max-width:700px;margin:0 auto 80px;line-height:1.8;}
 
-    .mobile-hamburger{
-      display:none;
-      flex-direction:column;
-      gap:4px;
-      padding:6px;
-      background:none;
-      border:none;
-      cursor:pointer;
-      z-index:200;
-    }
-    .mobile-hamburger span{
-      width:24px;height:2px;background:var(--purple);border-radius:2px;transition:var(--ease);
-    }
+    /* Elite Mini Cart */
+    .mini-cart-container{max-width:520px;margin:0 auto;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);overflow:hidden;}
+    .cart-header{background:linear-gradient(135deg,var(--purple),var(--purple-dark));padding:48px 40px;color:#fff;text-align:center;position:relative;overflow:hidden;}
+    .cart-header::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--success),var(--gold));}
+    .cart-title{font-family:'Clash Display',serif;font-size:2.8rem;font-weight:900;margin:0 0 12px;}
+    .cart-summary{display:flex;justify-content:space-between;font-size:1.1rem;opacity:0.95;}
 
-    nav{
-      width:100%;
-      overflow-x:auto;
-    }
-    nav ul{
-      display:flex;
-      gap:12px;
-      list-style:none;
-      margin:0;
-      padding:6px 0;
-      min-width:max-content;
-      align-items:center;
-    }
-    nav a{
-      text-decoration:none;
-      font-weight:600;
-      font-size:0.9rem;
-      padding:8px 14px;
-      border-radius:10px;
-      color:var(--muted);
-      transition:all var(--ease);
-      white-space:nowrap;
-    }
-    nav a:hover, nav a.active{
-      background:rgba(58,15,90,0.05);
-      color:var(--purple);
-    }
+    .cart-items{max-height:520px;overflow-y:auto;padding:48px;}
+    .cart-item{display:flex;gap:24px;align-items:center;background:rgba(58,15,90,0.02);border:2px solid rgba(58,15,90,0.08);border-radius:24px;padding:32px;margin-bottom:24px;transition:all var(--ease);}
+    .cart-item:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(58,15,90,0.2);}
+    .cart-item-image{width:96px;height:96px;border-radius:20px;object-fit:cover;border:2px solid rgba(58,15,90,0.15);box-shadow:0 12px 32px rgba(58,15,90,0.2);}
+    .cart-item-details{flex:1;}
+    .cart-item-name{font-family:'Clash Display',serif;font-size:1.4rem;font-weight:800;color:var(--purple);margin:0 0 8px;}
+    .cart-item-meta{font-size:1rem;color:var(--slate-mid);margin:0 0 16px;}
+    .cart-item-price{font-family:'Clash Display',serif;font-size:1.6rem;font-weight:900;color:var(--purple);}
+    .cart-item-remove{width:56px;height:56px;border-radius:50%;border:none;background:rgba(220,53,69,0.1);color:#dc3545;font-size:1.4rem;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--ease);}
+    .cart-item-remove:hover{background:rgba(220,53,69,0.2);transform:scale(1.1);}
 
-    .account-area{display:flex;align-items:center;gap:10px;}
-    .user-badge{font-weight:700;color:var(--purple);font-size:0.9rem;}
-    .logout-btn{
-      border:none;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;padding:8px 14px;border-radius:12px;font-weight:700;cursor:pointer;
-    }
+    /* Totals Section */
+    .totals-section{padding:0 48px 48px;border-top:2px solid rgba(58,15,90,0.1);}
+    .delivery-calculator{display:flex;gap:16px;align-items:center;margin-bottom:32px;padding:24px;background:rgba(16,185,129,0.05);border-radius:20px;border:2px solid rgba(16,185,129,0.2);}
+    .delivery-label{font-weight:700;color:var(--success);font-size:1.1rem;}
+    .delivery-select{padding:16px 20px;border:2px solid rgba(58,15,90,0.15);border-radius:16px;font-weight:600;background:#fff;}
+    .delivery-eta{font-family:'Clash Display',serif;font-size:1.6rem;font-weight:900;color:var(--success);margin-left:auto;}
+    
+    .total-line{display:flex;justify-content:space-between;padding:16px 0;font-size:1.1rem;}
+    .total-line strong{font-weight:700;color:var(--slate);}
+    .total-line.total{font-size:1.4rem;border-top:2px solid rgba(58,15,90,0.1);padding-top:24px;margin-top:16px;}
+    .total-amount{font-family:'Clash Display',serif;font-size:2.2rem;font-weight:900;color:var(--purple);}
 
-    /* ✅ MOBILE */
-    @media (max-width: 920px){
-      .mobile-hamburger{display:flex;}
-      nav{display:none;}
-      .account-area{display:none;}
-    }
+    /* Action Buttons */
+    .cart-actions{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 48px 48px;}
+    .cart-btn{padding:28px 40px;border:none;border-radius:24px;font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;cursor:pointer;transition:all var(--ease);display:flex;align-items:center;justify-content:center;gap:12px;height:80px;}
+    .btn-checkout{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;box-shadow:0 24px 80px rgba(58,15,90,0.4);}
+    .btn-checkout:hover{transform:translateY(-6px);box-shadow:0 36px 120px rgba(58,15,90,0.5);}
+    .btn-fullcart{background:#fff;color:var(--purple);border:3px solid rgba(58,15,90,0.2);box-shadow:0 16px 48px rgba(58,15,90,0.15);}
+    .btn-fullcart:hover{background:rgba(58,15,90,0.05);transform:translateY(-4px);}
 
-    /* ✅ MOBILE DRAWER */
-    .mobile-drawer{
-      position:fixed;top:0;right:-100%;width:300px;height:100vh;
-      background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);
-      border-left:1px solid rgba(183,185,189,0.2);z-index:150;
-      padding:80px 24px 40px;transition:all var(--ease);overflow-y:auto;
-    }
-    .mobile-drawer.open{right:0;}
-    .drawer-overlay{
-      position:fixed;top:0;left:0;width:100vw;height:100vh;
-      background:rgba(0,0,0,0.4);z-index:140;opacity:0;visibility:hidden;
-      transition:all var(--ease);
-    }
-    .drawer-overlay.open{opacity:1;visibility:visible;}
-    .drawer-header{display:flex;justify-content:space-between;align-items:center;
-      margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid rgba(183,185,189,0.12);
-    }
-    .drawer-close{background:none;border:none;font-size:1.4rem;color:var(--slate);
-      cursor:pointer;padding:4px;
-    }
-    .primary-nav{list-style:none;margin:0 0 24px 0;padding:0;border-bottom:1px solid rgba(183,185,189,0.08);}
-    .primary-nav li{margin-bottom:4px;}
-    .primary-nav a{display:block;text-decoration:none;font-weight:700;font-size:1rem;
-      padding:14px 16px;border-radius:12px;color:var(--purple);transition:all var(--ease);
-      border-left:3px solid transparent;
-    }
-    .primary-nav a:hover,.primary-nav a.active{background:rgba(58,15,90,0.08);border-left-color:var(--purple);}
+    .empty-state{text-align:center;padding:140px 80px;color:var(--slate-mid);}
+    .empty-state-icon{font-size:6rem;margin-bottom:32px;}
+    .empty-state-title{font-family:'Clash Display',serif;font-size:3.2rem;color:var(--slate);margin:0 0 24px;font-weight:900;}
+    .empty-state-subtitle{font-size:1.3rem;margin:0 0 48px;line-height:1.7;}
+    .btn-explore{padding:28px 56px;border-radius:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:1.4rem;cursor:pointer;border:none;box-shadow:0 24px 80px rgba(58,15,90,0.4);transition:all var(--ease);}
 
-    /* ✅ MINI CART PAGE */
-    .page{
-      max-width:var(--max-width);
-      margin:120px auto 80px;
-      padding:0 5%;
-    }
-
-    .page-header{
-      text-align:center;
-      margin-bottom:48px;
-    }
-    .page-title{
-      font-family:'Clash Display',serif;
-      font-size:clamp(2.2rem,6vw,2.8rem);
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      margin:0 0 16px;
-    }
-    .page-subtitle{
-      color:var(--slate-mid);
-      font-size:1.1rem;
-      max-width:520px;
-      margin:0 auto;
-      line-height:1.6;
-    }
-
-    /* ✅ MINI CART PANEL (FULL PAGE) */
-    .mini-cart-container{
-      max-width:420px;
-      margin:0 auto;
-      background:rgba(255,255,255,0.98);
-      backdrop-filter:blur(24px);
-      border-radius:var(--radius);
-      box-shadow:0 32px 100px rgba(58,15,90,0.2);
-      border:1px solid rgba(183,185,189,0.15);
-      overflow:hidden;
-    }
-
-    .mini-cart-header{
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      padding:24px;
-      color:#fff;
-      text-align:center;
-    }
-    .mini-cart-header h2{
-      font-family:'Clash Display',serif;
-      font-size:1.5rem;
-      margin:0;
-      font-weight:700;
-    }
-    .mini-cart-header p{
-      margin:4px 0 0;
-      opacity:0.9;
-      font-size:0.95rem;
-    }
-
-    .mini-cart-items{
-      max-height:400px;
-      overflow-y:auto;
-      padding:24px;
-    }
-
-    .cart-item{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      background:rgba(58,15,90,0.03);
-      border:1px solid rgba(58,15,90,0.08);
-      padding:20px;
-      border-radius:14px;
-      margin-bottom:16px;
-      transition:all var(--ease);
-    }
-    .cart-item:hover{
-      box-shadow:0 12px 32px rgba(58,15,90,0.15);
-      transform:translateY(-2px);
-    }
-
-    .cart-item-img{
-      width:64px;
-      height:64px;
-      border-radius:12px;
-      object-fit:cover;
-      border:1px solid rgba(58,15,90,0.12);
-    }
-
-    .cart-item-details{
-      flex:1;
-      min-width:0;
-    }
-    .cart-item-name{
-      font-weight:700;
-      font-size:1rem;
-      color:var(--slate);
-      margin:0 0 4px;
-      line-height:1.3;
-    }
-    .cart-item-price{
-      font-weight:700;
-      color:var(--purple);
-      font-size:1rem;
-      margin:0;
-    }
-
-    .cart-item-remove{
-      width:40px;
-      height:40px;
-      border-radius:50%;
-      border:none;
-      background:rgba(0,0,0,0.08);
-      color:var(--slate-mid);
-      font-size:1.3rem;
-      font-weight:700;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition:all var(--ease);
-    }
-    .cart-item-remove:hover{
-      background:rgba(220,53,69,0.15);
-      color:#dc3545;
-      transform:scale(1.1);
-    }
-
-    .mini-cart-total{
-      padding:24px;
-      text-align:center;
-      border-top:1px solid rgba(183,185,189,0.2);
-      background:#fafbff;
-    }
-    .mini-cart-total-label{
-      font-size:1.1rem;
-      font-weight:600;
-      color:var(--slate-mid);
-      margin:0 0 8px;
-    }
-    .mini-cart-total-amount{
-      font-family:'Clash Display',serif;
-      font-size:1.6rem;
-      font-weight:800;
-      color:var(--purple);
-      margin:0;
-    }
-
-    .mini-cart-actions{
-      padding:0 24px 24px;
-    }
-
-    .btn-primary,
-    .btn-secondary{
-      width:100%;
-      padding:18px 24px;
-      border:none;
-      border-radius:14px;
-      font-weight:700;
-      font-size:1rem;
-      cursor:pointer;
-      transition:all var(--ease);
-      margin-bottom:12px;
-    }
-    .btn-primary{
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;
-      box-shadow:0 16px 48px rgba(58,15,90,0.3);
-    }
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 24px 60px rgba(58,15,90,0.4);
-    }
-    .btn-secondary{
-      background:#fff;
-      color:var(--purple);
-      border:2px solid rgba(58,15,90,0.2);
-      font-weight:600;
-    }
-    .btn-secondary:hover{
-      background:rgba(58,15,90,0.05);
-    }
-
-    .empty-cart{
-      text-align:center;
-      padding:60px 24px;
-      color:var(--slate-mid);
-    }
-    .empty-cart h3{
-      font-family:'Clash Display',serif;
-      font-size:1.4rem;
-      color:var(--slate);
-      margin:0 0 12px;
-    }
-    .empty-cart p{
-      font-size:1rem;
-      margin:0 0 24px;
-    }
-    .empty-cart a{
-      color:var(--purple);
-      font-weight:700;
-      text-decoration:none;
-    }
-
-    footer{
-      padding:60px 5%;text-align:center;color:var(--muted);
-      border-top:1px solid rgba(183,185,189,0.12);
-      font-size:0.9rem;margin-top:40px;
-    }
-
-    #toast{
-      position:fixed;top:24px;right:24px;
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;padding:16px 24px;border-radius:14px;
-      box-shadow:0 20px 50px rgba(0,0,0,0.25);
-      font-size:0.95rem;font-weight:600;
-      transform:translateX(400px);transition:all var(--ease);
-      z-index:300;max-width:360px;
-    }
+    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
+    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
     #toast.show{transform:translateX(0);}
+
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
   </style>
 </head>
-
 <body>
-<!-- ✅ FULL HEADER SYSTEM -->
-<header>
-  <div class="topbar">
+  <!-- Perfect System Header -->
+  <header>
     <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png"/>
+      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
       <div>
-        <h1>Snehvastra</h1>
-        <div style="font-size:0.8rem;color:var(--muted)">New Gen Luxury Streetwear</div>
+        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
+        <div style="font-size:0.85rem;color:var(--muted);">Mini Cart</div>
       </div>
     </div>
-
-    <button class="mobile-hamburger" id="mobileHamburger">
-      <span></span><span></span><span></span>
-    </button>
-
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collection.html">Collection</a></li>
         <li><a href="auction.html">Auction</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
         <li><a href="cart.html" class="active">Cart (<span id="cartCount">0</span>)</a></li>
         <li id="authArea"></li>
       </ul>
     </nav>
-  </div>
-</header>
+  </header>
 
-<!-- ✅ MOBILE DRAWER -->
-<div class="drawer-overlay" id="drawerOverlay"></div>
-<div class="mobile-drawer" id="mobileDrawer">
-  <div class="drawer-header">
-    <div class="brand" style="gap:8px;">
-      <img src="images/logo.final.png" style="height:36px;"/>
-      <div>
-        <h1 style="font-size:1rem;margin:0;">Snehvastra</h1>
-        <div style="font-size:0.75rem;color:var(--muted);">New Gen Luxury</div>
-      </div>
-    </div>
-    <button class="drawer-close" id="drawerClose">&times;</button>
-  </div>
-  
-  <ul class="primary-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="collection.html">Collection</a></li>
-    <li><a href="auction.html">Auction</a></li>
-    <li><a href="wishlist.html">Wishlist</a></li>
-    <li><a href="cart.html" class="active">Cart (<span id="mobileCartCount">0</span>)</a></li>
-  </ul>
-
-  <div id="mobileAuthArea" class="drawer-section"></div>
-</div>
-
-<main class="page">
-  <div class="page-header">
-    <h1 class="page-title">Your Cart</h1>
-    <p class="page-subtitle">Quick preview of your selected pieces. NFC-authenticated luxury.</p>
+  <div class="auction-banner">
+    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
-  <div class="mini-cart-container" id="miniCartContainer">
-    <!-- Dynamic content -->
+  <section class="page-header">
+    <h1 class="page-title" data-aos="fade-down">Your Cart</h1>
+    <p class="page-subtitle" data-aos="fade-up" data-aos-delay="200">Live Suratgarh delivery calculator • NFC verified pieces • Collector pricing</p>
+  </section>
+
+  <div class="mini-cart-container" id="miniCartContainer" data-aos="fade-up">
+    <!-- Dynamic content loaded here -->
   </div>
-</main>
 
-<footer>
-  © <span id="year"></span> Snehvastra. All Rights Reserved.
-</footer>
+  <footer>
+    © <span id="year"></span> Snehvastra. Suratgarh 2-day delivery • NFC authenticated.
+  </footer>
 
-<div id="toast"></div>
+  <div id="toast"></div>
 
-<script>
-  const USER_KEY = "snehvastra_user";
-  const CART_KEY = "snehvastra_cart";
-  const PRODUCT_DB = {
-    "1": {name:"Streetwear Fusion Tee",price:4999,image:"images/products/tee.jpg"},
-    "2": {name:"Luxury Midnight Jacket",price:29999,image:"images/products/jacket.jpg"},
-    "3": {name:"Casual Cloud Hoodie",price:19999,image:"images/products/hoodie.jpg"},
-    "4": {name:"Tech Overshirt",price:49999,image:"images/products/overshirt.jpg"},
-    "one": {name:"Snehvastra ONE (Auction)",price:999999,image:"images/products/one.jpg"}
-  };
+  <script>
+    // Perfect system sync
+    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+    const user = JSON.parse(localStorage.getItem(USER_KEY));
 
-  // ✅ FULL SYSTEM INTEGRATION
-  let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-  const user = JSON.parse(localStorage.getItem(USER_KEY));
+    const PRODUCT_DB = {
+      "signature-tee-black": {name:"Signature Tee Matte Black",price:4999,image:"images/products/tee-black-1.jpg",nfc:true},
+      "cloud-hoodie-indigo": {name:"Cloud Hoodie Indigo",price:19999,image:"images/products/hoodie.jpg",nfc:true},
+      "snehvastra-one": {name:"Snehvastra ONE 1/1 Auction",price:125000,image:"images/products/one.jpg",nfc:true,auction:true}
+    };
 
-  const authArea = document.getElementById("authArea");
-  const mobileAuthArea = document.getElementById("mobileAuthArea");
-  const cartCountEl = document.getElementById("cartCount");
-  const mobileCartCountEl = document.getElementById("mobileCartCount");
-  const container = document.getElementById("miniCartContainer");
-  const toastEl = document.getElementById("toast");
-
-  function renderAuth(){
-    if(user && user.loggedIn){
-      authArea.innerHTML = `
-        <span class="user-badge">Hi, ${user.name}</span>
-        <button class="logout-btn" onclick="logout()">Logout</button>
-      `;
-    } else {
-      authArea.innerHTML = `<a href="user-login.html">Login</a><a href="user-register.html">Register</a>`;
-    }
-  }
-
-  function logout(){
-    localStorage.removeItem(USER_KEY);
-    location.reload();
-  }
-
-  function updateCartCount(){
-    const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-    cartCountEl.textContent = total;
-    if(mobileCartCountEl) mobileCartCountEl.textContent = total;
-  }
-
-  function money(n){
-    return "₹" + Number(n).toLocaleString("en-IN");
-  }
-
-  function renderMiniCart(){
-    const entries = Object.entries(cart).filter(([id,qty]) => qty > 0);
-    
-    if(entries.length === 0){
-      container.innerHTML = `
-        <div class="empty-cart">
-          <h3>Your cart is empty</h3>
-          <p>Discover exclusive drops and add premium pieces to your cart.</p>
-          <a href="collection.html">Explore Collection</a>
-        </div>
-      `;
-      return;
-    }
-
-    let totalPrice = 0;
-    let html = `
-      <div class="mini-cart-header">
-        <h2>Your Cart (${entries.length} items)</h2>
-        <p>Premium pieces • NFC authenticated</p>
-      </div>
-      <div class="mini-cart-items">`;
-
-    entries.forEach(([id,qty]) => {
-      const product = PRODUCT_DB[id];
-      if(product){
-        const lineTotal = product.price * qty;
-        totalPrice += lineTotal;
-        
-        html += `
-          <div class="cart-item" data-id="${id}">
-            <img src="${product.image}" alt="${product.name}" class="cart-item-img" onerror="this.src='images/logo.final.png'">
-            <div class="cart-item-details">
-              <div class="cart-item-name">${product.name}</div>
-              <div class="cart-item-price">${money(product.price)} × ${qty}</div>
-            </div>
-            <button class="cart-item-remove" aria-label="Remove ${product.name}">×</button>
-          </div>`;
+    function renderAuth(){
+      const authArea = document.getElementById("authArea");
+      if(user && user.loggedIn){
+        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
+      } else {
+        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
       }
-    });
+    }
 
-    html += `
+    function updateCartCount(){
+      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+      document.getElementById("cartCount").textContent = total;
+    }
+
+    function money(n){return "₹" + Math.round(Number(n)).toLocaleString("en-IN");}
+
+    function showToast(msg){
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 3200);
+    }
+
+    function renderMiniCart(){
+      const entries = Object.entries(cart).filter(([id,qty]) => qty > 0);
+      const container = document.getElementById("miniCartContainer");
+      
+      if(entries.length === 0){
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">🛒</div>
+            <h2 class="empty-state-title">Your Cart is Empty</h2>
+            <p class="empty-state-subtitle">Discover exclusive Suratgarh-crafted pieces with NFC authentication and collector pricing.</p>
+            <button class="btn-explore" onclick="location.href='collection.html'">Explore Collection</button>
+          </div>
+        `;
+        return;
+      }
+
+      let totalPrice = 0;
+      let auctionTotal = 0;
+      let standardTotal = 0;
+
+      let html = `
+        <div class="cart-header">
+          <h2 class="cart-title">Your Selection</h2>
+          <div class="cart-summary">
+            <span>${entries.length} Items</span>
+            <span id="suratgarhEta">Suratgarh: 2 days</span>
+          </div>
         </div>
-        <div class="mini-cart-total">
-          <div class="mini-cart-total-label">Total</div>
-          <div class="mini-cart-total-amount">${money(totalPrice)}</div>
+        <div class="cart-items">
+      `;
+
+      entries.forEach(([id,qty]) => {
+        const product = PRODUCT_DB[id];
+        if(product){
+          const lineTotal = product.price * qty;
+          totalPrice += lineTotal;
+          if(product.auction) auctionTotal += lineTotal;
+          else standardTotal += lineTotal;
+          
+          html += `
+            <div class="cart-item" data-id="${id}">
+              <img src="${product.image}" alt="${product.name}" class="cart-item-image" onerror="this.src='images/logo.final.png'">
+              <div class="cart-item-details">
+                <h4 class="cart-item-name">${product.name}</h4>
+                <p class="cart-item-meta">
+                  ${product.nfc ? '🔒 NFC Verified' : ''} 
+                  ${product.auction ? '🏆 Auction Piece' : 'Standard'}
+                </p>
+                <div class="cart-item-price">${money(product.price)} × ${qty}</div>
+              </div>
+              <button class="cart-item-remove" onclick="removeItem('${id}')">×</button>
+            </div>
+          `;
+        }
+      });
+
+      html += `
         </div>
-        <div class="mini-cart-actions">
-          <button class="btn-primary" onclick="location.href='checkout.html'">Proceed to Checkout</button>
-          <button class="btn-secondary" onclick="location.href='cart.html'">View Full Cart</button>
+        <div class="totals-section">
+          <div class="delivery-calculator">
+            <span class="delivery-label">🚚 Suratgarh Delivery</span>
+            <select class="delivery-select" onchange="updateEta()">
+              <option value="standard">Standard (2 days)</option>
+              <option value="express">Express (24hr)</option>
+            </select>
+            <span class="delivery-eta" id="deliveryEta">2 days</span>
+          </div>
+          <div class="total-line">
+            <span>Standard Items</span>
+            <span>${money(standardTotal)}</span>
+          </div>
+          ${auctionTotal > 0 ? `
+            <div class="total-line">
+              <span>Auction Pieces</span>
+              <span>${money(auctionTotal)}</span>
+            </div>
+          ` : ''}
+          <div class="total-line total">
+            <span><strong>Total</strong></span>
+            <span class="total-amount">${money(totalPrice)}</span>
+          </div>
+        </div>
+        <div class="cart-actions">
+          <button class="cart-btn btn-checkout" onclick="location.href='checkout.html'">
+            🛒 Secure Checkout
+          </button>
+          <button class="cart-btn btn-fullcart" onclick="location.href='cart.html'">
+            📋 Full Cart View
+          </button>
         </div>
       `;
-    
-    container.innerHTML = html;
-    
-    // Remove buttons
-    document.querySelectorAll(".cart-item-remove").forEach(btn => {
-      btn.onclick = () => {
-        const item = btn.closest(".cart-item");
-        const id = item.dataset.id;
-        delete cart[id];
-        localStorage.setItem(CART_KEY, JSON.stringify(cart));
-        updateCartCount();
-        renderMiniCart();
-        showToast("Item removed");
-      };
-    });
-  }
 
-  function showToast(msg){
-    toastEl.textContent = msg;
-    toastEl.classList.add("show");
-    setTimeout(() => toastEl.classList.remove("show"), 2500);
-  }
+      container.innerHTML = html;
+    }
 
-  // ✅ MOBILE DRAWER
-  const hamburger = document.getElementById("mobileHamburger");
-  const drawer = document.getElementById("mobileDrawer");
-  const overlay = document.getElementById("drawerOverlay");
-  const closeBtn = document.getElementById("drawerClose");
+    function removeItem(id){
+      delete cart[id];
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      updateCartCount();
+      renderMiniCart();
+      showToast("✅ Item removed from cart");
+      gsap.fromTo("#miniCartContainer", {scale: 1}, {scale: 0.98, duration: 0.2, yoyo: true, repeat: 1});
+    }
 
-  function openDrawer(){
-    drawer.classList.add("open");
-    overlay.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeDrawer(){
-    drawer.classList.remove("open");
-    overlay.classList.remove("open");
-    document.body.style.overflow = "";
-  }
+    function updateEta(){
+      const select = document.querySelector('.delivery-select');
+      const eta = select.value === 'express' ? '24hr' : '2 days';
+      document.getElementById('deliveryEta').textContent = eta;
+      document.getElementById('suratgarhEta').textContent = `Suratgarh: ${eta}`;
+    }
 
-  hamburger?.addEventListener("click", openDrawer);
-  closeBtn?.addEventListener("click", closeDrawer);
-  overlay?.addEventListener("click", closeDrawer);
+    // Auction timer
+    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
+    setInterval(()=>{
+      const diff = auctionDate - Date.now();
+      const timer = document.getElementById("auctionTimer");
+      if(diff > 0){
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        timer.textContent = `${days}d ${hours}h`;
+      } else {
+        timer.textContent = "LIVE NOW!";
+      }
+    }, 60000);
 
-  // ✅ ACTIVE NAV
-  function setActiveNav(){
-    const currentPath = window.location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll("nav a, .primary-nav a").forEach(link => {
-      link.classList.toggle("active", link.getAttribute("href") === currentPath);
-    });
-  }
-
-  // ✅ INIT
-  window.addEventListener("load", () => {
+    // Init
+    AOS.init({duration: 1200, once: true});
     renderAuth();
     updateCartCount();
     renderMiniCart();
-    setActiveNav();
     document.getElementById("year").textContent = new Date().getFullYear();
-  });
-
-  // Listen for cart changes
-  window.addEventListener("storage", () => {
-    cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-    updateCartCount();
-    renderMiniCart();
-  });
-</script>
-
+  </script>
 </body>
 </html>
