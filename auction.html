@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
   <meta name="theme-color" content="#2C1B4A"/>
   <title>SNEHVASTRA ONE — Live Auction</title>
   <meta name="description" content="Kota Studio 1/1 collector auction. Live NFC bidding."/>
@@ -12,119 +12,126 @@
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
       --amethyst:#2C1B4A; --amethyst-light:#4A377A; --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF;
-      --pearl:#F8F6F9; --sage:#A8B5A2; --shadow-soft:0 25px 100px rgba(44,27,74,0.12);
-      --radius:28px; --max-width:1200px; --ease:cubic-bezier(0.32,0.72,0,1);
+      --pearl:#F8F6F9; --sage:#A8B5A2; --shadow-soft:0 20px 60px rgba(44,27,74,0.15);
+      --radius:24px; --max-width:1200px; --ease:cubic-bezier(0.32,0.72,0,1);
     }
     *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.6;position:relative;min-height:100vh;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.6;position:relative;min-height:100vh;-webkit-text-size-adjust:100%;}
 
-    /* ✅ FIXED 64px MOBILE HEADER */
-    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,246,249,0.98);backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:16px 5%;}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:64px;max-width:var(--max-width);margin:0 auto;}
-    .brand{display:flex;gap:16px;align-items:center;cursor:pointer;flex-shrink:0;}
-    .logo{height:48px;border-radius:16px;box-shadow:0 12px 40px rgba(44,27,74,0.12);}
-    nav ul{display:flex;gap:8px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:wrap;}
-    nav a{padding:12px 24px;border-radius:20px;font-weight:500;color:var(--amethyst);text-decoration:none;font-size:0.9rem;transition:all 0.4s var(--ease);white-space:nowrap;display:flex;align-items:center;}
-    nav a.active,nav a:hover{background:rgba(232,180,184,0.15);color:var(--amethyst);box-shadow:0 8px 24px rgba(232,180,184,0.2);}
+    /* ✅ TRUE MOBILE HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,246,249,0.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(44,27,74,0.1);padding:12px 16px;}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:60px;max-width:1200px;margin:0 auto;}
+    .brand{display:flex;gap:12px;align-items:center;cursor:pointer;flex-shrink:0;}
+    .logo{height:44px;border-radius:12px;box-shadow:0 8px 24px rgba(44,27,74,0.15);}
+    nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:wrap;}
+    nav a{padding:8px 16px;border-radius:16px;font-weight:500;color:var(--amethyst);text-decoration:none;font-size:0.85rem;transition:all 0.3s ease;white-space:nowrap;display:flex;align-items:center;}
+    nav a.active,nav a:hover{background:rgba(232,180,184,0.2);color:var(--amethyst);}
     
-    /* 🔍 SEARCH + HAMBURGER */
-    .mobile-nav{display:none;align-items:center;gap:12px;}
-    .search-btn,.hamburger{background:none;border:none;font-size:1.6rem;color:var(--amethyst);cursor:pointer;padding:12px;border-radius:20px;transition:all 0.3s ease;display:flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;}
-    .search-btn:hover,.hamburger:hover{background:rgba(44,27,74,0.08);}
-    
-    @media(max-width:768px){
-      .mobile-nav{display:flex;}
+    .mobile-nav{display:flex;align-items:center;gap:8px;}
+    .search-btn,.hamburger{background:none;border:none;font-size:1.4rem;color:var(--amethyst);cursor:pointer;padding:8px;border-radius:16px;transition:all 0.3s ease;display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;}
+    .search-btn:hover,.hamburger:hover{background:rgba(44,27,74,0.1);}
+
+    /* ✅ MOBILE ONLY - HIDE DESKTOP NAV */
+    @media(max-width:900px){
       nav{display:none;}
-      header.menu-open nav{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(248,246,249,0.98);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:24px 5%;margin-top:4px;border-radius:0 0 24px 24px;}
+      header.menu-open nav{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(248,246,249,0.98);backdrop-filter:blur(20px);border-top:1px solid rgba(44,27,74,0.1);padding:20px 16px;border-radius:0 0 20px 20px;}
       header.menu-open nav ul{flex-direction:column;width:100%;gap:12px;}
-      nav a{display:block;text-align:center;padding:20px;width:100%;border-radius:16px;font-size:1rem;}
-      .logo{height:42px;}
+      nav a{display:block;text-align:center;padding:16px;width:100%;border-radius:16px;font-size:0.95rem;}
+      .logo{height:40px;}
     }
 
-    /* ✅ FIXED COUNTDOWN */
-    .countdown-container{position:fixed;top:84px;right:20px;z-index:900;max-width:240px;}
-    @media(max-width:768px){.countdown-container{top:80px;right:16px;max-width:200px;}}
-    @media(max-width:480px){.countdown-container{top:76px;right:12px;max-width:170px;}}
-    .countdown-card{background:var(--pearl);backdrop-filter:blur(40px);padding:clamp(18px,5vw,24px) clamp(24px,6vw,32px);border-radius:24px;font-family:'Clash Display',serif;font-weight:700;font-size:clamp(1.1rem,3vw,1.4rem);color:var(--amethyst);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);text-align:center;}
+    /* ✅ MOBILE COUNTDOWN - POSITIONED PERFECT */
+    .countdown-container{display:none;}
+    @media(min-width:901px){
+      .countdown-container{position:fixed;top:76px;right:20px;z-index:900;max-width:220px;}
+      .countdown-card{background:var(--pearl);backdrop-filter:blur(20px);padding:16px 24px;border-radius:20px;font-family:'Clash Display',serif;font-weight:700;font-size:1.1rem;color:var(--amethyst);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.1);text-align:center;}
+    }
 
-    /* ✅ PERFECT HERO - FIXED TITLE SIZE */
-    .hero{position:relative;min-height:100vh;padding:100px clamp(20px,5vw,8%) 80px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
-    @media(max-width:768px){.hero{padding:84px 16px 60px;min-height:90vh;}}
+    /* ✅ TRUE MOBILE HERO - NO ZOOM BREAK */
+    .hero{position:relative;min-height:100vh;padding:76px 16px 60px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
     .hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;filter:brightness(0.7);}
-    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 40% 20%,rgba(107,90,207,0.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(232,180,184,0.06) 0%,transparent 50%);z-index:2;}
-    .hero-content{position:relative;z-index:3;max-width:900px;padding:0 clamp(20px,5vw,8%);}
-    .hero-badge{position:absolute;top:clamp(60px,12vw,100px);left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(12px,3vw,20px) clamp(28px,7vw,40px);border-radius:999px;font-family:'Clash Display',serif;font-size:clamp(0.95rem,2.5vw,1.2rem);font-weight:700;letter-spacing:1px;box-shadow:var(--shadow-soft);animation:float-gentle 8s ease-in-out infinite;max-width:90vw;}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 40% 20%,rgba(107,90,207,0.1) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(232,180,184,0.08) 0%,transparent 50%);z-index:2;}
+    .hero-content{position:relative;z-index:3;width:100%;padding:0 8px;max-width:500px;}
     
-    /* 🎯 FIXED TITLE - NO CROPPING */
-    .hero-title{font-family:'Clash Display',serif;font-size:clamp(2.8rem, 8vw, 6.5rem);font-weight:900;margin:0 0 clamp(20px,5vw,24px);line-height:1.0;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px;}
+    .hero-badge{display:none;}
+    @media(min-width:901px){
+      .hero-badge{position:absolute;top:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:12px 24px;border-radius:999px;font-family:'Clash Display',serif;font-size:1rem;font-weight:700;letter-spacing:1px;box-shadow:var(--shadow-soft);animation:float-gentle 8s ease-in-out infinite;max-width:300px;}
+    }
     
-    .hero-subtitle{font-size:clamp(1.1rem,3vw,1.6rem);font-weight:200;max-width:700px;margin:0 auto clamp(40px,10vw,60px);opacity:0.9;line-height:1.6;}
-    .hero-stats{position:absolute;bottom:clamp(40px,10vw,80px);left:50%;transform:translateX(-50%);display:flex;gap:clamp(16px,4vw,40px);flex-wrap:wrap;justify-content:center;}
-    @media(max-width:480px){.hero-stats{flex-direction:column;align-items:center;gap:12px;}}
-    .stat{background:var(--pearl);padding:clamp(20px,5vw,32px) clamp(32px,8vw,48px);border-radius:24px;border:1px solid rgba(44,27,74,0.06);min-width:clamp(140px,20vw,180px);text-align:center;transition:all 0.6s var(--ease);box-shadow:var(--shadow-soft);flex:1;max-width:clamp(160px,25vw,220px);}
-    .stat:hover{transform:translateY(-8px) scale(1.02);background:linear-gradient(135deg,var(--pearl),rgba(237,232,245,0.8));}
-    .stat-value{font-family:'Clash Display',serif;font-size:clamp(2rem,6vw,3rem);font-weight:900;color:var(--amethyst);display:block;margin-bottom:4px;}
-    .stat-label{font-size:clamp(0.8rem,2.5vw,0.9rem);font-weight:300;letter-spacing:0.3px;opacity:0.8;}
+    /* 🎯 MOBILE-SAFE TITLE */
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(2.2rem, 9vw, 5rem);font-weight:900;margin:0 0 20px;line-height:1.05;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px;}
+    
+    .hero-subtitle{font-size:clamp(1rem, 4vw, 1.3rem);font-weight:300;margin:0 auto 40px;opacity:0.9;line-height:1.6;max-width:90%;}
 
-    /* ✅ VAULT SECTION */
-    .vault{padding:clamp(80px,20vh,160px) clamp(20px,5vw,5%) clamp(60px,15vh,120px);max-width:var(--max-width);margin:0 auto;}
-    .vault-title{font-family:'Clash Display',serif;font-size:clamp(2.5rem,8vw,5rem);text-align:center;margin:0 0 clamp(40px,10vw,100px);font-weight:900;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px;max-width:700px;margin-left:auto;margin-right:auto;}
+    /* ✅ MOBILE STATS - STACKED */
+    .hero-stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px;}
+    @media(max-width:480px){.hero-stats{flex-direction:column;align-items:center;gap:12px;width:100%;}}
+    .stat{background:var(--pearl);padding:16px 24px;border-radius:20px;border:1px solid rgba(44,27,74,0.1);text-align:center;box-shadow:var(--shadow-soft);flex:1;min-width:120px;max-width:160px;}
+    .stat-value{font-family:'Clash Display',serif;font-size:clamp(1.8rem, 7vw, 2.5rem);font-weight:900;color:var(--amethyst);display:block;margin-bottom:4px;}
+    .stat-label{font-size:clamp(0.75rem, 2.5vw, 0.85rem);font-weight:300;opacity:0.8;}
 
-    .auction-showcase{display:grid;grid-template-columns:1fr;gap:clamp(40px,10vw,100px);align-items:start;max-width:1000px;margin:0 auto;}
-    @media(min-width:1100px){.auction-showcase{grid-template-columns:1fr 400px;}}
+    /* ✅ VAULT - MOBILE STACK */
+    .vault{padding:80px 16px 60px;max-width:1200px;margin:0 auto;}
+    @media(max-width:900px){.vault{padding:60px 16px 40px;}}
+    .vault-title{font-family:'Clash Display',serif;font-size:clamp(2rem, 8vw, 4rem);text-align:center;margin:0 0 40px;font-weight:900;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px;max-width:90%;margin-left:auto;margin-right:auto;}
 
-    /* ✅ ARTISAN DISPLAY */
-    .artisan-display{position:relative;height:clamp(400px,50vh,680px);max-width:600px;margin:0 auto;}
-    .frame-glow{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:clamp(380px,55vw,580px);height:clamp(420px,60vh,720px);background:radial-gradient(circle,rgba(107,90,207,0.12) 0%,transparent 70%);border-radius:50%;animation:gentle-pulse 6s ease-in-out infinite;pointer-events:none;z-index:1;}
-    .silk-frame{position:absolute;top:clamp(16px,4vw,20px);left:50%;transform:translateX(-50%);width:clamp(360px,50vw,520px);height:clamp(380px,55vh,640px);background:linear-gradient(135deg,rgba(248,246,249,0.95),rgba(237,232,245,0.9));border-radius:24px;box-shadow:var(--shadow-soft),inset 0 1px 0 rgba(255,255,255,0.8);backdrop-filter:blur(40px);border:1px solid rgba(44,27,74,0.08);transition:all 0.8s var(--ease);display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:2;}
-    .silk-frame:hover{transform:translateX(-50%) translateY(-12px) scale(1.01);}
-    .silk-frame img{width:100%;height:100%;object-fit:cover;border-radius:20px;}
-    .item-title{position:relative;font-family:'Clash Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--amethyst);font-weight:700;text-align:center;padding:clamp(16px,4vw,20px) clamp(28px,7vw,40px);background:var(--pearl);border-radius:20px;box-shadow:var(--shadow-soft);letter-spacing:-0.2px;margin-top:clamp(16px,4vw,20px);max-width:500px;margin-left:auto;margin-right:auto;}
+    .auction-showcase{display:flex;flex-direction:column;gap:40px;align-items:center;max-width:1000px;margin:0 auto;}
+    @media(min-width:1100px){.auction-showcase{display:grid;grid-template-columns:1fr 380px;gap:60px;align-items:start;}}
 
-    /* ✅ SILK PANEL */
-    .silk-panel{background:var(--pearl);backdrop-filter:blur(50px);border-radius:var(--radius);padding:clamp(32px,8vw,60px) clamp(24px,6vw,40px);border:1px solid rgba(44,27,74,0.08);box-shadow:var(--shadow-soft);height:fit-content;position:sticky;top:clamp(100px,25vh,140px);align-self:start;max-width:400px;width:100%;}
-    @media(max-width:1100px){.silk-panel{position:relative;top:auto;}}
-    .current-bid{font-family:'Clash Display',serif;font-size:clamp(2.5rem,8vw,4rem);font-weight:900;color:var(--rose-gold);text-align:center;margin-bottom:clamp(24px,6vw,40px);letter-spacing:-1px;}
-    .bid-input-container{position:relative;margin-bottom:clamp(20px,5vw,32px);}
-    .bid-input{border:none;border-radius:20px;padding:clamp(16px,4.5vw,20px) clamp(24px,6vw,28px);font-size:clamp(1.2rem,3.5vw,1.4rem);font-family:'Clash Display',serif;font-weight:500;background:var(--pearl);color:var(--amethyst);width:100%;box-shadow:var(--shadow-soft);backdrop-filter:blur(20px);border:1px solid rgba(44,27,74,0.06);transition:all 0.4s var(--ease);box-sizing:border-box;min-height:56px;}
+    /* ✅ MOBILE ARTISAN */
+    .artisan-display{position:relative;height:clamp(300px, 45vw, 500px);width:100%;max-width:550px;margin:0 auto;}
+    .frame-glow{display:none;}
+    @media(min-width:1100px){
+      .frame-glow{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:clamp(350px,50vw,550px);height:clamp(380px,55vh,650px);background:radial-gradient(circle,rgba(107,90,207,0.12) 0%,transparent 70%);border-radius:50%;animation:gentle-pulse 6s ease-in-out infinite;pointer-events:none;z-index:1;}
+    }
+    .silk-frame{position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(280px, 80vw, 480px);height:clamp(300px, 85vw, 550px);background:linear-gradient(135deg,rgba(248,246,249,0.95),rgba(237,232,245,0.9));border-radius:20px;box-shadow:var(--shadow-soft);backdrop-filter:blur(20px);border:1px solid rgba(44,27,74,0.1);display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:2;}
+    .silk-frame img{width:100%;height:100%;object-fit:cover;border-radius:16px;}
+    .item-title{font-family:'Clash Display',serif;font-size:clamp(1.3rem, 5vw, 1.9rem);color:var(--amethyst);font-weight:700;text-align:center;padding:16px 24px;background:var(--pearl);border-radius:16px;box-shadow:var(--shadow-soft);letter-spacing:-0.1px;margin-top:16px;width:100%;max-width:450px;}
+
+    /* ✅ MOBILE BIDDING PANEL */
+    .silk-panel{background:var(--pearl);backdrop-filter:blur(30px);border-radius:var(--radius);padding:32px 24px;border:1px solid rgba(44,27,74,0.1);box-shadow:var(--shadow-soft);width:100%;max-width:380px;}
+    @media(max-width:1100px){.silk-panel{margin:0 auto;}}
+    .current-bid{font-family:'Clash Display',serif;font-size:clamp(2.2rem, 10vw, 3.5rem);font-weight:900;color:var(--rose-gold);text-align:center;margin-bottom:24px;letter-spacing:-1px;}
+    .bid-input-container{position:relative;margin-bottom:24px;}
+    .bid-input{border:none;border-radius:16px;padding:16px 20px;font-size:clamp(1.1rem, 4vw, 1.3rem);font-family:'Clash Display',serif;font-weight:500;background:var(--pearl);color:var(--amethyst);width:100%;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.1);min-height:56px;}
     .bid-input::placeholder{color:var(--amethyst);opacity:0.4;}
-    .bid-input:focus{outline:none;box-shadow:0 16px 48px rgba(44,27,74,0.1);transform:translateY(-2px);}
-    .bid-btn{display:block;width:100%;padding:clamp(18px,5vw,24px);border:none;border-radius:24px;background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);font-family:'Clash Display',serif;font-size:clamp(1.1rem,3vw,1.3rem);font-weight:700;letter-spacing:0.5px;cursor:pointer;box-shadow:var(--shadow-soft);transition:all 0.5s var(--ease);position:relative;overflow:hidden;text-transform:uppercase;text-decoration:none;min-height:64px;}
-    .bid-btn:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 28px 80px rgba(232,180,184,0.25);}
+    .bid-input:focus{outline:none;box-shadow:0 12px 32px rgba(44,27,74,0.15);}
+    .bid-btn{display:block;width:100%;padding:18px;border:none;border-radius:20px;background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);font-family:'Clash Display',serif;font-size:clamp(1rem, 3.5vw, 1.2rem);font-weight:700;letter-spacing:0.5px;cursor:pointer;box-shadow:var(--shadow-soft);transition:all 0.4s var(--ease);text-transform:uppercase;min-height:60px;}
+    .bid-btn:hover{transform:translateY(-2px);box-shadow:0 20px 50px rgba(232,180,184,0.3);}
 
-    /* ✅ LEADERBOARD */
-    .leaderboard{background:var(--pearl);backdrop-filter:blur(40px);border-radius:var(--radius);padding:clamp(32px,8vw,50px) clamp(24px,6vw,40px);border:1px solid rgba(44,27,74,0.08);box-shadow:var(--shadow-soft);margin-top:clamp(40px,10vw,80px);}
-    .leaderboard-title{font-family:'Clash Display',serif;font-size:clamp(1.8rem,5vw,2.2rem);color:var(--amethyst);text-align:center;margin-bottom:clamp(24px,6vw,40px);font-weight:700;letter-spacing:-0.2px;}
-    .leader-item{display:flex;justify-content:space-between;align-items:center;padding:clamp(20px,5vw,24px) 0;border-bottom:1px solid rgba(44,27,74,0.04);transition:all 0.4s var(--ease);}
+    /* ✅ MOBILE LEADERBOARD */
+    .leaderboard{background:var(--pearl);backdrop-filter:blur(30px);border-radius:var(--radius);padding:32px 24px;border:1px solid rgba(44,27,74,0.1);box-shadow:var(--shadow-soft);margin:40px 16px 0;}
+    @media(max-width:900px){.leaderboard{margin:40px 16px 0;width:calc(100% - 32px);}}
+    .leaderboard-title{font-family:'Clash Display',serif;font-size:clamp(1.5rem, 6vw, 2rem);color:var(--amethyst);text-align:center;margin-bottom:24px;font-weight:700;}
+    .leader-item{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(44,27,74,0.05);transition:all 0.3s ease;}
     .leader-item:last-child{border-bottom:none;}
-    .leader-item:hover{background:rgba(232,180,184,0.06);}
-    .leader-rank{font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--rose-gold);min-width:50px;flex-shrink:0;}
-    .leader-name{font-weight:500;font-size:clamp(0.95rem,2.8vw,1rem);opacity:0.9;flex:1;}
-    .leader-bid{font-family:'Clash Display',serif;font-size:clamp(1.3rem,3.5vw,1.6rem);font-weight:700;color:var(--amethyst);white-space:nowrap;}
+    .leader-rank{font-size:clamp(1.4rem, 5vw, 1.8rem);font-weight:900;color:var(--rose-gold);min-width:45px;flex-shrink:0;}
+    .leader-name{font-weight:500;font-size:clamp(0.9rem, 3vw, 1rem);opacity:0.9;flex:1;margin-left:12px;}
+    .leader-bid{font-family:'Clash Display',serif;font-size:clamp(1.2rem, 4vw, 1.5rem);font-weight:700;color:var(--amethyst);}
 
-    footer{padding:clamp(60px,15vh,120px) clamp(20px,5vw,5%) clamp(40px,10vh,60px);text-align:center;background:var(--pearl);color:var(--sage);border-top:1px solid rgba(44,27,74,0.06);font-size:clamp(0.85rem,2.5vw,0.9rem);font-weight:300;}
+    footer{padding:60px 16px 40px;text-align:center;background:var(--pearl);color:var(--sage);border-top:1px solid rgba(44,27,74,0.1);font-size:0.9rem;font-weight:300;}
     .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:20px;}
-    .footer-links a{color:var(--amethyst);text-decoration:none;font-weight:500;font-size:clamp(0.85rem,2.5vw,0.9rem);}
+    .footer-links a{color:var(--amethyst);text-decoration:none;font-weight:500;font-size:0.9rem;padding:8px 16px;border-radius:16px;transition:all 0.3s ease;}
+    .footer-links a:hover{background:rgba(232,180,184,0.2);}
 
-    #toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(14px,4vw,20px) clamp(28px,7vw,36px);border-radius:20px;font-weight:700;font-size:clamp(0.95rem,2.8vw,1rem);z-index:10000;transition:all 0.5s var(--ease);max-width:90vw;box-shadow:var(--shadow-soft);text-align:center;}
+    #toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:16px 32px;border-radius:20px;font-family:'Clash Display',serif;font-weight:700;font-size:1rem;z-index:10000;transition:all 0.4s var(--ease);max-width:90vw;box-shadow:var(--shadow-soft);text-align:center;}
     #toast.show{transform:translateX(-50%) translateY(0);}
 
-    @keyframes float-gentle{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-8px);}}
+    @keyframes float-gentle{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-6px);}}
     @keyframes gentle-pulse{0%,100%{opacity:0.7;transform:scale(1);}50%{opacity:1;transform:scale(1.02);}}
   </style>
 </head>
 <body>
-  <!-- ✅ FIXED MOBILE HEADER -->
+  <!-- ✅ PERFECT MOBILE HEADER -->
   <header>
     <div class="header-inner">
       <div class="brand" onclick="location.href='index.html'">
         <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-        <div style="font-family:'Clash Display',serif;font-size:1.2rem;font-weight:600;color:var(--amethyst);">Snehvastra</div>
+        <span style="font-family:'Clash Display',serif;font-size:1.1rem;font-weight:600;color:var(--amethyst);">Snehvastra</span>
       </div>
       <nav>
         <ul>
@@ -143,12 +150,12 @@
     </div>
   </header>
 
-  <!-- ✅ FIXED COUNTDOWN -->
+  <!-- ✅ DESKTOP COUNTDOWN -->
   <div class="countdown-container">
     <div class="countdown-card" id="countdown">Loading...</div>
   </div>
 
-  <!-- ✅ PERFECT HERO -->
+  <!-- ✅ MOBILE-PERFECT HERO -->
   <section class="hero">
     <video autoplay muted loop playsinline poster="images/auction-poster.jpg">
       <source src="videos/auction-hero.mp4" type="video/mp4">
@@ -204,7 +211,7 @@
     <div id="leaderboard"></div>
   </section>
 
-  <!-- ✅ FOOTER + NFC STORY -->
+  <!-- ✅ FOOTER -->
   <footer>
     © <span id="year"></span> Snehvastra. Kota Studio Auction.
     <div class="footer-links">
@@ -217,13 +224,12 @@
   <div id="toast"></div>
 
   <script>
-    // ✅ BULLETPROOF AUCTION SYSTEM (MOBILE LOCKED)
+    // ✅ BULLETPROOF MOBILE AUCTION SYSTEM
     (function(){
       const USER_KEY = "snehvastra_user"; 
       const CART_KEY = "snehvastra_cart";
       let cart = {}, user = null;
 
-      // SAFE STORAGE
       function safeGet(key, fallback) {
         try {
           return JSON.parse(localStorage.getItem(key) || fallback);
@@ -237,9 +243,9 @@
         if(!authArea) return;
         user = safeGet(USER_KEY, null);
         if(user && user.loggedIn) {
-          authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;font-size:0.9rem;">Hi, ${user.name?.split(' ')[0]}</span>`;
+          authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;font-size:0.85rem;">Hi, ${user.name?.split(' ')[0]}</span>`;
         } else {
-          authArea.innerHTML = `<a href="user-login.html" style="padding:10px 20px;border:2px solid var(--rose-gold);color:var(--rose-gold);border-radius:20px;font-weight:500;font-size:0.85rem;">Login to Bid</a>`;
+          authArea.innerHTML = `<a href="user-login.html" style="padding:8px 16px;border:2px solid var(--rose-gold);color:var(--rose-gold);border-radius:16px;font-weight:500;font-size:0.8rem;">Login to Bid</a>`;
         }
       };
 
@@ -258,12 +264,12 @@
         }
       }
 
-      // MOBILE NAV
+      // MOBILE MENU
       document.getElementById("hamburgerBtn")?.addEventListener("click", ()=>{
         document.querySelector("header").classList.toggle("menu-open");
       });
 
-      // AUCTION SYSTEM
+      // AUCTION LOGIC
       let currentBid = 47200;
       let leaderboard = [
         {name:"arun_v", bid:125000},
@@ -275,13 +281,15 @@
       window.placeBid = function(){
         if(!user?.loggedIn) {
           showToast("Login to bid");
+          setTimeout(() => window.location.href='user-login.html', 1500);
           return;
         }
         const input = document.getElementById("bidInput");
         const val = parseInt(input.value);
         if(!val || val <= currentBid || isNaN(val)){
-          showToast(`Bid > ₹${currentBid.toLocaleString()}`);
+          showToast(`Bid must be > ₹${currentBid.toLocaleString()}`);
           input.focus();
+          input.select();
           return;
         }
         currentBid = val;
@@ -292,10 +300,7 @@
         renderLeaderboard();
         input.value = "";
         input.placeholder = `₹${(val+1000).toLocaleString()}+`;
-        showToast("Bid placed ✓");
-        if(typeof gsap !== 'undefined'){
-          gsap.from("#currentBid", {scale:1.1, duration:0.3, yoyo:true, repeat:1});
-        }
+        showToast("✅ Bid placed successfully!");
       };
 
       function renderLeaderboard(){
@@ -303,7 +308,7 @@
         if(!container) return;
         container.innerHTML = leaderboard.map((item,i) => `
           <div class="leader-item ${item.name==="YOU" ? "you" : ""}">
-            <div style="display:flex;align-items:center;gap:16px;flex:1;">
+            <div style="display:flex;align-items:center;gap:12px;flex:1;">
               <div class="leader-rank">${i+1}.</div>
               <div class="leader-name">${item.name}</div>
             </div>
@@ -323,12 +328,13 @@
           const mins = Math.floor((diff%(1000*60*60))/(1000*60));
           countdownEl.textContent = `${days}d ${hours.toString().padStart(2,'0')}h ${mins.toString().padStart(2,'0')}m`;
         } else if(countdownEl) {
-          countdownEl.textContent = "LIVE!";
+          countdownEl.textContent = "🔥 LIVE!";
           countdownEl.style.background = "linear-gradient(135deg, var(--amethyst), var(--amethyst-light))";
+          countdownEl.style.color = "white";
         }
       }
 
-      // ENTER KEY
+      // ENTER KEY SUPPORT
       document.addEventListener('DOMContentLoaded', function(){
         const bidInput = document.getElementById('bidInput');
         if(bidInput){
@@ -347,7 +353,7 @@
         updateCountdown();
         setInterval(updateCountdown, 30000);
         document.getElementById("year").textContent = new Date().getFullYear();
-        if(typeof AOS !== 'undefined') AOS.init({duration:1000, once:true});
+        if(typeof AOS !== 'undefined') AOS.init({duration:800, once:true});
       }
 
       if(document.readyState === 'loading'){
@@ -359,3 +365,5 @@
   </script>
 </body>
 </html>
+
+🔧 SNEHVASTRA MOBILE LOCK
