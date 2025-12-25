@@ -3,122 +3,157 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="theme-color" content="#3A0F5A"/>
-  <title>Blog Single — Snehvastra</title>
+  <meta name="theme-color" content="#2C1B4A"/>
+  <title>The 200-Year Loom — Snehvastra</title>
   <meta name="description" content="Snehvastra artisan stories, NFC craft lineage, live studio insights, collector-exclusive craftsmanship journeys."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --gold:#F59E0B;
-      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
-      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-      --max-width:1400px;
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (LOCKED) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --shadow-soft:0 35px 140px rgba(44,27,74,0.15); --shadow-glow:0 0 35px rgba(107,90,207,0.2);
+      --radius:32px; --max-width:1600px; --ease:cubic-bezier(0.32,0.72,0,1);
     }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;line-height:1.7;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.8;position:relative;}
 
-    /* Perfect System Header */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
-    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
-    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
-    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
-    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
+    /* 🔒 FIXED ETHEREAL HEADER (SYSTEM MATCH) */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:20px 0;will-change:transform;}
+    .header-container{max-width:var(--max-width);margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:20px;align-items:center;cursor:pointer;transition:all 0.6s var(--ease);}
+    .brand:hover{transform:translateY(-4px);}
+    .logo{height:60px;border-radius:20px;box-shadow:0 20px 60px rgba(44,27,74,0.12);transition:inherit;}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:16px 28px;border-radius:24px;font-weight:400;color:var(--amethyst);text-decoration:none;font-size:0.95rem;backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;min-height:64px;display:flex;align-items:center;}
+    nav a::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a:hover::after{width:80%;}
+    nav a.active{color:var(--amethyst);font-weight:500;background:rgba(232,180,184,0.15);box-shadow:0 8px 32px rgba(232,180,184,0.15);}
 
-    /* Enhanced Auction Banner */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
-    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
+    /* ✅ HAMBURGER MENU (64px TOUCH) */
+    .hamburger{display:none;background:none;border:none;font-size:2rem;color:var(--amethyst);cursor:pointer;padding:16px;min-height:64px;}
+    @media(max-width:768px){
+      .hamburger{display:block!important;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:20px 0;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:8px;}
+      nav a{display:block;text-align:center;padding:20px;width:100%;border-radius:16px;min-height:64px;}
+    }
 
-    /* Hero */
-    .hero{max-width:var(--max-width);margin:140px auto 80px;padding:0 5%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:var(--radius);padding:120px 80px;text-align:center;color:#fff;position:relative;overflow:hidden;}
-    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);}
-    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4.5rem,12vw,7rem);margin:0 0 32px;position:relative;z-index:1;font-weight:900;line-height:1;}
-    .hero-subtitle{font-size:1.5rem;max-width:800px;margin:0 auto 48px;position:relative;z-index:1;opacity:0.95;line-height:1.6;}
-    .hero-image{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 60px 160px rgba(0,0,0,0.4);max-width:900px;margin:0 auto;height:520px;background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05));display:flex;align-items:center;justify-content:center;font-size:8rem;border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(20px);}
+    /* ✅ AUCTION BANNER (LIVE SYNC) */
+    .auction-banner{position:fixed;top:140px;right:30px;z-index:900;max-width:280px;background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:24px 32px;border-radius:28px;font-family:'Clash Display',serif;font-weight:700;font-size:1.2rem;text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);}
+    @media(max-width:768px){.auction-banner{top:120px;right:20px;max-width:240px;font-size:1rem;padding:20px 24px;}}
+    .auction-timer{font-size:1.6rem;font-weight:900;color:var(--amethyst);display:block;margin-top:8px;}
 
-    /* Content Grid */
-    .content-grid{max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;display:grid;grid-template-columns:1fr 480px;gap:80px;align-items:start;}
-    @media(max-width:1200px){.content-grid{grid-template-columns:1fr;gap:60px;}}
+    /* 🎭 SINGLE POST HERO */
+    .hero{position:relative;min-height:90vh;padding-top:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+    @media(max-width:768px){.hero{padding-top:120px;min-height:80vh;}}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 40% 20%,rgba(107,90,207,0.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(232,180,184,0.1) 0%,transparent 50%);z-index:1;}
+    .hero-content{position:relative;z-index:2;max-width:1200px;padding:0 5%;}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4.5rem,11vw,7.5rem);font-weight:900;margin:0 0 32px;line-height:0.9;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-2px;}
+    .hero-subtitle{font-size:clamp(1.2rem,3vw,1.7rem);font-weight:300;max-width:900px;margin:0 auto 80px;opacity:0.9;line-height:1.7;}
+    .hero-image{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);max-width:900px;margin:0 auto;height:520px;background:linear-gradient(135deg,rgba(107,90,207,0.12),rgba(232,180,184,0.06));display:flex;align-items:center;justify-content:center;font-size:10rem;border:1px solid rgba(44,27,74,0.15);backdrop-filter:blur(40px);transition:all 0.6s var(--ease);z-index:2;}
+    .hero-image:hover{transform:scale(1.02);}
 
-    /* Article */
-    .article{background:#fff;border-radius:var(--radius);padding:80px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);}
-    .back-link{display:inline-flex;align-items:center;gap:16px;color:var(--purple);font-weight:700;font-size:1.1rem;padding:24px 0;border-bottom:2px solid rgba(58,15,90,0.08);margin-bottom:48px;transition:all var(--ease);}
-    .back-link:hover{opacity:0.8;transform:translateX(-8px);}
-    .post-title{font-family:'Clash Display',serif;font-size:3.6rem;color:var(--purple);margin:0 0 48px;line-height:1.2;font-weight:900;}
-    .post-meta{display:flex;gap:32px;align-items:center;margin-bottom:48px;padding:32px 0;border-bottom:2px solid rgba(58,15,90,0.08);}
-    .meta-item{display:flex;align-items:center;gap:12px;color:var(--slate-mid);font-size:1.1rem;font-weight:600;}
-    .post-content{font-size:1.2rem;line-height:1.9;color:var(--slate);max-width:900px;}
-    .post-content p{margin-bottom:32px;}
-    .post-content h2{font-family:'Clash Display',serif;font-size:2.4rem;color:var(--purple);margin:64px 0 32px;font-weight:900;}
-    .post-content h3{font-size:1.6rem;color:var(--purple);margin:48px 0 24px;font-weight:700;}
-    .post-image{display:block;border-radius:var(--radius);margin:48px 0;box-shadow:var(--shadow-soft);width:100%;height:480px;background:linear-gradient(135deg,rgba(58,15,90,0.05),rgba(58,15,90,0.02));border:1px solid rgba(58,15,90,0.1);}
+    /* 📖 CONTENT GRID (Pentagram Layout) */
+    .content-grid{max-width:var(--max-width);margin:0 auto 140px;padding:0 5%;display:grid;grid-template-columns:1fr 480px;gap:100px;align-items:start;}
+    @media(max-width:1400px){.content-grid{grid-template-columns:1fr;gap:80px;}}
+    @media(max-width:768px){.content-grid{gap:60px;}}
 
-    /* Sidebar */
-    .sidebar{background:#fff;border-radius:var(--radius);padding:64px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:sticky;top:160px;}
-    .sidebar-title{font-family:'Clash Display',serif;font-size:2.4rem;color:var(--purple);margin:0 0 48px;text-align:center;font-weight:900;}
-    .story-details{list-style:none;padding:0;margin-bottom:64px;}
-    .story-detail{display:flex;justify-content:space-between;padding:24px 0;border-bottom:1px solid rgba(58,15,90,0.08);}
+    /* ✍️ MAIN ARTICLE (Huemor Perfection) */
+    .article{background:var(--pearl);backdrop-filter:blur(50px);border-radius:var(--radius);padding:80px;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);}
+    @media(max-width:768px){.article{padding:60px 40px;}}
+    .back-link{display:inline-flex;align-items:center;gap:20px;color:var(--amethyst);font-weight:600;font-size:1.1rem;padding:28px 0;border-bottom:2px solid rgba(44,27,74,0.1);margin-bottom:48px;transition:all 0.4s var(--ease);text-decoration:none;}
+    .back-link:hover{opacity:0.8;transform:translateX(-12px);}
+    .post-title{font-family:'Clash Display',serif;font-size:clamp(3rem,8vw,4.2rem);color:var(--amethyst);margin:0 0 48px;line-height:1.2;font-weight:900;letter-spacing:-1px;}
+    .post-meta{display:flex;gap:32px;align-items:center;margin-bottom:48px;padding:32px 0;border-bottom:2px solid rgba(44,27,74,0.1);flex-wrap:wrap;}
+    @media(max-width:768px){.post-meta{gap:20px;justify-content:center;}}
+    .meta-item{display:flex;align-items:center;gap:12px;color:var(--amethyst);opacity:0.6;font-size:1.1rem;font-weight:500;}
+    .post-content{font-size:1.3rem;line-height:1.9;color:var(--amethyst);opacity:0.9;max-width:900px;}
+    .post-content p{margin-bottom:36px;}
+    .post-content h2{font-family:'Clash Display',serif;font-size:2.8rem;color:var(--amethyst);margin:72px 0 36px;font-weight:900;letter-spacing:-0.5px;}
+    .post-content h3{font-size:1.8rem;color:var(--amethyst);margin:56px 0 28px;font-weight:700;}
+    .post-image{display:block;border-radius:var(--radius);margin:56px auto;box-shadow:var(--shadow-soft);width:100%;height:480px;background:linear-gradient(135deg,rgba(107,90,207,0.08),rgba(232,180,184,0.04));border:1px solid rgba(44,27,74,0.12);}
+
+    /* 📋 SIDEBAR (AKQA Sticky Perfection) */
+    .sidebar{background:var(--pearl);backdrop-filter:blur(60px);border-radius:var(--radius);padding:72px;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.1);position:sticky;top:160px;align-self:start;}
+    @media(max-width:768px){.sidebar{padding:56px 40px;top:140px;}}
+    .sidebar-title{font-family:'Clash Display',serif;font-size:clamp(2rem,5vw,2.6rem);color:var(--amethyst);margin:0 0 56px;text-align:center;font-weight:900;letter-spacing:-0.3px;}
+    .story-details{list-style:none;padding:0;margin-bottom:72px;}
+    .story-detail{display:flex;justify-content:space-between;padding:28px 0;border-bottom:1px solid rgba(44,27,74,0.08);transition:all 0.3s var(--ease);}
     .story-detail:last-child{border-bottom:none;padding-bottom:0;}
-    .detail-label{color:var(--slate-mid);font-size:1.1rem;}
-    .detail-value{font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;color:var(--purple);}
-    .related-stories h4{font-family:'Clash Display',serif;font-size:1.6rem;color:var(--purple);margin:0 0 40px;text-align:center;font-weight:900;}
-    .related-item{display:flex;gap:20px;padding:32px 0;border-bottom:1px solid rgba(58,15,90,0.08);transition:all var(--ease);}
+    .story-detail:hover{background:rgba(232,180,184,0.06);}
+    .detail-label{color:var(--amethyst);opacity:0.6;font-size:1.1rem;}
+    .detail-value{font-family:'Clash Display',serif;font-weight:900;font-size:1.4rem;color:var(--amethyst);}
+    .related-stories h4{font-family:'Clash Display',serif;font-size:1.8rem;color:var(--amethyst);margin:0 0 48px;text-align:center;font-weight:900;letter-spacing:-0.2px;}
+    .related-item{display:flex;gap:24px;padding:36px 0;border-bottom:1px solid rgba(44,27,74,0.08);transition:all 0.4s var(--ease);}
     .related-item:last-child{border-bottom:none;padding-bottom:0;}
-    .related-item:hover{background:rgba(58,15,90,0.02);transform:translateX(8px);}
-    .related-emoji{font-size:3.2rem;flex-shrink:0;}
-    .related-link{font-weight:900;font-size:1.2rem;color:var(--purple);display:flex;flex-direction:column;text-decoration:none;}
-    .related-link span{font-size:1rem;color:var(--slate-mid);font-weight:500;}
+    .related-item:hover{background:rgba(232,180,184,0.08);transform:translateX(12px);}
+    .related-emoji{font-size:3.5rem;flex-shrink:0;}
+    .related-link{font-weight:900;font-size:1.3rem;color:var(--amethyst);display:flex;flex-direction:column;text-decoration:none;transition:all 0.3s var(--ease);}
+    .related-link:hover{color:var(--rose-gold);}
+    .related-link span{font-size:1.05rem;color:var(--amethyst);opacity:0.7;font-weight:500;}
 
-    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
-    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
-    #toast.show{transform:translateX(0);}
+    /* PERFECT FOOTER */
+    footer{padding:140px 5% 80px;text-align:center;background:var(--pearl);color:var(--amethyst);border-top:1px solid rgba(44,27,74,0.06);font-size:1rem;font-weight:300;}
+    @media(max-width:768px){footer{padding:100px 5% 60px;}}
 
-    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
+    /* TOAST SYSTEM */
+    #toast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:24px 48px;border-radius:28px;font-family:'Clash Display',serif;font-weight:800;font-size:1.1rem;z-index:10000;transition:all 0.6s var(--ease);max-width:92vw;box-shadow:var(--shadow-soft);backdrop-filter:blur(30px);}
+    #toast.show{transform:translateX(-50%) translateY(0);}
+
+    @keyframes float-gentle{0%,100%{transform:translateX(-50%) translateY(0px) rotate(0deg);}50%{transform:translateX(-50%) translateY(-18px) rotate(1deg);}}
+    @keyframes gentle-pulse{0%,100%{opacity:0.6;transform:scale(1);}50%{opacity:1;transform:scale(1.03);}}
   </style>
 </head>
 <body>
-  <!-- Perfect System Header -->
+  <!-- 🔒 PERFECT HEADER SYSTEM -->
   <header>
-    <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.85rem;color:var(--muted);">Studio Stories</div>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:1.5rem;font-weight:600;color:var(--amethyst);">Snehvastra</div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html" class="active">Stories</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="blog.html" class="active">Stories</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li id="authArea"></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+  <!-- ✅ AUCTION COUNTDOWN BANNER -->
+  <div class="auction-banner" id="auctionBanner">
+    🔥 SNEHVASTRA ONE AUCTION<br>
+    <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
-  <main class="page" data-aos="fade-up">
-    <!-- Hero -->
-    <section class="hero" data-aos="zoom-in">
-      <h1 class="hero-title">The 200-Year Loom</h1>
-      <p class="hero-subtitle">Snehvastra studio uncovers a living archive: the 1825 handloom still weaving Snehvastra's signature textures. Seven generations unbroken.</p>
-      <div class="hero-image" data-aos="fade-up" data-aos-delay="300">🧵</div>
+  <main>
+    <!-- 🎭 HERO SECTION (FULL CONTENT) -->
+    <section class="hero" data-aos="fade-in">
+      <div class="hero-content">
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">The 200-Year Loom</h1>
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">Snehvastra studio uncovers a living archive: the 1825 handloom still weaving Snehvastra's signature textures. Seven generations unbroken.</p>
+        <div class="hero-image" data-aos="zoom-in" data-aos-delay="600">🧵</div>
+      </div>
     </section>
 
     <div class="content-grid">
-      <!-- Main Article -->
+      <!-- 📖 MAIN ARTICLE (100% PRESERVED) -->
       <article class="article" data-aos="fade-right">
         <a href="blog.html" class="back-link" data-aos="fade-up">← All Studio Stories</a>
         
@@ -148,7 +183,7 @@
         </div>
       </article>
 
-      <!-- Sidebar -->
+      <!-- 📋 SIDEBAR (FULL CONTENT PRESERVED) -->
       <aside class="sidebar" data-aos="fade-left">
         <h3 class="sidebar-title">Craft Details</h3>
         <ul class="story-details">
@@ -206,51 +241,83 @@
   <div id="toast"></div>
 
   <script>
-    // Perfect system sync
-    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 🔒 FULL SYSTEM SYNC (AUCTION MATCH)
+    const USER_KEY = "snehvastra_user"; 
+    const CART_KEY = "snehvastra_cart";
     let cart = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
-    const user = JSON.parse(localStorage.getItem(USER_KEY));
+    let user = JSON.parse(localStorage.getItem(USER_KEY) || 'null');
 
     function renderAuth(){
       const authArea = document.getElementById("authArea");
       if(user && user.loggedIn){
-        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
+        authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;">${user.name}</span>`;
       } else {
-        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
+        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 28px;border:1px solid var(--rose-gold);color:var(--rose-gold);border-radius:24px;font-weight:500;text-decoration:none;">Login</a>`;
       }
     }
 
     function updateCartCount(){
-      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-      document.getElementById("cartCount").textContent = total || 0;
+      const cartCount = document.getElementById("cartCount");
+      if(cartCount){
+        const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+        cartCount.textContent = total || 0;
+      }
     }
 
     function showToast(msg){
       const toast = document.getElementById("toast");
       toast.textContent = msg;
       toast.classList.add("show");
-      setTimeout(()=>toast.classList.remove("show"), 3200);
+      setTimeout(()=>toast.classList.remove("show"), 3500);
     }
 
-    // Auction timer
-    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
-    setInterval(()=>{
-      const diff = auctionDate - Date.now();
-      const timer = document.getElementById("auctionTimer");
+    // ✅ HAMBURGER TOGGLE
+    document.getElementById("hamburger").addEventListener("click", function(){
+      document.querySelector("header").classList.toggle("menu-open");
+    });
+
+    // ✅ AUCTION TIMER SYNC
+    const auctionEnd = new Date("2025-12-24T18:00:00").getTime();
+    function updateAuctionTimer(){
+      const now = Date.now();
+      const diff = auctionEnd - now;
+      const timerEl = document.getElementById("auctionTimer");
       if(diff > 0){
         const days = Math.floor(diff / (1000*60*60*24));
         const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        timer.textContent = `${days}d ${hours}h`;
+        timerEl.innerHTML = `${days}d ${hours.toString().padStart(2,'0')}h`;
       } else {
-        timer.textContent = "LIVE NOW!";
+        timerEl.innerHTML = "LIVE NOW!";
+        timerEl.style.color = "var(--amethyst)";
       }
-    }, 60000);
+    }
 
-    // Init
-    AOS.init({duration: 1200, once: true});
-    renderAuth();
-    updateCartCount();
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // ✅ HUEMOR GSAP SCROLL MASTER(Y)
+    gsap.from(".hero-title", {scale:0.85, opacity:0, duration:1.4, ease:"back.out(1.7)"});
+    gsap.from(".hero-image", {scale:0.9, y:40, duration:1.2, delay:0.5});
+    gsap.from(".post-title", {scale:0.95, y:30, duration:1, scrollTrigger:{trigger:".article", start:"top 85%"}});
+    gsap.from(".post-meta", {opacity:0, y:40, duration:0.8, scrollTrigger:{trigger:".post-meta", start:"top 90%"}});
+    gsap.from(".sidebar", {x:60, opacity:0, duration:1, scrollTrigger:{trigger:".sidebar", start:"top 85%"}});
+    gsap.from(".story-detail", {opacity:0, y:30, stagger:0.1, duration:0.6, scrollTrigger:{trigger:".story-details", start:"top 90%"}});
+
+    // INIT PERFECTION
+    function init(){
+      AOS.init({duration:1200, once:true, offset:100});
+      renderAuth();
+      updateCartCount();
+      updateAuctionTimer();
+      setInterval(updateAuctionTimer, 30000);
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
+
+    // LOAD WHEN READY
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   </script>
 </body>
 </html>
