@@ -2,123 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="theme-color" content="#3A0F5A"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="theme-color" content="#2C1B4A"/>
   <title>Terms of Service — Snehvastra</title>
-  <meta name="description" content="Handcrafted luxury terms: artisan authenticity, NFC warranty, auction binding, collector protections."/>
+  <meta name="description" content="Handcrafted luxury terms: artisan authenticity, NFC warranty, auction binding, collector protections from Kota."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --purple-dark:#2e0b4a; --slate:#1F2024; --slate-mid:#3B3D45;
-      --muted:#8E8F92; --success:#10B981; --glass:rgba(255,255,255,0.95); --radius:24px;
-      --shadow-soft:0 35px 100px rgba(58,15,90,0.12); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-      --max-width:1200px;
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (LOCKED) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --success:#10B981; --gold:#F59E0B; --shadow-soft:0 clamp(25px, 8vw, 35px) clamp(80px, 20vw, 140px) rgba(44,27,74,0.15); --shadow-glow:0 0 clamp(20px, 5vw, 35px) rgba(107,90,207,0.2);
+      --radius:clamp(20px, 5vw, 32px); --max-width:clamp(1200px, 95vw, 1400px); --ease:cubic-bezier(0.32,0.72,0,1);
     }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;line-height:1.8;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.8;position:relative;min-height:100vh;}
 
-    /* System Header (perfect sync across ALL pages) */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
-    .logo{height:48px;border-radius:14px;box-shadow:0 12px 40px rgba(58,15,90,0.15);}
-    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;}
-    nav a{padding:12px 20px;border-radius:16px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
-    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
+    /* 🔒 MOBILE LOCK HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;height:clamp(56px, 15vw, 60px);background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:clamp(8px, 2vw, 12px) 0;}
+    .header-container{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px, 5vw, 24px);height:100%;}
+    .brand{display:flex;gap:clamp(12px, 3vw, 20px);align-items:center;cursor:pointer;transition:all 0.4s var(--ease);}
+    .brand:hover{transform:translateY(-2px);}
+    .logo{height:clamp(40px, 11vw, 52px);border-radius:clamp(12px, 3vw, 20px);box-shadow:0 clamp(12px, 3vw, 20px) clamp(32px, 8vw, 60px) rgba(44,27,74,0.12);}
+    nav ul{display:flex;gap:clamp(8px, 2vw, 12px);list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);border-radius:clamp(16px, 4vw, 24px);font-weight:500;color:var(--amethyst);text-decoration:none;font-size:clamp(0.875rem, 2.2vw, 0.95rem);backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;min-height:clamp(44px, 11vw, 64px);display:flex;align-items:center;}
+    nav a::after{content:'';position:absolute;bottom:clamp(2px, 0.8vw, 4px);left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a:hover::after{width:80%;}
+    nav a.active{color:var(--amethyst);font-weight:600;background:rgba(232,180,184,0.15);box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(20px, 5vw, 32px) rgba(232,180,184,0.15);}
 
-    /* Enhanced Auction Banner */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
-    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;display:inline-block;animation:pulse 2s infinite;}
-
-    /* Premium Legal Layout */
-    .legal-container{max-width:var(--max-width);margin:220px auto 120px;padding:0 24px;}
-    .hero-section{background:#fff;border-radius:32px;padding:80px 64px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);text-align:center;margin-bottom:80px;position:relative;overflow:hidden;}
-    .hero-section::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--purple),var(--purple-dark),var(--success));}
-    .hero-title{font-family:'Clash Display',serif;font-size:clamp(3rem,8vw,4.5rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 24px;}
-    .hero-subtitle{font-size:1.2rem;color:var(--slate-mid);max-width:700px;margin:0 auto;line-height:1.7;}
+    .hamburger{display:none;background:none;border:none;font-size:clamp(1.75rem, 4.5vw, 2rem);color:var(--amethyst);cursor:pointer;padding:clamp(12px, 3vw, 16px);min-height:clamp(44px, 11vw, 64px);}
     
-    .last-updated{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:16px 32px;border-radius:24px;font-weight:700;display:inline-block;font-size:1rem;margin-bottom:60px;box-shadow:0 16px 50px rgba(58,15,90,0.3);}
+    @media(max-width:900px){
+      .hamburger{display:block!important;}
+      nav{display:none;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:clamp(16px, 4vw, 20px) 0;overflow-y:auto;max-height:60vh;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:clamp(6px, 1.5vw, 8px);}
+      nav a{display:block;text-align:center;width:100%;padding:clamp(20px, 5vw, 24px);border-radius:clamp(12px, 3vw, 16px);min-height:clamp(60px, 15vw, 72px);}
+    }
 
-    /* Interactive TOC */
-    .toc-panel{position:fixed;top:200px;right:40px;width:280px;max-height:65vh;background:#fff;border-radius:28px;padding:32px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.1);overflow-y:auto;z-index:120;}
-    .toc-title{font-family:'Clash Display',serif;font-size:1.3rem;color:var(--purple);margin:0 0 28px;font-weight:600;}
+    /* ✅ MOBILE LOCK AUCTION BANNER (top:68px) */
+    .auction-banner{position:fixed;top:clamp(68px, 18vw, 80px);right:clamp(16px, 4vw, 30px);z-index:900;max-width:clamp(220px, 28vw, 280px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(20px, 5vw, 32px);border-radius:clamp(20px, 5vw, 28px);font-family:'Clash Display',serif;font-weight:700;font-size:clamp(0.95rem, 2.5vw, 1.2rem);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);line-height:1.3;}
+    .auction-timer{display:block;margin-top:clamp(6px, 1.5vw, 8px);background:rgba(255,255,255,0.9);border-radius:clamp(12px, 3vw, 16px);padding:clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);font-weight:600;}
+    @media(max-width:480px){.auction-banner{right:clamp(12px, 3vw, 16px);}}
+
+    /* 📜 MOBILE LOCK LEGAL CONTAINER */
+    .legal-container{max-width:var(--max-width);margin:clamp(68px, 18vw, 120px) auto clamp(40px, 10vw, 80px);padding:0 clamp(20px, 5vw, 24px);}
+    @media(max-width:768px){.legal-container{padding:0 clamp(16px, 4vw, 20px);}}
+
+    /* 🎯 MOBILE LOCK HERO */
+    .hero-section{background:var(--pearl);border-radius:clamp(28px, 7vw, 32px);padding:clamp(40px, 10vw, 80px) clamp(32px, 8vw, 64px);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);text-align:center;margin-bottom:clamp(40px, 10vw, 60px);position:relative;overflow:hidden;}
+    @media(max-width:480px){.hero-section{padding:clamp(32px, 8vw, 40px) clamp(24px, 6vw, 32px);}}
+    .hero-section::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(4px, 1vw, 6px);background:linear-gradient(90deg,var(--amethyst),var(--amethyst-light),var(--success));}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(2rem, 6.5vw, 4.5rem);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 clamp(16px, 4vw, 20px);font-weight:900;line-height:1.1;letter-spacing:clamp(-1px, -0.3vw, -1.5px);}
+    .hero-subtitle{font-size:clamp(0.95rem, 2.5vw, 1.2rem);color:var(--amethyst);opacity:0.8;max-width:clamp(500px, 85vw, 700px);margin:0 auto;line-height:1.7;}
+    
+    .last-updated{background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);padding:clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);border-radius:clamp(20px, 5vw, 24px);font-weight:700;display:inline-block;font-size:clamp(0.85rem, 2.4vw, 1rem);margin-bottom:clamp(32px, 8vw, 48px);box-shadow:0 clamp(12px, 3vw, 16px) clamp(36px, 9vw, 50px) rgba(44,27,74,0.3);}
+
+    /* 📋 MOBILE LOCK TOC (BOTTOM SHEET) */
+    .toc-panel{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--pearl);border-radius:clamp(28px, 7vw, 28px) clamp(28px, 7vw, 28px) 0 0;padding:clamp(24px, 6vw, 32px) clamp(20px, 5vw, 24px);box-shadow:0 -clamp(16px, 4vw, 20px) clamp(48px, 12vw, 60px) rgba(44,27,74,0.15);border-top:1px solid rgba(44,27,74,0.1);max-height:70vh;overflow-y:auto;z-index:120;}
+    @media(min-width:1200px){.toc-panel{display:block;position:fixed;top:clamp(80px, 20vw, 120px);right:clamp(24px, 6vw, 40px);width:clamp(260px, 32vw, 280px);max-height:65vh;}}
+    .toc-title{font-family:'Clash Display',serif;font-size:clamp(1.1rem, 3.2vw, 1.3rem);color:var(--amethyst);margin:0 0 clamp(20px, 5vw, 24px);font-weight:600;text-align:center;}
     .toc-list{list-style:none;margin:0;padding:0;}
-    .toc-item{margin-bottom:16px;}
-    .toc-link{display:block;padding:16px 20px;border-radius:20px;color:var(--slate-mid);font-weight:600;text-decoration:none;transition:all var(--ease);position:relative;}
-    .toc-link:hover{background:rgba(58,15,90,0.06);color:var(--purple);transform:translateX(8px);}
-    .toc-link.active{background:linear-gradient(135deg,rgba(58,15,90,0.1),rgba(58,15,90,0.05));color:var(--purple);font-weight:700;}
+    .toc-item{margin-bottom:clamp(12px, 3vw, 14px);}
+    .toc-link{display:block;padding:clamp(12px, 3.5vw, 16px) clamp(16px, 4vw, 20px);border-radius:clamp(16px, 4vw, 20px);color:var(--amethyst);opacity:0.7;font-weight:600;text-decoration:none;transition:all 0.4s var(--ease);position:relative;}
+    .toc-link:hover{background:rgba(44,27,74,0.06);color:var(--amethyst);opacity:1;transform:translateX(clamp(4px, 1vw, 8px));}
+    .toc-link.active{background:linear-gradient(135deg,rgba(44,27,74,0.1),rgba(44,27,74,0.05));color:var(--amethyst);font-weight:700;opacity:1;}
+    .toc-toggle{position:fixed;bottom:clamp(20px, 5vw, 24px);right:clamp(20px, 5vw, 24px);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);border:none;padding:clamp(16px, 4vw, 20px);border-radius:50%;font-size:clamp(1.4rem, 3.5vw, 1.5rem);cursor:pointer;box-shadow:0 clamp(12px, 3vw, 16px) clamp(32px, 8vw, 48px) rgba(44,27,74,0.4);z-index:125;display:none;min-height:clamp(56px, 14vw, 64px);min-width:clamp(56px, 14vw, 64px);}
+    @media(max-width:1199px){.toc-toggle{display:block;}}
 
-    /* Legal Sections */
-    .legal-section{background:#fff;border-radius:28px;padding:64px 56px;margin-bottom:60px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.06);position:relative;overflow:hidden;opacity:0;transform:translateY(60px);transition:all 0.8s ease;}
+    /* ⚖️ MOBILE LOCK LEGAL SECTIONS */
+    .legal-section{background:var(--pearl);border-radius:clamp(24px, 6vw, 28px);padding:clamp(32px, 8vw, 64px) clamp(28px, 7vw, 56px);margin-bottom:clamp(40px, 10vw, 48px);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.06);position:relative;overflow:hidden;opacity:0;transform:translateY(clamp(40px, 10vw, 60px));transition:all 0.8s var(--ease);}
+    @media(max-width:480px){.legal-section{padding:clamp(24px, 6vw, 32px) clamp(20px, 5vw, 24px);}}
     .legal-section.visible{opacity:1;transform:translateY(0);}
-    .legal-section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--success));}
-    .section-icon{position:absolute;left:40px;top:64px;font-size:2.5rem;color:var(--purple);}
-    .section-title{font-family:'Clash Display',serif;font-size:2.2rem;margin:0 0 32px 80px;font-weight:600;}
-    .section-content{margin-left:80px;line-height:1.8;}
+    .legal-section::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(3px, 0.8vw, 4px);background:linear-gradient(90deg,var(--amethyst),var(--success));}
+    .section-icon{position:absolute;left:clamp(20px, 5vw, 40px);top:clamp(40px, 10vw, 64px);font-size:clamp(1.8rem, 5.5vw, 2.5rem);color:var(--amethyst);}
+    .section-title{font-family:'Clash Display',serif;font-size:clamp(1.4rem, 4.5vw, 2.2rem);margin:0 0 clamp(20px, 5vw, 24px) clamp(60px, 15vw, 80px);font-weight:600;}
+    .section-content{margin-left:clamp(60px, 15vw, 80px);line-height:1.8;}
+    @media(max-width:480px){.section-title{margin-left:clamp(52px, 13vw, 60px);}.section-content{margin-left:clamp(52px, 13vw, 60px);}}
     
-    .highlight-notice{background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(16,185,129,0.05));border-left:6px solid var(--success);padding:28px;margin:32px 0;border-radius:20px;}
+    .highlight-notice{background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(16,185,129,0.05));border-left:clamp(4px, 1vw, 6px) solid var(--success);padding:clamp(16px, 4vw, 28px) clamp(20px, 5vw, 24px);margin:clamp(20px, 5vw, 24px) 0;border-radius:clamp(16px, 4vw, 20px);}
     .highlight-notice strong{color:var(--success);font-weight:700;}
     
-    .artisan-badge{position:absolute;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:16px 24px;border-radius:24px;font-weight:700;font-size:0.9rem;}
+    .artisan-badge{position:absolute;top:clamp(16px, 4vw, 32px);right:clamp(16px, 4vw, 32px);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);padding:clamp(10px, 2.5vw, 16px) clamp(16px, 4vw, 24px);border-radius:clamp(20px, 5vw, 24px);font-weight:700;font-size:clamp(0.75rem, 2.2vw, 0.9rem);}
 
     /* Print Styles */
-    @media print{.toc-panel{display:none;}.legal-section{margin-bottom:40px;box-shadow:none;border:1px solid #ccc;}}
+    @media print{.toc-panel,.toc-toggle,.auction-banner{display:none;}.legal-section{margin-bottom:clamp(32px, 8vw, 40px);box-shadow:none;border:1px solid #ccc;}}
 
-    /* Responsive */
-    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
-    @media(max-width:1100px){.toc-panel{display:none;}}
-    @media(max-width:768px){
-      .hero-section{padding:60px 32px;}.legal-section{padding:48px 32px;}
-      .section-title{font-size:1.8rem;margin-left:60px;}.section-content{margin-left:60px;}
-      .section-icon{left:24px;top:48px;font-size:2rem;}
-    }
+    footer{padding:clamp(60px, 15vw, 80px) clamp(20px, 5vw, 5%) clamp(40px, 10vw, 40px);text-align:center;color:var(--sage);border-top:1px solid rgba(44,27,74,0.06);font-size:clamp(0.875rem, 2.2vw, 0.95rem);font-weight:300;line-height:1.6;}
+    footer a{color:var(--rose-gold);text-decoration:none;font-weight:500;}
 
-    footer{padding:80px 5% 40px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
-    #topBtn{position:fixed;bottom:40px;right:40px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;padding:20px;border-radius:24px;font-size:1.2rem;cursor:pointer;box-shadow:0 20px 60px rgba(58,15,90,0.4);display:none;z-index:90;}
+    #topBtn{position:fixed;bottom:clamp(80px, 20vw, 96px);right:clamp(20px, 5vw, 24px);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);border:none;padding:clamp(14px, 3.5vw, 16px);border-radius:clamp(20px, 5vw, 24px);font-size:clamp(1rem, 2.5vw, 1.1rem);cursor:pointer;box-shadow:0 clamp(12px, 3vw, 16px) clamp(32px, 8vw, 48px) rgba(44,27,74,0.4);display:none;z-index:90;min-height:clamp(52px, 13vw, 60px);min-width:clamp(52px, 13vw, 60px);}
+    @media(max-width:768px){#topBtn{bottom:clamp(88px, 22vw, 100px);right:clamp(16px, 4vw, 20px);}}
   </style>
 </head>
 <body>
-  <!-- Perfect System Header -->
+  <!-- 🔒 MOBILE LOCK HEADER -->
   <header>
-    <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.1rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.8rem;color:var(--muted);">Legal</div>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:clamp(1.1rem, 2.8vw, 1.5rem);font-weight:600;color:var(--amethyst);">Snehvastra</div>
+        <div style="font-size:clamp(0.7rem, 1.8vw, 0.8rem);color:var(--amethyst);opacity:0.7;font-weight:400;">Legal</div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="wishlist.html">Wishlist</a></li>
+          <li><a href="mini-cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li id="authArea"></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+  <!-- ✅ MOBILE LOCK AUCTION BANNER -->
+  <div class="auction-banner" id="auctionBanner">
+    🔥 SNEHVASTRA ONE AUCTION<br>
+    <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
+  <!-- 📋 MOBILE LOCK TOC TOGGLE -->
+  <button class="toc-toggle" id="tocToggle">📋</button>
+
   <div class="legal-container">
-    <!-- Hero Section -->
+    <!-- 🎯 MOBILE LOCK Hero Section -->
     <section class="hero-section" data-aos="fade-up">
       <h1 class="hero-title">Terms of Service</h1>
-      <p class="hero-subtitle">Your agreement with Surat's master artisans and the Snehvastra collector community. Last updated December 23, 2025.</p>
+      <p class="hero-subtitle">Your agreement with Kota's master artisans and the Snehvastra collector community. Last updated December 23, 2025.</p>
     </section>
 
     <div class="last-updated" data-aos="fade-up" data-aos-delay="200">Effective: December 23, 2025</div>
 
-    <!-- Interactive TOC -->
-    <nav class="toc-panel" data-aos="fade-left">
+    <!-- 📋 MOBILE LOCK TOC PANEL (BOTTOM SHEET) -->
+    <nav class="toc-panel" id="tocPanel">
       <h3 class="toc-title">Contents</h3>
       <ul class="toc-list">
         <li class="toc-item"><a href="#s1" class="toc-link">1. Introduction</a></li>
@@ -134,13 +160,13 @@
       </ul>
     </nav>
 
-    <!-- Legal Sections -->
+    <!-- ⚖️ MOBILE LOCK Legal Sections -->
     <section class="legal-section" id="s1" data-aos="fade-up">
       <div class="section-icon">⚖️</div>
-      <div class="artisan-badge">Artisan Authenticity</div>
+      <div class="artisan-badge">Kota Authenticity</div>
       <h2 class="section-title">1. Introduction</h2>
       <div class="section-content">
-        <p>These Terms govern your use of Snehvastra, the platform connecting collectors with Surat's master artisans. All pieces are handcrafted with NFC authentication for provenance verification.</p>
+        <p>These Terms govern your use of Snehvastra, the platform connecting collectors with Kota's master artisans. All pieces are handcrafted with NFC authentication for provenance verification.</p>
       </div>
     </section>
 
@@ -150,7 +176,7 @@
       <div class="section-content">
         <ul>
           <li>All prices include 18% GST (Rajasthan)</li>
-          <li>Handcrafted lead time: 3-7 days from Jaipur workshop</li>
+          <li>Handcrafted lead time: 3-7 days from Kota workshop</li>
           <li>Payments via Razorpay (UPI, Cards, Wallets)</li>
           <li>Drop model: Limited quantities, first-come-first-served</li>
         </ul>
@@ -163,7 +189,7 @@
       <div class="section-content">
         <p><strong>India:</strong> 3-5 days Express (₹99-299) | International: 7-14 days (₹999+)</p>
         <div class="highlight-notice">
-          <strong>NFC Tracking:</strong> Real-time location + temperature monitoring for premium pieces.
+          <strong>NFC Tracking:</strong> Real-time location + temperature monitoring for premium pieces from Kota.
         </div>
       </div>
     </section>
@@ -174,7 +200,7 @@
       <div class="section-content">
         <p>7-day defect-only window. Handcrafted nature excludes style-change returns.</p>
         <div class="highlight-notice">
-          <strong>Collector Protection:</strong> Full refund if NFC authentication fails workshop verification.
+          <strong>Collector Protection:</strong> Full refund if NFC authentication fails Kota workshop verification.
         </div>
       </div>
     </section>
@@ -197,7 +223,7 @@
       <div class="section-content">
         <p>Bids are <strong>legally binding</strong>. Highest bid wins within final 60 seconds.</p>
         <div class="highlight-notice">
-          <strong>Reserve Price:</strong> All lots meet artisan minimum viability threshold.
+          <strong>Reserve Price:</strong> All lots meet Kota artisan minimum viability threshold.
         </div>
       </div>
     </section>
@@ -230,99 +256,143 @@
       <div class="section-icon">🏛️</div>
       <h2 class="section-title">10. Governing Law</h2>
       <div class="section-content">
-        <p>Rajasthan High Court jurisdiction. Disputes resolved via arbitration in Jaipur before legal action.</p>
+        <p>Rajasthan High Court jurisdiction. Disputes resolved via arbitration in Kota before legal action.</p>
       </div>
     </section>
   </div>
 
-  <footer>
-    © <span id="year"></span> Snehvastra. Crafted in Surat, Rajasthan. <a href="mailto:legal@snehvastra.store" style="color:var(--purple);">legal@snehvastra.store</a>
+  <footer data-aos="fade-up">
+    © <span id="year"></span> Snehvastra. Crafted in Kota, Rajasthan. <a href="mailto:legal@snehvastra.store">legal@snehvastra.store</a>
   </footer>
 
   <button id="topBtn">↑ Top</button>
 
   <script>
-    // Perfect system sync (matches ALL pages)
-    const USER_KEY = "snehvastra_user"; const USERS_KEY = "snehvastra_users";
-    let cart = JSON.parse(localStorage.getItem("snehvastra_cart") || "{}");
+    // 🔒 BULLETPROOF MOBILE LOCK TERMS SYSTEM (NO GSAP)
+    document.addEventListener('DOMContentLoaded', function() {
+      initTerms();
+    });
 
-    // Auth rendering
-    const user = JSON.parse(localStorage.getItem(USER_KEY));
-    const authArea = document.getElementById("authArea");
-    if(user && user.loggedIn){
-      authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span><a href="#" onclick="logout()" style="background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:12px 20px;border-radius:16px;font-weight:700;">Logout</a>`;
-    } else {
-      authArea.innerHTML = `<a href="user-login.html" style="padding:12px 20px;">Login</a><a href="user-register.html" style="padding:12px 20px;">Join</a>`;
-    }
-
-    function logout(){localStorage.removeItem(USER_KEY);location.reload();}
-
-    // Cart sync
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-      document.getElementById("cartCount").textContent = total;
-    }
-
-    // Enhanced auction timer
-    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
-    setInterval(()=>{
-      const diff = auctionDate - Date.now();
-      const timer = document.getElementById("auctionTimer");
-      if(diff > 0){
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        timer.textContent = `${days}d ${hours}h`;
-      } else {
-        timer.textContent = "LIVE NOW!";
-        timer.style.background = "linear-gradient(135deg,#10B981,#059669)";
+    function initTerms() {
+      // 🔒 CORE SYSTEM - FULL LOCALSTORAGE SYNC
+      const USER_KEY = "snehvastra_user"; 
+      const CART_KEY = "snehvastra_cart";
+      
+      let cart = {};
+      let user = {};
+      
+      try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+        user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+      } catch(e) {
+        console.log('Storage reset - terms page');
+        cart = {};
       }
-    }, 60000);
 
-    // Interactive TOC + smooth scroll
-    document.querySelectorAll('.toc-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        target.scrollIntoView({behavior: 'smooth'});
-      });
-    });
-
-    // Active TOC highlighting
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          document.querySelectorAll('.toc-link').forEach(link => link.classList.remove('active'));
-          const id = entry.target.getAttribute('id');
-          document.querySelector(`.toc-link[href="#${id}"]`)?.classList.add('active');
+      // 🔐 AUTH SYNC
+      function renderAuth() {
+        const authArea = document.getElementById("authArea");
+        if (user && user.loggedIn) {
+          authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Hi, ${user.name}</span>`;
+        } else {
+          authArea.innerHTML = `<a href="user-login.html" style="padding:clamp(8px, 2vw, 12px) clamp(16px, 4vw, 28px);border:1px solid var(--rose-gold);color:var(--rose-gold);border-radius:clamp(16px, 4vw, 24px);font-weight:500;text-decoration:none;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Login</a>`;
         }
+      }
+
+      // 🛒 CART COUNT SYNC
+      function updateCartCount(){
+        const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+        const cartEl = document.getElementById("cartCount");
+        if(cartEl) cartEl.textContent = total || 0;
+      }
+
+      // ⏰ AUCTION TIMER
+      const auctionEnd = new Date("2025-12-24T18:00:00").getTime();
+      function updateAuctionTimer(){
+        const now = Date.now();
+        const diff = auctionEnd - now;
+        const timerEl = document.getElementById("auctionTimer");
+        if (timerEl && diff > 0) {
+          const days = Math.floor(diff / (1000*60*60*24));
+          const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+          timerEl.innerHTML = `${days}d ${hours.toString().padStart(2,'0')}h`;
+        } else if (timerEl) {
+          timerEl.innerHTML = "LIVE NOW!";
+          timerEl.parentElement.style.background = "linear-gradient(135deg, var(--success), #059669)";
+        }
+      }
+
+      // 🍔 HAMBURGER (900px breakpoint)
+      document.getElementById("hamburger").addEventListener("click", function() {
+        document.querySelector("header").classList.toggle("menu-open");
       });
-    }, {rootMargin: '-20% 0px -40% 0px'});
 
-    document.querySelectorAll('.legal-section').forEach(section => observer.observe(section));
+      // 📋 MOBILE TOC TOGGLE
+      const tocToggle = document.getElementById("tocToggle");
+      const tocPanel = document.getElementById("tocPanel");
+      if(tocToggle && tocPanel){
+        tocToggle.addEventListener("click", () => {
+          tocPanel.style.display = tocPanel.style.display === "block" ? "none" : "block";
+          // Haptic feedback
+          tocToggle.style.transform = 'scale(0.95)';
+          setTimeout(() => tocToggle.style.transform = 'scale(1)', 150);
+        });
+      }
 
-    // Scroll animations + top button
-    const sections = document.querySelectorAll('.legal-section');
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
+      // 🔗 INTERACTIVE TOC + SMOOTH SCROLL
+      document.querySelectorAll('.toc-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          if(target){
+            target.scrollIntoView({behavior: 'smooth', block: 'start'});
+            if(window.innerWidth < 1200) tocPanel.style.display = "none";
+            // Active state
+            document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
       });
-    });
-    sections.forEach(section => sectionObserver.observe(section));
 
-    const topBtn = document.getElementById("topBtn");
-    window.addEventListener("scroll", () => {
-      topBtn.style.display = window.scrollY > 800 ? "block" : "none";
-    });
-    topBtn.onclick = () => window.scrollTo({top: 0, behavior: "smooth"});
+      // 📍 ACTIVE TOC HIGHLIGHTING
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            document.querySelectorAll('.toc-link').forEach(link => link.classList.remove('active'));
+            const id = entry.target.getAttribute('id');
+            const activeLink = document.querySelector(`.toc-link[href="#${id}"]`);
+            if(activeLink) activeLink.classList.add('active');
+          }
+        });
+      }, {rootMargin: '-20% 0px -40% 0px'});
 
-    // Init
-    AOS.init({duration: 1200, once: true});
-    updateCartCount();
-    document.getElementById("year").textContent = new Date().getFullYear();
+      document.querySelectorAll('.legal-section').forEach(section => observer.observe(section));
 
-    // Print handler
-    window.addEventListener('beforeprint', () => document.querySelector('.toc-panel').style.display = 'none');
-    window.addEventListener('afterprint', () => document.querySelector('.toc-panel').style.display = 'block');
+      // 🎬 SCROLL ANIMATIONS + TOP BUTTON
+      const sections = document.querySelectorAll('.legal-section');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      });
+      sections.forEach(section => sectionObserver.observe(section));
+
+      const topBtn = document.getElementById("topBtn");
+      if(topBtn){
+        window.addEventListener("scroll", () => {
+          topBtn.style.display = window.scrollY > 800 ? "block" : "none";
+        });
+        topBtn.onclick = () => window.scrollTo({top: 0, behavior: "smooth"});
+      }
+
+      // 🔧 MOBILE LOCK INIT
+      AOS.init({duration:800, once:true, offset:100});
+      renderAuth();
+      updateCartCount();
+      updateAuctionTimer();
+      setInterval(updateAuctionTimer, 30000);
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
   </script>
 </body>
 </html>
