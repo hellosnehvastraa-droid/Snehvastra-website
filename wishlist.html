@@ -2,121 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Wishlist — Snehvastra Echo Drops</title>
-  <meta name="theme-color" content="#3A0F5A"/>
-  <meta name="description" content="Your curated streetwear collection. AI bundle suggestions. One-click checkout."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="theme-color" content="#2C1B4A"/>
+  <title>Wishlist — Snehvastra Kota Drops</title>
+  <meta name="description" content="Your curated Kota streetwear collection. AI bundle suggestions. One-click checkout."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --purple-dark:#2e0b4a; --slate:#1F2024; --slate-mid:#3B3D45;
-      --muted:#8E8F92; --glass:rgba(255,255,255,0.9); --radius:24px; --shadow-soft:0 30px 100px rgba(58,15,90,0.1);
-      --ease:0.35s; --max-width:1400px;
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (WISHLIST MOBILE LOCK) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --success:#10B981; --error:#EF4444; --warning:#F59E0B;
+      --shadow-soft:0 clamp(25px, 8vw, 35px) clamp(80px, 20vw, 140px) rgba(44,27,74,0.15); 
+      --shadow-glow:0 0 clamp(20px, 5vw, 35px) rgba(107,90,207,0.2);
+      --radius:clamp(20px, 5vw, 32px); --max-width:clamp(380px, 95vw, 1400px); --ease:cubic-bezier(0.32,0.72,0,1);
     }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,#faf9fc,#f5f3f8);color:var(--slate);overflow-x:hidden;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);min-height:100vh;overflow-x:hidden;line-height:1.7;}
 
-    /* Enhanced Header (sync with index/collection) */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(58,15,90,0.08);padding:18px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;}
-    .logo{height:50px;border-radius:14px;box-shadow:0 12px 40px rgba(58,15,90,0.15);}
-    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center;}
-    nav a{padding:12px 20px;border-radius:16px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
-    nav a.active,nav a:hover{background:rgba(58,15,90,0.08);color:var(--purple);}
-    .user-box{display:flex;align-items:center;gap:12px;}
-    .user-name{font-weight:700;color:var(--purple);font-size:0.95rem;}
-    .logout-btn{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;border-radius:14px;padding:10px 20px;font-weight:700;cursor:pointer;box-shadow:0 8px 30px rgba(58,15,90,0.3);}
+    /* 🔒 MOBILE LOCK HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;height:clamp(56px, 15vw, 60px);background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:clamp(8px, 2vw, 12px) 0;}
+    .header-container{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px, 5vw, 24px);height:100%;}
+    .brand{display:flex;gap:clamp(12px, 3vw, 20px);align-items:center;cursor:pointer;transition:all 0.4s var(--ease);}
+    .brand:hover{transform:translateY(-2px);}
+    .logo{height:clamp(40px, 11vw, 52px);border-radius:clamp(12px, 3vw, 20px);box-shadow:0 clamp(12px, 3vw, 20px) clamp(32px, 8vw, 60px) rgba(44,27,74,0.12);}
+    nav ul{display:flex;gap:clamp(8px, 2vw, 12px);list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);border-radius:clamp(16px, 4vw, 24px);font-weight:500;color:var(--amethyst);text-decoration:none;font-size:clamp(0.875rem, 2.2vw, 0.95rem);backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;min-height:clamp(44px, 11vw, 64px);display:flex;align-items:center;}
+    nav a::after{content:'';position:absolute;bottom:clamp(2px, 0.8vw, 4px);left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a:hover::after{width:80%;}
+    nav a.active{color:var(--amethyst);font-weight:600;background:rgba(232,180,184,0.15);box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(20px, 5vw, 32px) rgba(232,180,184,0.15);}
 
-    /* Auction Banner */
-    .auction-banner{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;text-align:center;font-weight:700;position:relative;overflow:hidden;}
-    .auction-banner::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);animation:shimmer 2s infinite;}
+    .hamburger{display:none;background:none;border:none;font-size:clamp(1.75rem, 4.5vw, 2rem);color:var(--amethyst);cursor:pointer;padding:clamp(12px, 3vw, 16px);min-height:clamp(44px, 11vw, 64px);}
+    .user-box{display:flex;align-items:center;gap:clamp(6px, 1.5vw, 8px);flex-shrink:0;}
+    .user-name{font-weight:700;color:var(--amethyst);font-size:clamp(0.8rem, 2.2vw, 0.85rem);}
+    .logout-btn{background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);border:none;border-radius:clamp(10px, 2.5vw, 12px);padding:clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 16px);font-weight:700;cursor:pointer;box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(24px, 6vw, 30px) rgba(44,27,74,0.3);font-size:clamp(0.75rem, 2vw, 0.8rem);transition:all 0.4s var(--ease);}
+    .logout-btn:hover{transform:translateY(-2px);box-shadow:0 clamp(10px, 2.5vw, 12px) clamp(32px, 8vw, 40px) rgba(44,27,74,0.4);}
+    
+    @media(max-width:900px){
+      .hamburger{display:block!important;}
+      nav{display:none;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:clamp(16px, 4vw, 20px) 0;overflow-y:auto;max-height:60vh;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:clamp(6px, 1.5vw, 8px);}
+      nav a{display:block;text-align:center;width:100%;padding:clamp(20px, 5vw, 24px);border-radius:clamp(12px, 3vw, 16px);min-height:clamp(60px, 15vw, 72px);}
+      .user-box{flex-direction:column;align-items:flex-start;gap:clamp(4px, 1vw, 6px);}
+    }
 
-    /* Main Content */
-    main{max-width:var(--max-width);margin:80px auto 100px;padding:0 5%;}
-    .page-header{text-align:center;margin-bottom:60px;}
-    .page-title{font-family:'Clash Display',serif;font-size:clamp(2.5rem,7vw,4.2rem);background:linear-gradient(135deg,var(--purple),#5a1f7a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 16px;}
-    .wishlist-stats{display:flex;justify-content:center;gap:40px;font-size:1.1rem;font-weight:600;color:var(--slate-mid);}
+    /* ✅ MOBILE LOCK AUCTION BANNER (top:68px) */
+    .auction-banner{position:fixed;top:clamp(68px, 18vw, 80px);right:clamp(16px, 4vw, 30px);z-index:900;max-width:clamp(220px, 28vw, 280px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(20px, 5vw, 32px);border-radius:clamp(20px, 5vw, 28px);font-family:'Clash Display',serif;font-weight:700;font-size:clamp(0.95rem, 2.5vw, 1.2rem);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);line-height:1.3;}
+    .auction-timer{display:block;margin-top:clamp(6px, 1.5vw, 8px);background:rgba(255,255,255,0.9);border-radius:clamp(12px, 3vw, 16px);padding:clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);font-weight:600;}
+    @media(max-width:480px){.auction-banner{right:clamp(12px, 3vw, 16px);}}
 
-    /* Wishlist Cards - Full Luxury Showcase */
-    .wishlist-grid{display:grid;gap:40px;padding:0;margin:0;}
-    .wishlist-item{position:relative;background:#fff;border-radius:32px;overflow:hidden;box-shadow:var(--shadow-soft);transition:all var(--ease);height:420px;}
-    .wishlist-item:hover{transform:translateY(-16px);box-shadow:0 50px 140px rgba(58,15,90,0.25);}
-    .item-media{position:relative;height:280px;overflow:hidden;}
-    .item-media img{width:100%;height:100%;object-fit:cover;transition:all var(--ease);}
+    /* 📱 MOBILE LOCK MAIN */
+    main{max-width:var(--max-width);margin:clamp(68px, 18vw, 120px) auto clamp(60px, 15vw, 80px);padding:0 clamp(20px, 5vw, 5%);}
+    
+    .page-header{text-align:center;margin-bottom:clamp(32px, 8vw, 60px);}
+    .page-title{font-family:'Clash Display',serif;font-size:clamp(1.8rem, 5.5vw, 4.2rem);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 clamp(8px, 2.5vw, 16px);line-height:1.1;font-weight:900;letter-spacing:clamp(-1px, -0.3vw, -1.5px);}
+    .wishlist-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px, 4vw, 40px);font-size:clamp(0.95rem, 2.8vw, 1.1rem);font-weight:600;color:var(--amethyst);opacity:0.9;}
+
+    /* 🎯 MOBILE LOCK WISHLIST GRID */
+    .wishlist-grid{display:grid;gap:clamp(20px, 6vw, 40px);padding:0;margin:0;grid-template-columns:repeat(auto-fill,minmax(clamp(320px, 90vw, 380px),1fr));}
+    @media(max-width:480px){.wishlist-grid{grid-template-columns:1fr;gap:clamp(20px, 5vw, 24px);}}
+
+    .wishlist-item{position:relative;background:var(--pearl);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);transition:all 0.4s var(--ease);height:clamp(360px, 52vw, 420px);}
+    @media(max-width:480px){.wishlist-item{height:auto;min-height:clamp(360px, 52vw, 420px);}}
+    .wishlist-item:hover{transform:translateY(-8px);box-shadow:0 clamp(32px, 8vw, 40px) clamp(100px, 25vw, 120px) rgba(44,27,74,0.2);}
+    
+    .item-media{position:relative;height:clamp(200px, 36vw, 280px);overflow:hidden;}
+    .item-media img{width:100%;height:100%;object-fit:cover;transition:all 0.4s var(--ease);}
     .item-media video{display:none;position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
     .wishlist-item:hover .item-media video{display:block;}
     .wishlist-item:hover .item-media img{transform:scale(1.08);}
     
-    .stock-badge{position:absolute;top:20px;left:20px;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-radius:20px;padding:8px 16px;font-weight:700;color:var(--purple);box-shadow:0 8px 32px rgba(0,0,0,0.15);}
-    .nfc-badge{position:absolute;top:20px;right:20px;background:linear-gradient(135deg,#fff,#f8f7ff);border:2px solid var(--purple);border-radius:24px;padding:10px 16px;font-size:0.85rem;font-weight:700;box-shadow:0 12px 40px rgba(58,15,90,0.2);}
+    .stock-badge{position:absolute;top:clamp(12px, 3vw, 16px);left:clamp(12px, 3vw, 16px);background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-radius:clamp(16px, 4vw, 20px);padding:clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 14px);font-weight:700;color:var(--amethyst);box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(24px, 6vw, 32px) rgba(0,0,0,0.15);font-size:clamp(0.8rem, 2.4vw, 0.85rem);}
+    .nfc-badge{position:absolute;top:clamp(12px, 3vw, 16px);right:clamp(12px, 3vw, 16px);background:linear-gradient(135deg,#fff,#f8f7ff);border:2px solid var(--amethyst);border-radius:clamp(16px, 4vw, 20px);padding:clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);font-size:clamp(0.75rem, 2.2vw, 0.8rem);font-weight:700;box-shadow:0 clamp(8px, 2vw, 10px) clamp(24px, 6vw, 32px) rgba(44,27,74,0.15);}
     
-    .item-content{padding:32px;}
-    .item-title{font-family:'Clash Display',serif;font-size:1.6rem;color:var(--purple);margin:0 0 12px;font-weight:600;}
-    .item-price{font-size:1.4rem;font-weight:900;color:var(--purple);margin:0 0 20px;}
-    .item-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px;color:var(--muted);font-size:0.95rem;}
-    .collector-count{background:rgba(58,15,90,0.08);color:var(--purple);padding:6px 14px;border-radius:20px;font-weight:600;}
+    .item-content{padding:clamp(20px, 5vw, 32px);}
+    .item-title{font-family:'Clash Display',serif;font-size:clamp(1.2rem, 3.8vw, 1.6rem);color:var(--amethyst);margin:0 0 clamp(6px, 2vw, 12px);font-weight:600;line-height:1.3;}
+    .item-price{font-size:clamp(1.1rem, 3.5vw, 1.4rem);font-weight:900;color:var(--amethyst);margin:0 0 clamp(10px, 3vw, 20px);}
+    .item-meta{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(8px, 2vw, 10px);margin-bottom:clamp(14px, 4vw, 24px);color:var(--amethyst);opacity:0.7;font-size:clamp(0.8rem, 2.4vw, 0.95rem);}
+    .collector-count{background:rgba(44,27,74,0.08);color:var(--amethyst);padding:clamp(4px, 1vw, 6px) clamp(10px, 2.5vw, 12px);border-radius:clamp(12px, 3vw, 16px);font-weight:600;}
     
-    .item-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
-    .bundle-suggestion{display:flex;align-items:center;gap:12px;background:rgba(58,15,90,0.03);padding:14px 20px;border-radius:20px;border:1px solid rgba(58,15,90,0.1);cursor:pointer;transition:all var(--ease);flex:1;}
-    .bundle-suggestion:hover{background:rgba(58,15,90,0.08);transform:translateX(4px);}
-    .bundle-icon{font-size:1.2rem;}
-    .add-bundle{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;border-radius:20px;padding:16px 32px;font-weight:700;font-size:1.1rem;cursor:pointer;box-shadow:0 12px 40px rgba(58,15,90,0.3);transition:all var(--ease);}
-    .add-bundle:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(58,15,90,0.4);}
-    .remove-heart{position:absolute;top:24px;left:24px;width:52px;height:52px;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--ease);box-shadow:0 12px 40px rgba(0,0,0,0.15);}
-    .heart-fill{display:none;width:28px;height:28px;background:var(--purple);clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);}
+    .item-actions{display:flex;gap:clamp(8px, 2vw, 12px);align-items:center;flex-wrap:wrap;}
+    .bundle-suggestion{display:flex;align-items:center;gap:clamp(8px, 2vw, 10px);background:rgba(44,27,74,0.03);padding:clamp(10px, 2.5vw, 12px) clamp(14px, 3.5vw, 16px);border-radius:clamp(16px, 4vw, 20px);border:1px solid rgba(44,27,74,0.1);cursor:pointer;transition:all 0.4s var(--ease);flex:1;font-size:clamp(0.85rem, 2.5vw, 0.9rem);}
+    .bundle-suggestion:hover{background:rgba(44,27,74,0.08);transform:translateX(4px);}
+    .bundle-icon{font-size:clamp(1rem, 2.8vw, 1.1rem);}
+    .add-bundle{background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);border:none;border-radius:clamp(16px, 4vw, 20px);padding:clamp(10px, 2.5vw, 14px) clamp(20px, 5vw, 28px);font-weight:700;font-size:clamp(0.9rem, 2.6vw, 1rem);cursor:pointer;box-shadow:0 clamp(10px, 2.5vw, 12px) clamp(32px, 8vw, 40px) rgba(44,27,74,0.3);transition:all 0.4s var(--ease);flex-shrink:0;min-height:clamp(44px, 11vw, 52px);}
+    .add-bundle:hover{transform:translateY(-3px);box-shadow:0 clamp(14px, 3.5vw, 18px) clamp(40px, 10vw, 60px) rgba(44,27,74,0.4);}
+    
+    .remove-heart{position:absolute;top:clamp(12px, 3vw, 16px);left:clamp(12px, 3vw, 16px);width:clamp(44px, 11vw, 48px);height:clamp(44px, 11vw, 48px);background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.4s var(--ease);box-shadow:0 clamp(8px, 2vw, 10px) clamp(24px, 6vw, 32px) rgba(0,0,0,0.15);z-index:10;}
+    .heart-fill{display:none;width:clamp(22px, 5.5vw, 26px);height:clamp(22px, 5.5vw, 26px);background:var(--amethyst);clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);}
     .remove-heart:hover .heart-fill{display:block;}
 
-    /* Sidebar */
-    .sidebar{background:#fff;border-radius:28px;padding:36px;border:1px solid rgba(58,15,90,0.08);box-shadow:var(--shadow-soft);}
-    .sidebar-title{font-family:'Clash Display',serif;font-size:1.4rem;color:var(--purple);margin:0 0 28px;font-weight:600;}
-    .quick-action{background:linear-gradient(135deg,rgba(58,15,90,0.02),rgba(58,15,90,0.01));border:2px solid rgba(58,15,90,0.1);color:var(--purple);border-radius:20px;padding:18px 24px;width:100%;margin-bottom:16px;font-weight:700;cursor:pointer;transition:all var(--ease);}
-    .quick-action:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(58,15,90,0.15);background:linear-gradient(135deg,rgba(58,15,90,0.05),rgba(58,15,90,0.03));}
+    /* 📱 MOBILE LOCK CONTENT LAYOUT */
+    .content{display:grid;grid-template-columns:1fr;gap:clamp(24px, 6vw, 40px);align-items:start;}
+    @media(min-width:1024px){.content{grid-template-columns:1fr clamp(300px, 30vw, 380px);}}
 
-    /* Empty State */
-    .empty-state{text-align:center;padding:120px 40px;color:var(--muted);}
-    .empty-illustration{width:200px;height:200px;background:linear-gradient(135deg,rgba(58,15,90,0.03),rgba(58,15,90,0.01));border-radius:50%;margin:0 auto 32px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:var(--muted);}
+    /* 🔐 MOBILE LOCK SIDEBAR */
+    .sidebar{background:var(--pearl);border-radius:var(--radius);padding:clamp(24px, 6vw, 36px);border:1px solid rgba(44,27,74,0.08);box-shadow:var(--shadow-soft);}
+    .sidebar-title{font-family:'Clash Display',serif;font-size:clamp(1.1rem, 3.5vw, 1.4rem);color:var(--amethyst);margin:0 0 clamp(16px, 4vw, 28px);font-weight:600;}
+    .quick-action{background:linear-gradient(135deg,rgba(44,27,74,0.02),rgba(44,27,74,0.01));border:2px solid rgba(44,27,74,0.1);color:var(--amethyst);border-radius:clamp(16px, 4vw, 20px);padding:clamp(14px, 3.5vw, 18px) clamp(18px, 4.5vw, 24px);width:100%;margin-bottom:clamp(12px, 3vw, 14px);font-weight:700;cursor:pointer;transition:all 0.4s var(--ease);font-size:clamp(0.9rem, 2.6vw, 1rem);min-height:clamp(52px, 13vw, 60px);}
+    .quick-action:hover{transform:translateY(-2px);box-shadow:0 clamp(16px, 4vw, 20px) clamp(48px, 12vw, 60px) rgba(44,27,74,0.15);background:linear-gradient(135deg,rgba(44,27,74,0.05),rgba(44,27,74,0.03));}
 
-    /* Toast & Share */
-    .toast{position:fixed;top:100px;right:24px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px 28px;border-radius:20px;box-shadow:0 20px 80px rgba(58,15,90,0.4);transform:translateX(400px);transition:all var(--ease);font-weight:700;z-index:500;}
+    /* 💎 EMPTY STATE */
+    .empty-state{text-align:center;padding:clamp(60px, 20vw, 120px) clamp(28px, 7vw, 40px);color:var(--amethyst);opacity:0.6;}
+    .empty-illustration{width:clamp(120px, 22vw, 200px);height:clamp(120px, 22vw, 200px);background:linear-gradient(135deg,rgba(44,27,74,0.03),rgba(44,27,74,0.01));border-radius:50%;margin:0 auto clamp(20px, 6vw, 32px);display:flex;align-items:center;justify-content:center;font-size:clamp(2.8rem, 9vw, 4rem);}
+
+    /* 🍞 MOBILE LOCK TOAST & SHARE */
+    .toast{position:fixed;top:clamp(20px, 5vw, 100px);right:clamp(20px, 5vw, 24px);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);padding:clamp(16px, 4vw, 20px) clamp(22px, 5.5vw, 28px);border-radius:clamp(18px, 4.5vw, 20px);box-shadow:0 clamp(18px, 4.5vw, 20px) clamp(56px, 14vw, 80px) rgba(44,27,74,0.4);transform:translateX(100vw);transition:all 0.4s var(--ease);font-weight:700;z-index:500;max-width:clamp(280px, 70vw, 90vw);}
     .toast.show{transform:translateX(0);}
-    .share-link{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-radius:50px;padding:16px 32px;border:2px solid rgba(58,15,90,0.2);font-weight:700;cursor:pointer;transition:all var(--ease);display:none;}
-    .share-link:hover{box-shadow:0 20px 60px rgba(0,0,0,0.2);}
-
-    @keyframes shimmer{0%{left:-100%}100%{left:100%}}
-    @media(max-width:980px){.content{display:block;gap:32px;}.wishlist-item{height:auto;}}
+    .share-link{position:fixed;bottom:clamp(24px, 6vw, 30px);left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-radius:50px;padding:clamp(12px, 3vw, 16px) clamp(26px, 6.5vw, 32px);border:2px solid rgba(44,27,74,0.2);font-weight:700;cursor:pointer;transition:all 0.4s var(--ease);display:none;font-size:clamp(0.85rem, 2.5vw, 1rem);min-height:clamp(48px, 12vw, 56px);}
   </style>
 </head>
 <body>
-  <!-- Enhanced Header -->
+  <!-- 🔒 MOBILE LOCK HEADER -->
   <header>
-    <div class="brand">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.1rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.8rem;color:var(--muted);">Your Collection</div>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:clamp(1.1rem, 2.8vw, 1.5rem);font-weight:600;color:var(--amethyst);">Snehvastra</div>
+        <div style="font-size:clamp(0.7rem, 1.8vw, 0.8rem);color:var(--amethyst);opacity:0.7;font-weight:400;">Kota Drops</div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="wishlist.html" class="active">Wishlist</a></li>
+          <li><a href="mini-cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="wishlist.html" class="active">Wishlist</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li id="authArea"></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="auction-banner" data-aos="fade-down">
-    🔥 SNEHVASTRA ONE AUCTION LIVE — 3 pieces remaining
+  <!-- ✅ MOBILE LOCK AUCTION BANNER -->
+  <div class="auction-banner" id="auctionBanner">
+    🔥 SNEHVASTRA KOTA AUCTION<br>
+    <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
   <main>
@@ -136,207 +165,270 @@
         <button class="quick-action" id="moveAllToCart" data-aos="zoom-in">Move All to Cart</button>
         <button class="quick-action" id="shareWishlist" data-aos="zoom-in" data-aos-delay="100">Share Wishlist</button>
         <button class="quick-action" id="clearWishlist" data-aos="zoom-in" data-aos-delay="200">Clear All</button>
-        <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(58,15,90,0.1);color:var(--muted);font-size:0.9rem;">
-          <strong>Sneh suggests:</strong> Complete looks sell out 3x faster
+        <div style="margin-top:clamp(20px, 5vw, 32px);padding-top:clamp(16px, 4vw, 24px);border-top:1px solid rgba(44,27,74,0.1);color:var(--amethyst);opacity:0.7;font-size:clamp(0.8rem, 2.4vw, 0.9rem);">
+          <strong>Sneh suggests:</strong> Complete Kota looks sell out 3x faster
         </div>
       </aside>
     </div>
 
-    <!-- Empty State -->
+    <!-- 💎 EMPTY STATE -->
     <div id="emptyState" class="empty-state" style="display:none;" data-aos="fade-up">
       <div class="empty-illustration">💎</div>
-      <h2 style="font-family:'Clash Display',serif;color:var(--purple);font-size:2.2rem;margin:0 0 16px;">Your wishlist is empty</h2>
-      <p>Browse <a href="collection.html" style="color:var(--purple);">Echo Drops</a> to start curating your collection.</p>
+      <h2 style="font-family:'Clash Display',serif;color:var(--amethyst);font-size:clamp(1.6rem, 5vw, 2.2rem);margin:0 0 clamp(10px, 3vw, 16px);">Your wishlist is empty</h2>
+      <p>Browse <a href="collection.html" style="color:var(--amethyst);font-weight:600;">Kota Drops</a> to start curating your collection.</p>
     </div>
   </main>
 
-  <!-- Share & Toast -->
+  <!-- 📱 SHARE & TOAST -->
   <div class="share-link" id="shareLink">📱 Copy Wishlist Link</div>
   <div class="toast" id="toast"></div>
 
   <script>
-    // Enhanced Products with full data
-    const PRODUCTS = {
-      "eclipse-hoodie": {title:"Eclipse Hoodie",price:12999,img:"images/products/eclipse-hoodie.jpg",video:"videos/eclipse.mp4",stock:3,tags:["hoodie","black"],complements:["neon-track","midnight-varsity"]},
-      "neon-track": {title:"Neon Track Pants",price:8999,img:"images/products/track-pants.jpg",video:"videos/track.mp4",stock:7,tags:["pants","neon"],complements:["eclipse-hoodie"]},
-      "midnight-varsity": {title:"Midnight Varsity",price:24999,img:"images/products/varsity.jpg",stock:2,tags:["jacket"],complements:["eclipse-hoodie"]}
-    };
+    // 🔒 BULLETPROOF MOBILE LOCK WISHLIST SYSTEM (NO GSAP)
+    document.addEventListener('DOMContentLoaded', function() {
+      initWishlist();
+    });
 
-    const KEY_USER = 'snehvastra_user';
-    const KEY_WISHLIST = 'snehvastra_wishlist';
-    const KEY_CART = 'snehvastra_cart';
+    function initWishlist() {
+      // 🔒 CORE PRODUCTS & STORAGE
+      const PRODUCTS = {
+        "eclipse-hoodie": {title:"Eclipse Hoodie",price:12999,img:"images/products/eclipse-hoodie.jpg",video:"videos/eclipse.mp4",stock:3,tags:["hoodie","black"],complements:["neon-track","midnight-varsity"],collectors:47},
+        "neon-track": {title:"Neon Track Pants",price:8999,img:"images/products/track-pants.jpg",video:"videos/track.mp4",stock:7,tags:["pants","neon"],complements:["eclipse-hoodie"],collectors:32},
+        "midnight-varsity": {title:"Midnight Varsity",price:24999,img:"images/products/varsity.jpg",stock:2,tags:["jacket"],complements:["eclipse-hoodie"],collectors:18}
+      };
 
-    let wishlist = [], cart = {};
+      const KEY_USER = 'snehvastra_user';
+      const KEY_WISHLIST = 'snehvastra_wishlist';
+      const KEY_CART = 'snehvastra_cart';
 
-    function getUser(){return JSON.parse(localStorage.getItem(KEY_USER)||'null');}
-    function getWishlist(){const user=getUser();return user&&user.wishlist?user.wishlist:JSON.parse(localStorage.getItem(KEY_WISHLIST)||'[]');}
-    function saveWishlist(items){
-      wishlist = items;
-      const user = getUser();
-      if(user){
-        user.wishlist = items;
-        localStorage.setItem(KEY_USER, JSON.stringify(user));
-      } else {
-        localStorage.setItem(KEY_WISHLIST, JSON.stringify(items));
+      let wishlist = [], cart = {};
+
+      // 🔒 SAFE STORAGE
+      function safeGet(key, fallback) {
+        try {
+          return JSON.parse(localStorage.getItem(key) || fallback);
+        } catch(e) {
+          return fallback;
+        }
       }
-      renderWishlist();
-    }
 
-    function renderWishlist(){
-      const area = document.getElementById('wishlistArea');
-      const countEl = document.getElementById('wishlistCount');
-      const totalEl = document.getElementById('wishlistTotal');
-      
-      if(wishlist.length === 0){
-        area.style.display = 'none';
-        document.getElementById('emptyState').style.display = 'block';
-        countEl.textContent = '0';
-        totalEl.textContent = '0';
-        return;
+      function getUser() { return safeGet(KEY_USER, null); }
+      function getWishlist() {
+        const user = getUser();
+        return user && user.wishlist ? user.wishlist : safeGet(KEY_WISHLIST, []);
       }
-      
-      area.style.display = 'grid';
-      document.getElementById('emptyState').style.display = 'none';
-      
-      let totalValue = 0;
-      area.innerHTML = wishlist.map(id => {
-        const p = PRODUCTS[id];
-        if(!p) return '';
-        totalValue += p.price;
-        return `
-          <article class="wishlist-item" data-aos="fade-up" data-aos-delay="${Math.random()*200}">
-            <div class="remove-heart" data-id="${id}" title="Remove from wishlist">
-              <div class="heart-fill"></div>
-            </div>
-            <div class="item-media">
-              <img src="${p.img}" alt="${p.title}" loading="lazy"/>
-              ${p.video ? `<video muted loop preload="none"><source src="${p.video}" type="video/mp4"/></video>` : ''}
-              <div class="stock-badge">${p.stock} left</div>
-              <div class="nfc-badge">NFC</div>
-            </div>
-            <div class="item-content">
-              <h3 class="item-title">${p.title}</h3>
-              <div class="item-price">₹${p.price.toLocaleString()}</div>
-              <div class="item-meta">
-                <span class="collector-count">${p.collectors || '47'} collectors</span>
-                <span>${p.tags.join(' • ')}</span>
-              </div>
-              <div class="item-actions">
-                <div class="bundle-suggestion" data-id="${id}">
-                  <span class="bundle-icon">🎯</span>
-                  <span>Sneh suggests: ${p.complements?.[0] ? PRODUCTS[p.complements[0]]?.title.split(' ')[0] : 'Jacket'}</span>
-                </div>
-                <button class="add-bundle" data-id="${id}">Add to Cart</button>
-              </div>
-            </div>
-          </article>`;
-      }).join('');
-      
-      countEl.textContent = wishlist.length;
-      totalEl.textContent = totalValue.toLocaleString();
-      
-      // Rebind events
-      bindEvents();
-    }
 
-    function bindEvents(){
-      // Remove hearts
-      document.querySelectorAll('.remove-heart').forEach(heart => {
-        heart.addEventListener('click', (e) => {
-          const id = e.currentTarget.dataset.id;
-          saveWishlist(wishlist.filter(x => x !== id));
-          showToast('Removed from wishlist');
-        });
-      });
-      
-      // Add to cart
-      document.querySelectorAll('.add-bundle').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = e.currentTarget.dataset.id;
-          cart[id] = (cart[id] || 0) + 1;
-          localStorage.setItem(KEY_CART, JSON.stringify(cart));
-          updateCartCount();
-          showToast('Added to cart!');
-          gsap.to(e.target, {scale: 0.95, duration: 0.1, yoyo: true, repeat: 1});
-        });
-      });
-      
-      // Bundle suggestions
-      document.querySelectorAll('.bundle-suggestion').forEach(suggestion => {
-        suggestion.addEventListener('click', (e) => {
-          const id = e.currentTarget.dataset.id;
+      function saveWishlist(items) {
+        wishlist = items;
+        const user = getUser();
+        try {
+          if(user) {
+            user.wishlist = items;
+            localStorage.setItem(KEY_USER, JSON.stringify(user));
+          } else {
+            localStorage.setItem(KEY_WISHLIST, JSON.stringify(items));
+          }
+          renderWishlist();
+        } catch(e) {}
+      }
+
+      // 🔐 AUTH SYNC
+      function renderAuth() {
+        const authArea = document.getElementById("authArea");
+        if (!authArea) return;
+        const user = getUser();
+        if (user && user.name) {
+          authArea.innerHTML = `<span class="user-box"><span class="user-name">Hi, ${user.name.split(' ')[0]}</span><button class="logout-btn" onclick="logout()">Logout</button></span>`;
+        } else {
+          authArea.innerHTML = `<a href="user-login.html" style="padding:clamp(8px, 2vw, 12px) clamp(16px, 4vw, 28px);border:1px solid var(--rose-gold);color:var(--rose-gold);border-radius:clamp(16px, 4vw, 24px);font-weight:500;text-decoration:none;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Login</a>`;
+        }
+      }
+
+      // 🎯 RENDER WISHLIST
+      function renderWishlist() {
+        const area = document.getElementById('wishlistArea');
+        const countEl = document.getElementById('wishlistCount');
+        const totalEl = document.getElementById('wishlistTotal');
+        
+        if (!area || !countEl || !totalEl) return;
+        
+        if (wishlist.length === 0) {
+          area.style.display = 'none';
+          document.getElementById('emptyState').style.display = 'block';
+          countEl.textContent = '0';
+          totalEl.textContent = '0';
+          return;
+        }
+        
+        area.style.display = 'grid';
+        document.getElementById('emptyState').style.display = 'none';
+        
+        let totalValue = 0;
+        area.innerHTML = wishlist.map((id, index) => {
           const p = PRODUCTS[id];
-          if(p.complements?.[0]){
-            cart[p.complements[0]] = (cart[p.complements[0]] || 0) + 1;
+          if (!p) return '';
+          totalValue += p.price;
+          return `
+            <article class="wishlist-item" data-aos="fade-up" data-aos-delay="${index * 100}">
+              <div class="remove-heart" data-id="${id}" title="Remove from wishlist">
+                <div class="heart-fill"></div>
+              </div>
+              <div class="item-media">
+                <img src="${p.img}" alt="${p.title}" loading="lazy"/>
+                ${p.video ? `<video muted loop preload="none"><source src="${p.video}" type="video/mp4"/></video>` : ''}
+                <div class="stock-badge">${p.stock} left</div>
+                <div class="nfc-badge">NFC</div>
+              </div>
+              <div class="item-content">
+                <h3 class="item-title">${p.title}</h3>
+                <div class="item-price">₹${p.price.toLocaleString()}</div>
+                <div class="item-meta">
+                  <span class="collector-count">${p.collectors} collectors</span>
+                  <span>${p.tags.join(' • ')}</span>
+                </div>
+                <div class="item-actions">
+                  <div class="bundle-suggestion" data-id="${id}">
+                    <span class="bundle-icon">🎯</span>
+                    <span>Sneh suggests: ${p.complements?.[0] ? PRODUCTS[p.complements[0]]?.title.split(' ')[0] : 'Jacket'}</span>
+                  </div>
+                  <button class="add-bundle" data-id="${id}">Add to Cart</button>
+                </div>
+              </div>
+            </article>`;
+        }).join('');
+        
+        countEl.textContent = wishlist.length;
+        totalEl.textContent = totalValue.toLocaleString();
+        bindEvents();
+      }
+
+      // ⚡ EVENT BINDING
+      function bindEvents() {
+        // Remove hearts
+        document.querySelectorAll('.remove-heart').forEach(heart => {
+          heart.replaceWith(heart.cloneNode(true));
+          heart.addEventListener('click', (e) => {
+            const id = e.currentTarget.dataset.id;
+            saveWishlist(wishlist.filter(x => x !== id));
+            showToast('Removed from wishlist');
+          });
+        });
+        
+        // Add to cart
+        document.querySelectorAll('.add-bundle').forEach(btn => {
+          btn.replaceWith(btn.cloneNode(true));
+          btn.addEventListener('click', (e) => {
+            const id = e.currentTarget.dataset.id;
             cart[id] = (cart[id] || 0) + 1;
             localStorage.setItem(KEY_CART, JSON.stringify(cart));
             updateCartCount();
-            showToast(`Complete look added: ${p.title} + ${PRODUCTS[p.complements[0]].title}`);
-          }
+            showToast('Added to cart!');
+            e.target.style.transform = 'scale(0.95)';
+            setTimeout(() => e.target.style.transform = '', 200);
+          });
         });
+        
+        // Bundle suggestions
+        document.querySelectorAll('.bundle-suggestion').forEach(suggestion => {
+          suggestion.replaceWith(suggestion.cloneNode(true));
+          suggestion.addEventListener('click', (e) => {
+            const id = e.currentTarget.dataset.id;
+            const p = PRODUCTS[id];
+            if (p.complements?.[0]) {
+              cart[p.complements[0]] = (cart[id] || 0) + 1;
+              cart[id] = (cart[id] || 0) + 1;
+              localStorage.setItem(KEY_CART, JSON.stringify(cart));
+              updateCartCount();
+              showToast(`Complete look added: ${p.title} + ${PRODUCTS[p.complements[0]].title}`);
+            }
+          });
+        });
+      }
+
+      // 🚀 QUICK ACTIONS
+      function initQuickActions() {
+        const moveAllBtn = document.getElementById('moveAllToCart');
+        const clearBtn = document.getElementById('clearWishlist');
+        const shareBtn = document.getElementById('shareWishlist');
+        
+        if (moveAllBtn) moveAllBtn.onclick = () => {
+          wishlist.forEach(id => {
+            cart[id] = (cart[id] || 0) + 1;
+          });
+          localStorage.setItem(KEY_CART, JSON.stringify(cart));
+          saveWishlist([]);
+          updateCartCount();
+          showToast('All items moved to cart!');
+        };
+
+        if (clearBtn) clearBtn.onclick = () => {
+          saveWishlist([]);
+          showToast('Wishlist cleared');
+        };
+
+        if (shareBtn) shareBtn.onclick = () => {
+          const url = `${window.location.origin}/wishlist.html?share=${btoa(JSON.stringify(wishlist))}`;
+          navigator.clipboard.writeText(url).catch(() => {});
+          document.getElementById('shareLink').style.display = 'block';
+          setTimeout(() => document.getElementById('shareLink').style.display = 'none', 3000);
+          showToast('Wishlist link copied!');
+        };
+      }
+
+      function updateCartCount() {
+        const total = Object.values(cart).reduce((a,b)=>a+(b||0),0);
+        const cartEl = document.getElementById('cartCount');
+        if (cartEl) cartEl.textContent = total || 0;
+      }
+
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        if (toast) {
+          toast.textContent = msg;
+          toast.classList.add('show');
+          setTimeout(()=>toast.classList.remove('show'), 2800);
+        }
+      }
+
+      function logout() {
+        try {
+          localStorage.removeItem(KEY_USER);
+          location.reload();
+        } catch(e) {}
+      }
+
+      // ⏰ AUCTION TIMER
+      const auctionEnd = new Date("2025-12-24T18:00:00").getTime();
+      function updateAuctionTimer() {
+        const now = Date.now();
+        const diff = auctionEnd - now;
+        const timerEl = document.getElementById("auctionTimer");
+        if (timerEl && diff > 0) {
+          const days = Math.floor(diff / (1000*60*60*24));
+          const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+          timerEl.innerHTML = `${days}d ${hours.toString().padStart(2,'0')}h`;
+        } else if (timerEl) {
+          timerEl.innerHTML = "LIVE NOW!";
+          timerEl.parentElement.style.background = "linear-gradient(135deg, var(--success), #059669)";
+        }
+      }
+
+      // 🍔 HAMBURGER (900px breakpoint)
+      document.getElementById("hamburger").addEventListener("click", function() {
+        document.querySelector("header").classList.toggle("menu-open");
       });
-    }
 
-    // Quick actions
-    document.getElementById('moveAllToCart').onclick = () => {
-      wishlist.forEach(id => {
-        cart[id] = (cart[id] || 0) + 1;
-      });
-      localStorage.setItem(KEY_CART, JSON.stringify(cart));
-      saveWishlist([]);
-      updateCartCount();
-      showToast('All items moved to cart!');
-    };
-
-    document.getElementById('clearWishlist').onclick = () => {
-      saveWishlist([]);
-      showToast('Wishlist cleared');
-    };
-
-    document.getElementById('shareWishlist').onclick = () => {
-      const url = `${window.location.origin}/wishlist.html?share=${btoa(JSON.stringify(wishlist))}`;
-      navigator.clipboard.writeText(url);
-      document.getElementById('shareLink').style.display = 'block';
-      setTimeout(() => document.getElementById('shareLink').style.display = 'none', 3000);
-      showToast('Wishlist link copied!');
-    };
-
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((a,b)=>a+b,0);
-      document.getElementById('cartCount').textContent = total;
-    }
-
-    function showToast(msg){
-      const toast = document.getElementById('toast');
-      toast.textContent = msg;
-      toast.classList.add('show');
-      setTimeout(()=>toast.classList.remove('show'), 2800);
-    }
-
-    // Auth
-    const authArea = document.getElementById('authArea');
-    const user = getUser();
-    if(user){
-      authArea.innerHTML = `<span class="user-name">Hi, ${user.name}</span><button class="logout-btn" onclick="logout()">Logout</button>`;
-      document.getElementById('signedInName').textContent = user.name;
-    } else {
-      authArea.innerHTML = `<a href="user-login.html" style="color:var(--purple);font-weight:600;">Login</a>`;
-    }
-
-    function logout(){
-      localStorage.removeItem(KEY_USER);
-      location.reload();
-    }
-
-    // Init
-    window.addEventListener('load', () => {
-      cart = JSON.parse(localStorage.getItem(KEY_CART) || '{}');
+      // 🔧 MOBILE LOCK INIT
+      cart = safeGet(KEY_CART, {});
       wishlist = getWishlist();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      AOS.init({duration: 1000, once: true});
+      renderAuth();
       renderWishlist();
       updateCartCount();
-    });
+      initQuickActions();
+      updateAuctionTimer();
+      setInterval(updateAuctionTimer, 30000);
+      AOS.init({duration:800, once:true, offset:100});
+    }
   </script>
 </body>
 </html>
