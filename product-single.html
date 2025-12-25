@@ -2,173 +2,274 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="theme-color" content="#3A0F5A"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="theme-color" content="#2C1B4A"/>
   <title>Signature Tee — Matte Black • Snehvastra</title>
-  <meta name="description" content="Handcrafted Signature Tee Matte Black. AI size fit, Suratgarh 2-day delivery, limited 247 pcs remaining."/>
+  <meta name="description" content="Handcrafted Signature Tee Matte Black. AI size fit, Kota 2-day delivery, limited 247 pcs remaining."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --warning:#F59E0B;
-      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
-      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-      --max-width:1400px;
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (LOCKED) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --success:#10B981; --warning:#F59E0B; --shadow-soft:0 clamp(25px, 8vw, 35px) clamp(80px, 20vw, 140px) rgba(44,27,74,0.15); --shadow-glow:0 0 clamp(20px, 5vw, 35px) rgba(107,90,207,0.2);
+      --radius:clamp(20px, 5vw, 32px); --max-width:clamp(1200px, 95vw, 1600px); --ease:cubic-bezier(0.32,0.72,0,1);
     }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.8;position:relative;min-height:100vh;}
 
-    /* Perfect System Header */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
-    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
-    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
-    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
-    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
+    /* 🔒 MOBILE LOCK HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;height:clamp(56px, 15vw, 60px);background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:clamp(8px, 2vw, 12px) 0;}
+    .header-container{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px, 5vw, 24px);height:100%;}
+    .brand{display:flex;gap:clamp(12px, 3vw, 20px);align-items:center;cursor:pointer;transition:all 0.4s var(--ease);}
+    .brand:hover{transform:translateY(-2px);}
+    .logo{height:clamp(40px, 11vw, 52px);border-radius:clamp(12px, 3vw, 20px);box-shadow:0 clamp(12px, 3vw, 20px) clamp(32px, 8vw, 60px) rgba(44,27,74,0.12);}
+    nav ul{display:flex;gap:clamp(8px, 2vw, 12px);list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);border-radius:clamp(16px, 4vw, 24px);font-weight:500;color:var(--amethyst);text-decoration:none;font-size:clamp(0.875rem, 2.2vw, 0.95rem);backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;min-height:clamp(44px, 11vw, 64px);display:flex;align-items:center;}
+    nav a::after{content:'';position:absolute;bottom:clamp(2px, 0.8vw, 4px);left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a:hover::after{width:80%;}
+    nav a.active{color:var(--amethyst);font-weight:600;background:rgba(232,180,184,0.15);box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(20px, 5vw, 32px) rgba(232,180,184,0.15);}
 
-    /* Enhanced Auction Banner */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
-    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
+    .hamburger{display:none;background:none;border:none;font-size:clamp(1.75rem, 4.5vw, 2rem);color:var(--amethyst);cursor:pointer;padding:clamp(12px, 3vw, 16px);min-height:clamp(44px, 11vw, 64px);}
+    
+    @media(max-width:900px){
+      .hamburger{display:block!important;}
+      nav{display:none;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:clamp(16px, 4vw, 20px) 0;overflow-y:auto;max-height:60vh;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:clamp(6px, 1.5vw, 8px);}
+      nav a{display:block;text-align:center;width:100%;padding:clamp(20px, 5vw, 24px);border-radius:clamp(12px, 3vw, 16px);min-height:clamp(60px, 15vw, 72px);}
+    }
 
-    /* Product Page Grid */
-    .product-page{max-width:var(--max-width);margin:160px auto 100px;padding:0 5%;display:grid;grid-template-columns:1fr 480px;gap:60px;align-items:start;}
-    @media(max-width:1200px){.product-page{grid-template-columns:1fr;gap:48px;}}
+    /* ✅ MOBILE LOCK AUCTION BANNER (top:68px) */
+    .auction-banner{position:fixed;top:clamp(68px, 18vw, 80px);right:clamp(16px, 4vw, 30px);z-index:900;max-width:clamp(220px, 28vw, 280px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(20px, 5vw, 32px);border-radius:clamp(20px, 5vw, 28px);font-family:'Clash Display',serif;font-weight:700;font-size:clamp(0.95rem, 2.5vw, 1.2rem);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);line-height:1.3;}
+    .auction-timer{display:block;margin-top:clamp(6px, 1.5vw, 8px);background:rgba(255,255,255,0.9);border-radius:clamp(12px, 3vw, 16px);padding:clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);font-weight:600;}
+    @media(max-width:480px){.auction-banner{right:clamp(12px, 3vw, 16px);}}
 
-    /* 360° Gallery */
-    .product-gallery{position:sticky;top:160px;align-self:start;}
-    .hero-viewer{width:100%;height:70vh;min-height:580px;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#f8f7ff,#f0eeff);box-shadow:var(--shadow-soft);position:relative;cursor:grab;}
+    /* 🛒 MOBILE LOCK PRODUCT PAGE */
+    .product-page{max-width:var(--max-width);margin:clamp(68px, 18vw, 140px) auto clamp(40px, 10vw, 80px);padding:0 clamp(16px, 4vw, 5%);display:grid;grid-template-columns:1fr;gap:clamp(32px, 8vw, 48px);align-items:start;}
+    @media(min-width:1201px){.product-page{grid-template-columns:1fr 480px;gap:clamp(48px, 12vw, 60px);}}
+    @media(max-width:768px){.product-page{gap:clamp(28px, 7vw, 40px);}}
+
+    /* 📸 MOBILE LOCK 360° GALLERY */
+    .product-gallery{position:relative;}
+    @media(min-width:1201px){.product-gallery{position:sticky;top:clamp(80px, 20vw, 160px);align-self:start;}}
+    .hero-viewer{
+      width:100%; 
+      height:clamp(280px, 70vw, 500px); 
+      min-height:280px; 
+      max-height:70vh;
+      border-radius:var(--radius); 
+      overflow:hidden; 
+      background:linear-gradient(135deg,#f8f7ff,#f0eeff); 
+      box-shadow:var(--shadow-soft); 
+      position:relative; 
+      cursor:grab;
+      margin-bottom:clamp(16px, 4vw, 20px);
+      touch-action:manipulation;
+    }
     .hero-viewer:active{cursor:grabbing;}
-    .hero-viewer canvas{width:100%;height:100%;object-fit:cover;}
-    .viewer-controls{position:absolute;bottom:24px;left:24px;right:24px;display:flex;gap:16px;justify-content:center;}
-    .viewer-btn{padding:16px 24px;border-radius:24px;border:2px solid rgba(255,255,255,0.9);background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);font-weight:700;cursor:pointer;transition:all var(--ease);}
-    .viewer-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,0.2);}
-    .viewer-btn.active{background:var(--purple);color:#fff;border-color:var(--purple);}
+    .hero-viewer img{width:100%;height:100%;object-fit:cover;display:block;}
 
-    .thumbnail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;}
-    .thumb{position:relative;width:100%;height:110px;border-radius:20px;overflow:hidden;border:3px solid rgba(58,15,90,0.1);cursor:pointer;transition:all var(--ease);}
-    .thumb:hover{border-color:var(--purple);transform:translateY(-6px);}
-    .thumb.active{border-color:var(--purple);box-shadow:0 16px 48px rgba(58,15,90,0.3);}
-    .thumb img{width:100%;height:100%;object-fit:cover;transition:all var(--ease);}
-    .thumb::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(58,15,90,0.1);opacity:0;transition:opacity var(--ease);}
+    .viewer-controls{
+      position:absolute; 
+      bottom:clamp(-52px, -13vw, -60px); 
+      left:50%; 
+      transform:translateX(-50%); 
+      display:flex; 
+      gap:clamp(8px, 2vw, 12px); 
+      background:rgba(255,255,255,0.95); 
+      backdrop-filter:blur(20px); 
+      padding:clamp(10px, 2.5vw, 12px) clamp(16px, 4vw, 24px); 
+      border-radius:clamp(24px, 6vw, 32px); 
+      box-shadow:0 clamp(16px, 4vw, 20px) clamp(40px, 10vw, 60px) rgba(0,0,0,0.15); 
+      z-index:10;
+    }
+    @media(max-width:480px){
+      .viewer-controls{bottom:clamp(-48px, -12vw, -48px);gap:clamp(6px, 1.5vw, 8px);padding:clamp(8px, 2vw, 10px) clamp(12px, 3vw, 16px);flex-direction:column;}
+    }
+    .viewer-btn{
+      padding:clamp(10px, 2.5vw, 12px) clamp(16px, 4vw, 20px); 
+      border-radius:clamp(16px, 4vw, 24px); 
+      border:clamp(1px, 0.3vw, 2px) solid rgba(44,27,74,0.2); 
+      background:#fff; 
+      font-weight:700; 
+      cursor:pointer; 
+      transition:all 0.4s var(--ease); 
+      font-size:clamp(0.8rem, 2.2vw, 0.9rem); 
+      white-space:nowrap; 
+      flex:1;
+      min-height:clamp(44px, 11vw, 52px);
+    }
+    .viewer-btn:hover{transform:translateY(-2px);border-color:var(--amethyst);}
+    .viewer-btn.active{background:var(--amethyst);color:#fff;border-color:var(--amethyst);}
+
+    .thumbnail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(72px, 18vw, 80px),1fr));gap:clamp(8px, 2vw, 12px);margin-top:clamp(20px, 5vw, 32px);}
+    @media(max-width:480px){.thumbnail-grid{gap:clamp(6px, 1.5vw, 8px);}}
+    .thumb{
+      position:relative; 
+      width:100%; 
+      height:clamp(64px, 16vw, 90px); 
+      border-radius:clamp(16px, 4vw, 20px); 
+      overflow:hidden; 
+      border:clamp(2px, 0.5vw, 3px) solid rgba(44,27,74,0.1); 
+      cursor:pointer; 
+      transition:all 0.4s var(--ease);
+      touch-action:manipulation;
+    }
+    .thumb:hover{border-color:var(--amethyst);transform:translateY(-4px);}
+    .thumb.active{border-color:var(--amethyst);box-shadow:0 clamp(12px, 3vw, 16px) clamp(32px, 8vw, 48px) rgba(44,27,74,0.3);}
+    .thumb img{width:100%;height:100%;object-fit:cover;transition:all 0.4s var(--ease);}
+    .thumb::after{
+      content:''; 
+      position:absolute; 
+      top:0; 
+      left:0; 
+      right:0; 
+      bottom:0; 
+      background:rgba(44,27,74,0.1); 
+      opacity:0; 
+      transition:opacity 0.4s var(--ease);
+    }
     .thumb.active::after{opacity:1;}
 
-    /* Product Info Panel */
-    .product-panel{background:#fff;border-radius:var(--radius);padding:80px 64px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:sticky;top:160px;align-self:start;}
-    .product-title{font-family:'Clash Display',serif;font-size:clamp(2.8rem,7vw,4rem);color:var(--purple);margin:0 0 24px;font-weight:900;line-height:1.1;}
-    .product-price{font-family:'Clash Display',serif;font-size:3.8rem;font-weight:900;color:var(--purple);margin:32px 0 24px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .stock-badge{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--warning),#F59E0B);color:#fff;padding:20px 32px;border-radius:32px;font-family:'Clash Display',serif;font-size:1.3rem;font-weight:900;box-shadow:0 20px 60px rgba(245,158,11,0.4);margin:24px 0;}
-    .delivery-badge{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--success),#059669);color:#fff;padding:16px 28px;border-radius:28px;font-weight:700;font-size:1.1rem;margin-bottom:40px;}
-    .product-desc{font-size:1.2rem;color:var(--slate-mid);line-height:1.8;margin-bottom:48px;max-width:500px;}
+    /* 🛒 MOBILE LOCK PRODUCT PANEL */
+    .product-panel{background:var(--pearl);border-radius:var(--radius);padding:clamp(32px, 8vw, 80px) clamp(24px, 6vw, 64px);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);position:relative;}
+    @media(min-width:1201px){.product-panel{position:sticky;top:clamp(80px, 20vw, 160px);align-self:start;}}
+    @media(max-width:480px){.product-panel{padding:clamp(24px, 6vw, 32px) clamp(20px, 5vw, 24px);}}
 
-    /* Size & Quantity */
-    .size-section{margin-bottom:48px;}
-    .section-title{font-family:'Clash Display',serif;font-size:1.6rem;color:var(--purple);margin:0 0 24px;font-weight:700;}
-    .size-grid{display:flex;gap:16px;flex-wrap:wrap;}
-    .size-pill{padding:20px 28px;border:3px solid rgba(58,15,90,0.15);border-radius:24px;background:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;cursor:pointer;transition:all var(--ease);min-width:80px;text-align:center;}
-    .size-pill:hover{transform:translateY(-4px);border-color:var(--purple);}
-    .size-pill.active{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border-color:var(--purple);box-shadow:0 16px 48px rgba(58,15,90,0.4);}
-    .size-guide-btn{padding:16px 28px;border:2px solid var(--purple);border-radius:24px;background:transparent;color:var(--purple);font-weight:700;cursor:pointer;transition:all var(--ease);margin-top:16px;}
-    .size-guide-btn:hover{background:var(--purple);color:#fff;}
+    .product-title{font-family:'Clash Display',serif;font-size:clamp(1.8rem, 6vw, 4rem);color:var(--amethyst);margin:0 0 clamp(12px, 3vw, 16px);font-weight:900;line-height:1.1;}
+    .product-subtitle{font-size:clamp(1.1rem, 3.5vw, 1.6rem);color:var(--amethyst);opacity:0.8;margin-bottom:clamp(16px, 4vw, 24px);font-weight:500;}
+    
+    .product-price{font-family:'Clash Display',serif;font-size:clamp(2.2rem, 7vw, 3.8rem);font-weight:900;color:var(--amethyst);margin:clamp(16px, 4vw, 24px) 0 clamp(12px, 3vw, 20px);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    
+    .stock-badge{display:inline-flex;align-items:center;gap:clamp(8px, 2vw, 12px);background:linear-gradient(135deg,var(--warning),#F59E0B);color:#fff;padding:clamp(14px, 3.5vw, 20px) clamp(20px, 5vw, 32px);border-radius:clamp(24px, 6vw, 32px);font-family:'Clash Display',serif;font-size:clamp(0.95rem, 2.8vw, 1.3rem);font-weight:900;box-shadow:0 clamp(16px, 4vw, 20px) clamp(40px, 10vw, 60px) rgba(245,158,11,0.4);margin:clamp(16px, 4vw, 20px) 0;justify-content:center;flex-wrap:wrap;}
+    
+    .delivery-badge{display:inline-flex;align-items:center;gap:clamp(6px, 1.5vw, 8px);background:linear-gradient(135deg,var(--success),#059669);color:#fff;padding:clamp(10px, 2.5vw, 16px) clamp(16px, 4vw, 28px);border-radius:clamp(20px, 5vw, 28px);font-weight:700;font-size:clamp(0.875rem, 2.5vw, 1.1rem);margin-bottom:clamp(24px, 6vw, 32px);justify-content:center;}
+    
+    .product-desc{font-size:clamp(0.95rem, 2.8vw, 1.2rem);color:var(--amethyst);line-height:1.7;margin-bottom:clamp(32px, 8vw, 40px);max-width:clamp(400px, 90vw, 500px);opacity:0.9;}
 
-    .qty-section{display:flex;align-items:center;gap:24px;margin-bottom:48px;}
-    .qty-group{display:flex;align-items:center;gap:12px;}
-    .qty-label{font-weight:700;color:var(--slate);font-size:1.1rem;}
-    .qty-controls{display:flex;align-items:center;gap:8px;padding:20px 24px;border:3px solid rgba(58,15,90,0.15);border-radius:24px;background:#fff;}
-    .qty-btn{width:48px;height:48px;border-radius:16px;border:none;background:rgba(58,15,90,0.05);font-weight:900;font-size:1.4rem;cursor:pointer;transition:all var(--ease);}
-    .qty-btn:hover{background:var(--purple);color:#fff;transform:scale(1.05);}
-    .qty-value{font-weight:900;font-size:1.4rem;width:48px;text-align:center;border:none;background:none;color:var(--purple);}
+    /* 📏 MOBILE LOCK SIZE & QTY */
+    .size-section{margin-bottom:clamp(32px, 8vw, 40px);}
+    .section-title{font-family:'Clash Display',serif;font-size:clamp(1.2rem, 4vw, 1.6rem);color:var(--amethyst);margin:0 0 clamp(16px, 4vw, 20px);font-weight:700;}
+    .size-grid{display:flex;gap:clamp(8px, 2vw, 12px);flex-wrap:wrap;}
+    @media(max-width:480px){.size-grid{justify-content:center;}}
+    .size-pill{padding:clamp(14px, 3.5vw, 20px) clamp(16px, 4vw, 28px);border:clamp(2px, 0.5vw, 3px) solid rgba(44,27,74,0.15);border-radius:clamp(20px, 5vw, 24px);background:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:clamp(1rem, 3vw, 1.3rem);cursor:pointer;transition:all 0.4s var(--ease);min-width:clamp(64px, 16vw, 72px);text-align:center;flex:1;max-width:clamp(90px, 22vw, 100px);}
+    .size-pill:hover{transform:translateY(-4px);border-color:var(--amethyst);}
+    .size-pill.active{background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:#fff;border-color:var(--amethyst);box-shadow:0 clamp(12px, 3vw, 16px) clamp(32px, 8vw, 48px) rgba(44,27,74,0.4);}
+    .size-guide-btn{padding:clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);border:clamp(1px, 0.3vw, 2px) solid var(--amethyst);border-radius:clamp(20px, 5vw, 24px);background:transparent;color:var(--amethyst);font-weight:700;cursor:pointer;transition:all 0.4s var(--ease);margin-top:clamp(12px, 3vw, 16px);width:100%;min-height:clamp(52px, 13vw, 60px);}
 
-    /* Action Buttons */
-    .action-buttons{display:flex;gap:20px;flex-wrap:wrap;}
-    .btn-cart{flex:1;padding:28px 48px;border:none;border-radius:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:1.4rem;cursor:pointer;box-shadow:0 24px 80px rgba(58,15,90,0.4);transition:all var(--ease);min-height:72px;}
-    .btn-cart:hover{transform:translateY(-6px);box-shadow:0 36px 120px rgba(58,15,90,0.5);}
-    .btn-wishlist{padding:28px 36px;border:3px solid rgba(58,15,90,0.2);border-radius:32px;background:#fff;color:var(--purple);font-weight:900;font-size:1.2rem;cursor:pointer;transition:all var(--ease);display:flex;align-items:center;gap:12px;}
-    .btn-wishlist:hover{background:rgba(58,15,90,0.05);border-color:var(--purple);transform:translateY(-4px);}
+    .qty-section{display:flex;align-items:center;gap:clamp(16px, 4vw, 20px);margin-bottom:clamp(32px, 8vw, 40px);flex-wrap:wrap;justify-content:center;}
+    @media(max-width:480px){.qty-section{flex-direction:column;gap:clamp(12px, 3vw, 16px);}}
+    .qty-group{display:flex;align-items:center;gap:clamp(8px, 2vw, 12px);}
+    .qty-label{font-weight:700;color:var(--amethyst);font-size:clamp(0.95rem, 2.8vw, 1.1rem);}
+    .qty-controls{display:flex;align-items:center;gap:clamp(6px, 1.5vw, 8px);padding:clamp(14px, 3.5vw, 20px) clamp(16px, 4vw, 24px);border:clamp(2px, 0.5vw, 3px) solid rgba(44,27,74,0.15);border-radius:clamp(20px, 5vw, 24px);background:#fff;}
+    .qty-btn{width:clamp(40px, 10vw, 48px);height:clamp(40px, 10vw, 48px);border-radius:clamp(12px, 3vw, 16px);border:none;background:rgba(44,27,74,0.05);font-weight:900;font-size:clamp(1.2rem, 3.5vw, 1.3rem);cursor:pointer;transition:all 0.4s var(--ease);}
+    .qty-btn:hover{background:var(--amethyst);color:#fff;transform:scale(1.05);}
+    .qty-btn:active{transform:scale(0.95);}
+    .qty-value{font-weight:900;font-size:clamp(1.1rem, 3.5vw, 1.4rem);width:clamp(40px, 10vw, 48px);text-align:center;border:none;background:none;color:var(--amethyst);}
+
+    /* 🛒 MOBILE LOCK ACTION BUTTONS */
+    .action-buttons{display:flex;gap:clamp(12px, 3vw, 16px);flex-wrap:wrap;}
+    @media(max-width:480px){.action-buttons{flex-direction:column;}}
+    .btn-cart{flex:1;padding:clamp(20px, 5vw, 28px) clamp(32px, 8vw, 48px);border:none;border-radius:clamp(24px, 6vw, 32px);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:clamp(1rem, 3vw, 1.4rem);cursor:pointer;box-shadow:0 clamp(20px, 5vw, 24px) clamp(60px, 15vw, 80px) rgba(44,27,74,0.4);transition:all 0.4s var(--ease);min-height:clamp(60px, 15vw, 72px);}
+    .btn-cart:hover{transform:translateY(-6px);box-shadow:0 clamp(28px, 7vw, 36px) clamp(80px, 20vw, 120px) rgba(44,27,74,0.5);}
+    .btn-cart:active{transform:scale(0.98);}
+    
+    .btn-wishlist{padding:clamp(20px, 5vw, 28px) clamp(24px, 6vw, 36px);border:clamp(2px, 0.5vw, 3px) solid rgba(44,27,74,0.2);border-radius:clamp(24px, 6vw, 32px);background:#fff;color:var(--amethyst);font-weight:900;font-size:clamp(0.95rem, 2.8vw, 1.2rem);cursor:pointer;transition:all 0.4s var(--ease);display:flex;align-items:center;gap:clamp(8px, 2vw, 12px);justify-content:center;flex:1;min-height:clamp(60px, 15vw, 72px);}
+    .btn-wishlist:hover{background:rgba(44,27,74,0.05);border-color:var(--amethyst);transform:translateY(-4px);}
     .btn-wishlist.active{color:#dc3545;border-color:#dc3545;}
+    .btn-wishlist:active{transform:scale(0.98);}
 
-    /* Product Specs */
-    .specs-section{background:rgba(58,15,90,0.02);border-radius:var(--radius);padding:48px;border:1px solid rgba(58,15,90,0.08);margin-top:60px;}
-    .spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;}
-    .spec-item{font-size:1.05rem;color:var(--slate-mid);}
-    .spec-label{font-weight:700;color:var(--purple);margin-bottom:8px;display:block;}
+    /* 📋 MOBILE LOCK SPECS */
+    .specs-section{background:rgba(44,27,74,0.02);border-radius:var(--radius);padding:clamp(28px, 7vw, 48px);border:1px solid rgba(44,27,74,0.08);margin-top:clamp(40px, 10vw, 48px);}
+    .spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(160px, 90vw, 200px),1fr));gap:clamp(16px, 4vw, 20px);}
+    @media(max-width:480px){.spec-grid{grid-template-columns:1fr;gap:clamp(12px, 3vw, 16px);}}
+    .spec-item{font-size:clamp(0.875rem, 2.5vw, 1.05rem);color:var(--amethyst);opacity:0.9;}
+    .spec-label{font-weight:700;color:var(--amethyst);margin-bottom:clamp(6px, 1.5vw, 8px);display:block;font-size:1.1em;}
 
-    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
-    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
+    footer{padding:clamp(60px, 15vw, 100px) clamp(20px, 5vw, 5%) clamp(40px, 10vw, 40px);text-align:center;color:var(--sage);border-top:1px solid rgba(44,27,74,0.06);font-size:clamp(0.875rem, 2.2vw, 0.95rem);font-weight:300;line-height:1.6;}
+
+    #toast{position:fixed;top:clamp(20px, 5vw, 32px);right:clamp(20px, 5vw, 32px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(24px, 6vw, 36px);border-radius:clamp(16px, 4vw, 24px);box-shadow:var(--shadow-soft);transform:translateX(500px);transition:all 0.4s var(--ease);font-family:'Clash Display',serif;font-weight:700;z-index:10000;font-size:clamp(0.875rem, 2.2vw, 1rem);max-width:clamp(90vw, 92vw, 420px);}
     #toast.show{transform:translateX(0);}
+    @media(max-width:480px){#toast{top:clamp(16px, 4vw, 20px);right:clamp(16px, 4vw, 20px);left:clamp(16px, 4vw, 20px);max-width:none;}}
 
     @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
   </style>
 </head>
 <body>
-  <!-- Perfect System Header -->
+  <!-- 🔒 MOBILE LOCK HEADER -->
   <header>
-    <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.85rem;color:var(--muted);">Signature Tee</div>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:clamp(1.1rem, 2.8vw, 1.5rem);font-weight:600;color:var(--amethyst);">Snehvastra</div>
+        <div style="font-size:clamp(0.7rem, 1.8vw, 0.8rem);color:var(--amethyst);opacity:0.7;font-weight:400;">Signature Tee</div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="size-guide.html">Size Guide</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="mini-cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="size-guide.html">Size Guide</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li id="authArea"></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+  <!-- ✅ MOBILE LOCK AUCTION BANNER -->
+  <div class="auction-banner" id="auctionBanner">
+    🔥 SNEHVASTRA ONE AUCTION<br>
+    <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
   <main class="product-page">
-    <!-- Elite 360° Gallery -->
+    <!-- 📸 MOBILE LOCK 360° GALLERY -->
     <section class="product-gallery" data-aos="fade-right">
       <div class="hero-viewer" id="productViewer">
-        <!-- 360° canvas will be inserted here -->
+        <img src="images/products/tee-black-1.jpg" alt="Signature Tee Matte Black"/>
       </div>
       <div class="viewer-controls">
         <button class="viewer-btn active" data-view="360">360° View</button>
         <button class="viewer-btn" data-view="model">3D Model</button>
       </div>
       <div class="thumbnail-grid">
-        <div class="thumb active" data-angle="0"><img src="images/products/tee-black-1.jpg"/></div>
-        <div class="thumb" data-angle="90"><img src="images/products/tee-black-2.jpg"/></div>
-        <div class="thumb" data-angle="180"><img src="images/products/tee-black-3.jpg"/></div>
-        <div class="thumb" data-angle="270"><img src="images/products/tee-black-4.jpg"/></div>
+        <div class="thumb active" data-angle="0"><img src="images/products/tee-black-1.jpg" alt="Tee 1"/></div>
+        <div class="thumb" data-angle="90"><img src="images/products/tee-black-2.jpg" alt="Tee 2"/></div>
+        <div class="thumb" data-angle="180"><img src="images/products/tee-black-3.jpg" alt="Tee 3"/></div>
+        <div class="thumb" data-angle="270"><img src="images/products/tee-black-4.jpg" alt="Tee 4"/></div>
       </div>
     </section>
 
-    <!-- Luxury Product Panel -->
+    <!-- 🛒 MOBILE LOCK PRODUCT PANEL -->
     <aside class="product-panel" data-aos="fade-left">
       <h1 class="product-title">Signature Tee</h1>
-      <div class="product-title" style="font-size:1.6rem;color:var(--slate-mid);">Matte Black</div>
+      <div class="product-subtitle">Matte Black</div>
       
-      <div class="product-price" data-aos="zoom-in">₹4,999</div>
+      <div class="product-price">₹4,999</div>
       
-      <div class="stock-badge" data-aos="fade-up">
+      <div class="stock-badge">
         <span>247</span> pcs remaining • <span id="liveStock">247</span> live
       </div>
       
-      <div class="delivery-badge" data-aos="fade-up" data-aos-delay="200">
-        🚚 Suratgarh ETA: 2 days
+      <div class="delivery-badge">
+        🚚 Kota ETA: 2 days
       </div>
 
-      <p class="product-desc" data-aos="fade-up" data-aos-delay="400">
+      <p class="product-desc">
         Handcrafted from 200-thread premium cotton using heritage dyeing techniques. NFC authenticated limited edition for collectors.
       </p>
 
-      <!-- Size Selection -->
+      <!-- 📏 MOBILE LOCK SIZE SELECTION -->
       <div class="size-section">
         <h3 class="section-title">Select Size</h3>
         <div class="size-grid">
@@ -177,10 +278,10 @@
           <div class="size-pill" data-size="L">L</div>
           <div class="size-pill" data-size="XL">XL</div>
         </div>
-        <button class="size-guide-btn" data-aos="fade-up" data-aos-delay="200">📏 Size Guide</button>
+        <button class="size-guide-btn">📏 Size Guide</button>
       </div>
 
-      <!-- Quantity -->
+      <!-- 🔢 MOBILE LOCK QUANTITY -->
       <div class="qty-section">
         <div class="qty-group">
           <label class="qty-label">Quantity</label>
@@ -192,13 +293,13 @@
         </div>
       </div>
 
-      <!-- Action Buttons -->
+      <!-- 🛒 MOBILE LOCK ACTION BUTTONS -->
       <div class="action-buttons">
-        <button class="btn-cart" id="addToCartBtn" data-aos="zoom-in">Add to Cart</button>
-        <button class="btn-wishlist" id="wishlistBtn" data-aos="zoom-in" data-aos-delay="100">❤️ Wishlist</button>
+        <button class="btn-cart" id="addToCartBtn">Add to Cart</button>
+        <button class="btn-wishlist" id="wishlistBtn">❤️ Wishlist</button>
       </div>
 
-      <!-- Product Specs -->
+      <!-- 📋 MOBILE LOCK SPECS -->
       <div class="specs-section">
         <div class="spec-grid">
           <div class="spec-item">
@@ -222,137 +323,199 @@
     </aside>
   </main>
 
-  <footer>
-    © <span id="year"></span> Snehvastra. Surat crafted, collector approved.
+  <footer data-aos="fade-up">
+    © <span id="year"></span> Snehvastra. Kota crafted, collector approved.
   </footer>
 
   <div id="toast"></div>
 
   <script>
-    // Perfect system sync
-    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart"; const WISHLIST_KEY = "snehvastra_wishlist";
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-    const user = JSON.parse(localStorage.getItem(USER_KEY));
+    // 🔒 BULLETPROOF MOBILE LOCK PRODUCT SYSTEM (NO GSAP)
+    document.addEventListener('DOMContentLoaded', function() {
+      initProduct();
+    });
 
-    const PRODUCT = {
-      id: "signature-tee-black",
-      name: "Signature Tee — Matte Black",
-      price: 4999,
-      stock: 247,
-      images: ["images/products/tee-black-1.jpg", "images/products/tee-black-2.jpg"]
-    };
-
-    function renderAuth(){
-      const authArea = document.getElementById("authArea");
-      if(user && user.loggedIn){
-        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
-      } else {
-        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
+    function initProduct() {
+      // 🔒 CORE SYSTEM - FULL LOCALSTORAGE SYNC
+      const USER_KEY = "snehvastra_user"; 
+      const CART_KEY = "snehvastra_cart"; 
+      const WISHLIST_KEY = "snehvastra_wishlist";
+      
+      let cart = {};
+      let user = {};
+      
+      try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+        user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+      } catch(e) {
+        console.log('Storage reset - product page');
+        cart = {};
       }
-    }
 
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-      document.getElementById("cartCount").textContent = total;
-    }
+      const PRODUCT = {
+        id: "signature-tee-black",
+        name: "Signature Tee — Matte Black",
+        price: 4999,
+        stock: 247,
+        images: ["images/products/tee-black-1.jpg", "images/products/tee-black-2.jpg"]
+      };
 
-    function showToast(msg){
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.classList.add("show");
-      setTimeout(()=>toast.classList.remove("show"), 3200);
-    }
-
-    // Live stock counter
-    let liveStock = PRODUCT.stock;
-    setInterval(() => {
-      if(liveStock > 0) {
-        liveStock--;
-        document.getElementById("liveStock").textContent = liveStock;
-        if(liveStock < 50) {
-          gsap.to("#liveStock", {scale: 1.3, duration: 0.2, yoyo: true, repeat: 1});
+      function showToast(msg){
+        const toast = document.getElementById("toast");
+        if(toast){
+          toast.textContent = msg;
+          toast.classList.add("show");
+          setTimeout(()=>toast.classList.remove("show"), 3200);
         }
       }
-    }, 8000);
 
-    // Size selection
-    document.querySelectorAll('.size-pill').forEach(pill => {
-      pill.addEventListener('click', () => {
-        document.querySelectorAll('.size-pill').forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
+      // 🔐 AUTH SYNC
+      function renderAuth() {
+        const authArea = document.getElementById("authArea");
+        if (user && user.loggedIn) {
+          authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Hi, ${user.name}</span>`;
+        } else {
+          authArea.innerHTML = `<a href="user-login.html" style="padding:clamp(8px, 2vw, 12px) clamp(16px, 4vw, 28px);border:1px solid var(--rose-gold);color:var(--rose-gold);border-radius:clamp(16px, 4vw, 24px);font-weight:500;text-decoration:none;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Login</a>`;
+        }
+      }
+
+      // 🛒 CART COUNT SYNC
+      function updateCartCount(){
+        const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+        const cartEl = document.getElementById("cartCount");
+        if(cartEl) cartEl.textContent = total || 0;
+      }
+
+      // 📦 LIVE STOCK COUNTER
+      let liveStock = PRODUCT.stock;
+      function updateLiveStock(){
+        const el = document.getElementById("liveStock");
+        if(el && liveStock > 0) {
+          liveStock--;
+          el.textContent = liveStock;
+          if(liveStock < 50) {
+            el.style.transform = 'scale(1.3)';
+            setTimeout(() => el.style.transform = 'scale(1)', 200);
+          }
+        }
+      }
+
+      // 👀 VIEWER CONTROLS (SIMPLE IMAGE SWAP)
+      document.querySelectorAll('.viewer-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.viewer-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          const viewer = document.getElementById('productViewer');
+          if(btn.dataset.view === '360') {
+            viewer.innerHTML = '<img src="images/products/tee-black-1.jpg" alt="360 View"/>';
+            showToast('🌀 360° view active');
+          } else {
+            viewer.innerHTML = '<img src="images/products/tee-black-2.jpg" alt="3D Model"/>';
+            showToast('🎨 3D model loaded');
+          }
+        });
       });
-    });
 
-    document.querySelector('.size-guide-btn').addEventListener('click', () => {
-      showToast('📏 Opening Size Guide...');
-      // Navigate to size-guide.html
-    });
+      // 🖼️ THUMBNAIL SWITCHING
+      document.querySelectorAll('.thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          
+          const img = thumb.querySelector('img').src;
+          const viewer = document.getElementById('productViewer');
+          viewer.innerHTML = `<img src="${img}" alt="Product View"/>`;
+        });
+      });
 
-    // Quantity controls
-    const qtyInput = document.getElementById('qtyInput');
-    document.getElementById('qtyPlus').onclick = () => {
-      let val = parseInt(qtyInput.value) || 1;
-      if(val < 5) qtyInput.value = val + 1;
-    };
-    document.getElementById('qtyMinus').onclick = () => {
-      let val = parseInt(qtyInput.value) || 1;
-      if(val > 1) qtyInput.value = val - 1;
-    };
+      // 📏 SIZE SELECTION
+      document.querySelectorAll('.size-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          document.querySelectorAll('.size-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+        });
+      });
 
-    // Add to cart
-    document.getElementById('addToCartBtn').onclick = () => {
-      const qty = parseInt(qtyInput.value) || 1;
-      cart[PRODUCT.id] = (cart[PRODUCT.id] || 0) + qty;
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
-      updateCartCount();
-      showToast(`✅ ${qty}x ${PRODUCT.name} added to cart!`);
+      document.querySelector('.size-guide-btn').addEventListener('click', () => {
+        showToast('📏 Opening Size Guide...');
+      });
+
+      // 🔢 QUANTITY CONTROLS
+      const qtyInput = document.getElementById('qtyInput');
+      document.getElementById('qtyPlus').addEventListener('click', () => {
+        let val = parseInt(qtyInput.value) || 1;
+        if(val < 5) qtyInput.value = val + 1;
+      });
       
-      gsap.fromTo('#addToCartBtn', 
-        {scale: 1}, 
-        {scale: 0.95, duration: 0.1, yoyo: true, repeat: 1}
-      );
-    };
-
-    // Wishlist
-    document.getElementById('wishlistBtn').onclick = () => {
-      let wishlist = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]");
-      if(!wishlist.find(p => p.id === PRODUCT.id)){
-        wishlist.push(PRODUCT);
-        localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
-        document.getElementById("wishlistBtn").classList.add("active");
-        document.getElementById("wishlistBtn").innerHTML = "❤️ In Wishlist";
-        showToast("❤️ Added to wishlist");
-      }
-    };
-
-    // 360° viewer simulation
-    document.querySelectorAll('.viewer-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.viewer-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        showToast(`${btn.dataset.view === '360' ? '🌀 360° view active' : '🎨 3D model loaded'}`);
+      document.getElementById('qtyMinus').addEventListener('click', () => {
+        let val = parseInt(qtyInput.value) || 1;
+        if(val > 1) qtyInput.value = val - 1;
       });
-    });
 
-    // Auction timer
-    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
-    setInterval(()=>{
-      const diff = auctionDate - Date.now();
-      const timer = document.getElementById("auctionTimer");
-      if(diff > 0){
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        timer.textContent = `${days}d ${hours}h`;
-      } else {
-        timer.textContent = "LIVE NOW!";
+      // 🛒 ADD TO CART
+      document.getElementById('addToCartBtn').addEventListener('click', () => {
+        const qty = parseInt(qtyInput.value) || 1;
+        cart[PRODUCT.id] = (cart[PRODUCT.id] || 0) + qty;
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        updateCartCount();
+        showToast(`✅ ${qty}x ${PRODUCT.name} added to cart!`);
+        
+        const btn = document.getElementById('addToCartBtn');
+        btn.style.transform = 'scale(0.95)';
+        setTimeout(() => btn.style.transform = 'scale(1)', 100);
+      });
+
+      // ❤️ WISHLIST
+      document.getElementById('wishlistBtn').addEventListener('click', () => {
+        let wishlist = [];
+        try {
+          wishlist = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]");
+        } catch(e) {
+          wishlist = [];
+        }
+        
+        if(!wishlist.find(p => p.id === PRODUCT.id)){
+          wishlist.push(PRODUCT);
+          localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+          const btn = document.getElementById("wishlistBtn");
+          btn.classList.add("active");
+          btn.innerHTML = "❤️ In Wishlist";
+          showToast("❤️ Added to wishlist");
+        }
+      });
+
+      // 🍔 HAMBURGER (900px breakpoint)
+      document.getElementById("hamburger").addEventListener("click", function() {
+        document.querySelector("header").classList.toggle("menu-open");
+      });
+
+      // ⏰ AUCTION TIMER
+      const auctionEnd = new Date("2025-12-24T18:00:00").getTime();
+      function updateAuctionTimer(){
+        const now = Date.now();
+        const diff = auctionEnd - now;
+        const timerEl = document.getElementById("auctionTimer");
+        if (diff > 0) {
+          const days = Math.floor(diff / (1000*60*60*24));
+          const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+          timerEl.innerHTML = `${days}d ${hours.toString().padStart(2,'0')}h`;
+        } else {
+          timerEl.innerHTML = "LIVE NOW!";
+          timerEl.parentElement.style.background = "linear-gradient(135deg, var(--success), #059669)";
+        }
       }
-    }, 60000);
 
-    // Init
-    AOS.init({duration: 1200, once: true});
-    renderAuth();
-    updateCartCount();
-    document.getElementById("year").textContent = new Date().getFullYear();
+      // 🔧 MOBILE LOCK INIT
+      AOS.init({duration:800, once:true, offset:100});
+      renderAuth();
+      updateCartCount();
+      updateLiveStock();
+      updateAuctionTimer();
+      setInterval(updateLiveStock, 8000);
+      setInterval(updateAuctionTimer, 30000);
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
   </script>
 </body>
 </html>
