@@ -2,129 +2,157 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="theme-color" content="#3A0F5A"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="theme-color" content="#2C1B4A"/>
   <title>Privacy Policy — Snehvastra</title>
-  <meta name="description" content="Enterprise-grade privacy: 256-bit encryption, zero data sales, GDPR/DPDP compliant, Suratgarh data sovereignty."/>
+  <meta name="description" content="Enterprise-grade privacy: 256-bit encryption, zero data sales, GDPR/DPDP compliant, Kota data sovereignty."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --warning:#F59E0B; --security:#06B6D4;
-      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
-      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-      --max-width:1400px;
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (LOCKED) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --success:#10B981; --shadow-soft:0 clamp(25px, 8vw, 35px) clamp(80px, 20vw, 140px) rgba(44,27,74,0.15); --shadow-glow:0 0 clamp(20px, 5vw, 35px) rgba(107,90,207,0.2);
+      --radius:clamp(20px, 5vw, 32px); --max-width:clamp(1200px, 95vw, 1600px); --ease:cubic-bezier(0.32,0.72,0,1);
     }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.8;position:relative;min-height:100vh;}
 
-    /* Perfect System Header */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
-    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
-    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
-    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
-    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
+    /* 🔒 MOBILE LOCK HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;height:clamp(56px, 15vw, 60px);background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:clamp(8px, 2vw, 12px) 0;}
+    .header-container{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px, 5vw, 24px);height:100%;}
+    .brand{display:flex;gap:clamp(12px, 3vw, 20px);align-items:center;cursor:pointer;transition:all 0.4s var(--ease);}
+    .brand:hover{transform:translateY(-2px);}
+    .logo{height:clamp(40px, 11vw, 52px);border-radius:clamp(12px, 3vw, 20px);box-shadow:0 clamp(12px, 3vw, 20px) clamp(32px, 8vw, 60px) rgba(44,27,74,0.12);}
+    nav ul{display:flex;gap:clamp(8px, 2vw, 12px);list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);border-radius:clamp(16px, 4vw, 24px);font-weight:500;color:var(--amethyst);text-decoration:none;font-size:clamp(0.875rem, 2.2vw, 0.95rem);backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;min-height:clamp(44px, 11vw, 64px);display:flex;align-items:center;}
+    nav a::after{content:'';position:absolute;bottom:clamp(2px, 0.8vw, 4px);left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a:hover::after{width:80%;}
+    nav a.active{color:var(--amethyst);font-weight:600;background:rgba(232,180,184,0.15);box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(20px, 5vw, 32px) rgba(232,180,184,0.15);}
 
-    /* Enhanced Auction Banner */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
-    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
+    .hamburger{display:none;background:none;border:none;font-size:clamp(1.75rem, 4.5vw, 2rem);color:var(--amethyst);cursor:pointer;padding:clamp(12px, 3vw, 16px);min-height:clamp(44px, 11vw, 64px);}
+    
+    @media(max-width:900px){
+      .hamburger{display:block!important;}
+      nav{display:none;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:clamp(16px, 4vw, 20px) 0;overflow-y:auto;max-height:60vh;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:clamp(6px, 1.5vw, 8px);}
+      nav a{display:block;text-align:center;width:100%;padding:clamp(20px, 5vw, 24px);border-radius:clamp(12px, 3vw, 16px);min-height:clamp(60px, 15vw, 72px);}
+    }
 
-    /* Privacy Hero */
-    .privacy-hero{max-width:var(--max-width);margin:180px auto 100px;padding:0 5%;text-align:center;}
-    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4.5rem,11vw,6.5rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 32px;}
-    .security-badge{display:inline-flex;align-items:center;gap:16px;background:linear-gradient(135deg,var(--security),#0891B2);color:#fff;padding:28px 48px;border-radius:40px;font-family:'Clash Display',serif;font-size:1.5rem;font-weight:900;box-shadow:0 28px 90px rgba(6,182,212,0.4);margin:40px 0;}
-    .hero-subtitle{font-size:1.3rem;color:var(--slate-mid);max-width:900px;margin:0 auto 80px;line-height:1.9;}
+    /* ✅ MOBILE LOCK AUCTION BANNER (top:68px) */
+    .auction-banner{position:fixed;top:clamp(68px, 18vw, 80px);right:clamp(16px, 4vw, 30px);z-index:900;max-width:clamp(220px, 28vw, 280px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(20px, 5vw, 32px);border-radius:clamp(20px, 5vw, 28px);font-family:'Clash Display',serif;font-weight:700;font-size:clamp(0.95rem, 2.5vw, 1.2rem);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);line-height:1.3;}
+    .auction-timer{display:block;margin-top:clamp(6px, 1.5vw, 8px);background:rgba(255,255,255,0.9);border-radius:clamp(12px, 3vw, 16px);padding:clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);font-weight:600;}
+    @media(max-width:480px){.auction-banner{right:clamp(12px, 3vw, 16px);}}
 
-    /* Live Security Dashboard */
-    .security-dashboard{max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;}
-    .dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;}
-    .security-card{background:#fff;border-radius:var(--radius);padding:64px 48px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:relative;overflow:hidden;text-align:center;}
-    .security-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--purple),var(--security));}
-    .security-icon{font-size:5rem;margin-bottom:24px;display:block;}
-    .security-title{font-family:'Clash Display',serif;font-size:2.2rem;color:var(--purple);margin:0 0 16px;font-weight:700;}
-    .security-metric{font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,var(--security),#0891B2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 12px;}
-    .security-status{font-weight:700;color:var(--success);font-size:1.1rem;}
+    /* 🛡️ MOBILE LOCK PRIVACY HERO */
+    .privacy-hero{max-width:var(--max-width);margin:clamp(68px, 18vw, 140px) auto clamp(40px, 10vw, 80px);padding:0 clamp(24px, 6vw, 5%);text-align:center;}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(2.5rem, 8vw, 6.5rem);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 clamp(16px, 4vw, 24px);font-weight:900;letter-spacing:clamp(-1px, -0.3vw, -2px);}
+    .security-badge{display:inline-flex;align-items:center;gap:clamp(8px, 2vw, 12px);background:linear-gradient(135deg,var(--success),#059669);color:var(--pearl);padding:clamp(16px, 4vw, 28px) clamp(24px, 6vw, 48px);border-radius:clamp(24px, 6vw, 40px);font-family:'Clash Display',serif;font-size:clamp(0.95rem, 2.5vw, 1.5rem);font-weight:900;box-shadow:0 clamp(20px, 5vw, 28px) clamp(60px, 15vw, 90px) rgba(16,185,129,0.4);margin:clamp(20px, 5vw, 32px) 0;flex-wrap:wrap;justify-content:center;}
+    .hero-subtitle{font-size:clamp(0.95rem, 2.5vw, 1.3rem);color:var(--amethyst);opacity:0.8;max-width:clamp(500px, 85vw, 900px);margin:0 auto clamp(40px, 10vw, 64px);line-height:1.8;}
 
-    /* Policy Sections */
-    .policy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:48px;max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;}
-    .policy-card{background:#fff;border-radius:var(--radius);padding:72px 56px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:relative;overflow:hidden;transition:all var(--ease);}
-    .policy-card:hover{transform:translateY(-8px);box-shadow:0 60px 160px rgba(58,15,90,0.25);}
-    .policy-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--purple),var(--success));}
-    .policy-icon{font-size:4.5rem;margin-bottom:32px;display:block;text-align:center;}
-    .policy-title{font-family:'Clash Display',serif;font-size:2.2rem;color:var(--purple);margin:0 0 24px;font-weight:700;}
-    .policy-features{list-style:none;padding:0;margin:32px 0;}
-    .policy-features li{font-size:1.1rem;color:var(--slate-mid);margin-bottom:16px;position:relative;padding-left:40px;}
-    .policy-features li::before{content:'🔒';position:absolute;left:0;color:var(--security);font-weight:900;font-size:1.2rem;}
-    .compliance-badge{background:linear-gradient(135deg,var(--success),#059669);color:#fff;padding:12px 24px;border-radius:24px;font-weight:700;font-size:0.95rem;display:inline-block;margin-top:20px;}
+    /* 📊 MOBILE LOCK SECURITY DASHBOARD */
+    .security-dashboard{max-width:var(--max-width);margin:0 auto clamp(60px, 15vw, 100px);padding:0 clamp(16px, 4vw, 5%);}
+    .dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(280px, 90vw, 320px),1fr));gap:clamp(20px, 5vw, 24px);}
+    @media(max-width:480px){.dashboard-grid{grid-template-columns:1fr;gap:clamp(16px, 4vw, 20px);}}
+    .security-card{background:var(--pearl);border-radius:var(--radius);padding:clamp(32px, 8vw, 64px) clamp(24px, 6vw, 48px);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);position:relative;overflow:hidden;text-align:center;transition:all 0.4s var(--ease);}
+    .security-card::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(4px, 1vw, 6px);background:linear-gradient(90deg,var(--amethyst),var(--success));}
+    .security-card:hover{transform:translateY(-6px);}
+    .security-card:active{transform:scale(0.98);}
+    .security-icon{font-size:clamp(2.5rem, 8vw, 5rem);margin-bottom:clamp(16px, 4vw, 20px);display:block;}
+    .security-title{font-family:'Clash Display',serif;font-size:clamp(1.3rem, 4vw, 2.2rem);color:var(--amethyst);margin:0 0 clamp(8px, 2vw, 12px);font-weight:700;}
+    .security-metric{font-size:clamp(1.6rem, 5vw, 3.5rem);font-weight:900;background:linear-gradient(135deg,var(--success),#059669);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 clamp(8px, 2vw, 12px);}
+    .security-status{font-weight:700;color:var(--success);font-size:clamp(0.875rem, 2.2vw, 1.1rem);opacity:0.9;}
 
-    /* Data Rights Portal */
-    .rights-portal{max-width:1000px;margin:120px auto 100px;padding:0 5%;}
-    .portal-card{background:linear-gradient(135deg,var(--purple),var(--purple-dark));padding:96px 64px;border-radius:var(--radius);box-shadow:0 40px 120px rgba(58,15,90,0.4);color:#fff;position:relative;overflow:hidden;text-align:center;}
-    .portal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,var(--security),var(--success));}
-    .portal-title{font-family:'Clash Display',serif;font-size:3.2rem;font-weight:900;margin:0 0 24px;}
-    .portal-subtitle{font-size:1.3rem;margin:0 0 48px;line-height:1.7;max-width:700px;margin-left:auto;margin-right:auto;}
-    .rights-buttons{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
-    .btn-rights{padding:24px 56px;border-radius:32px;font-family:'Clash Display',serif;font-weight:900;font-size:1.2rem;text-decoration:none;transition:all var(--ease);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:12px;}
-    .btn-primary{background:#fff;color:var(--purple);box-shadow:0 24px 80px rgba(255,255,255,0.3);}
-    .btn-primary:hover{transform:translateY(-6px);box-shadow:0 32px 100px rgba(255,255,255,0.4);}
-    .btn-secondary{background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.3);color:#fff;}
-    .btn-secondary:hover{background:rgba(255,255,255,0.25);}
-
-    /* Live Encryption Visualizer */
-    .encryption-viz{position:relative;height:200px;margin:60px 0;display:flex;align-items:center;justify-content:center;}
-    .encryption-circle{position:relative;width:180px;height:180px;border-radius:50%;background:conic-gradient(from 0deg, var(--security) 0deg 120deg, var(--success) 120deg 240deg, var(--purple) 240deg 360deg);animation:rotate 8s linear infinite;}
-    .encryption-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:linear-gradient(135deg,#fff,var(--glass));border-radius:50%;box-shadow:0 0 40px rgba(6,182,212,0.6);font-weight:900;font-size:1.4rem;color:var(--security);display:flex;align-items:center;justify-content:center;}
+    /* 🔐 MOBILE LOCK ENCRYPTION VIZ */
+    .encryption-viz{position:relative;height:clamp(140px, 40vw, 200px);margin:clamp(60px, 15vw, 80px) auto;display:flex;align-items:center;justify-content:center;max-width:clamp(350px, 90vw, 400px);}
+    .encryption-circle{position:relative;width:clamp(120px, 35vw, 180px);height:clamp(120px, 35vw, 180px);border-radius:50%;background:conic-gradient(from 0deg, var(--success) 0deg 120deg, var(--amethyst) 120deg 240deg, var(--rose-gold) 240deg 360deg);animation:rotate 8s linear infinite;}
+    .encryption-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(52px, 15vw, 80px);height:clamp(52px, 15vw, 80px);background:linear-gradient(135deg,var(--pearl),var(--ivory));border-radius:50%;box-shadow:0 0 clamp(32px, 8vw, 40px) rgba(16,185,129,0.6);font-family:'Clash Display',serif;font-weight:900;font-size:clamp(0.875rem, 2.5vw, 1.4rem);color:var(--success);display:flex;align-items:center;justify-content:center;}
     @keyframes rotate{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
-    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
-    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
-    #toast.show{transform:translateX(0);}
+    /* 📜 MOBILE LOCK POLICY GRID */
+    .policy-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px, 7vw, 32px);max-width:var(--max-width);margin:0 auto clamp(60px, 15vw, 100px);padding:0 clamp(16px, 4vw, 5%);}
+    @media(min-width:1100px){.policy-grid{grid-template-columns:repeat(auto-fit,minmax(clamp(380px, 45vw, 420px),1fr));gap:clamp(40px, 10vw, 48px);}}
+    .policy-card{background:var(--pearl);border-radius:var(--radius);padding:clamp(40px, 10vw, 72px) clamp(24px, 6vw, 56px);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);position:relative;overflow:hidden;transition:all 0.4s var(--ease);}
+    .policy-card::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(4px, 1vw, 6px);background:linear-gradient(90deg,var(--amethyst),var(--success));}
+    .policy-card:hover{transform:translateY(-6px);box-shadow:0 clamp(40px, 10vw, 60px) clamp(100px, 25vw, 160px) rgba(44,27,74,0.25);}
+    .policy-card:active{transform:scale(0.98);}
+    .policy-icon{font-size:clamp(2.5rem, 8vw, 4.5rem);margin-bottom:clamp(20px, 5vw, 24px);display:block;text-align:center;}
+    .policy-title{font-family:'Clash Display',serif;font-size:clamp(1.4rem, 4vw, 2.2rem);color:var(--amethyst);margin:0 0 clamp(16px, 4vw, 20px);font-weight:700;}
+    .policy-features{list-style:none;padding:0;margin:clamp(20px, 5vw, 24px) 0;}
+    .policy-features li{font-size:clamp(0.875rem, 2.2vw, 1.1rem);color:var(--amethyst);margin-bottom:clamp(12px, 3vw, 16px);position:relative;padding-left:clamp(28px, 7vw, 40px);line-height:1.6;opacity:0.9;}
+    .policy-features li::before{content:'🔒';position:absolute;left:0;color:var(--success);font-weight:900;font-size:clamp(1rem, 2.5vw, 1.2rem);}
+    .compliance-badge{background:linear-gradient(135deg,var(--success),#059669);color:var(--pearl);padding:clamp(10px, 2.5vw, 12px) clamp(20px, 5vw, 24px);border-radius:clamp(16px, 4vw, 24px);font-weight:700;font-size:clamp(0.8rem, 2vw, 0.95rem);display:inline-block;margin-top:clamp(16px, 4vw, 20px);}
 
-    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
+    /* ⚖️ MOBILE LOCK RIGHTS PORTAL */
+    .rights-portal{max-width:clamp(900px, 95vw, 1000px);margin:clamp(60px, 15vw, 100px) auto clamp(40px, 10vw, 80px);padding:0 clamp(16px, 4vw, 5%);}
+    .portal-card{background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));padding:clamp(48px, 12vw, 96px) clamp(32px, 8vw, 64px);border-radius:var(--radius);box-shadow:var(--shadow-soft);color:var(--pearl);position:relative;overflow:hidden;text-align:center;}
+    .portal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(6px, 1.5vw, 8px);background:linear-gradient(90deg,var(--success),var(--rose-gold));}
+    .portal-title{font-family:'Clash Display',serif;font-size:clamp(2rem, 6vw, 3.2rem);font-weight:900;margin:0 0 clamp(16px, 4vw, 20px);letter-spacing:clamp(-0.5px, -0.2vw, -0.8px);}
+    .portal-subtitle{font-size:clamp(0.95rem, 2.5vw, 1.3rem);margin:0 0 clamp(32px, 8vw, 40px);line-height:1.7;max-width:clamp(500px, 85vw, 700px);margin-left:auto;margin-right:auto;opacity:0.9;}
+    .rights-buttons{display:flex;gap:clamp(16px, 4vw, 20px);justify-content:center;flex-wrap:wrap;}
+    @media(max-width:480px){.rights-buttons{flex-direction:column;align-items:center;}}
+    .btn-rights{padding:clamp(16px, 4vw, 24px) clamp(32px, 8vw, 56px);border-radius:clamp(20px, 5vw, 32px);font-family:'Clash Display',serif;font-weight:900;font-size:clamp(0.95rem, 2.4vw, 1.2rem);text-decoration:none;transition:all 0.4s var(--ease);border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:clamp(8px, 2vw, 12px);width:100%;max-width:clamp(260px, 90vw, 280px);min-height:clamp(56px, 14vw, 60px);touch-action:manipulation;text-transform:uppercase;letter-spacing:0.3px;}
+    @media(min-width:481px){.btn-rights{width:auto;}}
+    .btn-primary{background:var(--pearl);color:var(--amethyst);box-shadow:0 clamp(16px, 4vw, 24px) clamp(40px, 10vw, 80px) rgba(248,246,249,0.3);}
+    .btn-primary:hover,.btn-primary:active{transform:translateY(-4px);box-shadow:0 clamp(24px, 6vw, 32px) clamp(60px, 15vw, 100px) rgba(248,246,249,0.4);}
+    .btn-secondary{background:rgba(248,246,249,0.15);border:clamp(1px, 0.3vw, 2px) solid rgba(248,246,249,0.3);color:var(--pearl);}
+    .btn-secondary:hover,.btn-secondary:active{background:rgba(248,246,249,0.25);transform:translateY(-2px);}
+
+    footer{padding:clamp(60px, 15vw, 100px) clamp(20px, 5vw, 5%) clamp(40px, 10vw, 40px);text-align:center;color:var(--sage);border-top:1px solid rgba(44,27,74,0.06);font-size:clamp(0.875rem, 2.2vw, 0.95rem);font-weight:300;line-height:1.6;}
+
+    #toast{position:fixed;top:clamp(20px, 5vw, 32px);right:clamp(20px, 5vw, 32px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(24px, 6vw, 36px);border-radius:clamp(16px, 4vw, 24px);box-shadow:var(--shadow-soft);transform:translateX(500px);transition:all 0.4s var(--ease);font-family:'Clash Display',serif;font-weight:700;z-index:10000;font-size:clamp(0.875rem, 2.2vw, 1rem);max-width:clamp(90vw, 92vw, 420px);}
+    #toast.show{transform:translateX(0);}
+    @media(max-width:480px){#toast{top:clamp(16px, 4vw, 20px);right:clamp(16px, 4vw, 20px);left:clamp(16px, 4vw, 20px);max-width:none;}}
   </style>
 </head>
 <body>
-  <!-- Perfect System Header -->
+  <!-- 🔒 MOBILE LOCK HEADER -->
   <header>
-    <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.85rem;color:var(--muted);">Privacy Policy</div>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:clamp(1.1rem, 2.8vw, 1.5rem);font-weight:600;color:var(--amethyst);">Snehvastra</div>
+        <div style="font-size:clamp(0.7rem, 1.8vw, 0.8rem);color:var(--amethyst);opacity:0.7;font-weight:400;">Privacy Policy</div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html" class="active">Privacy</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="mini-cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="return-policy.html">Returns</a></li>
-        <li><a href="privacy.html" class="active">Privacy</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li id="authArea"></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+  <!-- ✅ MOBILE LOCK AUCTION BANNER -->
+  <div class="auction-banner" id="auctionBanner">
+    🔥 SNEHVASTRA ONE AUCTION<br>
+    <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
-  <section class="privacy-hero">
-    <h1 class="hero-title" data-aos="fade-down">Data Fortress</h1>
-    <div class="security-badge" data-aos="zoom-in">
+  <!-- 🛡️ MOBILE LOCK PRIVACY HERO -->
+  <section class="privacy-hero" data-aos="fade-up">
+    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">Data Fortress</h1>
+    <div class="security-badge" data-aos="zoom-in" data-aos-delay="200">
       256-Bit Encryption • Zero Data Sales • GDPR/DPDP Compliant
     </div>
-    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Your privacy protected with enterprise-grade security. Suratgarh data sovereignty with global compliance standards.</p>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">Your privacy protected with enterprise-grade security. Kota data sovereignty with global compliance standards.</p>
   </section>
 
-  <!-- Live Security Dashboard -->
+  <!-- 📊 MOBILE LOCK SECURITY DASHBOARD -->
   <section class="security-dashboard">
     <div class="dashboard-grid">
       <div class="security-card" data-aos="fade-up">
@@ -148,16 +176,16 @@
     </div>
   </section>
 
-  <!-- Live Encryption Visualizer -->
-  <div class="encryption-viz" style="max-width:400px;margin:120px auto;" data-aos="zoom-in">
+  <!-- 🔐 MOBILE LOCK ENCRYPTION VIZ -->
+  <div class="encryption-viz" data-aos="zoom-in" data-aos-delay="100">
     <div class="encryption-circle">
       <div class="encryption-core">SECURE</div>
     </div>
   </div>
 
-  <!-- Policy Grid -->
+  <!-- 📜 MOBILE LOCK POLICY GRID -->
   <section class="policy-grid">
-    <div class="policy-card" data-aos="fade-up" data-aos-delay="100">
+    <div class="policy-card" data-aos="fade-up">
       <div class="policy-icon">📋</div>
       <h3 class="policy-title">Data We Collect</h3>
       <ul class="policy-features">
@@ -169,7 +197,7 @@
       <span class="compliance-badge">Minimal Collection</span>
     </div>
 
-    <div class="policy-card" data-aos="fade-up" data-aos-delay="200">
+    <div class="policy-card" data-aos="fade-up" data-aos-delay="100">
       <div class="policy-icon">🚫</div>
       <h3 class="policy-title">Never Shared With</h3>
       <ul class="policy-features">
@@ -181,19 +209,19 @@
       <span class="compliance-badge">Zero Sales Guarantee</span>
     </div>
 
-    <div class="policy-card" data-aos="fade-up" data-aos-delay="300">
+    <div class="policy-card" data-aos="fade-up" data-aos-delay="200">
       <div class="policy-icon">🔐</div>
       <h3 class="policy-title">Security Layers</h3>
       <ul class="policy-features">
         <li>AES-256 encryption</li>
         <li>SSL/TLS 1.3 everywhere</li>
-        <li>Suratgarh data residency</li>
+        <li>Kota data residency</li>
         <li>Zero-knowledge payments</li>
       </ul>
       <span class="compliance-badge">Bank-Grade Security</span>
     </div>
 
-    <div class="policy-card" data-aos="fade-up" data-aos-delay="400">
+    <div class="policy-card" data-aos="fade-up" data-aos-delay="300">
       <div class="policy-icon">⚖️</div>
       <h3 class="policy-title">Your Rights</h3>
       <ul class="policy-features">
@@ -206,80 +234,115 @@
     </div>
   </section>
 
-  <!-- Data Rights Portal -->
+  <!-- ⚖️ MOBILE LOCK RIGHTS PORTAL -->
   <section class="rights-portal">
     <div class="portal-card" data-aos="zoom-in">
       <h2 class="portal-title">Control Your Data</h2>
       <p class="portal-subtitle">One-click access to exercise all your privacy rights. 100% transparent data management.</p>
       <div class="rights-buttons">
-        <button class="btn-primary" onclick="showToast('📥 Data export initiated - email delivery in 2min')">Download My Data</button>
-        <button class="btn-primary" onclick="showToast('🗑️ Data deletion request received - permanent removal in 24hrs')">Delete My Data</button>
-        <a href="mailto:privacy@snehvastra.store?subject=Privacy%20Request" class="btn-secondary">Contact Privacy Officer</a>
+        <button class="btn-rights btn-primary" onclick="showToast('📥 Data export initiated - email delivery in 2min')">Download My Data</button>
+        <button class="btn-rights btn-primary" onclick="showToast('🗑️ Data deletion request received - permanent removal in 24hrs')">Delete My Data</button>
+        <a href="mailto:privacy@snehvastra.store?subject=Privacy%20Request" class="btn-rights btn-secondary">Contact Privacy Officer</a>
       </div>
     </div>
   </section>
 
-  <footer>
+  <footer data-aos="fade-up">
     © <span id="year"></span> Snehvastra. Privacy engineered for collectors. Updated Dec 23, 2025.
   </footer>
 
   <div id="toast"></div>
 
   <script>
-    // Perfect system sync
-    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-    const user = JSON.parse(localStorage.getItem(USER_KEY));
+    // 🔒 BULLETPROOF MOBILE LOCK PRIVACY SYSTEM (NO GSAP)
+    document.addEventListener('DOMContentLoaded', function() {
+      initPrivacy();
+    });
 
-    function renderAuth(){
-      const authArea = document.getElementById("authArea");
-      if(user && user.loggedIn){
-        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
-      } else {
-        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
+    function initPrivacy() {
+      // 🔒 CORE SYSTEM - FULL LOCALSTORAGE SYNC
+      const USER_KEY = "snehvastra_user"; 
+      const CART_KEY = "snehvastra_cart";
+      
+      let cart = {};
+      let user = null;
+      
+      try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+        user = JSON.parse(localStorage.getItem(USER_KEY) || 'null');
+      } catch(e) {
+        console.log('Storage reset - privacy page');
+        cart = {};
       }
-    }
 
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-      document.getElementById("cartCount").textContent = total;
-    }
-
-    function showToast(msg){
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.classList.add("show");
-      setTimeout(()=>toast.classList.remove("show"), 4000);
-    }
-
-    // Live encryption status
-    const encLevels = ['AES-256', 'TLS 1.3', 'SHA-512', 'AES-256'];
-    let encIndex = 0;
-    setInterval(() => {
-      document.getElementById('encryptionStatus').textContent = encLevels[encIndex];
-      encIndex = (encIndex + 1) % encLevels.length;
-    }, 3000);
-
-    // Auction timer
-    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
-    setInterval(()=>{
-      const diff = auctionDate - Date.now();
-      const timer = document.getElementById("auctionTimer");
-      if(diff > 0){
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        timer.textContent = `${days}d ${hours}h`;
-      } else {
-        timer.textContent = "LIVE NOW!";
-        timer.style.background = "linear-gradient(135deg,#10B981,#059669)";
+      function showToast(msg){
+        const toast = document.getElementById("toast");
+        if(toast){
+          toast.textContent = msg;
+          toast.classList.add("show");
+          setTimeout(()=>toast.classList.remove("show"), 4000);
+        }
       }
-    }, 60000);
 
-    // Init
-    AOS.init({duration: 1200, once: true});
-    renderAuth();
-    updateCartCount();
-    document.getElementById("year").textContent = new Date().getFullYear();
+      // 🔐 AUTH SYNC
+      function renderAuth() {
+        const authArea = document.getElementById("authArea");
+        if (user && user.loggedIn) {
+          authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Hi, ${user.name}</span>`;
+        } else {
+          authArea.innerHTML = `<a href="user-login.html" style="padding:clamp(8px, 2vw, 12px) clamp(16px, 4vw, 28px);border:1px solid var(--rose-gold);color:var(--rose-gold);border-radius:clamp(16px, 4vw, 24px);font-weight:500;text-decoration:none;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Login</a>`;
+        }
+      }
+
+      // 🛒 CART COUNT SYNC
+      function updateCartCount(){
+        const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+        const cartEl = document.getElementById("cartCount");
+        if(cartEl) cartEl.textContent = total || 0;
+      }
+
+      // 🔒 LIVE ENCRYPTION STATUS
+      const encLevels = ['AES-256', 'TLS 1.3', 'SHA-512', 'AES-256'];
+      let encIndex = 0;
+      function updateEncryption(){
+        const el = document.getElementById('encryptionStatus');
+        if(el){
+          el.textContent = encLevels[encIndex];
+          encIndex = (encIndex + 1) % encLevels.length;
+        }
+      }
+
+      // 🍔 HAMBURGER (900px breakpoint)
+      document.getElementById("hamburger").addEventListener("click", function() {
+        document.querySelector("header").classList.toggle("menu-open");
+      });
+
+      // ⏰ AUCTION TIMER
+      const auctionEnd = new Date("2025-12-24T18:00:00").getTime();
+      function updateAuctionTimer(){
+        const now = Date.now();
+        const diff = auctionEnd - now;
+        const timerEl = document.getElementById("auctionTimer");
+        if (diff > 0) {
+          const days = Math.floor(diff / (1000*60*60*24));
+          const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+          timerEl.innerHTML = `${days}d ${hours.toString().padStart(2,'0')}h`;
+        } else {
+          timerEl.innerHTML = "LIVE NOW!";
+          timerEl.parentElement.style.background = "linear-gradient(135deg, var(--success), #059669)";
+        }
+      }
+
+      // 🔧 MOBILE LOCK INIT
+      AOS.init({duration:800, once:true, offset:100});
+      renderAuth();
+      updateCartCount();
+      updateEncryption();
+      updateAuctionTimer();
+      setInterval(updateEncryption, 3000);
+      setInterval(updateAuctionTimer, 30000);
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
   </script>
 </body>
 </html>
