@@ -2,150 +2,173 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="theme-color" content="#3A0F5A"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="theme-color" content="#2C1B4A"/>
   <title>FAQ — Snehvastra</title>
-  <meta name="description" content="Suratgarh artisan FAQs, NFC verification, auction rules, 2-day shipping, collector authentication, live support."/>
+  <meta name="description" content="Kota artisan FAQs, NFC verification, auction rules, 2-day shipping, collector authentication, live support."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --gold:#F59E0B;
-      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
-      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-      --max-width:1400px;
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (LOCKED) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --success:#10B981; --shadow-soft:0 clamp(25px, 8vw, 35px) clamp(80px, 20vw, 140px) rgba(44,27,74,0.15); --shadow-glow:0 0 clamp(20px, 5vw, 35px) rgba(107,90,207,0.2);
+      --radius:clamp(20px, 5vw, 32px); --max-width:clamp(1200px, 95vw, 1600px); --ease:cubic-bezier(0.32,0.72,0,1);
     }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.8;position:relative;min-height:100vh;}
 
-    /* Perfect System Header */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
-    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
-    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
-    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
-    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
+    /* 🔒 MOBILE LOCK HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;height:clamp(56px, 15vw, 60px);background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:clamp(8px, 2vw, 12px) 0;}
+    .header-container{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px, 5vw, 24px);height:100%;}
+    .brand{display:flex;gap:clamp(12px, 3vw, 20px);align-items:center;cursor:pointer;transition:all 0.4s var(--ease);}
+    .brand:hover{transform:translateY(-2px);}
+    .logo{height:clamp(40px, 11vw, 52px);border-radius:clamp(12px, 3vw, 20px);box-shadow:0 clamp(12px, 3vw, 20px) clamp(32px, 8vw, 60px) rgba(44,27,74,0.12);}
+    nav ul{display:flex;gap:clamp(8px, 2vw, 12px);list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);border-radius:clamp(16px, 4vw, 24px);font-weight:400;color:var(--amethyst);text-decoration:none;font-size:clamp(0.875rem, 2.2vw, 0.95rem);backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;min-height:clamp(44px, 11vw, 64px);display:flex;align-items:center;}
+    nav a::after{content:'';position:absolute;bottom:clamp(2px, 0.8vw, 4px);left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a:hover::after{width:80%;}
+    nav a.active{color:var(--amethyst);font-weight:500;background:rgba(232,180,184,0.15);box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(20px, 5vw, 32px) rgba(232,180,184,0.15);}
 
-    /* Enhanced Auction Banner */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
-    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
+    .hamburger{display:none;background:none;border:none;font-size:clamp(1.75rem, 4.5vw, 2rem);color:var(--amethyst);cursor:pointer;padding:clamp(12px, 3vw, 16px);min-height:clamp(44px, 11vw, 64px);}
+    
+    @media(max-width:900px){
+      .hamburger{display:block!important;}
+      nav{display:none;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:clamp(16px, 4vw, 20px) 0;overflow-y:auto;max-height:60vh;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:clamp(6px, 1.5vw, 8px);}
+      nav a{display:block;text-align:center;width:100%;padding:clamp(20px, 5vw, 24px);border-radius:clamp(12px, 3vw, 16px);min-height:clamp(60px, 15vw, 72px);}
+    }
 
-    /* Hero Section */
-    .hero{max-width:var(--max-width);margin:160px auto 100px;padding:0 5%;text-align:center;}
-    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4.5rem,12vw,7rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 32px;}
-    .hero-subtitle{font-size:1.4rem;color:var(--slate-mid);max-width:800px;margin:0 auto 64px;line-height:1.8;}
-    .ai-search{position:relative;max-width:680px;margin:0 auto;}
-    .search-input{width:100%;padding:28px 80px 28px 32px;border:3px solid rgba(58,15,90,0.15);border-radius:32px;font-size:1.3rem;font-weight:600;background:var(--glass);backdrop-filter:blur(20px);transition:all var(--ease);}
-    .search-input:focus{outline:none;border-color:var(--purple);box-shadow:0 20px 60px rgba(58,15,90,0.2);}
-    .search-icon{position:absolute;right:32px;top:50%;transform:translateY(-50%);font-size:1.8rem;color:var(--purple);}
-    .search-results{font-size:1.1rem;color:var(--success);margin-top:16px;font-weight:600;}
+    /* ✅ MOBILE LOCK AUCTION BANNER (top:68px) */
+    .auction-banner{position:fixed;top:clamp(68px, 18vw, 80px);right:clamp(16px, 4vw, 30px);z-index:900;max-width:clamp(220px, 28vw, 280px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(20px, 5vw, 32px);border-radius:clamp(20px, 5vw, 28px);font-family:'Clash Display',serif;font-weight:700;font-size:clamp(0.95rem, 2.5vw, 1.2rem);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);line-height:1.3;}
+    .auction-timer{display:block;margin-top:clamp(6px, 1.5vw, 8px);background:rgba(255,255,255,0.9);border-radius:clamp(12px, 3vw, 16px);padding:clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);font-weight:600;}
+    @media(max-width:480px){.auction-banner{right:clamp(12px, 3vw, 16px);}}
 
-    /* FAQ Grid */
-    .faq-grid{max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:start;}
-    @media(max-width:1200px){.faq-grid{grid-template-columns:1fr;gap:60px;}}
+    /* 🆘 MOBILE LOCK HERO */
+    .hero{position:relative;max-width:var(--max-width);margin:clamp(68px, 18vw, 140px) auto clamp(40px, 10vw, 80px);padding:clamp(60px, 15vw, 120px) clamp(24px, 6vw, 5%);text-align:center;background:var(--pearl);backdrop-filter:blur(50px);border-radius:var(--radius);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(2.2rem, 8vw, 6.5rem);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 clamp(20px, 5vw, 32px);font-weight:900;letter-spacing:clamp(-1px, -0.3vw, -1.5px);line-height:1.1;}
+    .hero-subtitle{font-size:clamp(1rem, 2.8vw, 1.5rem);color:var(--amethyst);opacity:0.8;max-width:clamp(500px, 85vw, 800px);margin:0 auto clamp(32px, 8vw, 64px);line-height:1.8;}
+    
+    .ai-search{position:relative;max-width:clamp(400px, 85vw, 720px);margin:0 auto;}
+    .search-input{width:100%;padding:clamp(18px, 4.5vw, 28px) clamp(20px, 5vw, 32px) clamp(18px, 4.5vw, 28px) clamp(60px, 15vw, 80px);border:clamp(2px, 0.5vw, 3px) solid rgba(44,27,74,0.15);border-radius:var(--radius);font-size:clamp(0.95rem, 2.5vw, 1.2rem);font-weight:500;background:var(--pearl);backdrop-filter:blur(30px);transition:all 0.4s var(--ease);color:var(--amethyst);min-height:clamp(52px, 13vw, 72px);}
+    .search-input:focus{outline:none;border-color:var(--amethyst);box-shadow:0 clamp(12px, 3vw, 16px) clamp(32px, 8vw, 60px) rgba(44,27,74,0.2);}
+    .search-input::placeholder{color:var(--amethyst);opacity:0.5;}
+    .search-icon{position:absolute;left:clamp(20px, 5vw, 32px);top:50%;transform:translateY(-50%);font-size:clamp(1.6rem, 4vw, 2.4rem);color:var(--amethyst);}
+    .search-results{font-size:clamp(0.85rem, 2.2vw, 1.1rem);color:var(--success);margin-top:clamp(10px, 2.5vw, 16px);font-weight:600;opacity:0.9;}
 
-    /* FAQ Sections */
-    .faq-section{background:#fff;border-radius:var(--radius);padding:0;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);overflow:hidden;margin-bottom:48px;}
-    .section-header{font-family:'Clash Display',serif;font-size:2.4rem;color:var(--purple);padding:48px 48px 36px;margin:0;font-weight:900;border-bottom:3px solid rgba(58,15,90,0.1);}
-    .faq-item{border-bottom:2px solid rgba(58,15,90,0.05);transition:all var(--ease);}
+    /* ❓ MOBILE LOCK FAQ GRID */
+    .faq-grid{max-width:var(--max-width);margin:clamp(60px, 15vw, 140px) auto 0;padding:0 clamp(16px, 4vw, 5%);display:grid;grid-template-columns:1fr;gap:clamp(32px, 8vw, 80px);align-items:start;}
+    @media(min-width:900px){.faq-grid{grid-template-columns:1fr clamp(320px, 35vw, 420px);gap:clamp(40px, 10vw, 80px);}}
+
+    /* 📋 FAQ SECTIONS */
+    .faq-section{background:var(--pearl);backdrop-filter:blur(50px);border-radius:var(--radius);padding:0;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);overflow:hidden;margin-bottom:clamp(24px, 6vw, 48px);}
+    .section-header{font-family:'Clash Display',serif;font-size:clamp(1.4rem, 4vw, 2.4rem);color:var(--amethyst);padding:clamp(20px, 5vw, 48px) clamp(20px, 5vw, 48px) clamp(16px, 4vw, 36px);margin:0;font-weight:900;border-bottom:clamp(1px, 0.3vw, 3px) solid rgba(44,27,74,0.1);line-height:1.2;}
+
+    .faq-item{border-bottom:clamp(1px, 0.3vw, 2px) solid rgba(44,27,74,0.05);transition:all 0.4s var(--ease);}
     .faq-item:last-child{border-bottom:none;}
-    .faq-item:hover{background:rgba(58,15,90,0.02);}
+    .faq-item:hover{background:rgba(44,27,74,0.02);}
 
-    .question{width:100%;background:none;border:none;padding:40px 48px;font-family:'Clash Display',serif;font-size:1.4rem;font-weight:800;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all var(--ease);}
-    .question:hover{color:var(--purple-dark);}
-    .question.active{color:var(--purple);}
+    .question{width:100%;background:none;border:none;padding:clamp(20px, 5vw, 40px) clamp(20px, 5vw, 48px);font-family:'Clash Display',serif;font-size:clamp(1rem, 2.8vw, 1.3rem);font-weight:700;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s var(--ease);color:var(--amethyst);min-height:clamp(56px, 14vw, 80px);}
+    .question:hover{color:var(--amethyst-light);}
+    .question.active{color:var(--amethyst);font-weight:900;background:rgba(232,180,184,0.1);}
 
-    .question-icon{font-size:2rem;transition:transform var(--ease);}
-    .question.active .question-icon{transform:rotate(45deg);}
+    .question-icon{font-size:clamp(1.4rem, 3.5vw, 2rem);transition:transform 0.4s var(--ease);color:var(--rose-gold);flex-shrink:0;}
+    .question.active .question-icon{transform:rotate(45deg);color:var(--amethyst);}
 
-    .answer{padding:0 48px 40px;max-height:0;overflow:hidden;transition:all var(--ease);color:var(--slate-mid);line-height:1.8;font-size:1.1rem;}
-    .answer.show{max-height:600px;padding:40px 48px 48px;}
+    .answer{padding:0 clamp(20px, 5vw, 48px) clamp(20px, 5vw, 40px);max-height:0;overflow:hidden;transition:all 0.6s var(--ease);color:var(--amethyst);line-height:1.8;font-size:clamp(0.95rem, 2.4vw, 1.1rem);opacity:0;}
+    .answer.show{max-height:800px;padding:clamp(20px, 5vw, 40px) clamp(20px, 5vw, 48px) clamp(28px, 7vw, 48px);opacity:1;}
 
-    /* Support Panel */
-    .support-panel{background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:var(--radius);padding:64px;color:#fff;position:sticky;top:160px;align-self:start;height:fit-content;box-shadow:0 40px 120px rgba(58,15,90,0.4);}
-    .support-title{font-family:'Clash Display',serif;font-size:2.8rem;font-weight:900;margin:0 0 48px;text-align:center;}
-    .support-badge{background:var(--glass);backdrop-filter:blur(20px);padding:16px 28px;border-radius:24px;font-weight:800;color:var(--purple);margin-bottom:48px;text-align:center;display:block;font-size:1.1rem;}
-    .support-btn{width:100%;padding:28px 40px;border:none;border-radius:24px;font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;cursor:pointer;transition:all var(--ease);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:16px;height:84px;}
-    .btn-ai{background:var(--gold);color:var(--purple);box-shadow:0 20px 60px rgba(245,158,11,0.4);}
-    .btn-ai:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(245,158,11,0.5);}
-    .btn-contact{background:var(--glass);color:#fff;border:2px solid rgba(255,255,255,0.3);}
-    .btn-contact:hover{background:rgba(255,255,255,0.2);transform:translateY(-4px);}
+    /* 💬 MOBILE LOCK SUPPORT PANEL */
+    .support-panel{background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));border-radius:var(--radius);padding:clamp(32px, 8vw, 80px);color:var(--pearl);position:sticky;top:clamp(80px, 20vw, 160px);align-self:start;height:fit-content;box-shadow:var(--shadow-soft);}
+    @media(max-width:900px){.support-panel{position:static;padding:clamp(28px, 7vw, 60px) clamp(20px, 5vw, 40px);}}
+    .support-title{font-family:'Clash Display',serif;font-size:clamp(1.4rem, 4vw, 2.8rem);font-weight:900;margin:0 0 clamp(24px, 6vw, 48px);text-align:center;letter-spacing:clamp(-0.5px, -0.2vw, -0.8px);}
+    .support-badge{background:rgba(255,255,255,0.15);backdrop-filter:blur(20px);padding:clamp(12px, 3vw, 20px) clamp(20px, 5vw, 32px);border-radius:clamp(16px, 4vw, 28px);font-weight:700;color:var(--pearl);margin-bottom:clamp(24px, 6vw, 48px);text-align:center;display:block;font-size:clamp(0.9rem, 2.3vw, 1.1rem);border:1px solid rgba(255,255,255,0.2);}
+    .support-btn{width:100%;padding:clamp(16px, 4vw, 28px) clamp(24px, 6vw, 40px);border:none;border-radius:clamp(16px, 4vw, 28px);font-family:'Clash Display',serif;font-weight:900;font-size:clamp(0.95rem, 2.4vw, 1.2rem);cursor:pointer;transition:all 0.4s var(--ease);margin-bottom:clamp(12px, 3vw, 24px);display:flex;align-items:center;justify-content:center;gap:clamp(10px, 2.5vw, 16px);min-height:clamp(56px, 14vw, 84px);text-transform:uppercase;letter-spacing:0.3px;}
+    .btn-ai{background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);box-shadow:0 clamp(12px, 3vw, 16px) clamp(32px, 8vw, 60px) rgba(232,180,184,0.4);}
+    .btn-ai:hover{transform:translateY(-4px);box-shadow:0 clamp(20px, 5vw, 24px) clamp(48px, 12vw, 80px) rgba(232,180,184,0.5);}
+    .btn-contact{background:rgba(255,255,255,0.15);color:var(--pearl);border:clamp(1px, 0.3vw, 2px) solid rgba(255,255,255,0.3);backdrop-filter:blur(20px);}
+    .btn-contact:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px);}
 
-    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
-    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
-    #toast.show{transform:translateX(0);}
+    footer{padding:clamp(60px, 15vw, 140px) clamp(20px, 5vw, 5%) clamp(40px, 10vw, 80px);text-align:center;background:var(--pearl);color:var(--sage);border-top:1px solid rgba(44,27,74,0.06);font-size:clamp(0.875rem, 2.2vw, 1rem);font-weight:300;line-height:1.6;}
 
-    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
+    #toast{position:fixed;bottom:clamp(60px, 15vw, 80px);left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(28px, 7vw, 48px);border-radius:clamp(20px, 5vw, 28px);font-family:'Clash Display',serif;font-weight:800;font-size:clamp(0.95rem, 2.4vw, 1.1rem);z-index:10000;transition:all 0.6s var(--ease);max-width:clamp(90vw, 92vw, 92vw);box-shadow:var(--shadow-soft);text-align:center;}
+    #toast.show{transform:translateX(-50%) translateY(0);}
   </style>
 </head>
 <body>
-  <!-- Perfect System Header -->
+  <!-- 🔒 MOBILE LOCK HEADER -->
   <header>
-    <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.85rem;color:var(--muted);">Help Center</div>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:clamp(1.1rem, 2.8vw, 1.5rem);font-weight:600;color:var(--amethyst);">Snehvastra</div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="faq.html" class="active">FAQ</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="faq.html" class="active">FAQ</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li id="authArea"></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+  <!-- ✅ MOBILE LOCK AUCTION BANNER -->
+  <div class="auction-banner" id="auctionBanner">
+    🔥 SNEHVASTRA ONE AUCTION<br>
+    <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
-  <section class="hero">
-    <h1 class="hero-title" data-aos="fade-down">Help Center</h1>
-    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Suratgarh artisan craftsmanship, NFC authentication, auction rules, 2-day delivery, collector verification—all answered instantly.</p>
+  <!-- 🆘 MOBILE LOCK HERO -->
+  <section class="hero" data-aos="fade-up">
+    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">Help Center</h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Kota artisan craftsmanship, NFC authentication, auction rules, 2-day delivery, collector verification—all answered instantly.</p>
     
-    <div class="ai-search" data-aos="zoom-in" data-aos-delay="400">
+    <div class="ai-search" data-aos="fade-up" data-aos-delay="300">
       <input class="search-input" id="faqSearch" type="search" placeholder="Ask anything... (shipping, NFC, auctions, sizing)"/>
       <span class="search-icon">🔍</span>
       <div class="search-results" id="searchResults">Ready to help</div>
     </div>
   </section>
 
+  <!-- ❓ MOBILE LOCK FAQ GRID -->
   <div class="faq-grid">
-    <!-- Elite FAQ Sections -->
-    <div data-aos="fade-right">
-      <div class="faq-section">
-        <h2 class="section-header">Suratgarh Delivery</h2>
+    <!-- FAQ SECTIONS -->
+    <div data-aos="fade-up">
+      <div class="faq-section" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="section-header">Kota Delivery</h2>
         <div class="faq-item">
-          <button class="question">
-            How fast is shipping from Suratgarh?
+          <button class="question" data-aos="fade-up">
+            How fast is shipping from Kota?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            🚚 <strong>India:</strong> 2 days standard, 24hr express from Suratgarh. Free shipping over ₹15,000. Live tracking via WhatsApp + email.
+            🚚 <strong>India:</strong> 2 days standard, 24hr express from Kota. Free shipping over ₹15,000. Live tracking via WhatsApp + email.
           </div>
         </div>
         <div class="faq-item">
-          <button class="question">
+          <button class="question" data-aos="fade-up" data-aos-delay="100">
             International shipping available?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            🌍 Yes! 5-10 days worldwide via DHL. Duties calculated at checkout. Suratgarh direct to your door.
+            🌍 Yes! 5-10 days worldwide via DHL. Duties calculated at checkout. Kota direct to your door.
           </div>
         </div>
         <div class="faq-item">
-          <button class="question">
+          <button class="question" data-aos="fade-up" data-aos-delay="200">
             Cash on Delivery (COD) supported?
             <span class="question-icon">+</span>
           </button>
@@ -155,10 +178,10 @@
         </div>
       </div>
 
-      <div class="faq-section">
+      <div class="faq-section" data-aos="fade-up" data-aos-delay="300">
         <h2 class="section-header">NFC Authentication</h2>
         <div class="faq-item">
-          <button class="question">
+          <button class="question" data-aos="fade-up">
             How does NFC verification work?
             <span class="question-icon">+</span>
           </button>
@@ -167,20 +190,20 @@
           </div>
         </div>
         <div class="faq-item">
-          <button class="question">
+          <button class="question" data-aos="fade-up" data-aos-delay="100">
             Is every piece NFC verified?
             <span class="question-icon">+</span>
           </button>
           <div class="answer">
-            ✅ Yes! Every Snehvastra garment has embedded NFC chip with blockchain authenticity proof from Suratgarh artisans.
+            ✅ Yes! Every Snehvastra garment has embedded NFC chip with blockchain authenticity proof from Kota artisans.
           </div>
         </div>
       </div>
 
-      <div class="faq-section">
+      <div class="faq-section" data-aos="fade-up" data-aos-delay="500">
         <h2 class="section-header">Auction Rules</h2>
         <div class="faq-item">
-          <button class="question">
+          <button class="question" data-aos="fade-up">
             How do live auctions work?
             <span class="question-icon">+</span>
           </button>
@@ -189,7 +212,7 @@
           </div>
         </div>
         <div class="faq-item">
-          <button class="question">
+          <button class="question" data-aos="fade-up" data-aos-delay="100">
             Are auction pieces final sale?
             <span class="question-icon">+</span>
           </button>
@@ -199,10 +222,10 @@
         </div>
       </div>
 
-      <div class="faq-section">
+      <div class="faq-section" data-aos="fade-up" data-aos-delay="600">
         <h2 class="section-header">Returns & Care</h2>
         <div class="faq-item">
-          <button class="question">
+          <button class="question" data-aos="fade-up">
             What is the return policy?
             <span class="question-icon">+</span>
           </button>
@@ -211,7 +234,7 @@
           </div>
         </div>
         <div class="faq-item">
-          <button class="question">
+          <button class="question" data-aos="fade-up" data-aos-delay="100">
             Sizing & fit guide?
             <span class="question-icon">+</span>
           </button>
@@ -222,8 +245,8 @@
       </div>
     </div>
 
-    <!-- Elite Support Panel -->
-    <aside class="support-panel" data-aos="fade-left">
+    <!-- 💬 MOBILE LOCK SUPPORT PANEL -->
+    <aside class="support-panel" data-aos="fade-up" data-aos-delay="700">
       <h3 class="support-title">Instant Help</h3>
       <div class="support-badge">🕒 Response: <strong>&lt; 30 min</strong></div>
       
@@ -235,114 +258,148 @@
         💬 WhatsApp Support
       </button>
       
-      <div style="margin-top:48px;text-align:center;font-size:1rem;opacity:0.9;">
-        <div>📍 Suratgarh, Rajasthan</div>
+      <div style="margin-top:clamp(24px, 6vw, 48px);text-align:center;font-size:clamp(0.85rem, 2.2vw, 1rem);opacity:0.9;line-height:1.6;color:var(--pearl);">
+        <div>📍 Kota, Rajasthan</div>
         <div>🛡️ 100% Authentic</div>
         <div>🔒 NFC Verified</div>
       </div>
     </aside>
   </div>
 
-  <footer>
-    © <span id="year"></span> Snehvastra. Suratgarh Crafted • Blockchain Verified.
+  <footer data-aos="fade-up">
+    © <span id="year"></span> Snehvastra. Kota Crafted • Blockchain Verified.
   </footer>
 
   <div id="toast"></div>
 
   <script>
-    // Perfect system sync
-    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-    const user = JSON.parse(localStorage.getItem(USER_KEY));
+    // 🔒 BULLETPROOF MOBILE LOCK FAQ SYSTEM (NO GSAP - PERFECT)
+    document.addEventListener('DOMContentLoaded', function() {
+      initFAQ();
+    });
 
-    function renderAuth(){
-      const authArea = document.getElementById("authArea");
-      if(user && user.loggedIn){
-        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
-      } else {
-        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
+    function initFAQ() {
+      // 🔒 CORE SYSTEM - FULL LOCALSTORAGE SYNC
+      const USER_KEY = "snehvastra_user"; 
+      const CART_KEY = "snehvastra_cart";
+      
+      let cart = {};
+      let user = null;
+      
+      try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+        user = JSON.parse(localStorage.getItem(USER_KEY) || 'null');
+      } catch(e) {
+        console.log('Storage reset - FAQ page');
+        cart = {};
       }
-    }
 
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-      document.getElementById("cartCount").textContent = total;
-    }
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        toast.textContent = msg;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3500);
+      }
 
-    function showToast(msg){
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.classList.add("show");
-      setTimeout(()=>toast.classList.remove("show"), 3200);
-    }
-
-    // Elite FAQ Interactions
-    document.addEventListener('click', (e) => {
-      if(e.target.closest('.question')){
-        const question = e.target.closest('.question');
-        const answer = question.nextElementSibling;
-        const isOpen = answer.classList.contains('show');
-        
-        // Close all
-        document.querySelectorAll('.answer').forEach(a => a.classList.remove('show'));
-        document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
-        
-        // Toggle current
-        if(!isOpen){
-          answer.classList.add('show');
-          question.classList.add('active');
-          gsap.fromTo(answer, {opacity:0, height:0}, {opacity:1, height:'auto', duration:0.6, ease:"power2.out"});
+      // 🔐 AUTH SYNC
+      function renderAuth() {
+        const authArea = document.getElementById("authArea");
+        if (user && user.loggedIn) {
+          authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">${user.name}</span>`;
+        } else {
+          authArea.innerHTML = `<a href="user-login.html" style="padding:clamp(8px, 2vw, 12px) clamp(16px, 4vw, 28px);border:1px solid var(--rose-gold);color:var(--rose-gold);border-radius:clamp(16px, 4vw, 24px);font-weight:500;text-decoration:none;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Login</a>`;
         }
       }
-    });
 
-    // AI Search
-    document.getElementById('faqSearch').addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase();
-      let visibleCount = 0;
-      
-      document.querySelectorAll('.faq-item').forEach(item => {
-        const text = item.textContent.toLowerCase();
-        const isVisible = !query || text.includes(query);
-        item.style.display = isVisible ? 'block' : 'none';
-        if(isVisible) visibleCount++;
-      });
-      
-      const resultsEl = document.getElementById('searchResults');
-      resultsEl.textContent = query ? `${visibleCount} results` : 'Ready to help';
-      gsap.fromTo(resultsEl, {opacity:0, scale:0.95}, {opacity:1, scale:1, duration:0.3});
-    });
-
-    function launchAI(){
-      showToast("🤖 Sneh AI launching...");
-      // Integrate your AI chat here
-    }
-
-    function launchWhatsApp(){
-      const message = encodeURIComponent("Hi Snehvastra! I need help with:\n• Order tracking\n• NFC verification\n• Auction bidding");
-      window.open(`https://wa.me/917597152209?text=${message}`);
-      showToast("💬 WhatsApp support opened");
-    }
-
-    // Auction timer
-    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
-    setInterval(()=>{
-      const diff = auctionDate - Date.now();
-      const timer = document.getElementById("auctionTimer");
-      if(diff > 0){
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        timer.textContent = `${days}d ${hours}h`;
-      } else {
-        timer.textContent = "LIVE NOW!";
+      // 🛒 CART SYNC
+      function updateCartCount() {
+        const total = Object.values(cart).reduce((sum, qty) => sum + (qty || 0), 0);
+        const cartCount = document.getElementById("cartCount");
+        if (cartCount) cartCount.textContent = total || 0;
       }
-    }, 60000);
 
-    // Init
-    AOS.init({duration: 1200, once: true});
-    renderAuth();
-    updateCartCount();
-    document.getElementById("year").textContent = new Date().getFullYear();
+      // ❓ FAQ TOGGLE (One open at a time - MOBILE PERF)
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.question')) {
+          const question = e.target.closest('.question');
+          const answer = question.nextElementSibling;
+          const isOpen = answer.classList.contains('show');
+          
+          // Close all others
+          document.querySelectorAll('.answer').forEach(a => {
+            a.classList.remove('show');
+            a.previousElementSibling.classList.remove('active');
+          });
+          
+          // Toggle current
+          if (!isOpen) {
+            answer.classList.add('show');
+            question.classList.add('active');
+            showToast("Answer loaded");
+          }
+        }
+      });
+
+      // 🔍 LIVE SEARCH (Mobile optimized)
+      document.getElementById('faqSearch').addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+        
+        document.querySelectorAll('.faq-item').forEach(item => {
+          const text = item.textContent.toLowerCase();
+          const isVisible = !query || text.includes(query);
+          item.style.display = isVisible ? 'block' : 'none';
+          if (isVisible) visibleCount++;
+        });
+        
+        const resultsEl = document.getElementById('searchResults');
+        resultsEl.textContent = query ? `${visibleCount} results` : 'Ready to help';
+      });
+
+      // 🤖 AI LAUNCH
+      window.launchAI = function() {
+        showToast("🤖 Sneh AI launching...");
+      };
+
+      // 💬 WHATSAPP FORWARD
+      window.launchWhatsApp = function() {
+        const message = encodeURIComponent(
+          "Hi Snehvastra! I need help with:\n" +
+          "• Order tracking\n• NFC verification\n• Auction bidding\n• [Add your question]"
+        );
+        window.open(`https://wa.me/917597152209?text=${message}`, '_blank');
+        showToast("💬 WhatsApp support opened");
+      };
+
+      // 🍔 HAMBURGER (900px breakpoint)
+      document.getElementById("hamburger").addEventListener("click", function() {
+        document.querySelector("header").classList.toggle("menu-open");
+      });
+
+      // ⏰ AUCTION TIMER
+      const auctionEnd = new Date("2025-12-24T18:00:00").getTime();
+      function updateAuctionTimer() {
+        const now = Date.now();
+        const diff = auctionEnd - now;
+        const timerEl = document.getElementById("auctionTimer");
+        if (diff > 0) {
+          const days = Math.floor(diff / (1000*60*60*24));
+          const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+          timerEl.innerHTML = `${days}d ${hours.toString().padStart(2,'0')}h`;
+        } else {
+          timerEl.innerHTML = "LIVE NOW!";
+          timerEl.parentElement.style.background = "linear-gradient(135deg, var(--amethyst), var(--amethyst-light))";
+        }
+      }
+
+      // 🔧 MOBILE LOCK INIT
+      AOS.init({duration:800, once:true, offset:100});
+      renderAuth();
+      updateCartCount();
+      updateAuctionTimer();
+      setInterval(updateAuctionTimer, 30000);
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
   </script>
 </body>
 </html>
