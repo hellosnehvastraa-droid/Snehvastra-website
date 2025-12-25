@@ -2,150 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
   <meta name="theme-color" content="#3A0F5A"/>
   <title>Collector Dashboard — Snehvastra</title>
-  <meta name="description" content="Live order tracking, auction wins, Suratgarh 2-day delivery, reorder instant, lifetime collector metrics."/>
+  <meta name="description" content="Live order tracking, auction wins, Kota 2-day delivery, reorder instant, lifetime collector metrics."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
       --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --warning:#F59E0B; --info:#06B6D4;
       --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
-      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-      --max-width:1400px;
+      --radius:clamp(20px, 6vw, 28px); --shadow-soft:0 clamp(25px, 8vw, 40px) clamp(80px, 20vw, 120px) rgba(58,15,90,0.15); --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+      --max-width:clamp(1200px, 95vw, 1400px);
     }
     *{box-sizing:border-box;}
     body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
 
-    /* Perfect System Header */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
-    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
-    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
-    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
+    /* 🔒 MOBILE LOCK HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:clamp(12px, 3vw, 16px) 0;height:clamp(56px, 15vw, 64px);}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:clamp(44px, 12vw, 64px);max-width:var(--max-width);margin:0 auto;padding:0 clamp(20px, 5vw, 5%);}
+    .brand{display:flex;gap:clamp(12px, 3vw, 14px);align-items:center;cursor:pointer;flex-shrink:0;}
+    .logo{height:clamp(40px, 11vw, 48px);border-radius:clamp(12px, 3vw, 16px);box-shadow:0 clamp(12px, 3vw, 16px) clamp(32px, 8vw, 48px) rgba(58,15,90,0.18);}
+    nav ul{display:flex;gap:clamp(8px, 2vw, 12px);list-style:none;margin:0;padding:0;align-items:center;flex-wrap:wrap;}
+    nav a{padding:clamp(10px, 2.5vw, 12px) clamp(16px, 4vw, 20px);border-radius:clamp(16px, 4vw, 20px);font-weight:600;color:var(--muted);text-decoration:none;transition:all 0.4s var(--ease);font-size:clamp(0.8rem, 2.2vw, 0.9rem);white-space:nowrap;min-height:clamp(40px, 10vw, 44px);display:flex;align-items:center;}
     nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
+    
+    .hamburger{display:none;background:none;border:none;font-size:clamp(1.6rem, 4.5vw, 1.8rem);color:var(--purple);cursor:pointer;padding:clamp(10px, 2.5vw, 8px);min-height:clamp(44px, 12vw, 44px);}
+    
+    @media(max-width:900px){
+      .hamburger{display:block;}
+      nav{display:none;}
+      header.menu-open nav{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-top:1px solid rgba(58,15,90,0.08);padding:clamp(20px, 5vw, 20px) clamp(20px, 5vw, 5%);overflow-y:auto;max-height:60vh;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:clamp(10px, 2.5vw, 12px);}
+      nav a{display:block;text-align:center;padding:clamp(16px, 4vw, 20px);width:100%;min-height:clamp(52px, 13vw, 56px);}
+    }
 
-    /* Enhanced Auction Banner */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
-    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
+    /* ✅ MOBILE LOCK AUCTION BANNER */
+    .auction-banner{position:fixed;top:clamp(68px, 18vw, 88px);right:clamp(12px, 3vw, 20px);z-index:130;max-width:clamp(200px, 30vw, 280px);background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:clamp(14px, 3.5vw, 20px);border-radius:clamp(16px, 4vw, 20px);text-align:center;font-weight:700;box-shadow:0 clamp(15px, 4vw, 20px) clamp(40px, 10vw, 60px) rgba(58,15,90,0.4);border:1px solid rgba(58,15,90,0.2);font-size:clamp(0.9rem, 2.5vw, 1rem);line-height:1.3;}
+    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 16px);border-radius:clamp(12px, 3vw, 16px);color:var(--slate);font-weight:700;font-size:clamp(0.85rem, 2.2vw, 1rem);display:inline-block;margin-left:clamp(6px, 1.5vw, 8px);animation:pulse 2s infinite;}
+    @media(max-width:480px){.auction-banner{top:clamp(68px, 18vw, 80px);}}
 
-    /* Dashboard Hero */
-    .dashboard-hero{max-width:var(--max-width);margin:160px auto 80px;padding:0 5%;display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:start;}
-    @media(max-width:1100px){.dashboard-hero{grid-template-columns:1fr;gap:48px;}}
+    /* ✅ MOBILE LOCK DASHBOARD HERO */
+    .dashboard-hero{max-width:var(--max-width);margin:clamp(68px, 18vw, 140px) auto clamp(40px, 10vw, 60px);padding:0 clamp(16px, 4vw, 5%);display:grid;grid-template-columns:1fr;gap:clamp(32px, 8vw, 60px);align-items:start;}
+    @media(min-width:1100px){.dashboard-hero{grid-template-columns:clamp(280px, 28vw, 320px) 1fr;gap:clamp(40px, 10vw, 60px);}}
+    @media(max-width:768px){.dashboard-hero{margin:clamp(68px, 18vw, 120px) auto clamp(32px, 8vw, 40px);gap:clamp(24px, 6vw, 32px);padding:0 clamp(16px, 4vw, 4%);}}
+    
+    .profile-card{background:#fff;border-radius:var(--radius);padding:clamp(32px, 8vw, 64px) clamp(24px, 6vw, 48px);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);}
+    @media(max-width:480px){.profile-card{padding:clamp(28px, 7vw, 32px) clamp(20px, 5vw, 24px);}}
+    .profile-avatar{width:clamp(100px, 25vw, 160px);height:clamp(100px, 25vw, 160px);border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));margin:0 auto clamp(16px, 4vw, 24px);display:flex;align-items:center;justify-content:center;font-size:clamp(2rem, 8vw, 4rem);color:#fff;box-shadow:0 clamp(15px, 4vw, 20px) clamp(40px, 10vw, 60px) rgba(58,15,90,0.3);}
+    .collector-title{font-family:'Clash Display',serif;font-size:clamp(1.5rem, 5vw, 2.4rem);color:var(--purple);margin:0 0 clamp(8px, 2vw, 12px);font-weight:900;}
+    .member-badge{display:inline-flex;align-items:center;gap:clamp(8px, 2vw, 12px);background:linear-gradient(135deg,var(--success),#059669);color:#fff;padding:clamp(10px, 2.5vw, 16px) clamp(16px, 4vw, 28px);border-radius:clamp(24px, 6vw, 32px);font-weight:700;font-size:clamp(0.85rem, 2.2vw, 1.1rem);justify-content:center;flex-wrap:wrap;}
+    .lifetime-value{font-family:'Clash Display',serif;font-size:clamp(1.6rem, 5vw, 2.8rem);font-weight:900;background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:clamp(16px, 4vw, 24px) 0 0;}
 
-    .profile-card{background:#fff;border-radius:var(--radius);padding:64px 48px;text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);}
-    .profile-avatar{width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));margin:0 auto 32px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#fff;box-shadow:0 20px 60px rgba(58,15,90,0.3);}
-    .collector-title{font-family:'Clash Display',serif;font-size:2.4rem;color:var(--purple);margin:0 0 12px;font-weight:900;}
-    .member-badge{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--success),#059669);color:#fff;padding:16px 28px;border-radius:32px;font-weight:700;font-size:1.1rem;}
-    .lifetime-value{font-family:'Clash Display',serif;font-size:2.8rem;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:32px 0 0;}
-
-    .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:48px;}
-    .metric-card{background:#fff;border-radius:var(--radius);padding:48px 32px;text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);transition:all var(--ease);}
+    .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(200px, 48vw, 220px),1fr));gap:clamp(20px, 5vw, 24px);margin-top:clamp(24px, 6vw, 48px);}
+    @media(max-width:480px){.metrics-grid{grid-template-columns:1fr;gap:clamp(16px, 4vw, 20px);}}
+    .metric-card{background:#fff;border-radius:var(--radius);padding:clamp(24px, 6vw, 48px) clamp(20px, 5vw, 32px);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);transition:all 0.4s var(--ease);}
+    .metric-card:active{transform:scale(0.98);}
     .metric-card:hover{transform:translateY(-8px);}
-    .metric-value{font-family:'Clash Display',serif;font-size:3.2rem;font-weight:900;color:var(--purple);margin:0 0 12px;}
-    .metric-label{font-size:1.1rem;color:var(--slate-mid);font-weight:700;}
+    .metric-value{font-family:'Clash Display',serif;font-size:clamp(1.6rem, 6vw, 3.2rem);font-weight:900;color:var(--purple);margin:0 0 clamp(8px, 2vw, 12px);}
+    .metric-label{font-size:clamp(0.85rem, 2.2vw, 1.1rem);color:var(--slate-mid);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
 
-    /* Controls */
-    .controls{display:flex;gap:24px;margin:80px 0 40px;flex-wrap:wrap;align-items:center;}
-    .control-input,.control-select{padding:20px 28px;border:3px solid rgba(58,15,90,0.15);border-radius:24px;font-size:1.1rem;background:#fff;min-width:280px;font-weight:600;}
-    .control-input:focus,.control-select:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 4px rgba(58,15,90,0.1);}
+    .dash-title{font-family:'Clash Display',serif;font-size:clamp(2rem, 7vw, 3.8rem);color:var(--purple);margin:0 0 clamp(24px, 6vw, 48px);font-weight:900;text-align:center;letter-spacing:clamp(-1px, -0.3vw, -1.5px);}
+    @media(max-width:768px){.dash-title{letter-spacing:clamp(-0.8px, -0.2vw, -1px);}}
 
-    /* Orders Table */
-    .orders-section{max-width:var(--max-width);margin:0 auto 100px;padding:0 5%;}
-    .orders-card{background:#fff;border-radius:var(--radius);padding:80px 64px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);overflow:hidden;}
+    /* ✅ MOBILE PERFECT CONTROLS */
+    .controls{display:flex;flex-direction:column;gap:clamp(16px, 4vw, 20px);margin:clamp(40px, 10vw, 60px) clamp(20px, 5vw, 5%) clamp(32px, 8vw, 40px);padding:0 clamp(20px, 5vw, 5%);max-width:var(--max-width);margin-left:auto;margin-right:auto;}
+    @media(min-width:769px){.controls{flex-direction:row;flex-wrap:wrap;gap:clamp(20px, 5vw, 24px);align-items:center;}}
+    .control-input,.control-select{padding:clamp(14px, 3.5vw, 20px) clamp(20px, 5vw, 28px);border:clamp(2px, 0.5vw, 3px) solid rgba(58,15,90,0.15);border-radius:clamp(20px, 5vw, 24px);font-size:clamp(0.95rem, 2.5vw, 1.1rem);background:#fff;width:100%;font-weight:600;box-sizing:border-box;min-height:clamp(48px, 12vw, 52px);}
+    .control-input:focus,.control-select:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 clamp(3px, 0.8vw, 4px) rgba(58,15,90,0.1);}
+
+    /* ✅ MOBILE PERFECT ORDERS */
+    .orders-section{max-width:var(--max-width);margin:0 auto clamp(40px, 10vw, 80px);padding:0 clamp(16px, 4vw, 5%);}
+    .orders-card{background:#fff;border-radius:var(--radius);padding:clamp(32px, 8vw, 80px) clamp(24px, 6vw, 64px);box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);overflow:hidden;margin-bottom:clamp(32px, 8vw, 40px);}
+
     .orders-table{width:100%;border-collapse:collapse;}
-    .orders-table th{font-family:'Clash Display',serif;font-size:1rem;color:var(--slate-mid);padding:32px 24px 20px;text-transform:uppercase;letter-spacing:1px;font-weight:700;}
-    .orders-table td{padding:32px 24px;border-top:1px solid rgba(58,15,90,0.08);vertical-align:middle;}
-    .orders-table tr:hover{background:rgba(58,15,90,0.02);}
+    .orders-table th{font-family:'Clash Display',serif;font-size:clamp(0.75rem, 2vw, 0.85rem);color:var(--slate-mid);padding:clamp(12px, 3vw, 20px) clamp(12px, 3vw, 16px) clamp(12px, 3vw, 16px);text-transform:uppercase;letter-spacing:1px;font-weight:700;text-align:left;}
+    .orders-table td{padding:clamp(16px, 4vw, 24px) clamp(12px, 3vw, 16px);vertical-align:middle;border-top:1px solid rgba(58,15,90,0.08);}
+    @media(max-width:768px){
+      .orders-table thead{display:none;}
+      .orders-table tr{display:block;margin-bottom:clamp(20px, 5vw, 24px);border:clamp(1px, 0.3vw, 2px) solid rgba(58,15,90,0.08);border-radius:clamp(16px, 4vw, 20px);padding:clamp(20px, 5vw, 24px);background:#fff;box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(20px, 5vw, 32px) rgba(58,15,90,0.08);}
+      .orders-table td{display:block;text-align:center;padding:clamp(14px, 3.5vw, 16px) clamp(12px, 3vw, 12px);border-top:none;border-bottom:1px solid rgba(58,15,90,0.05);position:relative;min-height:clamp(44px, 11vw, 48px);}
+      .orders-table td:last-child{border-bottom:none;}
+      .orders-table td::before{content:attr(data-label);position:absolute;left:clamp(12px, 3vw, 12px);top:clamp(14px, 3.5vw, 16px);font-weight:700;color:var(--slate-mid);font-size:clamp(0.75rem, 2vw, 0.8rem);}
+      .orders-table td span{display:block;margin-top:clamp(4px, 1vw, 4px);}
+    }
 
-    .status-badge{padding:16px 28px;border-radius:32px;font-family:'Clash Display',serif;font-weight:900;font-size:1rem;display:inline-flex;align-items:center;gap:8px;}
+    .status-badge{padding:clamp(10px, 2.5vw, 12px) clamp(20px, 5vw, 24px);border-radius:clamp(24px, 6vw, 32px);font-family:'Clash Display',serif;font-weight:900;font-size:clamp(0.85rem, 2.2vw, 0.95rem);display:inline-flex;align-items:center;gap:clamp(6px, 1.5vw, 8px);white-space:nowrap;}
     .status-completed{background:linear-gradient(135deg,var(--success),#059669);color:#fff;}
     .status-shipped{background:linear-gradient(135deg,var(--info),#0891B2);color:#fff;}
     .status-processing{background:linear-gradient(135deg,var(--warning),#D97706);color:#fff;}
     .status-auction{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;}
 
-    .order-id{font-family:'Clash Display',serif;font-size:1.3rem;font-weight:900;color:var(--purple);}
-    .order-total{font-family:'Clash Display',serif;font-size:1.6rem;font-weight:900;color:var(--purple);}
-    .action-buttons{display:flex;gap:16px;}
-    .action-btn{padding:16px 32px;border-radius:24px;font-family:'Clash Display',serif;font-weight:900;font-size:1.1rem;cursor:pointer;transition:all var(--ease);border:none;display:flex;align-items:center;gap:12px;}
-    .btn-details{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;box-shadow:0 12px 40px rgba(58,15,90,0.3);}
-    .btn-reorder{background:#fff;color:var(--purple);border:3px solid rgba(58,15,90,0.2);box-shadow:0 12px 40px rgba(58,15,90,0.15);}
-    .action-btn:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(58,15,90,0.4);}
+    .order-id{font-family:'Clash Display',serif;font-size:clamp(1rem, 2.8vw, 1.3rem);font-weight:900;color:var(--purple);}
+    .order-total{font-family:'Clash Display',serif;font-size:clamp(1.1rem, 3.2vw, 1.6rem);font-weight:900;color:var(--purple);}
+    .action-buttons{display:flex;flex-direction:column;gap:clamp(10px, 2.5vw, 12px);width:100%;}
+    @media(min-width:769px){.action-buttons{flex-direction:row;gap:clamp(12px, 3vw, 16px);width:auto;}}
+    .action-btn{padding:clamp(14px, 3.5vw, 16px) clamp(24px, 6vw, 28px);border-radius:clamp(20px, 5vw, 24px);font-family:'Clash Display',serif;font-weight:900;font-size:clamp(0.9rem, 2.4vw, 1rem);cursor:pointer;transition:all 0.4s var(--ease);border:none;display:flex;align-items:center;justify-content:center;gap:clamp(8px, 2vw, 12px);width:100%;min-height:clamp(48px, 12vw, 52px);touch-action:manipulation;}
+    @media(min-width:769px){.action-btn{width:auto;}}
+    .btn-details{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;box-shadow:0 clamp(10px, 2.5vw, 12px) clamp(30px, 7.5vw, 40px) rgba(58,15,90,0.3);}
+    .btn-reorder{background:#fff;color:var(--purple);border:clamp(2px, 0.5vw, 3px) solid rgba(58,15,90,0.2);box-shadow:0 clamp(10px, 2.5vw, 12px) clamp(30px, 7.5vw, 40px) rgba(58,15,90,0.15);}
+    .action-btn:active{transform:scale(0.98);}
 
-    .empty-state{text-align:center;padding:120px 80px;color:var(--slate-mid);}
-    .empty-state h3{font-family:'Clash Display',serif;font-size:3rem;color:var(--slate);margin:0 0 24px;}
-    .empty-state .btn-primary{padding:24px 56px;border-radius:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;cursor:pointer;border:none;box-shadow:0 24px 80px rgba(58,15,90,0.4);transition:all var(--ease);}
+    .empty-state{text-align:center;padding:clamp(40px, 12vw, 120px) clamp(32px, 8vw, 80px);color:var(--slate-mid);}
+    .empty-state h3{font-family:'Clash Display',serif;font-size:clamp(1.6rem, 6vw, 3rem);color:var(--slate);margin:0 0 clamp(16px, 4vw, 20px);}
+    .empty-state .btn-primary{padding:clamp(16px, 4vw, 20px) clamp(40px, 10vw, 48px);border-radius:clamp(24px, 6vw, 32px);background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:clamp(1rem, 2.6vw, 1.2rem);cursor:pointer;border:none;box-shadow:0 clamp(18px, 4.5vw, 24px) clamp(60px, 15vw, 80px) rgba(58,15,90,0.4);transition:all 0.4s var(--ease);width:100%;max-width:clamp(260px, 70vw, 300px);}
+    @media(min-width:769px){.empty-state .btn-primary{width:auto;}}
 
-    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
-    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
+    footer{padding:clamp(60px, 15vw, 80px) clamp(20px, 5vw, 5%) clamp(40px, 10vw, 40px);text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:clamp(0.9rem, 2.3vw, 0.95rem);}
+    
+    #toast{position:fixed;top:clamp(20px, 5vw, 32px);right:clamp(16px, 4vw, 32px);background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:clamp(16px, 4vw, 24px) clamp(28px, 7vw, 36px);border-radius:clamp(20px, 5vw, 24px);box-shadow:0 clamp(20px, 5vw, 28px) clamp(60px, 15vw, 90px) rgba(58,15,90,0.45);transform:translateX(500px);transition:all 0.4s var(--ease);font-weight:700;z-index:500;max-width:clamp(90vw, 92vw, 420px);font-size:clamp(0.9rem, 2.4vw, 1rem);text-align:center;}
     #toast.show{transform:translateX(0);}
+    @media(max-width:480px){#toast{top:clamp(16px, 4vw, 20px);right:clamp(12px, 3vw, 20px);left:clamp(12px, 3vw, 20px);max-width:none;}}
 
     @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
   </style>
 </head>
 <body>
-  <!-- Perfect System Header -->
+  <!-- 🔒 MOBILE LOCK HEADER -->
   <header>
-    <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.85rem;color:var(--muted);">Collector Dashboard</div>
+    <div class="header-inner">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div>
+          <div style="font-family:'Clash Display',serif;font-size:clamp(1rem, 2.8vw, 1.15rem);color:var(--purple);">Snehvastra</div>
+          <div style="font-size:clamp(0.75rem, 2vw, 0.8rem);color:var(--muted);">Collector Dashboard</div>
+        </div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="order-history.html" class="active">Orders</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburgerBtn">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="order-history.html" class="active">Orders</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li id="authArea"></li>
-      </ul>
-    </nav>
   </header>
 
+  <!-- ✅ MOBILE LOCK AUCTION BANNER -->
   <div class="auction-banner">
     🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
   <main class="dashboard-hero">
     <!-- Profile Card -->
-    <div class="profile-card" data-aos="fade-right">
+    <div class="profile-card" data-aos="fade-up">
       <div class="profile-avatar">👑</div>
       <h2 class="collector-title" id="collectorName">Premium Collector</h2>
       <div class="member-badge">
-        Member since 2025 • Suratgarh Elite
+        Member since 2025 • Kota Elite
       </div>
       <div class="lifetime-value" id="lifetimeValue">₹1,45,000</div>
     </div>
 
     <!-- Metrics Grid -->
-    <div data-aos="fade-left">
-      <h1 style="font-family:'Clash Display',serif;font-size:3.8rem;color:var(--purple);margin:0 0 48px;font-weight:900;">Order Dashboard</h1>
+    <div data-aos="fade-up" data-aos-delay="200">
+      <h1 class="dash-title">Order Dashboard</h1>
       <div class="metrics-grid">
-        <div class="metric-card">
+        <div class="metric-card" data-aos="zoom-in">
           <div class="metric-value" id="totalOrders">12</div>
           <div class="metric-label">Total Orders</div>
         </div>
-        <div class="metric-card">
+        <div class="metric-card" data-aos="zoom-in" data-aos-delay="100">
           <div class="metric-value" id="totalPieces">28</div>
           <div class="metric-label">Pieces Owned</div>
         </div>
-        <div class="metric-card">
+        <div class="metric-card" data-aos="zoom-in" data-aos-delay="200">
           <div class="metric-value" id="auctionWins">3</div>
           <div class="metric-label">Auction Wins</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-value" id="suratgarhDelvs">100%</div>
-          <div class="metric-label">Suratgarh ETA</div>
+        <div class="metric-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="metric-value" id="kotaDelvs">100%</div>
+          <div class="metric-label">Kota ETA</div>
         </div>
       </div>
     </div>
@@ -168,154 +204,192 @@
     </div>
   </section>
 
-  <footer>
+  <footer data-aos="fade-up">
     © <span id="year"></span> Snehvastra. Collector dashboard v2.5 • Updated Dec 23, 2025.
   </footer>
 
   <div id="toast"></div>
 
   <script>
-    // Perfect system sync
-    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart"; const ORDERS_KEY = "snehvastra_orders";
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-    let user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
-
-    const SAMPLE_ORDERS = [
-      {id:"SNV-1001", date:"2025-12-15", items:[{name:"Signature Tee Matte Black", qty:2, price:4999}], total:9998, status:"completed", tracking:"DTDC-ET123456789", type:"standard"},
-      {id:"SNV-1002", date:"2025-12-18", items:[{name:"Cloud Hoodie Indigo", qty:1, price:19999}], total:19999, status:"shipped", tracking:"SNV-TRK-789", type:"standard"},
-      {id:"SNV-AUC-001", date:"2025-12-20", items:[{name:"Snehvastra ONE 1/1 Auction", qty:1, price:125000}], total:125000, status:"auction", tracking:null, type:"auction"}
-    ];
-
-    function money(n){return "₹" + Math.round(Number(n)).toLocaleString("en-IN");}
-
-    function renderAuth(){
-      const authArea = document.getElementById("authArea");
-      if(user && user.loggedIn){
-        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
-        document.getElementById("collectorName").textContent = user.name || "Elite Collector";
-      } else {
-        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
-      }
-    }
-
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-      document.getElementById("cartCount").textContent = total;
-    }
-
-    function showToast(msg){
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.classList.add("show");
-      setTimeout(()=>toast.classList.remove("show"), 3200);
-    }
-
-    function renderOrders(){
-      const search = document.getElementById("searchInput").value.toLowerCase();
-      const filter = document.getElementById("filterSelect").value;
+    // 🔒 BULLETPROOF MOBILE LOCK ORDER HISTORY (NO GSAP)
+    (function(){
+      const USER_KEY = "snehvastra_user"; 
+      const CART_KEY = "snehvastra_cart"; 
+      const ORDERS_KEY = "snehvastra_orders";
       
-      const filtered = SAMPLE_ORDERS.filter(order => {
-        if(filter !== "all" && order.status !== filter) return false;
-        return order.id.toLowerCase().includes(search) || 
-               order.items.some(i => i.name.toLowerCase().includes(search));
-      });
-
-      if(filtered.length === 0){
-        document.getElementById("ordersContainer").innerHTML = `
-          <div class="empty-state">
-            <h3>No Orders Found</h3>
-            <p>Try different search terms or filters. Start with our exclusive collection.</p>
-            <button class="btn-primary" onclick="location.href='collection.html'">Explore Collection</button>
-          </div>
-        `;
-        return;
+      let cart = {}, user = {};
+      
+      // SAFE STORAGE
+      try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+        user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+      } catch(e) {
+        cart = {}; user = {};
       }
 
-      let html = `
-        <table class="orders-table">
-          <thead>
+      const SAMPLE_ORDERS = [
+        {id:"SNV-1001", date:"2025-12-15", items:[{name:"Signature Tee Matte Black", qty:2, price:4999}], total:9998, status:"completed", tracking:"DTDC-ET123456789", type:"standard"},
+        {id:"SNV-1002", date:"2025-12-18", items:[{name:"Cloud Hoodie Indigo", qty:1, price:19999}], total:19999, status:"shipped", tracking:"SNV-TRK-789", type:"standard"},
+        {id:"SNV-AUC-001", date:"2025-12-20", items:[{name:"Snehvastra ONE 1/1 Auction", qty:1, price:125000}], total:125000, status:"auction", tracking:null, type:"auction"}
+      ];
+
+      function money(n){return "₹" + Math.round(Number(n)).toLocaleString("en-IN");}
+
+      window.renderAuth = function(){
+        const authArea = document.getElementById("authArea");
+        if(user && user.loggedIn){
+          authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;font-family:'Clash Display',serif;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Hi, ${user.name}</span>`;
+          document.getElementById("collectorName").textContent = user.name || "Elite Collector";
+        } else {
+          authArea.innerHTML = `<a href="user-login.html" style="padding:clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px);border:2px solid var(--purple);color:var(--purple);border-radius:clamp(16px, 4vw, 24px);font-weight:600;text-decoration:none;font-size:clamp(0.75rem, 2vw, 0.9rem);">Login</a>`;
+        }
+      };
+
+      function updateCartCount(){
+        const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+        const cartEl = document.getElementById("cartCount");
+        if(cartEl) cartEl.textContent = total || 0;
+      }
+
+      function showToast(msg){
+        const toast = document.getElementById("toast");
+        if(toast){
+          toast.textContent = msg;
+          toast.classList.add("show");
+          setTimeout(()=>toast.classList.remove("show"), 3200);
+        }
+      }
+
+      window.renderOrders = function(){
+        const search = (document.getElementById("searchInput")?.value || "").toLowerCase();
+        const filter = document.getElementById("filterSelect")?.value || "all";
+        const container = document.getElementById("ordersContainer");
+        
+        if(!container) return;
+        
+        const filtered = SAMPLE_ORDERS.filter(order => {
+          if(filter !== "all" && order.status !== filter) return false;
+          return order.id.toLowerCase().includes(search) || 
+                 order.items.some(i => i.name.toLowerCase().includes(search));
+        });
+
+        if(filtered.length === 0){
+          container.innerHTML = `
+            <div class="empty-state">
+              <h3>No Orders Found</h3>
+              <p style="font-size:clamp(1rem, 2.6vw, 1.1rem);margin-bottom:clamp(24px, 6vw, 32px);">Try different search terms or filters. Start with our exclusive collection.</p>
+              <button class="btn-primary" onclick="location.href='collection.html'">Explore Collection</button>
+            </div>
+          `;
+          return;
+        }
+
+        let html = `
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th data-label="Order ID">Order ID</th>
+                <th data-label="Date">Date</th>
+                <th data-label="Items">Items</th>
+                <th data-label="Total">Total</th>
+                <th data-label="Status">Status</th>
+                <th data-label="ETA">Kota ETA</th>
+                <th data-label="Actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        filtered.forEach(order => {
+          const itemCount = order.items.reduce((sum,i)=>sum+i.qty,0);
+          const eta = order.status === "completed" ? "Delivered" : 
+                     order.status === "shipped" ? "2 days" : "Processing";
+          html += `
             <tr>
-              <th>Order ID</th>
-              <th>Date</th>
-              <th>Items</th>
-              <th>Total</th>
-              <th>Status</th>
-              <th>Suratgarh ETA</th>
-              <th>Actions</th>
+              <td data-label="Order ID"><span class="order-id">${order.id}</span></td>
+              <td data-label="Date">${new Date(order.date).toLocaleDateString("en-IN")}</td>
+              <td data-label="Items">${itemCount} pcs</td>
+              <td data-label="Total"><span class="order-total">${money(order.total)}</span></td>
+              <td data-label="Status"><span class="status-badge status-${order.status}">
+                ${order.status === "auction" ? "🏆 WIN" : order.status.toUpperCase()}
+              </span></td>
+              <td data-label="ETA">${eta}</td>
+              <td data-label="Actions">
+                <div class="action-buttons">
+                  <button class="action-btn btn-details" onclick="viewOrder('${order.id}')">Details</button>
+                  <button class="action-btn btn-reorder" onclick="reorder('${order.id}')">Reorder</button>
+                </div>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-      `;
+          `;
+        });
 
-      filtered.forEach(order => {
-        const itemCount = order.items.reduce((sum,i)=>sum+i.qty,0);
-        const eta = order.status === "completed" ? "Delivered" : 
-                   order.status === "shipped" ? "2 days" : "Processing";
-        html += `
-          <tr>
-            <td><span class="order-id">${order.id}</span></td>
-            <td>${new Date(order.date).toLocaleDateString("en-IN")}</td>
-            <td>${itemCount} pcs</td>
-            <td><span class="order-total">${money(order.total)}</span></td>
-            <td><span class="status-badge status-${order.status}">
-              ${order.status === "auction" ? "🏆 WIN" : order.status.toUpperCase()}
-            </span></td>
-            <td>${eta}</td>
-            <td>
-              <div class="action-buttons">
-                <button class="action-btn btn-details" onclick="viewOrder('${order.id}')">Details</button>
-                <button class="action-btn btn-reorder" onclick="reorder('${order.id}')">Reorder</button>
-              </div>
-            </td>
-          </tr>
-        `;
-      });
+        html += `</tbody></table>`;
+        container.innerHTML = html;
+      };
 
-      html += `</tbody></table>`;
-      document.getElementById("ordersContainer").innerHTML = html;
-    }
+      window.viewOrder = function(id){
+        const order = SAMPLE_ORDERS.find(o => o.id === id);
+        showToast(`📋 Viewing ${order.id} details - Kota tracking active`);
+      };
 
-    function viewOrder(id){
-      const order = SAMPLE_ORDERS.find(o => o.id === id);
-      showToast(`📋 Viewing ${order.id} details - Suratgarh tracking active`);
-    }
+      window.reorder = function(id){
+        const order = SAMPLE_ORDERS.find(o => o.id === id);
+        order.items.forEach(item => {
+          const key = item.name.toLowerCase().replace(/[^a-z0-9]/g,'-');
+          cart[key] = (cart[key] || 0) + item.qty;
+        });
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        updateCartCount();
+        showToast(`✅ ${order.items.length} items reordered to cart!`);
+        setTimeout(()=>location.href='cart.html', 1200);
+      };
 
-    function reorder(id){
-      const order = SAMPLE_ORDERS.find(o => o.id === id);
-      order.items.forEach(item => {
-        const key = item.name.toLowerCase().replace(/[^a-z0-9]/g,'-');
-        cart[key] = (cart[key] || 0) + item.qty;
-      });
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
-      updateCartCount();
-      showToast(`✅ ${order.items.length} items reordered to cart!`);
-      setTimeout(()=>location.href='cart.html', 1200);
-    }
-
-    // Event listeners
-    document.getElementById("searchInput").addEventListener("input", renderOrders);
-    document.getElementById("filterSelect").addEventListener("change", renderOrders);
-
-    // Auction timer
-    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
-    setInterval(()=>{
-      const diff = auctionDate - Date.now();
-      const timer = document.getElementById("auctionTimer");
-      if(diff > 0){
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        timer.textContent = `${days}d ${hours}h`;
-      } else {
-        timer.textContent = "LIVE NOW!";
+      // 🔒 MOBILE LOCK HAMBURGER (900px)
+      const hamburger = document.getElementById("hamburgerBtn");
+      if(hamburger){
+        hamburger.addEventListener("click", function(){
+          document.querySelector("header").classList.toggle("menu-open");
+        });
       }
-    }, 60000);
 
-    // Init
-    AOS.init({duration: 1200, once: true});
-    renderAuth();
-    updateCartCount();
-    renderOrders();
-    document.getElementById("year").textContent = new Date().getFullYear();
+      // EVENT LISTENERS
+      const searchInput = document.getElementById("searchInput");
+      const filterSelect = document.getElementById("filterSelect");
+      if(searchInput) searchInput.addEventListener("input", renderOrders);
+      if(filterSelect) filterSelect.addEventListener("change", renderOrders);
+
+      // FIXED AUCTION TIMER
+      const auctionDate = new Date("2025-12-24T18:00:00").getTime();
+      function updateAuctionTimer(){
+        const diff = auctionDate - Date.now();
+        const timer = document.getElementById("auctionTimer");
+        if(timer && diff > 0){
+          const days = Math.floor(diff / (1000*60*60*24));
+          const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+          timer.textContent = `${days}d ${hours.toString().padStart(2,'0')}h`;
+        } else if(timer) {
+          timer.textContent = "LIVE NOW!";
+        }
+      }
+
+      // 🔒 MOBILE LOCK INIT
+      function init(){
+        AOS.init({duration: 1000, once: true, offset: 100});
+        renderAuth();
+        updateCartCount();
+        renderOrders();
+        document.getElementById("year").textContent = new Date().getFullYear();
+        updateAuctionTimer();
+        setInterval(updateAuctionTimer, 30000);
+      }
+
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
   </script>
 </body>
 </html>
