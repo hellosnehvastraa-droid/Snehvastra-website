@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="theme-color" content="#3A0F5A"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="theme-color" content="#2C1B4A"/>
   <title>Collector Reviews — Snehvastra</title>
-  <meta name="description" content="4.9⭐ from 2,847+ verified Surat collectors. Video testimonials, auction stories, 99% repeat rate."/>
+  <meta name="description" content="4.9⭐ from 2,847+ verified Kota collectors. Video testimonials, auction stories, 99% repeat rate."/>
 
   <!-- Enhanced Review Schema -->
   <script type="application/ld+json">
@@ -27,124 +27,154 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --gold:#F59E0B;
-      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
-      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-      --max-width:1400px;
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (LOCKED) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --gold:#F59E0B; --success:#10B981; --shadow-soft:0 clamp(25px, 8vw, 35px) clamp(80px, 20vw, 140px) rgba(44,27,74,0.15); --shadow-glow:0 0 clamp(20px, 5vw, 35px) rgba(107,90,207,0.2);
+      --radius:clamp(20px, 5vw, 32px); --max-width:clamp(1200px, 95vw, 1600px); --ease:cubic-bezier(0.32,0.72,0,1);
     }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.8;position:relative;min-height:100vh;}
 
-    /* Perfect System Header */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
-    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
-    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
-    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
-    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
+    /* 🔒 MOBILE LOCK HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;height:clamp(56px, 15vw, 60px);background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:clamp(8px, 2vw, 12px) 0;}
+    .header-container{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px, 5vw, 24px);height:100%;}
+    .brand{display:flex;gap:clamp(12px, 3vw, 20px);align-items:center;cursor:pointer;transition:all 0.4s var(--ease);}
+    .brand:hover{transform:translateY(-2px);}
+    .logo{height:clamp(40px, 11vw, 52px);border-radius:clamp(12px, 3vw, 20px);box-shadow:0 clamp(12px, 3vw, 20px) clamp(32px, 8vw, 60px) rgba(44,27,74,0.12);}
+    nav ul{display:flex;gap:clamp(8px, 2vw, 12px);list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);border-radius:clamp(16px, 4vw, 24px);font-weight:500;color:var(--amethyst);text-decoration:none;font-size:clamp(0.875rem, 2.2vw, 0.95rem);backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;min-height:clamp(44px, 11vw, 64px);display:flex;align-items:center;}
+    nav a::after{content:'';position:absolute;bottom:clamp(2px, 0.8vw, 4px);left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a:hover::after{width:80%;}
+    nav a.active{color:var(--amethyst);font-weight:600;background:rgba(232,180,184,0.15);box-shadow:0 clamp(6px, 1.5vw, 8px) clamp(20px, 5vw, 32px) rgba(232,180,184,0.15);}
 
-    /* Enhanced Auction Banner */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
-    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
+    .hamburger{display:none;background:none;border:none;font-size:clamp(1.75rem, 4.5vw, 2rem);color:var(--amethyst);cursor:pointer;padding:clamp(12px, 3vw, 16px);min-height:clamp(44px, 11vw, 64px);}
+    
+    @media(max-width:900px){
+      .hamburger{display:block!important;}
+      nav{display:none;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:clamp(16px, 4vw, 20px) 0;overflow-y:auto;max-height:60vh;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:clamp(6px, 1.5vw, 8px);}
+      nav a{display:block;text-align:center;width:100%;padding:clamp(20px, 5vw, 24px);border-radius:clamp(12px, 3vw, 16px);min-height:clamp(60px, 15vw, 72px);}
+    }
 
-    /* Hero Section */
-    .reviews-hero{max-width:var(--max-width);margin:200px auto 100px;padding:0 5%;text-align:center;}
-    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4rem,10vw,6.5rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 40px;}
-    .rating-display{display:flex;align-items:center;justify-content:center;gap:24px;margin:48px 0;}
-    .stars-container{display:flex;gap:4px;}
-    .star{fill:#D4D4D4;width:48px;height:48px;transition:all var(--ease);}
-    .star.filled{fill:var(--gold);animation:star-glow 1s ease-out;}
-    .score-badge{background:linear-gradient(135deg,var(--gold),#F59E0B);color:#fff;padding:32px 56px;border-radius:40px;font-family:'Clash Display',serif;font-size:4rem;font-weight:900;box-shadow:0 32px 100px rgba(245,158,11,0.4);}
-    .review-count{font-size:1.4rem;color:var(--slate-mid);font-weight:700;margin-top:16px;}
-    .hero-subtitle{font-size:1.3rem;color:var(--slate-mid);max-width:900px;margin:0 auto 80px;line-height:1.9;}
+    /* ✅ MOBILE LOCK AUCTION BANNER (top:68px) */
+    .auction-banner{position:fixed;top:clamp(68px, 18vw, 80px);right:clamp(16px, 4vw, 30px);z-index:900;max-width:clamp(220px, 28vw, 280px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(20px, 5vw, 32px);border-radius:clamp(20px, 5vw, 28px);font-family:'Clash Display',serif;font-weight:700;font-size:clamp(0.95rem, 2.5vw, 1.2rem);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);line-height:1.3;}
+    .auction-timer{display:block;margin-top:clamp(6px, 1.5vw, 8px);background:rgba(255,255,255,0.9);border-radius:clamp(12px, 3vw, 16px);padding:clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px);font-weight:600;}
+    @media(max-width:480px){.auction-banner{right:clamp(12px, 3vw, 16px);}}
 
-    /* Live Stats */
-    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;max-width:var(--max-width);margin:0 auto 120px;padding:0 5%;}
-    .stat-card{background:#fff;border-radius:var(--radius);padding:64px 48px;text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:relative;overflow:hidden;}
-    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--purple),var(--gold));}
-    .stat-number{font-family:'Clash Display',serif;font-size:4rem;font-weight:900;color:var(--purple);margin-bottom:16px;}
-    .stat-label{font-size:1.2rem;color:var(--slate-mid);font-weight:600;}
+    /* ⭐ MOBILE LOCK REVIEWS HERO */
+    .reviews-hero{max-width:var(--max-width);margin:clamp(68px, 18vw, 120px) auto clamp(40px, 10vw, 80px);padding:0 clamp(24px, 6vw, 5%);text-align:center;}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(2.2rem, 7vw, 6rem);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 clamp(20px, 5vw, 32px);font-weight:900;line-height:1.1;letter-spacing:clamp(-1px, -0.3vw, -1.5px);}
+    .rating-display{display:flex;flex-direction:column;align-items:center;gap:clamp(16px, 4vw, 20px);margin:clamp(24px, 6vw, 40px) 0;}
+    @media(min-width:769px){.rating-display{flex-direction:row;justify-content:center;gap:clamp(20px, 5vw, 24px);}}
+    .stars-container{display:flex;gap:clamp(4px, 1vw, 4px);flex-wrap:wrap;justify-content:center;}
+    .star{fill:#E5E5E5;width:clamp(28px, 8vw, 48px);height:clamp(28px, 8vw, 48px);transition:all 0.4s var(--ease);}
+    .star.filled{fill:var(--gold);animation:star-glow 0.8s ease-out;}
+    .score-badge{background:linear-gradient(135deg,var(--gold),#F59E0B);color:var(--pearl);padding:clamp(20px, 5vw, 32px) clamp(32px, 8vw, 56px);border-radius:clamp(24px, 6vw, 40px);font-family:'Clash Display',serif;font-size:clamp(2.2rem, 7vw, 4rem);font-weight:900;box-shadow:0 clamp(20px, 5vw, 32px) clamp(60px, 15vw, 100px) rgba(245,158,11,0.4);}
+    .review-count{font-size:clamp(1rem, 2.8vw, 1.4rem);color:var(--amethyst);opacity:0.8;font-weight:700;margin-top:clamp(8px, 2vw, 12px);}
+    .hero-subtitle{font-size:clamp(0.95rem, 2.5vw, 1.3rem);color:var(--amethyst);opacity:0.8;max-width:clamp(500px, 85vw, 900px);margin:0 auto clamp(40px, 10vw, 64px);line-height:1.8;}
 
-    /* Video Reviews */
-    .video-reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:48px;max-width:var(--max-width);margin:120px auto;padding:0 5%;}
-    .video-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);transition:all var(--ease);}
-    .video-card:hover{transform:translateY(-12px);box-shadow:0 60px 160px rgba(58,15,90,0.25);}
-    .video-thumbnail{position:relative;width:100%;height:240px;background:linear-gradient(135deg,#1F2024,#2D2D3A);cursor:pointer;}
-    .video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;}
-    .video-info{padding:40px;}
-    .reviewer-name{font-family:'Clash Display',serif;font-size:1.8rem;color:var(--purple);font-weight:700;margin-bottom:8px;}
-    .reviewer-title{font-size:1rem;color:var(--gold);font-weight:600;margin-bottom:20px;}
-    .verified-badge{background:linear-gradient(135deg,var(--success),#059669);color:#fff;padding:8px 20px;border-radius:20px;font-size:0.9rem;font-weight:700;display:inline-block;}
+    /* 📊 MOBILE LOCK STATS GRID */
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(220px, 45vw, 240px),1fr));gap:clamp(20px, 5vw, 24px);max-width:var(--max-width);margin:0 auto clamp(60px, 15vw, 80px);padding:0 clamp(16px, 4vw, 5%);}
+    .stat-card{background:var(--pearl);border-radius:var(--radius);padding:clamp(32px, 8vw, 64px) clamp(24px, 6vw, 48px);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);position:relative;overflow:hidden;transition:all 0.4s var(--ease);}
+    @media(max-width:480px){.stat-card{padding:clamp(24px, 6vw, 32px) clamp(20px, 5vw, 24px);}}
+    .stat-card:hover{transform:translateY(-4px);}
+    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(4px, 1vw, 6px);background:linear-gradient(90deg,var(--amethyst),var(--gold));}
+    .stat-number{font-family:'Clash Display',serif;font-size:clamp(2.2rem, 7vw, 4rem);font-weight:900;color:var(--amethyst);margin-bottom:clamp(8px, 2vw, 12px);}
+    .stat-label{font-size:clamp(0.875rem, 2.2vw, 1.2rem);color:var(--amethyst);opacity:0.7;font-weight:600;line-height:1.4;}
 
-    /* Collector Grid */
-    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:40px;max-width:var(--max-width);margin:120px auto;padding:0 5%;}
-    .review-card{background:#fff;border-radius:var(--radius);padding:56px 48px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);position:relative;transition:all var(--ease);}
-    .review-card.featured{border-top:6px solid var(--gold);transform:scale(1.03);}
-    .review-card:hover{transform:translateY(-8px);}
-    .review-header{display:flex;gap:20px;align-items:center;margin-bottom:28px;}
-    .avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;}
-    .reviewer-info h4{font-family:'Clash Display',serif;font-size:1.6rem;color:var(--purple);margin:0 0 4px;font-weight:700;}
-    .stars-row{display:flex;gap:4px;margin:12px 0;}
-    .star-small{width:20px;height:20px;fill:#D4D4D4;transition:all var(--ease);}
+    /* 🎥 MOBILE LOCK VIDEO REVIEWS */
+    .video-reviews{display:grid;grid-template-columns:1fr;gap:clamp(28px, 7vw, 32px);max-width:var(--max-width);margin:clamp(60px, 15vw, 80px) auto;padding:0 clamp(16px, 4vw, 5%);}
+    @media(min-width:1100px){.video-reviews{grid-template-columns:repeat(auto-fit,minmax(clamp(380px, 45vw, 420px),1fr));gap:clamp(40px, 10vw, 48px);}}
+    .video-card{background:var(--pearl);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);transition:all 0.4s var(--ease);}
+    .video-card:hover{transform:translateY(-8px);box-shadow:0 clamp(40px, 10vw, 60px) clamp(100px, 25vw, 160px) rgba(44,27,74,0.25);}
+    .video-thumbnail{position:relative;width:100%;height:clamp(180px, 45vw, 240px);background:linear-gradient(135deg,#2D2D3A,#1F2024);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+    .video-play{width:clamp(52px, 14vw, 80px);height:clamp(52px, 14vw, 80px);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--pearl);font-size:clamp(1.2rem, 3.5vw, 2rem);font-weight:900;box-shadow:0 clamp(8px, 2vw, 12px) clamp(24px, 6vw, 32px) rgba(44,27,74,0.3);}
+    .video-info{padding:clamp(24px, 6vw, 40px);}
+    .reviewer-name{font-family:'Clash Display',serif;font-size:clamp(1.2rem, 4vw, 1.8rem);color:var(--amethyst);font-weight:700;margin-bottom:clamp(6px, 1.5vw, 8px);}
+    .reviewer-title{font-size:clamp(0.8rem, 2.2vw, 1rem);color:var(--gold);font-weight:600;margin-bottom:clamp(12px, 3vw, 16px);}
+    .verified-badge{background:linear-gradient(135deg,var(--success),#059669);color:var(--pearl);padding:clamp(6px, 1.5vw, 8px) clamp(14px, 3.5vw, 20px);border-radius:clamp(16px, 4vw, 20px);font-size:clamp(0.75rem, 2vw, 0.9rem);font-weight:700;display:inline-block;}
+
+    /* ⭐ MOBILE LOCK REVIEWS GRID */
+    .reviews-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px, 6vw, 28px);max-width:var(--max-width);margin:clamp(60px, 15vw, 80px) auto;padding:0 clamp(16px, 4vw, 5%);}
+    @media(min-width:1100px){.reviews-grid{grid-template-columns:repeat(auto-fit,minmax(clamp(360px, 45vw, 380px),1fr));gap:clamp(32px, 8vw, 40px);}}
+    .review-card{background:var(--pearl);border-radius:var(--radius);padding:clamp(32px, 8vw, 56px) clamp(24px, 6vw, 48px);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.08);position:relative;transition:all 0.4s var(--ease);}
+    @media(max-width:480px){.review-card{padding:clamp(24px, 6vw, 32px) clamp(20px, 5vw, 24px);}}
+    .review-card.featured{border-top:clamp(4px, 1vw, 6px) solid var(--gold);transform:scale(1.02);}
+    .review-card:hover{transform:translateY(-6px);}
+    .review-header{display:flex;gap:clamp(12px, 3vw, 16px);align-items:center;margin-bottom:clamp(20px, 5vw, 24px);flex-wrap:wrap;}
+    @media(max-width:480px){.review-header{flex-direction:column;text-align:center;}}
+    .avatar{width:clamp(44px, 12vw, 64px);height:clamp(44px, 12vw, 64px);border-radius:50%;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:clamp(0.9rem, 2.5vw, 1.3rem);flex-shrink:0;}
+    .reviewer-info h4{font-family:'Clash Display',serif;font-size:clamp(1.1rem, 3.5vw, 1.6rem);color:var(--amethyst);margin:0 0 clamp(4px, 1vw, 4px);font-weight:700;}
+    .stars-row{display:flex;gap:clamp(3px, 0.8vw, 4px);margin:clamp(8px, 2vw, 12px) 0;justify-content:center;flex-wrap:wrap;}
+    .star-small{width:clamp(14px, 4.5vw, 20px);height:clamp(14px, 4.5vw, 20px);fill:#E5E5E5;transition:all 0.4s var(--ease);}
     .star-small.filled{fill:var(--gold);}
-    .review-text{font-size:1.15rem;color:var(--slate);line-height:1.8;margin-bottom:28px;}
-    .review-meta{font-size:1rem;color:var(--slate-mid);padding:20px;background:rgba(58,15,90,0.03);border-radius:20px;border-left:4px solid var(--purple);}
+    .review-text{font-size:clamp(0.95rem, 2.5vw, 1.15rem);color:var(--amethyst);line-height:1.8;margin-bottom:clamp(20px, 5vw, 24px);opacity:0.9;}
+    .review-meta{font-size:clamp(0.8rem, 2.2vw, 1rem);color:var(--amethyst);opacity:0.7;padding:clamp(12px, 3vw, 20px);background:rgba(44,27,74,0.03);border-radius:clamp(16px, 4vw, 20px);border-left:clamp(3px, 0.8vw, 4px) solid var(--amethyst);}
 
-    /* CTA Section */
-    .cta-section{max-width:1000px;margin:140px auto 100px;padding:0 5%;text-align:center;}
-    .cta-card{background:linear-gradient(135deg,var(--purple),var(--purple-dark));padding:96px 64px;border-radius:var(--radius);box-shadow:0 40px 120px rgba(58,15,90,0.4);color:#fff;position:relative;overflow:hidden;}
-    .cta-card::before{content:'';position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,var(--gold),var(--success));}
-    .cta-title{font-family:'Clash Display',serif;font-size:3.5rem;font-weight:900;margin:0 0 32px;}
-    .cta-subtitle{font-size:1.4rem;margin:0 0 60px;line-height:1.7;max-width:700px;margin-left:auto;margin-right:auto;}
-    .cta-buttons{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
-    .btn-primary,.btn-secondary{padding:24px 56px;border-radius:32px;font-family:'Clash Display',serif;font-weight:900;font-size:1.2rem;text-decoration:none;transition:all var(--ease);border:none;cursor:pointer;}
-    .btn-primary{background:#fff;color:var(--purple);box-shadow:0 24px 80px rgba(255,255,255,0.3);}
-    .btn-primary:hover{transform:translateY(-6px);box-shadow:0 32px 100px rgba(255,255,255,0.4);}
-    .btn-secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.3);}
+    /* 🚀 MOBILE LOCK CTA */
+    .cta-section{max-width:clamp(900px, 95vw, 1000px);margin:clamp(60px, 15vw, 80px) auto clamp(40px, 10vw, 60px);padding:0 clamp(16px, 4vw, 5%);text-align:center;}
+    .cta-card{background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));padding:clamp(48px, 12vw, 96px) clamp(32px, 8vw, 64px);border-radius:var(--radius);box-shadow:var(--shadow-soft);color:var(--pearl);position:relative;overflow:hidden;}
+    @media(max-width:480px){.cta-card{padding:clamp(36px, 9vw, 40px) clamp(24px, 6vw, 24px);}}
+    .cta-card::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(6px, 1.5vw, 8px);background:linear-gradient(90deg,var(--gold),var(--success));}
+    .cta-title{font-family:'Clash Display',serif;font-size:clamp(1.8rem, 6vw, 3.5rem);font-weight:900;margin:0 0 clamp(16px, 4vw, 24px);line-height:1.1;letter-spacing:clamp(-0.3px, -0.1vw, -0.5px);}
+    .cta-subtitle{font-size:clamp(0.95rem, 2.5vw, 1.4rem);margin:0 0 clamp(32px, 8vw, 48px);line-height:1.7;max-width:clamp(500px, 85vw, 700px);margin-left:auto;margin-right:auto;opacity:0.95;}
+    .cta-buttons{display:flex;gap:clamp(12px, 3vw, 16px);justify-content:center;flex-wrap:wrap;}
+    @media(max-width:480px){.cta-buttons{flex-direction:column;align-items:center;}}
+    .btn-primary,.btn-secondary{padding:clamp(16px, 4vw, 24px) clamp(32px, 8vw, 56px);border-radius:clamp(20px, 5vw, 32px);font-family:'Clash Display',serif;font-weight:900;font-size:clamp(0.95rem, 2.8vw, 1.2rem);text-decoration:none;transition:all 0.4s var(--ease);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:clamp(8px, 2vw, 12px);flex:1;max-width:clamp(280px, 90vw, 300px);min-height:clamp(56px, 14vw, 64px);touch-action:manipulation;}
+    .btn-primary{background:var(--pearl);color:var(--amethyst);box-shadow:0 clamp(16px, 4vw, 24px) clamp(40px, 10vw, 80px) rgba(248,246,249,0.3);}
+    .btn-primary:hover{transform:translateY(-4px);box-shadow:0 clamp(24px, 6vw, 32px) clamp(60px, 15vw, 100px) rgba(248,246,249,0.4);}
+    .btn-secondary{background:transparent;color:var(--pearl);border:clamp(1px, 0.3vw, 2px) solid rgba(255,255,255,0.3);}
 
-    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
-    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
+    footer{padding:clamp(60px, 15vw, 100px) clamp(20px, 5vw, 5%) clamp(40px, 10vw, 40px);text-align:center;color:var(--sage);border-top:1px solid rgba(44,27,74,0.06);font-size:clamp(0.875rem, 2.2vw, 0.95rem);font-weight:300;line-height:1.6;}
+
+    #toast{position:fixed;top:clamp(20px, 5vw, 32px);right:clamp(20px, 5vw, 32px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(16px, 4vw, 24px) clamp(24px, 6vw, 36px);border-radius:clamp(16px, 4vw, 24px);box-shadow:var(--shadow-soft);transform:translateX(500px);transition:all 0.4s var(--ease);font-family:'Clash Display',serif;font-weight:700;z-index:10000;font-size:clamp(0.875rem, 2.2vw, 1rem);max-width:clamp(90vw, 92vw, 420px);}
     #toast.show{transform:translateX(0);}
+    @media(max-width:480px){#toast{top:clamp(16px, 4vw, 20px);right:clamp(16px, 4vw, 20px);left:clamp(16px, 4vw, 20px);max-width:none;}}
 
-    @keyframes star-glow{0%{transform:scale(1);filter:drop-shadow(0 0 0 #F59E0B);}50%{transform:scale(1.2);filter:drop-shadow(0 0 12px #F59E0B);}100%{transform:scale(1);filter:drop-shadow(0 0 0 #F59E0B);}}
-    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
+    @keyframes star-glow{0%{transform:scale(1);filter:drop-shadow(0 0 0 var(--gold));}50%{transform:scale(1.15);filter:drop-shadow(0 0 8px var(--gold));}100%{transform:scale(1);filter:drop-shadow(0 0 0 var(--gold));}}
   </style>
 </head>
 <body>
-  <!-- Perfect System Header -->
+  <!-- 🔒 MOBILE LOCK HEADER -->
   <header>
-    <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.85rem;color:var(--muted);">Collector Reviews</div>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:clamp(1.1rem, 2.8vw, 1.5rem);font-weight:600;color:var(--amethyst);">Snehvastra</div>
+        <div style="font-size:clamp(0.7rem, 1.8vw, 0.8rem);color:var(--amethyst);opacity:0.7;font-weight:400;">Collector Reviews</div>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="reviews.html" class="active">Reviews</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="mini-cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="reviews.html" class="active">Reviews</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-        <li id="authArea"></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+  <!-- ✅ MOBILE LOCK AUCTION BANNER -->
+  <div class="auction-banner" id="auctionBanner">
+    🔥 SNEHVASTRA ONE AUCTION<br>
+    <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
-  <section class="reviews-hero">
-    <h1 class="hero-title" data-aos="fade-down">What Collectors Say</h1>
+  <!-- ⭐ MOBILE LOCK REVIEWS HERO -->
+  <section class="reviews-hero" data-aos="fade-up">
+    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">What Collectors Say</h1>
     <div class="rating-display">
       <div class="stars-container" id="heroStars">
         <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -153,13 +183,13 @@
         <svg class="star filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg class="star filled" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
-      <div class="score-badge" data-aos="zoom-in">4.9</div>
+      <div class="score-badge" data-aos="zoom-in" data-aos-delay="200">4.9</div>
     </div>
-    <div class="review-count" data-aos="fade-up">2,847 Verified Collectors • 99% Recommend</div>
-    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Real stories from Suratgarh to global collectors. Every piece verified, every review authentic.</p>
+    <div class="review-count" data-aos="fade-up" data-aos-delay="300">2,847 Verified Collectors • 99% Recommend</div>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">Real stories from Kota to global collectors. Every piece verified, every review authentic.</p>
   </section>
 
-  <!-- Live Trust Metrics -->
+  <!-- 📊 MOBILE LOCK Live Trust Metrics -->
   <section class="stats-grid">
     <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
       <div class="stat-number" data-count="99">0</div>
@@ -179,19 +209,19 @@
     </div>
   </section>
 
-  <!-- Video Testimonials -->
+  <!-- 🎥 MOBILE LOCK Video Testimonials -->
   <section class="video-reviews">
-    <div class="video-card" data-aos="fade-right">
+    <div class="video-card" data-aos="fade-up">
       <div class="video-thumbnail" onclick="playVideo(this)">
         <div class="video-play">▶</div>
       </div>
       <div class="video-info">
         <h3 class="reviewer-name">Rajiv Rao</h3>
         <div class="reviewer-title">Auction Winner #847</div>
-        <span class="verified-badge">Suratgarh Collector</span>
+        <span class="verified-badge">Kota Collector</span>
       </div>
     </div>
-    <div class="video-card" data-aos="fade-left">
+    <div class="video-card" data-aos="fade-up" data-aos-delay="200">
       <div class="video-thumbnail" onclick="playVideo(this)">
         <div class="video-play">▶</div>
       </div>
@@ -203,7 +233,7 @@
     </div>
   </section>
 
-  <!-- Featured Collector Reviews -->
+  <!-- ⭐ MOBILE LOCK Featured Collector Reviews -->
   <section class="reviews-grid">
     <div class="review-card featured" data-aos="fade-up">
       <div class="review-header">
@@ -220,10 +250,10 @@
         </div>
       </div>
       <p class="review-text">"The Bomber is museum quality. Wore it to Dubai Fashion Week—people thought international brand. 100% recommending."</p>
-      <div class="review-meta">Auction Bomber • Suratgarh • Dec 20, 2025 <span style="color:var(--success);">✅ Verified</span></div>
+      <div class="review-meta">Auction Bomber • Kota • Dec 20, 2025 <span style="color:var(--success);">✅ Verified</span></div>
     </div>
 
-    <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+    <div class="review-card" data-aos="fade-up" data-aos-delay="200">
       <div class="review-header">
         <div class="avatar">AS</div>
         <div class="reviewer-info">
@@ -242,6 +272,7 @@
     </div>
   </section>
 
+  <!-- 🚀 MOBILE LOCK CTA -->
   <section class="cta-section">
     <div class="cta-card" data-aos="zoom-in">
       <h2 class="cta-title">Join 2,847+ Elite Collectors</h2>
@@ -253,94 +284,128 @@
     </div>
   </section>
 
-  <footer>
-    © <span id="year"></span> Snehvastra. 2,847 verified collector reviews. <strong>4.9⭐ average.</strong>
+  <footer data-aos="fade-up">
+    © <span id="year"></span> Snehvastra. Kota crafted, collector approved.
   </footer>
 
   <div id="toast"></div>
 
   <script>
-    // Perfect system sync
-    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-    const user = JSON.parse(localStorage.getItem(USER_KEY));
-
-    function renderAuth(){
-      const authArea = document.getElementById("authArea");
-      if(user && user.loggedIn){
-        authArea.innerHTML = `<span style="color:var(--purple);font-weight:700;">Hi, ${user.name}</span>`;
-      } else {
-        authArea.innerHTML = `<a href="user-login.html" style="padding:12px 24px;">Login</a>`;
-      }
-    }
-
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-      document.getElementById("cartCount").textContent = total;
-    }
-
-    function showToast(msg){
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.classList.add("show");
-      setTimeout(()=>toast.classList.remove("show"), 3200);
-    }
-
-    // Animate stars on load
-    window.addEventListener('load', () => {
-      document.querySelectorAll('.star.filled, .star-small.filled').forEach((star, i) => {
-        setTimeout(() => {
-          star.style.animation = 'star-glow 0.8s ease-out';
-        }, i * 100);
-      });
+    // 🔒 BULLETPROOF MOBILE LOCK REVIEWS SYSTEM (NO GSAP)
+    document.addEventListener('DOMContentLoaded', function() {
+      initReviews();
     });
 
-    // Counter animations
-    function animateCounters(){
-      const counters = document.querySelectorAll('[data-count]');
-      counters.forEach(counter => {
-        const target = parseInt(counter.dataset.count);
-        const increment = target / 100;
-        let current = 0;
-        const timer = setInterval(() => {
-          current += increment;
-          if(current >= target) {
-            counter.textContent = target;
-            clearInterval(timer);
-          } else {
-            counter.textContent = Math.floor(current);
-          }
-        }, 20);
-      });
-    }
-
-    // Video play simulation
-    function playVideo(thumbnail){
-      showToast('🎥 Playing Rajiv Rao testimonial (2:47)');
-      gsap.to(thumbnail, {scale: 0.95, duration: 0.2, yoyo: true, repeat: 1});
-    }
-
-    // Auction timer
-    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
-    setInterval(()=>{
-      const diff = auctionDate - Date.now();
-      const timer = document.getElementById("auctionTimer");
-      if(diff > 0){
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        timer.textContent = `${days}d ${hours}h`;
-      } else {
-        timer.textContent = "LIVE NOW!";
-        timer.style.background = "linear-gradient(135deg,#10B981,#059669)";
+    function initReviews() {
+      // 🔒 CORE SYSTEM - FULL LOCALSTORAGE SYNC
+      const USER_KEY = "snehvastra_user"; 
+      const CART_KEY = "snehvastra_cart";
+      
+      let cart = {};
+      let user = {};
+      
+      try {
+        cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+        user = JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+      } catch(e) {
+        console.log('Storage reset - reviews page');
+        cart = {};
       }
-    }, 60000);
 
-    // Init
-    AOS.init({duration: 1200, once: true});
-    renderAuth();
-    updateCartCount();
-    animateCounters();
-    document.getElementById("year").textContent = new Date().getFullYear();
+      function showToast(msg){
+        const toast = document.getElementById("toast");
+        if(toast){
+          toast.textContent = msg;
+          toast.classList.add("show");
+          setTimeout(()=>toast.classList.remove("show"), 4000);
+        }
+      }
+
+      // 🔐 AUTH SYNC
+      function renderAuth() {
+        const authArea = document.getElementById("authArea");
+        if (user && user.loggedIn) {
+          authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Hi, ${user.name}</span>`;
+        } else {
+          authArea.innerHTML = `<a href="user-login.html" style="padding:clamp(8px, 2vw, 12px) clamp(16px, 4vw, 28px);border:1px solid var(--rose-gold);color:var(--rose-gold);border-radius:clamp(16px, 4vw, 24px);font-weight:500;text-decoration:none;font-size:clamp(0.8rem, 2.2vw, 0.95rem);">Login</a>`;
+        }
+      }
+
+      // 🛒 CART COUNT SYNC
+      function updateCartCount(){
+        const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
+        const cartEl = document.getElementById("cartCount");
+        if(cartEl) cartEl.textContent = total || 0;
+      }
+
+      // ⭐ STAR ANIMATIONS (CSS ONLY)
+      function animateStars(){
+        document.querySelectorAll('.star.filled, .star-small.filled').forEach((star, i) => {
+          setTimeout(() => {
+            star.style.animation = 'star-glow 0.8s ease-out';
+          }, i * 120);
+        });
+      }
+
+      // 📊 COUNTER ANIMATIONS
+      function animateCounters(){
+        const counters = document.querySelectorAll('[data-count]');
+        counters.forEach(counter => {
+          const target = parseInt(counter.dataset.count);
+          const increment = target / 80;
+          let current = 0;
+          const timer = setInterval(() => {
+            current += increment;
+            if(current >= target) {
+              counter.textContent = target.toLocaleString();
+              clearInterval(timer);
+            } else {
+              counter.textContent = Math.floor(current).toLocaleString();
+            }
+          }, 25);
+        });
+      }
+
+      // 🎥 VIDEO PLAY SIMULATION
+      window.playVideo = function(thumbnail){
+        showToast('🎥 Playing Rajiv Rao testimonial (2:47)');
+        thumbnail.style.transform = 'scale(0.95)';
+        setTimeout(() => thumbnail.style.transform = 'scale(1)', 200);
+      }
+
+      // 🍔 HAMBURGER (900px breakpoint)
+      document.getElementById("hamburger").addEventListener("click", function() {
+        document.querySelector("header").classList.toggle("menu-open");
+      });
+
+      // ⏰ AUCTION TIMER
+      const auctionEnd = new Date("2025-12-24T18:00:00").getTime();
+      function updateAuctionTimer(){
+        const now = Date.now();
+        const diff = auctionEnd - now;
+        const timerEl = document.getElementById("auctionTimer");
+        if (diff > 0) {
+          const days = Math.floor(diff / (1000*60*60*24));
+          const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+          timerEl.innerHTML = `${days}d ${hours.toString().padStart(2,'0')}h`;
+        } else {
+          timerEl.innerHTML = "LIVE NOW!";
+          timerEl.parentElement.style.background = "linear-gradient(135deg, var(--success), #059669)";
+        }
+      }
+
+      // 🔧 MOBILE LOCK INIT
+      AOS.init({duration:800, once:true, offset:100});
+      renderAuth();
+      updateCartCount();
+      setTimeout(() => {
+        animateStars();
+        animateCounters();
+      }, 500);
+      updateAuctionTimer();
+      setInterval(updateAuctionTimer, 30000);
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
   </script>
 </body>
 </html>
