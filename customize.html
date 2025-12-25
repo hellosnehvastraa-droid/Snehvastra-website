@@ -2,161 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="theme-color" content="#3A0F5A"/>
-  <title>Customize • Snehvastra</title>
-  <meta name="description" content="Suratgarh artisan customization with AI analysis, NFC tracking, doorstep pickup, live pricing from ₹3,499."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="theme-color" content="#2C1B4A"/>
+  <title>Customize — Snehvastra</title>
+  <meta name="description" content="Kota artisan customization. AI analysis + NFC tracking."/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root{
-      --purple:#3A0F5A; --purple-dark:#2e0b4a; --success:#10B981; --gold:#F59E0B;
-      --slate:#1F2024; --slate-mid:#3B3D45; --muted:#8E8F92; --glass:rgba(255,255,255,0.95);
-      --radius:28px; --shadow-soft:0 40px 120px rgba(58,15,90,0.15); --ease:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-      --max-width:1400px;
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF;
+      --pearl:#F8F6F9; --sage:#A8B5A2; --success:#10B981; --shadow-soft:0 20px 60px rgba(44,27,74,0.15);
+      --radius:24px; --max-width:1200px; --ease:cubic-bezier(0.32,0.72,0,1);
     }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#f8f7fc 0%,#f4f2f9 100%);color:var(--slate);overflow-x:hidden;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.6;position:relative;min-height:100vh;-webkit-text-size-adjust:100%;}
 
-    /* Perfect System Header */
-    header{position:sticky;top:0;z-index:140;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(58,15,90,0.08);padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
-    .brand{display:flex;gap:14px;align-items:center;cursor:pointer;}
-    .logo{height:52px;border-radius:16px;box-shadow:0 16px 48px rgba(58,15,90,0.18);}
-    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;}
-    nav a{padding:14px 24px;border-radius:20px;font-weight:600;color:var(--muted);text-decoration:none;transition:all var(--ease);}
-    nav a.active{background:rgba(58,15,90,0.08);color:var(--purple);}
-
-    /* Enhanced Auction Banner */
-    .auction-banner{position:fixed;top:88px;left:50%;transform:translateX(-50%);width:92%;max-width:520px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:20px;border-radius:20px;text-align:center;font-weight:700;box-shadow:0 20px 60px rgba(58,15,90,0.4);z-index:100;}
-    .auction-timer{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:8px 16px;border-radius:16px;color:var(--slate);font-weight:700;font-size:1.1rem;margin-left:12px;animation:pulse 2s infinite;}
-
-    /* Hero */
-    .hero{max-width:var(--max-width);margin:160px auto 100px;padding:0 5%;text-align:center;}
-    .hero-title{font-family:'Clash Display',serif;font-size:clamp(4.5rem,12vw,7rem);background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 32px;}
-    .hero-subtitle{font-size:1.4rem;color:var(--slate-mid);max-width:800px;margin:0 auto 64px;line-height:1.8;}
-
-    /* AI Analyzer */
-    .ai-analyzer{background:#fff;border-radius:var(--radius);padding:64px;max-width:720px;margin:0 auto 80px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);}
-    .ai-title{font-family:'Clash Display',serif;font-size:2.8rem;color:var(--purple);margin:0 0 24px;text-align:center;font-weight:900;}
-    .ai-input-group{position:relative;display:flex;gap:20px;align-items:end;max-width:640px;margin:0 auto;}
-    .ai-input{width:100%;padding:28px 32px 28px 80px;border:3px solid rgba(58,15,90,0.15);border-radius:32px;font-size:1.3rem;font-weight:600;background:var(--glass);backdrop-filter:blur(20px);transition:all var(--ease);}
-    .ai-input:focus{outline:none;border-color:var(--purple);box-shadow:0 20px 60px rgba(58,15,90,0.2);}
-    .ai-icon{position:absolute;left:32px;top:50%;transform:translateY(-50%);font-size:2.4rem;color:var(--purple);}
-    .ai-btn{padding:24px 48px;border:none;border-radius:28px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-weight:900;font-size:1.3rem;cursor:pointer;box-shadow:0 20px 60px rgba(58,15,90,0.4);transition:all var(--ease);}
-    .ai-btn:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(58,15,90,0.5);}
-    .ai-response{background:rgba(58,15,90,0.02);border-radius:24px;padding:32px;margin-top:32px;border:2px solid rgba(58,15,90,0.1);display:none;}
-    .ai-response.show{display:block;animation:fadeInUp 0.6s ease-out;}
-
-    /* Customization Form */
-    .customize-container{max-width:800px;margin:0 auto 120px;padding:0 5%;}
-    .form-section{background:#fff;border-radius:var(--radius);padding:80px;box-shadow:var(--shadow-soft);border:1px solid rgba(58,15,90,0.08);margin-bottom:48px;}
-    .section-title{font-family:'Clash Display',serif;font-size:2.8rem;color:var(--purple);margin:0 0 48px;text-align:center;font-weight:900;}
+    /* ✅ TRUE MOBILE HEADER - 60px FIXED */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,246,249,0.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(44,27,74,0.1);padding:12px 16px;}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:60px;max-width:1200px;margin:0 auto;}
+    .brand{display:flex;gap:12px;align-items:center;cursor:pointer;flex-shrink:0;}
+    .logo{height:44px;border-radius:12px;box-shadow:0 8px 24px rgba(44,27,74,0.15);}
+    nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:wrap;}
+    nav a{padding:8px 16px;border-radius:16px;font-weight:500;color:var(--amethyst);text-decoration:none;font-size:0.85rem;transition:all 0.3s ease;white-space:nowrap;display:flex;align-items:center;}
+    nav a.active,nav a:hover{background:rgba(232,180,184,0.2);color:var(--amethyst);}
     
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;}
+    .mobile-nav{display:flex;align-items:center;gap:8px;}
+    .hamburger{background:none;border:none;font-size:1.4rem;color:var(--amethyst);cursor:pointer;padding:8px;border-radius:16px;transition:all 0.3s ease;display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;}
+    .hamburger:hover{background:rgba(44,27,74,0.1);}
+
+    /* ✅ MOBILE ONLY - HIDE DESKTOP NAV */
+    @media(max-width:900px){
+      nav{display:none;}
+      header.menu-open nav{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(248,246,249,0.98);backdrop-filter:blur(20px);border-top:1px solid rgba(44,27,74,0.1);padding:20px 16px;border-radius:0 0 20px 20px;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:12px;}
+      nav a{display:block;text-align:center;padding:16px;width:100%;border-radius:16px;font-size:0.95rem;}
+      .logo{height:40px;}
+    }
+
+    /* ✅ FIXED AUCTION BANNER */
+    .auction-banner{position:fixed;top:76px;right:20px;z-index:900;max-width:220px;background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:16px 24px;border-radius:20px;font-family:'Clash Display',serif;font-weight:700;font-size:clamp(0.95rem,2.8vw,1.1rem);text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.1);}
+    @media(max-width:768px){.auction-banner{top:72px;right:16px;max-width:200px;}}
+    @media(max-width:480px){.auction-banner{top:68px;right:12px;max-width:170px;}}
+    .auction-timer{font-size:clamp(1.2rem,4vw,1.5rem);font-weight:900;color:var(--amethyst);display:block;margin-top:4px;}
+
+    /* ✅ MOBILE HERO */
+    .hero{position:relative;margin:76px auto 60px;padding:clamp(60px,15vw,120px) clamp(16px,5vw,5%);text-align:center;background:var(--pearl);backdrop-filter:blur(30px);border-radius:var(--radius);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.1);}
+    .hero-title{font-family:'Clash Display',serif;font-size:clamp(2.2rem,8vw,4.5rem);background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 20px;font-weight:900;letter-spacing:-0.8px;}
+    .hero-subtitle{font-size:clamp(1rem,3vw,1.2rem);color:var(--amethyst);opacity:0.8;line-height:1.7;max-width:100%;margin:0 auto;}
+
+    /* ✅ MOBILE AI ANALYZER */
+    .ai-analyzer{background:var(--pearl);backdrop-filter:blur(30px);border-radius:var(--radius);padding:clamp(40px,12vw,80px);max-width:900px;margin:0 auto clamp(40px,10vh,100px);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.1);}
+    .ai-title{font-family:'Clash Display',serif;font-size:clamp(1.8rem,6vw,3.5rem);color:var(--amethyst);margin:0 0 clamp(24px,8vw,32px);text-align:center;font-weight:900;}
+    .ai-input-group{position:relative;display:flex;flex-direction:column;gap:clamp(16px,6vw,24px);align-items:center;max-width:720px;margin:0 auto;}
+    @media(min-width:768px){.ai-input-group{flex-direction:row;align-items:end;}}
+    .ai-input-group > div{position:relative;flex:1;width:100%;max-width:500px;}
+    .ai-input{width:100%;padding:clamp(16px,5vw,28px) clamp(24px,6vw,80px) clamp(16px,5vw,28px) clamp(20px,5vw,32px);border:2px solid rgba(44,27,74,0.15);border-radius:28px;font-size:clamp(1rem,3vw,1.2rem);font-weight:500;background:var(--pearl);backdrop-filter:blur(20px);transition:all 0.3s var(--ease);color:var(--amethyst);}
+    .ai-input:focus{outline:none;border-color:var(--amethyst);box-shadow:0 12px 40px rgba(44,27,74,0.15);}
+    .ai-input::placeholder{color:var(--amethyst);opacity:0.5;}
+    .ai-icon{position:absolute;left:clamp(20px,5vw,32px);top:50%;transform:translateY(-50%);font-size:clamp(1.8rem,5vw,2.4rem);color:var(--amethyst);pointer-events:none;}
+    .ai-btn{padding:clamp(16px,5vw,28px) clamp(32px,8vw,48px);border:none;border-radius:28px;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);font-family:'Clash Display',serif;font-weight:900;font-size:clamp(1rem,3vw,1.3rem);cursor:pointer;box-shadow:var(--shadow-soft);transition:all 0.4s var(--ease);text-transform:uppercase;letter-spacing:0.3px;min-height:52px;flex-shrink:0;}
+    .ai-btn:hover{transform:translateY(-4px);box-shadow:0 25px 80px rgba(44,27,74,0.25);}
+    .ai-response{background:rgba(44,27,74,0.02);border-radius:24px;padding:clamp(24px,8vw,40px);margin-top:clamp(24px,8vw,40px);border:2px solid rgba(44,27,74,0.1);display:none;}
+    .ai-response.show{display:block;}
+    .ai-response h3{font-family:'Clash Display',serif;color:var(--amethyst);margin:0 0 16px;font-size:clamp(1.2rem,4vw,1.8rem);font-weight:900;}
+    .ai-response p{font-size:clamp(1rem,3vw,1.2rem);line-height:1.6;margin:0 0 24px;color:var(--amethyst);opacity:0.9;}
+    .ai-price-tag{background:var(--success);color:#fff;padding:clamp(12px,4vw,20px) clamp(20px,6vw,32px);border-radius:20px;font-weight:900;font-size:clamp(1rem,3vw,1.3rem);display:inline-block;text-align:center;}
+
+    /* ✅ MOBILE FORM */
+    .customize-container{max-width:var(--max-width);margin:0 auto clamp(40px,10vh,140px);padding:0 clamp(16px,5vw,5%);}
+    .form-section{background:var(--pearl);backdrop-filter:blur(30px);border-radius:var(--radius);padding:clamp(40px,12vw,80px);box-shadow:var(--shadow-soft);border:1px solid rgba(44,27,74,0.1);margin-bottom:clamp(40px,10vh,60px);}
+    .section-title{font-family:'Clash Display',serif;font-size:clamp(1.8rem,6vw,3.5rem);color:var(--amethyst);margin:0 0 clamp(32px,8vw,48px);text-align:center;font-weight:900;letter-spacing:-0.3px;}
+    
+    .form-grid{display:grid;grid-template-columns:1fr;gap:clamp(20px,6vw,32px);margin-bottom:clamp(24px,6vw,48px);}
+    @media(min-width:768px){.form-grid{grid-template-columns:1fr 1fr;}}
     .form-group:last-child{grid-column:1/-1;}
-    .form-label{display:block;font-weight:700;font-size:1.1rem;color:var(--slate);margin-bottom:12px;}
-    .form-input,.form-select,.form-textarea{width:100%;padding:24px;border:2px solid rgba(58,15,90,0.15);border-radius:20px;font-size:1.1rem;font-weight:500;background:var(--glass);backdrop-filter:blur(16px);transition:all var(--ease);}
-    .form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 4px rgba(58,15,90,0.1);}
-    .form-textarea{min-height:160px;resize:vertical;}
+    .form-label{display:block;font-weight:600;font-size:clamp(0.95rem,3vw,1.1rem);color:var(--amethyst);margin-bottom:12px;}
+    .form-input,.form-select,.form-textarea{width:100%;padding:clamp(16px,5vw,24px);border:2px solid rgba(44,27,74,0.15);border-radius:24px;font-size:clamp(1rem,3vw,1.1rem);font-weight:500;background:var(--pearl);backdrop-filter:blur(20px);transition:all 0.3s var(--ease);color:var(--amethyst);}
+    .form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--amethyst);box-shadow:0 0 0 3px rgba(44,27,74,0.1);}
+    .form-textarea{min-height:clamp(100px,20vw,160px);resize:vertical;}
+    .form-input::placeholder,.form-textarea::placeholder{color:var(--amethyst);opacity:0.5;}
     
-    .upload-zone{position:relative;width:100%;height:240px;border:3px dashed rgba(58,15,90,0.3);border-radius:24px;background:linear-gradient(135deg,rgba(58,15,90,0.03),rgba(58,15,90,0.01));display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all var(--ease);}
-    .upload-zone:hover{border-color:var(--purple);background:linear-gradient(135deg,rgba(58,15,90,0.08),rgba(58,15,90,0.04));}
+    .upload-zone{position:relative;width:100%;height:clamp(200px,40vw,280px);border:2px dashed rgba(44,27,74,0.2);border-radius:24px;background:linear-gradient(135deg,rgba(44,27,74,0.03),rgba(44,27,74,0.01));display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s var(--ease);}
+    .upload-zone:hover{border-color:var(--amethyst);background:linear-gradient(135deg,rgba(44,27,74,0.08),rgba(44,27,74,0.04));}
     .upload-zone.has-image img{width:100%;height:100%;object-fit:cover;border-radius:20px;}
-    .upload-icon{font-size:4.8rem;color:var(--purple);margin-bottom:24px;}
-    .upload-text{font-weight:700;color:var(--slate-mid);text-align:center;}
-    
-    .checkbox-group{display:flex;align-items:center;gap:16px;margin:48px 0;font-size:1.1rem;}
-    .checkbox-group input{width:20px;height:20px;}
+    .upload-zone.has-image .upload-content{display:none;}
+    .upload-icon{font-size:clamp(2.5rem,8vw,4.8rem);color:var(--amethyst);margin-bottom:12px;}
+    .upload-text{font-weight:600;color:var(--amethyst);opacity:0.8;text-align:center;font-size:clamp(0.95rem,3vw,1.1rem);}
+    .upload-text span{font-size:0.85rem;color:var(--amethyst);opacity:0.6;}
+    input[type="file"]{display:none;}
 
-    /* Pricing Calculator */
-    .pricing-calculator{background:linear-gradient(135deg,rgba(58,15,90,0.02),rgba(58,15,90,0.01));border-radius:24px;padding:48px;border:2px solid rgba(58,15,90,0.1);margin:64px 0;}
-    .price-row{display:flex;justify-content:space-between;align-items:center;padding:20px 0;font-size:1.2rem;}
-    .price-label{font-weight:700;color:var(--slate);}
-    .price-value{font-family:'Clash Display',serif;font-size:1.6rem;font-weight:900;color:var(--purple);}
-    .price-total{border-top:3px solid rgba(58,15,90,0.2);padding-top:32px;margin-top:24px;}
-    .total-amount{font-family:'Clash Display',serif;font-size:3.2rem;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--purple-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .checkbox-group{display:flex;align-items:flex-start;gap:16px;margin:clamp(32px,10vw,48px) 0;font-size:clamp(0.95rem,3vw,1.1rem);}
+    .checkbox-group input{width:20px;height:20px;flex-shrink:0;margin-top:2px;}
+    .checkbox-group label{font-weight:600;color:var(--amethyst);cursor:pointer;line-height:1.5;}
 
-    /* Submit */
+    /* ✅ MOBILE PRICING */
+    .pricing-calculator{background:linear-gradient(135deg,rgba(44,27,74,0.02),rgba(232,180,184,0.02));border-radius:24px;padding:clamp(32px,10vw,48px);border:2px solid rgba(44,27,74,0.12);margin:clamp(40px,12vw,64px) 0;}
+    .price-row{display:flex;justify-content:space-between;align-items:center;padding:clamp(16px,6vw,24px) 0;font-size:clamp(1rem,3vw,1.2rem);border-bottom:1px solid rgba(44,27,74,0.08);}
+    .price-row:last-child{border-bottom:none;padding:clamp(16px,6vw,24px) 0 0;}
+    .price-row.total{padding-top:clamp(20px,8vw,32px);border-top:2px solid rgba(44,27,74,0.2);}
+    .price-label{font-weight:600;color:var(--amethyst);opacity:0.9;}
+    .price-value{font-family:'Clash Display',serif;font-size:clamp(1.2rem,4vw,1.6rem);font-weight:900;color:var(--amethyst);}
+
+    /* ✅ MOBILE SUBMIT */
     .submit-section{text-align:center;}
-    .submit-btn{width:100%;max-width:480px;padding:36px 64px;border:none;border-radius:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;font-family:'Clash Display',serif;font-size:1.6rem;font-weight:900;cursor:pointer;box-shadow:0 28px 90px rgba(58,15,90,0.45);transition:all var(--ease);height:100px;}
-    .submit-btn:hover{transform:translateY(-8px);box-shadow:0 40px 120px rgba(58,15,90,0.55);}
+    .submit-btn{width:100%;max-width:520px;padding:clamp(20px,6vw,36px) clamp(40px,10vw,64px);border:none;border-radius:28px;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-light));color:var(--pearl);font-family:'Clash Display',serif;font-size:clamp(1.1rem,4vw,1.6rem);font-weight:900;cursor:pointer;box-shadow:var(--shadow-soft);transition:all 0.4s var(--ease);min-height:56px;text-transform:uppercase;letter-spacing:0.3px;}
+    .submit-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 25px 80px rgba(44,27,74,0.25);}
+    .submit-btn.sending{opacity:0.7;cursor:not-allowed;background:var(--amethyst);}
 
-    footer{padding:100px 5% 60px;text-align:center;color:var(--muted);border-top:1px solid rgba(183,185,189,0.12);font-size:0.95rem;}
-    #toast{position:fixed;top:32px;right:32px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;padding:24px 36px;border-radius:24px;box-shadow:0 28px 90px rgba(58,15,90,0.45);transform:translateX(500px);transition:all var(--ease);font-weight:700;z-index:500;max-width:420px;}
-    #toast.show{transform:translateX(0);}
+    footer{padding:clamp(60px,15vh,140px) clamp(16px,5vw,5%) clamp(40px,10vh,80px);text-align:center;background:var(--pearl);color:var(--sage);border-top:1px solid rgba(44,27,74,0.1);font-size:clamp(0.85rem,2.5vw,0.95rem);font-weight:300;}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:20px;}
+    .footer-links a{color:var(--amethyst);text-decoration:none;font-weight:500;font-size:clamp(0.85rem,2.5vw,0.9rem);padding:8px 16px;border-radius:16px;transition:all 0.3s ease;}
+    .footer-links a:hover{background:rgba(232,180,184,0.2);}
 
-    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+    #toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:clamp(14px,4vw,24px) clamp(32px,8vw,48px);border-radius:20px;font-family:'Clash Display',serif;font-weight:700;font-size:clamp(0.95rem,2.8vw,1.1rem);z-index:10000;transition:all 0.4s var(--ease);max-width:90vw;box-shadow:var(--shadow-soft);text-align:center;}
+    #toast.show{transform:translateX(-50%) translateY(0);}
   </style>
 </head>
 <body>
-  <!-- Perfect System Header -->
+  <!-- ✅ PERFECT MOBILE HEADER -->
   <header>
-    <div class="brand" onclick="location.href='index.html'">
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
-      <div>
-        <div style="font-family:'Clash Display',serif;font-size:1.2rem;color:var(--purple);">Snehvastra</div>
-        <div style="font-size:0.85rem;color:var(--muted);">Artisan Customize</div>
+    <div class="header-inner">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <span style="font-family:'Clash Display',serif;font-size:1.1rem;font-weight:600;color:var(--amethyst);">Snehvastra</span>
       </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="customize.html" class="active">Customize</a></li>
+          <li><a href="blog.html">Stories</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburgerBtn">☰</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="collection.html">Collection</a></li>
-        <li><a href="customize.html" class="active">Customize</a></li>
-        <li><a href="auction.html">Auction</a></li>
-        <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="auction-banner">
-    🔥 SNEHVASTRA ONE AUCTION <span class="auction-timer" id="auctionTimer">Loading...</span>
+  <!-- ✅ FIXED AUCTION BANNER -->
+  <div class="auction-banner" id="auctionBanner">
+    🔥 KOTA ONE AUCTION<br>
+    <span class="auction-timer" id="auctionTimer">Loading...</span>
   </div>
 
-  <section class="hero">
-    <h1 class="hero-title" data-aos="fade-down">Revive Your Heirloom</h1>
-    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Suratgarh artisans transform your cherished garments. AI analyzes + suggests. NFC tracks every stitch. Doorstep pickup included.</p>
+  <!-- ✅ HERO -->
+  <section class="hero" data-aos="fade-in">
+    <h1 class="hero-title" data-aos="fade-up">Revive Your Heirloom</h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Kota artisans transform garments. AI analyzes. NFC tracks. Doorstep pickup.</p>
   </section>
 
-  <!-- AI Garment Analyzer -->
-  <section class="ai-analyzer" data-aos="zoom-in">
+  <!-- ✅ AI ANALYZER -->
+  <section class="ai-analyzer" data-aos="fade-up">
     <h2 class="ai-title">AI Garment Analysis</h2>
     <div class="ai-input-group">
-      <div style="position:relative;flex:1;">
+      <div>
         <span class="ai-icon">🤖</span>
-        <input class="ai-input" id="aiInput" placeholder="Describe your garment... 'black hoodie with memories, wants luxury upgrade'"/>
+        <input class="ai-input" id="aiInput" placeholder="Describe: 'black hoodie, luxury upgrade'"/>
       </div>
       <button class="ai-btn" onclick="analyzeGarment()">Analyze</button>
     </div>
     <div class="ai-response" id="aiResponse"></div>
   </section>
 
-  <!-- Customization Form -->
+  <!-- ✅ FORM -->
   <div class="customize-container">
     <form class="form-section" id="customizeForm" data-aos="fade-up">
-      <h2 class="section-title">Schedule Artisan Revival</h2>
+      <h2 class="section-title">Schedule Kota Pickup</h2>
       
       <div class="form-grid">
         <div class="form-group">
           <label class="form-label">📸 Garment Photo *</label>
           <div class="upload-zone" id="uploadZone">
-            <div class="upload-icon">📷</div>
-            <div class="upload-text">Upload your cherished garment<br><span style="font-size:0.95rem;color:var(--muted);">Max 10MB</span></div>
-            <input type="file" id="garmentPhoto" accept="image/*" style="display:none;">
+            <div class="upload-content">
+              <div class="upload-icon">📷</div>
+              <div class="upload-text">Upload garment<br><span>Max 10MB • JPG/PNG</span></div>
+            </div>
+            <input type="file" id="garmentPhoto" accept="image/*">
           </div>
         </div>
         
         <div class="form-group">
           <label class="form-label">👕 Garment Type *</label>
           <select class="form-select" id="garmentType" required>
-            <option value="">Select type...</option>
+            <option value="">Select...</option>
             <option value="hoodie">Hoodie</option>
             <option value="tshirt">T-Shirt</option>
             <option value="jacket">Jacket</option>
@@ -168,22 +203,22 @@
 
       <div class="form-group">
         <label class="form-label">💭 Your Story</label>
-        <textarea class="form-textarea" id="story" placeholder="What memories does this garment hold? Special occasions? Who gifted it? Our artisans weave emotion into every stitch..."></textarea>
+        <textarea class="form-textarea" id="story" placeholder="What memories does this garment hold?"></textarea>
       </div>
 
       <div class="checkbox-group">
         <input type="checkbox" id="artisanFreedom">
-        <label for="artisanFreedom" style="font-weight:600;">✨ Give Suratgarh artisans full creative freedom</label>
+        <label for="artisanFreedom">✨ Artisan creative freedom (+₹1,500)</label>
       </div>
 
       <div class="form-grid">
         <div class="form-group">
           <label class="form-label">📍 Full Address *</label>
-          <input class="form-input" id="address" placeholder="House no, street, city, pincode" required>
+          <input class="form-input" id="address" placeholder="House, street, city, pincode" required>
         </div>
         <div class="form-group">
-          <label class="form-label">📱 Phone *</label>
-          <input class="form-input" id="phone" type="tel" placeholder="WhatsApp preferred" required>
+          <label class="form-label">📱 WhatsApp *</label>
+          <input class="form-input" id="phone" type="tel" placeholder="10-digit number" required>
         </div>
         <div class="form-group">
           <label class="form-label">📅 Preferred Pickup *</label>
@@ -193,136 +228,230 @@
 
       <div class="pricing-calculator">
         <div class="price-row">
-          <span class="price-label">Artisan Customization</span>
+          <span class="price-label">Kota Artisan Work</span>
           <span class="price-value" id="customPrice">₹3,499+</span>
         </div>
         <div class="price-row">
-          <span class="price-label">🚚 Suratgarh Pickup</span>
+          <span class="price-label">🚚 Doorstep Pickup</span>
           <span class="price-value">FREE</span>
         </div>
-        <div class="price-row price-total">
+        <div class="price-row total">
           <span class="price-label">Total</span>
           <span class="total-amount" id="totalPrice">₹3,499+</span>
         </div>
       </div>
 
       <div class="submit-section">
-        <button class="submit-btn" type="submit">🚚 Schedule Suratgarh Pickup</button>
+        <button class="submit-btn" type="submit">🚚 Schedule Kota Pickup</button>
       </div>
     </form>
   </div>
 
+  <!-- ✅ FOOTER -->
   <footer>
-    © <span id="year"></span> Snehvastra. Suratgarh artisans • NFC tracked • 30-day satisfaction.
+    © <span id="year"></span> Snehvastra. Kota artisans • NFC tracked • 30-day satisfaction.
+    <div class="footer-links">
+      <a href="nfc-story.html">NFC Story</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
   </footer>
 
   <div id="toast"></div>
 
   <script>
-    // Perfect system sync
-    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
-    const user = JSON.parse(localStorage.getItem(USER_KEY));
+    // 🔧 SNEHVASTRA MOBILE LOCK - CUSTOMIZE SYSTEM
+    (function(){
+      const USER_KEY = "snehvastra_user"; 
+      const CART_KEY = "snehvastra_cart";
+      let cart = {}, user = null;
 
-    function updateCartCount(){
-      const total = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0);
-      document.getElementById("cartCount").textContent = total;
-    }
-
-    function showToast(msg){
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.classList.add("show");
-      setTimeout(()=>toast.classList.remove("show"), 4200);
-    }
-
-    // AI Analyzer
-    function analyzeGarment(){
-      const input = document.getElementById('aiInput').value.toLowerCase();
-      const response = document.getElementById('aiResponse');
-      
-      let suggestion = "Suratgarh artisans recommend subtle luxury upgrades with hand embroidery and natural dyes.";
-      
-      if(input.includes('hoodie')) suggestion = "Layered chest embroidery + sleeve artisan signature. Perfect for heritage streetwear.";
-      if(input.includes('denim')) suggestion = "Raw edge distressing + contrast stitching. Vintage patina restoration available.";
-      if(input.includes('jacket')) suggestion = "Metallic thread details + leather patchwork. Collector-grade transformation.";
-      
-      response.innerHTML = `
-        <h3 style="font-family:'Clash Display',serif;color:var(--purple);margin:0 0 24px;">✨ AI Recommendation</h3>
-        <p style="font-size:1.2rem;line-height:1.8;margin:0;">${suggestion}</p>
-        <div style="margin-top:32px;padding:20px;background:rgba(16,185,129,0.1);border-radius:16px;font-weight:700;color:var(--success);">
-          💰 Starting at ₹3,499 • 12-day turnaround • NFC progress tracking
-        </div>
-      `;
-      response.classList.add('show');
-      gsap.fromTo(response, {opacity:0, y:40}, {opacity:1, y:0, duration:0.8});
-      showToast("🤖 AI analysis complete");
-    }
-
-    // Upload handler
-    document.getElementById('uploadZone').addEventListener('click', () => document.getElementById('garmentPhoto').click());
-    document.getElementById('garmentPhoto').addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if(file){
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          document.getElementById('uploadZone').innerHTML = `<img src="${ev.target.result}" alt="Garment">`;
-          document.getElementById('uploadZone').classList.add('has-image');
-          showToast("✅ Garment photo uploaded");
-        };
-        reader.readAsDataURL(file);
+      function safeGet(key, fallback) {
+        try {
+          return JSON.parse(localStorage.getItem(key) || fallback);
+        } catch(e) {
+          return fallback;
+        }
       }
-    });
 
-    // Dynamic pricing
-    document.getElementById('garmentType').addEventListener('change', updatePricing);
-    document.getElementById('artisanFreedom').addEventListener('change', updatePricing);
-    
-    function updatePricing(){
-      const type = document.getElementById('garmentType').value;
-      const freedom = document.getElementById('artisanFreedom').checked;
-      let base = 3499;
+      window.renderAuth = function(){
+        const authArea = document.getElementById("authArea");
+        if(!authArea) return;
+        user = safeGet(USER_KEY, null);
+        if(user && user.loggedIn) {
+          authArea.innerHTML = `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;font-size:0.85rem;">Hi, ${user.name?.split(' ')[0]}</span>`;
+        } else {
+          authArea.innerHTML = `<a href="user-login.html" style="padding:8px 16px;border:2px solid var(--rose-gold);color:var(--rose-gold);border-radius:16px;font-weight:500;font-size:0.8rem;">Login</a>`;
+        }
+      };
+
+      function updateCartCount(){
+        const total = Object.values(cart).reduce((a,b)=>a+(b||0),0);
+        const cartEl = document.getElementById("cartCount");
+        if(cartEl) cartEl.textContent = total || 0;
+      }
+
+      function money(n){return "₹" + Math.round(Number(n)).toLocaleString("en-IN");}
+
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        if(toast){
+          toast.textContent = msg;
+          toast.classList.add("show");
+          setTimeout(()=>toast.classList.remove("show"), 2500);
+        }
+      }
+
+      // MOBILE MENU
+      document.getElementById("hamburgerBtn")?.addEventListener("click", ()=>{
+        document.querySelector("header").classList.toggle("menu-open");
+      });
+
+      // 🤖 AI ANALYZER
+      window.analyzeGarment = function() {
+        const input = document.getElementById('aiInput').value.toLowerCase().trim();
+        const response = document.getElementById('aiResponse');
+        
+        if (!input) {
+          showToast("Describe your garment first");
+          return;
+        }
+        
+        let suggestion = "Kota artisans recommend luxury upgrades with embroidery.";
+        
+        if (input.includes('hoodie')) suggestion = "Chest embroidery + sleeve signature. Heritage streetwear.";
+        if (input.includes('denim')) suggestion = "Raw edge + contrast stitching. Vintage restoration.";
+        if (input.includes('jacket')) suggestion = "Metallic threads + leather patchwork. Collector-grade.";
+        if (input.includes('tshirt') || input.includes('tee')) suggestion = "Custom embroidery + distressing. Everyday heirloom.";
+        
+        response.innerHTML = `
+          <h3>✨ AI Recommendation</h3>
+          <p>${suggestion}</p>
+          <div class="ai-price-tag">
+            💰 Starting ₹3,499 • 12-day turnaround • NFC tracking
+          </div>
+        `;
+        response.classList.add('show');
+        showToast("🤖 AI analysis complete");
+      };
+
+      // 📷 UPLOAD
+      document.getElementById('uploadZone')?.addEventListener('click', () => {
+        document.getElementById('garmentPhoto').click();
+      });
       
-      if(type === 'jacket') base = 5999;
-      if(type === 'denim') base = 4999;
-      if(freedom) base += 1500;
+      document.getElementById('garmentPhoto')?.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file && file.size < 10 * 1024 * 1024) {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            const uploadZone = document.getElementById('uploadZone');
+            uploadZone.innerHTML = `<img src="${ev.target.result}" alt="Garment">`;
+            uploadZone.classList.add('has-image');
+            showToast("✅ Photo uploaded");
+          };
+          reader.readAsDataURL(file);
+        } else {
+          showToast("Image under 10MB please");
+        }
+      });
+
+      // 💰 PRICING
+      function updatePricing() {
+        const type = document.getElementById('garmentType')?.value;
+        const freedom = document.getElementById('artisanFreedom')?.checked;
+        let base = 3499;
+        
+        if (type === 'jacket') base = 5999;
+        if (type === 'denim') base = 4999;
+        if (freedom) base += 1500;
+        
+        document.getElementById('customPrice').textContent = money(base) + '+';
+        document.getElementById('totalPrice').textContent = money(base) + '+';
+      }
       
-      document.getElementById('customPrice').textContent = `₹${base.toLocaleString()}+`;
-      document.getElementById('totalPrice').textContent = `₹${base.toLocaleString()}+`;
-    }
+      document.getElementById('garmentType')?.addEventListener('change', updatePricing);
+      document.getElementById('artisanFreedom')?.addEventListener('change', updatePricing);
 
-    // Form submit
-    document.getElementById('customizeForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      showToast("✅ Pickup scheduled! Suratgarh artisan assigned. WhatsApp confirmation sent.");
-      
-      // WhatsApp confirmation
-      const phone = document.getElementById('phone').value;
-      const message = encodeURIComponent(`🚚 Snehvastra Customization Confirmed!\n\nArtisan assigned from Suratgarh.\nPickup: ${document.getElementById('pickupDate').value}\n\nTrack via NFC: Coming soon`);
-      window.open(`https://wa.me/917597152209?text=${message}`);
-    });
+      // 📋 FORM SUBMIT
+      document.getElementById('customizeForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.textContent = 'Scheduling...';
+        submitBtn.classList.add('sending');
+        
+        setTimeout(() => {
+          const required = ['garmentType', 'address', 'phone', 'pickupDate'];
+          for (let field of required) {
+            if (!document.getElementById(field).value.trim()) {
+              showToast(`Please fill ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`);
+              submitBtn.textContent = 'Schedule Kota Pickup';
+              submitBtn.classList.remove('sending');
+              return;
+            }
+          }
+          
+          const phone = document.getElementById('phone').value;
+          const message = encodeURIComponent(
+            `🧵 Snehvastra Customization\n\n` +
+            `Garment: ${document.getElementById('garmentType').value}\n` +
+            `Pickup: ${document.getElementById('pickupDate').value}\n` +
+            `Address: ${document.getElementById('address').value}\n\n` +
+            `Artisan freedom: ${document.getElementById('artisanFreedom').checked ? 'Yes' : 'No'}\n\n` +
+            `Story: ${document.getElementById('story').value || 'None'}`
+          );
+          
+          window.open(`https://wa.me/917597152209?text=${message}`, '_blank');
+          showToast("✅ Pickup scheduled! Kota artisan assigned.");
+          
+          submitBtn.textContent = 'Scheduled!';
+          submitBtn.style.background = 'var(--success)';
+          
+          setTimeout(() => {
+            submitBtn.textContent = 'Schedule Kota Pickup';
+            submitBtn.classList.remove('sending');
+            submitBtn.style.background = '';
+          }, 2000);
+        }, 800);
+      });
 
-    // Set min pickup date
-    document.getElementById('pickupDate').min = new Date(Date.now() + 2*24*60*60*1000).toISOString().split('T')[0];
+      // 📅 DATE MIN
+      const tomorrow = new Date(Date.now() + 2*24*60*60*1000);
+      const dateInput = document.getElementById('pickupDate');
+      if(dateInput) dateInput.min = tomorrow.toISOString().split('T')[0];
 
-    // Auction timer
-    const auctionDate = new Date("2025-12-24T18:00:00").getTime();
-    setInterval(()=>{
-      const diff = auctionDate - Date.now();
-      const timer = document.getElementById("auctionTimer");
-      if(diff > 0){
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        timer.textContent = `${days}d ${hours}h`;
+      // AUCTION TIMER
+      const auctionEnd = new Date("2025-12-25T18:00:00").getTime();
+      function updateAuctionTimer(){
+        const diff = auctionEnd - Date.now();
+        const timerEl = document.getElementById("auctionTimer");
+        if(timerEl && diff > 0){
+          const days = Math.floor(diff/(1000*60*60*24));
+          const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+          timerEl.textContent = `${days}d ${hours.toString().padStart(2,'0')}h`;
+        } else if(timerEl) {
+          timerEl.textContent = "LIVE!";
+        }
+      }
+
+      // INIT
+      function init(){
+        cart = safeGet(CART_KEY, {});
+        renderAuth();
+        updateCartCount();
+        updatePricing();
+        updateAuctionTimer();
+        setInterval(updateAuctionTimer, 30000);
+        document.getElementById("year").textContent = new Date().getFullYear();
+        if(typeof AOS !== 'undefined') AOS.init({duration:800, once:true});
+      }
+
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', init);
       } else {
-        timer.textContent = "LIVE NOW!";
+        init();
       }
-    }, 60000);
-
-    // Init
-    AOS.init({duration: 1200, once: true});
-    updateCartCount();
-    document.getElementById("year").textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
