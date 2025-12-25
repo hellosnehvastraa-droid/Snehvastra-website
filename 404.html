@@ -1,333 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Snehvastra — Page Not Found</title>
-  <meta name="description" content="Snehvastra page not found. Jump back to live drops, auctions, collections, and NFC-verified collector pieces." />
-  <meta name="theme-color" content="#3A0F5A" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#2C1B4A"/>
+  <title>Page Not Found — Snehvastra</title>
+  <meta name="description" content="Lost a thread? Snehvastra's NFC-verified luxury drops, live auctions, and artisan collection await."/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
-    :root {
-      --purple: #3A0F5A; --purple-dark: #2e0b4a; --gold: #F59E0B;
-      --slate: #1F2024; --slate-mid: #3B3D45; --muted: #8E8F92;
-      --glass: rgba(255,255,255,0.95); --radius: 28px;
-      --shadow-soft: 0 40px 120px rgba(58,15,90,0.15);
-      --ease: 0.4s cubic-bezier(0.25,0.46,0.45,0.94); --max-width: 1400px;
+    :root{
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (LOCKED) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --shadow-soft:0 35px 140px rgba(44,27,74,0.15); --shadow-glow:0 0 35px rgba(107,90,207,0.2);
+      --radius:32px; --max-width:1400px; --ease:cubic-bezier(0.32,0.72,0,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.8;position:relative;min-height:100vh;display:flex;flex-direction:column;}
+
+    /* 🔒 PERFECT MOBILE HEADER */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:20px 0;}
+    .header-container{max-width:var(--max-width);margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:20px;align-items:center;cursor:pointer;transition:all 0.6s var(--ease);}
+    .brand:hover{transform:translateY(-4px);}
+    .logo{height:60px;border-radius:20px;box-shadow:0 20px 60px rgba(44,27,74,0.12);}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:12px 24px;border-radius:24px;font-weight:400;color:var(--amethyst);text-decoration:none;font-size:0.95rem;backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;}
+    nav a::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a:hover::after{width:80%;}
+
+    /* 🔥 MOBILE HAMBURGER */
+    .hamburger{display:none;background:none;border:none;font-size:1.8rem;color:var(--amethyst);cursor:pointer;padding:8px;}
+    @media(max-width:768px){
+      .hamburger{display:block!important;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:20px 0;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:8px;}
+      nav a{display:block;text-align:center;padding:16px 20px;width:100%;border-radius:16px;}
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh; background: linear-gradient(135deg, #f8f7fc 0%, #f4f2f9 100%);
-      font-family: 'Poppins', sans-serif; color: var(--slate);
-      display: flex; flex-direction: column;
-    }
+    /* 🎨 ELEGANT 404 HERO (World-Class UX) */
+    .not-found{min-height:calc(100vh - 120px);padding:120px 5% 80px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;max-width:900px;margin:0 auto;}
+    @media(max-width:768px){.not-found{padding:100px 5% 60px;}}
+    .not-found-glow{position:absolute;top:0;left:0;right:0;height:400px;background:radial-gradient(ellipse at 30% 20%,rgba(107,90,207,0.15) 0%,transparent 70%);pointer-events:none;}
+    .not-found-icon{font-size:clamp(10rem,28vw,18rem);margin-bottom:2rem;opacity:0.12;filter:drop-shadow(0 20px 40px rgba(44,27,74,0.15));}
+    .not-found-title{font-family:'Clash Display',serif;font-size:clamp(4rem,12vw,7rem);font-weight:900;color:var(--amethyst);margin:0 0 1.5rem;background:linear-gradient(135deg,var(--amethyst),var(--amethyst-glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-2px;}
+    .not-found-subtitle{font-size:clamp(1.2rem,4vw,1.8rem);font-weight:300;color:var(--sage);margin:0 0 3rem;max-width:600px;line-height:1.7;}
 
-    /* Perfect System Header */
-    .site-header {
-      position: sticky; top: 0; z-index: 140;
-      background: var(--glass); backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(58,15,90,0.08);
-    }
-    .header-inner {
-      max-width: var(--max-width); margin: 0 auto;
-      padding: 24px 5%; display: flex; align-items: center;
-      justify-content: space-between;
-    }
-    .brand-lockup { display: flex; align-items: center; gap: 16px; cursor: pointer; }
-    .brand-lockup img { height: 52px; border-radius: 20px; box-shadow: 0 16px 48px rgba(58,15,90,0.18); }
-    .brand-tagline { font-size: 0.9rem; color: var(--muted); font-weight: 600; }
-    .header-nav { display: flex; gap: 20px; font-size: 1rem; }
-    .header-link { padding: 16px 28px; border-radius: 24px; font-weight: 700;
-      color: var(--slate-mid); text-decoration: none; position: relative;
-      transition: all var(--ease);
-    }
-    .header-link:hover { background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: #fff; box-shadow: 0 20px 60px rgba(58,15,90,0.3);
-    }
-    .header-actions { display: flex; align-items: center; gap: 16px; }
-    .pill-link { font-size: 0.95rem; padding: 14px 24px; border-radius: 24px;
-      border: 2px solid rgba(58,15,90,0.2); background: rgba(255,255,255,0.8);
-      font-weight: 700; display: inline-flex; align-items: center; gap: 8px;
-      transition: all var(--ease);
-    }
-    .pill-link:hover { background: #fff; transform: translateY(-2px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    }
-    .cart-pill { background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: #fff; border-color: rgba(58,15,90,0.4);
-    }
-    .cart-count-badge { min-width: 22px; height: 22px; border-radius: 50%;
-      background: var(--gold); color: var(--purple); font-size: 0.85rem;
-      font-weight: 900; display: flex; align-items: center; justify-content: center;
-    }
+    /* 🌟 WORLD-CLASS SEARCH */
+    .search-container{position:relative;margin:2rem 0;max-width:520px;width:100%;}
+    .search-input{width:100%;padding:24px 36px;border-radius:28px;border:2px solid rgba(44,27,74,0.08);font-size:1.4rem;font-family:'Clash Display',serif;font-weight:500;background:var(--ivory);color:var(--amethyst);backdrop-filter:blur(25px);transition:all 0.4s var(--ease);box-sizing:border-box;}
+    .search-input:focus{outline:none;border-color:var(--rose-gold);box-shadow:0 25px 80px rgba(232,180,184,0.2);transform:translateY(-3px);}
+    .search-input::placeholder{color:var(--sage);opacity:0.7;}
+    .search-glow{position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:radial-gradient(circle,rgba(232,180,184,0.3) 0%,transparent 70%);border-radius:50%;animation:pulse-glow 3s ease-in-out infinite;pointer-events:none;}
 
-    /* Main */
-    .page-main { flex: 1; display: flex; align-items: center; justify-content: center;
-      padding: 40px 20px 120px; max-width: var(--max-width); margin: 0 auto;
-    }
-    .card { width: 100%; max-width: 1000px; background: #fff;
-      border-radius: var(--radius); padding: 100px; border: 1px solid rgba(58,15,90,0.08);
-      box-shadow: var(--shadow-soft); display: grid; grid-template-columns: 1.2fr 1fr;
-      gap: 80px; position: relative; overflow: hidden;
-    }
-    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 6px; background: linear-gradient(90deg, var(--purple), var(--gold));
-    }
-    @media (max-width: 1200px) { .card { grid-template-columns: 1fr; gap: 60px; padding: 80px 60px; } }
+    /* 🎯 PERFECT BUTTONS */
+    .return-buttons{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;}
+    @media(max-width:480px){.return-buttons{flex-direction:column;align-items:center;gap:1.2rem;width:100%;}}
+    .btn-home,.btn-auction,.btn-search{padding:22px 44px;border-radius:32px;font-weight:700;font-size:1.15rem;min-height:64px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.5s var(--ease);position:relative;overflow:hidden;}
+    .btn-home{background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);box-shadow:var(--shadow-soft);}
+    .btn-home:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 45px 120px rgba(232,180,184,0.35);}
+    .btn-auction,.btn-search{background:var(--pearl);color:var(--amethyst);backdrop-filter:blur(30px);border:2px solid rgba(44,27,74,0.1);font-weight:600;margin:0 0.75rem;}
+    .btn-auction:hover,.btn-search:hover{background:var(--ivory);transform:translateY(-8px);border-color:var(--rose-gold);box-shadow:var(--shadow-soft);}
 
-    .card-left { text-align: center; }
-    .card-right { border-left: 2px solid rgba(58,15,90,0.1); padding-left: 60px;
-      display: flex; flex-direction: column; gap: 48px;
-    }
-    @media (max-width: 1200px) { .card-right { border-left: none; padding-left: 0; border-top: 2px solid rgba(58,15,90,0.1); padding-top: 60px; } }
+    /* 🤖 AI ASSISTANT (Huemor UX Standard) */
+    .ai-assist{position:relative;margin:4rem 0 2rem;max-width:480px;width:100%;}
+    .ai-card{background:var(--pearl);backdrop-filter:blur(40px);border-radius:var(--radius);padding:40px;border:1px solid rgba(44,27,74,0.08);box-shadow:var(--shadow-soft);}
+    @media(max-width:768px){.ai-card{padding:32px 24px;}}
+    .ai-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+    .ai-status{width:12px;height:12px;border-radius:50%;background:#A8D5BA;box-shadow:0 0 0 4px rgba(168,213,186,0.4);animation:pulse-dot 2s ease-in-out infinite;}
+    .ai-title{font-family:'Clash Display',serif;font-size:1.6rem;color:var(--amethyst);font-weight:700;}
+    .ai-input-container{position:relative;margin-bottom:20px;}
+    .ai-input{width:100%;padding:20px 28px;border-radius:24px;border:2px solid rgba(44,27,74,0.08);font-size:1.1rem;font-family:'Clash Display',serif;font-weight:500;background:var(--ivory);color:var(--amethyst);backdrop-filter:blur(20px);transition:all 0.4s var(--ease);}
+    .ai-input:focus{outline:none;border-color:var(--rose-gold);box-shadow:0 20px 60px rgba(232,180,184,0.15);}
+    .ai-chips{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;}
+    .ai-chip{padding:12px 20px;border-radius:24px;border:1px solid rgba(44,27,74,0.12);background:var(--silk);color:var(--amethyst);font-weight:500;cursor:pointer;transition:all 0.3s var(--ease);font-size:0.95rem;}
+    .ai-chip:hover{background:var(--rose-gold);border-color:var(--rose-gold);transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,180,184,0.2);}
+    .ai-actions{display:flex;gap:12px;flex-wrap:wrap;}
+    .ai-response{margin-top:16px;padding:20px;border-radius:20px;background:var(--ivory);color:var(--sage);font-weight:500;line-height:1.6;border-left:4px solid var(--rose-gold);}
 
-    .logo { height: 64px; margin-bottom: 32px; filter: drop-shadow(0 8px 24px rgba(58,15,90,0.2)); }
-    .code-pill { display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px;
-      border-radius: 999px; background: linear-gradient(135deg, rgba(58,15,90,0.08), rgba(58,15,90,0.04));
-      border: 2px solid rgba(58,15,90,0.15); font-family: 'Clash Display', serif;
-      font-size: 1.1rem; color: var(--purple); font-weight: 900; margin-bottom: 24px;
-    }
-    h1 { font-family: 'Clash Display', serif; font-size: clamp(4rem, 10vw, 6.5rem);
-      color: var(--purple); margin-bottom: 24px; font-weight: 900; line-height: 1;
-    }
-    .sub { font-size: 1.4rem; line-height: 1.8; color: var(--slate-mid);
-      max-width: 600px; margin: 0 auto 32px;
-    }
-    .hint-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
-      margin: 32px 0 48px; font-size: 1rem; color: var(--slate-mid);
-    }
-    .hint-badge { padding: 12px 24px; border-radius: 999px; background: rgba(58,15,90,0.06);
-      border: 2px dashed rgba(58,15,90,0.2); font-weight: 600;
-    }
+    /* FOOTER */
+    footer{padding:80px 5% 40px;text-align:center;background:var(--pearl);color:var(--amethyst);border-top:1px solid rgba(44,27,74,0.06);font-size:0.9rem;font-weight:300;margin-top:auto;}
+    @media(max-width:768px){footer{padding:60px 5% 30px;}}
 
-    .primary-actions { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 24px; }
-    .btn { padding: 20px 36px; border-radius: 28px; background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: #fff; font-weight: 900; font-size: 1.1rem; border: none;
-      box-shadow: 0 28px 90px rgba(58,15,90,0.4); cursor: pointer; display: inline-flex;
-      align-items: center; gap: 12px; transition: all var(--ease); font-family: 'Clash Display', serif;
-    }
-    .btn:hover { transform: translateY(-6px); box-shadow: 0 40px 120px rgba(58,15,90,0.5); }
-    .btn-ghost { background: rgba(58,15,90,0.08); color: var(--purple);
-      border: 2px solid rgba(58,15,90,0.2); box-shadow: none;
-    }
-    .btn-ghost:hover { background: rgba(58,15,90,0.15); transform: translateY(-4px);
-      box-shadow: 0 24px 80px rgba(58,15,90,0.2);
-    }
+    /* TOAST */
+    #toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,var(--sage),#9CB89A);color:var(--amethyst);padding:20px 36px;border-radius:24px;font-weight:600;font-size:1rem;z-index:1000;transition:all 0.5s var(--ease);max-width:90vw;box-shadow:var(--shadow-soft);}
+    #toast.show{transform:translateX(-50%) translateY(0);}
 
-    /* Sneh AI */
-    .inline-ai { background: linear-gradient(135deg, #fff, #f8f7fc); border-radius: var(--radius);
-      padding: 48px; border: 2px solid rgba(58,15,90,0.1); box-shadow: 0 20px 80px rgba(58,15,90,0.08);
-    }
-    .inline-ai-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-    .inline-ai label { font-family: 'Clash Display', serif; color: var(--purple); font-size: 1.3rem;
-      font-weight: 900; display: flex; align-items: center; gap: 12px;
-    }
-    .dot { width: 12px; height: 12px; border-radius: 50%; background: #10B981;
-      box-shadow: 0 0 0 8px rgba(16,185,129,0.3);
-    }
-    .ai-input { width: 100%; padding: 24px 32px; border-radius: 24px; border: 2px solid rgba(58,15,90,0.15);
-      font-size: 1.2rem; background: rgba(255,255,255,0.8); outline: none; font-weight: 600;
-    }
-    .ai-quick-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
-    .ai-chip { padding: 12px 20px; border-radius: 999px; border: 2px solid rgba(58,15,90,0.15);
-      background: rgba(255,255,255,0.9); font-weight: 700; cursor: pointer; transition: all var(--ease);
-      font-size: 0.95rem;
-    }
-    .ai-chip:hover { background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: #fff;
-      transform: translateY(-4px); box-shadow: 0 20px 60px rgba(58,15,90,0.3);
-    }
-    .ai-inline-actions { display: flex; gap: 16px; }
-    .ai-response { margin-top: 32px; padding: 32px; background: rgba(58,15,90,0.03);
-      border-radius: 20px; color: var(--slate); font-size: 1.2rem; line-height: 1.7;
-      min-height: 48px; border-left: 6px solid var(--purple);
-    }
-
-    .trust-stack { display: flex; flex-direction: column; gap: 32px; }
-    .trust-card { padding: 32px; border-radius: var(--radius); background: rgba(255,255,255,0.8);
-      border: 1px solid rgba(58,15,90,0.1); backdrop-filter: blur(20px);
-    }
-    .trust-title { font-family: 'Clash Display', serif; font-size: 1.2rem; color: var(--purple);
-      margin-bottom: 24px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em;
-    }
-    .quick-links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .quick-link-btn { padding: 20px; border-radius: 20px; border: 2px solid rgba(58,15,90,0.15);
-      background: rgba(255,255,255,0.9); font-weight: 700; font-size: 1rem; text-align: left;
-      cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-      transition: all var(--ease);
-    }
-    .quick-link-btn:hover { background: #fff; transform: translateY(-4px);
-      box-shadow: 0 24px 80px rgba(58,15,90,0.2); border-color: var(--purple);
-    }
-
-    footer { padding: 80px 5% 40px; text-align: center; color: var(--muted);
-      border-top: 1px solid rgba(183,185,189,0.12); font-size: 1rem;
-    }
-
-    @media (max-width: 900px) {
-      .header-nav { display: none; }
-      .brand-tagline { display: none; }
-      .card { padding: 60px 40px; }
-      .page-main { padding: 20px 16px 80px; }
-    }
+    @keyframes pulse-glow{0%,100%{opacity:0.7;transform:scale(1);}50%{opacity:1;transform:scale(1.1);}}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.2);}}
+    @keyframes float-gentle{0%,100%{transform:translateY(0px);}50%{transform:translateY(-12px);}}
   </style>
 </head>
-
 <body>
-<!-- Perfect System Header -->
-<header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand-lockup">
-      <img src="images/logo.final.png" alt="Snehvastra">
-      <span class="brand-tagline">Collector Continuity</span>
-    </a>
-
-    <nav class="header-nav">
-      <a href="collection.html" class="header-link">Collection</a>
-      <a href="auction.html" class="header-link">Auction</a>
-      <a href="blog.html" class="header-link">Stories</a>
-      <a href="about.html" class="header-link">About</a>
-    </nav>
-
-    <div class="header-actions">
-      <a href="user-login.html" class="pill-link">Account</a>
-      <a href="cart.html" class="pill-link cart-pill">
-        Cart <span class="cart-count-badge" id="cartCount">0</span>
-      </a>
+  <!-- 🔒 PERFECT MOBILE HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:1.5rem;font-weight:600;color:var(--amethyst);">Snehvastra</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="blog.html">Stories</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-  </div>
-</header>
+  </header>
 
-<main class="page-main">
-  <section class="card" data-aos="zoom-in">
-    <!-- Left -->
-    <div class="card-left">
-      <div class="code-pill" data-aos="fade-up">404 • Drop Missed</div>
-      <img src="images/logo.final.png" class="logo" alt="Snehvastra" data-aos="fade-up" data-aos-delay="100"/>
-      <h1 data-aos="fade-up" data-aos-delay="200">Page Dropped</h1>
-      <p class="sub" data-aos="fade-up" data-aos-delay="300">
-        This link missed the drop window. Sneh AI will route you to live auctions, 
-        current collections, or your cart instantly.
-      </p>
-      <div class="hint-row" data-aos="fade-up" data-aos-delay="400">
-        <div class="hint-badge">90% return to Collection</div>
-        <div class="hint-badge">Your cart is always safe</div>
-      </div>
-      <div class="primary-actions" data-aos="fade-up" data-aos-delay="500">
-        <button class="btn" onclick="location.href='index.html'">
-          Home ↩
-        </button>
-        <button class="btn-ghost" onclick="location.href='collection.html'">
-          Current Drop →
-        </button>
-        <button class="btn-ghost" onclick="location.href='auction.html'">
-          Live Auction ⚡
-        </button>
-      </div>
-    </div>
-
-    <!-- Right -->
-    <div class="card-right">
-      <div class="inline-ai">
-        <div class="inline-ai-header">
-          <label>
-            <span class="dot"></span>
-            Ask Sneh for routing
-          </label>
-        </div>
-        <input class="ai-input" id="ai404" placeholder="hoodies? auction? cart?"/>
-        <div class="ai-quick-row">
-          <button class="ai-chip" onclick="prefill404AI('hoodies')">Hoodies</button>
-          <button class="ai-chip" onclick="prefill404AI('cart')">My Cart</button>
-          <button class="ai-chip" onclick="prefill404AI('auction')">Auction</button>
-          <button class="ai-chip" onclick="prefill404AI('size guide')">Sizing</button>
-        </div>
-        <div class="ai-inline-actions">
-          <button class="btn" onclick="handle404AI()">Ask Sneh</button>
-          <button class="btn-ghost" onclick="location.href='contact.html'">Support</button>
-        </div>
-        <div class="ai-response" id="ai404Res"></div>
-      </div>
-
-      <div class="trust-stack">
-        <div class="trust-card">
-          <div class="trust-title">Quick Paths</div>
-          <div class="quick-links">
-            <button class="quick-link-btn" onclick="location.href='wishlist.html'">
-              Wishlist ♡
-            </button>
-            <button class="quick-link-btn" onclick="location.href='user-login.html'">
-              Login 👤
-            </button>
-            <button class="quick-link-btn" onclick="location.href='cart.html'">
-              Review Cart 🛒
-            </button>
-            <button class="quick-link-btn" onclick="location.href='shipping.html'">
-              Shipping 🚚
-            </button>
-          </div>
-          <div class="cart-context" id="cartContext"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  © <span id="year"></span> Snehvastra — All drops preserved
-</footer>
-
-<script>
-  // Cart sync
-  const CART_KEY = "snehvastra_cart";
-  function getCartCount() {
-    try {
-      const raw = localStorage.getItem(CART_KEY);
-      if (!raw) return 0;
-      const cart = JSON.parse(raw);
-      return Object.values(cart).reduce((sum, item) => sum + (item?.quantity || 0), 0);
-    } catch { return 0; }
-  }
-  
-  document.getElementById("cartCount").textContent = getCartCount();
-  const count = getCartCount();
-  document.getElementById("cartContext").innerHTML = 
-    count ? `You have <strong>${count}</strong> item${count > 1 ? 's' : ''} in cart.` : 
-    "Cart empty — explore current drops.";
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  // Sneh AI
-  function prefill404AI(text) {
-    document.getElementById("ai404").value = text;
-    handle404AI();
-  }
-
-  function handle404AI() {
-    const q = document.getElementById("ai404").value.toLowerCase().trim();
-    const res = document.getElementById("ai404Res");
+  <!-- 🎨 WORLD-CLASS 404 EXPERIENCE -->
+  <main class="not-found">
+    <div class="not-found-glow"></div>
+    <div class="not-found-icon" data-aos="zoom-in">🧵</div>
+    <h1 class="not-found-title" data-aos="fade-up" data-aos-delay="200">Thread Lost</h1>
+    <p class="not-found-subtitle" data-aos="fade-up" data-aos-delay="400">
+      This page slipped through the loom. Sneh will guide you back to live auctions and NFC-verified drops.
+    </p>
     
-    if (!q) {
-      res.innerHTML = "Ask about hoodies, auctions, cart, or sizing.";
-      return;
+    <div class="search-container" data-aos="fade-up" data-aos-delay="600">
+      <div class="search-glow"></div>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search drops, auctions, stories..." onkeypress="handleSearch(event)">
+    </div>
+    
+    <div class="return-buttons" data-aos="fade-up" data-aos-delay="800">
+      <a href="index.html" class="btn-home">← Home</a>
+      <a href="auction.html" class="btn-auction">Live Auction</a>
+      <a href="collection.html" class="btn-search">Current Drops</a>
+    </div>
+
+    <!-- 🤖 AI ASSISTANT PERFECTION -->
+    <div class="ai-assist" data-aos="fade-up" data-aos-delay="1000">
+      <div class="ai-card">
+        <div class="ai-header">
+          <div class="ai-status"></div>
+          <div class="ai-title">Ask Sneh</div>
+        </div>
+        <div class="ai-input-container">
+          <input type="text" class="ai-input" id="aiInput" placeholder="hoodie, auction, cart, login...">
+        </div>
+        <div class="ai-chips">
+          <button class="ai-chip" onclick="quickAsk('hoodie')">Hoodies</button>
+          <button class="ai-chip" onclick="quickAsk('auction')">Auction</button>
+          <button class="ai-chip" onclick="quickAsk('cart')">My Cart</button>
+          <button class="ai-chip" onclick="quickAsk('login')">Login</button>
+        </div>
+        <div class="ai-actions">
+          <button class="btn-home" style="width:100%;padding:18px;" onclick="handleAI()">Ask Sneh</button>
+        </div>
+        <div id="aiResponse" class="ai-response"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Snehvastra. Artisan Studio • NFC Craft Verified.
+  </footer>
+
+  <div id="toast"></div>
+
+  <script>
+    // 🔒 SNEHVASTRA SYSTEM (Production Ready)
+    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
+    let user = JSON.parse(localStorage.getItem(USER_KEY) || 'null');
+
+    // MOBILE MENU
+    document.getElementById('hamburger').addEventListener('click',()=>{
+      document.querySelector('header').classList.toggle('menu-open');
+    });
+
+    function renderAuth(){
+      document.getElementById("authArea").innerHTML = user?.loggedIn 
+        ? `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;">${user.name}</span>`
+        : `<a href="user-login.html" style="padding:12px 24px;border:1px solid var(--rose-gold);color:var(--rose-gold);border-radius:20px;font-weight:500;text-decoration:none;">Login</a>`;
     }
-    
-    if (q.includes("hoodie") || q.includes("tee")) 
-      res.innerHTML = "Latest hoodies & tees in <strong>collection.html</strong>";
-    else if (q.includes("cart") || q.includes("bag")) 
-      res.innerHTML = "Your cart is safe at <strong>cart.html</strong>";
-    else if (q.includes("auction")) 
-      res.innerHTML = "Live bidding at <strong>auction.html</strong>";
-    else if (q.includes("size")) 
-      res.innerHTML = "Sizing charts on product pages & <strong>shipping.html</strong>";
-    else res.innerHTML = "Try Collection or Auction for live drops.";
-  }
 
-  AOS.init({ duration: 1200, once: true });
-</script>
+    function updateCartCount(){
+      document.getElementById("cartCount").textContent = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0) || 0;
+    }
+
+    function showToast(msg){
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 3000);
+    }
+
+    // WORLD-CLASS SEARCH + AI
+    function handleSearch(e){
+      if(e.key === 'Enter'){
+        const query = e.target.value.toLowerCase();
+        showToast(`Searching "${query}"...`);
+        setTimeout(()=>navigateSearch(query), 1500);
+      }
+    }
+
+    function quickAsk(query){
+      document.getElementById('aiInput').value = query;
+      handleAI();
+    }
+
+    function handleAI(){
+      const input = document.getElementById('aiInput');
+      const response = document.getElementById('aiResponse');
+      const query = input.value.toLowerCase().trim();
+      
+      if(!query) return;
+      
+      const actions = {
+        'hoodie': 'hoodies', 'tee': 'tees', 'bomber': 'bombers', 'jacket': 'jackets',
+        'auction': 'auction.html', 'bid': 'auction.html', 'live': 'auction.html',
+        'cart': 'cart.html', 'bag': 'cart.html', 'checkout': 'cart.html',
+        'login': 'user-login.html', 'account': 'user-login.html',
+        'collection': 'collection.html', 'drops': 'collection.html'
+      };
+      
+      for(let key in actions){
+        if(query.includes(key)){
+          response.innerHTML = `→ Navigating to <strong>${key.toUpperCase()}</strong>`;
+          showToast(`Going to ${key}...`);
+          setTimeout(()=>location.href=typeof(actions[key])==='string' ? actions[key] : 'collection.html', 800);
+          return;
+        }
+      }
+      
+      response.innerHTML = "→ Starting from <strong>Collection</strong>";
+      showToast("Taking you to drops...");
+      setTimeout(()=>location.href='collection.html', 1000);
+    }
+
+    function navigateSearch(query){
+      showToast(`Found "${query}" in Collection`);
+      location.href='collection.html';
+    }
+
+    // GSAP PERFECTION
+    gsap.from(".not-found-icon", {scale:0.3, rotation:-180, duration:1.5, ease:"back.out(2)"});
+    gsap.from(".not-found-title", {scale:0.85, opacity:0, duration:1.2, delay:0.3, ease:"back.out(1.7)"});
+    gsap.from(".search-input", {scale:0.95, y:30, opacity:0, duration:0.8, delay:0.8, ease:"power2.out"});
+
+    // INIT
+    function init(){
+      AOS.init({duration:1200,once:true,offset:100});
+      renderAuth();
+      updateCartCount();
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
 </body>
 </html>
