@@ -1,311 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — Snehvastra</title>
-  <meta name="description" content="Snehvastra philosophy: artisan patience meets new-gen luxury streetwear. Limited drops, NFC craft lineage, collector intent." />
-  <meta name="theme-color" content="#3A0F5A" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#2C1B4A"/>
+  <title>About — Snehvastra Studio</title>
+  <meta name="description" content="Snehvastra: Artisan patience meets collector-grade streetwear. NFC lineage. Limited drops. New Gen luxury craft continuity."/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700;900&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
-    :root {
-      --purple: #3A0F5A; --purple-dark: #2e0b4a; --gold: #F59E0B;
-      --slate: #1F2024; --slate-mid: #3B3D45; --muted: #8E8F92;
-      --glass: rgba(255,255,255,0.95); --radius: 28px;
-      --shadow-soft: 0 40px 120px rgba(58,15,90,0.15);
-      --ease: 0.4s cubic-bezier(0.25,0.46,0.45,0.94); --max-width: 1400px;
+    :root{
+      /* 🔒 SNEHVASTRA GENTLE LUXURY SYSTEM (LOCKED) */
+      --amethyst:#2C1B4A; --amethyst-light:#4A377A; --amethyst-glow:#6B5ACF;
+      --pearl:#F8F6F9; --ivory:#EDE8F5; --silk:#D9D2E9;
+      --rose-gold:#E8B4B8; --rose-gold-dark:#D4A5AF; --sage:#A8B5A2;
+      --shadow-soft:0 35px 140px rgba(44,27,74,0.15); --shadow-glow:0 0 35px rgba(107,90,207,0.2);
+      --radius:32px; --max-width:1600px; --ease:cubic-bezier(0.32,0.72,0,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#F8F6F9 0%,#EDE8F5 50%,#D9D2E9 100%);color:var(--amethyst);overflow-x:hidden;line-height:1.8;position:relative;}
+
+    /* 🔒 WORLD-CLASS MOBILE HEADER */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(180deg,rgba(248,246,249,0.98),rgba(237,232,245,0.95));backdrop-filter:blur(40px);border-bottom:1px solid rgba(44,27,74,0.08);padding:20px 0;}
+    .header-container{max-width:var(--max-width);margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;gap:20px;align-items:center;cursor:pointer;transition:all 0.6s var(--ease);}
+    .brand:hover{transform:translateY(-4px);}
+    .logo{height:60px;border-radius:20px;box-shadow:0 20px 60px rgba(44,27,74,0.12);}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+    nav a{padding:12px 24px;border-radius:24px;font-weight:400;color:var(--amethyst);text-decoration:none;font-size:0.95rem;backdrop-filter:blur(20px);transition:all 0.4s var(--ease);position:relative;white-space:nowrap;}
+    nav a::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2px;background:var(--rose-gold);transition:all 0.4s var(--ease);transform:translateX(-50%);}
+    nav a.active::after,nav a:hover::after{width:80%;}
+    nav a.active{background:rgba(232,180,184,0.15);color:var(--amethyst);font-weight:500;box-shadow:0 8px 32px rgba(232,180,184,0.15);}
+
+    /* 🔥 MOBILE HAMBURGER */
+    .hamburger{display:none;background:none;border:none;font-size:1.8rem;color:var(--amethyst);cursor:pointer;padding:8px;}
+    @media(max-width:768px){
+      .hamburger{display:block!important;}
+      header.menu-open nav{display:block!important;position:absolute;top:100%;left:0;right:0;background:var(--pearl);backdrop-filter:blur(40px);border-top:1px solid rgba(44,27,74,0.08);padding:20px 0;}
+      header.menu-open nav ul{flex-direction:column;width:100%;gap:8px;}
+      nav a{display:block;text-align:center;padding:16px 20px;width:100%;border-radius:16px;}
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: linear-gradient(135deg, #f8f7fc 0%, #f4f2f9 100%);
-      font-family: 'Poppins', sans-serif; color: var(--slate);
-      overflow-x: hidden; line-height: 1.7;
-    }
+    /* 🎥 IMMERSIVE HERO (Pentagram Narrative) */
+    .hero{position:relative;min-height:100vh;padding:140px 5% 100px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+    @media(max-width:768px){.hero{padding:120px 5% 80px;min-height:90vh;}}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(44,27,74,0.75),rgba(44,27,74,0.4));z-index:2;}
+    .hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;filter:brightness(0.6);}
+    .hero-content{position:relative;z-index:3;max-width:1100px;}
+    .hero-badge{position:absolute;top:80px;right:80px;background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);padding:20px 36px;border-radius:999px;font-family:'Clash Display',serif;font-size:1.3rem;font-weight:900;letter-spacing:1px;box-shadow:var(--shadow-glow);animation:float-gentle 6s ease-in-out infinite;}
+    @media(max-width:768px){.hero-badge{top:60px;right:40px;font-size:1.1rem;padding:16px 28px;}}
+    .hero-badge span{display:block;font-size:0.7em;font-weight:400;opacity:0.9;}
+    .hero h1{font-family:'Clash Display',serif;font-size:clamp(5rem,14vw,9rem);font-weight:900;color:#fff;margin:0 0 2rem;line-height:0.95;text-shadow:0 12px 48px rgba(0,0,0,0.8);letter-spacing:-3px;}
+    .hero p{font-size:clamp(1.4rem,4vw,2rem);color:rgba(255,255,255,0.95);margin:0 auto 4rem;max-width:800px;line-height:1.7;}
 
-    /* Perfect System Header */
-    .site-header {
-      position: sticky; top: 0; z-index: 140;
-      background: var(--glass); backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(58,15,90,0.08);
-    }
-    .header-inner {
-      max-width: var(--max-width); margin: 0 auto;
-      padding: 24px 5%; display: flex; align-items: center;
-      justify-content: space-between;
-    }
-    .brand-lockup { display: flex; align-items: center; gap: 16px; cursor: pointer; }
-    .brand-lockup img { height: 52px; border-radius: 20px; box-shadow: 0 16px 48px rgba(58,15,90,0.18); }
-    .brand-tagline { font-size: 0.9rem; color: var(--muted); font-weight: 600; }
-    .header-nav { display: flex; gap: 20px; font-size: 1rem; }
-    .header-link { padding: 16px 28px; border-radius: 24px; font-weight: 700;
-      color: var(--slate-mid); text-decoration: none; position: relative;
-      transition: all var(--ease);
-    }
-    .header-link.active, .header-link:hover {
-      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: #fff; box-shadow: 0 20px 60px rgba(58,15,90,0.3);
-    }
-    .header-actions { display: flex; align-items: center; gap: 16px; }
-    .pill-link { font-size: 0.95rem; padding: 14px 24px; border-radius: 24px;
-      border: 2px solid rgba(58,15,90,0.2); background: rgba(255,255,255,0.8);
-      font-weight: 700; display: inline-flex; align-items: center; gap: 8px;
-      transition: all var(--ease);
-    }
-    .pill-link:hover { background: #fff; transform: translateY(-2px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    }
-    .cart-pill { background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: #fff; border-color: rgba(58,15,90,0.4);
-    }
-    .cart-count-badge { min-width: 22px; height: 22px; border-radius: 50%;
-      background: var(--gold); color: var(--purple); font-size: 0.85rem;
-      font-weight: 900; display: flex; align-items: center; justify-content: center;
-    }
+    /* 💎 STORY SECTIONS (Huemor Scroll Perfection) */
+    .story-section{max-width:var(--max-width);margin:140px auto;padding:0 5%;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:start;}
+    @media(max-width:1100px){.story-section{grid-template-columns:1fr;gap:80px;text-align:center;}}
+    @media(max-width:768px){.story-section{margin:100px auto;gap:60px;}}
+    .story-card{background:var(--pearl);backdrop-filter:blur(40px);border-radius:var(--radius);padding:100px 80px;border:1px solid rgba(44,27,74,0.08);box-shadow:var(--shadow-soft);position:relative;overflow:hidden;}
+    @media(max-width:768px){.story-card{padding:60px 40px;}}
+    .story-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rose-gold),var(--amethyst-glow));}
+    .story-visual{height:700px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);position:relative;}
+    @media(max-width:768px){.story-visual{height:500px;}}
+    .story-visual img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease);}
+    .story-card:hover .story-visual img{transform:scale(1.05);}
+    .story-title{font-family:'Clash Display',serif;font-size:clamp(3rem,8vw,4.5rem);font-weight:900;color:var(--amethyst);margin:0 0 2.5rem;line-height:1.1;letter-spacing:-1px;}
+    .story-subtitle{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:300;color:var(--sage);margin:0 0 3rem;max-width:600px;line-height:1.7;}
+    .quote{font-size:1.6rem;font-style:italic;color:var(--amethyst);font-weight:600;margin:3rem 0;padding:2.5rem;background:var(--ivory);border-left:6px solid var(--rose-gold);border-radius:0 24px 24px 0;line-height:1.6;}
+    .values{display:flex;flex-wrap:wrap;gap:1.2rem;margin:3rem 0;}
+    .value-pill{padding:16px 32px;border-radius:999px;font-size:1.1rem;font-weight:700;background:var(--silk);color:var(--amethyst);border:2px solid rgba(44,27,74,0.1);transition:all 0.4s var(--ease);cursor:pointer;}
+    .value-pill:hover{background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-dark));color:var(--amethyst);transform:translateY(-6px);box-shadow:var(--shadow-soft);}
 
-    /* Hero */
-    .hero { max-width: var(--max-width); margin: 160px auto 120px; padding: 0 5%;
-      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      border-radius: var(--radius); padding: 140px 100px; text-align: center;
-      color: #fff; position: relative; overflow: hidden;
-    }
-    .hero::before { content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2) 0%, transparent 60%);
-    }
-    .hero-badge { position: absolute; top: 48px; right: 48px;
-      background: linear-gradient(135deg, var(--gold), #F59E0B); color: var(--purple);
-      padding: 20px 36px; border-radius: 999px; font-family: 'Clash Display', serif;
-      font-weight: 900; font-size: 1.2rem; box-shadow: 0 20px 60px rgba(245,158,11,0.4);
-    }
-    .hero h1 { font-family: 'Clash Display', serif; font-size: clamp(5rem, 12vw, 8rem);
-      margin: 0 0 48px; position: relative; z-index: 1; font-weight: 900; line-height: 1;
-    }
-    .hero p { font-size: 1.6rem; max-width: 900px; margin: 0 auto 64px;
-      position: relative; z-index: 1; opacity: 0.95; line-height: 1.7;
-    }
+    /* 🤖 AI STORYTELLER (AKQA Intelligence) */
+    .ai-storyteller{position:relative;margin:120px 0;max-width:600px;width:100%;}
+    .ai-card{background:var(--pearl);backdrop-filter:blur(40px);border-radius:var(--radius);padding:60px;border:1px solid rgba(44,27,74,0.08);box-shadow:var(--shadow-soft);}
+    @media(max-width:768px){.ai-card{padding:48px 32px;}}
+    .ai-header{display:flex;align-items:center;gap:20px;margin-bottom:32px;}
+    .ai-status{width:16px;height:16px;border-radius:50%;background:#A8D5BA;box-shadow:0 0 0 6px rgba(168,213,186,0.4);animation:pulse-dot 2s ease-in-out infinite;}
+    .ai-title{font-family:'Clash Display',serif;font-size:2.2rem;color:var(--amethyst);font-weight:900;}
+    .ai-input{width:100%;padding:24px 36px;border-radius:28px;border:2px solid rgba(44,27,74,0.08);font-size:1.3rem;font-family:'Clash Display',serif;font-weight:500;background:var(--ivory);color:var(--amethyst);backdrop-filter:blur(25px);transition:all 0.4s var(--ease);}
+    .ai-input:focus{outline:none;border-color:var(--rose-gold);box-shadow:0 25px 80px rgba(232,180,184,0.2);transform:translateY(-4px);}
+    .ai-chips{display:flex;flex-wrap:wrap;gap:16px;margin:28px 0;}
+    .ai-chip{padding:16px 28px;border-radius:24px;border:2px solid rgba(44,27,74,0.12);background:var(--silk);color:var(--amethyst);font-weight:600;cursor:pointer;transition:all 0.4s var(--ease);font-size:1rem;}
+    .ai-chip:hover{background:var(--rose-gold);border-color:var(--rose-gold);transform:translateY(-4px);box-shadow:0 20px 60px rgba(232,180,184,0.25);}
+    .ai-actions{display:flex;gap:16px;margin-top:24px;flex-wrap:wrap;}
+    .ai-response{margin-top:24px;padding:32px;border-radius:24px;background:var(--ivory);color:var(--sage);font-size:1.2rem;font-weight:500;line-height:1.7;border-left:6px solid var(--rose-gold);min-height:80px;}
 
-    /* Sections */
-    .section { max-width: var(--max-width); margin: 0 auto 140px; padding: 0 5%; }
-    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    @media (max-width: 1200px) { .split { grid-template-columns: 1fr; gap: 60px; } }
+    /* FOOTER */
+    footer{padding:100px 5% 60px;text-align:center;background:var(--pearl);color:var(--sage);border-top:1px solid rgba(44,27,74,0.06);font-size:1rem;font-weight:300;margin-top:120px;}
+    @media(max-width:768px){footer{padding:80px 5% 40px;}}
 
-    .card { background: #fff; border-radius: var(--radius); padding: 80px;
-      border: 1px solid rgba(58,15,90,0.08); box-shadow: var(--shadow-soft);
-      position: relative; overflow: hidden;
-    }
-    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 4px; background: linear-gradient(90deg, var(--purple), var(--gold));
-    }
-    .card h2 { font-family: 'Clash Display', serif; color: var(--purple);
-      margin: 0 0 32px; font-size: 3.2rem; font-weight: 900; line-height: 1.2;
-    }
-    .card p { color: var(--slate-mid); font-size: 1.3rem; line-height: 1.8;
-      margin-bottom: 24px;
-    }
-    .quote { font-style: italic; color: var(--purple); font-size: 1.4rem;
-      font-weight: 600; margin: 48px 0; padding: 32px;
-      background: linear-gradient(135deg, rgba(58,15,90,0.03), rgba(58,15,90,0.01));
-      border-left: 6px solid var(--purple); border-radius: 0 16px 16px 0;
-    }
-
-    .values { display: flex; gap: 16px; flex-wrap: wrap; margin: 48px 0; }
-    .pill { padding: 16px 28px; border-radius: 999px; font-size: 1rem; font-weight: 700;
-      background: linear-gradient(135deg, rgba(58,15,90,0.08), rgba(58,15,90,0.04));
-      color: var(--purple); border: 1px solid rgba(58,15,90,0.15);
-      transition: all var(--ease);
-    }
-    .pill:hover { background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: #fff; transform: translateY(-4px); box-shadow: 0 20px 60px rgba(58,15,90,0.3);
-    }
-
-    .visual { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-soft);
-      height: 600px; position: relative;
-    }
-    .visual::before { content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(58,15,90,0.1), rgba(58,15,90,0.05));
-    }
-    .visual img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* Sneh AI */
-    .sneh-ai { background: linear-gradient(135deg, #fff, #f8f7fc);
-      border: 1px solid rgba(58,15,90,0.1); border-radius: var(--radius);
-      padding: 48px; margin-top: 64px; box-shadow: 0 20px 80px rgba(58,15,90,0.08);
-    }
-    .sneh-ai label { font-family: 'Clash Display', serif; color: var(--purple);
-      font-size: 1.4rem; font-weight: 900; margin-bottom: 24px; display: block;
-    }
-    .sneh-ai input { width: 100%; padding: 24px 32px; border-radius: 24px;
-      border: 2px solid rgba(58,15,90,0.15); font-size: 1.2rem; font-weight: 600;
-      outline: none; background: rgba(255,255,255,0.8);
-    }
-    .sneh-ai-buttons { display: flex; gap: 20px; margin-top: 32px; }
-    .btn { padding: 20px 36px; border: none; border-radius: 28px; font-weight: 900;
-      font-size: 1.1rem; cursor: pointer; transition: all var(--ease);
-      font-family: 'Clash Display', serif;
-    }
-    .btn-primary { background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-      color: #fff; box-shadow: 0 28px 90px rgba(58,15,90,0.4);
-    }
-    .btn-primary:hover { transform: translateY(-6px); box-shadow: 0 40px 120px rgba(58,15,90,0.5); }
-    .btn-ghost { background: rgba(58,15,90,0.06); color: var(--purple);
-      border: 2px solid rgba(58,15,90,0.2);
-    }
-    .response { margin-top: 32px; padding: 28px; background: rgba(58,15,90,0.03);
-      border-radius: 20px; color: var(--slate); font-size: 1.2rem; line-height: 1.7;
-      min-height: 32px; border-left: 4px solid var(--purple);
-    }
-
-    footer { padding: 120px 5% 80px; text-align: center; color: var(--muted);
-      border-top: 1px solid rgba(183,185,189,0.12); font-size: 1rem;
-    }
-
-    @media (max-width: 900px) {
-      .header-nav { display: none; }
-      .brand-tagline { display: none; }
-      .hero { padding: 100px 40px; margin-top: 120px; }
-    }
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(1.3);}}
+    @keyframes float-gentle{0%,100%{transform:translateY(0px) rotate(0deg);}50%{transform:translateY(-16px) rotate(2deg);}}
   </style>
 </head>
-
 <body>
-<!-- Perfect System Header -->
-<header class="site-header" data-aos="fade-down">
-  <div class="header-inner">
-    <a href="index.html" class="brand-lockup" data-aos="fade-right">
-      <img src="images/logo.final.png" alt="Snehvastra">
-      <span class="brand-tagline">New Gen Luxury</span>
-    </a>
-
-    <nav class="header-nav">
-      <a href="collection.html" class="header-link">Collection</a>
-      <a href="auction.html" class="header-link">Auction</a>
-      <a href="about.html" class="header-link active">About</a>
-      <a href="blog.html" class="header-link">Stories</a>
-      <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
-    </nav>
-
-    <div class="header-actions">
-      <a href="user-login.html" class="pill-link">Account</a>
-      <a href="cart.html" class="pill-link cart-pill">
-        Bag <span class="cart-count-badge" id="cartBadge">0</span>
-      </a>
-    </div>
-  </div>
-</header>
-
-<!-- Hero -->
-<section class="hero" data-aos="zoom-in">
-  <div class="hero-badge" data-aos="fade-left">COLLECTOR INTENT</div>
-  <h1 data-aos="fade-up">Craft. Culture. Continuity.</h1>
-  <p data-aos="fade-up" data-aos-delay="200">
-    Snehvastra fuses artisan patience with collector-grade streetwear. 
-    NFC-verified drops. Limited runs. Built to endure.
-  </p>
-</section>
-
-<!-- Story Split -->
-<section class="section split">
-  <div class="card" data-aos="fade-right">
-    <h2 data-aos="fade-up">The Snehvastra Vision</h2>
-    <p data-aos="fade-up" data-aos-delay="100">
-      Born from studio silence, Snehvastra rejects fast fashion noise. 
-      We craft with restraint — matte tactility, intentional silhouettes, 
-      NFC lineage tracking from loom to collector.
-    </p>
-    <div class="quote" data-aos="fade-up" data-aos-delay="200">
-      "Quiet luxury with unbroken craft continuity."
-    </div>
-    <div class="values">
-      <div class="pill" data-aos="fade-up" data-aos-delay="300">NFC Verified</div>
-      <div class="pill" data-aos="fade-up" data-aos-delay="400">Limited Drops</div>
-      <div class="pill" data-aos="fade-up" data-aos-delay="500">Artisan Craft</div>
-      <div class="pill" data-aos="fade-up" data-aos-delay="600">Collector Grade</div>
-    </div>
-
-    <div class="sneh-ai" data-aos="fade-up" data-aos-delay="700">
-      <label>Ask Sneh — Craft Intelligence</label>
-      <input id="aiInput" type="text" placeholder="Why NFC? Drop model? Craft process?" />
-      <div class="sneh-ai-buttons">
-        <button class="btn btn-primary" onclick="askSnehAI()">Ask Sneh</button>
-        <button class="btn btn-ghost" onclick="clearSnehAI()">Clear</button>
+  <!-- 🔒 PERFECT MOBILE HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="brand" onclick="location.href='index.html'">
+        <img src="images/logo.final.png" class="logo" alt="Snehvastra"/>
+        <div style="font-family:'Clash Display',serif;font-size:1.5rem;font-weight:600;color:var(--amethyst);">Snehvastra</div>
       </div>
-      <div class="response" id="aiRes"></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="auction.html">Auction</a></li>
+          <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
+          <li id="authArea"></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-  </div>
+  </header>
 
-  <div class="visual" data-aos="fade-left">
-    <img src="images/mybanner.jpg" alt="Snehvastra Studio"/>
-  </div>
-</section>
+  <!-- 🎨 IMMERSIVE STORY HERO -->
+  <section class="hero">
+    <video src="videos/studio-craft.mp4" class="hero-bg" autoplay muted loop playsinline></video>
+    <div class="hero-badge">
+      <span>Collector Intent</span>
+      Craft Continuity
+    </div>
+    <div class="hero-content">
+      <h1 data-aos="fade-up" data-aos-delay="200">Craft. Culture. Continuity.</h1>
+      <p data-aos="fade-up" data-aos-delay="400">
+        Snehvastra fuses artisan patience with collector-grade streetwear. 
+        NFC-verified drops. Limited runs. Built to endure eternally.
+      </p>
+    </div>
+  </section>
 
-<!-- Drop Philosophy -->
-<section class="section">
-  <div class="card" data-aos="fade-up">
-    <h2>Drop Philosophy</h2>
-    <p>
-      Snehvastra operates on scarcity and intent. Each drop opens briefly, 
-      then closes forever. Missed drops live in auction or collector archives. 
-      NFC ensures every piece traces its craft lineage eternally.
-    </p>
-    <p style="color: var(--slate-mid); font-size: 1.2rem; font-weight: 600;">
-      First access. Unbroken provenance. Collector continuity.
-    </p>
-  </div>
-</section>
+  <!-- 💎 VISION STORY -->
+  <section class="story-section">
+    <div class="story-card" data-aos="fade-right">
+      <h2 class="story-title" data-aos="fade-up">The Snehvastra Vision</h2>
+      <p class="story-subtitle" data-aos="fade-up" data-aos-delay="200">
+        Born from studio silence, Snehvastra rejects fast fashion noise. 
+        We craft with restraint — matte tactility, intentional silhouettes.
+      </p>
+      <blockquote class="quote" data-aos="fade-up" data-aos-delay="400">
+        "Quiet luxury with unbroken craft continuity."
+      </blockquote>
+      <div class="values" data-aos="fade-up" data-aos-delay="600">
+        <div class="value-pill">NFC Verified</div>
+        <div class="value-pill">Limited Drops</div>
+        <div class="value-pill">Artisan Craft</div>
+        <div class="value-pill">Collector Grade</div>
+      </div>
+    </div>
+    <div class="story-visual" data-aos="fade-left">
+      <img src="images/mybanner.jpg" alt="Snehvastra Studio Craft"/>
+    </div>
+  </section>
 
-<footer>
-  © <span id="year"></span> Snehvastra — Craft Continuity • NFC Lineage
-</footer>
+  <!-- 🎯 DROP PHILOSOPHY -->
+  <section class="story-section">
+    <div class="story-visual" data-aos="fade-right">
+      <img src="images/drop-philosophy.jpg" alt="Snehvastra Drop Process"/>
+    </div>
+    <div class="story-card" data-aos="fade-left">
+      <h2 class="story-title" data-aos="fade-up">Drop Philosophy</h2>
+      <p class="story-subtitle" data-aos="fade-up" data-aos-delay="200">
+        Snehvastra operates on scarcity and intent. Each drop opens briefly, 
+        then closes forever. NFC ensures unbroken craft lineage eternally.
+      </p>
+      <div class="ai-storyteller" data-aos="fade-up" data-aos-delay="400">
+        <div class="ai-card">
+          <div class="ai-header">
+            <div class="ai-status"></div>
+            <div class="ai-title">Ask Sneh</div>
+          </div>
+          <input class="ai-input" id="aiInput" placeholder="Why NFC? Drop model? Craft process?">
+          <div class="ai-chips">
+            <button class="ai-chip" onclick="quickAsk('NFC')">NFC Tracking</button>
+            <button class="ai-chip" onclick="quickAsk('drop')">Drop Model</button>
+            <button class="ai-chip" onclick="quickAsk('craft')">Craft Process</button>
+            <button class="ai-chip" onclick="quickAsk('why')">Our Mission</button>
+          </div>
+          <div class="ai-actions">
+            <button class="btn-home" style="width:100%;padding:20px;font-family:'Clash Display',serif;" onclick="handleAI()">Ask Sneh</button>
+          </div>
+          <div id="aiResponse" class="ai-response"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  // Perfect cart sync
-  const CART_KEY = "snehvastra_cart";
-  function getCartCount() {
-    try {
-      const raw = localStorage.getItem(CART_KEY);
-      if (!raw) return 0;
-      const cart = JSON.parse(raw);
-      return Object.values(cart).reduce((sum, item) => sum + (item?.quantity || 0), 0);
-    } catch { return 0; }
-  }
-  
-  document.getElementById("cartCount").textContent = getCartCount();
-  document.getElementById("cartBadge").textContent = getCartCount();
-  document.getElementById("year").textContent = new Date().getFullYear();
+  <footer>
+    © <span id="year"></span> Snehvastra Studio. Craft Continuity • NFC Lineage Verified.
+  </footer>
 
-  // Sneh AI
-  function askSnehAI() {
-    const q = document.getElementById("aiInput").value.toLowerCase().trim();
-    const res = document.getElementById("aiRes");
-    
-    if (!q) {
-      res.innerHTML = "Ask about drops, NFC, craft process, or collector philosophy.";
-      return;
+  <script>
+    // 🔒 SNEHVASTRA PRODUCTION SYSTEM
+    const USER_KEY = "snehvastra_user"; const CART_KEY = "snehvastra_cart";
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
+    let user = JSON.parse(localStorage.getItem(USER_KEY) || 'null');
+
+    // MOBILE MENU + AUTH
+    document.getElementById('hamburger').addEventListener('click',()=>{
+      document.querySelector('header').classList.toggle('menu-open');
+    });
+
+    function renderAuth(){
+      document.getElementById("authArea").innerHTML = user?.loggedIn 
+        ? `<span style="color:var(--rose-gold);font-weight:600;font-family:'Clash Display',serif;">${user.name}</span>`
+        : `<a href="user-login.html" style="padding:12px 24px;border:2px solid var(--rose-gold);color:var(--rose-gold);border-radius:24px;font-weight:500;text-decoration:none;">Login</a>`;
     }
-    
-    if (q.includes("nfc") || q.includes("verify")) 
-      res.innerHTML = "Every Snehvastra piece carries embedded NFC lineage — loom origin, artisan, drop date, verified forever.";
-    else if (q.includes("drop") || q.includes("limited"))
-      res.innerHTML = "Drops open briefly, then close. Scarcity preserves craft integrity and collector value.";
-    else if (q.includes("craft") || q.includes("fabric"))
-      res.innerHTML = "Matte tactility from long-staple cotton. 27+ hour artisan processes. No fast production.";
-    else if (q.includes("why") || q.includes("mission"))
-      res.innerHTML = "Snehvastra bridges heritage craft with collector streetwear. Continuity over consumption.";
-    else 
-      res.innerHTML = "Deep question. Try NFC tracking, drop model, or craft materials.";
-  }
 
-  function clearSnehAI() {
-    document.getElementById("aiInput").value = "";
-    document.getElementById("aiRes").textContent = "";
-  }
+    function updateCartCount(){
+      document.getElementById("cartCount").textContent = Object.values(cart).reduce((sum,qty)=>sum + (qty||0),0) || 0;
+    }
 
-  // Init AOS
-  AOS.init({ duration: 1200, once: true });
-</script>
+    // AI STORYTELLER PERFECTION
+    function quickAsk(query){
+      document.getElementById('aiInput').value = query;
+      handleAI();
+    }
+
+    function handleAI(){
+      const input = document.getElementById('aiInput');
+      const response = document.getElementById('aiResponse');
+      const query = input.value.toLowerCase().trim();
+      
+      if(!query) return;
+      
+      const stories = {
+        'nfc': 'Every Snehvastra piece carries embedded NFC — tracking loom origin, artisan signature, drop date. Verified forever.',
+        'drop': 'Drops open 48 hours, then close eternally. Scarcity preserves craft integrity and collector value.',
+        'craft': '27+ hour artisan processes. Long-staple cotton. Matte tactility. No fast production compromises.',
+        'why': 'Snehvastra bridges heritage craft with new-gen streetwear collectors. Continuity over consumption.',
+        'mission': 'Quiet luxury. Unbroken provenance. Collector continuity through NFC lineage.',
+        'philosophy': 'First access creates intent. Limited runs ensure enduring value. Craft over commerce.'
+      };
+      
+      for(let key in stories){
+        if(query.includes(key)){
+          response.innerHTML = `<strong>${query.toUpperCase()}:</strong> ${stories[key]}`;
+          gsap.fromTo(response, {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, ease:"power2.out"});
+          return;
+        }
+      }
+      
+      response.innerHTML = "Deep craft question. Try 'NFC tracking', 'drop model', or 'craft process' for studio secrets.";
+    }
+
+    // GSAP SCROLL MAGIC
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(".hero h1", {scale:0.85, opacity:0, duration:1.5, delay:0.5, ease:"back.out(2)"});
+    gsap.from(".story-title", {scale:0.9, opacity:0, duration:1.2, stagger:0.2, scrollTrigger:{trigger:".story-section", start:"top 80%"}});
+    gsap.to(".value-pill", {
+      scale:1.05, y:-8, duration:0.4, stagger:0.1,
+      scrollTrigger:{trigger:".values", start:"top 85%"},
+      ease:"back.out(1.7)"
+    });
+
+    // INIT PERFECTION
+    function init(){
+      AOS.init({duration:1400,once:true,offset:120});
+      renderAuth();
+      updateCartCount();
+      document.getElementById("year").textContent = new Date().getFullYear();
+      
+      // Video optimization
+      const video = document.querySelector('.hero-bg');
+      if(video){
+        video.addEventListener('loadeddata', ()=>video.currentTime = 2);
+        window.addEventListener('scroll', ()=>video.pause());
+      }
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
 </body>
 </html>
